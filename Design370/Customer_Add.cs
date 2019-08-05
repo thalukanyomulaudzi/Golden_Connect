@@ -31,6 +31,7 @@ namespace Design370
         private void Button2_Click_1(object sender, EventArgs e)
         {
             this.Close();
+            //
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
