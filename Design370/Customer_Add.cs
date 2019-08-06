@@ -46,6 +46,7 @@ namespace Design370
         {
             DialogResult exit = MessageBox.Show("Do you want to save these changes?", "Save changes", MessageBoxButtons.YesNo);
             e.Cancel = exit == DialogResult.Yes ? false : true;
-        }
+            MessageBox.Show("New Customer Added Successfully!");
+;        }
     }
 }
