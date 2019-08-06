@@ -32,15 +32,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtEM = new System.Windows.Forms.TextBox();
+            this.txtTEL = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLN = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -88,27 +88,27 @@
             this.label11.TabIndex = 78;
             this.label11.Text = "1. Personal Information";
             // 
-            // textBox5
+            // txtEM
             // 
-            this.textBox5.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(284, 216);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(183, 21);
-            this.textBox5.TabIndex = 77;
+            this.txtEM.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEM.Location = new System.Drawing.Point(284, 126);
+            this.txtEM.Name = "txtEM";
+            this.txtEM.Size = new System.Drawing.Size(183, 21);
+            this.txtEM.TabIndex = 77;
             // 
-            // textBox4
+            // txtTEL
             // 
-            this.textBox4.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(24, 216);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(183, 21);
-            this.textBox4.TabIndex = 76;
+            this.txtTEL.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTEL.Location = new System.Drawing.Point(24, 216);
+            this.txtTEL.Name = "txtTEL";
+            this.txtTEL.Size = new System.Drawing.Size(183, 21);
+            this.txtTEL.TabIndex = 76;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(281, 200);
+            this.label5.Location = new System.Drawing.Point(281, 110);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 75;
@@ -142,13 +142,13 @@
             this.label3.TabIndex = 72;
             this.label3.Text = "ID Number :";
             // 
-            // textBox2
+            // txtLN
             // 
-            this.textBox2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(24, 126);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(183, 21);
-            this.textBox2.TabIndex = 71;
+            this.txtLN.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLN.Location = new System.Drawing.Point(24, 126);
+            this.txtLN.Name = "txtLN";
+            this.txtLN.Size = new System.Drawing.Size(183, 21);
+            this.txtLN.TabIndex = 71;
             // 
             // label2
             // 
@@ -160,13 +160,13 @@
             this.label2.TabIndex = 70;
             this.label2.Text = "Last Name :";
             // 
-            // textBox1
+            // txtFN
             // 
-            this.textBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(24, 72);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 21);
-            this.textBox1.TabIndex = 69;
+            this.txtFN.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFN.Location = new System.Drawing.Point(24, 72);
+            this.txtFN.Name = "txtFN";
+            this.txtFN.Size = new System.Drawing.Size(183, 21);
+            this.txtFN.TabIndex = 69;
             // 
             // label1
             // 
@@ -187,15 +187,15 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtEM);
+            this.Controls.Add(this.txtTEL);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtLN);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFN);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Customer_Add";
@@ -213,15 +213,15 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtEM;
+        private System.Windows.Forms.TextBox txtTEL;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLN;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFN;
         private System.Windows.Forms.Label label1;
     }
 }

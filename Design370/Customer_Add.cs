@@ -41,7 +41,7 @@ namespace Design370
         {
             //It's workingyyyy
             //Stefan
-            this.Close();
+            addCustomer();
         }
 
         private void Customer_Add_FormClosing(object sender, FormClosingEventArgs e)
@@ -50,5 +50,29 @@ namespace Design370
             e.Cancel = exit == DialogResult.Yes ? false : true;
             MessageBox.Show("New Customer Added Successfully!");
 ;        }
+
+        public void addCustomer()
+        {
+            string custInsert = "INSERT INTO customer(customer_first, customer_last, customer_email, customer_phone) VALUES('"+txtFN.Text+"', '"+txtLN.Text+"', '"+txtEM.Text+"', '"+txtTEL.Text+"')";
+            MysqlConnection.cmd = new MySqlCommand(custInsert, MysqlConnection.mysqlCon);
+            try
+            {
+                MysqlConnection.mysqlCon.Open();
+                MySqlDataReader checkIfExist = MysqlConnection.cmd.ExecuteReader();
+                if (checkIfExist.HasRows)
+                {
+                    MessageBox.Show("Customer already exits!");
+                }
+                else
+                {
+                    MessageBox.Show("New Customer Inserted!");
+                    MysqlConnection.mysqlCon.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Error: " + ee.Message);
+            }
+        }
     }
 }
