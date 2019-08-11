@@ -23,5 +23,10 @@ namespace Design370
             Service_Types service_Types = new Service_Types();
             service_Types.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
