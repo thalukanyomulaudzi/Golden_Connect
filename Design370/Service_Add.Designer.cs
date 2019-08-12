@@ -175,6 +175,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Service_Add";
             this.Text = "Add Service";
+            this.Load += new System.EventHandler(this.Service_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
