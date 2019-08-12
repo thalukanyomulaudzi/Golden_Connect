@@ -22,7 +22,6 @@ namespace Design370
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
 
         {
-
             Graphics g = e.Graphics;
             Brush _textBrush;
 
@@ -57,9 +56,6 @@ namespace Design370
             _stringFlags.LineAlignment = StringAlignment.Center;
 
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
-
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -75,7 +71,7 @@ namespace Design370
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            var dbCon = DBConnection.Instance();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -92,7 +88,6 @@ namespace Design370
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //MessageBox.Show(e.RowIndex.ToString() + " " + e.ColumnIndex.ToString());   //stefan het homself bekak toe ek dit vir hom wys
 
             Customer_View customerView = new Customer_View();
             switch (e.ColumnIndex)

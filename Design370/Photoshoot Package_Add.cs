@@ -45,5 +45,15 @@ namespace Design370
             listBox4.Items.Add(listBox2.SelectedItem.ToString());
             listBox2.Items.RemoveAt(listBox2.SelectedIndex);
         }
+
+        private void ListBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test");
+        }
+
+        private void ListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

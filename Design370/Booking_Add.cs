@@ -22,5 +22,10 @@ namespace Design370
             Booking_Details bookingDetails = new Booking_Details();
             bookingDetails.Show();
         }
+
+        private void Booking_Add_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
