@@ -342,6 +342,7 @@
             this.Name = "Employee_Add";
             this.Text = "Add Employee";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Employee_Add_FormClosing);
+            this.Load += new System.EventHandler(this.Employee_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

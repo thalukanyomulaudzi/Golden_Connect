@@ -53,5 +53,10 @@ namespace Design370
         {
             this.Close();
         }
+
+        private void Employee_Add_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

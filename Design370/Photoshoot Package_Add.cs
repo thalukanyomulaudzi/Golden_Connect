@@ -15,6 +15,12 @@ namespace Design370
         public Photoshoot_Package_Add()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(listBox1, "Multiple items can be selected");
+            toolTip1.SetToolTip(listBox2, "Multiple items can be selected");
+            toolTip1.SetToolTip(listBox3, "Multiple items can be selected");
+            toolTip1.SetToolTip(listBox4, "Multiple items can be selected");
         }
 
         private void Photoshoot_Package_Add_Load(object sender, EventArgs e)
@@ -24,26 +30,60 @@ namespace Design370
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(listBox3.SelectedItem.ToString());
-            listBox3.Items.RemoveAt(listBox3.SelectedIndex);
+            ListBox.SelectedObjectCollection sourceItems = listBox3.SelectedItems;
+            foreach (var item in sourceItems)
+            {
+                listBox1.Items.Add(item);
+            }
+            while (listBox3.SelectedItems.Count > 0)
+            {
+                listBox3.Items.Remove(listBox3.SelectedItems[0]);
+            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            listBox3.Items.Add(listBox1.SelectedItem.ToString());
-            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            ListBox.SelectedObjectCollection sourceItems = listBox1.SelectedItems;
+            foreach (var item in sourceItems)
+            {
+                listBox3.Items.Add(item);
+            }
+            while (listBox1.SelectedItems.Count > 0)
+            {
+                listBox1.Items.Remove(listBox1.SelectedItems[0]);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            listBox2.Items.Add(listBox4.SelectedItem.ToString());
-            listBox4.Items.RemoveAt(listBox4.SelectedIndex);
+            ListBox.SelectedObjectCollection sourceItems = listBox4.SelectedItems;
+            foreach (var item in sourceItems)
+            {
+                listBox2.Items.Add(item);
+            }
+            while (listBox4.SelectedItems.Count > 0)
+            {
+                listBox4.Items.Remove(listBox4.SelectedItems[0]);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            listBox4.Items.Add(listBox2.SelectedItem.ToString());
-            listBox2.Items.RemoveAt(listBox2.SelectedIndex);
+            ListBox.SelectedObjectCollection sourceItems = listBox2.SelectedItems;
+            foreach (var item in sourceItems)
+            {
+                listBox4.Items.Add(item);
+            }
+            while (listBox2.SelectedItems.Count > 0)
+            {
+                listBox2.Items.Remove(listBox2.SelectedItems[0]);
+            }
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
