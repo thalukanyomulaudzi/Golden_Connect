@@ -30,9 +30,9 @@
         {
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtServTypeDesc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtServTypeName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -57,16 +57,17 @@
             this.button1.TabIndex = 31;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // txtServTypeDesc
             // 
-            this.textBox2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(30, 97);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 162);
-            this.textBox2.TabIndex = 28;
+            this.txtServTypeDesc.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServTypeDesc.Location = new System.Drawing.Point(30, 97);
+            this.txtServTypeDesc.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtServTypeDesc.Multiline = true;
+            this.txtServTypeDesc.Name = "txtServTypeDesc";
+            this.txtServTypeDesc.Size = new System.Drawing.Size(198, 162);
+            this.txtServTypeDesc.TabIndex = 28;
             // 
             // label2
             // 
@@ -79,14 +80,14 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Description :";
             // 
-            // textBox1
+            // txtServTypeName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(30, 40);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 21);
-            this.textBox1.TabIndex = 26;
+            this.txtServTypeName.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServTypeName.Location = new System.Drawing.Point(30, 40);
+            this.txtServTypeName.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtServTypeName.Name = "txtServTypeName";
+            this.txtServTypeName.Size = new System.Drawing.Size(198, 21);
+            this.txtServTypeName.TabIndex = 26;
             // 
             // label1
             // 
@@ -106,9 +107,9 @@
             this.ClientSize = new System.Drawing.Size(260, 338);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtServTypeDesc);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtServTypeName);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -123,9 +124,9 @@
 
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtServTypeDesc;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtServTypeName;
         private System.Windows.Forms.Label label1;
     }
 }
