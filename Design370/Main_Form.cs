@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -75,7 +76,20 @@ namespace Design370
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            load_EMPS();
+        }
 
+        public void load_EMPS()
+        {
+            MysqlConnection.mysqlCon.Open();
+            string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +
+                "FROM employee";
+            MysqlConnection.cmd = new MySqlCommand(employees, MysqlConnection.mysqlCon);
+            MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
+            DataTable table = new DataTable();
+            table.Load(MysqlConnection.reader);
+            empGrid.DataSource = table;
+            MysqlConnection.mysqlCon.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -98,15 +112,15 @@ namespace Design370
             switch (e.ColumnIndex)
             {
                 
-                case 3:
+                case 1:
                     Customer_View.edit = false;
                     customerView.Show();
                     break;
-                case 4:
+                case 2:
                     Customer_View.edit = true;
                     customerView.Show();
                     break;
-                case 5:
+                case 3:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
@@ -141,8 +155,8 @@ namespace Design370
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
-            e.Cancel = exit == DialogResult.Yes ? false : true;
+            //DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
+            //e.Cancel = exit == DialogResult.Yes ? false : true;
         }
 
         private void Button8_Click(object sender, EventArgs e)
@@ -153,7 +167,8 @@ namespace Design370
 
         private void Button16_Click(object sender, EventArgs e)
         {
-
+            Customer_Order_Add cOrder = new Customer_Order_Add();
+            cOrder.ShowDialog();
         }
 
         private void DataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -162,23 +177,23 @@ namespace Design370
             switch (e.ColumnIndex)
             {
 
-                case 4:
+                case 0:
                     Employee_View.edit = false;
                     employeeView.Show();
                     break;
-                case 5:
+                case 1:
                     Employee_View.edit = true;
                     employeeView.Show();
                     break;
-                case 6:
+                case 2:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        
                     }
                     else
                     {
-                        //dont do shit
+                        
                     }
                     break;
                 default:
@@ -370,6 +385,24 @@ namespace Design370
                 default:
                     break;
             }
+        }
+
+        private void TabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            MysqlConnection.mysqlCon.Open();
+            string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +
+                "FROM employee WHERE employee_first LIKE '%"+txtSearch.Text+"%' OR employee_last LIKE '%"+txtSearch.Text+"%' OR employee_idnumber LIKE '%"+txtSearch.Text+"%'";
+            MysqlConnection.cmd = new MySqlCommand(employees, MysqlConnection.mysqlCon);
+            MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
+            DataTable table = new DataTable();
+            table.Load(MysqlConnection.reader);
+            empGrid.DataSource = table;
+            MysqlConnection.mysqlCon.Close();
         }
     }
 }
