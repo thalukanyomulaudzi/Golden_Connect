@@ -112,6 +112,7 @@
             "Samsung Galaxy S10"});
             this.listBox4.Location = new System.Drawing.Point(489, 206);
             this.listBox4.Name = "listBox4";
+            this.listBox4.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox4.Size = new System.Drawing.Size(155, 108);
             this.listBox4.TabIndex = 51;
             // 
@@ -135,6 +136,7 @@
             "Decor"});
             this.listBox3.Location = new System.Drawing.Point(489, 34);
             this.listBox3.Name = "listBox3";
+            this.listBox3.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox3.Size = new System.Drawing.Size(155, 108);
             this.listBox3.TabIndex = 49;
             // 
@@ -144,6 +146,7 @@
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(252, 206);
             this.listBox2.Name = "listBox2";
+            this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox2.Size = new System.Drawing.Size(158, 108);
             this.listBox2.TabIndex = 48;
             // 
@@ -173,6 +176,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(252, 34);
             this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox1.Size = new System.Drawing.Size(158, 108);
             this.listBox1.TabIndex = 45;
             // 

@@ -31,13 +31,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxProductTypes = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtProductPrice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtProductDescr = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtProductame = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@
             this.button1.TabIndex = 75;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
@@ -75,14 +76,14 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click_1);
             // 
-            // comboBox1
+            // cbxProductTypes
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(33, 202);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(172, 21);
-            this.comboBox1.TabIndex = 73;
+            this.cbxProductTypes.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxProductTypes.FormattingEnabled = true;
+            this.cbxProductTypes.Location = new System.Drawing.Point(33, 202);
+            this.cbxProductTypes.Name = "cbxProductTypes";
+            this.cbxProductTypes.Size = new System.Drawing.Size(172, 21);
+            this.cbxProductTypes.TabIndex = 73;
             // 
             // label4
             // 
@@ -95,14 +96,14 @@
             this.label4.TabIndex = 72;
             this.label4.Text = "Product Type:";
             // 
-            // textBox3
+            // txtProductPrice
             // 
-            this.textBox3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(270, 35);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(172, 21);
-            this.textBox3.TabIndex = 71;
+            this.txtProductPrice.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductPrice.Location = new System.Drawing.Point(270, 35);
+            this.txtProductPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProductPrice.Name = "txtProductPrice";
+            this.txtProductPrice.Size = new System.Drawing.Size(172, 21);
+            this.txtProductPrice.TabIndex = 71;
             // 
             // label3
             // 
@@ -116,15 +117,15 @@
             this.label3.TabIndex = 70;
             this.label3.Text = "Product Price :";
             // 
-            // textBox2
+            // txtProductDescr
             // 
-            this.textBox2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(33, 87);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(172, 82);
-            this.textBox2.TabIndex = 69;
+            this.txtProductDescr.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductDescr.Location = new System.Drawing.Point(33, 87);
+            this.txtProductDescr.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProductDescr.Multiline = true;
+            this.txtProductDescr.Name = "txtProductDescr";
+            this.txtProductDescr.Size = new System.Drawing.Size(172, 82);
+            this.txtProductDescr.TabIndex = 69;
             // 
             // label2
             // 
@@ -137,14 +138,14 @@
             this.label2.TabIndex = 68;
             this.label2.Text = "Product Description :";
             // 
-            // textBox1
+            // txtProductame
             // 
-            this.textBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(33, 35);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 21);
-            this.textBox1.TabIndex = 67;
+            this.txtProductame.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductame.Location = new System.Drawing.Point(33, 35);
+            this.txtProductame.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProductame.Name = "txtProductame";
+            this.txtProductame.Size = new System.Drawing.Size(172, 21);
+            this.txtProductame.TabIndex = 67;
             // 
             // label1
             // 
@@ -165,13 +166,13 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxProductTypes);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtProductPrice);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtProductDescr);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtProductame);
             this.Controls.Add(this.label1);
             this.Name = "Product_Add";
             this.Text = "Add Product";
@@ -185,13 +186,13 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxProductTypes;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtProductPrice;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtProductDescr;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtProductame;
         private System.Windows.Forms.Label label1;
     }
 }
