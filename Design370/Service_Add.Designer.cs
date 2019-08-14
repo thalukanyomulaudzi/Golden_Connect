@@ -28,111 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbxServiceTypes = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtServicePrice = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtServiceDescr = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtServiceName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.cbxProductTypes = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtProductPrice = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtProductDescr = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtProductame = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // cbxServiceTypes
-            // 
-            this.cbxServiceTypes.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxServiceTypes.FormattingEnabled = true;
-            this.cbxServiceTypes.Location = new System.Drawing.Point(33, 202);
-            this.cbxServiceTypes.Name = "cbxServiceTypes";
-            this.cbxServiceTypes.Size = new System.Drawing.Size(172, 21);
-            this.cbxServiceTypes.TabIndex = 39;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 186);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 13);
-            this.label4.TabIndex = 38;
-            this.label4.Text = "Service Type:";
-            // 
-            // txtServicePrice
-            // 
-            this.txtServicePrice.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServicePrice.Location = new System.Drawing.Point(270, 35);
-            this.txtServicePrice.Margin = new System.Windows.Forms.Padding(2);
-            this.txtServicePrice.Name = "txtServicePrice";
-            this.txtServicePrice.Size = new System.Drawing.Size(172, 21);
-            this.txtServicePrice.TabIndex = 37;
-            // 
-            // label3
-            // 
-            this.label3.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(267, 20);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Service Price :";
-            // 
-            // txtServiceDescr
-            // 
-            this.txtServiceDescr.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServiceDescr.Location = new System.Drawing.Point(33, 87);
-            this.txtServiceDescr.Margin = new System.Windows.Forms.Padding(2);
-            this.txtServiceDescr.Multiline = true;
-            this.txtServiceDescr.Name = "txtServiceDescr";
-            this.txtServiceDescr.Size = new System.Drawing.Size(172, 82);
-            this.txtServiceDescr.TabIndex = 33;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(30, 72);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 13);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "Service Description :";
-            // 
-            // txtServiceName
-            // 
-            this.txtServiceName.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServiceName.Location = new System.Drawing.Point(33, 35);
-            this.txtServiceName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtServiceName.Name = "txtServiceName";
-            this.txtServiceName.Size = new System.Drawing.Size(172, 21);
-            this.txtServiceName.TabIndex = 31;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 20);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Service Name :";
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(270, 201);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 21);
-            this.button3.TabIndex = 63;
-            this.button3.Text = "Service Types";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click_1);
             // 
             // button2
             // 
@@ -141,7 +48,7 @@
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 28);
-            this.button2.TabIndex = 65;
+            this.button2.TabIndex = 87;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -152,29 +59,122 @@
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 28);
-            this.button1.TabIndex = 64;
+            this.button1.TabIndex = 86;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(270, 201);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(126, 21);
+            this.button3.TabIndex = 85;
+            this.button3.Text = "Service Types";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // cbxProductTypes
+            // 
+            this.cbxProductTypes.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxProductTypes.FormattingEnabled = true;
+            this.cbxProductTypes.Location = new System.Drawing.Point(33, 202);
+            this.cbxProductTypes.Name = "cbxProductTypes";
+            this.cbxProductTypes.Size = new System.Drawing.Size(172, 21);
+            this.cbxProductTypes.TabIndex = 84;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(30, 186);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 13);
+            this.label4.TabIndex = 83;
+            this.label4.Text = "Service Type:";
+            // 
+            // txtProductPrice
+            // 
+            this.txtProductPrice.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductPrice.Location = new System.Drawing.Point(270, 35);
+            this.txtProductPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProductPrice.Name = "txtProductPrice";
+            this.txtProductPrice.Size = new System.Drawing.Size(172, 21);
+            this.txtProductPrice.TabIndex = 82;
+            // 
+            // label3
+            // 
+            this.label3.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(267, 20);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 81;
+            this.label3.Text = "Service Price :";
+            // 
+            // txtProductDescr
+            // 
+            this.txtProductDescr.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductDescr.Location = new System.Drawing.Point(33, 87);
+            this.txtProductDescr.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProductDescr.Multiline = true;
+            this.txtProductDescr.Name = "txtProductDescr";
+            this.txtProductDescr.Size = new System.Drawing.Size(172, 82);
+            this.txtProductDescr.TabIndex = 80;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(30, 72);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 13);
+            this.label2.TabIndex = 79;
+            this.label2.Text = "Service Description :";
+            // 
+            // txtProductame
+            // 
+            this.txtProductame.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductame.Location = new System.Drawing.Point(33, 35);
+            this.txtProductame.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProductame.Name = "txtProductame";
+            this.txtProductame.Size = new System.Drawing.Size(172, 21);
+            this.txtProductame.TabIndex = 78;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(30, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.TabIndex = 77;
+            this.label1.Text = "Service Name :";
             // 
             // Service_Add
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 351);
+            this.ClientSize = new System.Drawing.Size(465, 350);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.cbxServiceTypes);
+            this.Controls.Add(this.cbxProductTypes);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtServicePrice);
+            this.Controls.Add(this.txtProductPrice);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtServiceDescr);
+            this.Controls.Add(this.txtProductDescr);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtServiceName);
+            this.Controls.Add(this.txtProductame);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Service_Add";
-            this.Text = "Add Service";
+            this.Text = "Service_Add";
             this.Load += new System.EventHandler(this.Service_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,16 +182,17 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cbxServiceTypes;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtServicePrice;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtServiceDescr;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtServiceName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
+
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cbxProductTypes;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtProductPrice;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtProductDescr;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtProductame;
+        private System.Windows.Forms.Label label1;
     }
 }
