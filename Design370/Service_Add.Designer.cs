@@ -51,6 +51,7 @@
             this.button2.TabIndex = 87;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button1
             // 
@@ -172,9 +173,9 @@
             this.Controls.Add(this.txtProductame);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Service_Add";
-            this.Text = "Service_Add";
+            this.Text = "Add Service";
             this.Load += new System.EventHandler(this.Service_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

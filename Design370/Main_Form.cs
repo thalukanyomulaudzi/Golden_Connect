@@ -13,6 +13,8 @@ namespace Design370
 {
     public partial class Main_Form : Form
     {
+
+        DBConnection dbCon = DBConnection.Instance();
         public Main_Form()
         {
             InitializeComponent();
@@ -72,9 +74,23 @@ namespace Design370
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            load_EMPS();
+            //load_EMPS();
+            //testConnection(); //this throws out all customer names and surnames, only use during development
+
+            if (!connectDB())
+                MessageBox.Show("Could not connect to database" + dbCon.DatabaseName);
+            loadTimeslots();
         }
 
+        private bool connectDB()
+        {
+            dbCon.DatabaseName = "goldenconnect";
+            return (dbCon.IsConnect());
+        }
+        private void loadTimeslots()
+        {
+
+        }
         public void load_EMPS()
         {
             MysqlConnection.mysqlCon.Open();
@@ -86,7 +102,26 @@ namespace Design370
             table.Load(MysqlConnection.reader);
             empGrid.DataSource = table;
             MysqlConnection.mysqlCon.Close();
-            var dbCon = DBConnection.Instance();
+            
+        }
+
+        private void testConnection()
+        {
+            
+            if (dbCon.IsConnect())
+            {
+                //suppose col0 and col1 are defined as VARCHAR in the DB
+                string query = "SELECT customer_first,customer_last FROM customer";
+                var cmd = new MySqlCommand(query, dbCon.Connection);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string first = reader.GetString(0);
+                    string last = reader.GetString(1);
+                    MessageBox.Show(first + "," + last);
+                }
+                dbCon.Close();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -151,8 +186,8 @@ namespace Design370
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
-            //e.Cancel = exit == DialogResult.Yes ? false : true;
+            DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
+            e.Cancel = exit == DialogResult.Yes ? false : true;
         }
 
         private void Button8_Click(object sender, EventArgs e)

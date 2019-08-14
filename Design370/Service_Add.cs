@@ -21,5 +21,10 @@ namespace Design370
         {
 
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

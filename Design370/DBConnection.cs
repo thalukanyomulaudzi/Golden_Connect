@@ -33,12 +33,23 @@ namespace Design370
             {
                 if (String.IsNullOrEmpty(DatabaseName))
                     return false;
-                string connstring = string.Format("Server=localhost; database={0}; UID=UserName; password=your password", DatabaseName);
+                string connstring = string.Format("Server=localhost; database={0}; UID=root; password=", DatabaseName);
                 Connection = new MySqlConnection(connstring);
-                Connection.Open();
+                try
+                {
+                    Connection.Open();
+                }
+                catch (Exception e)
+                {
+                    System.Windows.Forms.MessageBox.Show(e.Message);
+                }
             }
 
             return true;
+        }
+        public void Close()
+        {
+            Connection.Close();
         }
 
     }

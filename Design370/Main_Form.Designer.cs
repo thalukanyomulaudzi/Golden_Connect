@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.custGridView = new System.Windows.Forms.DataGridView();
+            this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.CustFirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,12 +51,15 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.empGrid = new System.Windows.Forms.DataGridView();
+            this.EmpView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EmpEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EmpDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnTimeslotAdd = new System.Windows.Forms.Button();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
@@ -150,12 +153,9 @@
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.EmpView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empGrid)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -214,7 +214,7 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.custGridView);
+            this.tabPage1.Controls.Add(this.dgvCustomer);
             this.tabPage1.Location = new System.Drawing.Point(154, 4);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
@@ -280,23 +280,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // custGridView
+            // dgvCustomer
             // 
-            this.custGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.custGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustFirst,
             this.CustLast,
             this.CustID,
             this.CustView,
             this.CustEdit,
             this.CustDelete});
-            this.custGridView.Location = new System.Drawing.Point(11, 59);
-            this.custGridView.Margin = new System.Windows.Forms.Padding(2);
-            this.custGridView.Name = "custGridView";
-            this.custGridView.RowTemplate.Height = 25;
-            this.custGridView.Size = new System.Drawing.Size(763, 349);
-            this.custGridView.TabIndex = 0;
-            this.custGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvCustomer.Location = new System.Drawing.Point(11, 59);
+            this.dgvCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.RowTemplate.Height = 25;
+            this.dgvCustomer.Size = new System.Drawing.Size(763, 349);
+            this.dgvCustomer.TabIndex = 0;
+            this.dgvCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // CustFirst
             // 
@@ -441,19 +441,34 @@
             this.empGrid.TabIndex = 9;
             this.empGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView4_CellContentClick);
             // 
+            // EmpView
+            // 
+            this.EmpView.HeaderText = "";
+            this.EmpView.Name = "EmpView";
+            // 
+            // EmpEdit
+            // 
+            this.EmpEdit.HeaderText = "";
+            this.EmpEdit.Name = "EmpEdit";
+            // 
+            // EmpDelete
+            // 
+            this.EmpDelete.HeaderText = "";
+            this.EmpDelete.Name = "EmpDelete";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.comboBox5);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.textBox5);
-            this.tabPage3.Controls.Add(this.button10);
+            this.tabPage3.Controls.Add(this.btnTimeslotAdd);
             this.tabPage3.Controls.Add(this.dataGridView5);
             this.tabPage3.Location = new System.Drawing.Point(154, 4);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(831, 580);
+            this.tabPage3.Size = new System.Drawing.Size(831, 608);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Timeslot";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -500,16 +515,16 @@
             this.textBox5.Size = new System.Drawing.Size(200, 25);
             this.textBox5.TabIndex = 19;
             // 
-            // button10
+            // btnTimeslotAdd
             // 
-            this.button10.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(623, 11);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(151, 28);
-            this.button10.TabIndex = 17;
-            this.button10.Text = "Add Timeslot";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnTimeslotAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimeslotAdd.Location = new System.Drawing.Point(623, 11);
+            this.btnTimeslotAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimeslotAdd.Name = "btnTimeslotAdd";
+            this.btnTimeslotAdd.Size = new System.Drawing.Size(151, 28);
+            this.btnTimeslotAdd.TabIndex = 17;
+            this.btnTimeslotAdd.Text = "Add Timeslot";
+            this.btnTimeslotAdd.UseVisualStyleBackColor = true;
             // 
             // dataGridView5
             // 
@@ -518,7 +533,7 @@
             this.dataGridView5.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.RowTemplate.Height = 24;
-            this.dataGridView5.Size = new System.Drawing.Size(813, 514);
+            this.dataGridView5.Size = new System.Drawing.Size(763, 356);
             this.dataGridView5.TabIndex = 16;
             // 
             // tabPage4
@@ -533,7 +548,7 @@
             this.tabPage4.Location = new System.Drawing.Point(154, 4);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(831, 580);
+            this.tabPage4.Size = new System.Drawing.Size(831, 608);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Services";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -664,7 +679,7 @@
             this.tabPage5.Location = new System.Drawing.Point(154, 4);
             this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(831, 580);
+            this.tabPage5.Size = new System.Drawing.Size(831, 608);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Products";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -794,7 +809,7 @@
             this.tabPage6.Location = new System.Drawing.Point(154, 4);
             this.tabPage6.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(831, 580);
+            this.tabPage6.Size = new System.Drawing.Size(831, 608);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Photoshoots";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -913,7 +928,7 @@
             this.tabPage7.Location = new System.Drawing.Point(154, 4);
             this.tabPage7.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(831, 580);
+            this.tabPage7.Size = new System.Drawing.Size(831, 608);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Events";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1046,7 +1061,7 @@
             this.tabPage8.Location = new System.Drawing.Point(154, 4);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(831, 580);
+            this.tabPage8.Size = new System.Drawing.Size(831, 608);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Customer Orders";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1158,7 +1173,7 @@
             this.tabPage9.Location = new System.Drawing.Point(154, 4);
             this.tabPage9.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(831, 580);
+            this.tabPage9.Size = new System.Drawing.Size(831, 608);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Bookings";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -1228,7 +1243,7 @@
             this.tabPage10.Location = new System.Drawing.Point(154, 4);
             this.tabPage10.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(831, 580);
+            this.tabPage10.Size = new System.Drawing.Size(831, 608);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "Supplier";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -1351,7 +1366,7 @@
             this.tabPage11.Location = new System.Drawing.Point(154, 4);
             this.tabPage11.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(831, 580);
+            this.tabPage11.Size = new System.Drawing.Size(831, 608);
             this.tabPage11.TabIndex = 10;
             this.tabPage11.Text = "Reports";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -1415,7 +1430,7 @@
             // 
             this.tabPage12.Location = new System.Drawing.Point(154, 4);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(831, 580);
+            this.tabPage12.Size = new System.Drawing.Size(831, 608);
             this.tabPage12.TabIndex = 11;
             this.tabPage12.Text = "Help";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -1430,21 +1445,6 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // EmpView
-            // 
-            this.EmpView.HeaderText = "";
-            this.EmpView.Name = "EmpView";
-            // 
-            // EmpEdit
-            // 
-            this.EmpEdit.HeaderText = "";
-            this.EmpEdit.Name = "EmpEdit";
-            // 
-            // EmpDelete
-            // 
-            this.EmpDelete.HeaderText = "";
-            this.EmpDelete.Name = "EmpDelete";
-            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1457,13 +1457,12 @@
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empGrid)).EndInit();
@@ -1516,7 +1515,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView custGridView;
+        private System.Windows.Forms.DataGridView dgvCustomer;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -1538,7 +1537,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnTimeslotAdd;
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Label label11;
