@@ -78,13 +78,13 @@ namespace Design370
             //testConnection(); //this throws out all customer names and surnames, only use during development
 
             if (!connectDB())
-                MessageBox.Show("Could not connect to database" + dbCon.DatabaseName);
+                MessageBox.Show("Could not connect to database " + dbCon.DatabaseName);
             loadTimeslots();
         }
 
         private bool connectDB()
         {
-            dbCon.DatabaseName = "goldenconnect";
+            dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
         }
         private void loadTimeslots()

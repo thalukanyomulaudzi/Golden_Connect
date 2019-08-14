@@ -213,10 +213,5 @@ namespace Design370
                 MysqlConnection.mysqlCon.Close();
             }
         }
-
-        private void Employee_Add_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
