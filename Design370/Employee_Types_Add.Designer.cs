@@ -30,12 +30,12 @@
         {
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
+            this.btn_AddType = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -59,15 +59,15 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "Access Level :";
             // 
-            // textBox2
+            // txtDescription
             // 
-            this.textBox2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(30, 97);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 162);
-            this.textBox2.TabIndex = 20;
+            this.txtDescription.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Location = new System.Drawing.Point(30, 97);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(198, 162);
+            this.txtDescription.TabIndex = 20;
             // 
             // label2
             // 
@@ -80,14 +80,14 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Description :";
             // 
-            // textBox1
+            // txtType
             // 
-            this.textBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(30, 40);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 21);
-            this.textBox1.TabIndex = 18;
+            this.txtType.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtType.Location = new System.Drawing.Point(30, 40);
+            this.txtType.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtType.Name = "txtType";
+            this.txtType.Size = new System.Drawing.Size(198, 21);
+            this.txtType.TabIndex = 18;
             // 
             // label1
             // 
@@ -100,44 +100,46 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Name :";
             // 
-            // button2
+            // btn_Cancel
             // 
-            this.button2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(30, 337);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 28);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Location = new System.Drawing.Point(30, 337);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(86, 28);
+            this.btn_Cancel.TabIndex = 24;
+            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_AddType
             // 
-            this.button1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(142, 337);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 28);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_AddType.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddType.Location = new System.Drawing.Point(142, 337);
+            this.btn_AddType.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_AddType.Name = "btn_AddType";
+            this.btn_AddType.Size = new System.Drawing.Size(86, 28);
+            this.btn_AddType.TabIndex = 23;
+            this.btn_AddType.Text = "Add";
+            this.btn_AddType.UseVisualStyleBackColor = true;
+            this.btn_AddType.Click += new System.EventHandler(this.Btn_AddType_Click);
             // 
             // Employee_Types_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(260, 395);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Cancel);
+            this.Controls.Add(this.btn_AddType);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtType);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Employee_Types_Add";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Employee Type";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -148,11 +150,11 @@
 
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.Button btn_AddType;
     }
 }

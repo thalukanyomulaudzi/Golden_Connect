@@ -28,57 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_CN = new System.Windows.Forms.Button();
+            this.btn_ADDEMP = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtADDRS = new System.Windows.Forms.TextBox();
+            this.cmEMTP = new System.Windows.Forms.ComboBox();
+            this.cmGEND = new System.Windows.Forms.ComboBox();
+            this.cmMS = new System.Windows.Forms.ComboBox();
+            this.cmTITLE = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtEMAIL = new System.Windows.Forms.TextBox();
+            this.txtTEL = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLN = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button2
+            // btn_CN
             // 
-            this.button2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(264, 494);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 28);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.btn_CN.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CN.Location = new System.Drawing.Point(264, 457);
+            this.btn_CN.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_CN.Name = "btn_CN";
+            this.btn_CN.Size = new System.Drawing.Size(87, 28);
+            this.btn_CN.TabIndex = 15;
+            this.btn_CN.Text = "Cancel";
+            this.btn_CN.UseVisualStyleBackColor = true;
+            this.btn_CN.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // button1
+            // btn_ADDEMP
             // 
-            this.button1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(369, 494);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 28);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.btn_ADDEMP.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ADDEMP.Location = new System.Drawing.Point(369, 457);
+            this.btn_ADDEMP.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_ADDEMP.Name = "btn_ADDEMP";
+            this.btn_ADDEMP.Size = new System.Drawing.Size(86, 28);
+            this.btn_ADDEMP.TabIndex = 14;
+            this.btn_ADDEMP.Text = "Add";
+            this.btn_ADDEMP.UseVisualStyleBackColor = true;
+            this.btn_ADDEMP.Click += new System.EventHandler(this.btn_ADDEMP_Click);
             // 
             // label13
             // 
@@ -110,17 +109,6 @@
             this.label11.TabIndex = 63;
             this.label11.Text = "1. Personal Information";
             // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(273, 421);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 21);
-            this.button3.TabIndex = 62;
-            this.button3.Text = "Employee Types";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click_1);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -132,51 +120,57 @@
             this.label10.TabIndex = 61;
             this.label10.Text = "Address :";
             // 
-            // textBox7
+            // txtADDRS
             // 
-            this.textBox7.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(30, 213);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(183, 61);
-            this.textBox7.TabIndex = 60;
+            this.txtADDRS.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtADDRS.Location = new System.Drawing.Point(30, 213);
+            this.txtADDRS.Margin = new System.Windows.Forms.Padding(2);
+            this.txtADDRS.Multiline = true;
+            this.txtADDRS.Name = "txtADDRS";
+            this.txtADDRS.Size = new System.Drawing.Size(183, 61);
+            this.txtADDRS.TabIndex = 60;
             // 
-            // comboBox4
+            // cmEMTP
             // 
-            this.comboBox4.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(31, 421);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(183, 21);
-            this.comboBox4.TabIndex = 59;
+            this.cmEMTP.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmEMTP.FormattingEnabled = true;
+            this.cmEMTP.Location = new System.Drawing.Point(31, 421);
+            this.cmEMTP.Name = "cmEMTP";
+            this.cmEMTP.Size = new System.Drawing.Size(183, 21);
+            this.cmEMTP.TabIndex = 59;
+            this.cmEMTP.SelectedIndexChanged += new System.EventHandler(this.CmEMTP_SelectedIndexChanged);
             // 
-            // comboBox3
+            // cmGEND
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(273, 116);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(183, 21);
-            this.comboBox3.TabIndex = 58;
+            this.cmGEND.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmGEND.FormattingEnabled = true;
+            this.cmGEND.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cmGEND.Location = new System.Drawing.Point(273, 116);
+            this.cmGEND.Name = "cmGEND";
+            this.cmGEND.Size = new System.Drawing.Size(183, 21);
+            this.cmGEND.TabIndex = 58;
             // 
-            // comboBox2
+            // cmMS
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(273, 165);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(183, 21);
-            this.comboBox2.TabIndex = 57;
+            this.cmMS.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmMS.FormattingEnabled = true;
+            this.cmMS.Location = new System.Drawing.Point(273, 165);
+            this.cmMS.Name = "cmMS";
+            this.cmMS.Size = new System.Drawing.Size(183, 21);
+            this.cmMS.TabIndex = 57;
+            this.cmMS.SelectedIndexChanged += new System.EventHandler(this.CmMS_SelectedIndexChanged);
             // 
-            // comboBox1
+            // cmTITLE
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(31, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(96, 21);
-            this.comboBox1.TabIndex = 56;
+            this.cmTITLE.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmTITLE.FormattingEnabled = true;
+            this.cmTITLE.Location = new System.Drawing.Point(31, 67);
+            this.cmTITLE.Name = "cmTITLE";
+            this.cmTITLE.Size = new System.Drawing.Size(96, 21);
+            this.cmTITLE.TabIndex = 56;
+            this.cmTITLE.SelectedIndexChanged += new System.EventHandler(this.CmTITLE_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -218,21 +212,21 @@
             this.label6.TabIndex = 52;
             this.label6.Text = "Title :";
             // 
-            // textBox5
+            // txtEMAIL
             // 
-            this.textBox5.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(273, 336);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(183, 21);
-            this.textBox5.TabIndex = 51;
+            this.txtEMAIL.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEMAIL.Location = new System.Drawing.Point(273, 336);
+            this.txtEMAIL.Name = "txtEMAIL";
+            this.txtEMAIL.Size = new System.Drawing.Size(183, 21);
+            this.txtEMAIL.TabIndex = 51;
             // 
-            // textBox4
+            // txtTEL
             // 
-            this.textBox4.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(31, 336);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(183, 21);
-            this.textBox4.TabIndex = 50;
+            this.txtTEL.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTEL.Location = new System.Drawing.Point(31, 336);
+            this.txtTEL.Name = "txtTEL";
+            this.txtTEL.Size = new System.Drawing.Size(183, 21);
+            this.txtTEL.TabIndex = 50;
             // 
             // label5
             // 
@@ -254,13 +248,13 @@
             this.label4.TabIndex = 48;
             this.label4.Text = "Phone Number :";
             // 
-            // textBox3
+            // txtID
             // 
-            this.textBox3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(273, 67);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(183, 21);
-            this.textBox3.TabIndex = 47;
+            this.txtID.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(273, 67);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(183, 21);
+            this.txtID.TabIndex = 47;
             // 
             // label3
             // 
@@ -272,13 +266,13 @@
             this.label3.TabIndex = 46;
             this.label3.Text = "ID Number :";
             // 
-            // textBox2
+            // txtLN
             // 
-            this.textBox2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(31, 165);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(183, 21);
-            this.textBox2.TabIndex = 45;
+            this.txtLN.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLN.Location = new System.Drawing.Point(31, 165);
+            this.txtLN.Name = "txtLN";
+            this.txtLN.Size = new System.Drawing.Size(183, 21);
+            this.txtLN.TabIndex = 45;
             // 
             // label2
             // 
@@ -290,13 +284,13 @@
             this.label2.TabIndex = 44;
             this.label2.Text = "Last Name :";
             // 
-            // textBox1
+            // txtFN
             // 
-            this.textBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(31, 116);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 21);
-            this.textBox1.TabIndex = 43;
+            this.txtFN.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFN.Location = new System.Drawing.Point(31, 116);
+            this.txtFN.Name = "txtFN";
+            this.txtFN.Size = new System.Drawing.Size(183, 21);
+            this.txtFN.TabIndex = 43;
             // 
             // label1
             // 
@@ -312,34 +306,35 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 562);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(475, 498);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.txtADDRS);
+            this.Controls.Add(this.cmEMTP);
+            this.Controls.Add(this.cmGEND);
+            this.Controls.Add(this.cmMS);
+            this.Controls.Add(this.cmTITLE);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtEMAIL);
+            this.Controls.Add(this.txtTEL);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtLN);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFN);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_CN);
+            this.Controls.Add(this.btn_ADDEMP);
             this.Name = "Employee_Add";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Employee";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Employee_Add_FormClosing);
             this.Load += new System.EventHandler(this.Employee_Add_Load);
@@ -349,31 +344,30 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_CN;
+        private System.Windows.Forms.Button btn_ADDEMP;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtADDRS;
+        private System.Windows.Forms.ComboBox cmEMTP;
+        private System.Windows.Forms.ComboBox cmGEND;
+        private System.Windows.Forms.ComboBox cmMS;
+        private System.Windows.Forms.ComboBox cmTITLE;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtEMAIL;
+        private System.Windows.Forms.TextBox txtTEL;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLN;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFN;
         private System.Windows.Forms.Label label1;
     }
 }
