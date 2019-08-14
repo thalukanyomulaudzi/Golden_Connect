@@ -42,10 +42,10 @@
             this.button6 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnProductsRemove = new System.Windows.Forms.Button();
+            this.btnProductsAdd = new System.Windows.Forms.Button();
+            this.btnServicesRemove = new System.Windows.Forms.Button();
+            this.btnServicesAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -196,49 +196,49 @@
             this.label6.TabIndex = 42;
             this.label6.Text = "Products :";
             // 
-            // button4
+            // btnProductsRemove
             // 
-            this.button4.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(324, 329);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(86, 29);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Remove";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnProductsRemove.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductsRemove.Location = new System.Drawing.Point(324, 329);
+            this.btnProductsRemove.Name = "btnProductsRemove";
+            this.btnProductsRemove.Size = new System.Drawing.Size(86, 29);
+            this.btnProductsRemove.TabIndex = 13;
+            this.btnProductsRemove.Text = "Remove";
+            this.btnProductsRemove.UseVisualStyleBackColor = true;
+            this.btnProductsRemove.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button2
+            // btnProductsAdd
             // 
-            this.button2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(558, 329);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 29);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnProductsAdd.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductsAdd.Location = new System.Drawing.Point(558, 329);
+            this.btnProductsAdd.Name = "btnProductsAdd";
+            this.btnProductsAdd.Size = new System.Drawing.Size(86, 29);
+            this.btnProductsAdd.TabIndex = 11;
+            this.btnProductsAdd.Text = "Add";
+            this.btnProductsAdd.UseVisualStyleBackColor = true;
+            this.btnProductsAdd.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnServicesRemove
             // 
-            this.button3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(324, 158);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 29);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Remove";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnServicesRemove.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServicesRemove.Location = new System.Drawing.Point(324, 158);
+            this.btnServicesRemove.Name = "btnServicesRemove";
+            this.btnServicesRemove.Size = new System.Drawing.Size(86, 29);
+            this.btnServicesRemove.TabIndex = 12;
+            this.btnServicesRemove.Text = "Remove";
+            this.btnServicesRemove.UseVisualStyleBackColor = true;
+            this.btnServicesRemove.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button1
+            // btnServicesAdd
             // 
-            this.button1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(558, 158);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 29);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnServicesAdd.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServicesAdd.Location = new System.Drawing.Point(558, 158);
+            this.btnServicesAdd.Name = "btnServicesAdd";
+            this.btnServicesAdd.Size = new System.Drawing.Size(86, 29);
+            this.btnServicesAdd.TabIndex = 9;
+            this.btnServicesAdd.Text = "Add";
+            this.btnServicesAdd.UseVisualStyleBackColor = true;
+            this.btnServicesAdd.Click += new System.EventHandler(this.button1_Click);
             // 
             // Photoshoot_Package_Add
             // 
@@ -251,11 +251,11 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnProductsRemove);
+            this.Controls.Add(this.btnServicesRemove);
+            this.Controls.Add(this.btnProductsAdd);
             this.Controls.Add(this.listBox4);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnServicesAdd);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label4);
@@ -289,9 +289,9 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnProductsRemove;
+        private System.Windows.Forms.Button btnProductsAdd;
+        private System.Windows.Forms.Button btnServicesRemove;
+        private System.Windows.Forms.Button btnServicesAdd;
     }
 }
