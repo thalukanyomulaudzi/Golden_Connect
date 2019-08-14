@@ -50,12 +50,12 @@ namespace Design370
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void btnAddProducts_Click(object sender, EventArgs e)
         {
+            int selectedIndex = this.cbxProductTypes.SelectedIndex + 1;
 
-            int selectedIndex = this.cbxProductTypes.SelectedIndex+1;
-
-            string prodInsert = "INSERT INTO product(product_name, product_description, product_price, product_type_id) VALUES('" + 
+            string prodInsert = "INSERT INTO product(product_name, product_description, product_price, product_type_id) VALUES('" +
                                 txtProductame.Text + "', '" + txtProductDescr.Text + "', '" + txtProductPrice.Text + "', '" + selectedIndex.ToString() + "')";
             MysqlConnection.cmd = new MySqlCommand(prodInsert, MysqlConnection.mysqlCon);
             try
