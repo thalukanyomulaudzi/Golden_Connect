@@ -370,6 +370,7 @@
     <Compile Include="Supplier_View.Designer.cs">
       <DependentUpon>Supplier_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Timeslots.cs" />
     <Compile Include="Timeslot_Add.cs">
       <SubType>Form</SubType>
     </Compile>
