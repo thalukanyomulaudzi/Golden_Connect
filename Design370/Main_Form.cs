@@ -85,6 +85,7 @@ namespace Design370
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.loadTimeslots();
             //Timeslots.removeDuplicates();
+            //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
         }
 
         private bool connectDB()
@@ -106,7 +107,7 @@ namespace Design370
             MysqlConnection.mysqlCon.Close();
         }
 
-        private void testConnection()//only in use during dev stage
+        private void testConnection()//only in use during dev stage for example code
         {
             if (dbCon.IsConnect())
             {
