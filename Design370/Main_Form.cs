@@ -78,8 +78,14 @@ namespace Design370
             //testConnection(); //this throws out all customer names and surnames, only use during development
 
             if (!connectDB())
+            {
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName);
-            loadTimeslots();
+
+            }
+            //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
+            //Timeslots.loadTimeslots();
+            //Timeslots.removeDuplicates();
+            //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
         }
 
         private bool connectDB()
@@ -87,10 +93,7 @@ namespace Design370
             dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
         }
-        private void loadTimeslots()
-        {
 
-        }
         public void load_EMPS()
         {
             MysqlConnection.mysqlCon.Open();
@@ -102,18 +105,16 @@ namespace Design370
             table.Load(MysqlConnection.reader);
             empGrid.DataSource = table;
             MysqlConnection.mysqlCon.Close();
-            
         }
 
-        private void testConnection()
+        private void testConnection()//only in use during dev stage for example code
         {
-            
             if (dbCon.IsConnect())
             {
                 //suppose col0 and col1 are defined as VARCHAR in the DB
                 string query = "SELECT customer_first,customer_last FROM customer";
-                var cmd = new MySqlCommand(query, dbCon.Connection);
-                var reader = cmd.ExecuteReader();
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     string first = reader.GetString(0);
