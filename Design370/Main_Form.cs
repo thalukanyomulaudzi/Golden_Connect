@@ -271,6 +271,10 @@ namespace Design370
         private void DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Service_View service_View = new Service_View();
+            ServiceEdit.Text = "Edit";
+            ServiceDelete.Text = "Delete";
+            ServiceView.Text = "View";
+            
             switch (e.ColumnIndex)
             {
 
