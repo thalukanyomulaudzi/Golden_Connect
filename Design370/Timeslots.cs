@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,21 +12,33 @@ namespace Design370
     {
         public static bool timeslotExists(DateTime dateTime)
         {
-            DBConnection dBCon = DBConnection.Instance();
-            if (dBCon.IsConnect())
+            try
             {
-                string dateTimeString = dateTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
-                short pos = (short)dateTimeString.IndexOf('T');
-                string dateString = dateTimeString.Remove(pos);
-                string timeString = dateTimeString.Substring(pos + 1);
-                System.Windows.Forms.MessageBox.Show(dateString + " " + timeString);
-                string query = "SELECT * FROM timeslot WHERE timeslot_date = '" + dateString + "' AND timeslot_start = '" + timeString + "'";
-                var command = new MySqlCommand(query, dBCon.Connection);
-                var reader = command.ExecuteReader();
-                if (reader.HasRows) return true;
-                dBCon.Close();
+                DBConnection dBCon = DBConnection.Instance();
+                if (dBCon.IsConnect())
+                {
+                    string dateTimeString = dateTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
+                    short pos = (short)dateTimeString.IndexOf('T');
+                    string dateString = dateTimeString.Remove(pos);
+                    string timeString = dateTimeString.Substring(pos + 1);
+                    System.Windows.Forms.MessageBox.Show(dateString + " " + timeString);
+                    string query = "SELECT * FROM timeslot WHERE timeslot_date = '" + dateString + "' AND timeslot_start = '" + timeString + "'";
+                    var command = new MySqlCommand(query, dBCon.Connection);
+                    var reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        dBCon.Close();
+                        return true;
+                    }
+                    dBCon.Close();
+                }
+                return false;
             }
-            return false;
+            catch(Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return false;
+            }
         }
         public static void generateTimeslotsAround(DateTime dateTime)//this function generates timeslots for a week centered around the datetime given
         {
@@ -94,6 +107,7 @@ namespace Design370
                             }
                             query = query.Remove(query.Length - 1);
                             query += ";";
+                            System.Windows.Forms.MessageBox.Show(query);
                             day = day.AddDays(1);
                             var command = new MySqlCommand(query, dBCon.Connection);
                             command.ExecuteNonQuery();
@@ -109,9 +123,27 @@ namespace Design370
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
         }
-        public static void loadTimeslots()
+        public static void loadTimeslots(System.Windows.Forms.DataGridView dgv)
         {
-            
+            try
+            {
+                DBConnection dBCon = DBConnection.Instance();
+                if (dBCon.IsConnect())
+                {
+                    string query = "SELECT * FROM";
+                    var command = new MySqlCommand(query, dBCon.Connection);
+
+
+
+                    dgv.Rows.Add();
+                }
+                
+
+            }
+            catch(Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+            }
         }
         public static void clearTimeslots()
         {
@@ -124,15 +156,42 @@ namespace Design370
                 DBConnection dBCon = DBConnection.Instance();
                 if (dBCon.IsConnect())
                 {
-                    string query = "DELETE slot1 FROM timeslot slot1 INNER JOIN timeslot slot2  WHERE slot1.timeslot_id > slot2.timeslot_id AND slot1.timeslot_date = slot2.timeslot_date AND slot1.timeslot_start = slot2.timeslot_start;";
+                    string query = "DELETE slot1 FROM timeslot slot1 INNER JOIN timeslot slot2 WHERE slot1.timeslot_id > slot2.timeslot_id AND slot1.timeslot_date = slot2.timeslot_date AND slot1.timeslot_start = slot2.timeslot_start;";
                     var command = new MySqlCommand(query, dBCon.Connection);
-                    command.ExecuteNonQuery();
+                    command.ExecuteReader();
                     dBCon.Close();
                 }
             }
             catch(Exception e)
             {
                 System.Windows.Forms.MessageBox.Show(e.Message);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        public static void dummy()
+        {
+            DBConnection dbcon = DBConnection.Instance();
+            if (dbcon.IsConnect())
+            {
+                string query = "Select booking_package_id FROM booking_package;";
+                var command = new MySqlCommand(query, dbcon.Connection);
+                var reader = command.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(reader);
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    System.Windows.Forms.MessageBox.Show(table.Rows[i].ItemArray[0].ToString());
+                }
+                dbcon.Close();
             }
         }
     }
