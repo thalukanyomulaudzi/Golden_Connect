@@ -77,5 +77,10 @@ namespace Design370
                 MessageBox.Show("Error: " + ee.Message);
             }
         }
+
+        private void Product_Add_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

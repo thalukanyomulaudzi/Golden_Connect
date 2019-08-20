@@ -176,6 +176,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Product_Add";
             this.Text = "Add Product";
+            this.Load += new System.EventHandler(this.Product_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

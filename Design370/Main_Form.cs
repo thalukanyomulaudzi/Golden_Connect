@@ -79,7 +79,6 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            Timeslots.dummy();
             //load_EMPS();
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
@@ -443,7 +442,7 @@ namespace Design370
 
         private void TabPage3_Click(object sender, EventArgs e)
         {
-            Timeslots.loadTimeslots(dataGridView10);
+            Timeslots.loadTimeslots(dataGridView10, DateTime.Today);
         }
     }
 }

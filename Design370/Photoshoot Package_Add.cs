@@ -88,7 +88,6 @@ namespace Design370
 
         private void ListBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Test");
         }
 
         private void ListBox2_SelectedIndexChanged(object sender, EventArgs e)

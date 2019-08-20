@@ -55,8 +55,6 @@
             this.EmpEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EmpDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.btnTimeslotAdd = new System.Windows.Forms.Button();
@@ -458,8 +456,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.comboBox5);
-            this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.textBox5);
             this.tabPage3.Controls.Add(this.btnTimeslotAdd);
@@ -474,33 +470,11 @@
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.TabPage3_Click);
             // 
-            // comboBox5
-            // 
-            this.comboBox5.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.ItemHeight = 17;
-            this.comboBox5.Location = new System.Drawing.Point(339, 11);
-            this.comboBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(103, 25);
-            this.comboBox5.TabIndex = 22;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(281, 15);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 18);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Sort by:";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 16);
+            this.label10.Location = new System.Drawing.Point(28, 17);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 18);
@@ -510,7 +484,7 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(71, 13);
+            this.textBox5.Location = new System.Drawing.Point(98, 14);
             this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(200, 25);
@@ -1534,8 +1508,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button btnTimeslotAdd;

@@ -123,19 +123,22 @@ namespace Design370
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
         }
-        public static void loadTimeslots(System.Windows.Forms.DataGridView dgv)
+        public static void loadTimeslots(System.Windows.Forms.DataGridView dgv, DateTime startDay)
         {
             try
             {
                 DBConnection dBCon = DBConnection.Instance();
                 if (dBCon.IsConnect())
                 {
-                    string query = "SELECT * FROM";
-                    var command = new MySqlCommand(query, dBCon.Connection);
+                    for (int i = 0; i < 7; i++)
+                    {
+                        string query = "SELECT * FROM";
+                        var command = new MySqlCommand(query, dBCon.Connection);
 
 
 
-                    dgv.Rows.Add();
+                        dgv.Rows.Add();
+                    }
                 }
                 
 
@@ -165,33 +168,6 @@ namespace Design370
             catch(Exception e)
             {
                 System.Windows.Forms.MessageBox.Show(e.Message);
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-        public static void dummy()
-        {
-            DBConnection dbcon = DBConnection.Instance();
-            if (dbcon.IsConnect())
-            {
-                string query = "Select booking_package_id FROM booking_package;";
-                var command = new MySqlCommand(query, dbcon.Connection);
-                var reader = command.ExecuteReader();
-                DataTable table = new DataTable();
-                table.Load(reader);
-                for (int i = 0; i < table.Rows.Count; i++)
-                {
-                    System.Windows.Forms.MessageBox.Show(table.Rows[i].ItemArray[0].ToString());
-                }
-                dbcon.Close();
             }
         }
     }
