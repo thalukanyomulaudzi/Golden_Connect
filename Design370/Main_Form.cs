@@ -74,14 +74,13 @@ namespace Design370
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (!connectDB())//First in function
+            {
+                MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
+                Application.Exit();
+            }
             //load_EMPS();
             //testConnection(); //this throws out all customer names and surnames, only use during development
-
-            if (!connectDB())
-            {
-                MessageBox.Show("Could not connect to database " + dbCon.DatabaseName);
-
-            }
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.loadTimeslots();
             //Timeslots.removeDuplicates();
@@ -441,9 +440,9 @@ namespace Design370
             MysqlConnection.mysqlCon.Close();
         }
 
-        private void tabPage6_Click(object sender, EventArgs e)
+        private void TabPage3_Click(object sender, EventArgs e)
         {
-
+            Timeslots.loadTimeslots(dataGridView10, DateTime.Today);
         }
     }
 }
