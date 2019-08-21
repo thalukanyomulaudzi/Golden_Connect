@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -77,6 +78,38 @@ namespace Design370
             while (listBox2.SelectedItems.Count > 0)
             {
                 listBox2.Items.Remove(listBox2.SelectedItems[0]);
+            }
+        }
+
+        private void Event_Package_Add_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                DBConnection dBConnection = DBConnection.Instance();
+                if (dBConnection.IsConnect())
+                {
+                    string query = "SELECT product_name FROM product WHERE product_type_id = '1';";
+                    var command = new MySqlCommand(query, dBConnection.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        listBox4.Items.Add(reader.GetString(0));
+                    }
+                    reader.Close();
+                    query = "SELECT service_name FROM service WHERE service_type_id = '1';";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        listBox3.Items.Add(reader.GetString(0));
+                    }
+                    dBConnection.Close();
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message);
+
             }
         }
     }

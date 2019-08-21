@@ -440,5 +440,10 @@ namespace Design370
             empGrid.DataSource = table;
             MysqlConnection.mysqlCon.Close();
         }
+
+        private void tabPage6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -149,6 +149,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Event_Types";
             this.Text = "Event Types";
+            this.Load += new System.EventHandler(this.Event_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

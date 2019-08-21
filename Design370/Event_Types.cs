@@ -53,5 +53,10 @@ namespace Design370
                     break;
             }
         }
+
+        private void Event_Types_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

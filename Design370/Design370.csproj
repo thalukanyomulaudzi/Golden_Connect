@@ -217,6 +217,7 @@
     <Compile Include="Employee_View.Designer.cs">
       <DependentUpon>Employee_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Event.cs" />
     <Compile Include="EventPackage_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +267,7 @@
     <Compile Include="Photoshoot Package_Add.Designer.cs">
       <DependentUpon>Photoshoot Package_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Photoshoot.cs" />
     <Compile Include="PhotoshootPackage_View.cs">
       <SubType>Form</SubType>
     </Compile>

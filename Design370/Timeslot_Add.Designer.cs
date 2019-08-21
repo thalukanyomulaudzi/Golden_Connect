@@ -94,9 +94,10 @@
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.button20);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Timeslot_Add";
             this.Text = "Timeslot_Add";
+            this.Load += new System.EventHandler(this.Timeslot_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

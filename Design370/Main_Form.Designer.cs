@@ -90,18 +90,10 @@
             this.ProductEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ProductDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.PhotoshootPackageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhotoshootPackageDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhotoshootPackagePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhotoshootPackageView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.PhotoshootPackageEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.PhotoshootPackageDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
@@ -153,6 +145,13 @@
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PhotoshootPackageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Services = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Products = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhotoshootPackagePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhotoshootPackageView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.PhotoshootPackageEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.PhotoshootPackageDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
@@ -800,8 +799,6 @@
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.comboBox6);
-            this.tabPage6.Controls.Add(this.label11);
             this.tabPage6.Controls.Add(this.label12);
             this.tabPage6.Controls.Add(this.textBox6);
             this.tabPage6.Controls.Add(this.button12);
@@ -813,28 +810,7 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Photoshoots";
             this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.ItemHeight = 17;
-            this.comboBox6.Location = new System.Drawing.Point(339, 11);
-            this.comboBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(103, 25);
-            this.comboBox6.TabIndex = 29;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(281, 15);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 18);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "Sort by:";
+            this.tabPage6.Click += new System.EventHandler(this.tabPage6_Click);
             // 
             // label12
             // 
@@ -873,7 +849,8 @@
             this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PhotoshootPackageName,
-            this.PhotoshootPackageDescription,
+            this.Services,
+            this.Products,
             this.PhotoshootPackagePrice,
             this.PhotoshootPackageView,
             this.PhotoshootPackageEdit,
@@ -885,36 +862,6 @@
             this.dataGridView6.Size = new System.Drawing.Size(763, 349);
             this.dataGridView6.TabIndex = 23;
             this.dataGridView6.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView6_CellContentClick);
-            // 
-            // PhotoshootPackageName
-            // 
-            this.PhotoshootPackageName.HeaderText = "Package Name";
-            this.PhotoshootPackageName.Name = "PhotoshootPackageName";
-            // 
-            // PhotoshootPackageDescription
-            // 
-            this.PhotoshootPackageDescription.HeaderText = "Description";
-            this.PhotoshootPackageDescription.Name = "PhotoshootPackageDescription";
-            // 
-            // PhotoshootPackagePrice
-            // 
-            this.PhotoshootPackagePrice.HeaderText = "Price";
-            this.PhotoshootPackagePrice.Name = "PhotoshootPackagePrice";
-            // 
-            // PhotoshootPackageView
-            // 
-            this.PhotoshootPackageView.HeaderText = "";
-            this.PhotoshootPackageView.Name = "PhotoshootPackageView";
-            // 
-            // PhotoshootPackageEdit
-            // 
-            this.PhotoshootPackageEdit.HeaderText = "";
-            this.PhotoshootPackageEdit.Name = "PhotoshootPackageEdit";
-            // 
-            // PhotoshootPackageDelete
-            // 
-            this.PhotoshootPackageDelete.HeaderText = "";
-            this.PhotoshootPackageDelete.Name = "PhotoshootPackageDelete";
             // 
             // tabPage7
             // 
@@ -1445,6 +1392,41 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // PhotoshootPackageName
+            // 
+            this.PhotoshootPackageName.HeaderText = "Package Name";
+            this.PhotoshootPackageName.Name = "PhotoshootPackageName";
+            // 
+            // Services
+            // 
+            this.Services.HeaderText = "Services";
+            this.Services.Name = "Services";
+            // 
+            // Products
+            // 
+            this.Products.HeaderText = "Products";
+            this.Products.Name = "Products";
+            // 
+            // PhotoshootPackagePrice
+            // 
+            this.PhotoshootPackagePrice.HeaderText = "Price";
+            this.PhotoshootPackagePrice.Name = "PhotoshootPackagePrice";
+            // 
+            // PhotoshootPackageView
+            // 
+            this.PhotoshootPackageView.HeaderText = "";
+            this.PhotoshootPackageView.Name = "PhotoshootPackageView";
+            // 
+            // PhotoshootPackageEdit
+            // 
+            this.PhotoshootPackageEdit.HeaderText = "";
+            this.PhotoshootPackageEdit.Name = "PhotoshootPackageEdit";
+            // 
+            // PhotoshootPackageDelete
+            // 
+            this.PhotoshootPackageDelete.HeaderText = "";
+            this.PhotoshootPackageDelete.Name = "PhotoshootPackageDelete";
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1539,8 +1521,6 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button btnTimeslotAdd;
         private System.Windows.Forms.DataGridView dataGridView5;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button12;
@@ -1600,12 +1580,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn ProductView;
         private System.Windows.Forms.DataGridViewButtonColumn ProductEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ProductDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhotoshootPackageName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhotoshootPackageDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhotoshootPackagePrice;
-        private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageView;
-        private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventPackageName;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventPackageDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventPackagePrice;
@@ -1622,6 +1596,13 @@
         private System.Windows.Forms.DataGridViewButtonColumn EmpEdit;
         private System.Windows.Forms.DataGridViewButtonColumn EmpDelete;
         public System.Windows.Forms.DataGridView empGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhotoshootPackageName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Services;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Products;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhotoshootPackagePrice;
+        private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageView;
+        private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageDelete;
     }
 }
 

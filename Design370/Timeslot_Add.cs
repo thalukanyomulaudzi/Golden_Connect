@@ -16,5 +16,10 @@ namespace Design370
         {
             InitializeComponent();
         }
+
+        private void Timeslot_Add_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
