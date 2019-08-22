@@ -76,7 +76,6 @@ namespace Design370
 
 
 
-                    row
                     //dgvPhotoshootPackage.Rows.Add(row);
                     dBConnection.Close();
                 }

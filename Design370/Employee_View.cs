@@ -36,7 +36,7 @@ namespace Design370
             textBox4.Enabled = edit;
             textBox5.Enabled = edit;
             textBox7.Enabled = edit;
-            comboBox1.Enabled = edit;
+            cbxEmpTitle.Enabled = edit;
             comboBox2.Enabled = edit;
             comboBox3.Enabled = edit;
             comboBox4.Enabled = edit;
@@ -50,7 +50,7 @@ namespace Design370
             textBox4.Enabled = true;
             textBox5.Enabled = true;
             textBox7.Enabled = true;
-            comboBox1.Enabled = true;
+            cbxEmpTitle.Enabled = true;
             comboBox2.Enabled = true;
             comboBox3.Enabled = true;
             comboBox4.Enabled = true;
