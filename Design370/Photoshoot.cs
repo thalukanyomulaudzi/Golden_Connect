@@ -10,7 +10,7 @@ namespace Design370
 {
     class Photoshoot
     {
-        public static void LoadDGVPhotoshoot (System.Windows.Forms.DataGridView dgv)
+        public static void LoadDGV (System.Windows.Forms.DataGridView dgvPhotoshootPackage)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace Design370
                         string Services = reader.GetString(1);
                         string Products = reader.GetString(2);
                         string Price = reader.GetString(3);
-                        dgv.Rows.Add(PackageName, Services, Products, Price, "View", "Edit", "Delete");
+                        dgvPhotoshootPackage.Rows.Add(PackageName, Services, Products, Price, "View", "Edit", "Delete");
                     }
                     dBConnection.Close();
                 }
