@@ -261,6 +261,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Photoshoot_Package_Add";
             this.Text = "Add Photoshoot Package";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Photoshoot_Package_Add_FormClosed);
             this.Load += new System.EventHandler(this.Photoshoot_Package_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -308,15 +308,15 @@ namespace Design370
             switch (e.ColumnIndex)
             {
 
-                case 3:
+                case 4:
                     PhotoshootPackage_View.edit = false;
                     photoshootPackage_View.Show();
                     break;
-                case 4:
+                case 5:
                     PhotoshootPackage_View.edit = true;
                     photoshootPackage_View.Show();
                     break;
-                case 5:
+                case 6:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {

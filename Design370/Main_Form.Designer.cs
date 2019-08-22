@@ -1,4 +1,6 @@
-﻿namespace Design370
+﻿using System;
+
+namespace Design370
 {
     partial class Main_Form
     {
@@ -1451,6 +1453,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
+        }
+
+        private void tabPage6_Click(object sender, EventArgs e)
+        {
+            
         }
 
         #endregion

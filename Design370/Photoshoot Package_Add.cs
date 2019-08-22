@@ -125,5 +125,10 @@ namespace Design370
         {
 
         }
+
+        private void Photoshoot_Package_Add_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
     }
 }
