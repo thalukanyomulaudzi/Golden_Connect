@@ -85,7 +85,7 @@ namespace Design370
             //Timeslots.loadTimeslots();
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            
+            Photoshoot.LoadDGV(dgvPhotoshootPackage);
         }
 
         private bool connectDB()
@@ -444,6 +444,11 @@ namespace Design370
         private void TabPage3_Click(object sender, EventArgs e)
         {
             Timeslots.loadTimeslots(dataGridView10, DateTime.Today);
+        }
+
+        private void TabPage6_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
