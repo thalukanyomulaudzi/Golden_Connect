@@ -79,10 +79,10 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            //load_EMPS();
+            loadEmployees();
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
-            //Timeslots.loadTimeslots();
+            Timeslots.loadTimeslots(dataGridView10, DateTime.Today);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
@@ -94,7 +94,7 @@ namespace Design370
             return (dbCon.IsConnect());
         }
 
-        public void load_EMPS()
+        public void loadEmployees()
         {
             MysqlConnection.mysqlCon.Open();
             string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +

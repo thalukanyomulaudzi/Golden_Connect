@@ -53,12 +53,12 @@ namespace Design370
 
         private void Employee_Add_Load(object sender, EventArgs e)
         {
-            load_Titles();
-            load_MaritalStatus();
-            load_EMPTypes();
+            loadTitles();
+            loadMaritalStatus();
+            loadTypes();
         }
 
-        public void load_Titles()
+        public void loadTitles()
         {
             MysqlConnection.mysqlCon.Open();
             try
@@ -68,7 +68,7 @@ namespace Design370
                 MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
                 while (MysqlConnection.reader.Read())
                 {
-                    cmTITLE.Items.Add(MysqlConnection.reader[1]);
+                    cbxEmpTitle.Items.Add(MysqlConnection.reader[1]);
                 }
                 MysqlConnection.mysqlCon.Close();
             }
@@ -79,7 +79,7 @@ namespace Design370
             }
         }
 
-        public void load_EMPTypes()
+        public void loadTypes()
         {
             MysqlConnection.mysqlCon.Open();
             try
@@ -89,7 +89,7 @@ namespace Design370
                 MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
                 while (MysqlConnection.reader.Read())
                 {
-                    cmEMTP.Items.Add(MysqlConnection.reader[1]);
+                    cbxEmpType.Items.Add(MysqlConnection.reader[1]);
                 }
                 MysqlConnection.mysqlCon.Close();
             }
@@ -100,7 +100,7 @@ namespace Design370
             }
         }
 
-        public void load_MaritalStatus()
+        public void loadMaritalStatus()
         {
             MysqlConnection.mysqlCon.Open();
             try
@@ -110,7 +110,7 @@ namespace Design370
                 MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
                 while (MysqlConnection.reader.Read())
                 {
-                    cmMS.Items.Add(MysqlConnection.reader[1]);
+                    cbxEmpMarital.Items.Add(MysqlConnection.reader[1]);
                 }
                 MysqlConnection.mysqlCon.Close();
             }
@@ -126,7 +126,7 @@ namespace Design370
             MysqlConnection.mysqlCon.Open();
             try
             {
-                string TitlesQuery = "SELECT marital_status_id FROM marital_status WHERE marital_status_name = '" + this.cmMS.SelectedItem.ToString() + "'";
+                string TitlesQuery = "SELECT marital_status_id FROM marital_status WHERE marital_status_name = '" + this.cbxEmpMarital.SelectedItem.ToString() + "'";
                 MysqlConnection.cmd = new MySqlCommand(TitlesQuery, MysqlConnection.mysqlCon);
                 MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
                 while (MysqlConnection.reader.Read())
@@ -153,8 +153,8 @@ namespace Design370
             MysqlConnection.mysqlCon.Open();
             string insertQuery = "INSERT INTO employee(employee_first, employee_last, employee_idnumber, employee_phone, " +
                 "employee_email, employee_address, employee_type, employee_gender, employee_marital, employee_title) " +
-                "VALUES('"+txtFN.Text+"', '"+txtLN.Text+"', '"+txtID.Text+"', '"+txtTEL.Text+"', '"+txtEMAIL.Text+"', '"+txtADDRS.Text+"', " +
-                "'"+EMPType+"', '"+cmGEND.SelectedItem.ToString()+"', '"+msID+"', '"+titleID+"')";
+                "VALUES('"+txtEmpFirst.Text+"', '"+txtEmpLast.Text+"', '"+txtEmpID.Text+"', '"+txtEmpPhone.Text+"', '"+txtEmpEmail.Text+"', '"+txtEmpAddress.Text+"', " +
+                "'"+EMPType+"', '"+cbxEmpGender.SelectedItem.ToString()+"', '"+msID+"', '"+titleID+"')";
             
             try
             {
@@ -175,7 +175,7 @@ namespace Design370
             MysqlConnection.mysqlCon.Open();
             try
             {
-                string TitlesQuery = "SELECT employee_type_id FROM employee_type WHERE employee_type_name = '" + this.cmEMTP.SelectedItem.ToString() + "'";
+                string TitlesQuery = "SELECT employee_type_id FROM employee_type WHERE employee_type_name = '" + this.cbxEmpType.SelectedItem.ToString() + "'";
                 MysqlConnection.cmd = new MySqlCommand(TitlesQuery, MysqlConnection.mysqlCon);
                 MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
                 while (MysqlConnection.reader.Read())
@@ -197,7 +197,7 @@ namespace Design370
             MysqlConnection.mysqlCon.Open();
             try
             {
-                string TitlesQuery = "SELECT title_id FROM title WHERE title_name = '" +this.cmTITLE.SelectedItem.ToString()+ "'";
+                string TitlesQuery = "SELECT title_id FROM title WHERE title_name = '" +this.cbxEmpTitle.SelectedItem.ToString()+ "'";
                 MysqlConnection.cmd = new MySqlCommand(TitlesQuery, MysqlConnection.mysqlCon);
                 MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
                 while (MysqlConnection.reader.Read())
