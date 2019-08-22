@@ -27,8 +27,9 @@ namespace Design370
                     for (int i = 0; i < bookingpackage.Rows.Count; i++)
                     {
                         DataTable booking_package_product = new DataTable();
-                        //row.Cells.Add(new System.Windows.Forms.DataGridViewCell())//bookingpackage.Rows[i].ItemArray[1].ToString());
+
                         System.Windows.Forms.MessageBox.Show(bookingpackage.Rows[i].ItemArray[0].ToString() + " " + bookingpackage.Rows[i].ItemArray[1].ToString());
+                        string name = bookingpackage.Rows[i].ItemArray[1].ToString();
                         query = "SELECT product_id, booking_package_product_quantity FROM booking_package_product WHERE booking_package_id = '" + bookingpackage.Rows[i].ItemArray[0].ToString() + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         reader = command.ExecuteReader();
@@ -75,7 +76,7 @@ namespace Design370
 
 
 
-
+                    row
                     //dgvPhotoshootPackage.Rows.Add(row);
                     dBConnection.Close();
                 }
