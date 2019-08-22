@@ -46,7 +46,7 @@ namespace Design370
                     {
                         listBox3.Items.Add(reader.GetString(0));
                     }
-                    dBConnection.Close();
+                    reader.Close();
                 }
             }
             catch (Exception except)
@@ -54,8 +54,6 @@ namespace Design370
                 MessageBox.Show(except.Message);
 
             }
-
-           
         }
         
         private void button1_Click(object sender, EventArgs e)

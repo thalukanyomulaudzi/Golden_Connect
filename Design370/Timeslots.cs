@@ -130,6 +130,7 @@ namespace Design370
                 DBConnection dBCon = DBConnection.Instance();
                 if (dBCon.IsConnect())
                 {
+                    DateTime day = startDay;
                     for (int i = 0; i < 7; i++)
                     {
                         string query = "SELECT * FROM";
