@@ -10,15 +10,17 @@ namespace Design370
 {
     class Photoshoot
     {
-        public static void LoadDGV (System.Windows.Forms.DataGridView dgvPhotoshootPackage)
+        public static void LoadDGV (System.Windows.Forms.DataGridView dgv)
         {
             try
             {
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    System.Windows.Forms.DataGridViewRow row = new System.Windows.Forms.DataGridViewRow();
                     double TotalPrice = 0;
+                    string PackageName = " ";
+                    string ProductCount = " ";
+                    string ServiceCount = " ";
                     string query = "SELECT booking_package_id, booking_package_name FROM booking_package;";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
@@ -27,9 +29,7 @@ namespace Design370
                     for (int i = 0; i < bookingpackage.Rows.Count; i++)
                     {
                         DataTable booking_package_product = new DataTable();
-
-                        System.Windows.Forms.MessageBox.Show(bookingpackage.Rows[i].ItemArray[0].ToString() + " " + bookingpackage.Rows[i].ItemArray[1].ToString());
-                        string name = bookingpackage.Rows[i].ItemArray[1].ToString();
+                        PackageName = bookingpackage.Rows[i].ItemArray[1].ToString();
                         query = "SELECT product_id, booking_package_product_quantity FROM booking_package_product WHERE booking_package_id = '" + bookingpackage.Rows[i].ItemArray[0].ToString() + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         reader = command.ExecuteReader();
@@ -37,14 +37,13 @@ namespace Design370
                         for (int j = 0; j < booking_package_product.Rows.Count; j++)
                         {
                             DataTable product = new DataTable();
-                            System.Windows.Forms.MessageBox.Show(booking_package_product.Rows[j].ItemArray[0].ToString() + " " + booking_package_product.Rows[j].ItemArray[1].ToString());
+                            ProductCount = booking_package_product.Rows.Count.ToString();
                             query = "SELECT product_price FROM product WHERE product_id = '" + booking_package_product.Rows[j].ItemArray[0].ToString() + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
                             reader = command.ExecuteReader();
                             product.Load(reader);
                             for (int k = 0; k < product.Rows.Count; k++)
                             {
-                                System.Windows.Forms.MessageBox.Show(product.Rows[k].ItemArray[0].ToString());
                                 TotalPrice += Convert.ToInt32(booking_package_product.Rows[j].ItemArray[1]) * Convert.ToDouble(product.Rows[k].ItemArray[0]);
                             }
                         }
@@ -56,29 +55,21 @@ namespace Design370
                         for (int l = 0; l < booking_package_service.Rows.Count; l++)
                         {
                             DataTable service = new DataTable();
-                            System.Windows.Forms.MessageBox.Show(booking_package_service.Rows[l].ItemArray[0].ToString());
+                            ServiceCount = booking_package_service.Rows.Count.ToString();
                             query = "SELECT service_price FROM service WHERE service_id = '" + booking_package_service.Rows[l].ItemArray[0].ToString() + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
                             reader = command.ExecuteReader();
                             service.Load(reader);
                             for (int m = 0; m < service.Rows.Count; m++)
                             {
-                                System.Windows.Forms.MessageBox.Show(service.Rows[m].ItemArray[0].ToString());
                                 TotalPrice += Convert.ToDouble(service.Rows[m].ItemArray[0]);
                             }
 
                         }
-
+                        dgv.Rows.Add(PackageName, ServiceCount, ProductCount, TotalPrice, "View", "Edit", "Delete");
                     }
 
-                    dBConnection.Close();
-                    System.Windows.Forms.MessageBox.Show(TotalPrice.ToString());
-
-
-
-                    row
-                    //dgvPhotoshootPackage.Rows.Add(row);
-                    dBConnection.Close();
+                    reader.Close();
                 }
             }
             catch (Exception e)

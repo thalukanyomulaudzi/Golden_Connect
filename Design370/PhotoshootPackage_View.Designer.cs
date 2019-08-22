@@ -101,6 +101,7 @@
             this.button4.TabIndex = 70;
             this.button4.Text = "Remove";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -111,6 +112,7 @@
             this.button3.TabIndex = 69;
             this.button3.Text = "Remove";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -121,18 +123,17 @@
             this.button2.TabIndex = 68;
             this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // listBox4
             // 
             this.listBox4.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox4.FormattingEnabled = true;
-            this.listBox4.Items.AddRange(new object[] {
-            "Standard Platter",
-            "Samsung Galaxy S10"});
             this.listBox4.Location = new System.Drawing.Point(489, 206);
             this.listBox4.Name = "listBox4";
             this.listBox4.Size = new System.Drawing.Size(155, 108);
             this.listBox4.TabIndex = 67;
+            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -143,14 +144,12 @@
             this.button1.TabIndex = 66;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listBox3
             // 
             this.listBox3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Items.AddRange(new object[] {
-            "Photography 1 hour",
-            "Decor"});
             this.listBox3.Location = new System.Drawing.Point(489, 34);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(155, 108);
