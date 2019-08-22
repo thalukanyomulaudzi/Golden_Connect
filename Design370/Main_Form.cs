@@ -85,6 +85,7 @@ namespace Design370
             //Timeslots.loadTimeslots();
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
+            
         }
 
         private bool connectDB()

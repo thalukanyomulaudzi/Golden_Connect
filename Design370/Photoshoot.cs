@@ -10,7 +10,7 @@ namespace Design370
 {
     class Photoshoot
     {
-        public static void LoadDGV (System.Windows.Forms.DataGridView dgv)
+        public static void LoadDGVPhotoshoot (System.Windows.Forms.DataGridView dgv)
         {
             try
             {

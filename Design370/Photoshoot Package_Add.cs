@@ -46,7 +46,7 @@ namespace Design370
                     {
                         listBox3.Items.Add(reader.GetString(0));
                     }
-                    dBConnection.Close();
+                    reader.Close();
                 }
             }
             catch (Exception except)
