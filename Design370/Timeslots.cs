@@ -34,7 +34,7 @@ namespace Design370
                 }
                 return false;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Windows.Forms.MessageBox.Show(e.Message);
                 return false;
@@ -74,7 +74,7 @@ namespace Design370
                 }
                 removeDuplicates();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
@@ -131,27 +131,38 @@ namespace Design370
                 if (dBCon.IsConnect())
                 {
                     DateTime day = startDay;
-                    for (int i = 0; i < 7; i++)
-                    {
-                        string query = "SELECT * FROM";
-                        var command = new MySqlCommand(query, dBCon.Connection);
+                    int i = 8;
+                    string query = "SELECT a.available FROM employee_timeslot a JOIN timeslot b WHERE b.timeslot_date >= '" + day.ToString("yyyy'-'MM'-'dd") + "' AND b.timeslot_date <= '" + day.AddDays(7).ToString("yyyy'-'MM'-'dd") + "' AND b.timeslot_start = '0" + i + ":00:00'";
 
+                    var command = new MySqlCommand(query, dBCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        System.Windows.Forms.MessageBox.Show(reader.GetString(0));
+                        dgv.Rows.Add();
+                    }
+                    i++;
+                    for (i = 10; i < 16; i++)
+                    {
+                        day = startDay;
+                        query = "SELECT * FROM timeslot WHERE timeslot_date = '" + day.ToString("yyyy'-'MM'-'dd") + "' AND timeslot_start = '";
+                        command = new MySqlCommand(query, dBCon.Connection);
 
 
                         dgv.Rows.Add();
                     }
                 }
-                
+
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
         }
         public static void clearTimeslots()
         {
-            
+
         }
         public static void removeDuplicates()
         {
@@ -166,10 +177,14 @@ namespace Design370
                     dBCon.Close();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
+        }
+        public void linkTimeslots()//link timeslots to employees
+        {
+            
         }
     }
 }
