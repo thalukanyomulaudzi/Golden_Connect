@@ -37,9 +37,12 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    string query = "SELECT product_name FROM product WHERE product_type_id = '1';";
+                    string query = "SELECT booking_package_name FROM booking_package WHERE";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
+                    query = "SELECT product_name FROM product WHERE product_type_id = '1';";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         listBox4.Items.Add(reader.GetString(0));
