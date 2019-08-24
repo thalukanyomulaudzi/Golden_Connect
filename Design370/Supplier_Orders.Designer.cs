@@ -33,14 +33,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmpTypeView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpTypeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpTypeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
+            this.dgvSupplierOrders = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox7
@@ -84,7 +78,7 @@
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(619, 22);
+            this.button14.Location = new System.Drawing.Point(516, 24);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(158, 28);
             this.button14.TabIndex = 68;
@@ -92,71 +86,30 @@
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.Button14_Click);
             // 
-            // dataGridView7
+            // dgvSupplierOrders
             // 
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SupplierName,
-            this.OrderNumber,
-            this.Total,
-            this.EmpTypeView,
-            this.EmpTypeEdit,
-            this.EmpTypeDelete});
-            this.dataGridView7.Location = new System.Drawing.Point(22, 73);
-            this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.RowTemplate.Height = 24;
-            this.dataGridView7.Size = new System.Drawing.Size(754, 335);
-            this.dataGridView7.TabIndex = 67;
-            this.dataGridView7.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellContentClick);
-            // 
-            // SupplierName
-            // 
-            this.SupplierName.HeaderText = "Supplier Name";
-            this.SupplierName.Name = "SupplierName";
-            // 
-            // OrderNumber
-            // 
-            this.OrderNumber.HeaderText = "Order Number";
-            this.OrderNumber.Name = "OrderNumber";
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
-            // EmpTypeView
-            // 
-            this.EmpTypeView.HeaderText = "";
-            this.EmpTypeView.Name = "EmpTypeView";
-            this.EmpTypeView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EmpTypeView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // EmpTypeEdit
-            // 
-            this.EmpTypeEdit.HeaderText = "";
-            this.EmpTypeEdit.Name = "EmpTypeEdit";
-            // 
-            // EmpTypeDelete
-            // 
-            this.EmpTypeDelete.HeaderText = "";
-            this.EmpTypeDelete.Name = "EmpTypeDelete";
+            this.dgvSupplierOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSupplierOrders.Location = new System.Drawing.Point(22, 73);
+            this.dgvSupplierOrders.Name = "dgvSupplierOrders";
+            this.dgvSupplierOrders.Size = new System.Drawing.Size(652, 201);
+            this.dgvSupplierOrders.TabIndex = 73;
             // 
             // Supplier_Orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 468);
+            this.ClientSize = new System.Drawing.Size(689, 327);
+            this.Controls.Add(this.dgvSupplierOrders);
             this.Controls.Add(this.comboBox7);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.button14);
-            this.Controls.Add(this.dataGridView7);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Supplier_Orders";
             this.Text = "Supplier Orders";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,12 +122,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.DataGridView dataGridView7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeView;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeDelete;
+        private System.Windows.Forms.DataGridView dgvSupplierOrders;
     }
 }
