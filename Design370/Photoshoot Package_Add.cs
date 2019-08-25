@@ -31,20 +31,20 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    string query = "SELECT product_name FROM product WHERE product_type_id = '1';";
+                    string query = "SELECT product_name, product_price FROM product WHERE product_type_id = '1';";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        listBox4.Items.Add(reader.GetString(0));
+                        listBox4.Items.Add(reader.GetString(0) + " - R" + reader.GetString(1));
                     }
                     reader.Close();
-                    query = "SELECT service_name FROM service WHERE service_type_id = '1';";
+                    query = "SELECT service_name, service_price FROM service WHERE service_type_id = '1';";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        listBox3.Items.Add(reader.GetString(0));
+                        listBox3.Items.Add(reader.GetString(0) + " - R" + reader.GetString(1));
                     }
                     reader.Close();
                 }
@@ -90,19 +90,13 @@ namespace Design370
             {
                 listBox2.Items.Add(item);
             }
-            while (listBox4.SelectedItems.Count > 0)
-            {
-                listBox4.Items.Remove(listBox4.SelectedItems[0]);
-            }
+            listBox4.ClearSelected();
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             ListBox.SelectedObjectCollection sourceItems = listBox2.SelectedItems;
-            foreach (var item in sourceItems)
-            {
-                listBox4.Items.Add(item);
-            }
             while (listBox2.SelectedItems.Count > 0)
             {
                 listBox2.Items.Remove(listBox2.SelectedItems[0]);
@@ -127,6 +121,24 @@ namespace Design370
         private void Photoshoot_Package_Add_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DBConnection dBCon = DBConnection.Instance();
+                if (dBCon.IsConnect())
+                {
+
+                }
+            }
+
+            catch (Exception except)
+            {
+
+                MessageBox.Show(except.Message);
+            }
         }
     }
 }

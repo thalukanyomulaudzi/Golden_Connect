@@ -274,6 +274,12 @@
     <Compile Include="PhotoshootPackage_View.Designer.cs">
       <DependentUpon>PhotoshootPackage_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductList.Designer.cs">
+      <DependentUpon>ProductList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,11 +348,11 @@
     <Compile Include="Service_View.Designer.cs">
       <DependentUpon>Service_View.cs</DependentUpon>
     </Compile>
-    <Compile Include="SupplierOrders_View.cs">
+    <Compile Include="SupplierList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SupplierOrders_View.Designer.cs">
-      <DependentUpon>SupplierOrders_View.cs</DependentUpon>
+    <Compile Include="SupplierList.Designer.cs">
+      <DependentUpon>SupplierList.cs</DependentUpon>
     </Compile>
     <Compile Include="Supplier_Add.cs">
       <SubType>Form</SubType>
@@ -446,6 +452,9 @@
     <EmbeddedResource Include="PhotoshootPackage_View.resx">
       <DependentUpon>PhotoshootPackage_View.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProductList.resx">
+      <DependentUpon>ProductList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Product_Add.resx">
       <DependentUpon>Product_Add.cs</DependentUpon>
     </EmbeddedResource>
@@ -489,8 +498,8 @@
     <EmbeddedResource Include="Service_View.resx">
       <DependentUpon>Service_View.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SupplierOrders_View.resx">
-      <DependentUpon>SupplierOrders_View.cs</DependentUpon>
+    <EmbeddedResource Include="SupplierList.resx">
+      <DependentUpon>SupplierList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier_Add.resx">
       <DependentUpon>Supplier_Add.cs</DependentUpon>
