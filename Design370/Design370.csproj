@@ -248,6 +248,7 @@
     <Compile Include="Event_Types_View.Designer.cs">
       <DependentUpon>Event_Types_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Item.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -32,7 +32,7 @@ namespace Design370
             button3.Enabled = edit;
             button4.Enabled = edit;
 
-            try
+            /*try
             {
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
@@ -62,7 +62,7 @@ namespace Design370
             {
                 MessageBox.Show(except.Message);
 
-            }
+            }*/
         }
 
         private void Button5_Click(object sender, EventArgs e)
