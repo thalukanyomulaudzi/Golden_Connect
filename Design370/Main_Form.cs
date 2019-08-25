@@ -81,7 +81,7 @@ namespace Design370
             }
             loadEmployees();
             //testConnection(); //this throws out all customer names and surnames, only use during development
-            //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(7));
+            //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
             Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
             //Timeslots.removeDuplicates();
@@ -182,8 +182,10 @@ namespace Design370
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            Booking_Dialog booking_Dialog = new Booking_Dialog();
-            booking_Dialog.Show();
+            Book_Event_Date bookDate = new Book_Event_Date();
+            bookDate.Show();
+            //Booking_Dialog booking_Dialog = new Booking_Dialog();
+            //booking_Dialog.Show();
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)

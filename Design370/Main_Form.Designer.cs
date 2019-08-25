@@ -60,7 +60,6 @@ namespace Design370
             this.label10 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.btnTimeslotAdd = new System.Windows.Forms.Button();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -152,6 +151,7 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -165,7 +165,6 @@ namespace Design370
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empGrid)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage5.SuspendLayout();
@@ -182,6 +181,7 @@ namespace Design370
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
             this.tabPage11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -464,10 +464,10 @@ namespace Design370
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dataGridView5);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.textBox5);
             this.tabPage3.Controls.Add(this.btnTimeslotAdd);
-            this.tabPage3.Controls.Add(this.dataGridView5);
             this.tabPage3.Location = new System.Drawing.Point(154, 4);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
@@ -508,24 +508,6 @@ namespace Design370
             this.btnTimeslotAdd.TabIndex = 17;
             this.btnTimeslotAdd.Text = "Add Timeslot";
             this.btnTimeslotAdd.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView5
-            // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.dataGridView5.Location = new System.Drawing.Point(11, 59);
-            this.dataGridView5.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.RowTemplate.Height = 24;
-            this.dataGridView5.Size = new System.Drawing.Size(763, 356);
-            this.dataGridView5.TabIndex = 16;
             // 
             // tabPage4
             // 
@@ -1420,6 +1402,28 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // dataGridView5
+            // 
+            this.dataGridView5.AllowUserToAddRows = false;
+            this.dataGridView5.AllowUserToDeleteRows = false;
+            this.dataGridView5.AllowUserToOrderColumns = true;
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7});
+            this.dataGridView5.Location = new System.Drawing.Point(7, 74);
+            this.dataGridView5.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.RowTemplate.Height = 24;
+            this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView5.Size = new System.Drawing.Size(817, 386);
+            this.dataGridView5.TabIndex = 21;
+            // 
             // Column1
             // 
             this.Column1.HeaderText = "Column1";
@@ -1492,7 +1496,6 @@ namespace Design370
             ((System.ComponentModel.ISupportInitialize)(this.empGrid)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -1516,6 +1519,7 @@ namespace Design370
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
             this.tabPage11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1565,7 +1569,6 @@ namespace Design370
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button btnTimeslotAdd;
-        private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button12;
@@ -1648,6 +1651,7 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageView;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageEdit;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageDelete;
+        private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
         private System.Windows.Forms.DataGridViewButtonColumn Column2;
         private System.Windows.Forms.DataGridViewButtonColumn Column3;
