@@ -154,6 +154,7 @@ namespace Design370
                             available.Add(reader.GetBoolean(0) ? "Available" : "Unavailable");
                         }
                         dgv.Rows.Add(available.ToArray());
+                        dgv.Rows[dgv.Rows.Count-2].HeaderCell.Value = "0" + i + ":00:00";
                         available.Clear();
                         reader.Close();
                     }
@@ -169,9 +170,11 @@ namespace Design370
                             available.Add(reader.GetBoolean(0) ? "Available" : "Unavailable");
                         }
                         dgv.Rows.Add(available.ToArray());
+                        dgv.Rows[dgv.Rows.Count-2].HeaderCell.Value = i + ":00:00";
                         available.Clear();
                         reader.Close();
                     }
+                    dgv.AutoResizeRowHeadersWidth(System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader);
                 }
 
 
