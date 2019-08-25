@@ -132,32 +132,46 @@ namespace Design370
                 if (dBCon.IsConnect())
                 {
                     DateTime day = startDay;
-                    int i = 8;
-                    string query = "SELECT a.available FROM employee_timeslot a JOIN timeslot b WHERE b.timeslot_date BETWEEN '" + day.ToString("yyyy'-'MM'-'dd") + "' AND DATE_ADD('" + day.AddDays(DaysInWeek).ToString("yyyy'-'MM'-'dd") + "', INTERVAL 1 DAY) AND b.timeslot_start = '0" + i + ":00:00'";
-                    System.Windows.Forms.MessageBox.Show(query);
-                    var command = new MySqlCommand(query, dBCon.Connection);
-                    var reader = command.ExecuteReader();
                     List<string> available = new List<string>();
-                    string add;
-                    while (reader.Read())
+                    int i;
+                    string query = "";
+                    MySqlCommand command;
+                    MySqlDataReader reader;
+                    DateTime headerDay = day;
+                    for (int j = 0; j < DaysInWeek ; j++)
                     {
-                        //System.Windows.Forms.MessageBox.Show(reader.GetString(0));
-                        add = reader.GetBoolean(0) ? "Available" : "Unavailable";
-                        available.Add(add);
+                        dgv.Columns[j].HeaderText = headerDay.ToString("dddd, MMM dd \"'\"yy");
+                        headerDay = headerDay.AddDays(1);
                     }
-                    Week slot1 = new Week(available);
-                    dgv.Rows.Add(available);
-                    i++;
+                    for (i=8;i<10;i++)
+                    {
+                        query = "SELECT a.available FROM employee_timeslot a JOIN timeslot b ON a.timeslot_id = b.timeslot_id WHERE b.timeslot_date BETWEEN '"
+                                    + day.ToString("yyyy'-'MM'-'dd") + "' AND '" + day.AddDays(DaysInWeek).ToString("yyyy'-'MM'-'dd") + "' AND timeslot_start = '0" + i + ":00:00'";
+                        command = new MySqlCommand(query, dBCon.Connection);
+                        reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            available.Add(reader.GetBoolean(0) ? "Available" : "Unavailable");
+                        }
+                        dgv.Rows.Add(available.ToArray());
+                        available.Clear();
+                        reader.Close();
+                    }
                     for (i = 10; i < 16; i++)
                     {
-                        day = startDay;
-                        query = "SELECT * FROM timeslot WHERE timeslot_date = '" + day.ToString("yyyy'-'MM'-'dd") + "' AND timeslot_start = '";
+                        query = "SELECT a.available FROM employee_timeslot a JOIN timeslot b ON a.timeslot_id = b.timeslot_id WHERE b.timeslot_date BETWEEN '"
+                                    + day.ToString("yyyy'-'MM'-'dd") + "' AND '" + day.AddDays(DaysInWeek).ToString("yyyy'-'MM'-'dd") + "' AND timeslot_start = '" + i + ":00:00'";
+                        //System.Windows.Forms.MessageBox.Show(query);
                         command = new MySqlCommand(query, dBCon.Connection);
-
-
-                        dgv.Rows.Add();
+                        reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            available.Add(reader.GetBoolean(0) ? "Available" : "Unavailable");
+                        }
+                        dgv.Rows.Add(available.ToArray());
+                        available.Clear();
+                        reader.Close();
                     }
-                    reader.Close();
                 }
 
 

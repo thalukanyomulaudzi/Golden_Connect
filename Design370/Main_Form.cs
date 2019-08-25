@@ -82,8 +82,8 @@ namespace Design370
             loadEmployees();
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(7));
-            Timeslots.linkTimeslots();
-            Timeslots.loadTimeslots(dataGridView10, DateTime.Today);
+            //Timeslots.linkTimeslots();
+            Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
@@ -445,7 +445,6 @@ namespace Design370
 
         private void TabPage3_Click(object sender, EventArgs e)
         {
-            Timeslots.loadTimeslots(dataGridView10, DateTime.Today);
         }
 
         private void TabPage6_MouseClick(object sender, MouseEventArgs e)
