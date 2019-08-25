@@ -143,11 +143,6 @@ namespace Design370
             }
         }
 
-        private void btn_ADDEMP_Click(object sender, EventArgs e)
-        {
-            addEmployee();
-        }
-
         public void addEmployee()
         {
             MysqlConnection.mysqlCon.Open();
@@ -168,6 +163,11 @@ namespace Design370
                 MessageBox.Show("Error: " + ee.Message);
                 MysqlConnection.mysqlCon.Close();
             }
+        }
+
+        private void BtnEmpAdd_Click(object sender, EventArgs e)
+        {
+            addEmployee();
         }
 
         private void CmEMTP_SelectedIndexChanged(object sender, EventArgs e)

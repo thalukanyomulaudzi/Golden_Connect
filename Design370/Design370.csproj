@@ -379,6 +379,7 @@
     <Compile Include="Timeslot_Add.Designer.cs">
       <DependentUpon>Timeslot_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Week.cs" />
     <EmbeddedResource Include="Booking_Add.resx">
       <DependentUpon>Booking_Add.cs</DependentUpon>
     </EmbeddedResource>

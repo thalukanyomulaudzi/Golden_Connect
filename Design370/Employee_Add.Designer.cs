@@ -77,7 +77,7 @@
             this.btnEmpAdd.TabIndex = 14;
             this.btnEmpAdd.Text = "Add";
             this.btnEmpAdd.UseVisualStyleBackColor = true;
-            this.btnEmpAdd.Click += new System.EventHandler(this.btn_ADDEMP_Click);
+            this.btnEmpAdd.Click += new System.EventHandler(this.BtnEmpAdd_Click);
             // 
             // label13
             // 
