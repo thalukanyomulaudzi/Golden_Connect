@@ -82,7 +82,8 @@ namespace Design370
             loadEmployees();
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
-            Timeslots.loadTimeslots(dataGridView10, DateTime.Today);
+            //Timeslots.linkTimeslots();
+            Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
@@ -201,14 +202,17 @@ namespace Design370
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            Booking_Dialog booking_Dialog = new Booking_Dialog();
-            booking_Dialog.Show();
+            Book_Event_Date bookDate = new Book_Event_Date();
+            bookDate.Show();
+            //Booking_Dialog booking_Dialog = new Booking_Dialog();
+            //booking_Dialog.Show();
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
             e.Cancel = exit == DialogResult.Yes ? false : true;
+            dbCon.Close();
         }
 
         private void Button8_Click(object sender, EventArgs e)
@@ -464,7 +468,6 @@ namespace Design370
 
         private void TabPage3_Click(object sender, EventArgs e)
         {
-            Timeslots.loadTimeslots(dataGridView10, DateTime.Today);
         }
 
         private void TabPage6_MouseClick(object sender, MouseEventArgs e)

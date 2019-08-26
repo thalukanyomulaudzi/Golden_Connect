@@ -78,5 +78,10 @@ namespace Design370
 
             }
         }
+        
+        public static void ViewPhotoshoot (int PhotoshootID)
+        {
+            
+        }
     }
 }
