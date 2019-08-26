@@ -109,6 +109,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Supplier_Orders";
             this.Text = "Supplier Orders";
+            this.Load += new System.EventHandler(this.Supplier_Orders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

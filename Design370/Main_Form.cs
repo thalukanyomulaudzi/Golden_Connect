@@ -86,8 +86,28 @@ namespace Design370
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            loadSuppliers();
         }
 
+        public void loadSuppliers()
+        {
+            using (MysqlConnection.mysqlCon)
+            {
+                MysqlConnection.mysqlCon.Open();
+
+                string sql = "SELECT supplier_id, supplier_name,supplier_email, supplier_phone, supplier_location_address FROM supplier";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
+                DataTable dtb1 = new DataTable();
+                adapter.Fill(dtb1);
+                //dtb1.Columns.Add("View");
+                //for (int i = 0; i < dtb1.Rows.Count; i++)
+                //{
+                //    dtb1.Rows[i]["View"] = "View";
+                //}
+                dataGridView10.AutoGenerateColumns = false;
+                dataGridView10.DataSource = dtb1;
+            }
+        }
         private bool connectDB()
         {
             dbCon.DatabaseName = "golden_connect";
@@ -395,6 +415,7 @@ namespace Design370
 
         private void DataGridView10_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
             Supplier_View supplier_View = new Supplier_View();
             switch (e.ColumnIndex)
             {

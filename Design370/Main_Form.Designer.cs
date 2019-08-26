@@ -30,6 +30,7 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -133,11 +134,6 @@ namespace Design370
             this.button20 = new System.Windows.Forms.Button();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.dataGridView10 = new System.Windows.Forms.DataGridView();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SupplierDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button22 = new System.Windows.Forms.Button();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -152,6 +148,13 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SupplierDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
@@ -241,7 +244,7 @@ namespace Design370
             this.label2.Location = new System.Drawing.Point(281, 15);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 18);
+            this.label2.Size = new System.Drawing.Size(56, 18);
             this.label2.TabIndex = 7;
             this.label2.Text = "Sort by:";
             // 
@@ -384,7 +387,7 @@ namespace Design370
             this.label7.Location = new System.Drawing.Point(281, 15);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 18);
+            this.label7.Size = new System.Drawing.Size(56, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Sort by:";
             // 
@@ -559,7 +562,7 @@ namespace Design370
             this.label3.Location = new System.Drawing.Point(281, 15);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 18);
+            this.label3.Size = new System.Drawing.Size(56, 18);
             this.label3.TabIndex = 14;
             this.label3.Text = "Sort by:";
             // 
@@ -690,7 +693,7 @@ namespace Design370
             this.label5.Location = new System.Drawing.Point(281, 15);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 18);
+            this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 21;
             this.label5.Text = "Sort by:";
             // 
@@ -923,7 +926,7 @@ namespace Design370
             this.label13.Location = new System.Drawing.Point(281, 15);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(57, 18);
+            this.label13.Size = new System.Drawing.Size(56, 18);
             this.label13.TabIndex = 35;
             this.label13.Text = "Sort by:";
             // 
@@ -1076,7 +1079,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 18);
+            this.label15.Size = new System.Drawing.Size(56, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Sort by:";
             // 
@@ -1210,9 +1213,19 @@ namespace Design370
             // 
             // dataGridView10
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light", 9.8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView10.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView10.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SupplierName,
+            this.Column1,
+            this.Column2,
             this.SupplierType,
             this.SupplierView,
             this.SupplierEdit,
@@ -1224,31 +1237,6 @@ namespace Design370
             this.dataGridView10.Size = new System.Drawing.Size(763, 349);
             this.dataGridView10.TabIndex = 55;
             this.dataGridView10.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView10_CellContentClick);
-            // 
-            // SupplierName
-            // 
-            this.SupplierName.HeaderText = "Supplier Name";
-            this.SupplierName.Name = "SupplierName";
-            // 
-            // SupplierType
-            // 
-            this.SupplierType.HeaderText = "Supplier Type";
-            this.SupplierType.Name = "SupplierType";
-            // 
-            // SupplierView
-            // 
-            this.SupplierView.HeaderText = "";
-            this.SupplierView.Name = "SupplierView";
-            // 
-            // SupplierEdit
-            // 
-            this.SupplierEdit.HeaderText = "";
-            this.SupplierEdit.Name = "SupplierEdit";
-            // 
-            // SupplierDelete
-            // 
-            this.SupplierDelete.HeaderText = "";
-            this.SupplierDelete.Name = "SupplierDelete";
             // 
             // button22
             // 
@@ -1280,7 +1268,7 @@ namespace Design370
             this.label19.Location = new System.Drawing.Point(281, 15);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 18);
+            this.label19.Size = new System.Drawing.Size(56, 18);
             this.label19.TabIndex = 51;
             this.label19.Text = "Sort by:";
             // 
@@ -1404,6 +1392,45 @@ namespace Design370
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.DataPropertyName = "supplier_name";
+            this.SupplierName.HeaderText = "Supplier Name";
+            this.SupplierName.Name = "SupplierName";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "supplier_email_address";
+            this.Column1.HeaderText = "Supplier Email Address";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "supplier_phone";
+            this.Column2.HeaderText = "Supplier Telephone";
+            this.Column2.Name = "Column2";
+            // 
+            // SupplierType
+            // 
+            this.SupplierType.DataPropertyName = "supplier_type_name";
+            this.SupplierType.HeaderText = "Supplier Type";
+            this.SupplierType.Name = "SupplierType";
+            // 
+            // SupplierView
+            // 
+            this.SupplierView.HeaderText = "";
+            this.SupplierView.Name = "SupplierView";
+            // 
+            // SupplierEdit
+            // 
+            this.SupplierEdit.HeaderText = "";
+            this.SupplierEdit.Name = "SupplierEdit";
+            // 
+            // SupplierDelete
+            // 
+            this.SupplierDelete.HeaderText = "";
+            this.SupplierDelete.Name = "SupplierDelete";
             // 
             // Main_Form
             // 
@@ -1567,11 +1594,6 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn EventPackageView;
         private System.Windows.Forms.DataGridViewButtonColumn EventPackageEdit;
         private System.Windows.Forms.DataGridViewButtonColumn EventPackageDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierType;
-        private System.Windows.Forms.DataGridViewButtonColumn SupplierView;
-        private System.Windows.Forms.DataGridViewButtonColumn SupplierEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn SupplierDelete;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.DataGridViewButtonColumn EmpView;
         private System.Windows.Forms.DataGridViewButtonColumn EmpEdit;
@@ -1584,6 +1606,13 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageView;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageEdit;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierType;
+        private System.Windows.Forms.DataGridViewButtonColumn SupplierView;
+        private System.Windows.Forms.DataGridViewButtonColumn SupplierEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn SupplierDelete;
     }
 }
 

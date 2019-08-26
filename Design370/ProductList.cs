@@ -24,17 +24,37 @@ namespace Design370
             {
                 MysqlConnection.mysqlCon.Open();
 
-                string sql = "SELECT product.product_id, product.product_name, product.product_price, product_type.product_type_name FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                string sql = "SELECT product.product_id, product.product_name, product.product_stock_quantity, product.product_price, product_type.product_type_name FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                 DataTable dtb1 = new DataTable();
                 adapter.Fill(dtb1);
-
+                dgvProductList.AutoGenerateColumns = false;
                 dgvProductList.DataSource = dtb1;
             }
         }
 
         private void btnSelectProduct_Click(object sender, EventArgs e)
         {
+            
+            try
+            {
+                int s = Convert.ToInt32(dgvProductList.SelectedRows[0].Cells[3].Value) + Convert.ToInt32(txtProductQuantity.Text);
+                Supplier_Orders_Add sd = new Supplier_Orders_Add();
+
+                Globals.ProductID = dgvProductList.SelectedRows[0].Cells[0].Value.ToString();
+                Globals.ProductName = dgvProductList.SelectedRows[0].Cells[1].Value.ToString();
+                Globals.ProductQuantity = s;
+                Globals.ProductTypeName = dgvProductList.SelectedRows[0].Cells[4].Value.ToString();
+                sd.Refresh();
+             
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.ToString());
+            }
+
+
 
         }
     }
