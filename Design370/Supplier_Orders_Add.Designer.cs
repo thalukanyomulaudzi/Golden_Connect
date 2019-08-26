@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnPlaceOrder = new System.Windows.Forms.Button();
             this.btnSelectSupplier = new System.Windows.Forms.Button();
@@ -41,14 +42,18 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRemoveProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvOrderProductList = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtSupplierOrderNo = new System.Windows.Forms.TextBox();
+            this.txtType = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderProductList)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -65,6 +70,7 @@
             // 
             // btnPlaceOrder
             // 
+            this.btnPlaceOrder.Enabled = false;
             this.btnPlaceOrder.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlaceOrder.Location = new System.Drawing.Point(588, 412);
             this.btnPlaceOrder.Margin = new System.Windows.Forms.Padding(2);
@@ -94,6 +100,7 @@
             this.groupBox1.Controls.Add(this.txtSupplierName);
             this.groupBox1.Controls.Add(this.txtTelephoneNo);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(12, 44);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(589, 131);
@@ -156,11 +163,12 @@
             // 
             this.groupBox2.Controls.Add(this.btnRemoveProduct);
             this.groupBox2.Controls.Add(this.btnAddProduct);
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.dgvOrderProductList);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txtSupplierOrderNo);
+            this.groupBox2.Controls.Add(this.txtType);
             this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(12, 181);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(662, 226);
@@ -177,6 +185,7 @@
             this.btnRemoveProduct.TabIndex = 70;
             this.btnRemoveProduct.Text = "Remove Product";
             this.btnRemoveProduct.UseVisualStyleBackColor = true;
+            this.btnRemoveProduct.Click += new System.EventHandler(this.btnRemoveProduct_Click);
             // 
             // btnAddProduct
             // 
@@ -189,13 +198,54 @@
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
-            // dataGridView1
+            // dgvOrderProductList
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(638, 133);
-            this.dataGridView1.TabIndex = 11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light", 9.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrderProductList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvOrderProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrderProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dgvOrderProductList.EnableHeadersVisualStyles = false;
+            this.dgvOrderProductList.Location = new System.Drawing.Point(7, 59);
+            this.dgvOrderProductList.Name = "dgvOrderProductList";
+            this.dgvOrderProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrderProductList.Size = new System.Drawing.Size(638, 133);
+            this.dgvOrderProductList.TabIndex = 11;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "product_id";
+            this.Column1.HeaderText = "Product ID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "product_name";
+            this.Column2.HeaderText = "Product Name";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 120;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "product_stock_quantity";
+            this.Column3.HeaderText = "Quantity";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "product_type_name";
+            this.Column4.HeaderText = "Product Type";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 120;
             // 
             // dateTimePicker1
             // 
@@ -215,12 +265,14 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Date :";
             // 
-            // txtSupplierOrderNo
+            // txtType
             // 
-            this.txtSupplierOrderNo.Location = new System.Drawing.Point(172, 27);
-            this.txtSupplierOrderNo.Name = "txtSupplierOrderNo";
-            this.txtSupplierOrderNo.Size = new System.Drawing.Size(102, 26);
-            this.txtSupplierOrderNo.TabIndex = 8;
+            this.txtType.Enabled = false;
+            this.txtType.Location = new System.Drawing.Point(110, 27);
+            this.txtType.Name = "txtType";
+            this.txtType.Size = new System.Drawing.Size(164, 26);
+            this.txtType.TabIndex = 8;
+            this.txtType.Text = "Supplier Order";
             // 
             // label5
             // 
@@ -228,9 +280,9 @@
             this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 9.25F);
             this.label5.Location = new System.Drawing.Point(7, 33);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(147, 16);
+            this.label5.Size = new System.Drawing.Size(97, 16);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Supplier Order Number :";
+            this.label5.Text = "Document Type:";
             // 
             // Supplier_Orders_Add
             // 
@@ -251,7 +303,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderProductList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -270,10 +322,14 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnRemoveProduct;
         private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvOrderProductList;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtSupplierOrderNo;
+        private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

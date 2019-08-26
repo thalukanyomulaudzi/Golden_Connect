@@ -36,6 +36,11 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.dgvProductList = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +64,7 @@
             // 
             // btnSelectProduct
             // 
+            this.btnSelectProduct.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSelectProduct.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectProduct.Location = new System.Drawing.Point(436, 220);
             this.btnSelectProduct.Margin = new System.Windows.Forms.Padding(2);
@@ -110,11 +116,50 @@
             // dgvProductList
             // 
             this.dgvProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.dgvProductList.Location = new System.Drawing.Point(12, 43);
             this.dgvProductList.Name = "dgvProductList";
             this.dgvProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductList.Size = new System.Drawing.Size(574, 173);
             this.dgvProductList.TabIndex = 79;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "product_id";
+            this.Column1.HeaderText = "Product ID";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 85;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "product_name";
+            this.Column2.HeaderText = "Product Name";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 110;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "product_price";
+            this.Column3.HeaderText = "Product Price";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "product_stock_quantity";
+            this.Column4.HeaderText = "Quantity On Hand";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 120;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "product_type_name";
+            this.Column5.HeaderText = "Product Type";
+            this.Column5.Name = "Column5";
             // 
             // ProductList
             // 
@@ -148,5 +193,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.DataGridView dgvProductList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }
