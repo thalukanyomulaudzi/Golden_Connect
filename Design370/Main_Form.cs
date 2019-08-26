@@ -13,7 +13,6 @@ namespace Design370
 {
     public partial class Main_Form : Form
     {
-
         DBConnection dbCon = DBConnection.Instance();
         public Main_Form()
         {
@@ -86,7 +85,6 @@ namespace Design370
             Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
         }
 
         private bool connectDB()
@@ -135,7 +133,7 @@ namespace Design370
         private void button12_Click(object sender, EventArgs e)
         {
             Photoshoot_Package_Add photoshootPackageAdd = new Photoshoot_Package_Add();
-            photoshootPackageAdd.Show();
+            photoshootPackageAdd.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -309,17 +307,22 @@ namespace Design370
 
         private void DataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string packageName;
             PhotoshootPackage_View photoshootPackage_View = new PhotoshootPackage_View();
             switch (e.ColumnIndex)
             {
 
                 case 4:
                     PhotoshootPackage_View.edit = false;
-                    photoshootPackage_View.Show();
+                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageName;
+                    photoshootPackage_View.ShowDialog();
                     break;
                 case 5:
                     PhotoshootPackage_View.edit = true;
-                    photoshootPackage_View.Show();
+                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageName;
+                    photoshootPackage_View.ShowDialog();
                     break;
                 case 6:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
@@ -452,6 +455,12 @@ namespace Design370
         private void TabPage6_MouseClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void Main_Form_Activated(object sender, EventArgs e)
+        {
+            dgvPhotoshootPackage.Rows.Clear();
+            Photoshoot.LoadDGV(dgvPhotoshootPackage);
         }
     }
 }
