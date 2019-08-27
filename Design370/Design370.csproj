@@ -262,6 +262,13 @@
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="MysqlConnection.cs" />
+    <Compile Include="NewCustomerOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCustomerOrder.Designer.cs">
+      <DependentUpon>NewCustomerOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs" />
     <Compile Include="Photoshoot Package_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewCustomerOrder.resx">
+      <DependentUpon>NewCustomerOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot Package_Add.resx">
       <DependentUpon>Photoshoot Package_Add.cs</DependentUpon>

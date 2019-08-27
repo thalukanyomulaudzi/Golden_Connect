@@ -221,7 +221,7 @@ namespace Design370
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            Customer_Order_Add cOrder = new Customer_Order_Add();
+            NewCustomerOrder cOrder = new NewCustomerOrder();
             cOrder.ShowDialog();
         }
 
