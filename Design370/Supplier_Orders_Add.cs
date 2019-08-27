@@ -12,12 +12,11 @@ namespace Design370
 {
     public partial class Supplier_Orders_Add : Form
     {
-        public Supplier_Orders_Add(string supplier_name, string supplier_email,string supplier_phone)
+        public Supplier_Orders_Add()
         {
             InitializeComponent();
-            txtSupplierName.Text = supplier_name;
-            txtEmailAddress.Text = supplier_email;
-            txtTelephoneNo.Text = supplier_phone;
+
+
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -27,14 +26,31 @@ namespace Design370
 
         private void Button4_Click(object sender, EventArgs e)
         {
+            //Place Order Button
+
+
             this.Close();
         }
 
         private void btnSelectSupplier_Click(object sender, EventArgs e)
         {
-            this.Close();
+
             SupplierList list = new SupplierList();
             list.ShowDialog();
+
+            txtSupplierName.Text = Globals.SupplierName;
+            txtEmailAddress.Text = Globals.SupplierEmail;
+            txtTelephoneNo.Text = Globals.SupplierPhone;
+
+            if (DialogResult == DialogResult.OK)
+            {
+                groupBox1.Enabled = true;
+                groupBox2.Enabled = true;
+                dgvOrderProductList.EnableHeadersVisualStyles = true;
+                btnPlaceOrder.Enabled = true;
+                txtType.Text = "Supplier Order";
+            }
+
         }
 
         private void Supplier_Orders_Add_Load(object sender, EventArgs e)
@@ -44,8 +60,24 @@ namespace Design370
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
+            //dgvOrderProductList.Rows.RemoveAt(0);
             ProductList f = new ProductList();
             f.ShowDialog();
+
+            
+            string[] row_value = new string[] {Globals.ProductID, Globals.ProductName, Globals.ProductQuantity.ToString(), Globals.ProductTypeName};
+
+
+            dgvOrderProductList.Rows.Add(row_value);
+
+        }
+
+        private void btnRemoveProduct_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvOrderProductList.SelectedRows)
+            {
+                dgvOrderProductList.Rows.RemoveAt(row.Index);
+            }
         }
     }
 }

@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.dgvSupplierList = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
@@ -41,11 +46,51 @@
             // dgvSupplierList
             // 
             this.dgvSupplierList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSupplierList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.dgvSupplierList.Location = new System.Drawing.Point(12, 44);
             this.dgvSupplierList.Name = "dgvSupplierList";
             this.dgvSupplierList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSupplierList.Size = new System.Drawing.Size(574, 202);
+            this.dgvSupplierList.Size = new System.Drawing.Size(663, 202);
             this.dgvSupplierList.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "supplier_id";
+            this.Column1.HeaderText = "Supplier ID";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 85;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "supplier_name";
+            this.Column2.HeaderText = "Supplier Name";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 105;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "supplier_email";
+            this.Column3.HeaderText = "Supplier Email Address";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 110;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "supplier_name";
+            this.Column4.HeaderText = "Supplier Telephone No";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "supplier_location_address";
+            this.Column5.HeaderText = "Supplier Location Address";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 120;
             // 
             // label14
             // 
@@ -70,16 +115,16 @@
             this.comboBox7.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.ItemHeight = 18;
-            this.comboBox7.Location = new System.Drawing.Point(450, 12);
+            this.comboBox7.Location = new System.Drawing.Point(504, 12);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(136, 26);
+            this.comboBox7.Size = new System.Drawing.Size(171, 26);
             this.comboBox7.TabIndex = 74;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(388, 15);
+            this.label13.Location = new System.Drawing.Point(431, 15);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 18);
             this.label13.TabIndex = 73;
@@ -95,11 +140,13 @@
             this.btnCancel.TabIndex = 76;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSelectSupplier
             // 
+            this.btnSelectSupplier.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSelectSupplier.Font = new System.Drawing.Font("Bahnschrift Light", 9.25F);
-            this.btnSelectSupplier.Location = new System.Drawing.Point(470, 252);
+            this.btnSelectSupplier.Location = new System.Drawing.Point(559, 250);
             this.btnSelectSupplier.Name = "btnSelectSupplier";
             this.btnSelectSupplier.Size = new System.Drawing.Size(116, 26);
             this.btnSelectSupplier.TabIndex = 75;
@@ -111,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 288);
+            this.ClientSize = new System.Drawing.Size(687, 288);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSelectSupplier);
             this.Controls.Add(this.comboBox7);
@@ -137,5 +184,10 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSelectSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

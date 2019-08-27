@@ -13,7 +13,6 @@ namespace Design370
 {
     public partial class Main_Form : Form
     {
-
         DBConnection dbCon = DBConnection.Instance();
         public Main_Form()
         {
@@ -86,9 +85,28 @@ namespace Design370
             Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            loadSuppliers();
         }
 
+        public void loadSuppliers()
+        {
+            using (MysqlConnection.mysqlCon)
+            {
+                MysqlConnection.mysqlCon.Open();
+
+                string sql = "SELECT supplier_id, supplier_name,supplier_email, supplier_phone, supplier_location_address FROM supplier";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
+                DataTable dtb1 = new DataTable();
+                adapter.Fill(dtb1);
+                //dtb1.Columns.Add("View");
+                //for (int i = 0; i < dtb1.Rows.Count; i++)
+                //{
+                //    dtb1.Rows[i]["View"] = "View";
+                //}
+                dataGridView10.AutoGenerateColumns = false;
+                dataGridView10.DataSource = dtb1;
+            }
+        }
         private bool connectDB()
         {
             dbCon.DatabaseName = "golden_connect";
@@ -135,7 +153,7 @@ namespace Design370
         private void button12_Click(object sender, EventArgs e)
         {
             Photoshoot_Package_Add photoshootPackageAdd = new Photoshoot_Package_Add();
-            photoshootPackageAdd.Show();
+            photoshootPackageAdd.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -309,17 +327,22 @@ namespace Design370
 
         private void DataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string packageName;
             PhotoshootPackage_View photoshootPackage_View = new PhotoshootPackage_View();
             switch (e.ColumnIndex)
             {
 
                 case 4:
                     PhotoshootPackage_View.edit = false;
-                    photoshootPackage_View.Show();
+                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageName;
+                    photoshootPackage_View.ShowDialog();
                     break;
                 case 5:
                     PhotoshootPackage_View.edit = true;
-                    photoshootPackage_View.Show();
+                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageName;
+                    photoshootPackage_View.ShowDialog();
                     break;
                 case 6:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
@@ -399,6 +422,7 @@ namespace Design370
 
         private void DataGridView10_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
             Supplier_View supplier_View = new Supplier_View();
             switch (e.ColumnIndex)
             {
@@ -452,6 +476,12 @@ namespace Design370
         private void TabPage6_MouseClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void Main_Form_Activated(object sender, EventArgs e)
+        {
+            dgvPhotoshootPackage.Rows.Clear();
+            Photoshoot.LoadDGV(dgvPhotoshootPackage);
         }
     }
 }

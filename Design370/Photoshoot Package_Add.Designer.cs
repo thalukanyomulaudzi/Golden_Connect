@@ -106,7 +106,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(229, 386);
+            this.button5.Location = new System.Drawing.Point(229, 374);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(86, 28);
@@ -117,7 +117,7 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(321, 386);
+            this.button6.Location = new System.Drawing.Point(321, 374);
             this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(86, 28);
@@ -149,7 +149,7 @@
             // btnProductsAdd
             // 
             this.btnProductsAdd.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductsAdd.Location = new System.Drawing.Point(321, 324);
+            this.btnProductsAdd.Location = new System.Drawing.Point(321, 316);
             this.btnProductsAdd.Name = "btnProductsAdd";
             this.btnProductsAdd.Size = new System.Drawing.Size(86, 29);
             this.btnProductsAdd.TabIndex = 11;
@@ -171,7 +171,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(229, 324);
+            this.button1.Location = new System.Drawing.Point(229, 316);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 29);
             this.button1.TabIndex = 43;
@@ -196,7 +196,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(432, 436);
+            this.ClientSize = new System.Drawing.Size(432, 420);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
