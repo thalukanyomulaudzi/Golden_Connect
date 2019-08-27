@@ -17,6 +17,9 @@ namespace Design370
         public Main_Form()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(textBox6, "Enter package name");
 
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
@@ -345,14 +348,17 @@ namespace Design370
                     photoshootPackage_View.ShowDialog();
                     break;
                 case 6:
+                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Photoshoot.GetRow1 = packageName;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dgvPhotoshootPackage.Rows.Clear();
+                        Photoshoot.DeletePhotoshoot(dgvPhotoshootPackage);
                     }
                     else
                     {
-                        //dont do shit
+                        
                     }
                     break;
                 default:
@@ -465,7 +471,6 @@ namespace Design370
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(MysqlConnection.reader);
-            empGrid.DataSource = table;
             MysqlConnection.mysqlCon.Close();
         }
 
@@ -477,11 +482,19 @@ namespace Design370
         {
 
         }
-
-        private void Main_Form_Activated(object sender, EventArgs e)
+        
+        private void Main_Form_Activated_1(object sender, EventArgs e)
         {
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            string packageName = textBox6.Text;
+            Photoshoot.GetRow1 = packageName;
+            dgvPhotoshootPackage.Rows.Clear();
+            Photoshoot.SearchPhotoshootPackage(dgvPhotoshootPackage);
         }
     }
 }

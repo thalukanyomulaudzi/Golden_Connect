@@ -30,7 +30,6 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -134,6 +133,13 @@ namespace Design370
             this.button20 = new System.Windows.Forms.Button();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.dataGridView10 = new System.Windows.Forms.DataGridView();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SupplierDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button22 = new System.Windows.Forms.Button();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -148,13 +154,6 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SupplierDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
@@ -812,6 +811,7 @@ namespace Design370
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(200, 25);
             this.textBox6.TabIndex = 26;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // button12
             // 
@@ -827,6 +827,7 @@ namespace Design370
             // 
             // dgvPhotoshootPackage
             // 
+            this.dgvPhotoshootPackage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPhotoshootPackage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhotoshootPackage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PhotoshootPackageName,
@@ -839,6 +840,7 @@ namespace Design370
             this.dgvPhotoshootPackage.Location = new System.Drawing.Point(11, 59);
             this.dgvPhotoshootPackage.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPhotoshootPackage.Name = "dgvPhotoshootPackage";
+            this.dgvPhotoshootPackage.RowHeadersVisible = false;
             this.dgvPhotoshootPackage.RowTemplate.Height = 24;
             this.dgvPhotoshootPackage.Size = new System.Drawing.Size(763, 349);
             this.dgvPhotoshootPackage.TabIndex = 23;
@@ -1213,14 +1215,6 @@ namespace Design370
             // 
             // dataGridView10
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light", 9.8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView10.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView10.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SupplierName,
@@ -1237,6 +1231,45 @@ namespace Design370
             this.dataGridView10.Size = new System.Drawing.Size(763, 349);
             this.dataGridView10.TabIndex = 55;
             this.dataGridView10.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView10_CellContentClick);
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.DataPropertyName = "supplier_name";
+            this.SupplierName.HeaderText = "Supplier Name";
+            this.SupplierName.Name = "SupplierName";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "supplier_email_address";
+            this.Column1.HeaderText = "Supplier Email Address";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "supplier_phone";
+            this.Column2.HeaderText = "Supplier Telephone";
+            this.Column2.Name = "Column2";
+            // 
+            // SupplierType
+            // 
+            this.SupplierType.DataPropertyName = "supplier_type_name";
+            this.SupplierType.HeaderText = "Supplier Type";
+            this.SupplierType.Name = "SupplierType";
+            // 
+            // SupplierView
+            // 
+            this.SupplierView.HeaderText = "";
+            this.SupplierView.Name = "SupplierView";
+            // 
+            // SupplierEdit
+            // 
+            this.SupplierEdit.HeaderText = "";
+            this.SupplierEdit.Name = "SupplierEdit";
+            // 
+            // SupplierDelete
+            // 
+            this.SupplierDelete.HeaderText = "";
+            this.SupplierDelete.Name = "SupplierDelete";
             // 
             // button22
             // 
@@ -1393,45 +1426,6 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // SupplierName
-            // 
-            this.SupplierName.DataPropertyName = "supplier_name";
-            this.SupplierName.HeaderText = "Supplier Name";
-            this.SupplierName.Name = "SupplierName";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "supplier_email_address";
-            this.Column1.HeaderText = "Supplier Email Address";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "supplier_phone";
-            this.Column2.HeaderText = "Supplier Telephone";
-            this.Column2.Name = "Column2";
-            // 
-            // SupplierType
-            // 
-            this.SupplierType.DataPropertyName = "supplier_type_name";
-            this.SupplierType.HeaderText = "Supplier Type";
-            this.SupplierType.Name = "SupplierType";
-            // 
-            // SupplierView
-            // 
-            this.SupplierView.HeaderText = "";
-            this.SupplierView.Name = "SupplierView";
-            // 
-            // SupplierEdit
-            // 
-            this.SupplierEdit.HeaderText = "";
-            this.SupplierEdit.Name = "SupplierEdit";
-            // 
-            // SupplierDelete
-            // 
-            this.SupplierDelete.HeaderText = "";
-            this.SupplierDelete.Name = "SupplierDelete";
-            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1444,6 +1438,7 @@ namespace Design370
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
+            this.Activated += new System.EventHandler(this.Main_Form_Activated_1);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
