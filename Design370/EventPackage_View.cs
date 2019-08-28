@@ -22,6 +22,12 @@ namespace Design370
         public EventPackage_View()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(listBox3, "Multiple items can be selected");
+            toolTip1.SetToolTip(listBox4, "Multiple items can be selected");
+            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
         }
 
         private void EventPackage_View_Load(object sender, EventArgs e)
@@ -177,7 +183,45 @@ namespace Design370
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            
+            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+            {
+                MessageBox.Show("Invalid character length for name and/or description");
+                return;
+            }
+            int itemIndex1, quantity1 = 0, quantity2 = 0;
+            string itemString1 = " ";
+            bool flag = false, flag1 = false;
+            foreach (var item in listBox3.Items)
+            {
+                itemIndex1 = listBox3.Items.IndexOf(item);
+                itemString1 = listBox3.Items[itemIndex1].ToString();
+                int pos = itemString1.IndexOf(":");
+                quantity1 = Convert.ToInt32(itemString1.Substring(pos + 1));
+                if (quantity1 >= 1)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+
+            foreach (var item in listBox4.Items)
+            {
+                itemIndex1 = listBox4.Items.IndexOf(item);
+                itemString1 = listBox4.Items[itemIndex1].ToString();
+                int pos = itemString1.IndexOf(":");
+                quantity2 = Convert.ToInt32(itemString1.Substring(pos + 1));
+                if (quantity2 >= 1)
+                {
+                    flag1 = true;
+                    break;
+                }
+            }
+
+            if (!flag || !flag1)
+            {
+                MessageBox.Show("No service and/or product selected");
+                return;
+            }
             try
             {
                 DBConnection dBConnection = DBConnection.Instance();
@@ -215,7 +259,7 @@ namespace Design370
                     {
                         posquant = Products[j].IndexOf(":");
                         quantity = Convert.ToInt32(Products[j].Substring(posquant + 1));
-                        if (quantity >= 1)
+                        if (quantity >= 0)
                         {
                             query = "UPDATE `booking_package_product` SET `booking_package_product_quantity` = '" + quantity + "' WHERE booking_package_id = '" + booking_package_id + "' AND product_id = '" + product_id.Rows[j].ItemArray[0] + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
@@ -237,9 +281,21 @@ namespace Design370
                     {
                         posquant = Services[k].IndexOf(":");
                         quantity = Convert.ToInt32(Services[k].Substring(posquant + 1));
-                        if (quantity >= 1)
+                        if (quantity == 1)
                         {
-                            query = "UPDATE `booking_package_service` SET `booking_package_service_quantity` = '" + quantity + "' WHERE booking_package_id = '" + booking_package_id + "' AND service_id = '" + service_id.Rows[k].ItemArray[0] + "'";
+                            query = "DELETE FROM `booking_package_service` WHERE booking_package_id = '" + booking_package_id + "' ";
+                            query += "AND service_id = '" + service_id.Rows[k].ItemArray[0].ToString() + "'";
+                            command = new MySqlCommand(query, dBConnection.Connection);
+                            command.ExecuteNonQuery();
+                            query = "INSERT INTO `booking_package_service` (`booking_package_id`, `service_id`) VALUES";
+                            query += "('" + booking_package_id + "', '" + service_id.Rows[k].ItemArray[0].ToString() + "')";
+                            command = new MySqlCommand(query, dBConnection.Connection);
+                            command.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            query = "DELETE FROM `booking_package_service` WHERE booking_package_id = '" + booking_package_id + "' ";
+                            query += "AND service_id = '" + service_id.Rows[k].ItemArray[0].ToString() + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
                             command.ExecuteNonQuery();
                         }

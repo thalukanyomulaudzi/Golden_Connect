@@ -104,6 +104,7 @@ namespace Design370
             int itemIndex, quantity = 0, i = 0;
             string itemString = " ";
             Products = new List<string>();
+            Products = new List<string>();
             foreach (var item in listBox4.Items)
             {
                 Products.Add(item.ToString());
@@ -151,6 +152,39 @@ namespace Design370
             if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
             {
                 MessageBox.Show("Invalid character length for name and/or description");
+                return;
+            }
+            int itemIndex1, quantity1 = 0, quantity2 = 0;
+            string itemString1 = " ";
+            bool flag = false, flag1 = false;
+            foreach (var item in listBox3.Items)
+            {
+                itemIndex1 = listBox3.Items.IndexOf(item);
+                itemString1 = listBox3.Items[itemIndex1].ToString();
+                int pos = itemString1.IndexOf(":");
+                quantity1 = Convert.ToInt32(itemString1.Substring(pos + 1));
+                if (quantity1 >= 1)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            foreach (var item in listBox4.Items)
+            {
+                itemIndex1 = listBox4.Items.IndexOf(item);
+                itemString1 = listBox4.Items[itemIndex1].ToString();
+                int pos = itemString1.IndexOf(":");
+                quantity2 = Convert.ToInt32(itemString1.Substring(pos + 1));
+                if (quantity2 >= 1)
+                {
+                    flag1 = true;
+                    break;
+                }
+            }
+
+            if (!flag || !flag1)
+            {
+                MessageBox.Show("No service and/or product selected");
                 return;
             }
 
@@ -241,6 +275,7 @@ namespace Design370
             int itemIndex, quantity = 0;
             string itemString = " ";
             Products = new List<string>();
+            Services = new List<string>();
             foreach (var item in listBox4.Items)
             {
                 Products.Add(item.ToString());
@@ -268,6 +303,7 @@ namespace Design370
             int itemIndex, quantity = 0;
             string itemString = " ";
             Services = new List<string>();
+            Products = new List<string>();
             foreach (var item in listBox3.Items)
             {
                 Services.Add(item.ToString());
