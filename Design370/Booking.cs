@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 namespace Design370
 {
-    class Bookings
+    class Booking
     {
+
+        public static string bookingType = "";
         public static void loadBookings(System.Windows.Forms.DataGridView dgv, string search = "")
         {
             try

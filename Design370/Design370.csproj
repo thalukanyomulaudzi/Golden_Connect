@@ -138,7 +138,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bookings.cs" />
+    <Compile Include="Booking.cs" />
     <Compile Include="Booking_Add.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -38,13 +38,11 @@
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBookingCreateEvent = new System.Windows.Forms.Button();
             this.dgvBookingEmployees = new System.Windows.Forms.DataGridView();
             this.bookingEmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingEmployeeAvailable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnBookingCreatePhotoshoot = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingEmployees)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +81,7 @@
             this.Column6,
             this.Column7});
             this.dgvBookEvent.Location = new System.Drawing.Point(27, 96);
-            this.dgvBookEvent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvBookEvent.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBookEvent.Name = "dgvBookEvent";
             this.dgvBookEvent.RowTemplate.Height = 24;
             this.dgvBookEvent.Size = new System.Drawing.Size(805, 232);
@@ -139,15 +137,15 @@
             this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // button1
+            // btnBookingCreateEvent
             // 
-            this.button1.Location = new System.Drawing.Point(848, 334);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(288, 24);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Create event booking";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.btnBookingCreateEvent.Location = new System.Drawing.Point(848, 334);
+            this.btnBookingCreateEvent.Name = "btnBookingCreateEvent";
+            this.btnBookingCreateEvent.Size = new System.Drawing.Size(288, 24);
+            this.btnBookingCreateEvent.TabIndex = 18;
+            this.btnBookingCreateEvent.Text = "Create event booking";
+            this.btnBookingCreateEvent.UseVisualStyleBackColor = true;
+            this.btnBookingCreateEvent.Click += new System.EventHandler(this.Button1_Click);
             // 
             // dgvBookingEmployees
             // 
@@ -171,44 +169,24 @@
             this.bookingEmployeeAvailable.HeaderText = "Available";
             this.bookingEmployeeAvailable.Name = "bookingEmployeeAvailable";
             // 
-            // button2
+            // btnBookingCreatePhotoshoot
             // 
-            this.button2.Location = new System.Drawing.Point(848, 364);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(288, 24);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Create photoshoot booking";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(364, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 16);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Customer: ";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(367, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(203, 21);
-            this.textBox1.TabIndex = 22;
+            this.btnBookingCreatePhotoshoot.Location = new System.Drawing.Point(848, 364);
+            this.btnBookingCreatePhotoshoot.Name = "btnBookingCreatePhotoshoot";
+            this.btnBookingCreatePhotoshoot.Size = new System.Drawing.Size(288, 24);
+            this.btnBookingCreatePhotoshoot.TabIndex = 20;
+            this.btnBookingCreatePhotoshoot.Text = "Create photoshoot booking";
+            this.btnBookingCreatePhotoshoot.UseVisualStyleBackColor = true;
+            this.btnBookingCreatePhotoshoot.Click += new System.EventHandler(this.Button2_Click);
             // 
             // Book_Event_Date
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 416);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(1164, 417);
+            this.Controls.Add(this.btnBookingCreatePhotoshoot);
             this.Controls.Add(this.dgvBookingEmployees);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBookingCreateEvent);
             this.Controls.Add(this.dgvBookEvent);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
@@ -234,12 +212,10 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
         private System.Windows.Forms.DataGridViewButtonColumn Column7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBookingCreateEvent;
         private System.Windows.Forms.DataGridView dgvBookingEmployees;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeAvailable;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnBookingCreatePhotoshoot;
     }
 }

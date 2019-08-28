@@ -21,22 +21,6 @@ namespace Design370
         {
             label8.Visible = cbxBookingAdditions.Checked;
             label6.Visible = cbxBookingAdditions.Checked;
-            
-
-            Booking_Dialog bookingDialog = new Booking_Dialog();
-            DialogResult result = bookingDialog.ShowDialog();
-            if (result == DialogResult.Yes)
-            {
-                txtBookingLocation.Text = "Event";
-            }
-            if (result == DialogResult.No)
-            {
-                txtBookingLocation.Text = "Photoshoot";
-            }
-            if (result == DialogResult.Cancel)
-            {
-
-            }
         }
 
         private void loadBookingDetails()
@@ -87,6 +71,17 @@ namespace Design370
             DialogResult result = bookingDialog.ShowDialog();
 
             txtBookingLocation.Text = result == DialogResult.Yes ? "Event" : "Photoshoot";
+        }
+
+        private void CbxBookingAdditions_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnBookingChangeCustomer_Click(object sender, EventArgs e)
+        {
+            Booking_Add bookingAdd = new Booking_Add();
+            var result =  bookingAdd.ShowDialog();
         }
     }
 }
