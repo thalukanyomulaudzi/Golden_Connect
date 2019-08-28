@@ -26,5 +26,27 @@ namespace Design370
         {
 
         }
+
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dgvBookEvent.Rows.Clear();
+            TimeSpan span = (dateTimePicker1.Value.Subtract(DateTime.Now));
+            MessageBox.Show(span.TotalDays.ToString());
+            if (span.TotalDays <= 2)
+                Timeslots.loadTimeslots(dgvBookEvent, DateTime.Now);
+            else
+                Timeslots.loadTimeslots(dgvBookEvent, dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3)));
+        }
+
+        private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Booking_Dialog bookingDialog = new Booking_Dialog();
+            bookingDialog.Show();
+        }
     }
 }

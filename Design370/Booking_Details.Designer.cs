@@ -28,288 +28,274 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
+            this.cbxBookingAdditions = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.lstBookingAdditionsServices = new System.Windows.Forms.ListBox();
+            this.lstBookingAdditionsProducts = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lstBookingServices = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lstBookingProducts = new System.Windows.Forms.ListBox();
+            this.cmbBookingPackage = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numBookingGuests = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtBookingLocation = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBookingCustomer = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).BeginInit();
             this.SuspendLayout();
             // 
-            // button3
+            // cbxBookingAdditions
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(480, 50);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(70, 26);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "Change";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.cbxBookingAdditions.AutoSize = true;
+            this.cbxBookingAdditions.Location = new System.Drawing.Point(45, 463);
+            this.cbxBookingAdditions.Name = "cbxBookingAdditions";
+            this.cbxBookingAdditions.Size = new System.Drawing.Size(127, 22);
+            this.cbxBookingAdditions.TabIndex = 38;
+            this.cbxBookingAdditions.Text = "Make additions";
+            this.cbxBookingAdditions.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(391, 647);
+            this.button2.Location = new System.Drawing.Point(372, 693);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 26);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "Submit booking";
+            this.button2.Size = new System.Drawing.Size(83, 34);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "Proceed";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // button1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(199, 531);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(218, 18);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "Dynamically added components";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(480, 597);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(37, 24);
-            this.numericUpDown1.TabIndex = 37;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(202, 596);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(272, 26);
-            this.comboBox2.TabIndex = 36;
+            this.button1.Location = new System.Drawing.Point(62, 693);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 34);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(34, 599);
+            this.label6.Location = new System.Drawing.Point(254, 498);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 18);
+            this.label6.Size = new System.Drawing.Size(65, 18);
             this.label6.TabIndex = 35;
-            this.label6.Text = "Platter:";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(523, 596);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(26, 26);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(202, 564);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(272, 26);
-            this.comboBox1.TabIndex = 33;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(34, 567);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 18);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "Photography:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label4.Location = new System.Drawing.Point(34, 343);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 18);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Package:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(202, 261);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(272, 24);
-            this.textBox2.TabIndex = 26;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label3.Location = new System.Drawing.Point(34, 264);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 18);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Venue:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(202, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(272, 24);
-            this.textBox1.TabIndex = 24;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 18);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Booking type";
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.BoldedDates = new System.DateTime[] {
-        new System.DateTime(2019, 6, 12, 0, 0, 0, 0)};
-            this.monthCalendar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthCalendar1.Location = new System.Drawing.Point(225, 87);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 22;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label1.Location = new System.Drawing.Point(34, 159);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 18);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Timeslot:";
+            this.label6.Text = "Services";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(34, 27);
+            this.label8.Location = new System.Drawing.Point(42, 498);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 18);
-            this.label8.TabIndex = 41;
-            this.label8.Text = "Booking for:";
+            this.label8.Size = new System.Drawing.Size(68, 18);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Products";
             // 
-            // textBox3
+            // lstBookingAdditionsServices
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(202, 21);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(272, 24);
-            this.textBox3.TabIndex = 42;
+            this.lstBookingAdditionsServices.FormattingEnabled = true;
+            this.lstBookingAdditionsServices.ItemHeight = 18;
+            this.lstBookingAdditionsServices.Items.AddRange(new object[] {
+            "Photography 1 hour",
+            "Photography 2 hours"});
+            this.lstBookingAdditionsServices.Location = new System.Drawing.Point(257, 536);
+            this.lstBookingAdditionsServices.Name = "lstBookingAdditionsServices";
+            this.lstBookingAdditionsServices.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lstBookingAdditionsServices.Size = new System.Drawing.Size(198, 112);
+            this.lstBookingAdditionsServices.TabIndex = 33;
             // 
-            // pictureBox4
+            // lstBookingAdditionsProducts
             // 
-            this.pictureBox4.Image = global::Design370.Properties.Resources._event;
-            this.pictureBox4.Location = new System.Drawing.Point(341, 411);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(133, 105);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 31;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.PictureBox4_Click);
+            this.lstBookingAdditionsProducts.FormattingEnabled = true;
+            this.lstBookingAdditionsProducts.ItemHeight = 18;
+            this.lstBookingAdditionsProducts.Items.AddRange(new object[] {
+            "10 Edited photos",
+            "Canvas A4",
+            "Canvas A3"});
+            this.lstBookingAdditionsProducts.Location = new System.Drawing.Point(46, 536);
+            this.lstBookingAdditionsProducts.Name = "lstBookingAdditionsProducts";
+            this.lstBookingAdditionsProducts.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lstBookingAdditionsProducts.Size = new System.Drawing.Size(198, 112);
+            this.lstBookingAdditionsProducts.TabIndex = 32;
             // 
-            // pictureBox3
+            // label5
             // 
-            this.pictureBox3.Image = global::Design370.Properties.Resources._event;
-            this.pictureBox3.Location = new System.Drawing.Point(202, 411);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(133, 105);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 30;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.PictureBox3_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(254, 295);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 18);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Services in package";
             // 
-            // pictureBox2
+            // lstBookingServices
             // 
-            this.pictureBox2.Image = global::Design370.Properties.Resources._event;
-            this.pictureBox2.Location = new System.Drawing.Point(341, 300);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(133, 105);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 29;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
+            this.lstBookingServices.FormattingEnabled = true;
+            this.lstBookingServices.ItemHeight = 18;
+            this.lstBookingServices.Items.AddRange(new object[] {
+            "Photography 1 hour",
+            "Decor setup"});
+            this.lstBookingServices.Location = new System.Drawing.Point(257, 329);
+            this.lstBookingServices.Name = "lstBookingServices";
+            this.lstBookingServices.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.lstBookingServices.Size = new System.Drawing.Size(198, 112);
+            this.lstBookingServices.TabIndex = 29;
             // 
-            // pictureBox1
+            // label4
             // 
-            this.pictureBox1.Image = global::Design370.Properties.Resources._event;
-            this.pictureBox1.Location = new System.Drawing.Point(202, 300);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 105);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 28;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(43, 295);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(143, 18);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Products in package";
+            // 
+            // lstBookingProducts
+            // 
+            this.lstBookingProducts.FormattingEnabled = true;
+            this.lstBookingProducts.ItemHeight = 18;
+            this.lstBookingProducts.Items.AddRange(new object[] {
+            "10 Edited photos"});
+            this.lstBookingProducts.Location = new System.Drawing.Point(46, 329);
+            this.lstBookingProducts.Name = "lstBookingProducts";
+            this.lstBookingProducts.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.lstBookingProducts.Size = new System.Drawing.Size(198, 112);
+            this.lstBookingProducts.TabIndex = 27;
+            // 
+            // cmbBookingPackage
+            // 
+            this.cmbBookingPackage.FormattingEnabled = true;
+            this.cmbBookingPackage.Items.AddRange(new object[] {
+            "Basic package"});
+            this.cmbBookingPackage.Location = new System.Drawing.Point(196, 202);
+            this.cmbBookingPackage.Name = "cmbBookingPackage";
+            this.cmbBookingPackage.Size = new System.Drawing.Size(259, 26);
+            this.cmbBookingPackage.TabIndex = 26;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(45, 206);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 18);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Select package";
+            // 
+            // numBookingGuests
+            // 
+            this.numBookingGuests.Location = new System.Drawing.Point(196, 244);
+            this.numBookingGuests.Name = "numBookingGuests";
+            this.numBookingGuests.Size = new System.Drawing.Size(259, 24);
+            this.numBookingGuests.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(44, 247);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 18);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "# of guests";
+            // 
+            // txtBookingLocation
+            // 
+            this.txtBookingLocation.Location = new System.Drawing.Point(196, 107);
+            this.txtBookingLocation.Multiline = true;
+            this.txtBookingLocation.Name = "txtBookingLocation";
+            this.txtBookingLocation.Size = new System.Drawing.Size(259, 81);
+            this.txtBookingLocation.TabIndex = 22;
+            this.txtBookingLocation.Text = "10 Example Road\r\nBrooklyn\r\nPretoria\r\n0181";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(45, 138);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 18);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Location";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(43, 22);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 18);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Customer: ";
+            // 
+            // txtBookingCustomer
+            // 
+            this.txtBookingCustomer.Location = new System.Drawing.Point(196, 22);
+            this.txtBookingCustomer.Name = "txtBookingCustomer";
+            this.txtBookingCustomer.Size = new System.Drawing.Size(259, 24);
+            this.txtBookingCustomer.TabIndex = 40;
+            this.txtBookingCustomer.Text = "John Doe";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(43, 70);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 18);
+            this.label9.TabIndex = 41;
+            this.label9.Text = "Date:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(196, 65);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(259, 24);
+            this.dateTimePicker1.TabIndex = 42;
             // 
             // Booking_Details
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 741);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(505, 795);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtBookingCustomer);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.cbxBookingAdditions);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lstBookingAdditionsServices);
+            this.Controls.Add(this.lstBookingAdditionsProducts);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lstBookingServices);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.lstBookingProducts);
+            this.Controls.Add(this.cmbBookingPackage);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.numBookingGuests);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.txtBookingLocation);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Booking_Details";
             this.Text = "Booking_Details";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Booking_Details_FormClosing);
             this.Load += new System.EventHandler(this.Booking_Details_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,27 +303,26 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox cbxBookingAdditions;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ListBox lstBookingAdditionsServices;
+        private System.Windows.Forms.ListBox lstBookingAdditionsProducts;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox lstBookingServices;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox lstBookingProducts;
+        private System.Windows.Forms.ComboBox cmbBookingPackage;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numBookingGuests;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtBookingLocation;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBookingCustomer;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

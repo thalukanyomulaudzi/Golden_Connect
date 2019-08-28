@@ -78,14 +78,15 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            loadEmployees();
+            //loadEmployees();
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
             Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
+            Bookings.loadBookings(dgvBookings);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            loadSuppliers();
+            //loadSuppliers();
         }
 
         public void loadSuppliers()
@@ -202,8 +203,6 @@ namespace Design370
         {
             Book_Event_Date bookDate = new Book_Event_Date();
             bookDate.Show();
-            //Booking_Dialog booking_Dialog = new Booking_Dialog();
-            //booking_Dialog.Show();
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -482,6 +481,11 @@ namespace Design370
         {
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
+        }
+
+        private void TextBox9_TextChanged(object sender, EventArgs e)
+        {
+            Bookings.loadBookings(dgvBookings, txtBookingSearch.Text);
         }
     }
 }
