@@ -38,14 +38,23 @@ namespace Design370
             
             try
             {
-                int s = Convert.ToInt32(dgvProductList.SelectedRows[0].Cells[3].Value) + Convert.ToInt32(txtProductQuantity.Text);
-                Supplier_Orders_Add sd = new Supplier_Orders_Add();
+                if (txtProductQuantity.Text.ToString() != "")
+                {
+                    int s = Convert.ToInt32(dgvProductList.SelectedRows[0].Cells[3].Value) + Convert.ToInt32(txtProductQuantity.Text);
+                    Supplier_Orders_Add sd = new Supplier_Orders_Add();
 
-                Globals.ProductID = dgvProductList.SelectedRows[0].Cells[0].Value.ToString();
-                Globals.ProductName = dgvProductList.SelectedRows[0].Cells[1].Value.ToString();
-                Globals.ProductQuantity = s;
-                Globals.ProductTypeName = dgvProductList.SelectedRows[0].Cells[4].Value.ToString();
-                sd.Refresh();
+                    Globals.ProductID = dgvProductList.SelectedRows[0].Cells[0].Value.ToString();
+                    Globals.ProductName = dgvProductList.SelectedRows[0].Cells[1].Value.ToString();
+                    Globals.ProductQuantity = s;
+                    Globals.ProductTypeName = dgvProductList.SelectedRows[0].Cells[4].Value.ToString();
+                    sd.Refresh();
+                }
+                else if (txtProductQuantity.Text.ToString() == "")
+                {
+                    this.DialogResult = DialogResult.None;
+                    MessageBox.Show("Enter quantity to place order");
+                    
+                }
              
             }
             catch (Exception exception)

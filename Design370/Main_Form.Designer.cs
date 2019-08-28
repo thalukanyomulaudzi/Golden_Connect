@@ -30,7 +30,6 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -70,12 +69,6 @@ namespace Design370
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -134,6 +127,13 @@ namespace Design370
             this.button20 = new System.Windows.Forms.Button();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.dataGridView10 = new System.Windows.Forms.DataGridView();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SupplierDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button22 = new System.Windows.Forms.Button();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -148,13 +148,12 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SupplierDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
@@ -600,6 +599,7 @@ namespace Design370
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ServiceName,
@@ -615,36 +615,6 @@ namespace Design370
             this.dataGridView2.Size = new System.Drawing.Size(763, 349);
             this.dataGridView2.TabIndex = 9;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
-            // 
-            // ServiceName
-            // 
-            this.ServiceName.HeaderText = "Service Name";
-            this.ServiceName.Name = "ServiceName";
-            // 
-            // ServiceType
-            // 
-            this.ServiceType.HeaderText = "Service Type";
-            this.ServiceType.Name = "ServiceType";
-            // 
-            // ServicePrice
-            // 
-            this.ServicePrice.HeaderText = "Price";
-            this.ServicePrice.Name = "ServicePrice";
-            // 
-            // ServiceView
-            // 
-            this.ServiceView.HeaderText = "";
-            this.ServiceView.Name = "ServiceView";
-            // 
-            // ServiceEdit
-            // 
-            this.ServiceEdit.HeaderText = "";
-            this.ServiceEdit.Name = "ServiceEdit";
-            // 
-            // ServiceDelete
-            // 
-            this.ServiceDelete.HeaderText = "";
-            this.ServiceDelete.Name = "ServiceDelete";
             // 
             // tabPage5
             // 
@@ -731,6 +701,7 @@ namespace Design370
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductName,
@@ -749,16 +720,19 @@ namespace Design370
             // 
             // ProductName
             // 
+            this.ProductName.DataPropertyName = "product_name";
             this.ProductName.HeaderText = "Product Name";
             this.ProductName.Name = "ProductName";
             // 
             // ProductType
             // 
+            this.ProductType.DataPropertyName = "product_type_name";
             this.ProductType.HeaderText = "Product Type";
             this.ProductType.Name = "ProductType";
             // 
             // ProductPrice
             // 
+            this.ProductPrice.DataPropertyName = "product_price";
             this.ProductPrice.HeaderText = "Price";
             this.ProductPrice.Name = "ProductPrice";
             // 
@@ -1213,14 +1187,7 @@ namespace Design370
             // 
             // dataGridView10
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light", 9.8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView10.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView10.AllowUserToAddRows = false;
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView10.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SupplierName,
@@ -1237,6 +1204,51 @@ namespace Design370
             this.dataGridView10.Size = new System.Drawing.Size(763, 349);
             this.dataGridView10.TabIndex = 55;
             this.dataGridView10.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView10_CellContentClick);
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.DataPropertyName = "supplier_name";
+            this.SupplierName.HeaderText = "Supplier Name";
+            this.SupplierName.Name = "SupplierName";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "supplier_email";
+            this.Column1.HeaderText = "Supplier Email Address";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "supplier_phone";
+            this.Column2.HeaderText = "Supplier Telephone";
+            this.Column2.Name = "Column2";
+            // 
+            // SupplierType
+            // 
+            this.SupplierType.DataPropertyName = "suppleir_type_name";
+            this.SupplierType.HeaderText = "Supplier Type";
+            this.SupplierType.Name = "SupplierType";
+            // 
+            // SupplierView
+            // 
+            this.SupplierView.HeaderText = "";
+            this.SupplierView.Name = "SupplierView";
+            this.SupplierView.Text = "View";
+            this.SupplierView.UseColumnTextForButtonValue = true;
+            // 
+            // SupplierEdit
+            // 
+            this.SupplierEdit.HeaderText = "";
+            this.SupplierEdit.Name = "SupplierEdit";
+            this.SupplierEdit.Text = "Edit";
+            this.SupplierEdit.UseColumnTextForButtonValue = true;
+            // 
+            // SupplierDelete
+            // 
+            this.SupplierDelete.HeaderText = "";
+            this.SupplierDelete.Name = "SupplierDelete";
+            this.SupplierDelete.Text = "Delete";
+            this.SupplierDelete.UseColumnTextForButtonValue = true;
             // 
             // button22
             // 
@@ -1393,44 +1405,44 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // SupplierName
+            // ServiceName
             // 
-            this.SupplierName.DataPropertyName = "supplier_name";
-            this.SupplierName.HeaderText = "Supplier Name";
-            this.SupplierName.Name = "SupplierName";
+            this.ServiceName.DataPropertyName = "service_name";
+            this.ServiceName.HeaderText = "Service Name";
+            this.ServiceName.Name = "ServiceName";
             // 
-            // Column1
+            // ServiceType
             // 
-            this.Column1.DataPropertyName = "supplier_email_address";
-            this.Column1.HeaderText = "Supplier Email Address";
-            this.Column1.Name = "Column1";
+            this.ServiceType.DataPropertyName = "service_type_name";
+            this.ServiceType.HeaderText = "Service Type";
+            this.ServiceType.Name = "ServiceType";
             // 
-            // Column2
+            // ServicePrice
             // 
-            this.Column2.DataPropertyName = "supplier_phone";
-            this.Column2.HeaderText = "Supplier Telephone";
-            this.Column2.Name = "Column2";
+            this.ServicePrice.DataPropertyName = "service_price";
+            this.ServicePrice.HeaderText = "Price";
+            this.ServicePrice.Name = "ServicePrice";
             // 
-            // SupplierType
+            // ServiceView
             // 
-            this.SupplierType.DataPropertyName = "supplier_type_name";
-            this.SupplierType.HeaderText = "Supplier Type";
-            this.SupplierType.Name = "SupplierType";
+            this.ServiceView.HeaderText = "";
+            this.ServiceView.Name = "ServiceView";
+            this.ServiceView.Text = "View";
+            this.ServiceView.UseColumnTextForButtonValue = true;
             // 
-            // SupplierView
+            // ServiceEdit
             // 
-            this.SupplierView.HeaderText = "";
-            this.SupplierView.Name = "SupplierView";
+            this.ServiceEdit.HeaderText = "";
+            this.ServiceEdit.Name = "ServiceEdit";
+            this.ServiceEdit.Text = "Edit";
+            this.ServiceEdit.UseColumnTextForButtonValue = true;
             // 
-            // SupplierEdit
+            // ServiceDelete
             // 
-            this.SupplierEdit.HeaderText = "";
-            this.SupplierEdit.Name = "SupplierEdit";
-            // 
-            // SupplierDelete
-            // 
-            this.SupplierDelete.HeaderText = "";
-            this.SupplierDelete.Name = "SupplierDelete";
+            this.ServiceDelete.HeaderText = "";
+            this.ServiceDelete.Name = "ServiceDelete";
+            this.ServiceDelete.Text = "Delete";
+            this.ServiceDelete.UseColumnTextForButtonValue = true;
             // 
             // Main_Form
             // 
@@ -1576,18 +1588,6 @@ namespace Design370
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TabPage tabPage12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServicePrice;
-        private System.Windows.Forms.DataGridViewButtonColumn ServiceView;
-        private System.Windows.Forms.DataGridViewButtonColumn ServiceEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ServiceDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
-        private System.Windows.Forms.DataGridViewButtonColumn ProductView;
-        private System.Windows.Forms.DataGridViewButtonColumn ProductEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ProductDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventPackageName;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventPackageDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventPackagePrice;
@@ -1606,6 +1606,12 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageView;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageEdit;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
+        private System.Windows.Forms.DataGridViewButtonColumn ProductView;
+        private System.Windows.Forms.DataGridViewButtonColumn ProductEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ProductDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -1613,6 +1619,12 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn SupplierView;
         private System.Windows.Forms.DataGridViewButtonColumn SupplierEdit;
         private System.Windows.Forms.DataGridViewButtonColumn SupplierDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServicePrice;
+        private System.Windows.Forms.DataGridViewButtonColumn ServiceView;
+        private System.Windows.Forms.DataGridViewButtonColumn ServiceEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ServiceDelete;
     }
 }
 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnPlaceOrder = new System.Windows.Forms.Button();
             this.btnSelectSupplier = new System.Windows.Forms.Button();
@@ -70,7 +69,6 @@
             // 
             // btnPlaceOrder
             // 
-            this.btnPlaceOrder.Enabled = false;
             this.btnPlaceOrder.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlaceOrder.Location = new System.Drawing.Point(588, 412);
             this.btnPlaceOrder.Margin = new System.Windows.Forms.Padding(2);
@@ -83,6 +81,7 @@
             // 
             // btnSelectSupplier
             // 
+            this.btnSelectSupplier.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSelectSupplier.Font = new System.Drawing.Font("Bahnschrift Light", 9.25F);
             this.btnSelectSupplier.Location = new System.Drawing.Point(12, 12);
             this.btnSelectSupplier.Name = "btnSelectSupplier";
@@ -100,7 +99,6 @@
             this.groupBox1.Controls.Add(this.txtSupplierName);
             this.groupBox1.Controls.Add(this.txtTelephoneNo);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(12, 44);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(589, 131);
@@ -168,13 +166,13 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtType);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(12, 181);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(662, 226);
             this.groupBox2.TabIndex = 70;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Supplier Order Details";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // btnRemoveProduct
             // 
@@ -200,14 +198,6 @@
             // 
             // dgvOrderProductList
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light", 9.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOrderProductList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOrderProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrderProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
