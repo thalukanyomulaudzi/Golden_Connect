@@ -84,7 +84,9 @@ namespace Design370
             Bookings.loadBookings(dgvBookings);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            //loadSuppliers();
+            Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            loadSuppliers();
+            loadProducts();
         }
 
         public void loadSuppliers()
@@ -93,7 +95,7 @@ namespace Design370
             {
                 MysqlConnection.mysqlCon.Open();
 
-                string sql = "SELECT supplier_id, supplier_name,supplier_email, supplier_phone, supplier_location_address FROM supplier";
+                string sql = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.suppleir_type_name FROM supplier INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                 DataTable dtb1 = new DataTable();
                 adapter.Fill(dtb1);
@@ -104,13 +106,56 @@ namespace Design370
                 //}
                 dataGridView10.AutoGenerateColumns = false;
                 dataGridView10.DataSource = dtb1;
+
+                //DataGridViewButtonCell b = new DataGridViewButtonCell();
+                //int rowIndex = MainTable.Rows.Add(b);
+                //MainTable.Rows[rowIndex].Cells[0].Value = "name";
             }
         }
+
+        public void loadServices()
+        {
+            using (MysqlConnection.mysqlCon)
+            {
+                using (MysqlConnection.mysqlCon)
+                {
+                    MysqlConnection.mysqlCon.Open();
+
+                    string sql =
+                        "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
+                    DataTable dtb1 = new DataTable();
+                    adapter.Fill(dtb1);
+                    dataGridView3.AutoGenerateColumns = false;
+                    dataGridView3.DataSource = dtb1;
+                }
+            }
+        }
+
+        public void loadProducts()
+        {
+            using (MysqlConnection.mysqlCon)
+            {
+                using (MysqlConnection.mysqlCon)
+                {
+                    MysqlConnection.mysqlCon.Open();
+
+                    string sql =
+                        "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
+                    DataTable dtb1 = new DataTable();
+                    adapter.Fill(dtb1);
+                    dataGridView3.AutoGenerateColumns = false;
+                    dataGridView3.DataSource = dtb1;
+                }
+            }
+        }
+
         private bool connectDB()
         {
             dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
-        }
+        } 
 
         public void loadEmployees()
         {
@@ -434,15 +479,15 @@ namespace Design370
             switch (e.ColumnIndex)
             {
 
-                case 2:
+                case 4:
                     Supplier_View.edit = false;
                     supplier_View.Show();
                     break;
-                case 3:
+                case 5:
                     Supplier_View.edit = true;
                     supplier_View.Show();
                     break;
-                case 4:
+                case 6:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {

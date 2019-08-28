@@ -81,6 +81,8 @@ namespace Design370
             this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.cmbProductSort = new System.Windows.Forms.ComboBox();
@@ -164,6 +166,12 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button10 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -643,8 +651,8 @@ namespace Design370
             // 
             // dgvServices
             // 
-            this.dgvServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ServiceName,
             this.ServiceType,
             this.ServicePrice,
@@ -658,36 +666,6 @@ namespace Design370
             this.dgvServices.Size = new System.Drawing.Size(763, 349);
             this.dgvServices.TabIndex = 9;
             this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
-            // 
-            // ServiceName
-            // 
-            this.ServiceName.HeaderText = "Service Name";
-            this.ServiceName.Name = "ServiceName";
-            // 
-            // ServiceType
-            // 
-            this.ServiceType.HeaderText = "Service Type";
-            this.ServiceType.Name = "ServiceType";
-            // 
-            // ServicePrice
-            // 
-            this.ServicePrice.HeaderText = "Price";
-            this.ServicePrice.Name = "ServicePrice";
-            // 
-            // ServiceView
-            // 
-            this.ServiceView.HeaderText = "";
-            this.ServiceView.Name = "ServiceView";
-            // 
-            // ServiceEdit
-            // 
-            this.ServiceEdit.HeaderText = "";
-            this.ServiceEdit.Name = "ServiceEdit";
-            // 
-            // ServiceDelete
-            // 
-            this.ServiceDelete.HeaderText = "";
-            this.ServiceDelete.Name = "ServiceDelete";
             // 
             // tabPage5
             // 
@@ -774,8 +752,8 @@ namespace Design370
             // 
             // dgvProducts
             // 
-            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductName,
             this.ProductType,
             this.ProductPrice,
@@ -792,16 +770,19 @@ namespace Design370
             // 
             // ProductName
             // 
+            this.ProductName.DataPropertyName = "product_name";
             this.ProductName.HeaderText = "Product Name";
             this.ProductName.Name = "ProductName";
             // 
             // ProductType
             // 
+            this.ProductType.DataPropertyName = "product_type_name";
             this.ProductType.HeaderText = "Product Type";
             this.ProductType.Name = "ProductType";
             // 
             // ProductPrice
             // 
+            this.ProductPrice.DataPropertyName = "product_price";
             this.ProductPrice.HeaderText = "Price";
             this.ProductPrice.Name = "ProductPrice";
             // 
@@ -1309,6 +1290,14 @@ namespace Design370
             // 
             // dataGridView10
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light", 9.8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView10.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView10.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SupplierName,
@@ -1325,45 +1314,6 @@ namespace Design370
             this.dataGridView10.Size = new System.Drawing.Size(763, 349);
             this.dataGridView10.TabIndex = 55;
             this.dataGridView10.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView10_CellContentClick);
-            // 
-            // SupplierName
-            // 
-            this.SupplierName.DataPropertyName = "supplier_name";
-            this.SupplierName.HeaderText = "Supplier Name";
-            this.SupplierName.Name = "SupplierName";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "supplier_email_address";
-            this.Column1.HeaderText = "Supplier Email Address";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "supplier_phone";
-            this.Column2.HeaderText = "Supplier Telephone";
-            this.Column2.Name = "Column2";
-            // 
-            // SupplierType
-            // 
-            this.SupplierType.DataPropertyName = "supplier_type_name";
-            this.SupplierType.HeaderText = "Supplier Type";
-            this.SupplierType.Name = "SupplierType";
-            // 
-            // SupplierView
-            // 
-            this.SupplierView.HeaderText = "";
-            this.SupplierView.Name = "SupplierView";
-            // 
-            // SupplierEdit
-            // 
-            this.SupplierEdit.HeaderText = "";
-            this.SupplierEdit.Name = "SupplierEdit";
-            // 
-            // SupplierDelete
-            // 
-            this.SupplierDelete.HeaderText = "";
-            this.SupplierDelete.Name = "SupplierDelete";
             // 
             // button22
             // 
@@ -1520,17 +1470,44 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // button10
+            // SupplierName
             // 
-            this.button10.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(585, 427);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(189, 28);
-            this.button10.TabIndex = 100;
-            this.button10.Text = "Photoshoot Types";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.SupplierName.DataPropertyName = "supplier_name";
+            this.SupplierName.HeaderText = "Supplier Name";
+            this.SupplierName.Name = "SupplierName";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "supplier_email_address";
+            this.Column1.HeaderText = "Supplier Email Address";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "supplier_phone";
+            this.Column2.HeaderText = "Supplier Telephone";
+            this.Column2.Name = "Column2";
+            // 
+            // SupplierType
+            // 
+            this.SupplierType.DataPropertyName = "supplier_type_name";
+            this.SupplierType.HeaderText = "Supplier Type";
+            this.SupplierType.Name = "SupplierType";
+            // 
+            // SupplierView
+            // 
+            this.SupplierView.HeaderText = "";
+            this.SupplierView.Name = "SupplierView";
+            // 
+            // SupplierEdit
+            // 
+            this.SupplierEdit.HeaderText = "";
+            this.SupplierEdit.Name = "SupplierEdit";
+            // 
+            // SupplierDelete
+            // 
+            this.SupplierDelete.HeaderText = "";
+            this.SupplierDelete.Name = "SupplierDelete";
             // 
             // Main_Form
             // 
@@ -1685,18 +1662,6 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn ProductView;
         private System.Windows.Forms.DataGridViewButtonColumn ProductEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ProductDelete;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpView;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpDelete;
-        public System.Windows.Forms.DataGridView empGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierType;
-        private System.Windows.Forms.DataGridViewButtonColumn SupplierView;
-        private System.Windows.Forms.DataGridViewButtonColumn SupplierEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn SupplierDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventPackageName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServicesEvents;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductsEvents;
@@ -1717,26 +1682,13 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageView;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageEdit;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageDelete;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn SupplierType;
-        //private System.Windows.Forms.DataGridViewButtonColumn SupplierView;
-        //private System.Windows.Forms.DataGridViewButtonColumn SupplierEdit;
-        //private System.Windows.Forms.DataGridViewButtonColumn SupplierDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeslotDay1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeslotDay2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeslotDay3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeslotDay4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeslotDay5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeslotDay6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeslotDay7;
-        private System.Windows.Forms.Label lblTimeslots;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bookingDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BookingCustName;
-        private System.Windows.Forms.DataGridViewButtonColumn bookingView;
-        private System.Windows.Forms.DataGridViewButtonColumn BookingEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn BookingDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierType;
+        private System.Windows.Forms.DataGridViewButtonColumn SupplierView;
+        private System.Windows.Forms.DataGridViewButtonColumn SupplierEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn SupplierDelete;
     }
 }
 

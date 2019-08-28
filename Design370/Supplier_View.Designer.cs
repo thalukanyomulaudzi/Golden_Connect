@@ -32,16 +32,16 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtemail = new System.Windows.Forms.TextBox();
+            this.txtspNo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtspaddress = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtSPName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxsp = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button3
@@ -88,21 +88,21 @@
             this.label11.TabIndex = 106;
             this.label11.Text = "1. Supplier Information";
             // 
-            // textBox5
+            // txtemail
             // 
-            this.textBox5.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(284, 216);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(183, 21);
-            this.textBox5.TabIndex = 105;
+            this.txtemail.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtemail.Location = new System.Drawing.Point(284, 216);
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Size = new System.Drawing.Size(183, 21);
+            this.txtemail.TabIndex = 105;
             // 
-            // textBox6
+            // txtspNo
             // 
-            this.textBox6.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(24, 216);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(183, 21);
-            this.textBox6.TabIndex = 104;
+            this.txtspNo.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtspNo.Location = new System.Drawing.Point(24, 216);
+            this.txtspNo.Name = "txtspNo";
+            this.txtspNo.Size = new System.Drawing.Size(183, 21);
+            this.txtspNo.TabIndex = 104;
             // 
             // label6
             // 
@@ -124,14 +124,14 @@
             this.label7.TabIndex = 102;
             this.label7.Text = "Phone Number :";
             // 
-            // textBox7
+            // txtspaddress
             // 
-            this.textBox7.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(284, 72);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(183, 75);
-            this.textBox7.TabIndex = 101;
+            this.txtspaddress.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtspaddress.Location = new System.Drawing.Point(284, 72);
+            this.txtspaddress.Multiline = true;
+            this.txtspaddress.Name = "txtspaddress";
+            this.txtspaddress.Size = new System.Drawing.Size(183, 75);
+            this.txtspaddress.TabIndex = 101;
             // 
             // label8
             // 
@@ -153,13 +153,13 @@
             this.label9.TabIndex = 99;
             this.label9.Text = "Supplier Type :";
             // 
-            // textBox9
+            // txtSPName
             // 
-            this.textBox9.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(24, 72);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(183, 21);
-            this.textBox9.TabIndex = 98;
+            this.txtSPName.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSPName.Location = new System.Drawing.Point(24, 72);
+            this.txtSPName.Name = "txtSPName";
+            this.txtSPName.Size = new System.Drawing.Size(183, 21);
+            this.txtSPName.TabIndex = 98;
             // 
             // label10
             // 
@@ -171,14 +171,14 @@
             this.label10.TabIndex = 97;
             this.label10.Text = "Supplier Name :";
             // 
-            // comboBox1
+            // cbxsp
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(24, 126);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(183, 21);
-            this.comboBox1.TabIndex = 96;
+            this.cbxsp.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxsp.FormattingEnabled = true;
+            this.cbxsp.Location = new System.Drawing.Point(24, 126);
+            this.cbxsp.Name = "cbxsp";
+            this.cbxsp.Size = new System.Drawing.Size(183, 21);
+            this.cbxsp.TabIndex = 96;
             // 
             // Supplier_View
             // 
@@ -189,16 +189,16 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtemail);
+            this.Controls.Add(this.txtspNo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txtspaddress);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.txtSPName);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxsp);
             this.Name = "Supplier_View";
             this.Text = "View Supplier";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Supplier_View_FormClosing);
@@ -214,15 +214,15 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtemail;
+        private System.Windows.Forms.TextBox txtspNo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtspaddress;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtSPName;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxsp;
     }
 }

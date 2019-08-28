@@ -28,60 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.cbxProductTypes = new System.Windows.Forms.ComboBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAddService = new System.Windows.Forms.Button();
+            this.btnAddServiceType = new System.Windows.Forms.Button();
+            this.cbxServiceTypes = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtProductPrice = new System.Windows.Forms.TextBox();
+            this.txtServicePrice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtProductDescr = new System.Windows.Forms.TextBox();
+            this.txtServiceDescr = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtProductame = new System.Windows.Forms.TextBox();
+            this.txtServiceName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(247, 298);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 28);
-            this.button2.TabIndex = 87;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.btnCancel.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(247, 298);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(87, 28);
+            this.btnCancel.TabIndex = 87;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // button1
+            // btnAddService
             // 
-            this.button1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(356, 298);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 28);
-            this.button1.TabIndex = 86;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddService.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddService.Location = new System.Drawing.Point(356, 298);
+            this.btnAddService.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddService.Name = "btnAddService";
+            this.btnAddService.Size = new System.Drawing.Size(86, 28);
+            this.btnAddService.TabIndex = 86;
+            this.btnAddService.Text = "Add";
+            this.btnAddService.UseVisualStyleBackColor = true;
+            this.btnAddService.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button3
+            // btnAddServiceType
             // 
-            this.button3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(270, 201);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 21);
-            this.button3.TabIndex = 85;
-            this.button3.Text = "Service Types";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAddServiceType.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddServiceType.Location = new System.Drawing.Point(270, 201);
+            this.btnAddServiceType.Name = "btnAddServiceType";
+            this.btnAddServiceType.Size = new System.Drawing.Size(126, 21);
+            this.btnAddServiceType.TabIndex = 85;
+            this.btnAddServiceType.Text = "Service Types";
+            this.btnAddServiceType.UseVisualStyleBackColor = true;
             // 
-            // cbxProductTypes
+            // cbxServiceTypes
             // 
-            this.cbxProductTypes.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxProductTypes.FormattingEnabled = true;
-            this.cbxProductTypes.Location = new System.Drawing.Point(33, 202);
-            this.cbxProductTypes.Name = "cbxProductTypes";
-            this.cbxProductTypes.Size = new System.Drawing.Size(172, 21);
-            this.cbxProductTypes.TabIndex = 84;
+            this.cbxServiceTypes.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxServiceTypes.FormattingEnabled = true;
+            this.cbxServiceTypes.Location = new System.Drawing.Point(33, 202);
+            this.cbxServiceTypes.Name = "cbxServiceTypes";
+            this.cbxServiceTypes.Size = new System.Drawing.Size(172, 21);
+            this.cbxServiceTypes.TabIndex = 84;
             // 
             // label4
             // 
@@ -94,14 +95,14 @@
             this.label4.TabIndex = 83;
             this.label4.Text = "Service Type:";
             // 
-            // txtProductPrice
+            // txtServicePrice
             // 
-            this.txtProductPrice.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductPrice.Location = new System.Drawing.Point(270, 35);
-            this.txtProductPrice.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProductPrice.Name = "txtProductPrice";
-            this.txtProductPrice.Size = new System.Drawing.Size(172, 21);
-            this.txtProductPrice.TabIndex = 82;
+            this.txtServicePrice.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServicePrice.Location = new System.Drawing.Point(270, 35);
+            this.txtServicePrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtServicePrice.Name = "txtServicePrice";
+            this.txtServicePrice.Size = new System.Drawing.Size(172, 21);
+            this.txtServicePrice.TabIndex = 82;
             // 
             // label3
             // 
@@ -115,15 +116,15 @@
             this.label3.TabIndex = 81;
             this.label3.Text = "Service Price :";
             // 
-            // txtProductDescr
+            // txtServiceDescr
             // 
-            this.txtProductDescr.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductDescr.Location = new System.Drawing.Point(33, 87);
-            this.txtProductDescr.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProductDescr.Multiline = true;
-            this.txtProductDescr.Name = "txtProductDescr";
-            this.txtProductDescr.Size = new System.Drawing.Size(172, 82);
-            this.txtProductDescr.TabIndex = 80;
+            this.txtServiceDescr.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServiceDescr.Location = new System.Drawing.Point(33, 87);
+            this.txtServiceDescr.Margin = new System.Windows.Forms.Padding(2);
+            this.txtServiceDescr.Multiline = true;
+            this.txtServiceDescr.Name = "txtServiceDescr";
+            this.txtServiceDescr.Size = new System.Drawing.Size(172, 82);
+            this.txtServiceDescr.TabIndex = 80;
             // 
             // label2
             // 
@@ -136,14 +137,14 @@
             this.label2.TabIndex = 79;
             this.label2.Text = "Service Description :";
             // 
-            // txtProductame
+            // txtServiceName
             // 
-            this.txtProductame.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductame.Location = new System.Drawing.Point(33, 35);
-            this.txtProductame.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProductame.Name = "txtProductame";
-            this.txtProductame.Size = new System.Drawing.Size(172, 21);
-            this.txtProductame.TabIndex = 78;
+            this.txtServiceName.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServiceName.Location = new System.Drawing.Point(33, 35);
+            this.txtServiceName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtServiceName.Name = "txtServiceName";
+            this.txtServiceName.Size = new System.Drawing.Size(172, 21);
+            this.txtServiceName.TabIndex = 78;
             // 
             // label1
             // 
@@ -161,16 +162,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 350);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.cbxProductTypes);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnAddService);
+            this.Controls.Add(this.btnAddServiceType);
+            this.Controls.Add(this.cbxServiceTypes);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtProductPrice);
+            this.Controls.Add(this.txtServicePrice);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtProductDescr);
+            this.Controls.Add(this.txtServiceDescr);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtProductame);
+            this.Controls.Add(this.txtServiceName);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -184,16 +185,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox cbxProductTypes;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnAddService;
+        private System.Windows.Forms.Button btnAddServiceType;
+        private System.Windows.Forms.ComboBox cbxServiceTypes;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtProductPrice;
+        private System.Windows.Forms.TextBox txtServicePrice;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtProductDescr;
+        private System.Windows.Forms.TextBox txtServiceDescr;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtProductame;
+        private System.Windows.Forms.TextBox txtServiceName;
         private System.Windows.Forms.Label label1;
     }
 }
