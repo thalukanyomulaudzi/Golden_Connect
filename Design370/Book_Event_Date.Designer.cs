@@ -42,6 +42,7 @@
             this.Column7 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bookingEmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -100,8 +101,9 @@
             this.dgvBookEvent.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBookEvent.Name = "dgvBookEvent";
             this.dgvBookEvent.RowTemplate.Height = 24;
-            this.dgvBookEvent.Size = new System.Drawing.Size(800, 257);
+            this.dgvBookEvent.Size = new System.Drawing.Size(805, 257);
             this.dgvBookEvent.TabIndex = 17;
+            this.dgvBookEvent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookEvent_CellContentClick);
             // 
             // Column1
             // 
@@ -165,11 +167,18 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bookingEmployeeName});
             this.dataGridView1.Location = new System.Drawing.Point(848, 146);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(288, 257);
             this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
+            // 
+            // bookingEmployeeName
+            // 
+            this.bookingEmployeeName.HeaderText = "Employee Name";
+            this.bookingEmployeeName.Name = "bookingEmployeeName";
             // 
             // Book_Event_Date
             // 
@@ -209,5 +218,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeName;
     }
 }

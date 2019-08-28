@@ -48,5 +48,10 @@ namespace Design370
             Booking_Dialog bookingDialog = new Booking_Dialog();
             bookingDialog.Show();
         }
+
+        private void DgvBookEvent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
