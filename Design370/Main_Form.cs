@@ -207,7 +207,6 @@ namespace Design370
         {
             DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
             e.Cancel = exit == DialogResult.Yes ? false : true;
-            dbCon.Close();
         }
 
         private void Button8_Click(object sender, EventArgs e)
