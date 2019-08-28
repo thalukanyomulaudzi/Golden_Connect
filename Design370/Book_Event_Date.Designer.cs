@@ -43,6 +43,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dgvBookingEmployees = new System.Windows.Forms.DataGridView();
             this.bookingEmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookingEmployeeAvailable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingEmployees)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +102,7 @@
             this.dgvBookEvent.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBookEvent.Name = "dgvBookEvent";
             this.dgvBookEvent.RowTemplate.Height = 24;
-            this.dgvBookEvent.Size = new System.Drawing.Size(805, 257);
+            this.dgvBookEvent.Size = new System.Drawing.Size(805, 232);
             this.dgvBookEvent.TabIndex = 17;
             this.dgvBookEvent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookEvent_CellContentClick);
             // 
@@ -156,7 +157,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1061, 409);
+            this.button1.Location = new System.Drawing.Point(1061, 394);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
@@ -168,10 +169,11 @@
             // 
             this.dgvBookingEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookingEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.bookingEmployeeName});
+            this.bookingEmployeeName,
+            this.bookingEmployeeAvailable});
             this.dgvBookingEmployees.Location = new System.Drawing.Point(848, 146);
             this.dgvBookingEmployees.Name = "dgvBookingEmployees";
-            this.dgvBookingEmployees.Size = new System.Drawing.Size(288, 257);
+            this.dgvBookingEmployees.Size = new System.Drawing.Size(288, 232);
             this.dgvBookingEmployees.TabIndex = 19;
             this.dgvBookingEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
             // 
@@ -179,6 +181,11 @@
             // 
             this.bookingEmployeeName.HeaderText = "Employee Name";
             this.bookingEmployeeName.Name = "bookingEmployeeName";
+            // 
+            // bookingEmployeeAvailable
+            // 
+            this.bookingEmployeeAvailable.HeaderText = "Available";
+            this.bookingEmployeeAvailable.Name = "bookingEmployeeAvailable";
             // 
             // Book_Event_Date
             // 
@@ -219,5 +226,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvBookingEmployees;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeAvailable;
     }
 }

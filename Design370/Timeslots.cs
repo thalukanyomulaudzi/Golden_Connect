@@ -192,7 +192,7 @@ namespace Design370
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
         }
-        public static void removeDuplicates()//
+        public static void removeDuplicates()//outdated function
         {
             try
             {

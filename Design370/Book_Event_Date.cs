@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -44,13 +46,34 @@ namespace Design370
 
         private void DgvBookEvent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DateTime dateTime;
+            try
+            {
+                DBConnection dBCon = DBConnection.Instance();
 
-            
+                CultureInfo cultureInfo = CultureInfo.InvariantCulture;
+                DateTime dateTime;
+                dateTime = DateTime.ParseExact(dgvBookEvent.Columns[e.ColumnIndex].HeaderText, "dddd, MMM dd \"'\"yy", cultureInfo);
+                dateTime = dateTime.AddHours(8 + dgvBookEvent.CurrentRow.Index);
+                //MessageBox.Show(dateTime.ToString());//shows the selected DateTime in a messagebox
+                dgvBookingEmployees.Rows.Clear();
+                string query = "SELECT e.employee_first, e.employee_last, et.available " +
+                    "FROM employee e " +
+                    "JOIN employee_timeslot et ON e.employee_id = et.employee_id " +
+                    "JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
+                    "WHERE t.timeslot_date = '" + dateTime.ToString("yyyy'-'MM'-'dd") + "' AND t.timeslot_start = '" + dateTime.ToString("HH:mm:ss") + "'";
 
-
-
-            //Bookings.loadEmployeeAvailable(dgvBookingEmployees, dateTime);
+                var command = new MySqlCommand(query, dBCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    dgvBookingEmployees.Rows.Add(reader.GetString(0) + " " + reader.GetString(1), reader.GetBoolean(2).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
         }
     }
 }
