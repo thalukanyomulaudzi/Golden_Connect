@@ -21,6 +21,7 @@ namespace Design370
         {
             label8.Visible = cbxBookingAdditions.Checked;
             label6.Visible = cbxBookingAdditions.Checked;
+            
 
             Booking_Dialog bookingDialog = new Booking_Dialog();
             DialogResult result = bookingDialog.ShowDialog();
@@ -36,6 +37,11 @@ namespace Design370
             {
 
             }
+        }
+
+        private void loadBookingDetails()
+        {
+
         }
 
         private void MonthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
