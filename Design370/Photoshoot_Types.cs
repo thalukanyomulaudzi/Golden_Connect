@@ -59,8 +59,8 @@ namespace Design370
                     string photoshootTypeName = " ";
                     string photoshootTypeDescription = " ";
                     DataTable PhotoshootType = new DataTable();
-                    string query = "SELECT event_type_name, event_type_description FROM event_type WHERE event_type_name LIKE '%" + textBox7.Text + "%' OR ";
-                    query += "event_type_description LIKE '%" + textBox7.Text + "%'";
+                    string query = "SELECT photoshoot_type_name, photoshoot_type_description FROM photoshoot_type WHERE photoshoot_type_name LIKE '%" + textBox7.Text + "%' OR ";
+                    query += "photoshoot_type_description LIKE '%" + textBox7.Text + "%'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     PhotoshootType.Load(reader);

@@ -19,27 +19,36 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    double TotalPrice = 0;
+                    int typeID = 0;
                     string PackageName = " ";
-                    string ProductCount = " ";
-                    string ServiceCount = " ";
-                    string query = "SELECT booking_package_id, booking_package_name FROM booking_package WHERE booking_package_type_id = 7";
+                    string query = "SELECT booking_package_type_id FROM booking_package_type WHERE booking_package_type_name = 'Photoshoot'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
+                    reader.Read();
+                    typeID = reader.GetInt32(0);
+                    reader.Close();
+                    query = "SELECT booking_package_id, booking_package_name FROM booking_package WHERE booking_package_type_id = '" + typeID + "'";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    reader = command.ExecuteReader();
                     DataTable bookingpackage = new DataTable();
                     bookingpackage.Load(reader);
                     for (int i = 0; i < bookingpackage.Rows.Count; i++)
                     {
+                        double TotalPrice = 0;
+                        int productquantity = 0, ServiceCount = 0;
                         DataTable booking_package_product = new DataTable();
                         PackageName = bookingpackage.Rows[i].ItemArray[1].ToString();
                         query = "SELECT product_id, booking_package_product_quantity FROM booking_package_product WHERE booking_package_id = '" + bookingpackage.Rows[i].ItemArray[0].ToString() + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         reader = command.ExecuteReader();
                         booking_package_product.Load(reader);
+                        for (int b = 0; b < booking_package_product.Rows.Count; b++)
+                        {
+                            productquantity += Convert.ToInt32(booking_package_product.Rows[b].ItemArray[1]);
+                        }
                         for (int j = 0; j < booking_package_product.Rows.Count; j++)
                         {
                             DataTable product = new DataTable();
-                            ProductCount = booking_package_product.Rows.Count.ToString();
                             query = "SELECT product_price FROM product WHERE product_id = '" + booking_package_product.Rows[j].ItemArray[0].ToString() + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
                             reader = command.ExecuteReader();
@@ -57,7 +66,7 @@ namespace Design370
                         for (int l = 0; l < booking_package_service.Rows.Count; l++)
                         {
                             DataTable service = new DataTable();
-                            ServiceCount = booking_package_service.Rows.Count.ToString();
+                            ServiceCount = booking_package_service.Rows.Count;
                             query = "SELECT service_price FROM service WHERE service_id = '" + booking_package_service.Rows[l].ItemArray[0].ToString() + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
                             reader = command.ExecuteReader();
@@ -68,7 +77,7 @@ namespace Design370
                             }
 
                         }
-                        dgv.Rows.Add(PackageName, ServiceCount, ProductCount, "R" + TotalPrice, "View", "Edit", "Delete");
+                        dgv.Rows.Add(PackageName, ServiceCount, productquantity, "R" + TotalPrice, "View", "Edit", "Delete");
                     }
 
                     reader.Close();
@@ -167,22 +176,23 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
+                    string booking_package_id = "";
                     string query = "SELECT booking_package_id FROM booking_package WHERE booking_package_name = '" + GetRowPhotoshoot + "'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        query = "DELETE FROM `booking_package_product` WHERE booking_package_id = '" + reader.GetString(0) + "'";
-                        command = new MySqlCommand(query, dBConnection.Connection);
-                        command.ExecuteNonQuery();
-                        query = "DELETE FROM `booking_package_service` WHERE booking_package_id = '" + reader.GetString(0) + "'";
-                        command = new MySqlCommand(query, dBConnection.Connection);
-                        command.ExecuteNonQuery();
-                        query = "DELETE FROM `booking_package` WHERE booking_package_id = '" + reader.GetString(0) + "'";
-                        command = new MySqlCommand(query, dBConnection.Connection);
-                        command.ExecuteNonQuery();
-                    }
+                    reader.Read();
+                    booking_package_id = reader.GetString(0);
                     reader.Close();
+                    query = "DELETE FROM `booking_package_product` WHERE booking_package_id = '" + booking_package_id + "'";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    command.ExecuteNonQuery();
+                    query = "DELETE FROM `booking_package_service` WHERE booking_package_id = '" + booking_package_id + "'";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    command.ExecuteNonQuery();
+                    query = "DELETE FROM `booking_package` WHERE booking_package_id = '" + booking_package_id + "'";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    command.ExecuteNonQuery();
+                    
                 }
             }
             catch (Exception except)

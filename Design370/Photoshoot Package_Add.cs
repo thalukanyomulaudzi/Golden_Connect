@@ -32,15 +32,22 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    string query = "SELECT product_name, product_price FROM product WHERE product_type_id = '1';";
+                    int typeID = 0;
+                    string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Photoshoot';";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
+                    reader.Read();
+                    typeID = reader.GetInt32(0);
+                    reader.Close();
+                    query = "SELECT product_name, product_price FROM product WHERE booking_type_id = '" + typeID + "'";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         listBox4.Items.Add(reader.GetString(0) + ";  R" + reader.GetString(1) + " - Qty: " + 0);
                     }
                         reader.Close();
-                        query = "SELECT service_name, service_price FROM service WHERE service_type_id = '1';";
+                        query = "SELECT service_name, service_price FROM service WHERE booking_type_id = '" + typeID +"'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         reader = command.ExecuteReader();
                         while (reader.Read())
