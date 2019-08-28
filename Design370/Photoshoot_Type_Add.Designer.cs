@@ -113,7 +113,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "Photoshoot_Type_Add";
-            this.Text = "Photoshoot_Type_Add";
+            this.Text = "Add Photoshoot Type";
             this.ResumeLayout(false);
             this.PerformLayout();
 

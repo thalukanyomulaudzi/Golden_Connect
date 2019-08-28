@@ -181,6 +181,12 @@
     <Compile Include="Customer_Order_Add.Designer.cs">
       <DependentUpon>Customer_Order_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer_Report.Designer.cs">
+      <DependentUpon>Customer_Report.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer_View.cs">
       <SubType>Form</SubType>
     </Compile>
