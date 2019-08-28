@@ -126,8 +126,8 @@ namespace Design370
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
-                    dataGridView3.AutoGenerateColumns = false;
-                    dataGridView3.DataSource = dtb1;
+                    dgvServices.AutoGenerateColumns = false;
+                    dgvServices.DataSource = dtb1;
                 }
             }
         }
@@ -145,8 +145,8 @@ namespace Design370
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
-                    dataGridView3.AutoGenerateColumns = false;
-                    dataGridView3.DataSource = dtb1;
+                    dgvServices.AutoGenerateColumns = false;
+                    dgvServices.DataSource = dtb1;
                 }
             }
         }
