@@ -70,20 +70,13 @@ namespace Design370
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            button10.Parent = tabPage6;
             if (!connectDB())//First in function
             {
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            //loadEmployees();
-            //testConnection(); //this throws out all customer names and surnames, only use during development
-            //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
-            //Timeslots.linkTimeslots();
             Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
-            Bookings.loadBookings(dgvBookings);
-            //Timeslots.removeDuplicates();
-            //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
+            Booking.loadBookings(dgvBookings);
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             loadSuppliers();
             loadProducts();
@@ -121,8 +114,7 @@ namespace Design370
                 {
                     MysqlConnection.mysqlCon.Open();
 
-                    string sql =
-                        "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
+                    string sql = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
@@ -140,8 +132,7 @@ namespace Design370
                 {
                     MysqlConnection.mysqlCon.Open();
 
-                    string sql =
-                        "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                    string sql = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
@@ -540,7 +531,7 @@ namespace Design370
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
         {
-            Bookings.loadBookings(dgvBookings, txtBookingSearch.Text);
+            Booking.loadBookings(dgvBookings, txtBookingSearch.Text);
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
