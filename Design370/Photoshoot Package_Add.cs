@@ -23,6 +23,8 @@ namespace Design370
             toolTip1.ShowAlways = true;
             toolTip1.SetToolTip(listBox3, "Multiple items can be selected");
             toolTip1.SetToolTip(listBox4, "Multiple items can be selected");
+            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
         }
 
         private void Photoshoot_Package_Add_Load(object sender, EventArgs e)
@@ -146,6 +148,11 @@ namespace Design370
 
         private void button6_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+            {
+                MessageBox.Show("Invalid package name and/or description length");
+                return;
+            }
             try
             {
                 DBConnection dBConnection = DBConnection.Instance();

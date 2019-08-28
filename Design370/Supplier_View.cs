@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -20,24 +21,51 @@ namespace Design370
 
         private void Supplier_View_Load(object sender, EventArgs e)
         {
-            textBox5.Enabled = edit;
-            textBox6.Enabled = edit;
-            textBox7.Enabled = edit;
-            textBox9.Enabled = edit;
-            comboBox1.Enabled = edit;
+            txtemail.Enabled = edit;
+            txtspNo.Enabled = edit;
+            txtspaddress.Enabled = edit;
+            txtSPName.Enabled = edit;
+            cbxsp.Enabled = edit;
+
+            //using (MysqlConnection.mysqlCon)
+            //{
+            //    DataTable dt = new DataTable();
+            //    MysqlConnection.mysqlCon.Open();
+            //    MySqlDataReader myReader = null;
+            //    MySqlCommand myCommand = new MySqlCommand("select * from customer_registration where username='" + Session["username"] + "'", con1);
+
+            //    myReader = myCommand.ExecuteReader();
+
+            //    while (myReader.Read())
+            //    {
+            //        TextBoxPassword.Text = (myReader["password"].ToString());
+            //        TextBoxRPassword.Text = (myReader["retypepassword"].ToString());
+            //        DropDownListGender.SelectedItem.Text = (myReader["gender"].ToString());
+            //        DropDownListMonth.Text = (myReader["birth"].ToString());
+            //        DropDownListYear.Text = (myReader["birth"].ToString());
+            //        TextBoxAddress.Text = (myReader["address"].ToString());
+            //        TextBoxCity.Text = (myReader["city"].ToString());
+            //        DropDownListCountry.SelectedItem.Text = (myReader["country"].ToString());
+            //        TextBoxPostcode.Text = (myReader["postcode"].ToString());
+            //        TextBoxEmail.Text = (myReader["email"].ToString());
+            //        TextBoxCarno.Text = (myReader["carno"].ToString());
+            //    }
+            //}
+
+
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            textBox5.Enabled = true;
-            textBox6.Enabled = true;
-            textBox7.Enabled = true;
-            textBox9.Enabled = true;
-            comboBox1.Enabled = true;        }
+            txtemail.Enabled = true;
+            txtspNo.Enabled = true;
+            txtspaddress.Enabled = true;
+            txtSPName.Enabled = true;
+            cbxsp.Enabled = true;        }
 
         private void Supplier_View_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (textBox5.Enabled)
+            if (txtemail.Enabled)
             {
                 DialogResult exit = MessageBox.Show("Do you want to save these changes?", "Save changes", MessageBoxButtons.YesNo);
                 e.Cancel = exit == DialogResult.Yes ? false : true;
