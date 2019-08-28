@@ -76,6 +76,7 @@ namespace Design370
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            button10.Parent = tabPage6;
             if (!connectDB())//First in function
             {
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
