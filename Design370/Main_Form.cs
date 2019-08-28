@@ -252,7 +252,6 @@ namespace Design370
         {
             DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
             e.Cancel = exit == DialogResult.Yes ? false : true;
-            dbCon.Close();
         }
 
         private void Button8_Click(object sender, EventArgs e)
@@ -561,6 +560,11 @@ namespace Design370
         }
 
         private void button10_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
         {
             Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
             photoshoot_Types.ShowDialog();

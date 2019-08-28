@@ -917,6 +917,7 @@ namespace Design370
             this.button10.Size = new System.Drawing.Size(189, 28);
             this.button10.TabIndex = 28;
             this.button10.Text = "Photoshoot Types";
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
             // tabPage7
             // 
