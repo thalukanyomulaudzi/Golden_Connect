@@ -76,14 +76,6 @@ namespace Design370
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnServiceAdd = new System.Windows.Forms.Button();
             this.dgvServices = new System.Windows.Forms.DataGridView();
-            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.cmbProductSort = new System.Windows.Forms.ComboBox();
@@ -110,6 +102,7 @@ namespace Design370
             this.PhotoshootPackageView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PhotoshootPackageEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PhotoshootPackageDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button10 = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnEventTypes = new System.Windows.Forms.Button();
             this.lblEventPackageSearch = new System.Windows.Forms.Label();
@@ -166,9 +159,15 @@ namespace Design370
             this.button25 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.dataGridViewCellStyle1 = new DataGridViewCellStyle();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -191,6 +190,7 @@ namespace Design370
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
             this.tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -258,7 +258,7 @@ namespace Design370
             this.lblCustomerSort.Location = new System.Drawing.Point(281, 15);
             this.lblCustomerSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCustomerSort.Name = "lblCustomerSort";
-            this.lblCustomerSort.Size = new System.Drawing.Size(56, 18);
+            this.lblCustomerSort.Size = new System.Drawing.Size(57, 18);
             this.lblCustomerSort.TabIndex = 7;
             this.lblCustomerSort.Text = "Sort by:";
             // 
@@ -401,7 +401,7 @@ namespace Design370
             this.label7.Location = new System.Drawing.Point(281, 15);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 18);
+            this.label7.Size = new System.Drawing.Size(57, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Sort by:";
             // 
@@ -493,7 +493,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -609,7 +609,7 @@ namespace Design370
             this.lblServiceSort.Location = new System.Drawing.Point(281, 15);
             this.lblServiceSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServiceSort.Name = "lblServiceSort";
-            this.lblServiceSort.Size = new System.Drawing.Size(56, 18);
+            this.lblServiceSort.Size = new System.Drawing.Size(57, 18);
             this.lblServiceSort.TabIndex = 14;
             this.lblServiceSort.Text = "Sort by:";
             // 
@@ -647,14 +647,6 @@ namespace Design370
             // 
             // dgvServices
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ServiceName,
-            this.ServiceType,
-            this.ServicePrice,
-            this.ServiceView,
-            this.ServiceEdit,
-            this.ServiceDelete});
             this.dgvServices.Location = new System.Drawing.Point(11, 59);
             this.dgvServices.Margin = new System.Windows.Forms.Padding(2);
             this.dgvServices.Name = "dgvServices";
@@ -710,7 +702,7 @@ namespace Design370
             this.lblProductSort.Location = new System.Drawing.Point(281, 15);
             this.lblProductSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProductSort.Name = "lblProductSort";
-            this.lblProductSort.Size = new System.Drawing.Size(56, 18);
+            this.lblProductSort.Size = new System.Drawing.Size(57, 18);
             this.lblProductSort.TabIndex = 21;
             this.lblProductSort.Text = "Sort by:";
             // 
@@ -880,7 +872,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 132;
+            this.PhotoshootPackageName.Width = 122;
             // 
             // Services
             // 
@@ -917,6 +909,13 @@ namespace Design370
             this.PhotoshootPackageDelete.HeaderText = "";
             this.PhotoshootPackageDelete.Name = "PhotoshootPackageDelete";
             this.PhotoshootPackageDelete.ReadOnly = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(699, 442);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 28;
             // 
             // tabPage7
             // 
@@ -1011,7 +1010,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 132;
+            this.EventPackageName.Width = 122;
             // 
             // ServicesEvents
             // 
@@ -1118,7 +1117,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 18);
+            this.label15.Size = new System.Drawing.Size(57, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Sort by:";
             // 
@@ -1230,7 +1229,7 @@ namespace Design370
             this.lblBookingSearch.Location = new System.Drawing.Point(8, 16);
             this.lblBookingSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBookingSearch.Name = "lblBookingSearch";
-            this.lblBookingSearch.Size = new System.Drawing.Size(209, 18);
+            this.lblBookingSearch.Size = new System.Drawing.Size(213, 18);
             this.lblBookingSearch.TabIndex = 50;
             this.lblBookingSearch.Text = "Search by customer last name:";
             // 
@@ -1286,14 +1285,6 @@ namespace Design370
             // 
             // dataGridView10
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light", 9.8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView10.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView10.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SupplierName,
@@ -1310,6 +1301,45 @@ namespace Design370
             this.dataGridView10.Size = new System.Drawing.Size(763, 349);
             this.dataGridView10.TabIndex = 55;
             this.dataGridView10.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView10_CellContentClick);
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.DataPropertyName = "supplier_name";
+            this.SupplierName.HeaderText = "Supplier Name";
+            this.SupplierName.Name = "SupplierName";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "supplier_email_address";
+            this.Column1.HeaderText = "Supplier Email Address";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "supplier_phone";
+            this.Column2.HeaderText = "Supplier Telephone";
+            this.Column2.Name = "Column2";
+            // 
+            // SupplierType
+            // 
+            this.SupplierType.DataPropertyName = "supplier_type_name";
+            this.SupplierType.HeaderText = "Supplier Type";
+            this.SupplierType.Name = "SupplierType";
+            // 
+            // SupplierView
+            // 
+            this.SupplierView.HeaderText = "";
+            this.SupplierView.Name = "SupplierView";
+            // 
+            // SupplierEdit
+            // 
+            this.SupplierEdit.HeaderText = "";
+            this.SupplierEdit.Name = "SupplierEdit";
+            // 
+            // SupplierDelete
+            // 
+            this.SupplierDelete.HeaderText = "";
+            this.SupplierDelete.Name = "SupplierDelete";
             // 
             // button22
             // 
@@ -1341,7 +1371,7 @@ namespace Design370
             this.label19.Location = new System.Drawing.Point(281, 15);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(56, 18);
+            this.label19.Size = new System.Drawing.Size(57, 18);
             this.label19.TabIndex = 51;
             this.label19.Text = "Sort by:";
             // 
@@ -1456,6 +1486,52 @@ namespace Design370
             this.tabPage12.Text = "Help";
             this.tabPage12.UseVisualStyleBackColor = true;
             // 
+            // ServiceName
+            // 
+            this.ServiceName.Name = "ServiceName";
+            // 
+            // ServiceType
+            // 
+            this.ServiceType.Name = "ServiceType";
+            // 
+            // ServicePrice
+            // 
+            this.ServicePrice.Name = "ServicePrice";
+            // 
+            // ServiceView
+            // 
+            this.ServiceView.Name = "ServiceView";
+            // 
+            // ServiceEdit
+            // 
+            this.ServiceEdit.Name = "ServiceEdit";
+            // 
+            // ServiceDelete
+            // 
+            this.ServiceDelete.Name = "ServiceDelete";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(0, 0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 0;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ServiceName,
+            this.ServiceType,
+            this.ServicePrice,
+            this.ServiceView,
+            this.ServiceEdit,
+            this.ServiceDelete});
+            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.TabIndex = 0;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -1465,45 +1541,6 @@ namespace Design370
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
-            // 
-            // SupplierName
-            // 
-            this.SupplierName.DataPropertyName = "supplier_name";
-            this.SupplierName.HeaderText = "Supplier Name";
-            this.SupplierName.Name = "SupplierName";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "supplier_email_address";
-            this.Column1.HeaderText = "Supplier Email Address";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "supplier_phone";
-            this.Column2.HeaderText = "Supplier Telephone";
-            this.Column2.Name = "Column2";
-            // 
-            // SupplierType
-            // 
-            this.SupplierType.DataPropertyName = "supplier_type_name";
-            this.SupplierType.HeaderText = "Supplier Type";
-            this.SupplierType.Name = "SupplierType";
-            // 
-            // SupplierView
-            // 
-            this.SupplierView.HeaderText = "";
-            this.SupplierView.Name = "SupplierView";
-            // 
-            // SupplierEdit
-            // 
-            this.SupplierEdit.HeaderText = "";
-            this.SupplierEdit.Name = "SupplierEdit";
-            // 
-            // SupplierDelete
-            // 
-            this.SupplierDelete.HeaderText = "";
-            this.SupplierDelete.Name = "SupplierDelete";
             // 
             // Main_Form
             // 
@@ -1552,6 +1589,7 @@ namespace Design370
             this.tabPage10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
             this.tabPage11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
