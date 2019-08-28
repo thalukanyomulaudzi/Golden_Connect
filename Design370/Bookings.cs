@@ -11,23 +11,30 @@ namespace Design370
     {
         public static void loadBookings(System.Windows.Forms.DataGridView dgv, string search = "")
         {
-            DBConnection dBCon = DBConnection.Instance();
-            if (dBCon.IsConnect())
+            try
             {
-                string query = "SELECT booking_id FROM booking WHERE";
-
-
-
-
-
-
-                query = "SELECT * FROM booking b JOIN customer c ON b.customer_id = c.customer_id WHERE c.customer_last LIKE %" + search + "%";
-                var command = new MySqlCommand(query, dBCon.Connection);
-                var reader = command.ExecuteReader();
-                while (reader.Read())
+                DBConnection dBCon = DBConnection.Instance();
+                if (dBCon.IsConnect())
                 {
+                    string query = "SELECT booking_id FROM booking WHERE";
 
+
+
+
+
+
+                    query = "SELECT * FROM booking b JOIN customer c ON b.customer_id = c.customer_id WHERE c.customer_last LIKE %" + search + "%";
+                    var command = new MySqlCommand(query, dBCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+
             }
         }
     }

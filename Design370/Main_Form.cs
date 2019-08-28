@@ -82,7 +82,7 @@ namespace Design370
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
-            Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
+            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
             Bookings.loadBookings(dgvBookings);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
@@ -123,7 +123,7 @@ namespace Design370
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(MysqlConnection.reader);
-            empGrid.DataSource = table;
+            dgvEmployees.DataSource = table;
             MysqlConnection.mysqlCon.Close();
         }
 
@@ -464,7 +464,7 @@ namespace Design370
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(MysqlConnection.reader);
-            empGrid.DataSource = table;
+            dgvEmployees.DataSource = table;
             MysqlConnection.mysqlCon.Close();
         }
 
