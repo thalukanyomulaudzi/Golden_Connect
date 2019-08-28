@@ -855,6 +855,7 @@ namespace Design370
             this.txtPhotoshootPackageSearch.Name = "txtPhotoshootPackageSearch";
             this.txtPhotoshootPackageSearch.Size = new System.Drawing.Size(200, 25);
             this.txtPhotoshootPackageSearch.TabIndex = 26;
+            this.txtPhotoshootPackageSearch.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // btnPhotoshootPackageAdd
             // 
@@ -870,6 +871,7 @@ namespace Design370
             // 
             // dgvPhotoshootPackage
             // 
+            this.dgvPhotoshootPackage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPhotoshootPackage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhotoshootPackage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PhotoshootPackageName,
@@ -882,6 +884,7 @@ namespace Design370
             this.dgvPhotoshootPackage.Location = new System.Drawing.Point(11, 59);
             this.dgvPhotoshootPackage.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPhotoshootPackage.Name = "dgvPhotoshootPackage";
+            this.dgvPhotoshootPackage.RowHeadersVisible = false;
             this.dgvPhotoshootPackage.RowTemplate.Height = 24;
             this.dgvPhotoshootPackage.Size = new System.Drawing.Size(763, 349);
             this.dgvPhotoshootPackage.TabIndex = 23;
@@ -1513,6 +1516,7 @@ namespace Design370
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
+            this.Activated += new System.EventHandler(this.Main_Form_Activated_1);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
