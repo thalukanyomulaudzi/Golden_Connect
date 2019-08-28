@@ -178,11 +178,6 @@ namespace Design370
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
-            {
-                MessageBox.Show("Invalid package name and/or description length");
-                return;
-            }
             try
             {
                 DBConnection dBConnection = DBConnection.Instance();
