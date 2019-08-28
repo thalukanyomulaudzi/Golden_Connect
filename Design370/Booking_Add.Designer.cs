@@ -28,36 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvBookingAdd = new System.Windows.Forms.DataGridView();
             this.CustFirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CustEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CustDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button20 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingAdd)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvBookingAdd
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvBookingAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBookingAdd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustFirst,
             this.CustLast,
             this.CustID,
             this.CustView,
             this.CustEdit,
             this.CustDelete});
-            this.dataGridView1.Location = new System.Drawing.Point(25, 76);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(995, 397);
-            this.dataGridView1.TabIndex = 65;
+            this.dgvBookingAdd.Location = new System.Drawing.Point(25, 76);
+            this.dgvBookingAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvBookingAdd.Name = "dgvBookingAdd";
+            this.dgvBookingAdd.Size = new System.Drawing.Size(732, 310);
+            this.dgvBookingAdd.TabIndex = 65;
             // 
             // CustFirst
             // 
@@ -89,48 +87,29 @@
             this.CustDelete.HeaderText = "";
             this.CustDelete.Name = "CustDelete";
             // 
-            // comboBox9
-            // 
-            this.comboBox9.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.ItemHeight = 17;
-            this.comboBox9.Location = new System.Drawing.Point(490, 23);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(136, 25);
-            this.comboBox9.TabIndex = 64;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(405, 26);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(56, 18);
-            this.label17.TabIndex = 63;
-            this.label17.Text = "Sort by:";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(22, 26);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(25, 18);
+            this.label18.Size = new System.Drawing.Size(57, 18);
             this.label18.TabIndex = 62;
-            this.label18.Text = "ID:";
+            this.label18.Text = "Search:";
             // 
             // textBox9
             // 
             this.textBox9.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(82, 23);
+            this.textBox9.Location = new System.Drawing.Point(109, 23);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(265, 25);
             this.textBox9.TabIndex = 61;
+            this.textBox9.TextChanged += new System.EventHandler(this.TextBox9_TextChanged);
             // 
             // button20
             // 
             this.button20.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.Location = new System.Drawing.Point(832, 498);
+            this.button20.Location = new System.Drawing.Point(569, 416);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(188, 35);
             this.button20.TabIndex = 60;
@@ -142,10 +121,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1042, 557);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox9);
-            this.Controls.Add(this.label17);
+            this.ClientSize = new System.Drawing.Size(794, 490);
+            this.Controls.Add(this.dgvBookingAdd);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.button20);
@@ -154,7 +131,7 @@
             this.Name = "Booking_Add";
             this.Text = "Booking_Add";
             this.Load += new System.EventHandler(this.Booking_Add_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingAdd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,9 +139,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox9;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridView dgvBookingAdd;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Button button20;

@@ -55,7 +55,7 @@
             // cbxBookingAdditions
             // 
             this.cbxBookingAdditions.AutoSize = true;
-            this.cbxBookingAdditions.Location = new System.Drawing.Point(45, 463);
+            this.cbxBookingAdditions.Location = new System.Drawing.Point(45, 484);
             this.cbxBookingAdditions.Name = "cbxBookingAdditions";
             this.cbxBookingAdditions.Size = new System.Drawing.Size(127, 22);
             this.cbxBookingAdditions.TabIndex = 38;
@@ -83,7 +83,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(254, 498);
+            this.label6.Location = new System.Drawing.Point(254, 519);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 18);
@@ -93,7 +93,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(42, 498);
+            this.label8.Location = new System.Drawing.Point(42, 519);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 18);
@@ -107,7 +107,7 @@
             this.lstBookingAdditionsServices.Items.AddRange(new object[] {
             "Photography 1 hour",
             "Photography 2 hours"});
-            this.lstBookingAdditionsServices.Location = new System.Drawing.Point(257, 536);
+            this.lstBookingAdditionsServices.Location = new System.Drawing.Point(257, 557);
             this.lstBookingAdditionsServices.Name = "lstBookingAdditionsServices";
             this.lstBookingAdditionsServices.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstBookingAdditionsServices.Size = new System.Drawing.Size(198, 112);
@@ -121,7 +121,7 @@
             "10 Edited photos",
             "Canvas A4",
             "Canvas A3"});
-            this.lstBookingAdditionsProducts.Location = new System.Drawing.Point(46, 536);
+            this.lstBookingAdditionsProducts.Location = new System.Drawing.Point(46, 557);
             this.lstBookingAdditionsProducts.Name = "lstBookingAdditionsProducts";
             this.lstBookingAdditionsProducts.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstBookingAdditionsProducts.Size = new System.Drawing.Size(198, 112);
@@ -130,7 +130,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(254, 295);
+            this.label5.Location = new System.Drawing.Point(254, 325);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 18);
@@ -144,7 +144,7 @@
             this.lstBookingServices.Items.AddRange(new object[] {
             "Photography 1 hour",
             "Decor setup"});
-            this.lstBookingServices.Location = new System.Drawing.Point(257, 329);
+            this.lstBookingServices.Location = new System.Drawing.Point(257, 359);
             this.lstBookingServices.Name = "lstBookingServices";
             this.lstBookingServices.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lstBookingServices.Size = new System.Drawing.Size(198, 112);
@@ -153,7 +153,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 295);
+            this.label4.Location = new System.Drawing.Point(43, 325);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(143, 18);
@@ -166,7 +166,7 @@
             this.lstBookingProducts.ItemHeight = 18;
             this.lstBookingProducts.Items.AddRange(new object[] {
             "10 Edited photos"});
-            this.lstBookingProducts.Location = new System.Drawing.Point(46, 329);
+            this.lstBookingProducts.Location = new System.Drawing.Point(46, 359);
             this.lstBookingProducts.Name = "lstBookingProducts";
             this.lstBookingProducts.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lstBookingProducts.Size = new System.Drawing.Size(198, 112);
@@ -177,7 +177,7 @@
             this.cmbBookingPackage.FormattingEnabled = true;
             this.cmbBookingPackage.Items.AddRange(new object[] {
             "Basic package"});
-            this.cmbBookingPackage.Location = new System.Drawing.Point(196, 202);
+            this.cmbBookingPackage.Location = new System.Drawing.Point(196, 289);
             this.cmbBookingPackage.Name = "cmbBookingPackage";
             this.cmbBookingPackage.Size = new System.Drawing.Size(259, 26);
             this.cmbBookingPackage.TabIndex = 26;
@@ -185,7 +185,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(45, 206);
+            this.label3.Location = new System.Drawing.Point(45, 293);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 18);
@@ -194,7 +194,7 @@
             // 
             // numBookingGuests
             // 
-            this.numBookingGuests.Location = new System.Drawing.Point(196, 244);
+            this.numBookingGuests.Location = new System.Drawing.Point(196, 246);
             this.numBookingGuests.Name = "numBookingGuests";
             this.numBookingGuests.Size = new System.Drawing.Size(259, 24);
             this.numBookingGuests.TabIndex = 24;
@@ -202,7 +202,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 247);
+            this.label2.Location = new System.Drawing.Point(44, 249);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 18);
@@ -290,7 +290,7 @@
             this.Controls.Add(this.txtBookingLocation);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Booking_Details";
             this.Text = "Booking_Details";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Booking_Details_FormClosing);

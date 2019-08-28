@@ -40,8 +40,13 @@ namespace Design370
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Booking_Dialog bookingDialog = new Booking_Dialog();
-            bookingDialog.Show();
+            if (dgvBookingEmployees.SelectedCells.Count == 0 || dgvBookEvent.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("Please select a timeslot and employee");
+                return;
+            }
+            Booking_Details bookingDetails = new Booking_Details();
+            bookingDetails.ShowDialog();
         }
 
         private void DgvBookEvent_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -74,6 +79,11 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

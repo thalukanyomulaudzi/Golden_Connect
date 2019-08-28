@@ -126,8 +126,8 @@ namespace Design370
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
-                    dataGridView3.AutoGenerateColumns = false;
-                    dataGridView3.DataSource = dtb1;
+                    dgvServices.AutoGenerateColumns = false;
+                    dgvServices.DataSource = dtb1;
                 }
             }
         }
@@ -145,8 +145,8 @@ namespace Design370
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
-                    dataGridView3.AutoGenerateColumns = false;
-                    dataGridView3.DataSource = dtb1;
+                    dgvServices.AutoGenerateColumns = false;
+                    dgvServices.DataSource = dtb1;
                 }
             }
         }
@@ -244,14 +244,15 @@ namespace Design370
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            Book_Event_Date bookDate = new Book_Event_Date();
-            bookDate.Show();
+            Booking_Add bookingAdd = new Booking_Add();
+            bookingAdd.ShowDialog();
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
             e.Cancel = exit == DialogResult.Yes ? false : true;
+            dbCon.Close();
         }
 
         private void Button8_Click(object sender, EventArgs e)
