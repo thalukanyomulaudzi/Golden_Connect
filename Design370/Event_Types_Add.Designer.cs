@@ -46,6 +46,7 @@
             this.button2.TabIndex = 44;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -57,6 +58,7 @@
             this.button1.TabIndex = 43;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
@@ -112,6 +114,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Event_Types_Add";
             this.Text = "Add Event Type";
+            this.Load += new System.EventHandler(this.Event_Types_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

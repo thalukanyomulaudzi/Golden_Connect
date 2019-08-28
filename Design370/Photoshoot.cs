@@ -10,7 +10,7 @@ namespace Design370
 {
     class Photoshoot
     {
-        public static string GetRow1 { get; set; }
+        public static string GetRowPhotoshoot { get; set; }
 
         public static void LoadDGV (System.Windows.Forms.DataGridView dgv)
         {
@@ -23,7 +23,7 @@ namespace Design370
                     string PackageName = " ";
                     string ProductCount = " ";
                     string ServiceCount = " ";
-                    string query = "SELECT booking_package_id, booking_package_name FROM booking_package;";
+                    string query = "SELECT booking_package_id, booking_package_name FROM booking_package WHERE booking_package_type_id = 7";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     DataTable bookingpackage = new DataTable();
@@ -68,7 +68,7 @@ namespace Design370
                             }
 
                         }
-                        dgv.Rows.Add(PackageName, ServiceCount, ProductCount, TotalPrice, "View", "Edit", "Delete");
+                        dgv.Rows.Add(PackageName, ServiceCount, ProductCount, "R" + TotalPrice, "View", "Edit", "Delete");
                     }
 
                     reader.Close();
@@ -92,9 +92,18 @@ namespace Design370
                     string PackageName = " ";
                     string ProductCount = " ";
                     string ServiceCount = " ";
-                    string query = "SELECT booking_package_id, booking_package_name FROM booking_package WHERE booking_package_name LIKE '%" + GetRow1 + "%'";
+                    string PackageType = " ";
+                    string query = "SELECT booking_package_type_id FROM booking_package_type WHERE booking_package_type_name = 'Photoshoot'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        PackageType = reader.GetString(0);
+                    }
+                    reader.Close();
+                    query = "SELECT booking_package_id, booking_package_name FROM booking_package WHERE booking_package_name LIKE '%" + GetRowPhotoshoot + "%' AND booking_package_type_id = '" + PackageType + "'";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    reader = command.ExecuteReader();
                     DataTable bookingpackage = new DataTable();
                     bookingpackage.Load(reader);
                     for (int i = 0; i < bookingpackage.Rows.Count; i++)
@@ -158,7 +167,7 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    string query = "SELECT booking_package_id FROM booking_package WHERE booking_package_name = '" + GetRow1 + "'";
+                    string query = "SELECT booking_package_id FROM booking_package WHERE booking_package_name = '" + GetRowPhotoshoot + "'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
