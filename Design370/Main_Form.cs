@@ -404,13 +404,13 @@ namespace Design370
 
                 case 4:
                     EventPackage_View.edit = false;
-                    packageName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
                     eventPackage_View.GetEventViewRow = packageName;
                     eventPackage_View.ShowDialog();
                     break;
                 case 5:
                     EventPackage_View.edit = true;
-                    packageName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
                     eventPackage_View.GetEventViewRow = packageName;
                     eventPackage_View.ShowDialog();
                     break;
@@ -492,8 +492,8 @@ namespace Design370
         {
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            dataGridView7.Rows.Clear();
-            Event.LoadDGV(dataGridView7);
+            dgvEventPackages.Rows.Clear();
+            Event.LoadDGV(dgvEventPackages);
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
@@ -504,17 +504,17 @@ namespace Design370
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             string packageName = txtPhotoshootPackageSearch.Text;
-            Photoshoot.GetRow1 = packageName;
+            Photoshoot.GetRowPhotoshoot = packageName;
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.SearchPhotoshootPackage(dgvPhotoshootPackage);
         }
 
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
-            string packageName = textBox7.Text;
+            string packageName = txtEventPackageSearch.Text;
             Event.GetRowEvent = packageName;
-            dataGridView7.Rows.Clear();
-            Event.SearchEventPackage(dataGridView7);
+            dgvEventPackages.Rows.Clear();
+            Event.SearchEventPackage(dgvEventPackages);
         }
     }
 }
