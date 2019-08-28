@@ -45,6 +45,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(19, 28);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 18);
             this.label14.TabIndex = 68;
@@ -54,17 +55,19 @@
             // 
             this.textBox7.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.Location = new System.Drawing.Point(82, 24);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(212, 26);
+            this.textBox7.Size = new System.Drawing.Size(213, 26);
             this.textBox7.TabIndex = 67;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(619, 22);
+            this.button14.Location = new System.Drawing.Point(565, 23);
+            this.button14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(158, 28);
+            this.button14.Size = new System.Drawing.Size(211, 28);
             this.button14.TabIndex = 66;
             this.button14.Text = "Add Photoshoot Type";
             this.button14.UseVisualStyleBackColor = true;
@@ -86,11 +89,12 @@
             this.EmpTypeEdit,
             this.EmpTypeDelete});
             this.dataGridView7.Location = new System.Drawing.Point(22, 73);
+            this.dataGridView7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.ReadOnly = true;
             this.dataGridView7.RowHeadersVisible = false;
             this.dataGridView7.RowTemplate.Height = 24;
-            this.dataGridView7.Size = new System.Drawing.Size(754, 335);
+            this.dataGridView7.Size = new System.Drawing.Size(754, 336);
             this.dataGridView7.TabIndex = 65;
             this.dataGridView7.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView7_CellContentClick);
             // 
@@ -132,15 +136,17 @@
             // 
             // Photoshoot_Types
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(804, 458);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.dataGridView7);
+            this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Photoshoot_Types";
-            this.Text = "Photoshoot_Types";
+            this.Text = "Photoshoot Types";
             this.Load += new System.EventHandler(this.Photoshoot_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
