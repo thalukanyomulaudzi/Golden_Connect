@@ -41,10 +41,10 @@
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvBookingEmployees = new System.Windows.Forms.DataGridView();
             this.bookingEmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingEmployees)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -164,16 +164,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // dataGridView1
+            // dgvBookingEmployees
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvBookingEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBookingEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.bookingEmployeeName});
-            this.dataGridView1.Location = new System.Drawing.Point(848, 146);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 257);
-            this.dataGridView1.TabIndex = 19;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
+            this.dgvBookingEmployees.Location = new System.Drawing.Point(848, 146);
+            this.dgvBookingEmployees.Name = "dgvBookingEmployees";
+            this.dgvBookingEmployees.Size = new System.Drawing.Size(288, 257);
+            this.dgvBookingEmployees.TabIndex = 19;
+            this.dgvBookingEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
             // 
             // bookingEmployeeName
             // 
@@ -185,7 +185,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 609);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvBookingEmployees);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvBookEvent);
             this.Controls.Add(this.label2);
@@ -196,7 +196,7 @@
             this.Text = "Book_Event_Date";
             this.Load += new System.EventHandler(this.Book_Event_Date_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingEmployees)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,7 +217,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
         private System.Windows.Forms.DataGridViewButtonColumn Column7;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvBookingEmployees;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeName;
     }
 }

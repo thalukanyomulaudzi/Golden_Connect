@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -17,8 +12,7 @@ namespace Design370
         public Main_Form()
         {
             InitializeComponent();
-            ToolTip toolTip1 = new ToolTip();
-            toolTip1.ShowAlways = true;
+            ToolTip toolTip1 = new ToolTip { ShowAlways = true };
             toolTip1.SetToolTip(txtPhotoshootPackageSearch, "Enter package name");
 
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
@@ -54,18 +48,18 @@ namespace Design370
             }
 
             // Draw string. Center the text.
-            StringFormat _stringFlags = new StringFormat();
-
-            _stringFlags.Alignment = StringAlignment.Center;
-
-            _stringFlags.LineAlignment = StringAlignment.Center;
+            StringFormat _stringFlags = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
 
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Customer_Add customerAdd= new Customer_Add();
+            Customer_Add customerAdd = new Customer_Add();
             customerAdd.Show();
         }
 
@@ -167,7 +161,6 @@ namespace Design370
             Customer_View customerView = new Customer_View();
             switch (e.ColumnIndex)
             {
-                
                 case 1:
                     Customer_View.edit = false;
                     customerView.Show();
@@ -181,7 +174,8 @@ namespace Design370
                     if (delete == DialogResult.Yes)
                     {
                         //do shit
-                    } else
+                    }
+                    else
                     {
                         //dont do shit
                     }
@@ -246,11 +240,11 @@ namespace Design370
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        
+
                     }
                     else
                     {
-                        
+
                     }
                     break;
                 default:
@@ -300,7 +294,7 @@ namespace Design370
             ServiceEdit.Text = "Edit";
             ServiceDelete.Text = "Delete";
             ServiceView.Text = "View";
-            
+
             switch (e.ColumnIndex)
             {
 
@@ -358,7 +352,7 @@ namespace Design370
                     }
                     else
                     {
-                        
+
                     }
                     break;
                 default:
@@ -371,7 +365,6 @@ namespace Design370
             Product_View product_View = new Product_View();
             switch (e.ColumnIndex)
             {
-
                 case 3:
                     Product_View.edit = false;
                     product_View.Show();
@@ -402,7 +395,6 @@ namespace Design370
             EventPackage_View eventPackage_View = new EventPackage_View();
             switch (e.ColumnIndex)
             {
-
                 case 4:
                     EventPackage_View.edit = false;
                     packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -471,7 +463,7 @@ namespace Design370
         {
             MysqlConnection.mysqlCon.Open();
             string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +
-                "FROM employee WHERE employee_first LIKE '%"+txtSearch.Text+"%' OR employee_last LIKE '%"+txtSearch.Text+"%' OR employee_idnumber LIKE '%"+txtSearch.Text+"%'";
+                "FROM employee WHERE employee_first LIKE '%" + txtSearch.Text + "%' OR employee_last LIKE '%" + txtSearch.Text + "%' OR employee_idnumber LIKE '%" + txtSearch.Text + "%'";
             MysqlConnection.cmd = new MySqlCommand(employees, MysqlConnection.mysqlCon);
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -488,7 +480,7 @@ namespace Design370
         {
 
         }
-        
+
         private void Main_Form_Activated_1(object sender, EventArgs e)
         {
             dgvPhotoshootPackage.Rows.Clear();

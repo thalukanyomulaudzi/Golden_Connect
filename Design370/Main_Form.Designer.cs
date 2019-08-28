@@ -1548,13 +1548,14 @@ namespace Design370
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(400, 0);
+            this.button10.Location = new System.Drawing.Point(580, 470);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(189, 28);
             this.button10.TabIndex = 100;
             this.button10.Text = "Photoshoot Types";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Parent = tabPage6;
             // 
             // Main_Form
             // 

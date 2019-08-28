@@ -1,9 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -22,7 +19,7 @@ namespace Design370
                     System.Windows.Forms.MessageBox.Show(query);
                     var command = new MySqlCommand(query, dBCon.Connection);
                     var reader = command.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         bookingIDs.Add(reader.GetInt16(0));
                         bookingDates.Add(DateTime.Parse(reader.GetString(1)));
@@ -39,17 +36,31 @@ namespace Design370
 
                     }
                     reader.Close();
-
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
         }
-        public static void loadEmployeeAvailable()
+        public static void loadEmployeeAvailable(System.Windows.Forms.DataGridView dgv, DateTime dateTime)
         {
+            try
+            {
+                DBConnection dBCon = DBConnection.Instance();
 
+
+
+
+
+
+
+
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+            }
         }
     }
 }
