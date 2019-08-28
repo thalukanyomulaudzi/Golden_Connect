@@ -22,7 +22,7 @@ namespace Design370
         private void Button14_Click_1(object sender, EventArgs e)
         {
             Event_Types_Add event_Types_Add = new Event_Types_Add();
-            event_Types_Add.Show();
+            event_Types_Add.ShowDialog();
         }
 
         private void DataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
