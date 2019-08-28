@@ -34,7 +34,7 @@ namespace Design370
             }
             catch(Exception e)
             {
-
+                System.Windows.Forms.MessageBox.Show(e.Message);
             }
         }
     }

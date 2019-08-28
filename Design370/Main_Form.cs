@@ -19,7 +19,7 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox6, "Enter package name");
+            toolTip1.SetToolTip(txtPhotoshootPackageSearch, "Enter package name");
 
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
@@ -496,7 +496,7 @@ namespace Design370
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
-            string packageName = textBox6.Text;
+            string packageName = txtPhotoshootPackageSearch.Text;
             Photoshoot.GetRow1 = packageName;
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.SearchPhotoshootPackage(dgvPhotoshootPackage);
