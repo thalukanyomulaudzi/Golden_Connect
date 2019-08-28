@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
     public partial class Main_Form : Form
     {
-
         DBConnection dbCon = DBConnection.Instance();
         public Main_Form()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip { ShowAlways = true };
+            toolTip1.SetToolTip(txtPhotoshootPackageSearch, "Enter package name");
 
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
@@ -52,18 +48,18 @@ namespace Design370
             }
 
             // Draw string. Center the text.
-            StringFormat _stringFlags = new StringFormat();
-
-            _stringFlags.Alignment = StringAlignment.Center;
-
-            _stringFlags.LineAlignment = StringAlignment.Center;
+            StringFormat _stringFlags = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
 
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Customer_Add customerAdd= new Customer_Add();
+            Customer_Add customerAdd = new Customer_Add();
             customerAdd.Show();
         }
 
@@ -74,16 +70,18 @@ namespace Design370
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            button10.Parent = tabPage6;
             if (!connectDB())//First in function
             {
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            loadEmployees();
+            //loadEmployees();
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
-            Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
+            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
+            Bookings.loadBookings(dgvBookings);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
@@ -168,7 +166,7 @@ namespace Design370
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(MysqlConnection.reader);
-            empGrid.DataSource = table;
+            dgvEmployees.DataSource = table;
             MysqlConnection.mysqlCon.Close();
         }
 
@@ -199,7 +197,7 @@ namespace Design370
         private void button12_Click(object sender, EventArgs e)
         {
             Photoshoot_Package_Add photoshootPackageAdd = new Photoshoot_Package_Add();
-            photoshootPackageAdd.Show();
+            photoshootPackageAdd.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -208,7 +206,6 @@ namespace Design370
             Customer_View customerView = new Customer_View();
             switch (e.ColumnIndex)
             {
-                
                 case 1:
                     Customer_View.edit = false;
                     customerView.Show();
@@ -222,7 +219,8 @@ namespace Design370
                     if (delete == DialogResult.Yes)
                     {
                         //do shit
-                    } else
+                    }
+                    else
                     {
                         //dont do shit
                     }
@@ -241,15 +239,13 @@ namespace Design370
         private void button2_Click(object sender, EventArgs e)
         {
             Event_Types eventTypes = new Event_Types();
-            eventTypes.Show();
+            eventTypes.ShowDialog();
         }
 
         private void Button20_Click(object sender, EventArgs e)
         {
             Book_Event_Date bookDate = new Book_Event_Date();
             bookDate.Show();
-            //Booking_Dialog booking_Dialog = new Booking_Dialog();
-            //booking_Dialog.Show();
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -267,7 +263,7 @@ namespace Design370
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            Customer_Order_Add cOrder = new Customer_Order_Add();
+            NewCustomerOrder cOrder = new NewCustomerOrder();
             cOrder.ShowDialog();
         }
 
@@ -289,11 +285,11 @@ namespace Design370
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        
+
                     }
                     else
                     {
-                        
+
                     }
                     break;
                 default:
@@ -343,7 +339,7 @@ namespace Design370
             ServiceEdit.Text = "Edit";
             ServiceDelete.Text = "Delete";
             ServiceView.Text = "View";
-            
+
             switch (e.ColumnIndex)
             {
 
@@ -373,27 +369,36 @@ namespace Design370
 
         private void DataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string packageName;
             PhotoshootPackage_View photoshootPackage_View = new PhotoshootPackage_View();
             switch (e.ColumnIndex)
             {
 
                 case 4:
                     PhotoshootPackage_View.edit = false;
-                    photoshootPackage_View.Show();
+                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageName;
+                    photoshootPackage_View.ShowDialog();
                     break;
                 case 5:
                     PhotoshootPackage_View.edit = true;
-                    photoshootPackage_View.Show();
+                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageName;
+                    photoshootPackage_View.ShowDialog();
                     break;
                 case 6:
+                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Photoshoot.GetRowPhotoshoot = packageName;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dgvPhotoshootPackage.Rows.Clear();
+                        Photoshoot.DeletePhotoshoot(dgvPhotoshootPackage);
+                        Photoshoot.LoadDGV(dgvPhotoshootPackage);
                     }
                     else
                     {
-                        //dont do shit
+
                     }
                     break;
                 default:
@@ -406,7 +411,6 @@ namespace Design370
             Product_View product_View = new Product_View();
             switch (e.ColumnIndex)
             {
-
                 case 3:
                     Product_View.edit = false;
                     product_View.Show();
@@ -433,23 +437,31 @@ namespace Design370
 
         private void DataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string packageName;
             EventPackage_View eventPackage_View = new EventPackage_View();
             switch (e.ColumnIndex)
             {
-
-                case 3:
-                    EventPackage_View.edit = false;
-                    eventPackage_View.Show();
-                    break;
                 case 4:
-                    EventPackage_View.edit = true;
-                    eventPackage_View.Show();
+                    EventPackage_View.edit = false;
+                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    eventPackage_View.GetEventViewRow = packageName;
+                    eventPackage_View.ShowDialog();
                     break;
                 case 5:
+                    EventPackage_View.edit = true;
+                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    eventPackage_View.GetEventViewRow = packageName;
+                    eventPackage_View.ShowDialog();
+                    break;
+                case 6:
+                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Event.GetRowEvent = packageName;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dgvEventPackages.Rows.Clear();
+                        Event.DeleteEvent(dgvEventPackages);
+                        Event.LoadDGV(dgvEventPackages);
                     }
                     else
                     {
@@ -501,12 +513,12 @@ namespace Design370
         {
             MysqlConnection.mysqlCon.Open();
             string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +
-                "FROM employee WHERE employee_first LIKE '%"+txtSearch.Text+"%' OR employee_last LIKE '%"+txtSearch.Text+"%' OR employee_idnumber LIKE '%"+txtSearch.Text+"%'";
+                "FROM employee WHERE employee_first LIKE '%" + txtSearch.Text + "%' OR employee_last LIKE '%" + txtSearch.Text + "%' OR employee_idnumber LIKE '%" + txtSearch.Text + "%'";
             MysqlConnection.cmd = new MySqlCommand(employees, MysqlConnection.mysqlCon);
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(MysqlConnection.reader);
-            empGrid.DataSource = table;
+            dgvEmployees.DataSource = table;
             MysqlConnection.mysqlCon.Close();
         }
 
@@ -517,6 +529,41 @@ namespace Design370
         private void TabPage6_MouseClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void Main_Form_Activated_1(object sender, EventArgs e)
+        {
+            dgvPhotoshootPackage.Rows.Clear();
+            Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            dgvEventPackages.Rows.Clear();
+            Event.LoadDGV(dgvEventPackages);
+        }
+
+        private void TextBox9_TextChanged(object sender, EventArgs e)
+        {
+            Bookings.loadBookings(dgvBookings, txtBookingSearch.Text);
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            string packageName = txtPhotoshootPackageSearch.Text;
+            Photoshoot.GetRowPhotoshoot = packageName;
+            dgvPhotoshootPackage.Rows.Clear();
+            Photoshoot.SearchPhotoshootPackage(dgvPhotoshootPackage);
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            string packageName = txtEventPackageSearch.Text;
+            Event.GetRowEvent = packageName;
+            dgvEventPackages.Rows.Clear();
+            Event.SearchEventPackage(dgvEventPackages);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
+            photoshoot_Types.ShowDialog();
         }
     }
 }

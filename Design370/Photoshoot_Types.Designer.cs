@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class Event_Types
+    partial class Photoshoot_Types
     {
         /// <summary>
         /// Required designer variable.
@@ -47,7 +47,7 @@
             this.label14.Location = new System.Drawing.Point(19, 28);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 18);
-            this.label14.TabIndex = 64;
+            this.label14.TabIndex = 68;
             this.label14.Text = "Search:";
             // 
             // textBox7
@@ -56,7 +56,7 @@
             this.textBox7.Location = new System.Drawing.Point(82, 24);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(212, 26);
-            this.textBox7.TabIndex = 63;
+            this.textBox7.TabIndex = 67;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // button14
@@ -65,10 +65,10 @@
             this.button14.Location = new System.Drawing.Point(619, 22);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(158, 28);
-            this.button14.TabIndex = 62;
-            this.button14.Text = "Add Event Type";
+            this.button14.TabIndex = 66;
+            this.button14.Text = "Add Photoshoot Type";
             this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.Button14_Click_1);
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // dataGridView7
             // 
@@ -91,8 +91,8 @@
             this.dataGridView7.RowHeadersVisible = false;
             this.dataGridView7.RowTemplate.Height = 24;
             this.dataGridView7.Size = new System.Drawing.Size(754, 335);
-            this.dataGridView7.TabIndex = 61;
-            this.dataGridView7.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellContentClick);
+            this.dataGridView7.TabIndex = 65;
+            this.dataGridView7.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView7_CellContentClick);
             // 
             // EmpTypeName
             // 
@@ -100,7 +100,7 @@
             this.EmpTypeName.HeaderText = "Name";
             this.EmpTypeName.Name = "EmpTypeName";
             this.EmpTypeName.ReadOnly = true;
-            this.EmpTypeName.Width = 73;
+            this.EmpTypeName.Width = 60;
             // 
             // EmpTypeDescription
             // 
@@ -108,7 +108,7 @@
             this.EmpTypeDescription.HeaderText = "Description";
             this.EmpTypeDescription.Name = "EmpTypeDescription";
             this.EmpTypeDescription.ReadOnly = true;
-            this.EmpTypeDescription.Width = 109;
+            this.EmpTypeDescription.Width = 85;
             // 
             // EmpTypeView
             // 
@@ -130,21 +130,18 @@
             this.EmpTypeDelete.Name = "EmpTypeDelete";
             this.EmpTypeDelete.ReadOnly = true;
             // 
-            // Event_Types
+            // Photoshoot_Types
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 461);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.dataGridView7);
-            this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Event_Types";
-            this.Text = "Event Types";
-            this.Activated += new System.EventHandler(this.Event_Types_Activated);
-            this.Load += new System.EventHandler(this.Event_Types_Load);
+            this.Name = "Photoshoot_Types";
+            this.Text = "Photoshoot_Types";
+            this.Load += new System.EventHandler(this.Photoshoot_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -152,6 +149,7 @@
         }
 
         #endregion
+
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button14;

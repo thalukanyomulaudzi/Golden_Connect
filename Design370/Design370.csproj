@@ -138,6 +138,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bookings.cs" />
     <Compile Include="Booking_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +263,13 @@
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="MysqlConnection.cs" />
+    <Compile Include="NewCustomerOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCustomerOrder.Designer.cs">
+      <DependentUpon>NewCustomerOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs" />
     <Compile Include="Photoshoot Package_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +282,24 @@
     </Compile>
     <Compile Include="PhotoshootPackage_View.Designer.cs">
       <DependentUpon>PhotoshootPackage_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Photoshoot_Types.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Photoshoot_Types.Designer.cs">
+      <DependentUpon>Photoshoot_Types.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Photoshoot_Types_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Photoshoot_Types_View.Designer.cs">
+      <DependentUpon>Photoshoot_Types_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Photoshoot_Type_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Photoshoot_Type_Add.Designer.cs">
+      <DependentUpon>Photoshoot_Type_Add.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductList.cs">
       <SubType>Form</SubType>
@@ -446,11 +472,23 @@
     <EmbeddedResource Include="Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewCustomerOrder.resx">
+      <DependentUpon>NewCustomerOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot Package_Add.resx">
       <DependentUpon>Photoshoot Package_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PhotoshootPackage_View.resx">
       <DependentUpon>PhotoshootPackage_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Photoshoot_Types.resx">
+      <DependentUpon>Photoshoot_Types.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Photoshoot_Types_View.resx">
+      <DependentUpon>Photoshoot_Types_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Photoshoot_Type_Add.resx">
+      <DependentUpon>Photoshoot_Type_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductList.resx">
       <DependentUpon>ProductList.cs</DependentUpon>

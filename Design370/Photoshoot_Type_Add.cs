@@ -11,16 +11,11 @@ using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    public partial class Event_Types_Add : Form
+    public partial class Photoshoot_Type_Add : Form
     {
-        public Event_Types_Add()
+        public Photoshoot_Type_Add()
         {
             InitializeComponent();
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,7 +26,7 @@ namespace Design370
                 if (dBConnection.IsConnect())
                 {
                     string booking_type_id = " ";
-                    string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Event'";
+                    string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Photoshoot'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -39,7 +34,7 @@ namespace Design370
                         booking_type_id = reader.GetString(0);
                     }
                     reader.Close();
-                    query = "INSERT INTO `event_type` (`event_type_id`, `event_type_name`, `event_type_description`, `booking_type_id`) VALUES";
+                    query = "INSERT INTO `photoshoot_type` (`photoshoot_type_id`, `photoshoot_type_name`, `photoshoot_type_description`, `booking_type_id`) VALUES";
                     query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + booking_type_id + "')";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     command.ExecuteNonQuery();
@@ -53,14 +48,9 @@ namespace Design370
             this.Close();
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void Event_Types_Add_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
