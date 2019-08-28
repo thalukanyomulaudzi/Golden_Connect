@@ -19,7 +19,7 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox6, "Enter package name");
+            toolTip1.SetToolTip(txtPhotoshootPackageSearch, "Enter package name");
 
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
@@ -81,14 +81,15 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            loadEmployees();
+            //loadEmployees();
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
-            Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
+            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
+            Bookings.loadBookings(dgvBookings);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            loadSuppliers();
+            //loadSuppliers();
         }
 
         public void loadSuppliers()
@@ -125,7 +126,7 @@ namespace Design370
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(MysqlConnection.reader);
-            empGrid.DataSource = table;
+            dgvEmployees.DataSource = table;
             MysqlConnection.mysqlCon.Close();
         }
 
@@ -205,8 +206,6 @@ namespace Design370
         {
             Book_Event_Date bookDate = new Book_Event_Date();
             bookDate.Show();
-            //Booking_Dialog booking_Dialog = new Booking_Dialog();
-            //booking_Dialog.Show();
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -476,6 +475,7 @@ namespace Design370
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(MysqlConnection.reader);
+            dgvEmployees.DataSource = table;
             MysqlConnection.mysqlCon.Close();
         }
 
@@ -496,10 +496,15 @@ namespace Design370
             Event.LoadDGV(dataGridView7);
         }
 
+        private void TextBox9_TextChanged(object sender, EventArgs e)
+        {
+            Bookings.loadBookings(dgvBookings, txtBookingSearch.Text);
+        }
+
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
-            string packageName = textBox6.Text;
-            Photoshoot.GetRowPhotoshoot = packageName;
+            string packageName = txtPhotoshootPackageSearch.Text;
+            Photoshoot.GetRow1 = packageName;
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.SearchPhotoshootPackage(dgvPhotoshootPackage);
         }

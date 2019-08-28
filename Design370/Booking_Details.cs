@@ -19,15 +19,18 @@ namespace Design370
 
         private void Booking_Details_Load(object sender, EventArgs e)
         {
+            label8.Visible = cbxBookingAdditions.Checked;
+            label6.Visible = cbxBookingAdditions.Checked;
+
             Booking_Dialog bookingDialog = new Booking_Dialog();
             DialogResult result = bookingDialog.ShowDialog();
             if (result == DialogResult.Yes)
             {
-                textBox1.Text = "Event";
+                txtBookingLocation.Text = "Event";
             }
             if (result == DialogResult.No)
             {
-                textBox1.Text = "Photoshoot";
+                txtBookingLocation.Text = "Photoshoot";
             }
             if (result == DialogResult.Cancel)
             {
@@ -48,62 +51,22 @@ namespace Design370
 
         private void PictureBox1_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.BorderStyle == BorderStyle.None)
-            {
-                pictureBox1.BorderStyle = BorderStyle.Fixed3D;
-                pictureBox2.BorderStyle = BorderStyle.None;
-                pictureBox3.BorderStyle = BorderStyle.None;
-                pictureBox4.BorderStyle = BorderStyle.None;
-            }
-            else if (pictureBox1.BorderStyle == BorderStyle.Fixed3D)
-            {
-                pictureBox1.BorderStyle = BorderStyle.None;
-            }
+            
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
-            if (pictureBox2.BorderStyle == BorderStyle.None)
-            {
-                pictureBox1.BorderStyle = BorderStyle.None;
-                pictureBox2.BorderStyle = BorderStyle.Fixed3D;
-                pictureBox3.BorderStyle = BorderStyle.None;
-                pictureBox4.BorderStyle = BorderStyle.None;
-            }
-            else if (pictureBox2.BorderStyle == BorderStyle.Fixed3D)
-            {
-                pictureBox2.BorderStyle = BorderStyle.None;
-            }
+            
         }
 
         private void PictureBox3_Click(object sender, EventArgs e)
         {
-            if (pictureBox3.BorderStyle == BorderStyle.None)
-            {
-                pictureBox1.BorderStyle = BorderStyle.None;
-                pictureBox2.BorderStyle = BorderStyle.None;
-                pictureBox3.BorderStyle = BorderStyle.Fixed3D;
-                pictureBox4.BorderStyle = BorderStyle.None;
-            }
-            else if (pictureBox3.BorderStyle == BorderStyle.Fixed3D)
-            {
-                pictureBox3.BorderStyle = BorderStyle.None;
-            }
+            
         }
 
         private void PictureBox4_Click(object sender, EventArgs e)
         {
-            if (pictureBox4.BorderStyle == BorderStyle.None)
-            {
-                pictureBox1.BorderStyle = BorderStyle.None;
-                pictureBox2.BorderStyle = BorderStyle.None;
-                pictureBox3.BorderStyle = BorderStyle.None;
-                pictureBox4.BorderStyle = BorderStyle.Fixed3D;
-            }
-            else if (pictureBox4.BorderStyle == BorderStyle.Fixed3D)
-            {
-                pictureBox4.BorderStyle = BorderStyle.None;
-            }
+            
         }
 
         private void Booking_Details_FormClosing(object sender, FormClosingEventArgs e)
@@ -117,7 +80,7 @@ namespace Design370
             Booking_Dialog bookingDialog = new Booking_Dialog();
             DialogResult result = bookingDialog.ShowDialog();
 
-            textBox1.Text = result == DialogResult.Yes ? "Event" : "Photoshoot";
+            txtBookingLocation.Text = result == DialogResult.Yes ? "Event" : "Photoshoot";
         }
     }
 }

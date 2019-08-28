@@ -40,7 +40,10 @@
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,6 +62,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 
@@ -96,7 +100,7 @@
             this.dgvBookEvent.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBookEvent.Name = "dgvBookEvent";
             this.dgvBookEvent.RowTemplate.Height = 24;
-            this.dgvBookEvent.Size = new System.Drawing.Size(813, 356);
+            this.dgvBookEvent.Size = new System.Drawing.Size(800, 257);
             this.dgvBookEvent.TabIndex = 17;
             // 
             // Column1
@@ -148,11 +152,32 @@
             this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1061, 409);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Proceed";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(848, 146);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(288, 257);
+            this.dataGridView1.TabIndex = 19;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
+            // 
             // Book_Event_Date
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1069, 554);
+            this.ClientSize = new System.Drawing.Size(1180, 609);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvBookEvent);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker2);
@@ -162,6 +187,7 @@
             this.Text = "Book_Event_Date";
             this.Load += new System.EventHandler(this.Book_Event_Date_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +207,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
         private System.Windows.Forms.DataGridViewButtonColumn Column7;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
