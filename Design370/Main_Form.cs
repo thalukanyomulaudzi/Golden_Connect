@@ -349,6 +349,7 @@ namespace Design370
                     {
                         dgvPhotoshootPackage.Rows.Clear();
                         Photoshoot.DeletePhotoshoot(dgvPhotoshootPackage);
+                        Photoshoot.LoadDGV(dgvPhotoshootPackage);
                     }
                     else
                     {
@@ -408,10 +409,14 @@ namespace Design370
                     eventPackage_View.ShowDialog();
                     break;
                 case 6:
+                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Event.GetRowEvent = packageName;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dgvEventPackages.Rows.Clear();
+                        Event.DeleteEvent(dgvEventPackages);
+                        Event.LoadDGV(dgvEventPackages);
                     }
                     else
                     {
@@ -508,6 +513,12 @@ namespace Design370
             Event.GetRowEvent = packageName;
             dgvEventPackages.Rows.Clear();
             Event.SearchEventPackage(dgvEventPackages);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
+            photoshoot_Types.ShowDialog();
         }
     }
 }
