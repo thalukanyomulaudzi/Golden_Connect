@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class UpdateEmployee
+    partial class Employee_Update
     {
         /// <summary>
         /// Required designer variable.

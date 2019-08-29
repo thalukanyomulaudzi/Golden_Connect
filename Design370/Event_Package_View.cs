@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    public partial class EventPackage_View : Form
+    public partial class Event_Package_View : Form
     {
         public static bool edit;
 
@@ -19,7 +19,7 @@ namespace Design370
         List<string> Products = new List<string>();
         List<string> Services = new List<string>();
 
-        public EventPackage_View()
+        public Event_Package_View()
         {
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();

@@ -164,11 +164,11 @@
     <Compile Include="Booking_Date.Designer.cs">
       <DependentUpon>Booking_Date.cs</DependentUpon>
     </Compile>
-    <Compile Include="CapturePayment.cs">
+    <Compile Include="Customer_Order_Capture.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CapturePayment.Designer.cs">
-      <DependentUpon>CapturePayment.cs</DependentUpon>
+    <Compile Include="Customer_Order_Capture.Designer.cs">
+      <DependentUpon>Customer_Order_Capture.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer_Add.cs">
       <SubType>Form</SubType>
@@ -228,11 +228,11 @@
       <DependentUpon>Employee_View.cs</DependentUpon>
     </Compile>
     <Compile Include="Event.cs" />
-    <Compile Include="EventPackage_View.cs">
+    <Compile Include="Event_Package_View.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EventPackage_View.Designer.cs">
-      <DependentUpon>EventPackage_View.cs</DependentUpon>
+    <Compile Include="Event_Package_View.Designer.cs">
+      <DependentUpon>Event_Package_View.cs</DependentUpon>
     </Compile>
     <Compile Include="Event_Package_Add.cs">
       <SubType>Form</SubType>
@@ -421,11 +421,11 @@
     <Compile Include="Timeslot_Add.Designer.cs">
       <DependentUpon>Timeslot_Add.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateEmployee.cs">
+    <Compile Include="Employee_Update.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateEmployee.Designer.cs">
-      <DependentUpon>UpdateEmployee.cs</DependentUpon>
+    <Compile Include="Employee_Update.Designer.cs">
+      <DependentUpon>Employee_Update.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Booking_Customer.resx">
       <DependentUpon>Booking_Customer.cs</DependentUpon>
@@ -436,8 +436,8 @@
     <EmbeddedResource Include="Booking_Date.resx">
       <DependentUpon>Booking_Date.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CapturePayment.resx">
-      <DependentUpon>CapturePayment.cs</DependentUpon>
+    <EmbeddedResource Include="Customer_Order_Capture.resx">
+      <DependentUpon>Customer_Order_Capture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_Add.resx">
       <DependentUpon>Customer_Add.cs</DependentUpon>
@@ -466,8 +466,8 @@
     <EmbeddedResource Include="Employee_View.resx">
       <DependentUpon>Employee_View.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EventPackage_View.resx">
-      <DependentUpon>EventPackage_View.cs</DependentUpon>
+    <EmbeddedResource Include="Event_Package_View.resx">
+      <DependentUpon>Event_Package_View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Event_Package_Add.resx">
       <DependentUpon>Event_Package_Add.cs</DependentUpon>
@@ -569,8 +569,8 @@
     <EmbeddedResource Include="Timeslot_Add.resx">
       <DependentUpon>Timeslot_Add.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateEmployee.resx">
-      <DependentUpon>UpdateEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="Employee_Update.resx">
+      <DependentUpon>Employee_Update.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
