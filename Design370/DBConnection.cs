@@ -52,5 +52,10 @@ namespace Design370
             Connection.Close();
         }
 
+        public void Open()
+        {
+            Connection.Open();
+        }
+
     }
 }

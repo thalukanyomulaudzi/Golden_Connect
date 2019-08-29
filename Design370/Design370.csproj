@@ -133,6 +133,7 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -157,17 +158,17 @@
     <Compile Include="Booking_Details.Designer.cs">
       <DependentUpon>Booking_Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="Booking_Dialog.cs">
+    <Compile Include="Booking_Date.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Booking_Dialog.Designer.cs">
-      <DependentUpon>Booking_Dialog.cs</DependentUpon>
+    <Compile Include="Booking_Date.Designer.cs">
+      <DependentUpon>Booking_Date.cs</DependentUpon>
     </Compile>
-    <Compile Include="Book_Event_Date.cs">
+    <Compile Include="Customer_Order_Capture.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Book_Event_Date.Designer.cs">
-      <DependentUpon>Book_Event_Date.cs</DependentUpon>
+    <Compile Include="Customer_Order_Capture.Designer.cs">
+      <DependentUpon>Customer_Order_Capture.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer_Add.cs">
       <SubType>Form</SubType>
@@ -194,6 +195,7 @@
       <DependentUpon>Customer_View.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnection.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="Employee_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,11 +227,11 @@
       <DependentUpon>Employee_View.cs</DependentUpon>
     </Compile>
     <Compile Include="Event.cs" />
-    <Compile Include="EventPackage_View.cs">
+    <Compile Include="Event_Package_View.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EventPackage_View.Designer.cs">
-      <DependentUpon>EventPackage_View.cs</DependentUpon>
+    <Compile Include="Event_Package_View.Designer.cs">
+      <DependentUpon>Event_Package_View.cs</DependentUpon>
     </Compile>
     <Compile Include="Event_Package_Add.cs">
       <SubType>Form</SubType>
@@ -269,25 +271,31 @@
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="MysqlConnection.cs" />
-    <Compile Include="NewCustomerOrder.cs">
+    <Compile Include="Customer_Order_New.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewCustomerOrder.Designer.cs">
-      <DependentUpon>NewCustomerOrder.cs</DependentUpon>
+    <Compile Include="Customer_Order_New.Designer.cs">
+      <DependentUpon>Customer_Order_New.cs</DependentUpon>
     </Compile>
     <Compile Include="Order.cs" />
+    <Compile Include="OrderImages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderImages.Designer.cs">
+      <DependentUpon>OrderImages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Photoshoot Package_Add.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Photoshoot Package_Add.Designer.cs">
-      <DependentUpon>Photoshoot Package_Add.cs</DependentUpon>
+    <Compile Include="Photoshoot_Package_Add.Designer.cs">
+      <DependentUpon>Photoshoot_Package_Add.cs</DependentUpon>
     </Compile>
     <Compile Include="Photoshoot.cs" />
-    <Compile Include="PhotoshootPackage_View.cs">
+    <Compile Include="Photoshoot_Package_View.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PhotoshootPackage_View.Designer.cs">
-      <DependentUpon>PhotoshootPackage_View.cs</DependentUpon>
+    <Compile Include="Photoshoot_Package_View.Designer.cs">
+      <DependentUpon>Photoshoot_Package_View.cs</DependentUpon>
     </Compile>
     <Compile Include="Photoshoot_Types.cs">
       <SubType>Form</SubType>
@@ -307,11 +315,11 @@
     <Compile Include="Photoshoot_Type_Add.Designer.cs">
       <DependentUpon>Photoshoot_Type_Add.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductList.cs">
+    <Compile Include="Product_List.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductList.Designer.cs">
-      <DependentUpon>ProductList.cs</DependentUpon>
+    <Compile Include="Product_List.Designer.cs">
+      <DependentUpon>Product_List.cs</DependentUpon>
     </Compile>
     <Compile Include="Product_Add.cs">
       <SubType>Form</SubType>
@@ -381,11 +389,11 @@
     <Compile Include="Service_View.Designer.cs">
       <DependentUpon>Service_View.cs</DependentUpon>
     </Compile>
-    <Compile Include="SupplierList.cs">
+    <Compile Include="Supplier_List.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SupplierList.Designer.cs">
-      <DependentUpon>SupplierList.cs</DependentUpon>
+    <Compile Include="Supplier_List.Designer.cs">
+      <DependentUpon>Supplier_List.cs</DependentUpon>
     </Compile>
     <Compile Include="Supplier_Add.cs">
       <SubType>Form</SubType>
@@ -411,12 +419,18 @@
     <Compile Include="Supplier_View.Designer.cs">
       <DependentUpon>Supplier_View.cs</DependentUpon>
     </Compile>
-    <Compile Include="Timeslots.cs" />
+    <Compile Include="Timeslot.cs" />
     <Compile Include="Timeslot_Add.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Timeslot_Add.Designer.cs">
       <DependentUpon>Timeslot_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employee_Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employee_Update.Designer.cs">
+      <DependentUpon>Employee_Update.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Booking_Customer.resx">
       <DependentUpon>Booking_Customer.cs</DependentUpon>
@@ -424,11 +438,11 @@
     <EmbeddedResource Include="Booking_Details.resx">
       <DependentUpon>Booking_Details.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Booking_Dialog.resx">
-      <DependentUpon>Booking_Dialog.cs</DependentUpon>
+    <EmbeddedResource Include="Booking_Date.resx">
+      <DependentUpon>Booking_Date.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Book_Event_Date.resx">
-      <DependentUpon>Book_Event_Date.cs</DependentUpon>
+    <EmbeddedResource Include="Customer_Order_Capture.resx">
+      <DependentUpon>Customer_Order_Capture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_Add.resx">
       <DependentUpon>Customer_Add.cs</DependentUpon>
@@ -457,8 +471,8 @@
     <EmbeddedResource Include="Employee_View.resx">
       <DependentUpon>Employee_View.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EventPackage_View.resx">
-      <DependentUpon>EventPackage_View.cs</DependentUpon>
+    <EmbeddedResource Include="Event_Package_View.resx">
+      <DependentUpon>Event_Package_View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Event_Package_Add.resx">
       <DependentUpon>Event_Package_Add.cs</DependentUpon>
@@ -478,14 +492,17 @@
     <EmbeddedResource Include="Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewCustomerOrder.resx">
-      <DependentUpon>NewCustomerOrder.cs</DependentUpon>
+    <EmbeddedResource Include="Customer_Order_New.resx">
+      <DependentUpon>Customer_Order_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderImages.resx">
+      <DependentUpon>OrderImages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot Package_Add.resx">
       <DependentUpon>Photoshoot Package_Add.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PhotoshootPackage_View.resx">
-      <DependentUpon>PhotoshootPackage_View.cs</DependentUpon>
+    <EmbeddedResource Include="Photoshoot_Package_View.resx">
+      <DependentUpon>Photoshoot_Package_View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot_Types.resx">
       <DependentUpon>Photoshoot_Types.cs</DependentUpon>
@@ -496,8 +513,8 @@
     <EmbeddedResource Include="Photoshoot_Type_Add.resx">
       <DependentUpon>Photoshoot_Type_Add.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductList.resx">
-      <DependentUpon>ProductList.cs</DependentUpon>
+    <EmbeddedResource Include="Product_List.resx">
+      <DependentUpon>Product_List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product_Add.resx">
       <DependentUpon>Product_Add.cs</DependentUpon>
@@ -542,8 +559,8 @@
     <EmbeddedResource Include="Service_View.resx">
       <DependentUpon>Service_View.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SupplierList.resx">
-      <DependentUpon>SupplierList.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier_List.resx">
+      <DependentUpon>Supplier_List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier_Add.resx">
       <DependentUpon>Supplier_Add.cs</DependentUpon>
@@ -559,6 +576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Timeslot_Add.resx">
       <DependentUpon>Timeslot_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee_Update.resx">
+      <DependentUpon>Employee_Update.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

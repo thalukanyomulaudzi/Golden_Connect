@@ -70,7 +70,6 @@ namespace Design370
             int itemIndex, quantity = 0, i = 0;
             string itemString = " ";
             Services.Clear();
-            Products.Clear();
             foreach (var item in listBox3.Items)
             {
                 Services.Add(item.ToString());
@@ -103,7 +102,6 @@ namespace Design370
         {
             int itemIndex, quantity = 0, i = 0;
             string itemString = " ";
-            Services.Clear();
             Products.Clear();
             foreach (var item in listBox4.Items)
             {
@@ -275,7 +273,6 @@ namespace Design370
         {
             int itemIndex, quantity = 0;
             string itemString = " ";
-            Services.Clear();
             Products.Clear();
             foreach (var item in listBox4.Items)
             {
@@ -304,7 +301,6 @@ namespace Design370
             int itemIndex, quantity = 0;
             string itemString = " ";
             Services.Clear();
-            Products.Clear();
             foreach (var item in listBox3.Items)
             {
                 Services.Add(item.ToString());

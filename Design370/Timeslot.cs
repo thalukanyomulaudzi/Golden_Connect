@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    class Timeslots
+    class Timeslot
     {
 
         const short DaysInWeek = 7;
@@ -25,10 +25,10 @@ namespace Design370
                     var reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
-                        dBCon.Close();
+                        reader.Close();
                         return true;
                     }
-                    dBCon.Close();
+                    reader.Close();
                 }
                 return false;
             }
@@ -139,6 +139,7 @@ namespace Design370
                         dgv.Columns[j].HeaderText = headerDay.ToString("dddd, MMM dd yyyy");
                         headerDay = headerDay.AddDays(1);
                     }
+
                     for (i=8;i<10;i++)
                     {
                         query = "SELECT et.available FROM employee_timeslot et JOIN timeslot t ON et.timeslot_id = t.timeslot_id WHERE t.timeslot_date BETWEEN '" + 

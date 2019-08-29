@@ -11,10 +11,10 @@ using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    public partial class SupplierList : Form
+    public partial class Supplier_List : Form
     {
       
-        public SupplierList()
+        public Supplier_List()
         {
             InitializeComponent();
         }

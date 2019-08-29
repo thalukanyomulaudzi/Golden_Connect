@@ -1,20 +1,25 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    public partial class PhotoshootPackage_View : Form
+    public partial class Event_Package_View : Form
     {
         public static bool edit;
 
-        public string GetRow { get; set; }
+        public string GetEventViewRow { get; set; }
         List<string> Products = new List<string>();
         List<string> Services = new List<string>();
 
-        public PhotoshootPackage_View()
+        public Event_Package_View()
         {
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
@@ -25,7 +30,7 @@ namespace Design370
             toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
         }
 
-        private void PhotoshootPackage_View_Load(object sender, EventArgs e)
+        private void EventPackage_View_Load(object sender, EventArgs e)
         {
             textBox1.Enabled = edit;
             textBox2.Enabled = edit;
@@ -35,31 +40,34 @@ namespace Design370
             button2.Enabled = edit;
             button3.Enabled = edit;
             button4.Enabled = edit;
-            button5.Enabled = !edit;
 
-            int booking_package_id, typeID;
+            if (edit == true)
+            {
+                button5.Enabled = false;
+            }
+
+            int booking_package_id = 0;
+            int typeID = 0;
             try
             {
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
                     typeID = 0;
-                    string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Photoshoot';";
+                    string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Event';";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     reader.Read();
                     typeID = reader.GetInt32(0);
                     reader.Close();
-
-                    query = "SELECT booking_package_id, booking_package_description FROM booking_package WHERE booking_package_name = '" + GetRow + "'";
+                    query = "SELECT booking_package_id, booking_package_description FROM booking_package WHERE booking_package_name = '" + GetEventViewRow + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
                     reader.Read();
-                    booking_package_id = reader.GetInt32(0);
-                    textBox1.Text = GetRow;
+                    booking_package_id = Convert.ToInt32(reader.GetString(0));
+                    textBox1.Text = GetEventViewRow;
                     textBox2.Text = reader.GetString(1);
                     reader.Close();
-
                     query = "SELECT product_id, booking_package_product_quantity FROM booking_package_product WHERE booking_package_id = '" + booking_package_id + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
@@ -70,13 +78,16 @@ namespace Design370
                     Product.Load(reader);
                     for (int i = 0; i < Product.Rows.Count; i++)
                     {
+                        Product2 = new DataTable();
+                        Product3 = new DataTable();
                         query = "SELECT product_name, product_price FROM product WHERE product_id = '" + Product.Rows[i].ItemArray[0] + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         reader = command.ExecuteReader();
-                        Product2.Clear();
                         Product2.Load(reader);
                         for (int j = 0; j < Product2.Rows.Count; j++)
+                        {
                             listBox4.Items.Add(Product2.Rows[j].ItemArray[0] + ";  R" + Product2.Rows[j].ItemArray[1] + " - Qty: " + Product.Rows[i].ItemArray[1]);
+                        }
                     }
                     query = "SELECT product_id FROM product WHERE booking_type_id = '" + typeID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
@@ -84,7 +95,11 @@ namespace Design370
                     Product3.Load(reader);
                     for (int m = 0; m < Product3.Rows.Count; m++)
                     {
-                        if (!Product.Rows.Contains(Product3.Rows[m].ItemArray[0]))
+                        if (Product.Rows.Contains(Product3.Rows[m].ItemArray[0]))
+                        {
+
+                        }
+                        else
                         {
                             query = "SELECT product_name, product_price FROM product WHERE product_id = '" + Product3.Rows[m].ItemArray[0] + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
@@ -103,13 +118,15 @@ namespace Design370
                     Service.Load(reader);
                     for (int k = 0; k < Service.Rows.Count; k++)
                     {
+                        Service2 = new DataTable();
                         query = "SELECT service_name, service_price FROM service WHERE service_id = '" + Service.Rows[k].ItemArray[0] + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         reader = command.ExecuteReader();
-                        Service2.Clear();
                         Service2.Load(reader);
                         for (int l = 0; l < Service2.Rows.Count; l++)
+                        {
                             listBox3.Items.Add(Service2.Rows[l].ItemArray[0] + ";  R" + Service2.Rows[l].ItemArray[1] + " - Qty: " + 1);
+                        }
                     }
                     query = "SELECT service_id FROM service WHERE booking_type_id = '" + typeID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
@@ -117,7 +134,12 @@ namespace Design370
                     Service3.Load(reader);
                     for (int p = 0; p < Service3.Rows.Count; p++)
                     {
-                        if (!Service.Rows.Contains(Service3.Rows[p].ItemArray[0]))
+                        if (Service.Rows.Contains(Service3.Rows[p].ItemArray[0]))
+                        {
+
+                        }
+
+                        else
                         {
                             query = "SELECT service_name, service_price FROM service WHERE service_id = '" + Service3.Rows[p].ItemArray[0] + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
@@ -127,6 +149,7 @@ namespace Design370
                             reader.Close();
                         }
                     }
+
                 }
             }
             catch (Exception except)
@@ -149,7 +172,7 @@ namespace Design370
             button5.Enabled = false;
         }
 
-        private void PhotoshootPackage_View_FormClosing(object sender, FormClosingEventArgs e)
+        private void EventPackage_View_FormClosing(object sender, FormClosingEventArgs e)
         {
             
         }
@@ -197,7 +220,6 @@ namespace Design370
                     MessageBox.Show("No service and/or product selected");
                     return;
                 }
-
                 try
                 {
                     DBConnection dBConnection = DBConnection.Instance();
@@ -206,7 +228,7 @@ namespace Design370
                         int quantity = 0, itemIndex = 0, posid = 0, posquant = 0, booking_package_id = 0;
                         string itemString = " ";
                         string package_type = " ";
-                        string query = "SELECT booking_package_type_id FROM booking_package_type WHERE booking_package_type_name = 'Photoshoot'";
+                        string query = "SELECT booking_package_type_id FROM booking_package_type WHERE booking_package_type_name = 'Event'";
                         var command = new MySqlCommand(query, dBConnection.Connection);
                         var reader = command.ExecuteReader();
                         reader.Read();
@@ -285,7 +307,6 @@ namespace Design370
 
                 catch (Exception except)
                 {
-
                     MessageBox.Show(except.Message);
                 }
                 this.Close();
@@ -293,17 +314,11 @@ namespace Design370
             this.Close();
         }
 
-        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            int itemIndex, quantity = 0, i = 0;
+            int itemIndex, quantity = 0;
             string itemString = " ";
             Services.Clear();
-            Products.Clear();
             foreach (var item in listBox3.Items)
             {
                 Services.Add(item.ToString());
@@ -326,35 +341,11 @@ namespace Design370
             listBox3.Items.AddRange(Services.ToArray());
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            int itemIndex, quantity = 0, i = 0;
-            string itemString = " ";
-            Services.Clear();
-            Products.Clear();
-            foreach (var item in listBox4.Items)
-            {
-                Products.Add(item.ToString());
-            }
-            foreach (var item in listBox4.SelectedItems)
-            {
-                itemIndex = listBox4.Items.IndexOf(item);
-                itemString = listBox4.Items[itemIndex].ToString();
-                int pos = itemString.IndexOf(":");
-                quantity = Convert.ToInt32(itemString.Substring(pos + 1)) + 1;
-                itemString = itemString.Substring(0, pos);
-                Products[itemIndex] = itemString + ": " + quantity;
-            }
-            listBox4.Items.Clear();
-            listBox4.Items.AddRange(Products.ToArray());
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             int itemIndex, quantity = 0;
             string itemString = " ";
             Services.Clear();
-            Products.Clear();
             foreach (var item in listBox3.Items)
             {
                 Services.Add(item.ToString());
@@ -377,11 +368,32 @@ namespace Design370
             listBox3.Items.AddRange(Services.ToArray());
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int itemIndex, quantity = 0, i = 0;
+            string itemString = " ";
+            Products.Clear();
+            foreach (var item in listBox4.Items)
+            {
+                Products.Add(item.ToString());
+            }
+            foreach (var item in listBox4.SelectedItems)
+            {
+                itemIndex = listBox4.Items.IndexOf(item);
+                itemString = listBox4.Items[itemIndex].ToString();
+                int pos = itemString.IndexOf(":");
+                quantity = Convert.ToInt32(itemString.Substring(pos + 1)) + 1;
+                itemString = itemString.Substring(0, pos);
+                Products[itemIndex] = itemString + ": " + quantity;
+            }
+            listBox4.Items.Clear();
+            listBox4.Items.AddRange(Products.ToArray());
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             int itemIndex, quantity = 0;
             string itemString = " ";
-            Services.Clear();
             Products.Clear();
             foreach (var item in listBox4.Items)
             {

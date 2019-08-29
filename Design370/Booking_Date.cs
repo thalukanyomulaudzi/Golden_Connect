@@ -1,20 +1,20 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Globalization;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    public partial class Book_Event_Date : Form
+    public partial class Booking_Date : Form
     {
-        public Book_Event_Date()
+        public Booking_Date()
         {
             InitializeComponent();
         }
 
-        private void Book_Event_Date_Load(object sender, EventArgs e)
+        private void Booking_Date_Load(object sender, EventArgs e)
         {
-            Timeslots.loadTimeslots(dgvBookEvent, DateTime.Today);
+            Timeslot.loadTimeslots(dgvBookEvent, DateTime.Today);
         }
 
 
@@ -23,9 +23,9 @@ namespace Design370
             dgvBookEvent.Rows.Clear();
             TimeSpan span = (dateTimePicker1.Value.Subtract(DateTime.Now));
             if (span.TotalDays <= 2)
-                Timeslots.loadTimeslots(dgvBookEvent, DateTime.Now);
+                Timeslot.loadTimeslots(dgvBookEvent, DateTime.Now);
             else
-                Timeslots.loadTimeslots(dgvBookEvent, dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3)));
+                Timeslot.loadTimeslots(dgvBookEvent, dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3)));
         }
 
         private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -38,14 +38,13 @@ namespace Design370
             try
             {
                 DBConnection dBCon = DBConnection.Instance();
-
                 CultureInfo cultureInfo = CultureInfo.InvariantCulture;
                 DateTime dateTime;
                 dateTime = DateTime.ParseExact(dgvBookEvent.Columns[e.ColumnIndex].HeaderText, "dddd, MMM dd yyyy", cultureInfo);
                 dateTime = dateTime.AddHours(8 + dgvBookEvent.CurrentRow.Index);
                 //MessageBox.Show(dateTime.ToString());//shows the selected DateTime in a messagebox
                 dgvBookingEmployees.Rows.Clear();
-                string query = "SELECT e.employee_first, e.employee_last, et.available " +
+                string query = "SELECT e.employee_first, e.employee_last, et.available, e.employee_id " +
                     "FROM employee e " +
                     "JOIN employee_timeslot et ON e.employee_id = et.employee_id " +
                     "JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
@@ -55,7 +54,7 @@ namespace Design370
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    dgvBookingEmployees.Rows.Add(reader.GetString(0) + " " + reader.GetString(1), reader.GetBoolean(2).ToString());
+                    dgvBookingEmployees.Rows.Add(reader.GetString(0) + " " + reader.GetString(1), reader.GetBoolean(2).ToString(), reader.GetString(3));
                 }
                 reader.Close();
             }
@@ -75,28 +74,24 @@ namespace Design370
         }
         private void bookingDetails(string bookingType)
         {
-            Booking.bookingType = bookingType;
-            Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
-            Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
-
-
-
-            //DataGridViewTextBoxCell { ColumnIndex = 0, RowIndex = 0 }
-
+            try
+            {
+                Booking.bookingType = bookingType;
+                Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
+                Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                Booking.employeeID = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[2].Value.ToString();
+                Booking.time = dgvBookEvent.Rows[dgvBookEvent.CurrentRow.Index].HeaderCell.Value.ToString();
+                MessageBox.Show(Booking.time);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void Book_Event_Date_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = !checkSelected();
-        }
-        private bool checkSelected()
-        {
-            if (dgvBookingEmployees.SelectedCells.Count == 0 || dgvBookEvent.SelectedCells.Count == 0)
-            {
-                MessageBox.Show("Please select a timeslot and employee");
-                return false;
-            }
-            return true;
+
         }
     }
 }
