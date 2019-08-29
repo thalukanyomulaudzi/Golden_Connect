@@ -94,13 +94,13 @@ namespace Design370
             {
 
                 case 2:
-                    Event_Types_View.edit = false;
+                    Photoshoot_Types_View.edit = false;
                     photoshootTypeName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
                     photoshoot_Types_View.GetPhotoshootTypeViewRow = photoshootTypeName;
                     photoshoot_Types_View.ShowDialog();
                     break;
                 case 3:
-                    Event_Types_View.edit = true; photoshootTypeName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Photoshoot_Types_View.edit = true; photoshootTypeName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
                     photoshoot_Types_View.GetPhotoshootTypeViewRow = photoshootTypeName;
                     photoshoot_Types_View.ShowDialog();
                     break;
