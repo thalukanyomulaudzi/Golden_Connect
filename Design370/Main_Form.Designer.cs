@@ -255,7 +255,7 @@ namespace Design370
             this.lblCustomerSort.Location = new System.Drawing.Point(281, 15);
             this.lblCustomerSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCustomerSort.Name = "lblCustomerSort";
-            this.lblCustomerSort.Size = new System.Drawing.Size(57, 18);
+            this.lblCustomerSort.Size = new System.Drawing.Size(56, 18);
             this.lblCustomerSort.TabIndex = 7;
             this.lblCustomerSort.Text = "Sort by:";
             // 
@@ -399,7 +399,7 @@ namespace Design370
             this.label7.Location = new System.Drawing.Point(281, 15);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 18);
+            this.label7.Size = new System.Drawing.Size(56, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Sort by:";
             // 
@@ -500,7 +500,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -616,7 +616,7 @@ namespace Design370
             this.lblServiceSort.Location = new System.Drawing.Point(281, 15);
             this.lblServiceSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServiceSort.Name = "lblServiceSort";
-            this.lblServiceSort.Size = new System.Drawing.Size(57, 18);
+            this.lblServiceSort.Size = new System.Drawing.Size(56, 18);
             this.lblServiceSort.TabIndex = 14;
             this.lblServiceSort.Text = "Sort by:";
             // 
@@ -741,7 +741,7 @@ namespace Design370
             this.lblProductSort.Location = new System.Drawing.Point(281, 15);
             this.lblProductSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProductSort.Name = "lblProductSort";
-            this.lblProductSort.Size = new System.Drawing.Size(57, 18);
+            this.lblProductSort.Size = new System.Drawing.Size(56, 18);
             this.lblProductSort.TabIndex = 21;
             this.lblProductSort.Text = "Sort by:";
             // 
@@ -911,7 +911,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 122;
+            this.PhotoshootPackageName.Width = 132;
             // 
             // Services
             // 
@@ -959,6 +959,7 @@ namespace Design370
             this.btnPhotoshootTypes.TabIndex = 0;
             this.btnPhotoshootTypes.Text = "Photoshoot Types";
             this.btnPhotoshootTypes.UseVisualStyleBackColor = true;
+            this.btnPhotoshootTypes.Click += new System.EventHandler(this.btnPhotoshootTypes_Click);
             // 
             // tabPage7
             // 
@@ -1053,7 +1054,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 122;
+            this.EventPackageName.Width = 132;
             // 
             // ServicesEvents
             // 
@@ -1163,7 +1164,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 18);
+            this.label15.Size = new System.Drawing.Size(56, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Sort by:";
             // 
@@ -1417,7 +1418,7 @@ namespace Design370
             this.label19.Location = new System.Drawing.Point(281, 15);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 18);
+            this.label19.Size = new System.Drawing.Size(56, 18);
             this.label19.TabIndex = 51;
             this.label19.Text = "Sort by:";
             // 

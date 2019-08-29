@@ -110,32 +110,7 @@ namespace Design370
 
         private void Event_Types_Load(object sender, EventArgs e)
         {
-            try
-            {
-                DBConnection dBConnection = DBConnection.Instance();
-                if (dBConnection.IsConnect())
-                {
-                    string eventTypeName = " ";
-                    string eventTypeDescription = " ";
-                    DataTable EventTypes = new DataTable();
-                    string query = "SELECT event_type_name, event_type_description FROM event_type";
-                    var command = new MySqlCommand(query, dBConnection.Connection);
-                    var reader = command.ExecuteReader();
-                    EventTypes.Load(reader);
-                    for (int i = 0; i < EventTypes.Rows.Count; i++)
-                    {
-                        eventTypeName = EventTypes.Rows[i].ItemArray[0].ToString();
-                        eventTypeDescription = EventTypes.Rows[i].ItemArray[1].ToString();
-                        dataGridView7.Rows.Add(eventTypeName, eventTypeDescription, "View", "Edit", "Delete");
-                    }
-                    reader.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-
-            }
+            
         }
 
         private void Event_Types_Activated(object sender, EventArgs e)

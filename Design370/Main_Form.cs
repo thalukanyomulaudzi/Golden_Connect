@@ -565,5 +565,11 @@ namespace Design370
             Photoshoot_Package_Add photoshootPackageAdd = new Photoshoot_Package_Add();
             photoshootPackageAdd.ShowDialog();
         }
+
+        private void btnPhotoshootTypes_Click(object sender, EventArgs e)
+        {
+            Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
+            photoshoot_Types.ShowDialog();
+        }
     }
 }
