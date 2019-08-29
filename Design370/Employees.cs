@@ -6,6 +6,30 @@ namespace Design370
     class Employees
     {
         public static DBConnection dbCon = DBConnection.Instance();
+        public static string EmployeeID { get; set; }
+
+        public static bool deleteEmployee()
+        {
+            try
+            {
+
+                DBConnection dB = DBConnection.Instance();
+                if (dB.IsConnect())
+                {
+                    string deleteEmp = "DELETE FROM `employee` WHERE `employee_idnumber` = '" + EmployeeID + "'";
+                    var command = new MySqlCommand(deleteEmp, dB.Connection);
+                    command.ExecuteReader();
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return false;
+            }
+        }
         public Employees()
         {
 
@@ -15,18 +39,7 @@ namespace Design370
         {
             try
             {
-                dgvEmp.ColumnCount = 8;
-                dgvEmp.Columns[3].Name = "First Name";
-                dgvEmp.Columns[3].Width = 190;
-                dgvEmp.Columns[4].Name = "Last Name";
-                dgvEmp.Columns[4].Width = 190;
-                dgvEmp.Columns[5].Name = "ID Number";
-                dgvEmp.Columns[5].Width = 187;
-                dgvEmp.Columns[6].Name = "Telephone";
-                dgvEmp.Columns[6].Width = 150;
-                dgvEmp.Columns[7].Name = "Email Address";
-                dgvEmp.Columns[7].Width = 230;
-                dgvEmp.ReadOnly = true;
+                setColumns(dgvEmp);
                 if (dbCon.IsConnect())
                 {
                     string loadEmp = "SELECT * FROM `employee`";
@@ -49,18 +62,7 @@ namespace Design370
         {
             try
             {
-                dgvEmp.ColumnCount = 8;
-                dgvEmp.Columns[3].Name = "First Name";
-                dgvEmp.Columns[3].Width = 190;
-                dgvEmp.Columns[4].Name = "Last Name";
-                dgvEmp.Columns[4].Width = 190;
-                dgvEmp.Columns[5].Name = "ID Number";
-                dgvEmp.Columns[5].Width = 187;
-                dgvEmp.Columns[6].Name = "Telephone";
-                dgvEmp.Columns[6].Width = 150;
-                dgvEmp.Columns[7].Name = "Email Address";
-                dgvEmp.Columns[7].Width = 230;
-                dgvEmp.ReadOnly = true;
+                setColumns(dgvEmp);
                 if (dbCon.IsConnect())
                 {
                     string loadEmp = "SELECT * FROM `employee` WHERE `employee_idnumber` LIKE @ID OR `employee_first` LIKE @FIRST OR `employee_last` LIKE @LAST OR `employee_email` LIKE @MAIL";
@@ -89,18 +91,7 @@ namespace Design370
             id = getEmpType(sort);
             try
             {
-                dgvEmp.ColumnCount = 8;
-                dgvEmp.Columns[3].Name = "First Name";
-                dgvEmp.Columns[3].Width = 190;
-                dgvEmp.Columns[4].Name = "Last Name";
-                dgvEmp.Columns[4].Width = 190;
-                dgvEmp.Columns[5].Name = "ID Number";
-                dgvEmp.Columns[5].Width = 187;
-                dgvEmp.Columns[6].Name = "Telephone";
-                dgvEmp.Columns[6].Width = 150;
-                dgvEmp.Columns[7].Name = "Email Address";
-                dgvEmp.Columns[7].Width = 230;
-                dgvEmp.ReadOnly = true;
+                setColumns(dgvEmp);
                 if (dbCon.IsConnect())
                 {
                     string loadEmp = "SELECT * FROM `employee` WHERE `employee_type` = '" + id + "'";
@@ -190,6 +181,21 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
+        }
+        private static void setColumns(System.Windows.Forms.DataGridView dgv)
+        {
+            dgv.ColumnCount = 8;
+            dgv.Columns[3].Name = "First Name";
+            dgv.Columns[3].Width = 190;
+            dgv.Columns[4].Name = "Last Name";
+            dgv.Columns[4].Width = 190;
+            dgv.Columns[5].Name = "ID Number";
+            dgv.Columns[5].Width = 187;
+            dgv.Columns[6].Name = "Telephone";
+            dgv.Columns[6].Width = 150;
+            dgv.Columns[7].Name = "Email Address";
+            dgv.Columns[7].Width = 230;
+            dgv.ReadOnly = true;
         }
 
 

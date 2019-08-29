@@ -1257,9 +1257,9 @@ namespace Design370
             this.lblBookingSearch.Location = new System.Drawing.Point(8, 16);
             this.lblBookingSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBookingSearch.Name = "lblBookingSearch";
-            this.lblBookingSearch.Size = new System.Drawing.Size(213, 18);
+            this.lblBookingSearch.Size = new System.Drawing.Size(54, 18);
             this.lblBookingSearch.TabIndex = 50;
-            this.lblBookingSearch.Text = "Search by customer last name:";
+            this.lblBookingSearch.Text = "Search";
             // 
             // txtBookingSearch
             // 
@@ -1281,6 +1281,7 @@ namespace Design370
             this.btnBookingCapture.TabIndex = 48;
             this.btnBookingCapture.Text = "Capture Payment";
             this.btnBookingCapture.UseVisualStyleBackColor = true;
+            this.btnBookingCapture.Click += new System.EventHandler(this.BtnBookingCapture_Click);
             // 
             // tabPage10
             // 

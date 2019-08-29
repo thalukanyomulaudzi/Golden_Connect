@@ -247,20 +247,20 @@ namespace Design370
 
                 case 0:
                     Employee_Update.edit = false;
-                    Employee_Update.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    Employee_Update.employeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                     employeeView.btnSaveEmpEdit.Visible = false;
                     employeeView.ShowDialog();
                     break;
                 case 1:
                     Employee_Update.edit = true;
-                    Employee_Update.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    Employee_Update.employeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                     employeeView.ShowDialog();
                     break;
                 case 2:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        Employee.employeeID = Convert.ToInt16(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                        Employee.EmployeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                         if (Employee.deleteEmployee())
                         {
                             MessageBox.Show("Employee Successfully Deleted", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -546,6 +546,11 @@ namespace Design370
         {
             empGrid.Rows.Clear();
             Employees.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
+        }
+
+        private void BtnBookingCapture_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
