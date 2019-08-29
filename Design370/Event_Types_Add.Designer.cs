@@ -46,6 +46,7 @@
             this.button2.TabIndex = 44;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -57,12 +58,14 @@
             this.button1.TabIndex = 43;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(30, 97);
             this.textBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.textBox2.MaxLength = 200;
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(198, 162);
@@ -84,6 +87,7 @@
             this.textBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(30, 40);
             this.textBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.textBox1.MaxLength = 25;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(198, 21);
             this.textBox1.TabIndex = 40;
@@ -112,6 +116,8 @@
             this.Controls.Add(this.label1);
             this.Name = "Event_Types_Add";
             this.Text = "Add Event Type";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Event_Types_Add_FormClosing);
+            this.Load += new System.EventHandler(this.Event_Types_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

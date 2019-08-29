@@ -136,14 +136,14 @@ namespace Design370
                     DateTime headerDay = day;
                     for (int j = 0; j < DaysInWeek ; j++)
                     {
-                        dgv.Columns[j].HeaderText = headerDay.ToString("dddd, MMM dd \"'\"yy");
+                        dgv.Columns[j].HeaderText = headerDay.ToString("dddd, MMM dd yyyy");
                         headerDay = headerDay.AddDays(1);
                     }
 
                     for (i=8;i<10;i++)
                     {
-                        query = "SELECT a.available FROM employee_timeslot a JOIN timeslot b ON a.timeslot_id = b.timeslot_id WHERE b.timeslot_date BETWEEN '"
-                                    + day.ToString("yyyy'-'MM'-'dd") + "' AND '" + day.AddDays(DaysInWeek).ToString("yyyy'-'MM'-'dd") + "' AND timeslot_start = '0" + i + ":00:00'";
+                        query = "SELECT et.available FROM employee_timeslot et JOIN timeslot t ON et.timeslot_id = t.timeslot_id WHERE t.timeslot_date BETWEEN '" + 
+                            day.ToString("yyyy'-'MM'-'dd") + "' AND '" + day.AddDays(DaysInWeek).ToString("yyyy'-'MM'-'dd") + "' AND t.timeslot_start = '0" + i + ":00:00'";
                         command = new MySqlCommand(query, dBCon.Connection);
                         reader = command.ExecuteReader();
                         while (reader.Read())
@@ -157,8 +157,8 @@ namespace Design370
                     }
                     for (i = 10; i < 16; i++)
                     {
-                        query = "SELECT a.available FROM employee_timeslot a JOIN timeslot b ON a.timeslot_id = b.timeslot_id WHERE b.timeslot_date BETWEEN '"
-                                    + day.ToString("yyyy'-'MM'-'dd") + "' AND '" + day.AddDays(DaysInWeek).ToString("yyyy'-'MM'-'dd") + "' AND timeslot_start = '" + i + ":00:00'";
+                        query = "SELECT a.available FROM employee_timeslot a JOIN timeslot b ON a.timeslot_id = b.timeslot_id WHERE b.timeslot_date BETWEEN '" +
+                                    day.ToString("yyyy'-'MM'-'dd") + "' AND '" + day.AddDays(DaysInWeek).ToString("yyyy'-'MM'-'dd") + "' AND timeslot_start = '" + i + ":00:00'";
                         command = new MySqlCommand(query, dBCon.Connection);
                         reader = command.ExecuteReader();
                         while (reader.Read())
@@ -193,7 +193,7 @@ namespace Design370
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
         }
-        public static void removeDuplicates()//
+        public static void removeDuplicates()//outdated function
         {
             try
             {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -16,15 +17,19 @@ namespace Design370
         public Product_View()
         {
             InitializeComponent();
+
         }
 
         private void Product_View_Load(object sender, EventArgs e)
         {
+
             textBox1.Enabled = edit;
             textBox2.Enabled = edit;
             textBox3.Enabled = edit;
             comboBox1.Enabled = edit;
             button3.Enabled = edit;
+
+
         }
 
         private void Button2_Click(object sender, EventArgs e)

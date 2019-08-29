@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -22,9 +17,86 @@ namespace Design370
             Timeslots.loadTimeslots(dgvBookEvent, DateTime.Today);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dgvBookEvent.Rows.Clear();
+            TimeSpan span = (dateTimePicker1.Value.Subtract(DateTime.Now));
+            if (span.TotalDays <= 2)
+                Timeslots.loadTimeslots(dgvBookEvent, DateTime.Now);
+            else
+                Timeslots.loadTimeslots(dgvBookEvent, dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3)));
+        }
+
+        private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void DgvBookEvent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DBConnection dBCon = DBConnection.Instance();
+
+                CultureInfo cultureInfo = CultureInfo.InvariantCulture;
+                DateTime dateTime;
+                dateTime = DateTime.ParseExact(dgvBookEvent.Columns[e.ColumnIndex].HeaderText, "dddd, MMM dd yyyy", cultureInfo);
+                dateTime = dateTime.AddHours(8 + dgvBookEvent.CurrentRow.Index);
+                //MessageBox.Show(dateTime.ToString());//shows the selected DateTime in a messagebox
+                dgvBookingEmployees.Rows.Clear();
+                string query = "SELECT e.employee_first, e.employee_last, et.available " +
+                    "FROM employee e " +
+                    "JOIN employee_timeslot et ON e.employee_id = et.employee_id " +
+                    "JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
+                    "WHERE t.timeslot_date = '" + dateTime.ToString("yyyy'-'MM'-'dd") + "' AND t.timeslot_start = '" + dateTime.ToString("HH:mm:ss") + "'";
+
+                var command = new MySqlCommand(query, dBCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    dgvBookingEmployees.Rows.Add(reader.GetString(0) + " " + reader.GetString(1), reader.GetBoolean(2).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            bookingDetails("Event");
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            bookingDetails("Photoshoot");
+        }
+        private void bookingDetails(string bookingType)
+        {
+            Booking.bookingType = bookingType;
+            Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
+            Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+
+
+
+            //DataGridViewTextBoxCell { ColumnIndex = 0, RowIndex = 0 }
+
+        }
+
+        private void Book_Event_Date_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !checkSelected();
+        }
+        private bool checkSelected()
+        {
+            if (dgvBookingEmployees.SelectedCells.Count == 0 || dgvBookEvent.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("Please select a timeslot and employee");
+                return false;
+            }
+            return true;
         }
     }
 }

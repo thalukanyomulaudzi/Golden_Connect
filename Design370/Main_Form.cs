@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -17,6 +12,8 @@ namespace Design370
         public Main_Form()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip { ShowAlways = true };
+            toolTip1.SetToolTip(txtPhotoshootPackageSearch, "Enter package name");
 
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
@@ -51,18 +48,18 @@ namespace Design370
             }
 
             // Draw string. Center the text.
-            StringFormat _stringFlags = new StringFormat();
-
-            _stringFlags.Alignment = StringAlignment.Center;
-
-            _stringFlags.LineAlignment = StringAlignment.Center;
+            StringFormat _stringFlags = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
 
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Customer_Add customerAdd= new Customer_Add();
+            Customer_Add customerAdd = new Customer_Add();
             customerAdd.Show();
         }
 
@@ -86,7 +83,11 @@ namespace Design370
             Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
+            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
+            Booking.loadBookings(dgvBookings);
+            Photoshoot.LoadDGV(dgvPhotoshootPackage);
             loadSuppliers();
+            loadProducts();
         }
 
         public void loadSuppliers()
@@ -95,7 +96,7 @@ namespace Design370
             {
                 MysqlConnection.mysqlCon.Open();
 
-                string sql = "SELECT supplier_id, supplier_name,supplier_email, supplier_phone, supplier_location_address FROM supplier";
+                string sql = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.suppleir_type_name FROM supplier INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                 DataTable dtb1 = new DataTable();
                 adapter.Fill(dtb1);
@@ -106,13 +107,54 @@ namespace Design370
                 //}
                 dataGridView10.AutoGenerateColumns = false;
                 dataGridView10.DataSource = dtb1;
+
+                //DataGridViewButtonCell b = new DataGridViewButtonCell();
+                //int rowIndex = MainTable.Rows.Add(b);
+                //MainTable.Rows[rowIndex].Cells[0].Value = "name";
             }
         }
+
+        public void loadServices()
+        {
+            using (MysqlConnection.mysqlCon)
+            {
+                using (MysqlConnection.mysqlCon)
+                {
+                    MysqlConnection.mysqlCon.Open();
+
+                    string sql = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
+                    DataTable dtb1 = new DataTable();
+                    adapter.Fill(dtb1);
+                    dgvServices.AutoGenerateColumns = false;
+                    dgvServices.DataSource = dtb1;
+                }
+            }
+        }
+
+        public void loadProducts()
+        {
+            using (MysqlConnection.mysqlCon)
+            {
+                using (MysqlConnection.mysqlCon)
+                {
+                    MysqlConnection.mysqlCon.Open();
+
+                    string sql = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
+                    DataTable dtb1 = new DataTable();
+                    adapter.Fill(dtb1);
+                    dgvServices.AutoGenerateColumns = false;
+                    dgvServices.DataSource = dtb1;
+                }
+            }
+        }
+
         private bool connectDB()
         {
             dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
-        }
+        } 
 
         //public void loadEmployees()
         //{
@@ -163,7 +205,6 @@ namespace Design370
             Customer_View customerView = new Customer_View();
             switch (e.ColumnIndex)
             {
-                
                 case 1:
                     Customer_View.edit = false;
                     customerView.Show();
@@ -177,7 +218,8 @@ namespace Design370
                     if (delete == DialogResult.Yes)
                     {
                         //do shit
-                    } else
+                    }
+                    else
                     {
                         //dont do shit
                     }
@@ -196,22 +238,24 @@ namespace Design370
         private void button2_Click(object sender, EventArgs e)
         {
             Event_Types eventTypes = new Event_Types();
-            eventTypes.Show();
+            eventTypes.ShowDialog();
         }
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            Book_Event_Date bookDate = new Book_Event_Date();
-            bookDate.Show();
-            //Booking_Dialog booking_Dialog = new Booking_Dialog();
-            //booking_Dialog.Show();
+            Booking_Details details = new Booking_Details();
+            details.ShowDialog();
+
+
+
+
+            
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
             e.Cancel = exit == DialogResult.Yes ? false : true;
-            dbCon.Close();
         }
 
         private void Button8_Click(object sender, EventArgs e)
@@ -310,7 +354,7 @@ namespace Design370
             ServiceEdit.Text = "Edit";
             ServiceDelete.Text = "Delete";
             ServiceView.Text = "View";
-            
+
             switch (e.ColumnIndex)
             {
 
@@ -358,14 +402,18 @@ namespace Design370
                     photoshootPackage_View.ShowDialog();
                     break;
                 case 6:
+                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Photoshoot.GetRowPhotoshoot = packageName;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dgvPhotoshootPackage.Rows.Clear();
+                        Photoshoot.DeletePhotoshoot(dgvPhotoshootPackage);
+                        Photoshoot.LoadDGV(dgvPhotoshootPackage);
                     }
                     else
                     {
-                        //dont do shit
+
                     }
                     break;
                 default:
@@ -378,7 +426,6 @@ namespace Design370
             Product_View product_View = new Product_View();
             switch (e.ColumnIndex)
             {
-
                 case 3:
                     Product_View.edit = false;
                     product_View.Show();
@@ -405,23 +452,31 @@ namespace Design370
 
         private void DataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string packageName;
             EventPackage_View eventPackage_View = new EventPackage_View();
             switch (e.ColumnIndex)
             {
-
-                case 3:
-                    EventPackage_View.edit = false;
-                    eventPackage_View.Show();
-                    break;
                 case 4:
-                    EventPackage_View.edit = true;
-                    eventPackage_View.Show();
+                    EventPackage_View.edit = false;
+                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    eventPackage_View.GetEventViewRow = packageName;
+                    eventPackage_View.ShowDialog();
                     break;
                 case 5:
+                    EventPackage_View.edit = true;
+                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    eventPackage_View.GetEventViewRow = packageName;
+                    eventPackage_View.ShowDialog();
+                    break;
+                case 6:
+                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Event.GetRowEvent = packageName;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dgvEventPackages.Rows.Clear();
+                        Event.DeleteEvent(dgvEventPackages);
+                        Event.LoadDGV(dgvEventPackages);
                     }
                     else
                     {
@@ -440,15 +495,15 @@ namespace Design370
             switch (e.ColumnIndex)
             {
 
-                case 2:
+                case 4:
                     Supplier_View.edit = false;
                     supplier_View.Show();
                     break;
-                case 3:
+                case 5:
                     Supplier_View.edit = true;
                     supplier_View.Show();
                     break;
-                case 4:
+                case 6:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
@@ -484,24 +539,44 @@ namespace Design370
 
         }
 
-        private void Main_Form_Activated(object sender, EventArgs e)
+        private void Main_Form_Activated_1(object sender, EventArgs e)
         {
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            empGrid.Rows.Clear();
-            Employees.LoadEmployees(empGrid);
+            dgvEventPackages.Rows.Clear();
+            Event.LoadDGV(dgvEventPackages);
         }
 
-        private void DgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void TextBox9_TextChanged(object sender, EventArgs e)
+        {
+            Booking.loadBookings(dgvBookings, txtBookingSearch.Text);
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            string packageName = txtPhotoshootPackageSearch.Text;
+            Photoshoot.GetRowPhotoshoot = packageName;
+            dgvPhotoshootPackage.Rows.Clear();
+            Photoshoot.SearchPhotoshootPackage(dgvPhotoshootPackage);
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            string packageName = txtEventPackageSearch.Text;
+            Event.GetRowEvent = packageName;
+            dgvEventPackages.Rows.Clear();
+            Event.SearchEventPackage(dgvEventPackages);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
         {
             
-  
         }
 
-        private void ComboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void button10_Click_1(object sender, EventArgs e)
         {
-            empGrid.Rows.Clear();
-            Employees.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
+            Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
+            photoshoot_Types.ShowDialog();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class Event_Types
+    partial class Photoshoot_Types
     {
         /// <summary>
         /// Required designer variable.
@@ -45,30 +45,33 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(19, 28);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 18);
-            this.label14.TabIndex = 64;
+            this.label14.TabIndex = 68;
             this.label14.Text = "Search:";
             // 
             // textBox7
             // 
             this.textBox7.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(82, 24);
+            this.textBox7.Location = new System.Drawing.Point(83, 24);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(212, 26);
-            this.textBox7.TabIndex = 63;
+            this.textBox7.Size = new System.Drawing.Size(211, 26);
+            this.textBox7.TabIndex = 67;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(619, 22);
+            this.button14.Location = new System.Drawing.Point(565, 22);
+            this.button14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(158, 28);
-            this.button14.TabIndex = 62;
-            this.button14.Text = "Add Event Type";
+            this.button14.Size = new System.Drawing.Size(211, 28);
+            this.button14.TabIndex = 66;
+            this.button14.Text = "Add Photoshoot Type";
             this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.Button14_Click_1);
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // dataGridView7
             // 
@@ -86,13 +89,14 @@
             this.EmpTypeEdit,
             this.EmpTypeDelete});
             this.dataGridView7.Location = new System.Drawing.Point(22, 73);
+            this.dataGridView7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.ReadOnly = true;
             this.dataGridView7.RowHeadersVisible = false;
             this.dataGridView7.RowTemplate.Height = 24;
             this.dataGridView7.Size = new System.Drawing.Size(754, 335);
-            this.dataGridView7.TabIndex = 61;
-            this.dataGridView7.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellContentClick);
+            this.dataGridView7.TabIndex = 65;
+            this.dataGridView7.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView7_CellContentClick);
             // 
             // EmpTypeName
             // 
@@ -130,21 +134,20 @@
             this.EmpTypeDelete.Name = "EmpTypeDelete";
             this.EmpTypeDelete.ReadOnly = true;
             // 
-            // Event_Types
+            // Photoshoot_Types
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 461);
+            this.ClientSize = new System.Drawing.Size(803, 455);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.dataGridView7);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Event_Types";
-            this.Text = "Event Types";
-            this.Activated += new System.EventHandler(this.Event_Types_Activated);
-            this.Load += new System.EventHandler(this.Event_Types_Load);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "Photoshoot_Types";
+            this.Text = "Photoshoot_Types";
+            this.Load += new System.EventHandler(this.Photoshoot_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -152,6 +155,7 @@
         }
 
         #endregion
+
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button14;
