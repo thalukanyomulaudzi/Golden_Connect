@@ -50,7 +50,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dtmBookingDate = new System.Windows.Forms.DateTimePicker();
             this.btnBookingChangeCustomer = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBookingChangeDateEmployee = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtBookingEmployee = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).BeginInit();
@@ -186,6 +186,7 @@
             this.cmbBookingPackage.Name = "cmbBookingPackage";
             this.cmbBookingPackage.Size = new System.Drawing.Size(259, 26);
             this.cmbBookingPackage.TabIndex = 26;
+            this.cmbBookingPackage.SelectedIndexChanged += new System.EventHandler(this.CmbBookingPackage_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -278,7 +279,7 @@
             this.btnBookingChangeCustomer.UseVisualStyleBackColor = true;
             this.btnBookingChangeCustomer.Click += new System.EventHandler(this.BtnBookingChangeCustomer_Click);
             // 
-            // button1
+            // btnBookingChangeDateEmployee
             // 
             this.button1.Location = new System.Drawing.Point(464, 54);
             this.button1.Name = "button1";
@@ -313,7 +314,7 @@
             this.ClientSize = new System.Drawing.Size(544, 795);
             this.Controls.Add(this.txtBookingEmployee);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBookingChangeDateEmployee);
             this.Controls.Add(this.btnBookingChangeCustomer);
             this.Controls.Add(this.dtmBookingDate);
             this.Controls.Add(this.label9);
@@ -372,7 +373,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dtmBookingDate;
         private System.Windows.Forms.Button btnBookingChangeCustomer;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBookingChangeDateEmployee;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtBookingEmployee;
     }

@@ -75,6 +75,14 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
+            Employees.LoadEmployeeTypes(cbxSort);
+            Employees.LoadEmployees(empGrid);
+            //testConnection(); //this throws out all customer names and surnames, only use during development
+            //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
+            //Timeslots.linkTimeslots();
+            Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
+            //Timeslots.removeDuplicates();
+            //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
@@ -148,18 +156,18 @@ namespace Design370
             return (dbCon.IsConnect());
         } 
 
-        public void loadEmployees()
-        {
-            MysqlConnection.mysqlCon.Open();
-            string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +
-                "FROM employee";
-            MysqlConnection.cmd = new MySqlCommand(employees, MysqlConnection.mysqlCon);
-            MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
-            DataTable table = new DataTable();
-            table.Load(MysqlConnection.reader);
-            dgvEmployees.DataSource = table;
-            MysqlConnection.mysqlCon.Close();
-        }
+        //public void loadEmployees()
+        //{
+        //    MysqlConnection.mysqlCon.Open();
+        //    string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +
+        //        "FROM employee";
+        //    MysqlConnection.cmd = new MySqlCommand(employees, MysqlConnection.mysqlCon);
+        //    MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
+        //    DataTable table = new DataTable();
+        //    table.Load(MysqlConnection.reader);
+        //    empGrid.DataSource = table;
+        //    MysqlConnection.mysqlCon.Close();
+        //}
 
         private void testConnection()//only in use during dev stage for example code
         {
@@ -264,23 +272,35 @@ namespace Design370
 
         private void DataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Employee_View employeeView = new Employee_View();
+            UpdateEmployee employeeView = new UpdateEmployee();
             switch (e.ColumnIndex)
             {
 
                 case 0:
-                    Employee_View.edit = false;
-                    employeeView.Show();
+                    UpdateEmployee.edit = false;
+                    UpdateEmployee.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    employeeView.btnSaveEmpEdit.Visible = false;
+                    employeeView.ShowDialog();
                     break;
                 case 1:
-                    Employee_View.edit = true;
-                    employeeView.Show();
+                    UpdateEmployee.edit = true;
+                    UpdateEmployee.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    employeeView.ShowDialog();
                     break;
                 case 2:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
+                        DeleteEmployee deleteEmp = new DeleteEmployee();
+                        deleteEmp.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                        if (deleteEmp.deleteEmployee())
+                        {
+                            MessageBox.Show("Employee Successfully Deleted", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
 
+                        }
                     }
                     else
                     {
@@ -290,7 +310,7 @@ namespace Design370
                 default:
                     break;
             }
-        }
+            }
 
         private void Button7_Click(object sender, EventArgs e)
         {
@@ -506,15 +526,8 @@ namespace Design370
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            MysqlConnection.mysqlCon.Open();
-            string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +
-                "FROM employee WHERE employee_first LIKE '%" + txtSearch.Text + "%' OR employee_last LIKE '%" + txtSearch.Text + "%' OR employee_idnumber LIKE '%" + txtSearch.Text + "%'";
-            MysqlConnection.cmd = new MySqlCommand(employees, MysqlConnection.mysqlCon);
-            MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
-            DataTable table = new DataTable();
-            table.Load(MysqlConnection.reader);
-            dgvEmployees.DataSource = table;
-            MysqlConnection.mysqlCon.Close();
+            empGrid.Rows.Clear();
+            Employees.SearchEmployees(txtSearch.Text, empGrid);
         }
 
         private void TabPage3_Click(object sender, EventArgs e)

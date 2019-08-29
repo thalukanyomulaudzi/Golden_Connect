@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -64,8 +58,9 @@ namespace Design370
                     }
                     reader.Close();
                 }
+                //txtBookingLocation.Clear();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -73,7 +68,7 @@ namespace Design370
 
         private void Booking_Details_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("The booking creation has been canceled");
+            MessageBox.Show("Booking creation has been canceled");
         }
 
         private void CbxBookingAdditions_CheckedChanged(object sender, EventArgs e)

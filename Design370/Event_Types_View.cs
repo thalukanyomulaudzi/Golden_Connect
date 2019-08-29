@@ -69,7 +69,7 @@ namespace Design370
 
         private void Event_Types_View_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (textBox1.Enabled)
+            if (txtEmpTypeName.Enabled)
             {
                 DialogResult SaveChanges = MessageBox.Show("Do you want to save these changes?", "Save changes", MessageBoxButtons.YesNo);
                 if (SaveChanges == DialogResult.Yes)
@@ -168,6 +168,16 @@ namespace Design370
                 this.Close();
             }
             this.Close();
+        }
+
+        private void BtnEditEmpType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,61 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.EmpTypeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpTypeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpTypeView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpTypeDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmpTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.dgvEmpType = new System.Windows.Forms.DataGridView();
             this.button14 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
+            this.EmpTypeView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EmpTypeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EmpTypeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpType)).BeginInit();
             this.SuspendLayout();
             // 
-            // EmpTypeDelete
+            // dgvEmpType
             // 
-            this.EmpTypeDelete.HeaderText = "";
-            this.EmpTypeDelete.Name = "EmpTypeDelete";
-            // 
-            // EmpTypeEdit
-            // 
-            this.EmpTypeEdit.HeaderText = "";
-            this.EmpTypeEdit.Name = "EmpTypeEdit";
-            // 
-            // EmpTypeView
-            // 
-            this.EmpTypeView.HeaderText = "";
-            this.EmpTypeView.Name = "EmpTypeView";
-            this.EmpTypeView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EmpTypeView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // EmpTypeDescription
-            // 
-            this.EmpTypeDescription.HeaderText = "Description";
-            this.EmpTypeDescription.Name = "EmpTypeDescription";
-            // 
-            // EmpTypeName
-            // 
-            this.EmpTypeName.HeaderText = "Name";
-            this.EmpTypeName.Name = "EmpTypeName";
-            // 
-            // dataGridView7
-            // 
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EmpTypeName,
-            this.EmpTypeDescription,
+            this.dgvEmpType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EmpTypeView,
             this.EmpTypeEdit,
             this.EmpTypeDelete});
-            this.dataGridView7.Location = new System.Drawing.Point(22, 73);
-            this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.RowTemplate.Height = 24;
-            this.dataGridView7.Size = new System.Drawing.Size(754, 335);
-            this.dataGridView7.TabIndex = 43;
+            this.dgvEmpType.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvEmpType.Location = new System.Drawing.Point(0, 73);
+            this.dgvEmpType.Name = "dgvEmpType";
+            this.dgvEmpType.RowTemplate.Height = 24;
+            this.dgvEmpType.Size = new System.Drawing.Size(803, 383);
+            this.dgvEmpType.TabIndex = 43;
+            this.dgvEmpType.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvEmpType_CellContentClick);
             // 
             // button14
             // 
@@ -133,6 +104,32 @@
             this.comboBox7.Size = new System.Drawing.Size(136, 26);
             this.comboBox7.TabIndex = 48;
             // 
+            // EmpTypeView
+            // 
+            this.EmpTypeView.HeaderText = "";
+            this.EmpTypeView.Name = "EmpTypeView";
+            this.EmpTypeView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EmpTypeView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EmpTypeView.Text = "View";
+            this.EmpTypeView.UseColumnTextForButtonValue = true;
+            this.EmpTypeView.Width = 70;
+            // 
+            // EmpTypeEdit
+            // 
+            this.EmpTypeEdit.HeaderText = "";
+            this.EmpTypeEdit.Name = "EmpTypeEdit";
+            this.EmpTypeEdit.Text = "Edit";
+            this.EmpTypeEdit.UseColumnTextForButtonValue = true;
+            this.EmpTypeEdit.Width = 70;
+            // 
+            // EmpTypeDelete
+            // 
+            this.EmpTypeDelete.HeaderText = "";
+            this.EmpTypeDelete.Name = "EmpTypeDelete";
+            this.EmpTypeDelete.Text = "Delete";
+            this.EmpTypeDelete.UseColumnTextForButtonValue = true;
+            this.EmpTypeDelete.Width = 70;
+            // 
             // Employee_Types
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -143,30 +140,28 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.button14);
-            this.Controls.Add(this.dataGridView7);
+            this.Controls.Add(this.dgvEmpType);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Employee_Types";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Types";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
+            this.Load += new System.EventHandler(this.Employee_Types_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpType)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeDelete;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpTypeDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpTypeName;
-        private System.Windows.Forms.DataGridView dataGridView7;
+        private System.Windows.Forms.DataGridView dgvEmpType;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeView;
+        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeDelete;
     }
 }

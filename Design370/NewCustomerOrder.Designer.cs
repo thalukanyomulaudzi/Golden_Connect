@@ -77,11 +77,15 @@
             this.orderQuantity = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmOrderList = new System.Windows.Forms.ComboBox();
+            this.cbxProducts = new System.Windows.Forms.ComboBox();
             this.btnAddP = new System.Windows.Forms.Button();
             this.btnSaveOrder = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbxPrTypes = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lblProductType = new System.Windows.Forms.Label();
             this.customerOrderTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -333,6 +337,7 @@
             // 
             // panel7
             // 
+            this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.lblOrders);
             this.panel7.Controls.Add(this.label20);
             this.panel7.Controls.Add(this.panel8);
@@ -340,10 +345,12 @@
             this.panel7.Controls.Add(this.lblq);
             this.panel7.Controls.Add(this.label11);
             this.panel7.Controls.Add(this.lblPrice);
+            this.panel7.Controls.Add(this.lblProductType);
             this.panel7.Controls.Add(this.lblOrderid);
             this.panel7.Controls.Add(this.lblProductPrice);
             this.panel7.Controls.Add(this.lblProduct);
             this.panel7.Controls.Add(this.label10);
+            this.panel7.Controls.Add(this.label18);
             this.panel7.Controls.Add(this.label12);
             this.panel7.Controls.Add(this.label9);
             this.panel7.Controls.Add(this.label16);
@@ -377,6 +384,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel8.Controls.Add(this.label14);
             this.panel8.Controls.Add(this.lblD);
             this.panel8.Controls.Add(this.label15);
@@ -453,7 +461,7 @@
             // 
             this.lblImages.AutoSize = true;
             this.lblImages.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImages.Location = new System.Drawing.Point(368, 165);
+            this.lblImages.Location = new System.Drawing.Point(366, 202);
             this.lblImages.Name = "lblImages";
             this.lblImages.Size = new System.Drawing.Size(28, 31);
             this.lblImages.TabIndex = 7;
@@ -463,7 +471,7 @@
             // 
             this.lblq.AutoSize = true;
             this.lblq.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblq.Location = new System.Drawing.Point(368, 133);
+            this.lblq.Location = new System.Drawing.Point(366, 170);
             this.lblq.Name = "lblq";
             this.lblq.Size = new System.Drawing.Size(28, 31);
             this.lblq.TabIndex = 8;
@@ -473,7 +481,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(232, 165);
+            this.label11.Location = new System.Drawing.Point(231, 202);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(127, 30);
             this.label11.TabIndex = 10;
@@ -483,7 +491,7 @@
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(366, 203);
+            this.lblPrice.Location = new System.Drawing.Point(364, 240);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(82, 31);
             this.lblPrice.TabIndex = 9;
@@ -493,7 +501,7 @@
             // 
             this.lblOrderid.AutoSize = true;
             this.lblOrderid.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrderid.Location = new System.Drawing.Point(366, 29);
+            this.lblOrderid.Location = new System.Drawing.Point(364, 29);
             this.lblOrderid.Name = "lblOrderid";
             this.lblOrderid.Size = new System.Drawing.Size(181, 31);
             this.lblOrderid.TabIndex = 11;
@@ -503,7 +511,7 @@
             // 
             this.lblProductPrice.AutoSize = true;
             this.lblProductPrice.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductPrice.Location = new System.Drawing.Point(366, 99);
+            this.lblProductPrice.Location = new System.Drawing.Point(364, 136);
             this.lblProductPrice.Name = "lblProductPrice";
             this.lblProductPrice.Size = new System.Drawing.Size(82, 31);
             this.lblProductPrice.TabIndex = 11;
@@ -513,7 +521,7 @@
             // 
             this.lblProduct.AutoSize = true;
             this.lblProduct.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct.Location = new System.Drawing.Point(366, 64);
+            this.lblProduct.Location = new System.Drawing.Point(364, 101);
             this.lblProduct.Name = "lblProduct";
             this.lblProduct.Size = new System.Drawing.Size(181, 31);
             this.lblProduct.TabIndex = 11;
@@ -523,11 +531,11 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(216, 133);
+            this.label10.Location = new System.Drawing.Point(108, 170);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(144, 30);
+            this.label10.Size = new System.Drawing.Size(250, 30);
             this.label10.TabIndex = 12;
-            this.label10.Text = "Quantity : ";
+            this.label10.Text = "Product Quantity : ";
             // 
             // label12
             // 
@@ -543,7 +551,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(204, 203);
+            this.label9.Location = new System.Drawing.Point(204, 240);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(154, 30);
             this.label9.TabIndex = 13;
@@ -553,7 +561,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(153, 99);
+            this.label16.Location = new System.Drawing.Point(151, 136);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(207, 30);
             this.label16.TabIndex = 14;
@@ -563,11 +571,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(224, 65);
+            this.label8.Location = new System.Drawing.Point(144, 101);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(136, 30);
+            this.label8.Size = new System.Drawing.Size(214, 30);
             this.label8.TabIndex = 14;
-            this.label8.Text = "Product : ";
+            this.label8.Text = "Product Name : ";
             // 
             // panel6
             // 
@@ -597,6 +605,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.groupBox2);
             this.panel4.Controls.Add(this.btnAddP);
@@ -610,15 +619,17 @@
             // groupBox2
             // 
             this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.cbxPrTypes);
             this.groupBox2.Controls.Add(this.linkUpload);
             this.groupBox2.Controls.Add(this.orderQuantity);
             this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.cmOrderList);
+            this.groupBox2.Controls.Add(this.cbxProducts);
             this.groupBox2.Font = new System.Drawing.Font("Bahnschrift Light", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(61, 53);
+            this.groupBox2.Location = new System.Drawing.Point(43, 53);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(381, 279);
+            this.groupBox2.Size = new System.Drawing.Size(399, 305);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Select Products";
@@ -627,7 +638,7 @@
             // 
             this.linkUpload.AutoSize = true;
             this.linkUpload.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkUpload.Location = new System.Drawing.Point(215, 198);
+            this.linkUpload.Location = new System.Drawing.Point(215, 250);
             this.linkUpload.Name = "linkUpload";
             this.linkUpload.Size = new System.Drawing.Size(129, 19);
             this.linkUpload.TabIndex = 18;
@@ -638,7 +649,7 @@
             // orderQuantity
             // 
             this.orderQuantity.Font = new System.Drawing.Font("Bahnschrift Light", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderQuantity.Location = new System.Drawing.Point(168, 144);
+            this.orderQuantity.Location = new System.Drawing.Point(178, 185);
             this.orderQuantity.Maximum = new decimal(new int[] {
             50,
             0,
@@ -663,7 +674,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Bahnschrift Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(39, 144);
+            this.label6.Location = new System.Drawing.Point(76, 184);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 24);
             this.label6.TabIndex = 1;
@@ -673,21 +684,21 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(39, 96);
+            this.label5.Location = new System.Drawing.Point(80, 135);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 24);
             this.label5.TabIndex = 1;
             this.label5.Text = "Product : ";
             // 
-            // cmOrderList
+            // cbxProducts
             // 
-            this.cmOrderList.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmOrderList.FormattingEnabled = true;
-            this.cmOrderList.Location = new System.Drawing.Point(168, 95);
-            this.cmOrderList.Name = "cmOrderList";
-            this.cmOrderList.Size = new System.Drawing.Size(176, 27);
-            this.cmOrderList.TabIndex = 0;
-            this.cmOrderList.SelectedIndexChanged += new System.EventHandler(this.CmOrderList_SelectedIndexChanged);
+            this.cbxProducts.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxProducts.FormattingEnabled = true;
+            this.cbxProducts.Location = new System.Drawing.Point(178, 136);
+            this.cbxProducts.Name = "cbxProducts";
+            this.cbxProducts.Size = new System.Drawing.Size(176, 27);
+            this.cbxProducts.TabIndex = 0;
+            this.cbxProducts.SelectedIndexChanged += new System.EventHandler(this.CmOrderList_SelectedIndexChanged);
             // 
             // btnAddP
             // 
@@ -696,7 +707,7 @@
             this.btnAddP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddP.Font = new System.Drawing.Font("Bookshelf Symbol 7", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddP.ForeColor = System.Drawing.Color.White;
-            this.btnAddP.Location = new System.Drawing.Point(104, 390);
+            this.btnAddP.Location = new System.Drawing.Point(104, 392);
             this.btnAddP.Name = "btnAddP";
             this.btnAddP.Size = new System.Drawing.Size(127, 33);
             this.btnAddP.TabIndex = 3;
@@ -711,7 +722,7 @@
             this.btnSaveOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveOrder.Font = new System.Drawing.Font("Bookshelf Symbol 7", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveOrder.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnSaveOrder.Location = new System.Drawing.Point(243, 389);
+            this.btnSaveOrder.Location = new System.Drawing.Point(243, 391);
             this.btnSaveOrder.Name = "btnSaveOrder";
             this.btnSaveOrder.Size = new System.Drawing.Size(129, 35);
             this.btnSaveOrder.TabIndex = 3;
@@ -743,14 +754,57 @@
             this.label4.Text = "Place Customer Order";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Bahnschrift Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(39, 84);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(133, 24);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Product Type: ";
+            // 
+            // cbxPrTypes
+            // 
+            this.cbxPrTypes.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPrTypes.FormattingEnabled = true;
+            this.cbxPrTypes.Location = new System.Drawing.Point(178, 85);
+            this.cbxPrTypes.Name = "cbxPrTypes";
+            this.cbxPrTypes.Size = new System.Drawing.Size(176, 27);
+            this.cbxPrTypes.TabIndex = 19;
+            this.cbxPrTypes.SelectedIndexChanged += new System.EventHandler(this.CbxPrTypes_SelectedIndexChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(158, 65);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(202, 30);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "Product Type : ";
+            // 
+            // lblProductType
+            // 
+            this.lblProductType.AutoSize = true;
+            this.lblProductType.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductType.Location = new System.Drawing.Point(366, 65);
+            this.lblProductType.Name = "lblProductType";
+            this.lblProductType.Size = new System.Drawing.Size(148, 31);
+            this.lblProductType.TabIndex = 11;
+            this.lblProductType.Text = "Select Type";
+            // 
             // NewCustomerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1221, 636);
             this.Controls.Add(this.customerOrderTab);
             this.Name = "NewCustomerOrder";
-            this.Text = "NewCustomerOrder";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Place Customer Order";
             this.Load += new System.EventHandler(this.NewCustomerOrder_Load);
             this.customerOrderTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -827,10 +881,14 @@
         private System.Windows.Forms.NumericUpDown orderQuantity;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmOrderList;
+        private System.Windows.Forms.ComboBox cbxProducts;
         private System.Windows.Forms.Button btnAddP;
         private System.Windows.Forms.Button btnSaveOrder;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cbxPrTypes;
+        private System.Windows.Forms.Label lblProductType;
+        private System.Windows.Forms.Label label18;
     }
 }
