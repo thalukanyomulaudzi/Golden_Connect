@@ -5,9 +5,9 @@ using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    public partial class Book_Event_Date : Form
+    public partial class Booking_Date : Form
     {
-        public Book_Event_Date()
+        public Booking_Date()
         {
             InitializeComponent();
         }
@@ -78,25 +78,11 @@ namespace Design370
             Booking.bookingType = bookingType;
             Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
             Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
-
-
-
-            //DataGridViewTextBoxCell { ColumnIndex = 0, RowIndex = 0 }
-
         }
 
         private void Book_Event_Date_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = !checkSelected();
-        }
-        private bool checkSelected()
-        {
-            if (dgvBookingEmployees.SelectedCells.Count == 0 || dgvBookEvent.SelectedCells.Count == 0)
-            {
-                MessageBox.Show("Please select a timeslot and employee");
-                return false;
-            }
-            return true;
+
         }
     }
 }
