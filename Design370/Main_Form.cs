@@ -64,6 +64,7 @@ namespace Design370
             }
             Employees.LoadEmployeeTypes(cbxSort);
             Employees.LoadEmployees(empGrid);
+            Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
@@ -548,9 +549,10 @@ namespace Design370
             Employees.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
         }
 
-        private void BtnBookingCapture_Click(object sender, EventArgs e)
+        private void BtnCaptureOrderPayment_Click(object sender, EventArgs e)
         {
-
+            CapturePayment newPayment = new CapturePayment();
+            newPayment.ShowDialog();
         }
     }
 }

@@ -97,6 +97,7 @@ namespace Design370
             this.ProductEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ProductDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblPhotoshootPackageSearch = new System.Windows.Forms.Label();
             this.txtPhotoshootPackageSearch = new System.Windows.Forms.TextBox();
             this.dgvPhotoshootPackage = new System.Windows.Forms.DataGridView();
@@ -253,7 +254,7 @@ namespace Design370
             this.lblCustomerSort.Location = new System.Drawing.Point(281, 15);
             this.lblCustomerSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCustomerSort.Name = "lblCustomerSort";
-            this.lblCustomerSort.Size = new System.Drawing.Size(57, 18);
+            this.lblCustomerSort.Size = new System.Drawing.Size(56, 18);
             this.lblCustomerSort.TabIndex = 7;
             this.lblCustomerSort.Text = "Sort by:";
             // 
@@ -397,7 +398,7 @@ namespace Design370
             this.label7.Location = new System.Drawing.Point(281, 15);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 18);
+            this.label7.Size = new System.Drawing.Size(56, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Sort by:";
             // 
@@ -498,7 +499,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -614,7 +615,7 @@ namespace Design370
             this.lblServiceSort.Location = new System.Drawing.Point(281, 15);
             this.lblServiceSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServiceSort.Name = "lblServiceSort";
-            this.lblServiceSort.Size = new System.Drawing.Size(57, 18);
+            this.lblServiceSort.Size = new System.Drawing.Size(56, 18);
             this.lblServiceSort.TabIndex = 14;
             this.lblServiceSort.Text = "Sort by:";
             // 
@@ -739,7 +740,7 @@ namespace Design370
             this.lblProductSort.Location = new System.Drawing.Point(281, 15);
             this.lblProductSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProductSort.Name = "lblProductSort";
-            this.lblProductSort.Size = new System.Drawing.Size(57, 18);
+            this.lblProductSort.Size = new System.Drawing.Size(56, 18);
             this.lblProductSort.TabIndex = 21;
             this.lblProductSort.Text = "Sort by:";
             // 
@@ -828,6 +829,7 @@ namespace Design370
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.button1);
             this.tabPage6.Controls.Add(this.lblPhotoshootPackageSearch);
             this.tabPage6.Controls.Add(this.txtPhotoshootPackageSearch);
             this.tabPage6.Controls.Add(this.dgvPhotoshootPackage);
@@ -841,6 +843,18 @@ namespace Design370
             this.tabPage6.UseVisualStyleBackColor = true;
             this.tabPage6.Click += new System.EventHandler(this.tabPage6_Click);
             this.tabPage6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TabPage6_MouseClick);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(586, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(188, 28);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Add Photoshoot Package";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // lblPhotoshootPackageSearch
             // 
@@ -896,7 +910,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 122;
+            this.PhotoshootPackageName.Width = 132;
             // 
             // Services
             // 
@@ -937,10 +951,10 @@ namespace Design370
             // btnPhotoshootTypes
             // 
             this.btnPhotoshootTypes.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhotoshootTypes.Location = new System.Drawing.Point(609, 431);
+            this.btnPhotoshootTypes.Location = new System.Drawing.Point(586, 427);
             this.btnPhotoshootTypes.Margin = new System.Windows.Forms.Padding(2);
             this.btnPhotoshootTypes.Name = "btnPhotoshootTypes";
-            this.btnPhotoshootTypes.Size = new System.Drawing.Size(165, 29);
+            this.btnPhotoshootTypes.Size = new System.Drawing.Size(188, 29);
             this.btnPhotoshootTypes.TabIndex = 0;
             this.btnPhotoshootTypes.Text = "Photoshoot Types";
             this.btnPhotoshootTypes.UseVisualStyleBackColor = true;
@@ -1039,7 +1053,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 122;
+            this.EventPackageName.Width = 132;
             // 
             // ServicesEvents
             // 
@@ -1098,6 +1112,9 @@ namespace Design370
             // 
             // dgvOrders
             // 
+            this.dgvOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Location = new System.Drawing.Point(11, 59);
             this.dgvOrders.Margin = new System.Windows.Forms.Padding(2);
@@ -1146,7 +1163,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 18);
+            this.label15.Size = new System.Drawing.Size(56, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Sort by:";
             // 
@@ -1180,6 +1197,7 @@ namespace Design370
             this.btnCaptureOrderPayment.TabIndex = 39;
             this.btnCaptureOrderPayment.Text = "Capture Payment";
             this.btnCaptureOrderPayment.UseVisualStyleBackColor = true;
+            this.btnCaptureOrderPayment.Click += new System.EventHandler(this.BtnCaptureOrderPayment_Click);
             // 
             // button16
             // 
@@ -1388,7 +1406,7 @@ namespace Design370
             this.label19.Location = new System.Drawing.Point(281, 15);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 18);
+            this.label19.Size = new System.Drawing.Size(56, 18);
             this.label19.TabIndex = 51;
             this.label19.Text = "Sort by:";
             // 
@@ -1727,6 +1745,7 @@ namespace Design370
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
         private Button btnBookingAdd;
+        private Button button1;
     }
 }
 
