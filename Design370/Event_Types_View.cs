@@ -29,6 +29,7 @@ namespace Design370
         {
             textBox1.Enabled = edit;
             textBox2.Enabled = edit;
+            string Name = "";
 
             if (edit == true)
             {
@@ -49,6 +50,7 @@ namespace Design370
                         textBox2.Text = reader.GetString(1);
                     }
                     reader.Close();
+                    Name = textBox1.Text;
                 }
             }
             catch (Exception except)
@@ -83,6 +85,7 @@ namespace Design370
                         if (dBConnection.IsConnect())
                         {
                             string booking_type_id = " ";
+                            string event_type_id = " ";
                             string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Event'";
                             var command = new MySqlCommand(query, dBConnection.Connection);
                             var reader = command.ExecuteReader();
@@ -91,8 +94,16 @@ namespace Design370
                                 booking_type_id = reader.GetString(0);
                             }
                             reader.Close();
-                            query = "INSERT INTO `event_type` (`event_type_id`, `event_type_name`, `event_type_description`, `booking_type_id`) VALUES";
-                            query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + booking_type_id + "')";
+                            query = "SELECT event_type_id FROM event_type WHERE event_type_name = '" + Name + "'";
+                            command = new MySqlCommand(query, dBConnection.Connection);
+                            reader = command.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                event_type_id = reader.GetString(0);
+                            }
+                            reader.Close();
+                            query = "UPDATE `event_type` SET `event_type_id` = '" + event_type_id + "', `event_type_name` = '" + textBox1.Text + "', `event_type_description`";
+                            query += " = '" + textBox2.Text + "', `booking_type_id` = '" + booking_type_id + "' WHERE event_type_id = '" + event_type_id + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
                             command.ExecuteNonQuery();
                         }
@@ -125,6 +136,7 @@ namespace Design370
                     if (dBConnection.IsConnect())
                     {
                         string booking_type_id = " ";
+                        string event_type_id = " ";
                         string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Event'";
                         var command = new MySqlCommand(query, dBConnection.Connection);
                         var reader = command.ExecuteReader();
@@ -133,8 +145,17 @@ namespace Design370
                             booking_type_id = reader.GetString(0);
                         }
                         reader.Close();
-                        query = "INSERT INTO `event_type` (`event_type_id`, `event_type_name`, `event_type_description`, `booking_type_id`) VALUES";
-                        query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + booking_type_id + "')";
+                        query = "SELECT event_type_id FROM event_type WHERE event_type_name = '" + Name + "'";
+                        command = new MySqlCommand(query, dBConnection.Connection);
+                        reader = command.ExecuteReader();
+                        reader.Read();
+                        while (reader.Read())
+                        {
+                            event_type_id = reader.GetString(0);
+                        }
+                        reader.Close();
+                        query = "UPDATE `event_type` SET `event_type_id` = '" + event_type_id + "', `event_type_name` = '" + textBox1.Text + "', `event_type_description`";
+                        query += " = '" + textBox2.Text + "', `booking_type_id` = '" + booking_type_id + "' WHERE event_type_id = '" + event_type_id + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
                     }

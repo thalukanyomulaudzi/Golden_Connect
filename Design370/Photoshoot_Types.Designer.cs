@@ -55,7 +55,7 @@
             // 
             this.textBox7.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.Location = new System.Drawing.Point(83, 24);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(211, 26);
             this.textBox7.TabIndex = 67;
@@ -65,7 +65,7 @@
             // 
             this.button14.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.Location = new System.Drawing.Point(565, 22);
-            this.button14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button14.Margin = new System.Windows.Forms.Padding(4);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(211, 28);
             this.button14.TabIndex = 66;
@@ -89,7 +89,7 @@
             this.EmpTypeEdit,
             this.EmpTypeDelete});
             this.dataGridView7.Location = new System.Drawing.Point(22, 73);
-            this.dataGridView7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView7.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.ReadOnly = true;
             this.dataGridView7.RowHeadersVisible = false;
@@ -144,9 +144,9 @@
             this.Controls.Add(this.button14);
             this.Controls.Add(this.dataGridView7);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Photoshoot_Types";
-            this.Text = "Photoshoot_Types";
+            this.Text = "Photoshoot Types";
             this.Load += new System.EventHandler(this.Photoshoot_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
