@@ -74,6 +74,7 @@ namespace Design370
                     if (dBConnection.IsConnect())
                     {
                         string booking_type_id = " ";
+                        string photoshoot_type_id = " ";
                         string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Photoshoot'";
                         var command = new MySqlCommand(query, dBConnection.Connection);
                         var reader = command.ExecuteReader();
@@ -82,8 +83,17 @@ namespace Design370
                             booking_type_id = reader.GetString(0);
                         }
                         reader.Close();
-                        query = "INSERT INTO `photoshoot_type` (`photoshoot_type_id`, `photoshoot_type_name`, `photoshoot_type_description`, `booking_type_id`) VALUES";
-                        query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + booking_type_id + "')";
+                        query = "SELECT photoshoot_type_id FROM photoshoot_type WHERE photoshoot_type_name = '" + Name + "'";
+                        command = new MySqlCommand(query, dBConnection.Connection);
+                        reader = command.ExecuteReader();
+                        reader.Read();
+                        while (reader.Read())
+                        {
+                            photoshoot_type_id = reader.GetString(0);
+                        }
+                        reader.Close();
+                        query = "UPDATE `photoshoot_type` SET `photoshoot_type_id` = '" + photoshoot_type_id + "', `photoshoot_type_name` = '" + textBox1.Text + "', `photoshoot_type_description`";
+                        query += " = '" + textBox2.Text + "', `booking_type_id` = '" + booking_type_id + "' WHERE photoshoot_type_id = '" + photoshoot_type_id + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
                     }
@@ -122,6 +132,7 @@ namespace Design370
                         if (dBConnection.IsConnect())
                         {
                             string booking_type_id = " ";
+                            string photoshoot_type_id = " ";
                             string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Photoshoot'";
                             var command = new MySqlCommand(query, dBConnection.Connection);
                             var reader = command.ExecuteReader();
@@ -130,8 +141,17 @@ namespace Design370
                                 booking_type_id = reader.GetString(0);
                             }
                             reader.Close();
-                            query = "INSERT INTO `photoshoot_type` (`photoshoot_type_id`, `photoshoot_type_name`, `photoshoot_type_description`, `booking_type_id`) VALUES";
-                            query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + booking_type_id + "')";
+                            query = "SELECT photoshoot_type_id FROM photoshoot_type WHERE photoshoot_type_name = '" + Name + "'";
+                            command = new MySqlCommand(query, dBConnection.Connection);
+                            reader = command.ExecuteReader();
+                            reader.Read();
+                            while (reader.Read())
+                            {
+                                photoshoot_type_id = reader.GetString(0);
+                            }
+                            reader.Close();
+                            query = "UPDATE `photoshoot_type` SET `photoshoot_type_id` = '" + photoshoot_type_id + "', `photoshoot_type_name` = '" + textBox1.Text + "', `photoshoot_type_description`";
+                            query += " = '" + textBox2.Text + "', `booking_type_id` = '" + booking_type_id + "' WHERE photoshoot_type_id = '" + photoshoot_type_id + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
                             command.ExecuteNonQuery();
                         }
