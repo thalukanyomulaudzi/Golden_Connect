@@ -426,8 +426,6 @@
     <Compile Include="UpdateEmployee.Designer.cs">
       <DependentUpon>UpdateEmployee.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Booking_Add.resx">
-      <DependentUpon>Booking_Add.cs</DependentUpon>
     <EmbeddedResource Include="Booking_Customer.resx">
       <DependentUpon>Booking_Customer.cs</DependentUpon>
     </EmbeddedResource>

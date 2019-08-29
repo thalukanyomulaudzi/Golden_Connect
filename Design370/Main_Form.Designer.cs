@@ -393,7 +393,6 @@ namespace Design370
             this.cbxSort.Name = "cbxSort";
             this.cbxSort.Size = new System.Drawing.Size(103, 25);
             this.cbxSort.TabIndex = 15;
-            this.cbxSort.SelectedIndexChanged += new System.EventHandler(this.ComboBox4_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -1088,7 +1087,6 @@ namespace Design370
             this.dgvOrders.RowTemplate.Height = 24;
             this.dgvOrders.Size = new System.Drawing.Size(763, 349);
             this.dgvOrders.TabIndex = 46;
-            this.dgvOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellClick);
             // 
             // button18
             // 
@@ -1659,6 +1657,7 @@ namespace Design370
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button button8;
+        private DataGridView dgvEmployees;
         private System.Windows.Forms.Button btnTimeslotAdd;
         private System.Windows.Forms.DataGridView dgvTimeslots;
         private DataGridViewTextBoxColumn timeslotDay1;
@@ -1729,8 +1728,6 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn ServiceView;
         private System.Windows.Forms.DataGridViewButtonColumn ServiceEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ServiceDelete;
-        private Button button4;
-        private DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
@@ -1756,6 +1753,7 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageView;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageEdit;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageDelete;
+        private Button button10;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -1763,10 +1761,8 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn SupplierView;
         private System.Windows.Forms.DataGridViewButtonColumn SupplierEdit;
         private System.Windows.Forms.DataGridViewButtonColumn SupplierDelete;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpView;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpDelete;
         private DataGridViewCellStyle dataGridViewCellStyle1;
+        private Button btnBookingAdd;
     }
 }
 
