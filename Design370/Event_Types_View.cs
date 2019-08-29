@@ -112,35 +112,39 @@ namespace Design370
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+            if (textBox1.Enabled)
             {
-                MessageBox.Show("Invalid character length for name and/or description");
-                return;
-            }
-            try
-            {
-                DBConnection dBConnection = DBConnection.Instance();
-                if (dBConnection.IsConnect())
+                if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
                 {
-                    string booking_type_id = " ";
-                    string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Event'";
-                    var command = new MySqlCommand(query, dBConnection.Connection);
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        booking_type_id = reader.GetString(0);
-                    }
-                    reader.Close();
-                    query = "INSERT INTO `event_type` (`event_type_id`, `event_type_name`, `event_type_description`, `booking_type_id`) VALUES";
-                    query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + booking_type_id + "')";
-                    command = new MySqlCommand(query, dBConnection.Connection);
-                    command.ExecuteNonQuery();
+                    MessageBox.Show("Invalid character length for name and/or description");
+                    return;
                 }
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                try
+                {
+                    DBConnection dBConnection = DBConnection.Instance();
+                    if (dBConnection.IsConnect())
+                    {
+                        string booking_type_id = " ";
+                        string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Event'";
+                        var command = new MySqlCommand(query, dBConnection.Connection);
+                        var reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            booking_type_id = reader.GetString(0);
+                        }
+                        reader.Close();
+                        query = "INSERT INTO `event_type` (`event_type_id`, `event_type_name`, `event_type_description`, `booking_type_id`) VALUES";
+                        query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + booking_type_id + "')";
+                        command = new MySqlCommand(query, dBConnection.Connection);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
 
+                }
+                this.Close();
             }
             this.Close();
         }
