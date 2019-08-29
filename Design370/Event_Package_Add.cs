@@ -20,10 +20,10 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(listBox3, "Multiple items can be selected");
-            toolTip1.SetToolTip(listBox4, "Multiple items can be selected");
             toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
             toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
+            toolTip1.SetToolTip(listBox3, "Multiple items can be selected");
+            toolTip1.SetToolTip(listBox4, "Multiple items can be selected");
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -288,10 +288,15 @@ namespace Design370
                     }
                     for (int k = 0; k < service_id.Rows.Count; k++)
                     {
-                        query = "INSERT INTO `booking_package_service` (`booking_package_id`, `service_id`) VALUES";
-                        query += "('" + booking_package_id + "', '" + service_id.Rows[k].ItemArray[0].ToString() + "')";
-                        command = new MySqlCommand(query, dBConnection.Connection);
-                        command.ExecuteNonQuery();
+                        posquant = Services[k].IndexOf(":");
+                        quantity = Convert.ToInt32(Services[k].Substring(posquant + 1));
+                        if (quantity == 1)
+                        {
+                            query = "INSERT INTO `booking_package_service` (`booking_package_id`, `service_id`) VALUES";
+                            query += "('" + booking_package_id + "', '" + service_id.Rows[k].ItemArray[0].ToString() + "')";
+                            command = new MySqlCommand(query, dBConnection.Connection);
+                            command.ExecuteNonQuery();
+                        }
                     }
                 }
             }

@@ -65,6 +65,7 @@
             this.textBox2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(30, 97);
             this.textBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.textBox2.MaxLength = 200;
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(198, 162);
@@ -86,6 +87,7 @@
             this.textBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(30, 40);
             this.textBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.textBox1.MaxLength = 25;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(198, 21);
             this.textBox1.TabIndex = 46;
@@ -114,6 +116,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Photoshoot_Type_Add";
             this.Text = "Add Photoshoot Type";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Photoshoot_Type_Add_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
