@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class SupplierList
+    partial class Supplier_List
     {
         /// <summary>
         /// Required designer variable.

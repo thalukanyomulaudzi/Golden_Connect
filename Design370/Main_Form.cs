@@ -62,16 +62,16 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            Employees.LoadEmployeeTypes(cbxSort);
-            Employees.LoadEmployees(empGrid);
+            Employee.LoadEmployeeTypes(cbxSort);
+            Employee.LoadEmployees(empGrid);
             Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
-            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             loadSuppliers();
@@ -255,8 +255,8 @@ namespace Design370
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        Employees.EmployeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                        if (Employees.deleteEmployee())
+                        Employee.EmployeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                        if (Employee.deleteEmployee())
                         {
                             MessageBox.Show("Employee Successfully Deleted", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -348,18 +348,18 @@ namespace Design370
         private void DataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string packageName;
-            PhotoshootPackage_View photoshootPackage_View = new PhotoshootPackage_View();
+            Photoshoot_Package_View photoshootPackage_View = new Photoshoot_Package_View();
             switch (e.ColumnIndex)
             {
 
                 case 4:
-                    PhotoshootPackage_View.edit = false;
+                    Photoshoot_Package_View.edit = false;
                     packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
                     photoshootPackage_View.GetRow = packageName;
                     photoshootPackage_View.ShowDialog();
                     break;
                 case 5:
-                    PhotoshootPackage_View.edit = true;
+                    Photoshoot_Package_View.edit = true;
                     packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
                     photoshootPackage_View.GetRow = packageName;
                     photoshootPackage_View.ShowDialog();
@@ -490,7 +490,7 @@ namespace Design370
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             empGrid.Rows.Clear();
-            Employees.SearchEmployees(txtSearch.Text, empGrid);
+            Employee.SearchEmployees(txtSearch.Text, empGrid);
         }
 
         private void TabPage3_Click(object sender, EventArgs e)
@@ -540,7 +540,7 @@ namespace Design370
         private void CbxSort_SelectedIndexChanged(object sender, EventArgs e)
         {
             empGrid.Rows.Clear();
-            Employees.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
+            Employee.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
         }
 
         private void BtnCaptureOrderPayment_Click(object sender, EventArgs e)

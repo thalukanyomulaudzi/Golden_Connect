@@ -3,7 +3,7 @@ using System;
 using System.Windows.Forms;
 namespace Design370
 {
-    class Employees
+    class Employee
     {
         public static DBConnection dbCon = DBConnection.Instance();
         public static string EmployeeID { get; set; }
@@ -28,11 +28,6 @@ namespace Design370
                 return false;
             }
         }
-        public Employees()
-        {
-
-        }
-
         public static void LoadEmployees(DataGridView dgvEmp)
         {
             try

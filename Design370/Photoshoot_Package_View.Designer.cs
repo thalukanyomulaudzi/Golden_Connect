@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class PhotoshootPackage_View
+    partial class Photoshoot_Package_View
     {
         /// <summary>
         /// Required designer variable.

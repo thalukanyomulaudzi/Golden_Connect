@@ -100,7 +100,7 @@ namespace Design370
         private void btnSelectSupplier_Click(object sender, EventArgs e)
         {
 
-            SupplierList list = new SupplierList();
+            Supplier_List list = new Supplier_List();
             list.ShowDialog();
 
             txtSupplierName.Text = Globals.SupplierName;
@@ -126,7 +126,7 @@ namespace Design370
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             //dgvOrderProductList.Rows.RemoveAt(0);
-            ProductList f = new ProductList();
+            Product_List f = new Product_List();
             f.ShowDialog();
 
             

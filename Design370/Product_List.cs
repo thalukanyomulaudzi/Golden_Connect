@@ -11,9 +11,9 @@ using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    public partial class ProductList : Form
+    public partial class Product_List : Form
     {
-        public ProductList()
+        public Product_List()
         {
             InitializeComponent();
         }
