@@ -10,20 +10,19 @@ using System.Windows.Forms;
 
 namespace Design370
 {
-    public partial class Booking_Dialog : Form
+    public partial class Customer_Order_Capture : Form
     {
-        public Booking_Dialog()
+        public Customer_Order_Capture()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Label2_Click(object sender, EventArgs e)
         {
-            //Book_Event_Date book_Event_Date = new Book_Event_Date();
-            //book_Event_Date.Show();
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CapturePayment_Load(object sender, EventArgs e)
         {
 
         }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
 namespace Design370
 {
@@ -19,8 +15,6 @@ namespace Design370
         {
             try
             {
-                dbCon.Close();
-                dbCon.Open();
                 dgvEmp.ColumnCount = 8;
                 dgvEmp.Columns[3].Name = "First Name";
                 dgvEmp.Columns[3].Width = 190;
@@ -42,10 +36,10 @@ namespace Design370
                     {
                         dgvEmp.Rows.Add("", "", "", reader[1], reader[2], reader[3], reader[4], reader[5]);
                     }
-                    dbCon.Close();
+                    reader.Close();
                 }
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
@@ -55,8 +49,6 @@ namespace Design370
         {
             try
             {
-                dbCon.Close();
-                dbCon.Open();
                 dgvEmp.ColumnCount = 8;
                 dgvEmp.Columns[3].Name = "First Name";
                 dgvEmp.Columns[3].Width = 190;
@@ -83,7 +75,7 @@ namespace Design370
                     {
                         dgvEmp.Rows.Add("", "", "", reader[1], reader[2], reader[3], reader[4], reader[5]);
                     }
-                    dbCon.Close();
+                    reader.Close();
                 }
             }
             catch (Exception err)
@@ -97,8 +89,6 @@ namespace Design370
             id = getEmpType(sort);
             try
             {
-                dbCon.Close();
-                dbCon.Open();
                 dgvEmp.ColumnCount = 8;
                 dgvEmp.Columns[3].Name = "First Name";
                 dgvEmp.Columns[3].Width = 190;
@@ -113,14 +103,14 @@ namespace Design370
                 dgvEmp.ReadOnly = true;
                 if (dbCon.IsConnect())
                 {
-                    string loadEmp = "SELECT * FROM `employee` WHERE `employee_type` = '"+id+"'";
+                    string loadEmp = "SELECT * FROM `employee` WHERE `employee_type` = '" + id + "'";
                     var command = new MySqlCommand(loadEmp, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         dgvEmp.Rows.Add("", "", "", reader[1], reader[2], reader[3], reader[4], reader[5]);
                     }
-                    dbCon.Close();
+                    reader.Close();
                 }
             }
             catch (Exception err)
@@ -135,15 +125,15 @@ namespace Design370
             {
                 dbCon.Close();
                 dbCon.Open();
-                string empTypes = "SELECT * FROM `employee_type` WHERE `employee_type_name` = '"+sort+"'";
+                string empTypes = "SELECT * FROM `employee_type` WHERE `employee_type_name` = '" + sort + "'";
                 var command = new MySqlCommand(empTypes, dbCon.Connection);
                 var reader = command.ExecuteReader();
                 reader.Read();
-                if(reader.HasRows)
+                if (reader.HasRows)
                 {
                     t = Convert.ToInt32(reader[0].ToString());
                 }
-
+                reader.Close();
             }
             return t;
         }
@@ -154,8 +144,6 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    dbCon.Close();
-                    dbCon.Open();
                     string loadEmp = "SELECT * FROM `employee_type`";
                     var command = new MySqlCommand(loadEmp, dbCon.Connection);
                     var reader = command.ExecuteReader();
@@ -163,10 +151,10 @@ namespace Design370
                     {
                         sortCombo.Items.Add(reader[1]);
                     }
-                    dbCon.Close();
+                    reader.Close();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -207,4 +195,3 @@ namespace Design370
 
     }
 }
- 

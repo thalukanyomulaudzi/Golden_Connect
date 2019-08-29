@@ -197,7 +197,7 @@
             this.Name = "Book_Event_Date";
             this.Text = "Book_Event_Date";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Book_Event_Date_FormClosing);
-            this.Load += new System.EventHandler(this.Book_Event_Date_Load);
+            this.Load += new System.EventHandler(this.Booking_Date_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingEmployees)).EndInit();
             this.ResumeLayout(false);

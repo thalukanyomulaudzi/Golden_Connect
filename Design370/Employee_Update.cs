@@ -11,13 +11,13 @@ using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    public partial class UpdateEmployee : Form
+    public partial class Employee_Update : Form
     {
         public static bool edit;
         public static long employeeID;
         int ms, et;
         int msID, emtID;
-        public UpdateEmployee()
+        public Employee_Update()
         {
             InitializeComponent();
         }

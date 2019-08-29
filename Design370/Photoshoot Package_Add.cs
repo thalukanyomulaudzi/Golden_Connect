@@ -13,9 +13,8 @@ namespace Design370
 {
     public partial class Photoshoot_Package_Add : Form
     {
-
-        List<string> Products;
-        List<string> Services;
+        List<string> Products = new List<string>();
+        List<string> Services = new List<string>();
         public Photoshoot_Package_Add()
         {
             InitializeComponent();
@@ -70,7 +69,8 @@ namespace Design370
         {
             int itemIndex, quantity = 0, i = 0;
             string itemString = " ";
-            Services = new List<string>();
+            Services.Clear();
+            Products.Clear();
             foreach (var item in listBox3.Items)
             {
                 Services.Add(item.ToString());
@@ -103,8 +103,8 @@ namespace Design370
         {
             int itemIndex, quantity = 0, i = 0;
             string itemString = " ";
-            Products = new List<string>();
-            Products = new List<string>();
+            Services.Clear();
+            Products.Clear();
             foreach (var item in listBox4.Items)
             {
                 Products.Add(item.ToString());
@@ -275,8 +275,8 @@ namespace Design370
         {
             int itemIndex, quantity = 0;
             string itemString = " ";
-            Products = new List<string>();
-            Services = new List<string>();
+            Services.Clear();
+            Products.Clear();
             foreach (var item in listBox4.Items)
             {
                 Products.Add(item.ToString());
@@ -303,8 +303,8 @@ namespace Design370
         {
             int itemIndex, quantity = 0;
             string itemString = " ";
-            Services = new List<string>();
-            Products = new List<string>();
+            Services.Clear();
+            Products.Clear();
             foreach (var item in listBox3.Items)
             {
                 Services.Add(item.ToString());

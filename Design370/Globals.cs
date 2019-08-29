@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design370
+﻿namespace Design370
 {
     public class Globals
     {
-
         //Supplier
         public static string SupplierID { get; set; } = "";
         public static string SupplierName { get; set; } = "";
@@ -24,6 +17,5 @@ namespace Design370
 
         public static int ProductQuantity { get; set; } = 0;
         public static string ProductTypeName { get; set; } = "";
-
     }
 }

@@ -18,26 +18,16 @@ namespace Design370
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
 
-        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
-
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)//Draw tabcontrol with tabs on left side
         {
             Graphics g = e.Graphics;
             Brush _textBrush;
-
-            // Get the item from the collection.
             TabPage _tabPage = tabControl1.TabPages[e.Index];
-
-            // Get the real bounds for the tab rectangle.
             Rectangle _tabBounds = tabControl1.GetTabRect(e.Index);
-
-            // Use our own font.
             Font _tabFont = new Font("Bahnschrift Light", (float)15.0, FontStyle.Regular, GraphicsUnit.Pixel);
-
             if (e.State == DrawItemState.Selected)
             {
                 _tabFont = new Font("Bahnschrift Light", (float)15.0, FontStyle.Bold, GraphicsUnit.Pixel);
-
-                // Draw a different background color, and don't paint a focus rectangle.
                 _textBrush = new SolidBrush(Color.Gold);
                 g.FillRectangle(Brushes.CornflowerBlue, e.Bounds);
             }
@@ -46,14 +36,11 @@ namespace Design370
                 _textBrush = new System.Drawing.SolidBrush(e.ForeColor);
                 e.DrawBackground();
             }
-
-            // Draw string. Center the text.
             StringFormat _stringFlags = new StringFormat
             {
                 Alignment = StringAlignment.Center,
                 LineAlignment = StringAlignment.Center
             };
-
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
         }
 
@@ -171,7 +158,7 @@ namespace Design370
                     string last = reader.GetString(1);
                     MessageBox.Show(first + "," + last);
                 }
-                dbCon.Close();
+                reader.Close();
             }
         }
 
@@ -233,11 +220,6 @@ namespace Design370
         {
             Booking_Details details = new Booking_Details();
             details.ShowDialog();
-
-
-
-
-            
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -260,19 +242,19 @@ namespace Design370
 
         private void DataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            UpdateEmployee employeeView = new UpdateEmployee();
+            Employee_Update employeeView = new Employee_Update();
             switch (e.ColumnIndex)
             {
 
                 case 0:
-                    UpdateEmployee.edit = false;
-                    UpdateEmployee.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    Employee_Update.edit = false;
+                    Employee_Update.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
                     employeeView.btnSaveEmpEdit.Visible = false;
                     employeeView.ShowDialog();
                     break;
                 case 1:
-                    UpdateEmployee.edit = true;
-                    UpdateEmployee.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    Employee_Update.edit = true;
+                    Employee_Update.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
                     employeeView.ShowDialog();
                     break;
                 case 2:
@@ -441,17 +423,17 @@ namespace Design370
         private void DataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string packageName;
-            EventPackage_View eventPackage_View = new EventPackage_View();
+            Event_Package_View eventPackage_View = new Event_Package_View();
             switch (e.ColumnIndex)
             {
                 case 4:
-                    EventPackage_View.edit = false;
+                    Event_Package_View.edit = false;
                     packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
                     eventPackage_View.GetEventViewRow = packageName;
                     eventPackage_View.ShowDialog();
                     break;
                 case 5:
-                    EventPackage_View.edit = true;
+                    Event_Package_View.edit = true;
                     packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
                     eventPackage_View.GetEventViewRow = packageName;
                     eventPackage_View.ShowDialog();
@@ -527,7 +509,7 @@ namespace Design370
 
         }
 
-        private void Main_Form_Activated_1(object sender, EventArgs e)
+        private void Main_Form_Activated(object sender, EventArgs e)
         {
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
@@ -557,11 +539,6 @@ namespace Design370
         }
 
         private void button10_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button10_Click_1(object sender, EventArgs e)
         {
             Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
             photoshoot_Types.ShowDialog();

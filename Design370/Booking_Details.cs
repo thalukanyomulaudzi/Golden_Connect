@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -79,7 +78,7 @@ namespace Design370
         private void BtnBookingChangeCustomer_Click(object sender, EventArgs e)
         {
             Booking_Customer bookingAdd = new Booking_Customer();
-            var result =  bookingAdd.ShowDialog();
+            var result = bookingAdd.ShowDialog();
             txtBookingCustomer.Text = Booking.customerName;
         }
 

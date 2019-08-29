@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class EventPackage_View
+    partial class Event_Package_View
     {
         /// <summary>
         /// Required designer variable.
