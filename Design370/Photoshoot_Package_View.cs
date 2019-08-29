@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Design370
 {
-    public partial class PhotoshootPackage_View : Form
+    public partial class Photoshoot_Package_View : Form
     {
         public static bool edit;
 
@@ -14,7 +14,7 @@ namespace Design370
         List<string> Products = new List<string>();
         List<string> Services = new List<string>();
 
-        public PhotoshootPackage_View()
+        public Photoshoot_Package_View()
         {
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
@@ -303,7 +303,6 @@ namespace Design370
             int itemIndex, quantity = 0, i = 0;
             string itemString = " ";
             Services.Clear();
-            Products.Clear();
             foreach (var item in listBox3.Items)
             {
                 Services.Add(item.ToString());
@@ -330,7 +329,6 @@ namespace Design370
         {
             int itemIndex, quantity = 0, i = 0;
             string itemString = " ";
-            Services.Clear();
             Products.Clear();
             foreach (var item in listBox4.Items)
             {
@@ -354,7 +352,6 @@ namespace Design370
             int itemIndex, quantity = 0;
             string itemString = " ";
             Services.Clear();
-            Products.Clear();
             foreach (var item in listBox3.Items)
             {
                 Services.Add(item.ToString());
@@ -381,7 +378,6 @@ namespace Design370
         {
             int itemIndex, quantity = 0;
             string itemString = " ";
-            Services.Clear();
             Products.Clear();
             foreach (var item in listBox4.Items)
             {

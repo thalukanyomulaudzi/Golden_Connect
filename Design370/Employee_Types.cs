@@ -109,7 +109,7 @@ namespace Design370
         private void TxtSearchEmpType_TextChanged(object sender, EventArgs e)
         {
             dgvEmpType.Rows.Clear();
-            Employees.SearchEmployeeType(txtSearchEmpType.Text, dgvEmpType);
+            Employee.SearchEmployeeType(txtSearchEmpType.Text, dgvEmpType);
         }
 
         private void CbxSortEmpType_SelectedIndexChanged(object sender, EventArgs e)

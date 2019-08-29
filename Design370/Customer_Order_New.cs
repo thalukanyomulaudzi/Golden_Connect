@@ -15,7 +15,7 @@ using System.IO;
 
 namespace Design370
 {
-    public partial class NewCustomerOrder : Form
+    public partial class Customer_Order_New : Form
     {
         int qty = 0;
         decimal p_price = 0;
@@ -39,7 +39,7 @@ namespace Design370
         bool generated = false;
         decimal discount = 0;
         DBConnection dbCon = DBConnection.Instance();
-        public NewCustomerOrder()
+        public Customer_Order_New()
         {
             InitializeComponent();
         }

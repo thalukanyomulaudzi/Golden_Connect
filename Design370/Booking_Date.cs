@@ -14,7 +14,7 @@ namespace Design370
 
         private void Booking_Date_Load(object sender, EventArgs e)
         {
-            Timeslots.loadTimeslots(dgvBookEvent, DateTime.Today);
+            Timeslot.loadTimeslots(dgvBookEvent, DateTime.Today);
         }
 
 
@@ -23,9 +23,9 @@ namespace Design370
             dgvBookEvent.Rows.Clear();
             TimeSpan span = (dateTimePicker1.Value.Subtract(DateTime.Now));
             if (span.TotalDays <= 2)
-                Timeslots.loadTimeslots(dgvBookEvent, DateTime.Now);
+                Timeslot.loadTimeslots(dgvBookEvent, DateTime.Now);
             else
-                Timeslots.loadTimeslots(dgvBookEvent, dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3)));
+                Timeslot.loadTimeslots(dgvBookEvent, dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3)));
         }
 
         private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -38,7 +38,6 @@ namespace Design370
             try
             {
                 DBConnection dBCon = DBConnection.Instance();
-
                 CultureInfo cultureInfo = CultureInfo.InvariantCulture;
                 DateTime dateTime;
                 dateTime = DateTime.ParseExact(dgvBookEvent.Columns[e.ColumnIndex].HeaderText, "dddd, MMM dd yyyy", cultureInfo);
@@ -75,9 +74,21 @@ namespace Design370
         }
         private void bookingDetails(string bookingType)
         {
-            Booking.bookingType = bookingType;
-            Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
-            Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+            try
+            {
+                Booking.bookingType = bookingType;
+                Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
+                Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                Booking.employeeID = Convert.ToInt16(dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[2].Value);
+                foreach (DataGridCell cell in dgvBookEvent.SelectedCells)
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void Book_Event_Date_FormClosing(object sender, FormClosingEventArgs e)

@@ -62,8 +62,8 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            Employees.LoadEmployeeTypes(cbxSort);
-            Employees.LoadEmployees(empGrid);
+            Employee.LoadEmployeeTypes(cbxSort);
+            Employee.LoadEmployees(empGrid);
             Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
@@ -110,7 +110,8 @@ namespace Design370
                 {
                     MysqlConnection.mysqlCon.Open();
 
-                    string sql = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
+                    string sql = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service " +
+                        "INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
@@ -128,12 +129,13 @@ namespace Design370
                 {
                     MysqlConnection.mysqlCon.Open();
 
-                    string sql = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                    string sql = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product " +
+                        "INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
-                    dgvServices.AutoGenerateColumns = false;
-                    dgvServices.DataSource = dtb1;
+                    dgvProducts.AutoGenerateColumns = false;
+                    dgvProducts.DataSource = dtb1;
                 }
             }
         }
@@ -142,7 +144,7 @@ namespace Design370
         {
             dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
-        } 
+        }
 
         private void testConnection()//only in use during dev stage for example code
         {
@@ -216,12 +218,6 @@ namespace Design370
             eventTypes.ShowDialog();
         }
 
-        private void Button20_Click(object sender, EventArgs e)
-        {
-            Booking_Details details = new Booking_Details();
-            details.ShowDialog();
-        }
-
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
@@ -236,7 +232,7 @@ namespace Design370
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            NewCustomerOrder cOrder = new NewCustomerOrder();
+            Customer_Order_New cOrder = new Customer_Order_New();
             cOrder.ShowDialog();
         }
 
@@ -248,22 +244,21 @@ namespace Design370
 
                 case 0:
                     Employee_Update.edit = false;
-                    Employee_Update.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    Employee_Update.employeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                     employeeView.btnSaveEmpEdit.Visible = false;
                     employeeView.ShowDialog();
                     break;
                 case 1:
                     Employee_Update.edit = true;
-                    Employee_Update.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    Employee_Update.employeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                     employeeView.ShowDialog();
                     break;
                 case 2:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        DeleteEmployee deleteEmp = new DeleteEmployee();
-                        deleteEmp.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
-                        if (deleteEmp.deleteEmployee())
+                        Employee.EmployeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                        if (Employee.deleteEmployee())
                         {
                             MessageBox.Show("Employee Successfully Deleted", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -280,7 +275,7 @@ namespace Design370
                 default:
                     break;
             }
-            }
+        }
 
         private void Button7_Click(object sender, EventArgs e)
         {
@@ -355,18 +350,18 @@ namespace Design370
         private void DataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string packageName;
-            PhotoshootPackage_View photoshootPackage_View = new PhotoshootPackage_View();
+            Photoshoot_Package_View photoshootPackage_View = new Photoshoot_Package_View();
             switch (e.ColumnIndex)
             {
 
                 case 4:
-                    PhotoshootPackage_View.edit = false;
+                    Photoshoot_Package_View.edit = false;
                     packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
                     photoshootPackage_View.GetRow = packageName;
                     photoshootPackage_View.ShowDialog();
                     break;
                 case 5:
-                    PhotoshootPackage_View.edit = true;
+                    Photoshoot_Package_View.edit = true;
                     packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
                     photoshootPackage_View.GetRow = packageName;
                     photoshootPackage_View.ShowDialog();
@@ -497,7 +492,7 @@ namespace Design370
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             empGrid.Rows.Clear();
-            Employees.SearchEmployees(txtSearch.Text, empGrid);
+            Employee.SearchEmployees(txtSearch.Text, empGrid);
         }
 
         private void TabPage3_Click(object sender, EventArgs e)
@@ -547,13 +542,36 @@ namespace Design370
         private void CbxSort_SelectedIndexChanged(object sender, EventArgs e)
         {
             empGrid.Rows.Clear();
-            Employees.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
+            Employee.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
         }
 
         private void BtnCaptureOrderPayment_Click(object sender, EventArgs e)
         {
             Customer_Order_Capture newPayment = new Customer_Order_Capture();
             newPayment.ShowDialog();
+        }
+
+        private void BtnBookingCapture_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnBookingAdd_Click(object sender, EventArgs e)
+        {
+            Booking_Details details = new Booking_Details();
+            details.ShowDialog();
+        }
+
+        private void BtnPhotoshootPackageAdd_Click(object sender, EventArgs e)
+        {
+            Photoshoot_Package_Add photoshootPackageAdd = new Photoshoot_Package_Add();
+            photoshootPackageAdd.ShowDialog();
+        }
+
+        private void btnPhotoshootTypes_Click(object sender, EventArgs e)
+        {
+            Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
+            photoshoot_Types.ShowDialog();
         }
 
         private void DgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)

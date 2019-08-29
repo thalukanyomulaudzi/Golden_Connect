@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class ProductList
+    partial class Product_List
     {
         /// <summary>
         /// Required designer variable.

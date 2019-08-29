@@ -14,7 +14,7 @@ namespace Design370
     public partial class Employee_Update : Form
     {
         public static bool edit;
-        public static long employeeID;
+        public static string employeeID;
         int ms, et;
         int msID, emtID;
         public Employee_Update()

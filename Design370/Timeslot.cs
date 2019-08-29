@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    class Timeslots
+    class Timeslot
     {
 
         const short DaysInWeek = 7;
@@ -25,10 +25,10 @@ namespace Design370
                     var reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
-                        dBCon.Close();
+                        reader.Close();
                         return true;
                     }
-                    dBCon.Close();
+                    reader.Close();
                 }
                 return false;
             }

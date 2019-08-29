@@ -147,6 +147,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Photoshoot_Types";
             this.Text = "Photoshoot Types";
+            this.Activated += new System.EventHandler(this.Photoshoot_Types_Activated);
             this.Load += new System.EventHandler(this.Photoshoot_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);

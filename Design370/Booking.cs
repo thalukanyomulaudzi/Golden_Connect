@@ -7,6 +7,7 @@ namespace Design370
     class Booking
     {
         public static string bookingType = "", customerName = "", employeeName = "";
+        public static short customerID, employeeID, duration;
         public static DateTime bookingDate = new DateTime();
         public static void loadBookings(System.Windows.Forms.DataGridView dgv, string search = "")
         {
@@ -18,7 +19,6 @@ namespace Design370
                     List<short> bookingIDs = new List<short>();
                     List<DateTime> bookingDates = new List<DateTime>();
                     string query = "SELECT DISTINCT et.booking_id, t.timeslot_date FROM employee_timeslot et JOIN timeslot t ON et.timeslot_id = t.timeslot_id WHERE et.booking_id IS NOT NULL";
-                    //System.Windows.Forms.MessageBox.Show(query);
                     var command = new MySqlCommand(query, dBCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -45,16 +45,5 @@ namespace Design370
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
         }
-        //public static void loadEmployeeAvailable(System.Windows.Forms.DataGridView dgv, DateTime dateTime)
-        //{
-        //    try
-        //    {
-        //        DBConnection dBCon = DBConnection.Instance();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        System.Windows.Forms.MessageBox.Show(e.Message);
-        //    }
-        //}
     }
 }
