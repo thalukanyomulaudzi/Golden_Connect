@@ -84,6 +84,7 @@
             this.dgvBookEvent.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBookEvent.Name = "dgvBookEvent";
             this.dgvBookEvent.RowTemplate.Height = 24;
+            this.dgvBookEvent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvBookEvent.Size = new System.Drawing.Size(805, 232);
             this.dgvBookEvent.TabIndex = 17;
             this.dgvBookEvent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookEvent_CellContentClick);
@@ -139,6 +140,7 @@
             // 
             // btnBookingCreateEvent
             // 
+            this.btnBookingCreateEvent.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnBookingCreateEvent.Location = new System.Drawing.Point(848, 334);
             this.btnBookingCreateEvent.Name = "btnBookingCreateEvent";
             this.btnBookingCreateEvent.Size = new System.Drawing.Size(288, 24);
@@ -155,6 +157,7 @@
             this.bookingEmployeeAvailable});
             this.dgvBookingEmployees.Location = new System.Drawing.Point(848, 96);
             this.dgvBookingEmployees.Name = "dgvBookingEmployees";
+            this.dgvBookingEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvBookingEmployees.Size = new System.Drawing.Size(288, 232);
             this.dgvBookingEmployees.TabIndex = 19;
             this.dgvBookingEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
@@ -171,6 +174,7 @@
             // 
             // btnBookingCreatePhotoshoot
             // 
+            this.btnBookingCreatePhotoshoot.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnBookingCreatePhotoshoot.Location = new System.Drawing.Point(848, 364);
             this.btnBookingCreatePhotoshoot.Name = "btnBookingCreatePhotoshoot";
             this.btnBookingCreatePhotoshoot.Size = new System.Drawing.Size(288, 24);
@@ -192,6 +196,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Book_Event_Date";
             this.Text = "Book_Event_Date";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Book_Event_Date_FormClosing);
             this.Load += new System.EventHandler(this.Book_Event_Date_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingEmployees)).EndInit();

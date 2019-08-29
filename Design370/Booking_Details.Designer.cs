@@ -52,7 +52,7 @@
             this.btnBookingChangeCustomer = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBookingEmployee = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).BeginInit();
             this.SuspendLayout();
             // 
@@ -297,20 +297,20 @@
             this.label10.TabIndex = 45;
             this.label10.Text = "Employee:";
             // 
-            // textBox1
+            // txtBookingEmployee
             // 
-            this.textBox1.Location = new System.Drawing.Point(193, 90);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(259, 24);
-            this.textBox1.TabIndex = 46;
-            this.textBox1.Text = "John Doe";
+            this.txtBookingEmployee.Location = new System.Drawing.Point(193, 90);
+            this.txtBookingEmployee.Name = "txtBookingEmployee";
+            this.txtBookingEmployee.Size = new System.Drawing.Size(259, 24);
+            this.txtBookingEmployee.TabIndex = 46;
+            this.txtBookingEmployee.Text = "John Doe";
             // 
             // Booking_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 795);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBookingEmployee);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnBookingChangeCustomer);
@@ -373,6 +373,6 @@
         private System.Windows.Forms.Button btnBookingChangeCustomer;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBookingEmployee;
     }
 }

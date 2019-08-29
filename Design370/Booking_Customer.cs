@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    public partial class Booking_Add : Form
+    public partial class Booking_Customer : Form
     {
-        public Booking_Add()
+        public Booking_Customer()
         {
             InitializeComponent();
         }
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            Book_Event_Date bookEventDate = new Book_Event_Date();
-            bookEventDate.ShowDialog();
+            Booking.customerName = dgvBookingAdd.SelectedRows[0].Cells[0].Value.ToString() + " " + dgvBookingAdd.SelectedRows[0].Cells[1].Value.ToString();
+            this.Hide();
         }
 
         private void Booking_Add_Load(object sender, EventArgs e)
@@ -46,7 +39,7 @@ namespace Design370
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    dgvBookingAdd.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2));
+                    dgvBookingAdd.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "View", "Edit", "Delete");
                 }
                 reader.Close();
             }
@@ -54,6 +47,11 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
+        }
+
+        private void Booking_Customer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

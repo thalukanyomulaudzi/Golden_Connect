@@ -235,8 +235,13 @@ namespace Design370
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            Booking_Add bookingAdd = new Booking_Add();
-            bookingAdd.ShowDialog();
+            Booking_Details details = new Booking_Details();
+            details.ShowDialog();
+
+
+
+
+            
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)

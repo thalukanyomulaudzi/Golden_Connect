@@ -22,7 +22,6 @@ namespace Design370
         {
             dgvBookEvent.Rows.Clear();
             TimeSpan span = (dateTimePicker1.Value.Subtract(DateTime.Now));
-            MessageBox.Show(span.TotalDays.ToString());
             if (span.TotalDays <= 2)
                 Timeslots.loadTimeslots(dgvBookEvent, DateTime.Now);
             else
@@ -42,7 +41,7 @@ namespace Design370
 
                 CultureInfo cultureInfo = CultureInfo.InvariantCulture;
                 DateTime dateTime;
-                dateTime = DateTime.ParseExact(dgvBookEvent.Columns[e.ColumnIndex].HeaderText, "dddd, MMM dd \"'\"yy", cultureInfo);
+                dateTime = DateTime.ParseExact(dgvBookEvent.Columns[e.ColumnIndex].HeaderText, "dddd, MMM dd yyyy", cultureInfo);
                 dateTime = dateTime.AddHours(8 + dgvBookEvent.CurrentRow.Index);
                 //MessageBox.Show(dateTime.ToString());//shows the selected DateTime in a messagebox
                 dgvBookingEmployees.Rows.Clear();
@@ -76,14 +75,28 @@ namespace Design370
         }
         private void bookingDetails(string bookingType)
         {
+            Booking.bookingType = bookingType;
+            Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
+            Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+
+
+
+            //DataGridViewTextBoxCell { ColumnIndex = 0, RowIndex = 0 }
+
+        }
+
+        private void Book_Event_Date_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !checkSelected();
+        }
+        private bool checkSelected()
+        {
             if (dgvBookingEmployees.SelectedCells.Count == 0 || dgvBookEvent.SelectedCells.Count == 0)
             {
                 MessageBox.Show("Please select a timeslot and employee");
-                return;
+                return false;
             }
-            Booking.bookingType = bookingType;
-            Booking_Details bookingDetails = new Booking_Details();
-            bookingDetails.ShowDialog();
+            return true;
         }
     }
 }

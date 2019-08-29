@@ -19,58 +19,51 @@ namespace Design370
 
         private void Booking_Details_Load(object sender, EventArgs e)
         {
-            label8.Visible = cbxBookingAdditions.Checked;
-            label6.Visible = cbxBookingAdditions.Checked;
+            Booking_Customer customer = new Booking_Customer();
+            var result = customer.ShowDialog();
+
+            if (result == DialogResult.Cancel)
+            {
+                MessageBox.Show("Customer selection has been canceled");
+                Dispose();
+                return;
+            }
+
+            Book_Event_Date bookEventDate = new Book_Event_Date();
+            result = bookEventDate.ShowDialog();
+
+            if (result == DialogResult.Cancel)
+            {
+                MessageBox.Show("Timeslot/employee selection has been canceled");
+                Dispose();
+                return;
+            }
+            loadBookingDetails();
         }
 
         private void loadBookingDetails()
         {
+            try
+            {
+                txtBookingCustomer.Text = Booking.customerName;
+                txtBookingEmployee.Text = Booking.employeeName;
+                dtmBookingDate.Value = Booking.bookingDate;
+                DBConnection dBCon = DBConnection.Instance();
+                if (dBCon.IsConnect())
+                {
 
-        }
-
-        private void MonthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            String[] times = { "10:00", "12:00" };
-            ComboBox comboBoxTime = new ComboBox();
-            comboBoxTime.Items.AddRange(times);
-            comboBoxTime.Location = new Point(213, 252);
-            comboBoxTime.Width = 100;
-            comboBoxTime.Height = 24;
-            comboBoxTime.Show();
-        }
-
-        private void PictureBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void PictureBox2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void PictureBox3_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void PictureBox4_Click(object sender, EventArgs e)
-        {
-            
+                    string query = "";
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void Booking_Details_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult exit = MessageBox.Show("Are you sure you want to cancel making the booking?", "Cancel booking", MessageBoxButtons.YesNo);
-            e.Cancel = exit == DialogResult.Yes ? false : true;
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            Booking_Dialog bookingDialog = new Booking_Dialog();
-            DialogResult result = bookingDialog.ShowDialog();
-
-            txtBookingLocation.Text = result == DialogResult.Yes ? "Event" : "Photoshoot";
+            MessageBox.Show("The booking creation has been canceled");
         }
 
         private void CbxBookingAdditions_CheckedChanged(object sender, EventArgs e)
@@ -80,7 +73,7 @@ namespace Design370
 
         private void BtnBookingChangeCustomer_Click(object sender, EventArgs e)
         {
-            Booking_Add bookingAdd = new Booking_Add();
+            Booking_Customer bookingAdd = new Booking_Customer();
             var result =  bookingAdd.ShowDialog();
         }
     }

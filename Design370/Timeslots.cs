@@ -136,7 +136,7 @@ namespace Design370
                     DateTime headerDay = day;
                     for (int j = 0; j < DaysInWeek ; j++)
                     {
-                        dgv.Columns[j].HeaderText = headerDay.ToString("dddd, MMM dd \"'\"yy");
+                        dgv.Columns[j].HeaderText = headerDay.ToString("dddd, MMM dd yyyy");
                         headerDay = headerDay.AddDays(1);
                     }
                     for (i=8;i<10;i++)

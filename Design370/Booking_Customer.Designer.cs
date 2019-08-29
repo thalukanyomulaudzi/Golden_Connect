@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class Booking_Add
+    partial class Booking_Customer
     {
         /// <summary>
         /// Required designer variable.
@@ -54,6 +54,7 @@
             this.dgvBookingAdd.Location = new System.Drawing.Point(25, 76);
             this.dgvBookingAdd.Margin = new System.Windows.Forms.Padding(4);
             this.dgvBookingAdd.Name = "dgvBookingAdd";
+            this.dgvBookingAdd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBookingAdd.Size = new System.Drawing.Size(732, 310);
             this.dgvBookingAdd.TabIndex = 65;
             // 
@@ -108,16 +109,17 @@
             // 
             // button20
             // 
+            this.button20.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button20.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button20.Location = new System.Drawing.Point(569, 416);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(188, 35);
             this.button20.TabIndex = 60;
-            this.button20.Text = "Add Booking";
+            this.button20.Text = "Select customer";
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.Button20_Click);
             // 
-            // Booking_Add
+            // Booking_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,8 +130,9 @@
             this.Controls.Add(this.button20);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Booking_Add";
-            this.Text = "Booking_Add";
+            this.Name = "Booking_Customer";
+            this.Text = "Select customer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Booking_Customer_FormClosing);
             this.Load += new System.EventHandler(this.Booking_Add_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingAdd)).EndInit();
             this.ResumeLayout(false);
