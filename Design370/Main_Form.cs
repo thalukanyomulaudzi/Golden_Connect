@@ -241,19 +241,19 @@ namespace Design370
 
         private void DataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            UpdateEmployee employeeView = new UpdateEmployee();
+            Employee_Update employeeView = new Employee_Update();
             switch (e.ColumnIndex)
             {
 
                 case 0:
-                    UpdateEmployee.edit = false;
-                    UpdateEmployee.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    Employee_Update.edit = false;
+                    Employee_Update.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
                     employeeView.btnSaveEmpEdit.Visible = false;
                     employeeView.ShowDialog();
                     break;
                 case 1:
-                    UpdateEmployee.edit = true;
-                    UpdateEmployee.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                    Employee_Update.edit = true;
+                    Employee_Update.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
                     employeeView.ShowDialog();
                     break;
                 case 2:
@@ -422,17 +422,17 @@ namespace Design370
         private void DataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string packageName;
-            EventPackage_View eventPackage_View = new EventPackage_View();
+            Event_Package_View eventPackage_View = new Event_Package_View();
             switch (e.ColumnIndex)
             {
                 case 4:
-                    EventPackage_View.edit = false;
+                    Event_Package_View.edit = false;
                     packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
                     eventPackage_View.GetEventViewRow = packageName;
                     eventPackage_View.ShowDialog();
                     break;
                 case 5:
-                    EventPackage_View.edit = true;
+                    Event_Package_View.edit = true;
                     packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
                     eventPackage_View.GetEventViewRow = packageName;
                     eventPackage_View.ShowDialog();
@@ -508,7 +508,7 @@ namespace Design370
 
         }
 
-        private void Main_Form_Activated_1(object sender, EventArgs e)
+        private void Main_Form_Activated(object sender, EventArgs e)
         {
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Design370
 {
-    public partial class CapturePayment : Form
+    public partial class Customer_Order_Capture : Form
     {
-        public CapturePayment()
+        public Customer_Order_Capture()
         {
             InitializeComponent();
         }

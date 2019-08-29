@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class CapturePayment
+    partial class Customer_Order_Capture
     {
         /// <summary>
         /// Required designer variable.
