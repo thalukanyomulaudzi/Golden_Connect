@@ -186,7 +186,6 @@
             this.cmbBookingPackage.Name = "cmbBookingPackage";
             this.cmbBookingPackage.Size = new System.Drawing.Size(259, 26);
             this.cmbBookingPackage.TabIndex = 26;
-            this.cmbBookingPackage.SelectedIndexChanged += new System.EventHandler(this.CmbBookingPackage_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -281,13 +280,13 @@
             // 
             // btnBookingChangeDateEmployee
             // 
-            this.button1.Location = new System.Drawing.Point(464, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(68, 60);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "Change";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.btnBookingChangeDateEmployee.Location = new System.Drawing.Point(464, 54);
+            this.btnBookingChangeDateEmployee.Name = "button1";
+            this.btnBookingChangeDateEmployee.Size = new System.Drawing.Size(68, 60);
+            this.btnBookingChangeDateEmployee.TabIndex = 44;
+            this.btnBookingChangeDateEmployee.Text = "Change";
+            this.btnBookingChangeDateEmployee.UseVisualStyleBackColor = true;
+            this.btnBookingChangeDateEmployee.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label10
             // 

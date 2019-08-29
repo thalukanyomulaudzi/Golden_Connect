@@ -80,7 +80,7 @@ namespace Design370
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
-            Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
+            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
