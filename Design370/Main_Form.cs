@@ -216,12 +216,6 @@ namespace Design370
             eventTypes.ShowDialog();
         }
 
-        private void Button20_Click(object sender, EventArgs e)
-        {
-            Booking_Details details = new Booking_Details();
-            details.ShowDialog();
-        }
-
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
@@ -558,6 +552,18 @@ namespace Design370
         private void BtnBookingCapture_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnBookingAdd_Click(object sender, EventArgs e)
+        {
+            Booking_Details details = new Booking_Details();
+            details.ShowDialog();
+        }
+
+        private void BtnPhotoshootPackageAdd_Click(object sender, EventArgs e)
+        {
+            Photoshoot_Package_Add photoshootPackageAdd = new Photoshoot_Package_Add();
+            photoshootPackageAdd.ShowDialog();
         }
     }
 }

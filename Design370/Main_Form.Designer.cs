@@ -97,7 +97,7 @@ namespace Design370
             this.ProductEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ProductDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPhotoshootPackageAdd = new System.Windows.Forms.Button();
             this.lblPhotoshootPackageSearch = new System.Windows.Forms.Label();
             this.txtPhotoshootPackageSearch = new System.Windows.Forms.TextBox();
             this.dgvPhotoshootPackage = new System.Windows.Forms.DataGridView();
@@ -133,6 +133,7 @@ namespace Design370
             this.btnCaptureOrderPayment = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnBookingAdd = new System.Windows.Forms.Button();
             this.dgvBookings = new System.Windows.Forms.DataGridView();
             this.bookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookingCustName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -829,7 +830,7 @@ namespace Design370
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.button1);
+            this.tabPage6.Controls.Add(this.btnPhotoshootPackageAdd);
             this.tabPage6.Controls.Add(this.lblPhotoshootPackageSearch);
             this.tabPage6.Controls.Add(this.txtPhotoshootPackageSearch);
             this.tabPage6.Controls.Add(this.dgvPhotoshootPackage);
@@ -844,17 +845,17 @@ namespace Design370
             this.tabPage6.Click += new System.EventHandler(this.tabPage6_Click);
             this.tabPage6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TabPage6_MouseClick);
             // 
-            // button1
+            // btnPhotoshootPackageAdd
             // 
-            this.button1.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(586, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 28);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Add Photoshoot Package";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnPhotoshootPackageAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhotoshootPackageAdd.Location = new System.Drawing.Point(586, 11);
+            this.btnPhotoshootPackageAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPhotoshootPackageAdd.Name = "btnPhotoshootPackageAdd";
+            this.btnPhotoshootPackageAdd.Size = new System.Drawing.Size(188, 28);
+            this.btnPhotoshootPackageAdd.TabIndex = 32;
+            this.btnPhotoshootPackageAdd.Text = "Add Photoshoot Package";
+            this.btnPhotoshootPackageAdd.UseVisualStyleBackColor = true;
+            this.btnPhotoshootPackageAdd.Click += new System.EventHandler(this.BtnPhotoshootPackageAdd_Click);
             // 
             // lblPhotoshootPackageSearch
             // 
@@ -958,7 +959,6 @@ namespace Design370
             this.btnPhotoshootTypes.TabIndex = 0;
             this.btnPhotoshootTypes.Text = "Photoshoot Types";
             this.btnPhotoshootTypes.UseVisualStyleBackColor = true;
-            this.btnPhotoshootTypes.Click += new System.EventHandler(this.button10_Click);
             // 
             // tabPage7
             // 
@@ -1213,6 +1213,7 @@ namespace Design370
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.btnBookingAdd);
             this.tabPage9.Controls.Add(this.dgvBookings);
             this.tabPage9.Controls.Add(this.lblBookingSearch);
             this.tabPage9.Controls.Add(this.txtBookingSearch);
@@ -1224,6 +1225,16 @@ namespace Design370
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Bookings";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // btnBookingAdd
+            // 
+            this.btnBookingAdd.Location = new System.Drawing.Point(585, 13);
+            this.btnBookingAdd.Name = "btnBookingAdd";
+            this.btnBookingAdd.Size = new System.Drawing.Size(189, 25);
+            this.btnBookingAdd.TabIndex = 54;
+            this.btnBookingAdd.Text = "Add Booking";
+            this.btnBookingAdd.UseVisualStyleBackColor = true;
+            this.btnBookingAdd.Click += new System.EventHandler(this.BtnBookingAdd_Click);
             // 
             // dgvBookings
             // 
@@ -1720,10 +1731,6 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn EventPackageView;
         private System.Windows.Forms.DataGridViewButtonColumn EventPackageEdit;
         private System.Windows.Forms.DataGridViewButtonColumn EventPackageDelete;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpView;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpDelete;
         public System.Windows.Forms.DataGridView empGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhotoshootPackageName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Services;
@@ -1732,7 +1739,6 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageView;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageEdit;
         private System.Windows.Forms.DataGridViewButtonColumn PhotoshootPackageDelete;
-        private Button button10;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -1740,12 +1746,11 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn SupplierView;
         private System.Windows.Forms.DataGridViewButtonColumn SupplierEdit;
         private System.Windows.Forms.DataGridViewButtonColumn SupplierDelete;
-        private DataGridViewCellStyle dataGridViewCellStyle1;
         private DataGridViewButtonColumn View;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private Button btnPhotoshootPackageAdd;
         private Button btnBookingAdd;
-        private Button button1;
     }
 }
 

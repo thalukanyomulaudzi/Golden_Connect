@@ -1,104 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
 
 namespace Design370
 {
     public class Order
     {
-        private string OrderName;
-        private int OrderQuantity;
-        private string[] OrderImages;
-        private int productID;
-        private long orderID;
         private static DBConnection dbCon = DBConnection.Instance();
 
         public Order() { }
 
         public Order(string name, int qty, string[] imgs, int productID, long orderID)
         {
-            OrderName = name;
-            OrderQuantity = qty;
-            OrderImages = imgs;
-            this.productID = productID;
-            this.orderID = orderID;
+            getOrderName = name;
+            getOrderQuanity = qty;
+            getOrderImages = imgs;
+            getProductID = productID;
+            getOrderID = orderID;
         }
 
-        public string getOrderName
-        {
-            get
-            {
-                return OrderName;
-            }
+        public string getOrderName { get; set; }
 
-            set
-            {
-                OrderName = value;
-            }
-        }
+        public int getOrderQuanity { get; set; }
 
-        public int getOrderQuanity
-        {
-            get
-            {
-                return OrderQuantity;
-            }
+        public string[] getOrderImages { get; set; }
 
-            set
-            {
-                OrderQuantity = value;
-            }
-        }
+        public int getProductID { get; set; }
 
-        public string[] getOrderImages
-        {
-            get
-            {
-                return OrderImages;
-            }
-
-            set
-            {
-                OrderImages = value;
-            }
-        }
-
-        public int getProductID
-        {
-            get
-            {
-                return productID;
-            }
-
-            set
-            {
-                productID = value;
-            }
-        }
-
-        public long getOrderID
-        {
-            get
-            {
-                return orderID;
-            }
-
-            set
-            {
-                orderID = value;
-            }
-        }
+        public long getOrderID { get; set; }
 
         public static void LoadOrders(DataGridView dgv)
         {
             try
             {
-                dbCon.Close();
-                dbCon.Open();
                 dgv.ColumnCount = 6;
                 dgv.Columns[0].Name = "Order ID";
                 dgv.Columns[0].Width = 110;
@@ -122,13 +56,13 @@ namespace Design370
                     {
                         dgv.Rows.Add(reader[0], reader[2] + " " + reader[6], reader[1], reader[3], reader[4], reader[5]);
                     }
+                    reader.Close();
                 }
             }
-            catch (Exception err)
+            catch (Exception e)
             {
-                MessageBox.Show(err.Message);
+                MessageBox.Show(e.Message);
             }
-            dbCon.Close();
         }
     }
 }
