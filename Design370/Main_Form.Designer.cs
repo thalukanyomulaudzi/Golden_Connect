@@ -1098,6 +1098,9 @@ namespace Design370
             // 
             // dgvOrders
             // 
+            this.dgvOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Location = new System.Drawing.Point(11, 59);
             this.dgvOrders.Margin = new System.Windows.Forms.Padding(2);
@@ -1180,6 +1183,7 @@ namespace Design370
             this.btnCaptureOrderPayment.TabIndex = 39;
             this.btnCaptureOrderPayment.Text = "Capture Payment";
             this.btnCaptureOrderPayment.UseVisualStyleBackColor = true;
+            this.btnCaptureOrderPayment.Click += new System.EventHandler(this.BtnCaptureOrderPayment_Click);
             // 
             // button16
             // 
