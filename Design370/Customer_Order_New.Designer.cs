@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class NewCustomerOrder
+    partial class Customer_Order_New
     {
         /// <summary>
         /// Required designer variable.

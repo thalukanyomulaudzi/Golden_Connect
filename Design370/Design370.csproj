@@ -195,7 +195,7 @@
       <DependentUpon>Customer_View.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnection.cs" />
-    <Compile Include="DeleteEmployee.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="Employees.cs" />
     <Compile Include="Employee_Add.cs">
       <SubType>Form</SubType>
@@ -272,11 +272,11 @@
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="MysqlConnection.cs" />
-    <Compile Include="NewCustomerOrder.cs">
+    <Compile Include="Customer_Order_New.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewCustomerOrder.Designer.cs">
-      <DependentUpon>NewCustomerOrder.cs</DependentUpon>
+    <Compile Include="Customer_Order_New.Designer.cs">
+      <DependentUpon>Customer_Order_New.cs</DependentUpon>
     </Compile>
     <Compile Include="Order.cs" />
     <Compile Include="Photoshoot Package_Add.cs">
@@ -487,8 +487,8 @@
     <EmbeddedResource Include="Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewCustomerOrder.resx">
-      <DependentUpon>NewCustomerOrder.cs</DependentUpon>
+    <EmbeddedResource Include="Customer_Order_New.resx">
+      <DependentUpon>Customer_Order_New.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot Package_Add.resx">
       <DependentUpon>Photoshoot Package_Add.cs</DependentUpon>

@@ -141,7 +141,7 @@ namespace Design370
         {
             dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
-        } 
+        }
 
         private void testConnection()//only in use during dev stage for example code
         {
@@ -235,7 +235,7 @@ namespace Design370
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            NewCustomerOrder cOrder = new NewCustomerOrder();
+            Customer_Order_New cOrder = new Customer_Order_New();
             cOrder.ShowDialog();
         }
 
@@ -260,9 +260,8 @@ namespace Design370
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        DeleteEmployee deleteEmp = new DeleteEmployee();
-                        deleteEmp.employeeID = Convert.ToInt64(empGrid.Rows[e.RowIndex].Cells[5].Value);
-                        if (deleteEmp.deleteEmployee())
+                        Employee.employeeID = Convert.ToInt16(empGrid.Rows[e.RowIndex].Cells[5].Value);
+                        if (Employee.deleteEmployee())
                         {
                             MessageBox.Show("Employee Successfully Deleted", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -279,7 +278,7 @@ namespace Design370
                 default:
                     break;
             }
-            }
+        }
 
         private void Button7_Click(object sender, EventArgs e)
         {
