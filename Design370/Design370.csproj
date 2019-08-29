@@ -195,7 +195,6 @@
       <DependentUpon>Customer_View.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnection.cs" />
-    <Compile Include="Employee.cs" />
     <Compile Include="Employees.cs" />
     <Compile Include="Employee_Add.cs">
       <SubType>Form</SubType>

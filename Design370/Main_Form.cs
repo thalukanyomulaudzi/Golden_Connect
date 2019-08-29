@@ -260,8 +260,8 @@ namespace Design370
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        Employee.EmployeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                        if (Employee.deleteEmployee())
+                        Employees.EmployeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                        if (Employees.deleteEmployee())
                         {
                             MessageBox.Show("Employee Successfully Deleted", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
