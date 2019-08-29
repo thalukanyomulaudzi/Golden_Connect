@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.dgvBookingAdd = new System.Windows.Forms.DataGridView();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.button20 = new System.Windows.Forms.Button();
             this.CustFirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CustEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CustDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.button20 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingAdd)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,36 +57,6 @@
             this.dgvBookingAdd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBookingAdd.Size = new System.Drawing.Size(732, 310);
             this.dgvBookingAdd.TabIndex = 65;
-            // 
-            // CustFirst
-            // 
-            this.CustFirst.HeaderText = "First name";
-            this.CustFirst.Name = "CustFirst";
-            // 
-            // CustLast
-            // 
-            this.CustLast.HeaderText = "Last name";
-            this.CustLast.Name = "CustLast";
-            // 
-            // CustID
-            // 
-            this.CustID.HeaderText = "ID";
-            this.CustID.Name = "CustID";
-            // 
-            // CustView
-            // 
-            this.CustView.HeaderText = "";
-            this.CustView.Name = "CustView";
-            // 
-            // CustEdit
-            // 
-            this.CustEdit.HeaderText = "";
-            this.CustEdit.Name = "CustEdit";
-            // 
-            // CustDelete
-            // 
-            this.CustDelete.HeaderText = "";
-            this.CustDelete.Name = "CustDelete";
             // 
             // label18
             // 
@@ -118,6 +88,36 @@
             this.button20.Text = "Select customer";
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.Button20_Click);
+            // 
+            // CustFirst
+            // 
+            this.CustFirst.HeaderText = "First name";
+            this.CustFirst.Name = "CustFirst";
+            // 
+            // CustLast
+            // 
+            this.CustLast.HeaderText = "Last name";
+            this.CustLast.Name = "CustLast";
+            // 
+            // CustID
+            // 
+            this.CustID.HeaderText = "ID";
+            this.CustID.Name = "CustID";
+            // 
+            // CustView
+            // 
+            this.CustView.HeaderText = "";
+            this.CustView.Name = "CustView";
+            // 
+            // CustEdit
+            // 
+            this.CustEdit.HeaderText = "";
+            this.CustEdit.Name = "CustEdit";
+            // 
+            // CustDelete
+            // 
+            this.CustDelete.HeaderText = "";
+            this.CustDelete.Name = "CustDelete";
             // 
             // Booking_Customer
             // 

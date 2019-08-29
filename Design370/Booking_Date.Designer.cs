@@ -189,7 +189,6 @@
             // 
             this.bookingEmployeeID.HeaderText = "ID";
             this.bookingEmployeeID.Name = "bookingEmployeeID";
-            this.bookingEmployeeID.Visible = false;
             // 
             // Booking_Date
             // 

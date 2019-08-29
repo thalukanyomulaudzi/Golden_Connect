@@ -6,8 +6,8 @@ namespace Design370
 {
     class Booking
     {
-        public static string bookingType = "", customerName = "", employeeName = "";
-        public static short customerID, employeeID, duration;
+        public static string bookingType = "", customerName = "", employeeName = "", customerID, employeeID, time;
+        public static short duration;
         public static DateTime bookingDate = new DateTime();
         public static void loadBookings(System.Windows.Forms.DataGridView dgv, string search = "")
         {

@@ -36,6 +36,7 @@ namespace Design370
                 return;
             }
             loadBookingDetails();
+            numBookingSpan.Focus();
         }
 
         private void loadBookingDetails()
@@ -45,6 +46,7 @@ namespace Design370
                 txtBookingCustomer.Text = Booking.customerName;
                 dtmBookingDate.Value = Booking.bookingDate;
                 txtBookingEmployee.Text = Booking.employeeName;
+                txtBookingTime.Text = Booking.time;
                 DBConnection dBCon = DBConnection.Instance();
                 if (dBCon.IsConnect())
                 {
@@ -243,11 +245,51 @@ namespace Design370
         }
         private void BtnBookingProceed_Click(object sender, EventArgs e)
         {
+            MySqlCommand command;
+            MySqlDataReader reader = null;
             try
             {
+                if(Convert.ToInt32(txtBookingTime.Text.Substring(0,2)) + numBookingSpan.Value > 16)
+                {
+                    MessageBox.Show("That time span is too long for a booking");
+                    return;
+                }
+
+
+
+
                 DBConnection dBCon = DBConnection.Instance();
-                string query = "";
-                var command = new MySqlCommand(query, dBCon.Connection);
+                //get type id
+                string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = '" + Booking.bookingType + "'";
+                command = new MySqlCommand(query, dBCon.Connection);
+                reader = command.ExecuteReader();
+                reader.Read();
+                string typeID = reader.GetString(0);
+                reader.Close();
+
+                //get status id
+                query = "SELECT booking_status_id FROM booking_status WHERE booking_status_name = 'Pending'";
+                command.CommandText = query;
+                reader = command.ExecuteReader();
+                reader.Read();
+                string statusID = reader.GetString(0);
+                reader.Close();
+
+                //get booking package id
+                query = "SELECT booking_package_id FROM booking_package WHERE booking_package_name = '" + cmbBookingPackage.Text + "'";
+                command.CommandText = query;
+                reader = command.ExecuteReader();
+                reader.Read();
+                string packageID = reader.GetString(0);
+                reader.Close();
+
+                //insert booking
+                query = "INSERT INTO `booking` (`booking_id`, `customer_id`, `date_created`, `location_address`, `discount_id`, " +
+                    "`booking_type_id`, `booking_status_id`, `transport_fee_id`, `booking_package_id`, `booking_guests`) " +
+                    "VALUES (NULL, '" + Booking.customerID + "', '" + DateTime.Now.ToString("yyyy'-'MM'-'dd") + "', '" + txtBookingLocation.Text + "', NULL, '" +
+                    typeID + "', '" + statusID + "', '" + "1" + "', '" + packageID + "', '" + numBookingGuests.Value.ToString() + "');" +
+                    "UPDATE";
+                command = new MySqlCommand(query, dBCon.Connection);
                 command.ExecuteNonQuery();
 
 
@@ -257,7 +299,13 @@ namespace Design370
             catch(Exception ee)
             {
                 MessageBox.Show(ee.Message);
+                reader.Close();
             }
+        }
+
+        private void NumBookingSpan_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
