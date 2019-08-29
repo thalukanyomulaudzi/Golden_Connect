@@ -33,7 +33,7 @@ namespace Design370
 
             if (edit == true)
             {
-                button2.Enabled = false;
+                btnEditEmpType.Enabled = false;
             }
             
             try
@@ -69,7 +69,7 @@ namespace Design370
 
         private void Event_Types_View_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (txtEmpTypeName.Enabled)
+            if (textBox1.Enabled)
             {
                 DialogResult SaveChanges = MessageBox.Show("Do you want to save these changes?", "Save changes", MessageBoxButtons.YesNo);
                 if (SaveChanges == DialogResult.Yes)
@@ -102,8 +102,8 @@ namespace Design370
                                 event_type_id = reader.GetString(0);
                             }
                             reader.Close();
-                            query = "UPDATE `event_type` SET `event_type_id` = '" + event_type_id + "', `event_type_name` = '" + textBox1.Text + "', `event_type_description`";
-                            query += " = '" + textBox2.Text + "', `booking_type_id` = '" + booking_type_id + "' WHERE event_type_id = '" + event_type_id + "'";
+                            query = "UPDATE `event_type` SET `event_type_id` = '" + event_type_id + "', `event_type_name` = '" + textBox2.Text + "', `event_type_description`";
+                            query += " = '" + textBox1.Text + "', `booking_type_id` = '" + booking_type_id + "' WHERE event_type_id = '" + event_type_id + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
                             command.ExecuteNonQuery();
                         }
@@ -171,11 +171,6 @@ namespace Design370
         }
 
         private void BtnEditEmpType_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
         {
 
         }

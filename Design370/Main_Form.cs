@@ -80,7 +80,7 @@ namespace Design370
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
-            Timeslots.loadTimeslots(dataGridView5, DateTime.Today);
+            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
             //Timeslots.removeDuplicates();
             //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
@@ -155,19 +155,6 @@ namespace Design370
             dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
         } 
-
-        //public void loadEmployees()
-        //{
-        //    MysqlConnection.mysqlCon.Open();
-        //    string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +
-        //        "FROM employee";
-        //    MysqlConnection.cmd = new MySqlCommand(employees, MysqlConnection.mysqlCon);
-        //    MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
-        //    DataTable table = new DataTable();
-        //    table.Load(MysqlConnection.reader);
-        //    empGrid.DataSource = table;
-        //    MysqlConnection.mysqlCon.Close();
-        //}
 
         private void testConnection()//only in use during dev stage for example code
         {
@@ -577,6 +564,12 @@ namespace Design370
         {
             Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
             photoshoot_Types.ShowDialog();
+        }
+
+        private void CbxSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            empGrid.Rows.Clear();
+            Employees.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
         }
     }
 }

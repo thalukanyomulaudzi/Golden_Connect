@@ -171,6 +171,40 @@ namespace Design370
                 MessageBox.Show(e.Message);
             }
         }
+
+        public static void SearchEmployeeType(string text, DataGridView dgvEmpType)
+        {
+            try
+            {
+                dgvEmpType.ColumnCount = 5;
+                dgvEmpType.Columns[3].Name = "Employee Type Name";
+                dgvEmpType.Columns[3].Width = 230;
+                dgvEmpType.Columns[4].Name = "Employee Type Description";
+                dgvEmpType.Columns[4].Width = 320;
+                dgvEmpType.ReadOnly = true;
+                dbCon.Close();
+                dbCon.Open();
+                if (dbCon.IsConnect())
+                {
+                    string loadTypes = "SELECT * FROM `employee_type` WHERE `employee_type_name` LIKE @Name";
+                    var command = new MySqlCommand(loadTypes, dbCon.Connection);
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.Parameters.AddWithValue("@Name", "%"+text+"%");
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvEmpType.Rows.Add("", "", "", reader[1], reader[2]);
+                    }
+                    dbCon.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+
     }
 }
  

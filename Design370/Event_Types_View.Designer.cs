@@ -30,9 +30,9 @@
         {
             this.btnEditEmpType = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.txtEmpTypeDescription = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtEmpTypeName = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // txtEmpTypeDescription
+            // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(30, 97);
@@ -82,7 +82,7 @@
             this.label2.TabIndex = 47;
             this.label2.Text = "Description :";
             // 
-            // txtEmpTypeName
+            // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(30, 40);
@@ -110,9 +110,9 @@
             this.ClientSize = new System.Drawing.Size(259, 344);
             this.Controls.Add(this.btnEditEmpType);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtEmpTypeDescription);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtEmpTypeName);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "Event_Types_View";
             this.Text = "View Event Type";
@@ -127,9 +127,9 @@
 
         private System.Windows.Forms.Button btnEditEmpType;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtEmpTypeDescription;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtEmpTypeName;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
     }
 }
