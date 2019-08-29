@@ -61,10 +61,12 @@
             this.lblq = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
+            this.lblProductType = new System.Windows.Forms.Label();
             this.lblOrderid = new System.Windows.Forms.Label();
             this.lblProductPrice = new System.Windows.Forms.Label();
             this.lblProduct = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -73,19 +75,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbxPrTypes = new System.Windows.Forms.ComboBox();
             this.linkUpload = new System.Windows.Forms.LinkLabel();
             this.orderQuantity = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxProducts = new System.Windows.Forms.ComboBox();
             this.btnAddP = new System.Windows.Forms.Button();
             this.btnSaveOrder = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cbxPrTypes = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.lblProductType = new System.Windows.Forms.Label();
             this.customerOrderTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -143,7 +143,7 @@
             this.panel3.Controls.Add(this.lblCusInfo);
             this.panel3.Location = new System.Drawing.Point(829, 87);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(359, 508);
+            this.panel3.Size = new System.Drawing.Size(381, 508);
             this.panel3.TabIndex = 78;
             // 
             // lblTel
@@ -497,6 +497,16 @@
             this.lblPrice.TabIndex = 9;
             this.lblPrice.Text = "R0.00";
             // 
+            // lblProductType
+            // 
+            this.lblProductType.AutoSize = true;
+            this.lblProductType.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductType.Location = new System.Drawing.Point(366, 65);
+            this.lblProductType.Name = "lblProductType";
+            this.lblProductType.Size = new System.Drawing.Size(148, 31);
+            this.lblProductType.TabIndex = 11;
+            this.lblProductType.Text = "Select Type";
+            // 
             // lblOrderid
             // 
             this.lblOrderid.AutoSize = true;
@@ -536,6 +546,16 @@
             this.label10.Size = new System.Drawing.Size(250, 30);
             this.label10.TabIndex = 12;
             this.label10.Text = "Product Quantity : ";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(158, 65);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(202, 30);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "Product Type : ";
             // 
             // label12
             // 
@@ -634,6 +654,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Select Products";
             // 
+            // cbxPrTypes
+            // 
+            this.cbxPrTypes.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPrTypes.FormattingEnabled = true;
+            this.cbxPrTypes.Location = new System.Drawing.Point(178, 85);
+            this.cbxPrTypes.Name = "cbxPrTypes";
+            this.cbxPrTypes.Size = new System.Drawing.Size(176, 27);
+            this.cbxPrTypes.TabIndex = 19;
+            this.cbxPrTypes.SelectedIndexChanged += new System.EventHandler(this.CbxPrTypes_SelectedIndexChanged);
+            // 
             // linkUpload
             // 
             this.linkUpload.AutoSize = true;
@@ -679,6 +709,16 @@
             this.label6.Size = new System.Drawing.Size(96, 24);
             this.label6.TabIndex = 1;
             this.label6.Text = "Quantity : ";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Bahnschrift Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(39, 84);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(133, 24);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Product Type: ";
             // 
             // label5
             // 
@@ -753,46 +793,6 @@
             this.label4.TabIndex = 74;
             this.label4.Text = "Place Customer Order";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Bahnschrift Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(39, 84);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(133, 24);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "Product Type: ";
-            // 
-            // cbxPrTypes
-            // 
-            this.cbxPrTypes.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxPrTypes.FormattingEnabled = true;
-            this.cbxPrTypes.Location = new System.Drawing.Point(178, 85);
-            this.cbxPrTypes.Name = "cbxPrTypes";
-            this.cbxPrTypes.Size = new System.Drawing.Size(176, 27);
-            this.cbxPrTypes.TabIndex = 19;
-            this.cbxPrTypes.SelectedIndexChanged += new System.EventHandler(this.CbxPrTypes_SelectedIndexChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(158, 65);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(202, 30);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "Product Type : ";
-            // 
-            // lblProductType
-            // 
-            this.lblProductType.AutoSize = true;
-            this.lblProductType.Font = new System.Drawing.Font("Bookshelf Symbol 7", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductType.Location = new System.Drawing.Point(366, 65);
-            this.lblProductType.Name = "lblProductType";
-            this.lblProductType.Size = new System.Drawing.Size(148, 31);
-            this.lblProductType.TabIndex = 11;
-            this.lblProductType.Text = "Select Type";
             // 
             // NewCustomerOrder
             // 
