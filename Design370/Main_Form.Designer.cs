@@ -30,7 +30,6 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -48,7 +47,7 @@ namespace Design370
             this.CustDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button7 = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cbxSort = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -117,7 +116,7 @@ namespace Design370
             this.EventPackageEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EventPackageDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.dataGridView8 = new System.Windows.Forms.DataGridView();
+            this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
@@ -134,6 +133,13 @@ namespace Design370
             this.button20 = new System.Windows.Forms.Button();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.dataGridView10 = new System.Windows.Forms.DataGridView();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SupplierDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button22 = new System.Windows.Forms.Button();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -148,13 +154,6 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SupplierDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
@@ -171,7 +170,7 @@ namespace Design370
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.tabPage8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
             this.tabPage10.SuspendLayout();
@@ -341,7 +340,7 @@ namespace Design370
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.button7);
-            this.tabPage2.Controls.Add(this.comboBox4);
+            this.tabPage2.Controls.Add(this.cbxSort);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.txtSearch);
@@ -369,16 +368,17 @@ namespace Design370
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
-            // comboBox4
+            // cbxSort
             // 
-            this.comboBox4.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.ItemHeight = 17;
-            this.comboBox4.Location = new System.Drawing.Point(339, 11);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(103, 25);
-            this.comboBox4.TabIndex = 15;
+            this.cbxSort.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSort.FormattingEnabled = true;
+            this.cbxSort.ItemHeight = 17;
+            this.cbxSort.Location = new System.Drawing.Point(339, 11);
+            this.cbxSort.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxSort.Name = "cbxSort";
+            this.cbxSort.Size = new System.Drawing.Size(103, 25);
+            this.cbxSort.TabIndex = 15;
+            this.cbxSort.SelectedIndexChanged += new System.EventHandler(this.ComboBox4_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -435,11 +435,11 @@ namespace Design370
             this.EmpView,
             this.EmpEdit,
             this.EmpDelete});
-            this.empGrid.Location = new System.Drawing.Point(11, 59);
+            this.empGrid.Location = new System.Drawing.Point(4, 59);
             this.empGrid.Margin = new System.Windows.Forms.Padding(2);
             this.empGrid.Name = "empGrid";
             this.empGrid.RowTemplate.Height = 24;
-            this.empGrid.Size = new System.Drawing.Size(816, 545);
+            this.empGrid.Size = new System.Drawing.Size(823, 545);
             this.empGrid.TabIndex = 9;
             this.empGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView4_CellContentClick);
             // 
@@ -447,16 +447,25 @@ namespace Design370
             // 
             this.EmpView.HeaderText = "";
             this.EmpView.Name = "EmpView";
+            this.EmpView.Text = "View";
+            this.EmpView.UseColumnTextForButtonValue = true;
+            this.EmpView.Width = 70;
             // 
             // EmpEdit
             // 
             this.EmpEdit.HeaderText = "";
             this.EmpEdit.Name = "EmpEdit";
+            this.EmpEdit.Text = "Edit";
+            this.EmpEdit.UseColumnTextForButtonValue = true;
+            this.EmpEdit.Width = 70;
             // 
             // EmpDelete
             // 
             this.EmpDelete.HeaderText = "";
             this.EmpDelete.Name = "EmpDelete";
+            this.EmpDelete.Text = "Delete";
+            this.EmpDelete.UseColumnTextForButtonValue = true;
+            this.EmpDelete.Width = 70;
             // 
             // tabPage3
             // 
@@ -1012,7 +1021,7 @@ namespace Design370
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.dataGridView8);
+            this.tabPage8.Controls.Add(this.dgvOrders);
             this.tabPage8.Controls.Add(this.button18);
             this.tabPage8.Controls.Add(this.button17);
             this.tabPage8.Controls.Add(this.comboBox8);
@@ -1029,15 +1038,16 @@ namespace Design370
             this.tabPage8.Text = "Customer Orders";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // dataGridView8
+            // dgvOrders
             // 
-            this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView8.Location = new System.Drawing.Point(11, 59);
-            this.dataGridView8.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView8.Name = "dataGridView8";
-            this.dataGridView8.RowTemplate.Height = 24;
-            this.dataGridView8.Size = new System.Drawing.Size(763, 349);
-            this.dataGridView8.TabIndex = 46;
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.Location = new System.Drawing.Point(11, 59);
+            this.dgvOrders.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.RowTemplate.Height = 24;
+            this.dgvOrders.Size = new System.Drawing.Size(763, 349);
+            this.dgvOrders.TabIndex = 46;
+            this.dgvOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellClick);
             // 
             // button18
             // 
@@ -1213,14 +1223,6 @@ namespace Design370
             // 
             // dataGridView10
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light", 9.8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView10.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView10.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SupplierName,
@@ -1237,6 +1239,45 @@ namespace Design370
             this.dataGridView10.Size = new System.Drawing.Size(763, 349);
             this.dataGridView10.TabIndex = 55;
             this.dataGridView10.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView10_CellContentClick);
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.DataPropertyName = "supplier_name";
+            this.SupplierName.HeaderText = "Supplier Name";
+            this.SupplierName.Name = "SupplierName";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "supplier_email_address";
+            this.Column1.HeaderText = "Supplier Email Address";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "supplier_phone";
+            this.Column2.HeaderText = "Supplier Telephone";
+            this.Column2.Name = "Column2";
+            // 
+            // SupplierType
+            // 
+            this.SupplierType.DataPropertyName = "supplier_type_name";
+            this.SupplierType.HeaderText = "Supplier Type";
+            this.SupplierType.Name = "SupplierType";
+            // 
+            // SupplierView
+            // 
+            this.SupplierView.HeaderText = "";
+            this.SupplierView.Name = "SupplierView";
+            // 
+            // SupplierEdit
+            // 
+            this.SupplierEdit.HeaderText = "";
+            this.SupplierEdit.Name = "SupplierEdit";
+            // 
+            // SupplierDelete
+            // 
+            this.SupplierDelete.HeaderText = "";
+            this.SupplierDelete.Name = "SupplierDelete";
             // 
             // button22
             // 
@@ -1393,45 +1434,6 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // SupplierName
-            // 
-            this.SupplierName.DataPropertyName = "supplier_name";
-            this.SupplierName.HeaderText = "Supplier Name";
-            this.SupplierName.Name = "SupplierName";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "supplier_email_address";
-            this.Column1.HeaderText = "Supplier Email Address";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "supplier_phone";
-            this.Column2.HeaderText = "Supplier Telephone";
-            this.Column2.Name = "Column2";
-            // 
-            // SupplierType
-            // 
-            this.SupplierType.DataPropertyName = "supplier_type_name";
-            this.SupplierType.HeaderText = "Supplier Type";
-            this.SupplierType.Name = "SupplierType";
-            // 
-            // SupplierView
-            // 
-            this.SupplierView.HeaderText = "";
-            this.SupplierView.Name = "SupplierView";
-            // 
-            // SupplierEdit
-            // 
-            this.SupplierEdit.HeaderText = "";
-            this.SupplierEdit.Name = "SupplierEdit";
-            // 
-            // SupplierDelete
-            // 
-            this.SupplierDelete.HeaderText = "";
-            this.SupplierDelete.Name = "SupplierDelete";
-            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1444,6 +1446,7 @@ namespace Design370
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
@@ -1470,7 +1473,7 @@ namespace Design370
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
@@ -1520,7 +1523,7 @@ namespace Design370
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cbxSort;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSearch;
@@ -1547,7 +1550,7 @@ namespace Design370
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.DataGridView dataGridView8;
+        private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.DataGridView dataGridView9;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox9;
@@ -1595,9 +1598,6 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn EventPackageEdit;
         private System.Windows.Forms.DataGridViewButtonColumn EventPackageDelete;
         private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpView;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpDelete;
         public System.Windows.Forms.DataGridView empGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhotoshootPackageName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Services;
@@ -1613,6 +1613,9 @@ namespace Design370
         private System.Windows.Forms.DataGridViewButtonColumn SupplierView;
         private System.Windows.Forms.DataGridViewButtonColumn SupplierEdit;
         private System.Windows.Forms.DataGridViewButtonColumn SupplierDelete;
+        private System.Windows.Forms.DataGridViewButtonColumn EmpView;
+        private System.Windows.Forms.DataGridViewButtonColumn EmpEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn EmpDelete;
     }
 }
 

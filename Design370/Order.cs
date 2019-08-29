@@ -11,14 +11,18 @@ namespace Design370
         private string OrderName;
         private int OrderQuantity;
         private string[] OrderImages;
+        private int productID;
+        private long orderID;
 
         public Order() { }
 
-        public Order(string name, int qty, string[] imgs)
+        public Order(string name, int qty, string[] imgs, int productID, long orderID)
         {
             OrderName = name;
             OrderQuantity = qty;
             OrderImages = imgs;
+            this.productID = productID;
+            this.orderID = orderID;
         }
 
         public string getOrderName
@@ -57,6 +61,32 @@ namespace Design370
             set
             {
                 OrderImages = value;
+            }
+        }
+
+        public int getProductID
+        {
+            get
+            {
+                return productID;
+            }
+
+            set
+            {
+                productID = value;
+            }
+        }
+
+        public long getOrderID
+        {
+            get
+            {
+                return orderID;
+            }
+
+            set
+            {
+                orderID = value;
             }
         }
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -20,19 +21,13 @@ namespace Design370
 
         private void Event_Types_View_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled = edit;
-            textBox2.Enabled = edit;
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
+            txtEmpTypeName.Enabled = edit;
+            txtEmpTypeDescription.Enabled = edit;
         }
 
         private void Event_Types_View_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (textBox1.Enabled)
+            if (txtEmpTypeName.Enabled)
             {
                 DialogResult exit = MessageBox.Show("Do you want to save these changes?", "Save changes", MessageBoxButtons.YesNo);
                 e.Cancel = exit == DialogResult.Yes ? false : true;
@@ -42,6 +37,16 @@ namespace Design370
         private void Button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void BtnEditEmpType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

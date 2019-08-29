@@ -139,6 +139,7 @@ namespace Design370
                         dgv.Columns[j].HeaderText = headerDay.ToString("dddd, MMM dd \"'\"yy");
                         headerDay = headerDay.AddDays(1);
                     }
+
                     for (i=8;i<10;i++)
                     {
                         query = "SELECT a.available FROM employee_timeslot a JOIN timeslot b ON a.timeslot_id = b.timeslot_id WHERE b.timeslot_date BETWEEN '"
