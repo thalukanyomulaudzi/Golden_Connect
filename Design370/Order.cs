@@ -49,7 +49,9 @@ namespace Design370
                 dgv.ReadOnly = true;
                 if (dbCon.IsConnect())
                 {
-                    string orders = "SELECT `order_id`, `order_date_placed`, `customer`.`customer_first`, `order_quantity`, `order_total`, `order_status`.`order_status_name`, `customer`.`customer_last` FROM `order`, `customer`, `order_status` WHERE `order`.`customer_id` = `customer`.`customer_id` AND `order`.`order_status_id` = `order_status`.`order_status_id`";
+                    string orders = "SELECT `order_id`, `order_date_placed`, `customer`.`customer_first`, `order_quantity`, `order_total`, `order_status`.`order_status_name`, `customer`.`customer_last` " +
+                        "FROM `order`, `customer`, `order_status` " +
+                        "WHERE `order`.`customer_id` = `customer`.`customer_id` AND `order`.`order_status_id` = `order_status`.`order_status_id`";
                     var command = new MySqlCommand(orders, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())

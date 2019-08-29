@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 
 namespace Design370
 {
-    class Timeslots
+    class Timeslot
     {
 
         const short DaysInWeek = 7;

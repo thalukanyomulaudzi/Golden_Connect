@@ -14,7 +14,7 @@ namespace Design370
 
         private void Booking_Date_Load(object sender, EventArgs e)
         {
-            Timeslots.loadTimeslots(dgvBookEvent, DateTime.Today);
+            Timeslot.loadTimeslots(dgvBookEvent, DateTime.Today);
         }
 
 
@@ -23,9 +23,9 @@ namespace Design370
             dgvBookEvent.Rows.Clear();
             TimeSpan span = (dateTimePicker1.Value.Subtract(DateTime.Now));
             if (span.TotalDays <= 2)
-                Timeslots.loadTimeslots(dgvBookEvent, DateTime.Now);
+                Timeslot.loadTimeslots(dgvBookEvent, DateTime.Now);
             else
-                Timeslots.loadTimeslots(dgvBookEvent, dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3)));
+                Timeslot.loadTimeslots(dgvBookEvent, dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3)));
         }
 
         private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
