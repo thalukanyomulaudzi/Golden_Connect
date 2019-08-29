@@ -54,6 +54,9 @@ namespace Design370
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.empGrid = new System.Windows.Forms.DataGridView();
+            this.View = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblTimeslots = new System.Windows.Forms.Label();
             this.btnTimeslotAdd = new System.Windows.Forms.Button();
@@ -96,7 +99,6 @@ namespace Design370
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.lblPhotoshootPackageSearch = new System.Windows.Forms.Label();
             this.txtPhotoshootPackageSearch = new System.Windows.Forms.TextBox();
-            this.btnPhotoshootPackageAdd = new System.Windows.Forms.Button();
             this.dgvPhotoshootPackage = new System.Windows.Forms.DataGridView();
             this.PhotoshootPackageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Services = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +107,7 @@ namespace Design370
             this.PhotoshootPackageView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PhotoshootPackageEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PhotoshootPackageDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnPhotoshootPackageAdd = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnEventTypes = new System.Windows.Forms.Button();
             this.lblEventPackageSearch = new System.Windows.Forms.Label();
@@ -126,7 +129,7 @@ namespace Design370
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button15 = new System.Windows.Forms.Button();
+            this.btnCaptureOrderPayment = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.dgvBookings = new System.Windows.Forms.DataGridView();
@@ -161,10 +164,6 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.View = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            empGrid = new DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -453,6 +452,30 @@ namespace Design370
             this.empGrid.Size = new System.Drawing.Size(823, 545);
             this.empGrid.TabIndex = 9;
             this.empGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView4_CellContentClick);
+            // 
+            // View
+            // 
+            this.View.HeaderText = "";
+            this.View.Name = "View";
+            this.View.Text = "View";
+            this.View.UseColumnTextForButtonValue = true;
+            this.View.Width = 70;
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "";
+            this.Edit.Name = "Edit";
+            this.Edit.Text = "Edit";
+            this.Edit.UseColumnTextForButtonValue = true;
+            this.Edit.Width = 70;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "";
+            this.Delete.Name = "Delete";
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
+            this.Delete.Width = 70;
             // 
             // tabPage3
             // 
@@ -840,18 +863,6 @@ namespace Design370
             this.txtPhotoshootPackageSearch.TabIndex = 26;
             this.txtPhotoshootPackageSearch.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
-            // btnPhotoshootPackageAdd
-            // 
-            this.btnPhotoshootPackageAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhotoshootPackageAdd.Location = new System.Drawing.Point(0, 0);
-            this.btnPhotoshootPackageAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPhotoshootPackageAdd.Name = "btnPhotoshootPackageAdd";
-            this.btnPhotoshootPackageAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnPhotoshootPackageAdd.TabIndex = 0;
-            this.btnPhotoshootPackageAdd.Text = "Photoshoot Types";
-            this.btnPhotoshootPackageAdd.UseVisualStyleBackColor = true;
-            this.btnPhotoshootPackageAdd.Click += new System.EventHandler(this.button10_Click_1);
-            // 
             // dgvPhotoshootPackage
             // 
             this.dgvPhotoshootPackage.AllowUserToAddRows = false;
@@ -922,6 +933,18 @@ namespace Design370
             this.PhotoshootPackageDelete.HeaderText = "";
             this.PhotoshootPackageDelete.Name = "PhotoshootPackageDelete";
             this.PhotoshootPackageDelete.ReadOnly = true;
+            // 
+            // btnPhotoshootPackageAdd
+            // 
+            this.btnPhotoshootPackageAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhotoshootPackageAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnPhotoshootPackageAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPhotoshootPackageAdd.Name = "btnPhotoshootPackageAdd";
+            this.btnPhotoshootPackageAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnPhotoshootPackageAdd.TabIndex = 0;
+            this.btnPhotoshootPackageAdd.Text = "Photoshoot Types";
+            this.btnPhotoshootPackageAdd.UseVisualStyleBackColor = true;
+            this.btnPhotoshootPackageAdd.Click += new System.EventHandler(this.button10_Click_1);
             // 
             // tabPage7
             // 
@@ -1063,7 +1086,7 @@ namespace Design370
             this.tabPage8.Controls.Add(this.label15);
             this.tabPage8.Controls.Add(this.label16);
             this.tabPage8.Controls.Add(this.textBox8);
-            this.tabPage8.Controls.Add(this.button15);
+            this.tabPage8.Controls.Add(this.btnCaptureOrderPayment);
             this.tabPage8.Controls.Add(this.button16);
             this.tabPage8.Location = new System.Drawing.Point(154, 4);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(2);
@@ -1147,16 +1170,16 @@ namespace Design370
             this.textBox8.Size = new System.Drawing.Size(200, 25);
             this.textBox8.TabIndex = 40;
             // 
-            // button15
+            // btnCaptureOrderPayment
             // 
-            this.button15.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(623, 11);
-            this.button15.Margin = new System.Windows.Forms.Padding(2);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(151, 28);
-            this.button15.TabIndex = 39;
-            this.button15.Text = "Capture Payment";
-            this.button15.UseVisualStyleBackColor = true;
+            this.btnCaptureOrderPayment.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCaptureOrderPayment.Location = new System.Drawing.Point(623, 11);
+            this.btnCaptureOrderPayment.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCaptureOrderPayment.Name = "btnCaptureOrderPayment";
+            this.btnCaptureOrderPayment.Size = new System.Drawing.Size(151, 28);
+            this.btnCaptureOrderPayment.TabIndex = 39;
+            this.btnCaptureOrderPayment.Text = "Capture Payment";
+            this.btnCaptureOrderPayment.UseVisualStyleBackColor = true;
             // 
             // button16
             // 
@@ -1489,30 +1512,6 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // View
-            // 
-            this.View.HeaderText = "";
-            this.View.Name = "View";
-            this.View.Text = "View";
-            this.View.UseColumnTextForButtonValue = true;
-            this.View.Width = 70;
-            // 
-            // Edit
-            // 
-            this.Edit.HeaderText = "";
-            this.Edit.Name = "Edit";
-            this.Edit.Text = "Edit";
-            this.Edit.UseColumnTextForButtonValue = true;
-            this.Edit.Width = 70;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "";
-            this.Delete.Name = "Delete";
-            this.Delete.Text = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
-            this.Delete.Width = 70;
-            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1525,6 +1524,7 @@ namespace Design370
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
@@ -1638,7 +1638,7 @@ namespace Design370
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button btnCaptureOrderPayment;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
