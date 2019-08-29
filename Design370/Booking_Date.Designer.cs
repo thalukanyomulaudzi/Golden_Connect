@@ -40,9 +40,10 @@
             this.Column7 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnBookingCreateEvent = new System.Windows.Forms.Button();
             this.dgvBookingEmployees = new System.Windows.Forms.DataGridView();
+            this.btnBookingCreatePhotoshoot = new System.Windows.Forms.Button();
             this.bookingEmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingEmployeeAvailable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnBookingCreatePhotoshoot = new System.Windows.Forms.Button();
+            this.bookingEmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingEmployees)).BeginInit();
             this.SuspendLayout();
@@ -154,23 +155,14 @@
             this.dgvBookingEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookingEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.bookingEmployeeName,
-            this.bookingEmployeeAvailable});
+            this.bookingEmployeeAvailable,
+            this.bookingEmployeeID});
             this.dgvBookingEmployees.Location = new System.Drawing.Point(848, 96);
             this.dgvBookingEmployees.Name = "dgvBookingEmployees";
             this.dgvBookingEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvBookingEmployees.Size = new System.Drawing.Size(288, 232);
             this.dgvBookingEmployees.TabIndex = 19;
             this.dgvBookingEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
-            // 
-            // bookingEmployeeName
-            // 
-            this.bookingEmployeeName.HeaderText = "Employee Name";
-            this.bookingEmployeeName.Name = "bookingEmployeeName";
-            // 
-            // bookingEmployeeAvailable
-            // 
-            this.bookingEmployeeAvailable.HeaderText = "Available";
-            this.bookingEmployeeAvailable.Name = "bookingEmployeeAvailable";
             // 
             // btnBookingCreatePhotoshoot
             // 
@@ -183,7 +175,23 @@
             this.btnBookingCreatePhotoshoot.UseVisualStyleBackColor = true;
             this.btnBookingCreatePhotoshoot.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // Book_Event_Date
+            // bookingEmployeeName
+            // 
+            this.bookingEmployeeName.HeaderText = "Employee Name";
+            this.bookingEmployeeName.Name = "bookingEmployeeName";
+            // 
+            // bookingEmployeeAvailable
+            // 
+            this.bookingEmployeeAvailable.HeaderText = "Available";
+            this.bookingEmployeeAvailable.Name = "bookingEmployeeAvailable";
+            // 
+            // bookingEmployeeID
+            // 
+            this.bookingEmployeeID.HeaderText = "ID";
+            this.bookingEmployeeID.Name = "bookingEmployeeID";
+            this.bookingEmployeeID.Visible = false;
+            // 
+            // Booking_Date
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -194,7 +202,7 @@
             this.Controls.Add(this.dgvBookEvent);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
-            this.Name = "Book_Event_Date";
+            this.Name = "Booking_Date";
             this.Text = "Book_Event_Date";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Book_Event_Date_FormClosing);
             this.Load += new System.EventHandler(this.Booking_Date_Load);
@@ -219,8 +227,9 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column7;
         private System.Windows.Forms.Button btnBookingCreateEvent;
         private System.Windows.Forms.DataGridView dgvBookingEmployees;
+        private System.Windows.Forms.Button btnBookingCreatePhotoshoot;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeAvailable;
-        private System.Windows.Forms.Button btnBookingCreatePhotoshoot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeID;
     }
 }

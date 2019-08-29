@@ -38,7 +38,6 @@ namespace Design370
             try
             {
                 DBConnection dBCon = DBConnection.Instance();
-
                 CultureInfo cultureInfo = CultureInfo.InvariantCulture;
                 DateTime dateTime;
                 dateTime = DateTime.ParseExact(dgvBookEvent.Columns[e.ColumnIndex].HeaderText, "dddd, MMM dd yyyy", cultureInfo);
@@ -75,9 +74,21 @@ namespace Design370
         }
         private void bookingDetails(string bookingType)
         {
-            Booking.bookingType = bookingType;
-            Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
-            Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+            try
+            {
+                Booking.bookingType = bookingType;
+                Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
+                Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                Booking.employeeID = Convert.ToInt16(dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[2].Value);
+                foreach (DataGridCell cell in dgvBookEvent.SelectedCells)
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void Book_Event_Date_FormClosing(object sender, FormClosingEventArgs e)

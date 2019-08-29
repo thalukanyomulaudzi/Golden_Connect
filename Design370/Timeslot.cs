@@ -25,10 +25,10 @@ namespace Design370
                     var reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
-                        dBCon.Close();
+                        reader.Close();
                         return true;
                     }
-                    dBCon.Close();
+                    reader.Close();
                 }
                 return false;
             }

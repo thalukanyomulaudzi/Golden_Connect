@@ -110,7 +110,8 @@ namespace Design370
                 {
                     MysqlConnection.mysqlCon.Open();
 
-                    string sql = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
+                    string sql = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service " +
+                        "INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
@@ -128,12 +129,13 @@ namespace Design370
                 {
                     MysqlConnection.mysqlCon.Open();
 
-                    string sql = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                    string sql = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product " +
+                        "INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                     DataTable dtb1 = new DataTable();
                     adapter.Fill(dtb1);
-                    dgvServices.AutoGenerateColumns = false;
-                    dgvServices.DataSource = dtb1;
+                    dgvProducts.AutoGenerateColumns = false;
+                    dgvProducts.DataSource = dtb1;
                 }
             }
         }
