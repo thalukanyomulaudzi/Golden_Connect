@@ -158,12 +158,6 @@
     <Compile Include="Booking_Details.Designer.cs">
       <DependentUpon>Booking_Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="Booking_Dialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Booking_Dialog.Designer.cs">
-      <DependentUpon>Booking_Dialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Booking_Date.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -438,9 +432,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Booking_Details.resx">
       <DependentUpon>Booking_Details.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Booking_Dialog.resx">
-      <DependentUpon>Booking_Dialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Booking_Date.resx">
       <DependentUpon>Booking_Date.cs</DependentUpon>

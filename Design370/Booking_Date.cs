@@ -1,7 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Globalization;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -12,7 +12,7 @@ namespace Design370
             InitializeComponent();
         }
 
-        private void Book_Event_Date_Load(object sender, EventArgs e)
+        private void Booking_Date_Load(object sender, EventArgs e)
         {
             Timeslots.loadTimeslots(dgvBookEvent, DateTime.Today);
         }

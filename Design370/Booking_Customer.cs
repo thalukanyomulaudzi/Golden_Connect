@@ -20,7 +20,6 @@ namespace Design370
         private void Booking_Add_Load(object sender, EventArgs e)
         {
             loadDGV();
-            
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
