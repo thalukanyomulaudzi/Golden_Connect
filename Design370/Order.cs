@@ -99,19 +99,19 @@ namespace Design370
             {
                 dbCon.Close();
                 dbCon.Open();
-                dgv.ColumnCount = 6;
-                dgv.Columns[0].Name = "Order ID";
-                dgv.Columns[0].Width = 110;
-                dgv.Columns[1].Name = "Customer Name";
-                dgv.Columns[1].Width = 150;
-                dgv.Columns[2].Name = "Date Placed";
-                dgv.Columns[2].Width = 120;
-                dgv.Columns[3].Name = "Order Quantity";
-                dgv.Columns[3].Width = 140;
-                dgv.Columns[4].Name = "Order Total";
-                dgv.Columns[4].Width = 130;
-                dgv.Columns[5].Name = "Order Status";
-                dgv.Columns[5].Width = 140;
+                dgv.ColumnCount = 8;
+                dgv.Columns[2].Name = "Order ID";
+                dgv.Columns[2].Width = 150;
+                dgv.Columns[3].Name = "Customer Name";
+                dgv.Columns[3].Width = 150;
+                dgv.Columns[4].Name = "Date Placed";
+                dgv.Columns[4].Width = 150;
+                dgv.Columns[5].Name = "Order Quantity";
+                dgv.Columns[5].Width = 150; 
+                dgv.Columns[6].Name = "Order Total";
+                dgv.Columns[6].Width = 150;
+                dgv.Columns[7].Name = "Order Status";
+                dgv.Columns[7].Width = 150;
                 dgv.ReadOnly = true;
                 if (dbCon.IsConnect())
                 {
@@ -120,7 +120,7 @@ namespace Design370
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        dgv.Rows.Add(reader[0], reader[2] + " " + reader[6], reader[1], reader[3], reader[4], reader[5]);
+                        dgv.Rows.Add("", "", reader[0], reader[2] + " " + reader[6], reader[1], reader[3], reader[4], reader[5]);
                     }
                 }
             }

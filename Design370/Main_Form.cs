@@ -68,9 +68,9 @@ namespace Design370
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
-            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
-            //Timeslots.removeDuplicates();
-            //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
+            //Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
+            ////Timeslots.removeDuplicates();
+            ////MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
@@ -511,10 +511,10 @@ namespace Design370
 
         private void Main_Form_Activated(object sender, EventArgs e)
         {
-            dgvPhotoshootPackage.Rows.Clear();
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            dgvEventPackages.Rows.Clear();
-            Event.LoadDGV(dgvEventPackages);
+            //dgvPhotoshootPackage.Rows.Clear();
+            //Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            //dgvEventPackages.Rows.Clear();
+            //Event.LoadDGV(dgvEventPackages);
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
@@ -552,8 +552,29 @@ namespace Design370
 
         private void BtnCaptureOrderPayment_Click(object sender, EventArgs e)
         {
-            CapturePayment newPayment = new CapturePayment();
+            Customer_Order_Capture newPayment = new Customer_Order_Capture();
             newPayment.ShowDialog();
+        }
+
+        private void DgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            OrderImages customerOI = new OrderImages();
+            Customer_Order_Capture customerPay = new Customer_Order_Capture();
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    OrderImages.orderID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
+                    customerOI = new OrderImages();
+                    customerOI.ShowDialog();
+                    break;
+                case 1:
+                    Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
+                    customerPay.ShowDialog();
+                    break;
+                default:
+                    break;
+                    
+            }
         }
     }
 }

@@ -279,6 +279,12 @@
       <DependentUpon>NewCustomerOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Order.cs" />
+    <Compile Include="OrderImages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderImages.Designer.cs">
+      <DependentUpon>OrderImages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Photoshoot Package_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -489,6 +495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewCustomerOrder.resx">
       <DependentUpon>NewCustomerOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderImages.resx">
+      <DependentUpon>OrderImages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot Package_Add.resx">
       <DependentUpon>Photoshoot Package_Add.cs</DependentUpon>
