@@ -18,26 +18,16 @@ namespace Design370
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
 
-        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
-
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)//Draw tabcontrol with tabs on left side
         {
             Graphics g = e.Graphics;
             Brush _textBrush;
-
-            // Get the item from the collection.
             TabPage _tabPage = tabControl1.TabPages[e.Index];
-
-            // Get the real bounds for the tab rectangle.
             Rectangle _tabBounds = tabControl1.GetTabRect(e.Index);
-
-            // Use our own font.
             Font _tabFont = new Font("Bahnschrift Light", (float)15.0, FontStyle.Regular, GraphicsUnit.Pixel);
-
             if (e.State == DrawItemState.Selected)
             {
                 _tabFont = new Font("Bahnschrift Light", (float)15.0, FontStyle.Bold, GraphicsUnit.Pixel);
-
-                // Draw a different background color, and don't paint a focus rectangle.
                 _textBrush = new SolidBrush(Color.Gold);
                 g.FillRectangle(Brushes.CornflowerBlue, e.Bounds);
             }
@@ -46,14 +36,11 @@ namespace Design370
                 _textBrush = new System.Drawing.SolidBrush(e.ForeColor);
                 e.DrawBackground();
             }
-
-            // Draw string. Center the text.
             StringFormat _stringFlags = new StringFormat
             {
                 Alignment = StringAlignment.Center,
                 LineAlignment = StringAlignment.Center
             };
-
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
         }
 
@@ -183,7 +170,7 @@ namespace Design370
                     string last = reader.GetString(1);
                     MessageBox.Show(first + "," + last);
                 }
-                dbCon.Close();
+                reader.Close();
             }
         }
 
