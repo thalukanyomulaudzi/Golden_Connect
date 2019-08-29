@@ -161,7 +161,7 @@ namespace Design370
                         MessageBox.Show("Invalid character length for name and/or description");
                         return;
                     }
-                    int itemIndex1, quantity1 = 0, quantity2 = 0;
+                    int itemIndex1, quantity1, quantity2;
                     string itemString1 = " ";
                     bool flag = false, flag1 = false;
                     foreach (var item in listBox3.Items)

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -29,7 +24,7 @@ namespace Design370
                 return;
             }
 
-            Book_Event_Date bookEventDate = new Book_Event_Date();
+            Booking_Date bookEventDate = new Booking_Date();
             result = bookEventDate.ShowDialog();
 
             if (result == DialogResult.Cancel)
@@ -46,16 +41,26 @@ namespace Design370
             try
             {
                 txtBookingCustomer.Text = Booking.customerName;
-                txtBookingEmployee.Text = Booking.employeeName;
                 dtmBookingDate.Value = Booking.bookingDate;
+                txtBookingEmployee.Text = Booking.employeeName;
                 DBConnection dBCon = DBConnection.Instance();
                 if (dBCon.IsConnect())
                 {
-
-                    string query = "";
+                    string query = "SELECT bp.booking_package_name FROM booking_package bp " +
+                        "JOIN booking_package_type bpt ON bp.booking_package_type_id = bpt.booking_package_type_id " +
+                        "WHERE bpt.booking_package_type_name = '" + Booking.bookingType + "'";
+                    var command = new MySqlCommand(query, dBCon.Connection);
+                    var reader = command.ExecuteReader();
+                    cmbBookingPackage.Items.Clear();
+                    while (reader.Read())
+                    {
+                        cmbBookingPackage.Items.Add(reader.GetString(0));
+                    }
+                    reader.Close();
                 }
+                //txtBookingLocation.Clear();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -63,7 +68,7 @@ namespace Design370
 
         private void Booking_Details_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("The booking creation has been canceled");
+            MessageBox.Show("Booking creation has been canceled");
         }
 
         private void CbxBookingAdditions_CheckedChanged(object sender, EventArgs e)
@@ -75,6 +80,14 @@ namespace Design370
         {
             Booking_Customer bookingAdd = new Booking_Customer();
             var result =  bookingAdd.ShowDialog();
+            txtBookingCustomer.Text = Booking.customerName;
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Booking_Date bookingDate = new Booking_Date();
+            var result = bookingDate.ShowDialog();
+            loadBookingDetails();
         }
     }
 }
