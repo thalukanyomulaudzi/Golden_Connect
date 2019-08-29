@@ -24,7 +24,7 @@ namespace Design370
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message);
                 return false;
             }
         }
@@ -50,9 +50,9 @@ namespace Design370
                     reader.Close();
                 }
             }
-            catch (Exception err)
+            catch (Exception e)
             {
-                MessageBox.Show(err.Message);
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -78,9 +78,9 @@ namespace Design370
                     reader.Close();
                 }
             }
-            catch (Exception err)
+            catch (Exception e)
             {
-                MessageBox.Show(err.Message);
+                MessageBox.Show(e.Message);
             }
         }
         static int id;
@@ -102,9 +102,9 @@ namespace Design370
                     reader.Close();
                 }
             }
-            catch (Exception err)
+            catch (Exception e)
             {
-                MessageBox.Show(err.Message);
+                MessageBox.Show(e.Message);
             }
         }
         private static int t;
@@ -112,8 +112,6 @@ namespace Design370
         {
             if (dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
                 string empTypes = "SELECT * FROM `employee_type` WHERE `employee_type_name` = '" + sort + "'";
                 var command = new MySqlCommand(empTypes, dbCon.Connection);
                 var reader = command.ExecuteReader();
@@ -166,7 +164,7 @@ namespace Design370
                     string loadTypes = "SELECT * FROM `employee_type` WHERE `employee_type_name` LIKE @Name";
                     var command = new MySqlCommand(loadTypes, dbCon.Connection);
                     command.CommandType = System.Data.CommandType.Text;
-                    command.Parameters.AddWithValue("@Name", "%"+text+"%");
+                    command.Parameters.AddWithValue("@Name", "%" + text + "%");
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -195,7 +193,5 @@ namespace Design370
             dgv.Columns[7].Width = 230;
             dgv.ReadOnly = true;
         }
-
-
     }
 }

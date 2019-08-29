@@ -551,8 +551,13 @@ namespace Design370
 
         private void BtnCaptureOrderPayment_Click(object sender, EventArgs e)
         {
-            CapturePayment newPayment = new CapturePayment();
+            Customer_Order_Capture newPayment = new Customer_Order_Capture();
             newPayment.ShowDialog();
+        }
+
+        private void BtnBookingCapture_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
