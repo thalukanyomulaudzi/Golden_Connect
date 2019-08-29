@@ -116,57 +116,7 @@ namespace Design370
 
         private void Photoshoot_Types_View_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (textBox1.Enabled)
-            {
-                DialogResult SaveChanges = MessageBox.Show("Do you want to save these changes?", "Save changes", MessageBoxButtons.YesNo);
-                if (SaveChanges == DialogResult.Yes)
-                {
-                    if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
-                    {
-                        MessageBox.Show("Invalid character length for name and/or description");
-                        return;
-                    }
-                    try
-                    {
-                        DBConnection dBConnection = DBConnection.Instance();
-                        if (dBConnection.IsConnect())
-                        {
-                            string booking_type_id = " ";
-                            string photoshoot_type_id = " ";
-                            string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = 'Photoshoot'";
-                            var command = new MySqlCommand(query, dBConnection.Connection);
-                            var reader = command.ExecuteReader();
-                            while (reader.Read())
-                            {
-                                booking_type_id = reader.GetString(0);
-                            }
-                            reader.Close();
-                            query = "SELECT photoshoot_type_id FROM photoshoot_type WHERE photoshoot_type_name = '" + Name + "'";
-                            command = new MySqlCommand(query, dBConnection.Connection);
-                            reader = command.ExecuteReader();
-                            reader.Read();
-                            while (reader.Read())
-                            {
-                                photoshoot_type_id = reader.GetString(0);
-                            }
-                            reader.Close();
-                            query = "UPDATE `photoshoot_type` SET `photoshoot_type_id` = '" + photoshoot_type_id + "', `photoshoot_type_name` = '" + textBox1.Text + "', `photoshoot_type_description`";
-                            query += " = '" + textBox2.Text + "', `booking_type_id` = '" + booking_type_id + "' WHERE photoshoot_type_id = '" + photoshoot_type_id + "'";
-                            command = new MySqlCommand(query, dBConnection.Connection);
-                            command.ExecuteNonQuery();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Windows.Forms.MessageBox.Show(ex.Message);
-
-                    }
-                }
-                else
-                {
-
-                }
-            }
+           
         }
     }
 }

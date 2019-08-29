@@ -20,32 +20,7 @@ namespace Design370
 
         private void Photoshoot_Types_Load(object sender, EventArgs e)
         {
-            try
-            {
-                DBConnection dBConnection = DBConnection.Instance();
-                if (dBConnection.IsConnect())
-                {
-                    string photoshootTypeName = " ";
-                    string photoshootTypeDescription = " ";
-                    DataTable PhotoshootTypes = new DataTable();
-                    string query = "SELECT photoshoot_type_name, photoshoot_type_description FROM photoshoot_type";
-                    var command = new MySqlCommand(query, dBConnection.Connection);
-                    var reader = command.ExecuteReader();
-                    PhotoshootTypes.Load(reader);
-                    for (int i = 0; i < PhotoshootTypes.Rows.Count; i++)
-                    {
-                        photoshootTypeName = PhotoshootTypes.Rows[i].ItemArray[0].ToString();
-                        photoshootTypeDescription = PhotoshootTypes.Rows[i].ItemArray[1].ToString();
-                        dataGridView7.Rows.Add(photoshootTypeName, photoshootTypeDescription, "View", "Edit", "Delete");
-                    }
-                    reader.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-
-            }
+            
         }
 
         private void textBox7_TextChanged(object sender, EventArgs e)
@@ -166,6 +141,37 @@ namespace Design370
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void Photoshoot_Types_Activated(object sender, EventArgs e)
+        {
+            dataGridView7.Rows.Clear();
+            try
+            {
+                DBConnection dBConnection = DBConnection.Instance();
+                if (dBConnection.IsConnect())
+                {
+                    string photoshootTypeName = " ";
+                    string photoshootTypeDescription = " ";
+                    DataTable PhotoshootTypes = new DataTable();
+                    string query = "SELECT photoshoot_type_name, photoshoot_type_description FROM photoshoot_type";
+                    var command = new MySqlCommand(query, dBConnection.Connection);
+                    var reader = command.ExecuteReader();
+                    PhotoshootTypes.Load(reader);
+                    for (int i = 0; i < PhotoshootTypes.Rows.Count; i++)
+                    {
+                        photoshootTypeName = PhotoshootTypes.Rows[i].ItemArray[0].ToString();
+                        photoshootTypeDescription = PhotoshootTypes.Rows[i].ItemArray[1].ToString();
+                        dataGridView7.Rows.Add(photoshootTypeName, photoshootTypeDescription, "View", "Edit", "Delete");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+
             }
         }
     }
