@@ -133,6 +133,7 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -163,11 +164,17 @@
     <Compile Include="Booking_Dialog.Designer.cs">
       <DependentUpon>Booking_Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Book_Event_Date.cs">
+    <Compile Include="Booking_Date.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Book_Event_Date.Designer.cs">
-      <DependentUpon>Book_Event_Date.cs</DependentUpon>
+    <Compile Include="Booking_Date.Designer.cs">
+      <DependentUpon>Booking_Date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CapturePayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CapturePayment.Designer.cs">
+      <DependentUpon>CapturePayment.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer_Add.cs">
       <SubType>Form</SubType>
@@ -194,6 +201,8 @@
       <DependentUpon>Customer_View.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnection.cs" />
+    <Compile Include="DeleteEmployee.cs" />
+    <Compile Include="Employees.cs" />
     <Compile Include="Employee_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -418,6 +427,12 @@
     <Compile Include="Timeslot_Add.Designer.cs">
       <DependentUpon>Timeslot_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateEmployee.Designer.cs">
+      <DependentUpon>UpdateEmployee.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Booking_Customer.resx">
       <DependentUpon>Booking_Customer.cs</DependentUpon>
     </EmbeddedResource>
@@ -427,8 +442,11 @@
     <EmbeddedResource Include="Booking_Dialog.resx">
       <DependentUpon>Booking_Dialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Book_Event_Date.resx">
-      <DependentUpon>Book_Event_Date.cs</DependentUpon>
+    <EmbeddedResource Include="Booking_Date.resx">
+      <DependentUpon>Booking_Date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CapturePayment.resx">
+      <DependentUpon>CapturePayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_Add.resx">
       <DependentUpon>Customer_Add.cs</DependentUpon>
@@ -559,6 +577,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Timeslot_Add.resx">
       <DependentUpon>Timeslot_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateEmployee.resx">
+      <DependentUpon>UpdateEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

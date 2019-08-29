@@ -14,7 +14,7 @@ namespace Design370
         private void Button20_Click(object sender, EventArgs e)
         {
             Booking.customerName = dgvBookingAdd.SelectedRows[0].Cells[0].Value.ToString() + " " + dgvBookingAdd.SelectedRows[0].Cells[1].Value.ToString();
-            this.Hide();
+            Dispose();
         }
 
         private void Booking_Add_Load(object sender, EventArgs e)

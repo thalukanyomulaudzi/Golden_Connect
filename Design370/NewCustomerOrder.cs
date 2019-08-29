@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Web.Util;
+using System.Net;
+using System.Collections;
 using System.IO;
 
 namespace Design370
@@ -35,6 +38,7 @@ namespace Design370
         Random rnd = new Random();
         bool generated = false;
         decimal discount = 0;
+        DBConnection dbCon = DBConnection.Instance();
         public NewCustomerOrder()
         {
             InitializeComponent();
@@ -46,7 +50,7 @@ namespace Design370
             counter = 0;
             txtSeach.Enabled = false;
             btnP.Enabled = false;
-            string csearch = "SELECT * FROM Customer Order By customer_id ASC";
+            string csearch = "SELECT * FROM `Customer` Order By `customer_id` ASC";
             MysqlConnection.mysqlCon.Open();
             MysqlConnection.cmd = new MySqlCommand(csearch, MysqlConnection.mysqlCon);
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
@@ -63,19 +67,20 @@ namespace Design370
 
         private void loadProducts()
         {
-            string products = "SELECT * FROM Product";
+            string products = "SELECT * FROM product_type";
             MysqlConnection.mysqlCon.Open();
             MysqlConnection.cmd = new MySqlCommand(products, MysqlConnection.mysqlCon);
             MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
             while (MysqlConnection.reader.Read())
             {
-                cmOrderList.Items.Add(MysqlConnection.reader.GetString("product_name"));
+                cbxPrTypes.Items.Add(MysqlConnection.reader.GetString("product_type_name"));
             }
             MysqlConnection.mysqlCon.Close();
         }
 
         private void BtnSaveOrder_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show(orderID.ToString());
             finalOrder(); //Function that finalises the order quantity!
             MysqlConnection.mysqlCon.Open();
 
@@ -88,22 +93,24 @@ namespace Design370
                         orderDescription += (", \n");
                 }
 
-                if (newOrderLine() == 1)
+                if (newOrderLine() >= 1)
                 {
                     foreach (Order order in orders)
                     {
                         if (order != null)
                         {
                             int size = order.getOrderImages.Length;
+                            int imageProd = order.getProductID;
                             for (int p = 0; p < size; p++)
                             {
                                 FileStream file = new FileStream(order.getOrderImages[p].ToString(), FileMode.Open, FileAccess.Read);
                                 BinaryReader read = new BinaryReader(file);
                                 saveImg = read.ReadBytes((int)file.Length);
-                                string path = "INSERT INTO `order_image` (`order_image`, `order_id`) VALUES (@image, @orderID)";
+                                string path = "INSERT INTO `order_image` (`order_image`, `order_id`, `product_id`) VALUES (@image, @orderID, @ImageProduct)";
                                 MysqlConnection.cmd = new MySqlCommand(path, MysqlConnection.mysqlCon);
                                 MysqlConnection.cmd.Parameters.AddWithValue("@image", saveImg);
                                 MysqlConnection.cmd.Parameters.AddWithValue("@orderID", orderID);
+                                MysqlConnection.cmd.Parameters.AddWithValue("@ImageProduct", imageProd);
                                 int uploaded = MysqlConnection.cmd.ExecuteNonQuery();
                                 if (uploaded == 1)
                                 {
@@ -126,13 +133,40 @@ namespace Design370
                     lblOrderid.Text = "Select Product";
                     lblProduct.Text = "Select Product";
                     lblImages.Text = imageCounter.ToString();
+                    lblProductPrice.Text = "R0.00";
+                    lblProductType.Text = "Select Type";
+                    lblD.Text = "0%";
+                    orders = null; //Destroying an object!
+                    int sent = SendSMS("CI00206948", "u15231748@tuks.co.za", "om0QGsm1", "0784016134", "Good Day Mr ... \n\nThis Message serves as a notice to inform you that your order has been processed and will be ready in a few days.");
+                    if(sent == 0)
+                    {
+                        MessageBox.Show("Message Sent Successfully", "Customer Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
-            else
-            {
-                MessageBox.Show("Ooops...");
-            }
             MysqlConnection.mysqlCon.Close();
+        }
+
+        public int SendSMS(String AccountID, String Email, String Password, String Recipient, String Message)
+        {
+            WebClient Client = new WebClient();
+            String RequestURL, RequestData;
+
+            RequestURL = "https://redoxygen.net/sms.dll?Action=SendSMS";
+
+            RequestData = "AccountId=" + AccountID
+                + "&Email=" + System.Web.HttpUtility.UrlEncode(Email)
+                + "&Password=" + System.Web.HttpUtility.UrlEncode(Password)
+                + "&Recipient=" + System.Web.HttpUtility.UrlEncode(Recipient)
+                + "&Message=" + System.Web.HttpUtility.UrlEncode(Message);
+
+            byte[] PostData = Encoding.ASCII.GetBytes(RequestData);
+            byte[] Response = Client.UploadData(RequestURL, PostData);
+
+            String Result = Encoding.ASCII.GetString(Response);
+            int ResultCode = System.Convert.ToInt32(Result.Substring(0, 4));
+
+            return ResultCode;
         }
 
         private void LinkUpload_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -155,24 +189,38 @@ namespace Design370
         {
             if (i > 0)
             {
-                if (MessageBox.Show("Do you want to save the current order?", "Place Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (cbxProducts.SelectedIndex > -1)
                 {
-                    orders[i] = new Order(cmOrderList.SelectedItem.ToString(), qty, photos);
+                    if (MessageBox.Show("Do you want to save the current order?", "Place Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        orders[i] = new Order(cbxProducts.SelectedItem.ToString(), qty, photos, id, orderID);
+                        i++;
+                        sumTotal += subTotal;
+                        lblOrders.Text = (i).ToString();
+                    }
+                    else
+                    {
+                        //Do nothing
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a product", "Place Customer Order", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                if (cbxProducts.SelectedIndex > -1)
+                {
+                    orders[i] = new Order(cbxProducts.SelectedItem.ToString(), qty, photos, id, orderID);
                     i++;
                     sumTotal += subTotal;
                     lblOrders.Text = (i).ToString();
                 }
                 else
                 {
-                    //Do nothing
+                    MessageBox.Show("Please select a product", "Place Customer Order", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                orders[i] = new Order(cmOrderList.SelectedItem.ToString(), qty, photos);
-                i++;
-                sumTotal += subTotal;
-                lblOrders.Text = (i).ToString();
             }
         }
 
@@ -223,30 +271,54 @@ namespace Design370
 
         public int newOrder()
         {
-            string orderInsert = "INSERT INTO `order` (`order_id`, `order_date_placed`, `customer_id`, `order_status_id`) " +
-                "VALUES(@id, @date, @cID, @osd)";
-            MysqlConnection.cmd = new MySqlCommand(orderInsert, MysqlConnection.mysqlCon);
-            MysqlConnection.cmd.Parameters.AddWithValue("@id", orderID);
-            MysqlConnection.cmd.Parameters.AddWithValue("@date", DateTime.Now);
-            MysqlConnection.cmd.Parameters.AddWithValue("@cID", customerID);
-            MysqlConnection.cmd.Parameters.AddWithValue("@osd", 1);
-            int done = MysqlConnection.cmd.ExecuteNonQuery();
-            return done;
+            if (cbxProducts.SelectedIndex > -1)
+            {
+                var date = DateTime.Now;
+                string orderInsert = "INSERT INTO `order` (`order_id`, `order_date_placed`, `customer_id`, `order_status_id`, `order_total`, `order_quantity`) " +
+                    "VALUES(@id, @date, @cID, @osd, @OrderTotal, @Quantity)";
+                MysqlConnection.cmd = new MySqlCommand(orderInsert, MysqlConnection.mysqlCon);
+                MysqlConnection.cmd.Parameters.AddWithValue("@id", orderID);
+                MysqlConnection.cmd.Parameters.AddWithValue("@date", date.Date);
+                MysqlConnection.cmd.Parameters.AddWithValue("@cID", customerID);
+                MysqlConnection.cmd.Parameters.AddWithValue("@osd", 1);
+                MysqlConnection.cmd.Parameters.AddWithValue("@OrderTotal", sumTotal);
+                MysqlConnection.cmd.Parameters.AddWithValue("@Quantity", i);
+                int done = MysqlConnection.cmd.ExecuteNonQuery();
+                return done;
+            }
+            else
+            {
+                return -1;
+            }
         }
-
+        int complete;
         public int newOrderLine()
         {
-            string orderLineInsert = "INSERT INTO `order_line` (`order_id`, `order_line_quantity`, `order_total`, `order_line_description`) " +
-            "VALUES (@orderID, @quantity, @orderTotal, @description)";
-            MysqlConnection.cmd = new MySqlCommand(orderLineInsert, MysqlConnection.mysqlCon);
-            MysqlConnection.cmd.Parameters.AddWithValue("@orderID", orderID);
-            MysqlConnection.cmd.Parameters.AddWithValue("@quantity", i);
-            MysqlConnection.cmd.Parameters.AddWithValue("@orderTotal", sumTotal);
-            MysqlConnection.cmd.Parameters.AddWithValue("@description", orderDescription);
-            int complete = MysqlConnection.cmd.ExecuteNonQuery();
-            return complete;
+            if (cbxProducts.SelectedIndex > -1)
+            {
+                foreach (Order order in orders)
+                {
+                    if (order != null)
+                    {
+                        string orderLineInsert = "INSERT INTO `order_line` (`product_id`, `order_id`, `order_line_quantity`) " +
+                        "VALUES (@ProductID, @orderID, @quantity)";
+                        MysqlConnection.cmd = new MySqlCommand(orderLineInsert, MysqlConnection.mysqlCon);
+                        MysqlConnection.cmd.Parameters.AddWithValue("@orderID", order.getOrderID);
+                        MysqlConnection.cmd.Parameters.AddWithValue("@quantity", order.getOrderQuanity);
+                        MysqlConnection.cmd.Parameters.AddWithValue("@ProductID", order.getProductID);
+                        complete = MysqlConnection.cmd.ExecuteNonQuery();
+                        complete++;
+                    }
+                }
+                return complete;
+            }
+            else
+            {
+                return -1;
+            }
+            
         }
-
+        int id = 0;
         private void CmOrderList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (generated == false)
@@ -254,10 +326,10 @@ namespace Design370
                 lblOrderid.Text = getOrderID().ToString();
                 generated = true;
             }
-            int id = 0;
-            if (cmOrderList.SelectedIndex > -1)
+            
+            if (cbxProducts.SelectedIndex > -1)
             {
-                string products = "SELECT * FROM Product WHERE product_name = '" + cmOrderList.SelectedItem.ToString() + "'";
+                string products = "SELECT * FROM Product WHERE product_name = '" + cbxProducts.SelectedItem.ToString() + "'";
                 MysqlConnection.mysqlCon.Open();
                 MysqlConnection.cmd = new MySqlCommand(products, MysqlConnection.mysqlCon);
                 MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
@@ -290,7 +362,7 @@ namespace Design370
 
         private void BtnAddP_Click(object sender, EventArgs e)
         {
-            orders[i] = new Order(cmOrderList.SelectedItem.ToString(), qty, photos);
+            orders[i] = new Order(cbxProducts.SelectedItem.ToString(), qty, photos, id, orderID);
             i++;
             sumTotal += subTotal;
             lblOrders.Text = (i).ToString();
@@ -381,6 +453,44 @@ namespace Design370
                 MysqlConnection.mysqlCon.Close();
                 customerID = names[index];
             }
+        }
+
+        private void CbxPrTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dbCon.Close();
+            if(dbCon.IsConnect())
+            {
+                lblProductType.Text = cbxPrTypes.SelectedItem.ToString();
+                string check = "SELECT `product_name` FROM `product` WHERE `product_type_id` = '"+ getProductID(cbxPrTypes.SelectedItem.ToString()) + "'";
+                dbCon.Open();
+                var command = new MySqlCommand(check, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                cbxProducts.Items.Clear();
+                while(reader.Read())
+                {
+                    cbxProducts.Items.Add(reader[0]);
+                }
+                dbCon.Close();
+            }
+        }
+
+        int productTypeID;
+        private int getProductID(string m)
+        {
+            if (dbCon.IsConnect())
+            {
+                string check = "SELECT `product_type_id` FROM `product_type` WHERE `product_type_name` = '" + cbxPrTypes.SelectedItem.ToString() + "'";
+                var command = new MySqlCommand(check, dbCon.Connection);
+                dbCon.Open();
+                var reader = command.ExecuteReader();
+                reader.Read();
+                if(reader.HasRows)
+                {
+                    productTypeID = Convert.ToInt32(reader[0]);
+                }
+                dbCon.Close();
+            }
+            return productTypeID;
         }
     }
 }

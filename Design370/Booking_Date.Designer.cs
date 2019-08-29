@@ -1,6 +1,6 @@
 ﻿namespace Design370
 {
-    partial class Book_Event_Date
+    partial class Booking_Date
     {
         /// <summary>
         /// Required designer variable.

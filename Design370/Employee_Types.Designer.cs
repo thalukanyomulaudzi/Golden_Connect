@@ -28,29 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.EmpTypeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpTypeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dgvEmpType = new System.Windows.Forms.DataGridView();
             this.EmpTypeView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpTypeDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmpTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.EmpTypeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EmpTypeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button14 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtSearchEmpType = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
+            this.cbxSortEmpType = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpType)).BeginInit();
             this.SuspendLayout();
             // 
-            // EmpTypeDelete
+            // dgvEmpType
             // 
-            this.EmpTypeDelete.HeaderText = "";
-            this.EmpTypeDelete.Name = "EmpTypeDelete";
-            // 
-            // EmpTypeEdit
-            // 
-            this.EmpTypeEdit.HeaderText = "";
-            this.EmpTypeEdit.Name = "EmpTypeEdit";
+            this.dgvEmpType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EmpTypeView,
+            this.EmpTypeEdit,
+            this.EmpTypeDelete});
+            this.dgvEmpType.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvEmpType.Location = new System.Drawing.Point(0, 73);
+            this.dgvEmpType.Name = "dgvEmpType";
+            this.dgvEmpType.RowTemplate.Height = 24;
+            this.dgvEmpType.Size = new System.Drawing.Size(803, 383);
+            this.dgvEmpType.TabIndex = 43;
+            this.dgvEmpType.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvEmpType_CellContentClick);
             // 
             // EmpTypeView
             // 
@@ -58,31 +61,25 @@
             this.EmpTypeView.Name = "EmpTypeView";
             this.EmpTypeView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.EmpTypeView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EmpTypeView.Text = "View";
+            this.EmpTypeView.UseColumnTextForButtonValue = true;
+            this.EmpTypeView.Width = 70;
             // 
-            // EmpTypeDescription
+            // EmpTypeEdit
             // 
-            this.EmpTypeDescription.HeaderText = "Description";
-            this.EmpTypeDescription.Name = "EmpTypeDescription";
+            this.EmpTypeEdit.HeaderText = "";
+            this.EmpTypeEdit.Name = "EmpTypeEdit";
+            this.EmpTypeEdit.Text = "Edit";
+            this.EmpTypeEdit.UseColumnTextForButtonValue = true;
+            this.EmpTypeEdit.Width = 70;
             // 
-            // EmpTypeName
+            // EmpTypeDelete
             // 
-            this.EmpTypeName.HeaderText = "Name";
-            this.EmpTypeName.Name = "EmpTypeName";
-            // 
-            // dataGridView7
-            // 
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EmpTypeName,
-            this.EmpTypeDescription,
-            this.EmpTypeView,
-            this.EmpTypeEdit,
-            this.EmpTypeDelete});
-            this.dataGridView7.Location = new System.Drawing.Point(22, 73);
-            this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.RowTemplate.Height = 24;
-            this.dataGridView7.Size = new System.Drawing.Size(754, 335);
-            this.dataGridView7.TabIndex = 43;
+            this.EmpTypeDelete.HeaderText = "";
+            this.EmpTypeDelete.Name = "EmpTypeDelete";
+            this.EmpTypeDelete.Text = "Delete";
+            this.EmpTypeDelete.UseColumnTextForButtonValue = true;
+            this.EmpTypeDelete.Width = 70;
             // 
             // button14
             // 
@@ -95,13 +92,14 @@
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.Button14_Click);
             // 
-            // textBox7
+            // txtSearchEmpType
             // 
-            this.textBox7.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(82, 24);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(212, 26);
-            this.textBox7.TabIndex = 45;
+            this.txtSearchEmpType.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchEmpType.Location = new System.Drawing.Point(82, 24);
+            this.txtSearchEmpType.Name = "txtSearchEmpType";
+            this.txtSearchEmpType.Size = new System.Drawing.Size(212, 26);
+            this.txtSearchEmpType.TabIndex = 45;
+            this.txtSearchEmpType.TextChanged += new System.EventHandler(this.TxtSearchEmpType_TextChanged);
             // 
             // label14
             // 
@@ -123,50 +121,49 @@
             this.label13.TabIndex = 47;
             this.label13.Text = "Sort by:";
             // 
-            // comboBox7
+            // cbxSortEmpType
             // 
-            this.comboBox7.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.ItemHeight = 18;
-            this.comboBox7.Location = new System.Drawing.Point(374, 24);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(136, 26);
-            this.comboBox7.TabIndex = 48;
+            this.cbxSortEmpType.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSortEmpType.FormattingEnabled = true;
+            this.cbxSortEmpType.ItemHeight = 18;
+            this.cbxSortEmpType.Location = new System.Drawing.Point(374, 24);
+            this.cbxSortEmpType.Name = "cbxSortEmpType";
+            this.cbxSortEmpType.Size = new System.Drawing.Size(136, 26);
+            this.cbxSortEmpType.TabIndex = 48;
+            this.cbxSortEmpType.SelectedIndexChanged += new System.EventHandler(this.CbxSortEmpType_SelectedIndexChanged);
             // 
             // Employee_Types
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(803, 456);
-            this.Controls.Add(this.comboBox7);
+            this.Controls.Add(this.cbxSortEmpType);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txtSearchEmpType);
             this.Controls.Add(this.button14);
-            this.Controls.Add(this.dataGridView7);
+            this.Controls.Add(this.dgvEmpType);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Employee_Types";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Types";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
+            this.Load += new System.EventHandler(this.Employee_Types_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpType)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeDelete;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpTypeDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpTypeName;
-        private System.Windows.Forms.DataGridView dataGridView7;
+        private System.Windows.Forms.DataGridView dgvEmpType;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtSearchEmpType;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox cbxSortEmpType;
+        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeView;
+        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn EmpTypeDelete;
     }
 }
