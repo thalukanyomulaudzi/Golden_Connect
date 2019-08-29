@@ -295,135 +295,139 @@ namespace Design370
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+            if (textBox1.Enabled)
             {
-                MessageBox.Show("Invalid character length for name and/or description");
-                return;
-            }
-            int itemIndex1, quantity1 = 0, quantity2 = 0;
-            string itemString1 = " ";
-            bool flag = false, flag1 = false;
-            foreach (var item in listBox3.Items)
-            {
-                itemIndex1 = listBox3.Items.IndexOf(item);
-                itemString1 = listBox3.Items[itemIndex1].ToString();
-                int pos = itemString1.IndexOf(":");
-                quantity1 = Convert.ToInt32(itemString1.Substring(pos + 1));
-                if (quantity1 >= 1)
+                if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
                 {
-                    flag = true;
-                    break;
+                    MessageBox.Show("Invalid character length for name and/or description");
+                    return;
                 }
-            }
-
-            foreach (var item in listBox4.Items)
-            {
-                itemIndex1 = listBox4.Items.IndexOf(item);
-                itemString1 = listBox4.Items[itemIndex1].ToString();
-                int pos = itemString1.IndexOf(":");
-                quantity2 = Convert.ToInt32(itemString1.Substring(pos + 1));
-                if (quantity2 >= 1)
+                int itemIndex1, quantity1 = 0, quantity2 = 0;
+                string itemString1 = " ";
+                bool flag = false, flag1 = false;
+                foreach (var item in listBox3.Items)
                 {
-                    flag1 = true;
-                    break;
-                }
-            }
-
-            if (!flag || !flag1)
-            {
-                MessageBox.Show("No service and/or product selected");
-                return;
-            }
-
-            try
-            {
-                DBConnection dBConnection = DBConnection.Instance();
-                if (dBConnection.IsConnect())
-                {
-                    int quantity = 0, itemIndex = 0, posid = 0, posquant = 0, booking_package_id = 0;
-                    string itemString = " ";
-                    string package_type = " ";
-                    string query = "SELECT booking_package_type_id FROM booking_package_type WHERE booking_package_type_name = 'Photoshoot'";
-                    var command = new MySqlCommand(query, dBConnection.Connection);
-                    var reader = command.ExecuteReader();
-                    reader.Read();
-                    package_type = reader.GetString(0);
-                    reader.Close();
-                    query = "SELECT booking_package_id FROM booking_package WHERE booking_package_name = '" + textBox1.Text + "'";
-                    command = new MySqlCommand(query, dBConnection.Connection);
-                    reader = command.ExecuteReader();
-                    reader.Read();
-                    booking_package_id = reader.GetInt32(0);
-                    reader.Close();
-                    DataTable product_id = new DataTable();
-                    DataTable service_id = new DataTable();
-                    foreach (var item in Products)
+                    itemIndex1 = listBox3.Items.IndexOf(item);
+                    itemString1 = listBox3.Items[itemIndex1].ToString();
+                    int pos = itemString1.IndexOf(":");
+                    quantity1 = Convert.ToInt32(itemString1.Substring(pos + 1));
+                    if (quantity1 >= 1)
                     {
-                        itemIndex = Products.IndexOf(item);
-                        posid = Products[itemIndex].IndexOf(";");
-                        itemString = Products[itemIndex].Substring(0, posid);
-                        query = "SELECT product_id FROM product WHERE product_name = '" + itemString + "'";
+                        flag = true;
+                        break;
+                    }
+                }
+
+                foreach (var item in listBox4.Items)
+                {
+                    itemIndex1 = listBox4.Items.IndexOf(item);
+                    itemString1 = listBox4.Items[itemIndex1].ToString();
+                    int pos = itemString1.IndexOf(":");
+                    quantity2 = Convert.ToInt32(itemString1.Substring(pos + 1));
+                    if (quantity2 >= 1)
+                    {
+                        flag1 = true;
+                        break;
+                    }
+                }
+
+                if (!flag || !flag1)
+                {
+                    MessageBox.Show("No service and/or product selected");
+                    return;
+                }
+
+                try
+                {
+                    DBConnection dBConnection = DBConnection.Instance();
+                    if (dBConnection.IsConnect())
+                    {
+                        int quantity = 0, itemIndex = 0, posid = 0, posquant = 0, booking_package_id = 0;
+                        string itemString = " ";
+                        string package_type = " ";
+                        string query = "SELECT booking_package_type_id FROM booking_package_type WHERE booking_package_type_name = 'Photoshoot'";
+                        var command = new MySqlCommand(query, dBConnection.Connection);
+                        var reader = command.ExecuteReader();
+                        reader.Read();
+                        package_type = reader.GetString(0);
+                        reader.Close();
+                        query = "SELECT booking_package_id FROM booking_package WHERE booking_package_name = '" + textBox1.Text + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         reader = command.ExecuteReader();
-                        product_id.Load(reader);
+                        reader.Read();
+                        booking_package_id = reader.GetInt32(0);
                         reader.Close();
-                    }
-                    for (int j = 0; j < product_id.Rows.Count; j++)
-                    {
-                        posquant = Products[j].IndexOf(":");
-                        quantity = Convert.ToInt32(Products[j].Substring(posquant + 1));
-                        if (quantity >= 0)
+                        DataTable product_id = new DataTable();
+                        DataTable service_id = new DataTable();
+                        foreach (var item in Products)
                         {
-                            query = "UPDATE `booking_package_product` SET `booking_package_product_quantity` = '" + quantity + "' WHERE booking_package_id = '" + booking_package_id + "' AND product_id = '" + product_id.Rows[j].ItemArray[0] + "'";
+                            itemIndex = Products.IndexOf(item);
+                            posid = Products[itemIndex].IndexOf(";");
+                            itemString = Products[itemIndex].Substring(0, posid);
+                            query = "SELECT product_id FROM product WHERE product_name = '" + itemString + "'";
                             command = new MySqlCommand(query, dBConnection.Connection);
-                            command.ExecuteNonQuery();
+                            reader = command.ExecuteReader();
+                            product_id.Load(reader);
+                            reader.Close();
                         }
-                    }
-                    foreach (var item in Services)
-                    {
-                        itemIndex = Services.IndexOf(item);
-                        posid = Services[itemIndex].IndexOf(";");
-                        itemString = Services[itemIndex].Substring(0, posid);
-                        query = "SELECT service_id FROM service WHERE service_name = '" + itemString + "'";
+                        for (int j = 0; j < product_id.Rows.Count; j++)
+                        {
+                            posquant = Products[j].IndexOf(":");
+                            quantity = Convert.ToInt32(Products[j].Substring(posquant + 1));
+                            if (quantity >= 0)
+                            {
+                                query = "UPDATE `booking_package_product` SET `booking_package_product_quantity` = '" + quantity + "' WHERE booking_package_id = '" + booking_package_id + "' AND product_id = '" + product_id.Rows[j].ItemArray[0] + "'";
+                                command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        foreach (var item in Services)
+                        {
+                            itemIndex = Services.IndexOf(item);
+                            posid = Services[itemIndex].IndexOf(";");
+                            itemString = Services[itemIndex].Substring(0, posid);
+                            query = "SELECT service_id FROM service WHERE service_name = '" + itemString + "'";
+                            command = new MySqlCommand(query, dBConnection.Connection);
+                            reader = command.ExecuteReader();
+                            service_id.Load(reader);
+                            reader.Close();
+                        }
+                        for (int k = 0; k < service_id.Rows.Count; k++)
+                        {
+                            posquant = Services[k].IndexOf(":");
+                            quantity = Convert.ToInt32(Services[k].Substring(posquant + 1));
+                            if (quantity == 1)
+                            {
+                                query = "DELETE FROM `booking_package_service` WHERE booking_package_id = '" + booking_package_id + "' ";
+                                query += "AND service_id = '" + service_id.Rows[k].ItemArray[0].ToString() + "'";
+                                command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                                query = "INSERT INTO `booking_package_service` (`booking_package_id`, `service_id`) VALUES";
+                                query += "('" + booking_package_id + "', '" + service_id.Rows[k].ItemArray[0].ToString() + "')";
+                                command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                query = "DELETE FROM `booking_package_service` WHERE booking_package_id = '" + booking_package_id + "' ";
+                                query += "AND service_id = '" + service_id.Rows[k].ItemArray[0].ToString() + "'";
+                                command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        query = "UPDATE `booking_package` SET `booking_package_name` = '" + textBox1.Text + "', ";
+                        query += "`booking_package_description` = '" + textBox2.Text + "' WHERE booking_package_id = '" + booking_package_id + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
-                        reader = command.ExecuteReader();
-                        service_id.Load(reader);
-                        reader.Close();
+                        command.ExecuteNonQuery();
                     }
-                    for (int k = 0; k < service_id.Rows.Count; k++)
-                    {
-                        posquant = Services[k].IndexOf(":");
-                        quantity = Convert.ToInt32(Services[k].Substring(posquant + 1));
-                        if (quantity == 1)
-                        {
-                            query = "DELETE FROM `booking_package_service` WHERE booking_package_id = '" + booking_package_id + "' ";
-                            query += "AND service_id = '" + service_id.Rows[k].ItemArray[0].ToString() + "'";
-                            command = new MySqlCommand(query, dBConnection.Connection);
-                            command.ExecuteNonQuery();
-                            query = "INSERT INTO `booking_package_service` (`booking_package_id`, `service_id`) VALUES";
-                            query += "('" + booking_package_id + "', '" + service_id.Rows[k].ItemArray[0].ToString() + "')";
-                            command = new MySqlCommand(query, dBConnection.Connection);
-                            command.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            query = "DELETE FROM `booking_package_service` WHERE booking_package_id = '" + booking_package_id + "' ";
-                            query += "AND service_id = '" + service_id.Rows[k].ItemArray[0].ToString() + "'";
-                            command = new MySqlCommand(query, dBConnection.Connection);
-                            command.ExecuteNonQuery();
-                        }
-                    }
-                    query = "UPDATE `booking_package` SET `booking_package_name` = '" + textBox1.Text + "', ";
-                    query += "`booking_package_description` = '" + textBox2.Text + "' WHERE booking_package_id = '" + booking_package_id + "'";
-                    command = new MySqlCommand(query, dBConnection.Connection);
-                    command.ExecuteNonQuery();
                 }
-            }
 
-            catch (Exception except)
-            {
+                catch (Exception except)
+                {
 
-                MessageBox.Show(except.Message);
+                    MessageBox.Show(except.Message);
+                }
+                this.Close();
             }
             this.Close();
         }
