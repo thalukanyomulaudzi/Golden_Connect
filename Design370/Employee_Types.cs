@@ -95,6 +95,7 @@ namespace Design370
                     while (reader.Read())
                     {
                         dgvEmpType.Rows.Add("", "", "", reader[1], reader[2]);
+                        cbxSortEmpType.Items.Add(reader[1]);
                     }
                     dbCon.Close();
                 }
@@ -103,6 +104,17 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
+        }
+
+        private void TxtSearchEmpType_TextChanged(object sender, EventArgs e)
+        {
+            dgvEmpType.Rows.Clear();
+            Employees.SearchEmployeeType(txtSearchEmpType.Text, dgvEmpType);
+        }
+
+        private void CbxSortEmpType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

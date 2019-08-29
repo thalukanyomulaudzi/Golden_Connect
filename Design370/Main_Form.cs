@@ -143,19 +143,6 @@ namespace Design370
             return (dbCon.IsConnect());
         } 
 
-        //public void loadEmployees()
-        //{
-        //    MysqlConnection.mysqlCon.Open();
-        //    string employees = "SELECT employee_first, employee_last, employee_idnumber, employee_phone, employee_email " +
-        //        "FROM employee";
-        //    MysqlConnection.cmd = new MySqlCommand(employees, MysqlConnection.mysqlCon);
-        //    MysqlConnection.reader = MysqlConnection.cmd.ExecuteReader();
-        //    DataTable table = new DataTable();
-        //    table.Load(MysqlConnection.reader);
-        //    empGrid.DataSource = table;
-        //    MysqlConnection.mysqlCon.Close();
-        //}
-
         private void testConnection()//only in use during dev stage for example code
         {
             if (dbCon.IsConnect())
@@ -564,6 +551,12 @@ namespace Design370
         {
             Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
             photoshoot_Types.ShowDialog();
+        }
+
+        private void CbxSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            empGrid.Rows.Clear();
+            Employees.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
         }
     }
 }

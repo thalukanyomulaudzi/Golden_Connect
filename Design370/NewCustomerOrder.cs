@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Web.Util;
+using System.Net;
+using System.Collections;
 using System.IO;
 
 namespace Design370
@@ -134,9 +137,36 @@ namespace Design370
                     lblProductType.Text = "Select Type";
                     lblD.Text = "0%";
                     orders = null; //Destroying an object!
+                    int sent = SendSMS("CI00206948", "u15231748@tuks.co.za", "om0QGsm1", "0784016134", "Good Day Mr ... \n\nThis Message serves as a notice to inform you that your order has been processed and will be ready in a few days.");
+                    if(sent == 0)
+                    {
+                        MessageBox.Show("Message Sent Successfully", "Customer Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             MysqlConnection.mysqlCon.Close();
+        }
+
+        public int SendSMS(String AccountID, String Email, String Password, String Recipient, String Message)
+        {
+            WebClient Client = new WebClient();
+            String RequestURL, RequestData;
+
+            RequestURL = "https://redoxygen.net/sms.dll?Action=SendSMS";
+
+            RequestData = "AccountId=" + AccountID
+                + "&Email=" + System.Web.HttpUtility.UrlEncode(Email)
+                + "&Password=" + System.Web.HttpUtility.UrlEncode(Password)
+                + "&Recipient=" + System.Web.HttpUtility.UrlEncode(Recipient)
+                + "&Message=" + System.Web.HttpUtility.UrlEncode(Message);
+
+            byte[] PostData = Encoding.ASCII.GetBytes(RequestData);
+            byte[] Response = Client.UploadData(RequestURL, PostData);
+
+            String Result = Encoding.ASCII.GetString(Response);
+            int ResultCode = System.Convert.ToInt32(Result.Substring(0, 4));
+
+            return ResultCode;
         }
 
         private void LinkUpload_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
