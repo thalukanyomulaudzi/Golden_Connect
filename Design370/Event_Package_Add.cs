@@ -33,7 +33,7 @@ namespace Design370
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            int itemIndex, quantity = 0, i = 0;
+            int itemIndex, quantity = 0;
             string itemString = " ";
             Services = new List<string>();
             Products = new List<string>();
