@@ -129,7 +129,6 @@ namespace Design370
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.btnCaptureOrderPayment = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.btnBookingAdd = new System.Windows.Forms.Button();
@@ -1083,7 +1082,6 @@ namespace Design370
             this.tabPage8.Controls.Add(this.label15);
             this.tabPage8.Controls.Add(this.label16);
             this.tabPage8.Controls.Add(this.textBox8);
-            this.tabPage8.Controls.Add(this.btnCaptureOrderPayment);
             this.tabPage8.Controls.Add(this.button16);
             this.tabPage8.Location = new System.Drawing.Point(154, 4);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(2);
@@ -1142,6 +1140,7 @@ namespace Design370
             this.button18.TabIndex = 45;
             this.button18.Text = "Deliver Order";
             this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.Button18_Click);
             // 
             // button17
             // 
@@ -1154,6 +1153,7 @@ namespace Design370
             this.button17.TabIndex = 44;
             this.button17.Text = "Prepare Order";
             this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.Button17_Click);
             // 
             // comboBox8
             // 
@@ -1197,24 +1197,11 @@ namespace Design370
             this.textBox8.Size = new System.Drawing.Size(200, 25);
             this.textBox8.TabIndex = 40;
             // 
-            // btnCaptureOrderPayment
-            // 
-            this.btnCaptureOrderPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCaptureOrderPayment.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCaptureOrderPayment.Location = new System.Drawing.Point(724, 11);
-            this.btnCaptureOrderPayment.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCaptureOrderPayment.Name = "btnCaptureOrderPayment";
-            this.btnCaptureOrderPayment.Size = new System.Drawing.Size(131, 28);
-            this.btnCaptureOrderPayment.TabIndex = 39;
-            this.btnCaptureOrderPayment.Text = "Capture Payment";
-            this.btnCaptureOrderPayment.UseVisualStyleBackColor = true;
-            this.btnCaptureOrderPayment.Click += new System.EventHandler(this.BtnCaptureOrderPayment_Click);
-            // 
             // button16
             // 
             this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button16.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(592, 11);
+            this.button16.Location = new System.Drawing.Point(727, 11);
             this.button16.Margin = new System.Windows.Forms.Padding(2);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(128, 28);
@@ -1686,7 +1673,6 @@ namespace Design370
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Button btnCaptureOrderPayment;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
