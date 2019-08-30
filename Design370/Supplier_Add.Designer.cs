@@ -101,6 +101,7 @@
             // 
             this.txtEmailAddress.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmailAddress.Location = new System.Drawing.Point(284, 216);
+            this.txtEmailAddress.MaxLength = 50;
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(183, 21);
             this.txtEmailAddress.TabIndex = 91;
@@ -109,6 +110,7 @@
             // 
             this.txtTelephoneNo.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelephoneNo.Location = new System.Drawing.Point(24, 216);
+            this.txtTelephoneNo.MaxLength = 10;
             this.txtTelephoneNo.Name = "txtTelephoneNo";
             this.txtTelephoneNo.Size = new System.Drawing.Size(183, 21);
             this.txtTelephoneNo.TabIndex = 90;
@@ -137,6 +139,7 @@
             // 
             this.txtAddress.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(284, 72);
+            this.txtAddress.MaxLength = 100;
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(183, 75);
@@ -166,6 +169,7 @@
             // 
             this.txtSupplierName.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierName.Location = new System.Drawing.Point(24, 72);
+            this.txtSupplierName.MaxLength = 25;
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(183, 21);
             this.txtSupplierName.TabIndex = 83;
@@ -203,6 +207,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Supplier_Add";
             this.Text = "Add Supplier";
+            this.Load += new System.EventHandler(this.Supplier_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

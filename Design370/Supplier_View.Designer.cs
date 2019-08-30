@@ -201,6 +201,7 @@
             this.Controls.Add(this.cbxsp);
             this.Name = "Supplier_View";
             this.Text = "View Supplier";
+            this.Activated += new System.EventHandler(this.Supplier_View_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Supplier_View_FormClosing);
             this.Load += new System.EventHandler(this.Supplier_View_Load);
             this.ResumeLayout(false);

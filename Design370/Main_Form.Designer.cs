@@ -31,7 +31,7 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -152,8 +152,6 @@ namespace Design370
             this.SupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.SupplierDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button22 = new System.Windows.Forms.Button();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.button24 = new System.Windows.Forms.Button();
@@ -254,7 +252,7 @@ namespace Design370
             this.lblCustomerSort.Location = new System.Drawing.Point(281, 15);
             this.lblCustomerSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCustomerSort.Name = "lblCustomerSort";
-            this.lblCustomerSort.Size = new System.Drawing.Size(57, 18);
+            this.lblCustomerSort.Size = new System.Drawing.Size(56, 18);
             this.lblCustomerSort.TabIndex = 7;
             this.lblCustomerSort.Text = "Sort by:";
             // 
@@ -398,7 +396,7 @@ namespace Design370
             this.label7.Location = new System.Drawing.Point(281, 15);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 18);
+            this.label7.Size = new System.Drawing.Size(56, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Sort by:";
             // 
@@ -499,7 +497,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -894,7 +892,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 122;
+            this.PhotoshootPackageName.Width = 132;
             // 
             // Services
             // 
@@ -1037,7 +1035,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 122;
+            this.EventPackageName.Width = 132;
             // 
             // ServicesEvents
             // 
@@ -1121,11 +1119,11 @@ namespace Design370
             // 
             // CustomerOrderPayment
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle1;
             this.CustomerOrderPayment.HeaderText = "";
             this.CustomerOrderPayment.Name = "CustomerOrderPayment";
             this.CustomerOrderPayment.Text = "Capture Payment";
@@ -1174,7 +1172,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 18);
+            this.label15.Size = new System.Drawing.Size(56, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Sort by:";
             // 
@@ -1329,8 +1327,6 @@ namespace Design370
             // 
             this.tabPage10.Controls.Add(this.dataGridView10);
             this.tabPage10.Controls.Add(this.button22);
-            this.tabPage10.Controls.Add(this.comboBox10);
-            this.tabPage10.Controls.Add(this.label19);
             this.tabPage10.Controls.Add(this.label20);
             this.tabPage10.Controls.Add(this.textBox10);
             this.tabPage10.Controls.Add(this.button24);
@@ -1344,6 +1340,10 @@ namespace Design370
             // 
             // dataGridView10
             // 
+            this.dataGridView10.AllowUserToAddRows = false;
+            this.dataGridView10.AllowUserToDeleteRows = false;
+            this.dataGridView10.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView10.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView10.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SupplierName,
@@ -1356,6 +1356,8 @@ namespace Design370
             this.dataGridView10.Location = new System.Drawing.Point(11, 59);
             this.dataGridView10.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView10.Name = "dataGridView10";
+            this.dataGridView10.ReadOnly = true;
+            this.dataGridView10.RowHeadersVisible = false;
             this.dataGridView10.RowTemplate.Height = 24;
             this.dataGridView10.Size = new System.Drawing.Size(763, 349);
             this.dataGridView10.TabIndex = 55;
@@ -1366,39 +1368,46 @@ namespace Design370
             this.SupplierName.DataPropertyName = "supplier_name";
             this.SupplierName.HeaderText = "Supplier Name";
             this.SupplierName.Name = "SupplierName";
+            this.SupplierName.ReadOnly = true;
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "supplier_email_address";
             this.Column1.HeaderText = "Supplier Email Address";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.DataPropertyName = "supplier_phone";
             this.Column2.HeaderText = "Supplier Telephone";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // SupplierType
             // 
             this.SupplierType.DataPropertyName = "supplier_type_name";
             this.SupplierType.HeaderText = "Supplier Type";
             this.SupplierType.Name = "SupplierType";
+            this.SupplierType.ReadOnly = true;
             // 
             // SupplierView
             // 
             this.SupplierView.HeaderText = "";
             this.SupplierView.Name = "SupplierView";
+            this.SupplierView.ReadOnly = true;
             // 
             // SupplierEdit
             // 
             this.SupplierEdit.HeaderText = "";
             this.SupplierEdit.Name = "SupplierEdit";
+            this.SupplierEdit.ReadOnly = true;
             // 
             // SupplierDelete
             // 
             this.SupplierDelete.HeaderText = "";
             this.SupplierDelete.Name = "SupplierDelete";
+            this.SupplierDelete.ReadOnly = true;
             // 
             // button22
             // 
@@ -1411,28 +1420,6 @@ namespace Design370
             this.button22.Text = "Supplier Orders";
             this.button22.UseVisualStyleBackColor = true;
             this.button22.Click += new System.EventHandler(this.Button22_Click);
-            // 
-            // comboBox10
-            // 
-            this.comboBox10.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.ItemHeight = 17;
-            this.comboBox10.Location = new System.Drawing.Point(339, 11);
-            this.comboBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(103, 25);
-            this.comboBox10.TabIndex = 52;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(281, 15);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 18);
-            this.label19.TabIndex = 51;
-            this.label19.Text = "Sort by:";
             // 
             // label20
             // 
@@ -1453,6 +1440,7 @@ namespace Design370
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(200, 25);
             this.textBox10.TabIndex = 49;
+            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
             // button24
             // 
@@ -1699,8 +1687,6 @@ namespace Design370
         private System.Windows.Forms.Button btnBookingCapture;
         private System.Windows.Forms.DataGridView dataGridView10;
         private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.ComboBox comboBox10;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button button24;
