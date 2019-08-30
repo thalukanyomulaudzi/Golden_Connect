@@ -68,5 +68,34 @@ namespace Design370
                 MessageBox.Show(e.Message);
             }
         }
+        static int statusID;
+        private static int getStatusID(string statusName)
+        {
+            if(dbCon.IsConnect())
+            {
+                dbCon.Close();
+                dbCon.Open();
+                string getID = "SELECT * FROM `order_status` WHERE `order_status_name` = '"+statusName+"'";
+                var cmd = new MySqlCommand(getID, dbCon.Connection);
+                var reader = cmd.ExecuteReader();
+                reader.Read();
+                statusID = Convert.ToInt32(reader[0]);
+            }
+            return statusID;
+        }
+
+        public static void UpdateOrderStatus(int orderID, string status)
+        {
+            statusID = getStatusID(status);
+            if(dbCon.IsConnect())
+            {
+                dbCon.Close();
+                dbCon.Open();
+                string update = "UPDATE `order` SET `order_status_id` = '"+statusID+"' WHERE `order_id` = '"+orderID+"'";
+                var command = new MySqlCommand(update, dbCon.Connection);
+                command.ExecuteReader();
+                MessageBox.Show("Order: "+orderID + " successfully updated!");
+            }
+        }
     }
 }

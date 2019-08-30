@@ -541,8 +541,8 @@ namespace Design370
 
         private void BtnCaptureOrderPayment_Click(object sender, EventArgs e)
         {
-            Customer_Order_Capture newPayment = new Customer_Order_Capture();
-            newPayment.ShowDialog();
+            //Customer_Order_Capture newPayment = new Customer_Order_Capture();
+            //newPayment.ShowDialog();
         }
 
         private void BtnBookingCapture_Click(object sender, EventArgs e)
@@ -580,13 +580,42 @@ namespace Design370
                     customerOI.ShowDialog();
                     break;
                 case 1:
-                    Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
-                    customerPay.ShowDialog();
+                    if (dbCon.IsConnect())
+                    {
+                        dbCon.Close();
+                        dbCon.Open();
+                        string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Placed' AND `order`.`order_id` = '"+ dgvOrders.Rows[e.RowIndex].Cells[2].Value + "'";
+                        var command = new MySqlCommand(checkStatus, dbCon.Connection);
+                        var reader = command.ExecuteReader();
+                        reader.Read();
+                        if (reader.HasRows)
+                        {
+                            Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
+                            customerPay.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        
+                    }
                     break;
                 default:
                     break;
                     
             }
+        }
+
+        private void Button17_Click(object sender, EventArgs e)
+        {
+            PrepareOrder prepareCustOrdr = new PrepareOrder();
+            prepareCustOrdr.ShowDialog();
+        }
+
+        private void Button18_Click(object sender, EventArgs e)
+        {
+            DeliverOrder deliveries = new DeliverOrder();
+            deliveries.ShowDialog();
         }
     }
 }
