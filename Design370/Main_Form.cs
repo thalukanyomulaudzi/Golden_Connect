@@ -79,26 +79,26 @@ namespace Design370
 
         public void loadSuppliers()
         {
-            using (MysqlConnection.mysqlCon)
+            try
             {
-                MysqlConnection.mysqlCon.Open();
-
-                string sql = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.supplier_type_name FROM supplier INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
-                DataTable dtb1 = new DataTable();
-                adapter.Fill(dtb1);
-                //dtb1.Columns.Add("View");
-                //for (int i = 0; i < dtb1.Rows.Count; i++)
-                //{
-                //    dtb1.Rows[i]["View"] = "View";
-                //}
-                dataGridView10.AutoGenerateColumns = false;
-                dataGridView10.DataSource = dtb1;
-
-                //DataGridViewButtonCell b = new DataGridViewButtonCell();
-                //int rowIndex = MainTable.Rows.Add(b);
-                //MainTable.Rows[rowIndex].Cells[0].Value = "name";
+                if (dbCon.IsConnect())
+                {
+                    string query = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.supplier_type_name FROM supplier " +
+                        "INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dataGridView10.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), "View", "Edit", "Delete");
+                    }
+                    reader.Close();
+                }
             }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+            
         }
 
         public void loadServices()
@@ -304,7 +304,7 @@ namespace Design370
         private void Button24_Click(object sender, EventArgs e)
         {
             Supplier_Add supplier_Add = new Supplier_Add();
-            supplier_Add.Show();
+            supplier_Add.ShowDialog();
         }
 
         private void Button22_Click(object sender, EventArgs e)
@@ -510,24 +510,52 @@ namespace Design370
 
         private void DataGridView10_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            string supplierName;
             Supplier_View supplier_View = new Supplier_View();
             switch (e.ColumnIndex)
             {
 
                 case 4:
                     Supplier_View.edit = false;
-                    supplier_View.Show();
+                    supplierName = dataGridView10.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    supplier_View.GetSupplierRow = supplierName;
+                    supplier_View.ShowDialog();
                     break;
                 case 5:
                     Supplier_View.edit = true;
-                    supplier_View.Show();
+                    supplierName = dataGridView10.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    supplier_View.GetSupplierRow = supplierName;
+                    supplier_View.ShowDialog();
                     break;
                 case 6:
+                    supplierName = dataGridView10.Rows[e.RowIndex].Cells[0].Value.ToString();
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dataGridView10.Rows.Clear();
+                        try
+                        {
+                            DBConnection dBConnection = DBConnection.Instance();
+                            if (dBConnection.IsConnect())
+                            {
+                                string supplierID = "";
+                                string query = "SELECT supplier_id FROM supplier WHERE supplier_name = '" + supplierName + "'";
+                                var command = new MySqlCommand(query, dBConnection.Connection);
+                                var reader = command.ExecuteReader();
+                                while (reader.Read())
+                                {
+                                    supplierID = reader.GetString(0);
+                                }
+                                reader.Close();
+                                query = "DELETE FROM `supplier` WHERE supplier_id = '" + supplierID + "'";
+                                command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        catch (Exception except)
+                        {
+                            System.Windows.Forms.MessageBox.Show("This supplier is used in a supplier order. It can not be deleted.");
+                        }
                     }
                     else
                     {
@@ -569,6 +597,8 @@ namespace Design370
             loadProducts();
             dgvServices.Rows.Clear();
             loadServices();
+            dataGridView10.Rows.Clear();
+            loadSuppliers();
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
@@ -701,6 +731,37 @@ namespace Design370
                 default:
                     break;
                     
+            }
+        }
+
+        private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+            dgvServices.Rows.Clear();
+            try
+            {
+                if (dbCon.IsConnect())
+                {
+                    string query = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.supplier_type_name FROM supplier " +
+                        "INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id " +
+                        "WHERE supplier.supplier_name LIKE '%" + textBox10.Text + "%' OR supplier_type.supplier_type_name LIKE '%" + textBox10.Text + "%' " +
+                        "OR supplier.supplier_email LIKE '%" + textBox10.Text + "%' OR supplier.supplier_phone LIKE '%" + textBox10.Text + "%'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dataGridView10.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), "View", "Edit", "Delete");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
     }
