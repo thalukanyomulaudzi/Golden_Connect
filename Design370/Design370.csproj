@@ -284,13 +284,13 @@
     <Compile Include="OrderImages.Designer.cs">
       <DependentUpon>OrderImages.cs</DependentUpon>
     </Compile>
-    <Compile Include="Photoshoot Package_Add.cs">
+    <Compile Include="Photoshoot.cs" />
+    <Compile Include="Photoshoot_Package_Add.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Photoshoot_Package_Add.Designer.cs">
       <DependentUpon>Photoshoot_Package_Add.cs</DependentUpon>
     </Compile>
-    <Compile Include="Photoshoot.cs" />
     <Compile Include="Photoshoot_Package_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -498,11 +498,8 @@
     <EmbeddedResource Include="OrderImages.resx">
       <DependentUpon>OrderImages.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Photoshoot Package_Add.resx">
-      <DependentUpon>Photoshoot Package_Add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Photoshoot_Package_View.resx">
-      <DependentUpon>Photoshoot_Package_View.cs</DependentUpon>
+    <EmbeddedResource Include="Photoshoot_Package_Add.resx">
+      <DependentUpon>Photoshoot_Package_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot_Types.resx">
       <DependentUpon>Photoshoot_Types.cs</DependentUpon>
