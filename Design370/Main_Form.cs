@@ -68,10 +68,10 @@ namespace Design370
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
-            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
-            //Timeslots.removeDuplicates();
-            //MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
+            //Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
+            ////Timeslots.removeDuplicates();
+            ////MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
+            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             loadSuppliers();
@@ -685,6 +685,27 @@ namespace Design370
             catch (Exception ee)
             {
                 MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void DgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            OrderImages customerOI = new OrderImages();
+            Customer_Order_Capture customerPay = new Customer_Order_Capture();
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    OrderImages.orderID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
+                    customerOI = new OrderImages();
+                    customerOI.ShowDialog();
+                    break;
+                case 1:
+                    Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
+                    customerPay.ShowDialog();
+                    break;
+                default:
+                    break;
+                    
             }
         }
     }

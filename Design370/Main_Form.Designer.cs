@@ -32,6 +32,7 @@ namespace Design370
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cmb = new System.Windows.Forms.ComboBox();
@@ -162,6 +163,8 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ViewOrderProducts = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.CustomerOrderPayment = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -211,7 +214,7 @@ namespace Design370
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(989, 616);
+            this.tabControl1.Size = new System.Drawing.Size(1262, 616);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 11;
             // 
@@ -228,7 +231,7 @@ namespace Design370
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(831, 608);
+            this.tabPage1.Size = new System.Drawing.Size(1104, 608);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer";
             this.tabPage1.Click += new System.EventHandler(this.TabPage1_Click);
@@ -358,7 +361,7 @@ namespace Design370
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(831, 608);
+            this.tabPage2.Size = new System.Drawing.Size(1104, 608);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Employee";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -484,7 +487,7 @@ namespace Design370
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(831, 608);
+            this.tabPage3.Size = new System.Drawing.Size(1104, 608);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Timeslot";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -575,7 +578,7 @@ namespace Design370
             this.tabPage4.Location = new System.Drawing.Point(154, 4);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(831, 608);
+            this.tabPage4.Size = new System.Drawing.Size(1104, 608);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Services";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -695,7 +698,7 @@ namespace Design370
             this.tabPage5.Location = new System.Drawing.Point(154, 4);
             this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(831, 608);
+            this.tabPage5.Size = new System.Drawing.Size(1104, 608);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Products";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -818,7 +821,7 @@ namespace Design370
             this.tabPage6.Location = new System.Drawing.Point(154, 4);
             this.tabPage6.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(831, 608);
+            this.tabPage6.Size = new System.Drawing.Size(1104, 608);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Photoshoots";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -951,7 +954,7 @@ namespace Design370
             this.tabPage7.Location = new System.Drawing.Point(154, 4);
             this.tabPage7.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(831, 608);
+            this.tabPage7.Size = new System.Drawing.Size(1104, 608);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Events";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1086,7 +1089,7 @@ namespace Design370
             this.tabPage8.Location = new System.Drawing.Point(154, 4);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(831, 608);
+            this.tabPage8.Size = new System.Drawing.Size(1104, 608);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Customer Orders";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1097,31 +1100,37 @@ namespace Design370
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrders.Location = new System.Drawing.Point(11, 59);
+            this.dgvOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ViewOrderProducts,
+            this.CustomerOrderPayment});
+            this.dgvOrders.Location = new System.Drawing.Point(2, 59);
             this.dgvOrders.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.RowTemplate.Height = 24;
-            this.dgvOrders.Size = new System.Drawing.Size(763, 349);
+            this.dgvOrders.Size = new System.Drawing.Size(1100, 547);
             this.dgvOrders.TabIndex = 46;
+            this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellContentClick);
             // 
             // button18
             // 
+            this.button18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button18.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(623, 427);
+            this.button18.Location = new System.Drawing.Point(979, 11);
             this.button18.Margin = new System.Windows.Forms.Padding(2);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(151, 28);
+            this.button18.Size = new System.Drawing.Size(112, 28);
             this.button18.TabIndex = 45;
             this.button18.Text = "Deliver Order";
             this.button18.UseVisualStyleBackColor = true;
             // 
             // button17
             // 
+            this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button17.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(457, 427);
+            this.button17.Location = new System.Drawing.Point(859, 11);
             this.button17.Margin = new System.Windows.Forms.Padding(2);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(151, 28);
+            this.button17.Size = new System.Drawing.Size(116, 28);
             this.button17.TabIndex = 44;
             this.button17.Text = "Prepare Order";
             this.button17.UseVisualStyleBackColor = true;
@@ -1170,11 +1179,12 @@ namespace Design370
             // 
             // btnCaptureOrderPayment
             // 
+            this.btnCaptureOrderPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCaptureOrderPayment.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCaptureOrderPayment.Location = new System.Drawing.Point(623, 11);
+            this.btnCaptureOrderPayment.Location = new System.Drawing.Point(724, 11);
             this.btnCaptureOrderPayment.Margin = new System.Windows.Forms.Padding(2);
             this.btnCaptureOrderPayment.Name = "btnCaptureOrderPayment";
-            this.btnCaptureOrderPayment.Size = new System.Drawing.Size(151, 28);
+            this.btnCaptureOrderPayment.Size = new System.Drawing.Size(131, 28);
             this.btnCaptureOrderPayment.TabIndex = 39;
             this.btnCaptureOrderPayment.Text = "Capture Payment";
             this.btnCaptureOrderPayment.UseVisualStyleBackColor = true;
@@ -1182,11 +1192,12 @@ namespace Design370
             // 
             // button16
             // 
+            this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button16.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(457, 11);
+            this.button16.Location = new System.Drawing.Point(592, 11);
             this.button16.Margin = new System.Windows.Forms.Padding(2);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(151, 28);
+            this.button16.Size = new System.Drawing.Size(128, 28);
             this.button16.TabIndex = 38;
             this.button16.Text = "Place Order";
             this.button16.UseVisualStyleBackColor = true;
@@ -1202,7 +1213,7 @@ namespace Design370
             this.tabPage9.Location = new System.Drawing.Point(154, 4);
             this.tabPage9.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(831, 608);
+            this.tabPage9.Size = new System.Drawing.Size(1104, 608);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Bookings";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -1305,7 +1316,7 @@ namespace Design370
             this.tabPage10.Location = new System.Drawing.Point(154, 4);
             this.tabPage10.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(831, 608);
+            this.tabPage10.Size = new System.Drawing.Size(1104, 608);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "Supplier";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -1444,7 +1455,7 @@ namespace Design370
             this.tabPage11.Location = new System.Drawing.Point(154, 4);
             this.tabPage11.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(831, 608);
+            this.tabPage11.Size = new System.Drawing.Size(1104, 608);
             this.tabPage11.TabIndex = 10;
             this.tabPage11.Text = "Reports";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -1508,33 +1519,56 @@ namespace Design370
             // 
             this.tabPage12.Location = new System.Drawing.Point(154, 4);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(831, 608);
+            this.tabPage12.Size = new System.Drawing.Size(1104, 608);
             this.tabPage12.TabIndex = 11;
             this.tabPage12.Text = "Help";
             this.tabPage12.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(226, 64);
+            this.pictureBox1.Size = new System.Drawing.Size(250, 77);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
+            // 
+            // ViewOrderProducts
+            // 
+            this.ViewOrderProducts.HeaderText = "";
+            this.ViewOrderProducts.Name = "ViewOrderProducts";
+            this.ViewOrderProducts.Text = "View Products";
+            this.ViewOrderProducts.UseColumnTextForButtonValue = true;
+            this.ViewOrderProducts.Width = 140;
+            // 
+            // CustomerOrderPayment
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle1;
+            this.CustomerOrderPayment.HeaderText = "";
+            this.CustomerOrderPayment.Name = "CustomerOrderPayment";
+            this.CustomerOrderPayment.Text = "Capture Payment";
+            this.CustomerOrderPayment.UseColumnTextForButtonValue = true;
+            this.CustomerOrderPayment.Width = 130;
             // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(989, 693);
+            this.ClientSize = new System.Drawing.Size(1262, 693);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.Main_Form_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1728,6 +1762,9 @@ namespace Design370
         private DataGridViewButtonColumn ServiceView;
         private DataGridViewButtonColumn ServiceEdit;
         private DataGridViewButtonColumn ServiceDelete;
+        private Button button1;
+        private DataGridViewButtonColumn ViewOrderProducts;
+        private DataGridViewButtonColumn CustomerOrderPayment;
     }
 }
 

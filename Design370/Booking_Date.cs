@@ -38,14 +38,13 @@ namespace Design370
             try
             {
                 DBConnection dBCon = DBConnection.Instance();
-
                 CultureInfo cultureInfo = CultureInfo.InvariantCulture;
                 DateTime dateTime;
                 dateTime = DateTime.ParseExact(dgvBookEvent.Columns[e.ColumnIndex].HeaderText, "dddd, MMM dd yyyy", cultureInfo);
                 dateTime = dateTime.AddHours(8 + dgvBookEvent.CurrentRow.Index);
                 //MessageBox.Show(dateTime.ToString());//shows the selected DateTime in a messagebox
                 dgvBookingEmployees.Rows.Clear();
-                string query = "SELECT e.employee_first, e.employee_last, et.available " +
+                string query = "SELECT e.employee_first, e.employee_last, et.available, e.employee_id " +
                     "FROM employee e " +
                     "JOIN employee_timeslot et ON e.employee_id = et.employee_id " +
                     "JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
@@ -55,7 +54,7 @@ namespace Design370
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    dgvBookingEmployees.Rows.Add(reader.GetString(0) + " " + reader.GetString(1), reader.GetBoolean(2).ToString());
+                    dgvBookingEmployees.Rows.Add(reader.GetString(0) + " " + reader.GetString(1), reader.GetBoolean(2).ToString(), reader.GetString(3));
                 }
                 reader.Close();
             }
@@ -75,9 +74,19 @@ namespace Design370
         }
         private void bookingDetails(string bookingType)
         {
-            Booking.bookingType = bookingType;
-            Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
-            Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+            try
+            {
+                Booking.bookingType = bookingType;
+                Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
+                Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                Booking.employeeID = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[2].Value.ToString();
+                Booking.time = dgvBookEvent.Rows[dgvBookEvent.CurrentRow.Index].HeaderCell.Value.ToString();
+                MessageBox.Show(Booking.time);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void Book_Event_Date_FormClosing(object sender, FormClosingEventArgs e)
