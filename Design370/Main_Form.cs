@@ -182,12 +182,12 @@ namespace Design370
             switch (e.ColumnIndex)
             {
                 case 1:
-                    Customer_View.edit = false;
-                    customerView.Show();
+                    customerView.edit = false;
+                    customerView.ShowDialog();
                     break;
                 case 2:
-                    Customer_View.edit = true;
-                    customerView.Show();
+                    customerView.edit = true;
+                    customerView.ShowDialog();
                     break;
                 case 3:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
