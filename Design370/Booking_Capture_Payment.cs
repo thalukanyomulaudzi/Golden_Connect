@@ -42,7 +42,6 @@ namespace Design370
                 while (reader.Read())
                 {
                     total += reader.GetDouble(0) * reader.GetInt16(1);
-                    MessageBox.Show(reader.GetString(0) + reader.GetString(1));
                 }
                 reader.Close();
                 txtBookingOutstandingTotal.Text = total.ToString();
@@ -62,6 +61,23 @@ namespace Design370
             if (regex.IsMatch(txtBookingPaymentAmount.Text))
             {
                 payment = Convert.ToDouble(txtBookingPaymentAmount.Text);
+            }
+        }
+
+        private void BtnBookingPaymentCapture_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DBConnection dBCon = DBConnection.Instance();
+                string query = "INSERT INTO `payment` (`payment_id`, `customer_id`, `payment_amount`, `payment_date`, `payment_type_id`, `order_id`, `booking_id`) " +
+                    "VALUES (NULL, '" + Booking.customerID + "', '" + txtBookingPaymentAmount.Text + "', '" + DateTime.Now.ToString("yyyy'-'MM'-'dd") + "', '1', NULL, '" + Booking.bookingID + "');";
+                MessageBox.Show(query);
+                var command = new MySqlCommand(query, dBCon.Connection);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
     }

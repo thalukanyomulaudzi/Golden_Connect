@@ -634,6 +634,13 @@ namespace Design370
         {
             try
             {
+                DBConnection dBCon = DBConnection.Instance();
+                string query = "SELECT c.customer_id FROM customer c JOIN booking b ON b.customer_id = c.customer_id ";
+                var command = new MySqlCommand(query, dBCon.Connection);
+                var reader = command.ExecuteReader();
+                reader.Read();
+                Booking.customerID = reader.GetString(0);
+                reader.Close();
                 Booking.bookingID = dgvBookings.SelectedRows[0].Cells["bookingID"].Value.ToString();
                 Booking_Capture_Payment capture_Payment = new Booking_Capture_Payment();
                 capture_Payment.ShowDialog();
