@@ -20,16 +20,27 @@ namespace Design370
 
         private void ProductList_Load(object sender, EventArgs e)
         {
-            using (MysqlConnection.mysqlCon)
+            try
             {
-                MysqlConnection.mysqlCon.Open();
-
-                string sql = "SELECT product.product_id, product.product_name, product.product_stock_quantity, product.product_price, product_type.product_type_name FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
-                DataTable dtb1 = new DataTable();
-                adapter.Fill(dtb1);
-                dgvProductList.AutoGenerateColumns = false;
-                dgvProductList.DataSource = dtb1;
+                DBConnection dBConnection = DBConnection.Instance();
+                if (dBConnection.IsConnect())
+                {
+                    string query = "SELECT product.product_id, product.product_name, product.product_stock_quantity, product.product_price, product_type.product_type_name" +
+                        " FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                    var command = new MySqlCommand(query, dBConnection.Connection);
+                    var reader = command.ExecuteReader();
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(reader);
+                    reader.Close();
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        dgvProductList.Rows.Add(dataTable.Rows[i].ItemArray[0], dataTable.Rows[i].ItemArray[1], dataTable.Rows[i].ItemArray[3], dataTable.Rows[i].ItemArray[2], dataTable.Rows[i].ItemArray[4]); 
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
