@@ -26,7 +26,7 @@ namespace Design370
 
                 while (mysqlReader.Read())
                 {
-                    cbxSupplierType.Items.Add(mysqlReader["suppleir_type_name"].ToString());
+                    cbxSupplierType.Items.Add(mysqlReader["supplier_type_name"].ToString());
                     cbxSupplierType.ValueMember = (mysqlReader["supplier_type_id"].ToString());
 
                 }
@@ -43,31 +43,65 @@ namespace Design370
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            int selectedIndex = this.cbxSupplierType.SelectedIndex + 1;
-
-            string prodInsert = "INSERT INTO supplier(supplier_name, supplier_email, supplier_phone, supplier_location_address, supplier_type_id) VALUES('" +
-                                txtSupplierName.Text + "', '" + txtEmailAddress.Text + "', '" + txtTelephoneNo.Text + "', '" + txtAddress.Text + "', '" + 
-                                selectedIndex.ToString() + "')";
-            MysqlConnection.cmd = new MySqlCommand(prodInsert, MysqlConnection.mysqlCon);
+            if (txtSupplierName.Text.Length <= 2 || txtEmailAddress.Text.Length <= 5 || txtEmailAddress.Text.Length <= 10 || txtTelephoneNo.Text.Length <= 9)
+            {
+                MessageBox.Show("Invalid character length for one of the inputs");
+                return;
+            }
+            if (cbxSupplierType.SelectedIndex <= -1 )
+            {
+                MessageBox.Show("Please select a supplier type");
+                return;
+            }
             try
             {
-                MysqlConnection.mysqlCon.Open();
-                MySqlDataReader checkIfExist = MysqlConnection.cmd.ExecuteReader();
-                if (checkIfExist.HasRows)
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
                 {
-                    MessageBox.Show("Supplier already exits!");
+                    string supplierTypeID = "";
+                    string query = "SELECT supplier_type_id FROM supplier_type WHERE supplier_type_name = '" + cbxSupplierType.SelectedItem.ToString() + "'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    reader.Read();
+                    supplierTypeID = reader.GetString(0);
+                    reader.Close();
+                    query = "INSERT INTO `supplier`(`supplier_id`, `supplier_name`, `supplier_email`, `supplier_phone`, `supplier_location_address`, `supplier_type_id`) VALUES('" +
+                                "NULL" + "', '" + txtSupplierName.Text + "', '" + txtEmailAddress.Text + "', '" + txtTelephoneNo.Text + "', '" + txtAddress + "', '" + supplierTypeID + "')";
+                    command = new MySqlCommand(query, dbCon.Connection);
+                    command.ExecuteNonQuery();
                 }
-                else
-                {
-                    MessageBox.Show("New Supplier Inserted!");
-                    MysqlConnection.mysqlCon.Close();
-                }
+                this.Close();
             }
             catch (Exception ee)
             {
-                MessageBox.Show("Error: " + ee.Message);
+                MessageBox.Show(ee.Message);
             }
-            this.Close();
+        
+        }
+
+        private void Supplier_Add_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
+                {
+                    var mysqlCmd = new MySqlCommand("SELECT * FROM supplier_type", dbCon.Connection);
+                    var mysqlReader = mysqlCmd.ExecuteReader();
+                    while (mysqlReader.Read())
+                    {
+                        cbxSupplierType.Items.Add(mysqlReader["supplier_type_name"].ToString());
+                        cbxSupplierType.ValueMember = (mysqlReader["supplier_type_id"].ToString());
+
+                    }
+                    mysqlReader.Close();
+                }
+
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
         }
     }
 }
