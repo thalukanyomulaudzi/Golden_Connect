@@ -195,6 +195,12 @@
       <DependentUpon>Customer_View.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnection.cs" />
+    <Compile Include="DeliverOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliverOrder.Designer.cs">
+      <DependentUpon>DeliverOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs" />
     <Compile Include="Employee_Add.cs">
       <SubType>Form</SubType>
@@ -314,6 +320,12 @@
     </Compile>
     <Compile Include="Photoshoot_Type_Add.Designer.cs">
       <DependentUpon>Photoshoot_Type_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrepareOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrepareOrder.Designer.cs">
+      <DependentUpon>PrepareOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Product_List.cs">
       <SubType>Form</SubType>
@@ -456,6 +468,9 @@
     <EmbeddedResource Include="Customer_View.resx">
       <DependentUpon>Customer_View.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeliverOrder.resx">
+      <DependentUpon>DeliverOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employee_Add.resx">
       <DependentUpon>Employee_Add.cs</DependentUpon>
     </EmbeddedResource>
@@ -509,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot_Type_Add.resx">
       <DependentUpon>Photoshoot_Type_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrepareOrder.resx">
+      <DependentUpon>PrepareOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product_List.resx">
       <DependentUpon>Product_List.cs</DependentUpon>

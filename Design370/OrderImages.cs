@@ -36,9 +36,11 @@ namespace Design370
             lblOrderID.Text = orderID.ToString();
             
             getProductID();
+
             
-            foreach(int product in productID)
+            foreach (int product in productID)
             {
+                dbCon.Close();
                 dbCon.Open();
                 string type = "SELECT `product_type_name` FROM `product_type`, `product` WHERE `product`.`product_type_id` = `product_type`.`product_type_id` AND `product`.`product_id` = '"+product+"'";
                 var command = new MySqlCommand(type, dbCon.Connection);
@@ -50,33 +52,50 @@ namespace Design370
 
                 }
                 reader.Close();
-                ProductList(product, r);
+                prodqty = ProductCount(product);
+                ProductList(product, r, prodqty);
                 r++;
+               
                 //string viewProduct = "SELECT * FROM `order_line` WHERE `product_id` = '"+product+"' AND `order_id` = '"+orderID+"'";
                 dbCon.Close();
             }
+            ;//
             custOrderProductList.ExpandAll();
             //
             loadImages(orderID);
             Imgs(0);
         }
 
-        public void ProductList(int id, int r)
+        public void ProductList(int id, int r, int qty)
         {
-            string list = "SELECT DISTINCT(`product_name`) FROM `product`, `order_line` WHERE `order_line`.`order_id` = '"+orderID+"' AND `product`.`product_id` = '"+id+"'";
+            string list = "SELECT DISTINCT(`product_name`) FROM `product`, `order_line` WHERE `order_line`.`order_id` = '" + orderID+"' AND `product`.`product_id` = '"+id+"'";
             var command = new MySqlCommand(list, dbCon.Connection);
             var reader = command.ExecuteReader();
             while(reader.Read())
             {
-                custOrderProductList.Nodes[0].Nodes[r].Nodes.Add(reader[0].ToString());
+                custOrderProductList.Nodes[0].Nodes[r].Nodes.Add(qty + " - " + reader[0].ToString());
             }
-           
+            reader.Close();
+        }
+        int prodqty = 0;
+        public int ProductCount(int id)
+        {
+            string list = "SELECT COUNT(`product_name`) FROM `product`, `order_line` WHERE `order_line`.`order_id` = '" + orderID + "' AND `product`.`product_id` = '" + id + "'";
+            var command = new MySqlCommand(list, dbCon.Connection);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                prodqty++;
+            }
+            reader.Close();
+            return prodqty;
         }
 
         public void getProductID()
         {
             if (dbCon.IsConnect())
             {
+                dbCon.Close();
                 dbCon.Open();
                 string getProducts = "SELECT DISTINCT(`product_id`) FROM `order_image` WHERE `order_id` = '" + orderID + "'";
                 var command = new MySqlCommand(getProducts, dbCon.Connection);

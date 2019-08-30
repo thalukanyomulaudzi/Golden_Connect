@@ -37,6 +37,7 @@ namespace Design370
             lblOID.Text = OrderPaymentID.ToString();
             if(dbCon.IsConnect())
             {
+                dbCon.Close();
                 dbCon.Open();
                 string paymentData = "SELECT * FROM `order` WHERE `order_id` = '"+OrderPaymentID+"'";
                 var command = new MySqlCommand(paymentData, dbCon.Connection);
