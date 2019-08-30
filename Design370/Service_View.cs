@@ -31,6 +31,7 @@ namespace Design370
             textBox1.Enabled = true;
             textBox2.Enabled = true;
             textBox3.Enabled = true;
+            comboBox1.Enabled = true;
             comboBox2.Enabled = true;
             button3.Enabled = true;
             button2.Enabled = false;
@@ -170,7 +171,7 @@ namespace Design370
                 {
                     string bookingTypeID = "";
                     string serviceTypeID = "";
-                    var mysqlCmd = new MySqlCommand("SELECT booking_type_ID FROM booking_type WHERE booking_type_name = '" + comboBox1.SelectedItem + "'", dbConnection.Connection);
+                    var mysqlCmd = new MySqlCommand("SELECT booking_type_ID FROM booking_type WHERE booking_type_name = '" + comboBox2.SelectedItem + "'", dbConnection.Connection);
                     var mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
                     {
@@ -183,9 +184,7 @@ namespace Design370
                     mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
                     {
-
                         serviceTypeID = mysqlReader.GetString(0);
-
                     }
                     mysqlReader.Close();
                     mysqlCmd = new MySqlCommand("SELECT * FROM service_type WHERE service_type_id = '" + serviceTypeID + "'", dbConnection.Connection);
@@ -203,6 +202,11 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
+        }
+
+        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

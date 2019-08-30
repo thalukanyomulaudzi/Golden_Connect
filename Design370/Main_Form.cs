@@ -339,10 +339,34 @@ namespace Design370
                     service_View.ShowDialog();
                     break;
                 case 5:
+                    serviceName = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dgvProducts.Rows.Clear();
+                        try
+                        {
+                            DBConnection dBConnection = DBConnection.Instance();
+                            if (dBConnection.IsConnect())
+                            {
+                                string serviceID = "";
+                                string query = "SELECT service_id FROM service WHERE service_name = '" + serviceName + "'";
+                                var command = new MySqlCommand(query, dBConnection.Connection);
+                                var reader = command.ExecuteReader();
+                                while (reader.Read())
+                                {
+                                    serviceID = reader.GetString(0);
+                                }
+                                reader.Close();
+                                query = "DELETE FROM `service` WHERE service_id = '" + serviceID + "'";
+                                command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        catch (Exception except)
+                        {
+                            System.Windows.Forms.MessageBox.Show("This service is used in a package. It can not be deleted.");
+                        }
                     }
                     else
                     {
@@ -412,10 +436,34 @@ namespace Design370
                     product_View.ShowDialog();
                     break;
                 case 5:
+                    productName = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dgvProducts.Rows.Clear();
+                        try
+                        {
+                            DBConnection dBConnection = DBConnection.Instance();
+                            if (dBConnection.IsConnect())
+                            {
+                                string productID = "";
+                                string query = "SELECT product_id FROM product WHERE product_name = '" + productName + "'";
+                                var command = new MySqlCommand(query, dBConnection.Connection);
+                                var reader = command.ExecuteReader();
+                                while (reader.Read())
+                                {
+                                    productID = reader.GetString(0);
+                                }
+                                reader.Close();
+                                query = "DELETE FROM `product` WHERE product_id = '" + productID + "'";
+                                command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        catch (Exception except)
+                        {
+                            System.Windows.Forms.MessageBox.Show("This product is used in a package. It can not be deleted.");
+                        }
                     }
                     else
                     {

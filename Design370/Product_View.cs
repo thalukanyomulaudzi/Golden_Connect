@@ -99,7 +99,6 @@ namespace Design370
             textBox1.Enabled = true;
             textBox2.Enabled = true;
             textBox3.Enabled = true;
-            comboBox1.Enabled = true;
             comboBox2.Enabled = true;
             button3.Enabled = true;
             button2.Enabled = false;
@@ -158,7 +157,7 @@ namespace Design370
         private void Button3_Click(object sender, EventArgs e)
         {
             Product_Types product_Types = new Product_Types();
-            product_Types.Show();
+            product_Types.ShowDialog();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,7 +170,7 @@ namespace Design370
                 {
                     string bookingTypeID = "";
                     string productTypeID = "";
-                    var mysqlCmd = new MySqlCommand("SELECT booking_type_ID FROM booking_type WHERE booking_type_name = '" + comboBox1.SelectedItem + "'", dbConnection.Connection);
+                    var mysqlCmd = new MySqlCommand("SELECT booking_type_ID FROM booking_type WHERE booking_type_name = '" + comboBox2.SelectedItem + "'", dbConnection.Connection);
                     var mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
                     {

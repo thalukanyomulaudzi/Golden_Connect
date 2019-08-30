@@ -45,10 +45,34 @@ namespace Design370
                     product_Types_View.ShowDialog();
                     break;
                 case 4:
+                    productTypeName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dataGridView7.Rows.Clear();
+                        try
+                        {
+                            DBConnection dBConnection = DBConnection.Instance();
+                            if (dBConnection.IsConnect())
+                            {
+                                string productTypeID = "";
+                                string query = "SELECT product_type_id FROM product_type WHERE product_type_name = '" + productTypeName + "'";
+                                var command = new MySqlCommand(query, dBConnection.Connection);
+                                var reader = command.ExecuteReader();
+                                while (reader.Read())
+                                {
+                                    productTypeID = reader.GetString(0);
+                                }
+                                reader.Close();
+                                query = "DELETE FROM `product_type` WHERE product_type_id = '" + productTypeID + "'";
+                                command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        catch (Exception except)
+                        {
+                            System.Windows.Forms.MessageBox.Show("This product type contains services. It can not be deleted.");
+                        }
                     }
                     else
                     {

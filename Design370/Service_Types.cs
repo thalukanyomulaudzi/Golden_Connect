@@ -45,10 +45,34 @@ namespace Design370
                     service_Types_View.ShowDialog();
                     break;
                 case 4:
+                    serviceTypeName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
+                        dataGridView7.Rows.Clear();
+                        try
+                        {
+                            DBConnection dBConnection = DBConnection.Instance();
+                            if (dBConnection.IsConnect())
+                            {
+                                string serviceTypeID = "";
+                                string query = "SELECT service_type_id FROM service_type WHERE service_type_name = '" + serviceTypeName + "'";
+                                var command = new MySqlCommand(query, dBConnection.Connection);
+                                var reader = command.ExecuteReader();
+                                while (reader.Read())
+                                {
+                                    serviceTypeID = reader.GetString(0);
+                                }
+                                reader.Close();
+                                query = "DELETE FROM `service_type` WHERE service_type_id = '" + serviceTypeID + "'";
+                                command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        catch (Exception except)
+                        {
+                            System.Windows.Forms.MessageBox.Show("This service type contains services. It can not be deleted.");
+                        }
                     }
                     else
                     {
