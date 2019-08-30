@@ -31,8 +31,8 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cmb = new System.Windows.Forms.ComboBox();
@@ -121,6 +121,8 @@ namespace Design370
             this.EventPackageDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.ViewOrderProducts = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.CustomerOrderPayment = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
@@ -163,8 +165,6 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ViewOrderProducts = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.CustomerOrderPayment = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -254,7 +254,7 @@ namespace Design370
             this.lblCustomerSort.Location = new System.Drawing.Point(281, 15);
             this.lblCustomerSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCustomerSort.Name = "lblCustomerSort";
-            this.lblCustomerSort.Size = new System.Drawing.Size(56, 18);
+            this.lblCustomerSort.Size = new System.Drawing.Size(57, 18);
             this.lblCustomerSort.TabIndex = 7;
             this.lblCustomerSort.Text = "Sort by:";
             // 
@@ -398,7 +398,7 @@ namespace Design370
             this.label7.Location = new System.Drawing.Point(281, 15);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 18);
+            this.label7.Size = new System.Drawing.Size(57, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Sort by:";
             // 
@@ -499,7 +499,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -894,7 +894,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 132;
+            this.PhotoshootPackageName.Width = 122;
             // 
             // Services
             // 
@@ -1037,7 +1037,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 132;
+            this.EventPackageName.Width = 122;
             // 
             // ServicesEvents
             // 
@@ -1111,6 +1111,27 @@ namespace Design370
             this.dgvOrders.TabIndex = 46;
             this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellContentClick);
             // 
+            // ViewOrderProducts
+            // 
+            this.ViewOrderProducts.HeaderText = "";
+            this.ViewOrderProducts.Name = "ViewOrderProducts";
+            this.ViewOrderProducts.Text = "View Products";
+            this.ViewOrderProducts.UseColumnTextForButtonValue = true;
+            this.ViewOrderProducts.Width = 140;
+            // 
+            // CustomerOrderPayment
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CustomerOrderPayment.HeaderText = "";
+            this.CustomerOrderPayment.Name = "CustomerOrderPayment";
+            this.CustomerOrderPayment.Text = "Capture Payment";
+            this.CustomerOrderPayment.UseColumnTextForButtonValue = true;
+            this.CustomerOrderPayment.Width = 130;
+            // 
             // button18
             // 
             this.button18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1153,7 +1174,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 18);
+            this.label15.Size = new System.Drawing.Size(57, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Sort by:";
             // 
@@ -1222,7 +1243,7 @@ namespace Design370
             // 
             this.btnBookingAdd.Location = new System.Drawing.Point(585, 13);
             this.btnBookingAdd.Name = "btnBookingAdd";
-            this.btnBookingAdd.Size = new System.Drawing.Size(189, 25);
+            this.btnBookingAdd.Size = new System.Drawing.Size(189, 29);
             this.btnBookingAdd.TabIndex = 54;
             this.btnBookingAdd.Text = "Add Booking";
             this.btnBookingAdd.UseVisualStyleBackColor = true;
@@ -1298,7 +1319,7 @@ namespace Design370
             this.btnBookingCapture.Location = new System.Drawing.Point(11, 425);
             this.btnBookingCapture.Margin = new System.Windows.Forms.Padding(2);
             this.btnBookingCapture.Name = "btnBookingCapture";
-            this.btnBookingCapture.Size = new System.Drawing.Size(151, 28);
+            this.btnBookingCapture.Size = new System.Drawing.Size(151, 29);
             this.btnBookingCapture.TabIndex = 48;
             this.btnBookingCapture.Text = "Capture Payment";
             this.btnBookingCapture.UseVisualStyleBackColor = true;
@@ -1409,7 +1430,7 @@ namespace Design370
             this.label19.Location = new System.Drawing.Point(281, 15);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(56, 18);
+            this.label19.Size = new System.Drawing.Size(57, 18);
             this.label19.TabIndex = 51;
             this.label19.Text = "Sort by:";
             // 
@@ -1535,27 +1556,6 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // ViewOrderProducts
-            // 
-            this.ViewOrderProducts.HeaderText = "";
-            this.ViewOrderProducts.Name = "ViewOrderProducts";
-            this.ViewOrderProducts.Text = "View Products";
-            this.ViewOrderProducts.UseColumnTextForButtonValue = true;
-            this.ViewOrderProducts.Width = 140;
-            // 
-            // CustomerOrderPayment
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle1;
-            this.CustomerOrderPayment.HeaderText = "";
-            this.CustomerOrderPayment.Name = "CustomerOrderPayment";
-            this.CustomerOrderPayment.Text = "Capture Payment";
-            this.CustomerOrderPayment.UseColumnTextForButtonValue = true;
-            this.CustomerOrderPayment.Width = 130;
-            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1568,7 +1568,6 @@ namespace Design370
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.Main_Form_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);

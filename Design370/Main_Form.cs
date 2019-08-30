@@ -71,7 +71,7 @@ namespace Design370
             //Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
             ////Timeslots.removeDuplicates();
             ////MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             loadSuppliers();
@@ -83,7 +83,7 @@ namespace Design370
             {
                 MysqlConnection.mysqlCon.Open();
 
-                string sql = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.suppleir_type_name FROM supplier INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id";
+                string sql = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.supplier_type_name FROM supplier INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
                 DataTable dtb1 = new DataTable();
                 adapter.Fill(dtb1);
@@ -183,7 +183,6 @@ namespace Design370
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             Customer_View customerView = new Customer_View();
             switch (e.ColumnIndex)
             {

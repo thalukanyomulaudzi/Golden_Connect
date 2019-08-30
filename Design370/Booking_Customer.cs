@@ -13,7 +13,7 @@ namespace Design370
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            Booking.customerName = dgvBookingAdd.SelectedRows[0].Cells[0].Value.ToString() + " " + dgvBookingAdd.SelectedRows[0].Cells[1].Value.ToString();
+            Booking.customerName = dgvBookingCustomer.SelectedRows[0].Cells[0].Value.ToString() + " " + dgvBookingCustomer.SelectedRows[0].Cells[1].Value.ToString();
             Dispose();
         }
 
@@ -30,7 +30,7 @@ namespace Design370
         {
             try
             {
-                dgvBookingAdd.Rows.Clear();
+                dgvBookingCustomer.Rows.Clear();
                 DBConnection dBCon = DBConnection.Instance();
                 string query = textBox9.Text == "" ? "SELECT customer_first, customer_last, customer_id_number FROM customer"
                     : "SELECT customer_first, customer_last, customer_id_number FROM customer WHERE customer_first LIKE '%" + textBox9.Text + "%' OR customer_last LIKE '%" + textBox9.Text + "%' OR customer_id_number LIKE '%" + textBox9.Text + "%'";
@@ -38,7 +38,7 @@ namespace Design370
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    dgvBookingAdd.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "View", "Edit", "Delete");
+                    dgvBookingCustomer.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "View", "Edit", "Delete");
                 }
                 reader.Close();
             }
@@ -51,6 +51,36 @@ namespace Design370
         private void Booking_Customer_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void DgvBookingAdd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Customer_View customerView = new Customer_View();
+            customerView.customerID = dgvBookingCustomer.SelectedRows[0].Cells[2].Value.ToString();
+            switch (e.ColumnIndex)
+            {
+                case 3:
+                    customerView.edit = false;
+                    customerView.Show();
+                    break;
+                case 4:
+                    customerView.edit = true;
+                    customerView.Show();
+                    break;
+                case 5:
+                    DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
+                    if (delete == DialogResult.Yes)
+                    {
+                        //do shit
+                    }
+                    else
+                    {
+                        //dont do shit
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -28,35 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvBookingAdd = new System.Windows.Forms.DataGridView();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.button20 = new System.Windows.Forms.Button();
+            this.dgvBookingCustomer = new System.Windows.Forms.DataGridView();
             this.CustFirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CustEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CustDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingAdd)).BeginInit();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.button20 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingCustomer)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvBookingAdd
+            // dgvBookingCustomer
             // 
-            this.dgvBookingAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBookingAdd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvBookingCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBookingCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustFirst,
             this.CustLast,
             this.CustID,
             this.CustView,
             this.CustEdit,
             this.CustDelete});
-            this.dgvBookingAdd.Location = new System.Drawing.Point(25, 76);
-            this.dgvBookingAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvBookingAdd.Name = "dgvBookingAdd";
-            this.dgvBookingAdd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBookingAdd.Size = new System.Drawing.Size(732, 310);
-            this.dgvBookingAdd.TabIndex = 65;
+            this.dgvBookingCustomer.Location = new System.Drawing.Point(25, 76);
+            this.dgvBookingCustomer.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvBookingCustomer.Name = "dgvBookingCustomer";
+            this.dgvBookingCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBookingCustomer.Size = new System.Drawing.Size(732, 310);
+            this.dgvBookingCustomer.TabIndex = 65;
+            this.dgvBookingCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookingAdd_CellContentClick);
+            // 
+            // CustFirst
+            // 
+            this.CustFirst.HeaderText = "First name";
+            this.CustFirst.Name = "CustFirst";
+            // 
+            // CustLast
+            // 
+            this.CustLast.HeaderText = "Last name";
+            this.CustLast.Name = "CustLast";
+            // 
+            // CustID
+            // 
+            this.CustID.HeaderText = "ID";
+            this.CustID.Name = "CustID";
+            // 
+            // CustView
+            // 
+            this.CustView.HeaderText = "";
+            this.CustView.Name = "CustView";
+            // 
+            // CustEdit
+            // 
+            this.CustEdit.HeaderText = "";
+            this.CustEdit.Name = "CustEdit";
+            // 
+            // CustDelete
+            // 
+            this.CustDelete.HeaderText = "";
+            this.CustDelete.Name = "CustDelete";
             // 
             // label18
             // 
@@ -89,42 +120,12 @@
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.Button20_Click);
             // 
-            // CustFirst
-            // 
-            this.CustFirst.HeaderText = "First name";
-            this.CustFirst.Name = "CustFirst";
-            // 
-            // CustLast
-            // 
-            this.CustLast.HeaderText = "Last name";
-            this.CustLast.Name = "CustLast";
-            // 
-            // CustID
-            // 
-            this.CustID.HeaderText = "ID";
-            this.CustID.Name = "CustID";
-            // 
-            // CustView
-            // 
-            this.CustView.HeaderText = "";
-            this.CustView.Name = "CustView";
-            // 
-            // CustEdit
-            // 
-            this.CustEdit.HeaderText = "";
-            this.CustEdit.Name = "CustEdit";
-            // 
-            // CustDelete
-            // 
-            this.CustDelete.HeaderText = "";
-            this.CustDelete.Name = "CustDelete";
-            // 
             // Booking_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 490);
-            this.Controls.Add(this.dgvBookingAdd);
+            this.Controls.Add(this.dgvBookingCustomer);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.button20);
@@ -134,7 +135,7 @@
             this.Text = "Select customer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Booking_Customer_FormClosing);
             this.Load += new System.EventHandler(this.Booking_Add_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,7 +143,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvBookingAdd;
+        private System.Windows.Forms.DataGridView dgvBookingCustomer;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Button button20;
