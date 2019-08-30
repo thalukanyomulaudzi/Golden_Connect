@@ -13,8 +13,24 @@ namespace Design370
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            Booking.customerName = dgvBookingCustomer.SelectedRows[0].Cells[0].Value.ToString() + " " + dgvBookingCustomer.SelectedRows[0].Cells[1].Value.ToString();
-            Dispose();
+            try
+            {
+                DBConnection dBCon = DBConnection.Instance();
+                string query = "SELECT customer_id FROM customer WHERE customer_id_number = '" + dgvBookingCustomer.SelectedRows[0].Cells[2].Value.ToString() + "'";
+                var command = new MySqlCommand(query, dBCon.Connection);
+                var reader = command.ExecuteReader();
+                reader.Read();
+                Booking.customerID = reader.GetString(0);
+                reader.Close();
+
+                Booking.customerName = dgvBookingCustomer.SelectedRows[0].Cells[0].Value.ToString() + " " + dgvBookingCustomer.SelectedRows[0].Cells[1].Value.ToString();
+                Dispose();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+           
         }
 
         private void Booking_Add_Load(object sender, EventArgs e)
@@ -71,16 +87,27 @@ namespace Design370
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
-                    }
-                    else
-                    {
-                        //dont do shit
+                        try
+                        {
+                            DBConnection dBCon = DBConnection.Instance();
+                            string query = "DELETE FROM customer WHERE customer_id_number = " + dgvBookingCustomer.SelectedRows[0].Cells[2].Value.ToString();
+                            var command = new MySqlCommand(query, dBCon.Connection);
+                            command.ExecuteNonQuery();
+                        }
+                        catch (Exception ee)
+                        {
+                            MessageBox.Show(ee.Message);
+                        }
                     }
                     break;
                 default:
                     break;
             }
+        }
+
+        private void Booking_Customer_Activated(object sender, EventArgs e)
+        {
+            loadDGV();
         }
     }
 }

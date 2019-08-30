@@ -186,23 +186,19 @@ namespace Design370
             Customer_View customerView = new Customer_View();
             switch (e.ColumnIndex)
             {
-                case 1:
+                case 3:
                     customerView.edit = false;
                     customerView.ShowDialog();
                     break;
-                case 2:
+                case 4:
                     customerView.edit = true;
                     customerView.ShowDialog();
                     break;
-                case 3:
+                case 5:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        //do shit
-                    }
-                    else
-                    {
-                        //dont do shit
+                        
                     }
                     break;
                 default:

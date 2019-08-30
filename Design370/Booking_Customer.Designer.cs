@@ -133,6 +133,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Booking_Customer";
             this.Text = "Select customer";
+            this.Activated += new System.EventHandler(this.Booking_Customer_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Booking_Customer_FormClosing);
             this.Load += new System.EventHandler(this.Booking_Add_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingCustomer)).EndInit();
