@@ -64,7 +64,7 @@ namespace Design370
             }
             Employee.LoadEmployeeTypes(cbxSort);
             Employee.LoadEmployees(empGrid);
-            Order.LoadOrders(dgvOrders);
+            //Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
             //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
             //Timeslots.linkTimeslots();
@@ -75,7 +75,6 @@ namespace Design370
             Booking.loadBookings(dgvBookings);
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             loadSuppliers();
-            loadProducts();
         }
 
         public void loadSuppliers()
@@ -104,37 +103,45 @@ namespace Design370
 
         public void loadServices()
         {
-            using (MysqlConnection.mysqlCon)
+            try
             {
-                using (MysqlConnection.mysqlCon)
+                if (dbCon.IsConnect())
                 {
-                    MysqlConnection.mysqlCon.Open();
-
-                    string sql = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
-                    DataTable dtb1 = new DataTable();
-                    adapter.Fill(dtb1);
-                    dgvServices.AutoGenerateColumns = false;
-                    dgvServices.DataSource = dtb1;
+                    string query = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "View", "Edit", "Delete");
+                    }
+                    reader.Close();
                 }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
 
         public void loadProducts()
         {
-            using (MysqlConnection.mysqlCon)
+            try
             {
-                using (MysqlConnection.mysqlCon)
+                if (dbCon.IsConnect())
                 {
-                    MysqlConnection.mysqlCon.Open();
-
-                    string sql = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, MysqlConnection.mysqlCon);
-                    DataTable dtb1 = new DataTable();
-                    adapter.Fill(dtb1);
-                    dgvServices.AutoGenerateColumns = false;
-                    dgvServices.DataSource = dtb1;
+                    string query = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "View", "Edit", "Delete");
+                    }
+                    reader.Close();
                 }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
 
@@ -314,20 +321,22 @@ namespace Design370
         private void DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Service_View service_View = new Service_View();
-            ServiceEdit.Text = "Edit";
-            ServiceDelete.Text = "Delete";
-            ServiceView.Text = "View";
+            string serviceName = "";
 
             switch (e.ColumnIndex)
             {
 
                 case 3:
                     Service_View.edit = false;
-                    service_View.Show();
+                    serviceName = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    service_View.GetServiceRow = serviceName;
+                    service_View.ShowDialog();
                     break;
                 case 4:
                     Service_View.edit = true;
-                    service_View.Show();
+                    serviceName = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    service_View.GetServiceRow = serviceName;
+                    service_View.ShowDialog();
                     break;
                 case 5:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
@@ -386,16 +395,21 @@ namespace Design370
 
         private void DataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string productName = "";
             Product_View product_View = new Product_View();
             switch (e.ColumnIndex)
             {
                 case 3:
                     Product_View.edit = false;
-                    product_View.Show();
+                    productName = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    product_View.GetProductRow = productName;
+                    product_View.ShowDialog();
                     break;
                 case 4:
                     Product_View.edit = true;
-                    product_View.Show();
+                    productName = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    product_View.GetProductRow = productName;
+                    product_View.ShowDialog();
                     break;
                 case 5:
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
@@ -508,6 +522,10 @@ namespace Design370
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             dgvEventPackages.Rows.Clear();
             Event.LoadDGV(dgvEventPackages);
+            dgvProducts.Rows.Clear();
+            loadProducts();
+            dgvServices.Rows.Clear();
+            loadServices();
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
@@ -570,6 +588,56 @@ namespace Design370
         {
             Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
             photoshoot_Types.ShowDialog();
+        }
+
+        private void txtProductSearch_TextChanged(object sender, EventArgs e)
+        {
+            dgvProducts.Rows.Clear();
+            try
+            {
+                if (dbCon.IsConnect())
+                {
+                    string query = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product " +
+                        "INNER JOIN product_type ON product.product_type_id=product_type.product_type_id " +
+                        "WHERE product.product_name LIKE '%" + txtProductSearch.Text + "%' OR product_type.product_type_name LIKE '%" + txtProductSearch.Text + "%'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "View", "Edit", "Delete");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            dgvServices.Rows.Clear();
+            try
+            {
+                if (dbCon.IsConnect())
+                {
+                    string query = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service " +
+                        "INNER JOIN service_type ON service.service_type_id=service_type.service_type_id " +
+                        "WHERE service.service_name LIKE '%" + textBox2.Text + "%' OR service_type.service_type_name LIKE '%" + textBox2.Text + "%'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "View", "Edit", "Delete");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
         }
     }
 }

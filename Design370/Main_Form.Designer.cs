@@ -70,8 +70,6 @@ namespace Design370
             this.timeslotDay7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btnServiceType = new System.Windows.Forms.Button();
-            this.cmbServicesSort = new System.Windows.Forms.ComboBox();
-            this.lblServiceSort = new System.Windows.Forms.Label();
             this.lblServiceSearch = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnServiceAdd = new System.Windows.Forms.Button();
@@ -84,8 +82,6 @@ namespace Design370
             this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
-            this.cmbProductSort = new System.Windows.Forms.ComboBox();
-            this.lblProductSort = new System.Windows.Forms.Label();
             this.lblProductSearch = new System.Windows.Forms.Label();
             this.txtProductSearch = new System.Windows.Forms.TextBox();
             this.btnProductAdd = new System.Windows.Forms.Button();
@@ -572,8 +568,6 @@ namespace Design370
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.btnServiceType);
-            this.tabPage4.Controls.Add(this.cmbServicesSort);
-            this.tabPage4.Controls.Add(this.lblServiceSort);
             this.tabPage4.Controls.Add(this.lblServiceSearch);
             this.tabPage4.Controls.Add(this.textBox2);
             this.tabPage4.Controls.Add(this.btnServiceAdd);
@@ -598,28 +592,6 @@ namespace Design370
             this.btnServiceType.UseVisualStyleBackColor = true;
             this.btnServiceType.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // cmbServicesSort
-            // 
-            this.cmbServicesSort.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbServicesSort.FormattingEnabled = true;
-            this.cmbServicesSort.ItemHeight = 17;
-            this.cmbServicesSort.Location = new System.Drawing.Point(339, 11);
-            this.cmbServicesSort.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbServicesSort.Name = "cmbServicesSort";
-            this.cmbServicesSort.Size = new System.Drawing.Size(103, 25);
-            this.cmbServicesSort.TabIndex = 15;
-            // 
-            // lblServiceSort
-            // 
-            this.lblServiceSort.AutoSize = true;
-            this.lblServiceSort.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServiceSort.Location = new System.Drawing.Point(281, 15);
-            this.lblServiceSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblServiceSort.Name = "lblServiceSort";
-            this.lblServiceSort.Size = new System.Drawing.Size(56, 18);
-            this.lblServiceSort.TabIndex = 14;
-            this.lblServiceSort.Text = "Sort by:";
-            // 
             // lblServiceSearch
             // 
             this.lblServiceSearch.AutoSize = true;
@@ -639,6 +611,7 @@ namespace Design370
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(200, 25);
             this.textBox2.TabIndex = 12;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // btnServiceAdd
             // 
@@ -654,6 +627,10 @@ namespace Design370
             // 
             // dgvServices
             // 
+            this.dgvServices.AllowUserToAddRows = false;
+            this.dgvServices.AllowUserToDeleteRows = false;
+            this.dgvServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvServices.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ServiceName,
@@ -662,43 +639,55 @@ namespace Design370
             this.ServiceView,
             this.ServiceEdit,
             this.ServiceDelete});
-            this.dgvServices.Location = new System.Drawing.Point(11, 58);
+            this.dgvServices.Location = new System.Drawing.Point(11, 59);
             this.dgvServices.Margin = new System.Windows.Forms.Padding(2);
             this.dgvServices.Name = "dgvServices";
+            this.dgvServices.ReadOnly = true;
+            this.dgvServices.RowHeadersVisible = false;
             this.dgvServices.RowTemplate.Height = 24;
-            this.dgvServices.Size = new System.Drawing.Size(763, 344);
+            this.dgvServices.Size = new System.Drawing.Size(763, 349);
             this.dgvServices.TabIndex = 0;
             this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
             // 
             // ServiceName
             // 
+            this.ServiceName.HeaderText = "ServiceName";
             this.ServiceName.Name = "ServiceName";
+            this.ServiceName.ReadOnly = true;
             // 
             // ServiceType
             // 
+            this.ServiceType.HeaderText = "ServiceType";
             this.ServiceType.Name = "ServiceType";
+            this.ServiceType.ReadOnly = true;
             // 
             // ServicePrice
             // 
+            this.ServicePrice.HeaderText = "ServicePrice";
             this.ServicePrice.Name = "ServicePrice";
+            this.ServicePrice.ReadOnly = true;
             // 
             // ServiceView
             // 
+            this.ServiceView.HeaderText = "";
             this.ServiceView.Name = "ServiceView";
+            this.ServiceView.ReadOnly = true;
             // 
             // ServiceEdit
             // 
+            this.ServiceEdit.HeaderText = "";
             this.ServiceEdit.Name = "ServiceEdit";
+            this.ServiceEdit.ReadOnly = true;
             // 
             // ServiceDelete
             // 
+            this.ServiceDelete.HeaderText = "";
             this.ServiceDelete.Name = "ServiceDelete";
+            this.ServiceDelete.ReadOnly = true;
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.button5);
-            this.tabPage5.Controls.Add(this.cmbProductSort);
-            this.tabPage5.Controls.Add(this.lblProductSort);
             this.tabPage5.Controls.Add(this.lblProductSearch);
             this.tabPage5.Controls.Add(this.txtProductSearch);
             this.tabPage5.Controls.Add(this.btnProductAdd);
@@ -723,28 +712,6 @@ namespace Design370
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
-            // cmbProductSort
-            // 
-            this.cmbProductSort.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProductSort.FormattingEnabled = true;
-            this.cmbProductSort.ItemHeight = 17;
-            this.cmbProductSort.Location = new System.Drawing.Point(339, 11);
-            this.cmbProductSort.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbProductSort.Name = "cmbProductSort";
-            this.cmbProductSort.Size = new System.Drawing.Size(103, 25);
-            this.cmbProductSort.TabIndex = 22;
-            // 
-            // lblProductSort
-            // 
-            this.lblProductSort.AutoSize = true;
-            this.lblProductSort.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductSort.Location = new System.Drawing.Point(281, 15);
-            this.lblProductSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblProductSort.Name = "lblProductSort";
-            this.lblProductSort.Size = new System.Drawing.Size(56, 18);
-            this.lblProductSort.TabIndex = 21;
-            this.lblProductSort.Text = "Sort by:";
-            // 
             // lblProductSearch
             // 
             this.lblProductSearch.AutoSize = true;
@@ -764,6 +731,7 @@ namespace Design370
             this.txtProductSearch.Name = "txtProductSearch";
             this.txtProductSearch.Size = new System.Drawing.Size(200, 25);
             this.txtProductSearch.TabIndex = 19;
+            this.txtProductSearch.TextChanged += new System.EventHandler(this.txtProductSearch_TextChanged);
             // 
             // btnProductAdd
             // 
@@ -779,6 +747,10 @@ namespace Design370
             // 
             // dgvProducts
             // 
+            this.dgvProducts.AllowUserToAddRows = false;
+            this.dgvProducts.AllowUserToDeleteRows = false;
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductName,
@@ -790,6 +762,8 @@ namespace Design370
             this.dgvProducts.Location = new System.Drawing.Point(11, 59);
             this.dgvProducts.Margin = new System.Windows.Forms.Padding(2);
             this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.ReadOnly = true;
+            this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowTemplate.Height = 24;
             this.dgvProducts.Size = new System.Drawing.Size(763, 349);
             this.dgvProducts.TabIndex = 16;
@@ -800,33 +774,39 @@ namespace Design370
             this.ProductName.DataPropertyName = "product_name";
             this.ProductName.HeaderText = "Product Name";
             this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
             // 
             // ProductType
             // 
             this.ProductType.DataPropertyName = "product_type_name";
             this.ProductType.HeaderText = "Product Type";
             this.ProductType.Name = "ProductType";
+            this.ProductType.ReadOnly = true;
             // 
             // ProductPrice
             // 
             this.ProductPrice.DataPropertyName = "product_price";
             this.ProductPrice.HeaderText = "Price";
             this.ProductPrice.Name = "ProductPrice";
+            this.ProductPrice.ReadOnly = true;
             // 
             // ProductView
             // 
             this.ProductView.HeaderText = "";
             this.ProductView.Name = "ProductView";
+            this.ProductView.ReadOnly = true;
             // 
             // ProductEdit
             // 
             this.ProductEdit.HeaderText = "";
             this.ProductEdit.Name = "ProductEdit";
+            this.ProductEdit.ReadOnly = true;
             // 
             // ProductDelete
             // 
             this.ProductDelete.HeaderText = "";
             this.ProductDelete.Name = "ProductDelete";
+            this.ProductDelete.ReadOnly = true;
             // 
             // tabPage6
             // 
@@ -1621,8 +1601,6 @@ namespace Design370
         private System.Windows.Forms.TextBox txtCustomerSearch;
         private System.Windows.Forms.Button btnCustomerAdd;
         private System.Windows.Forms.DataGridView dgvCustomers;
-        private System.Windows.Forms.ComboBox cmbServicesSort;
-        private System.Windows.Forms.Label lblServiceSort;
         private System.Windows.Forms.Label lblServiceSearch;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button4;
@@ -1636,8 +1614,6 @@ namespace Design370
         private System.Windows.Forms.ComboBox cbxSort;
         private System.Windows.Forms.Button btnServiceAdd;
         private System.Windows.Forms.DataGridView dgvServices;
-        private System.Windows.Forms.ComboBox cmbProductSort;
-        private System.Windows.Forms.Label lblProductSort;
         private System.Windows.Forms.Label lblProductSearch;
         private System.Windows.Forms.TextBox txtProductSearch;
         private System.Windows.Forms.Button btnProductAdd;
@@ -1712,12 +1688,6 @@ namespace Design370
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TabPage tabPage12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServicePrice;
-        private System.Windows.Forms.DataGridViewButtonColumn ServiceView;
-        private System.Windows.Forms.DataGridViewButtonColumn ServiceEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ServiceDelete;
         private DataGridView dgvService;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductType;
@@ -1752,6 +1722,12 @@ namespace Design370
         private DataGridViewButtonColumn Delete;
         private Button btnPhotoshootPackageAdd;
         private Button btnBookingAdd;
+        private DataGridViewTextBoxColumn ServiceName;
+        private DataGridViewTextBoxColumn ServiceType;
+        private DataGridViewTextBoxColumn ServicePrice;
+        private DataGridViewButtonColumn ServiceView;
+        private DataGridViewButtonColumn ServiceEdit;
+        private DataGridViewButtonColumn ServiceDelete;
     }
 }
 
