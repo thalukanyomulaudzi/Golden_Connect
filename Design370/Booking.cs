@@ -13,6 +13,7 @@ namespace Design370
         {
             try
             {
+                dgv.Rows.Clear();
                 DBConnection dBCon = DBConnection.Instance();
                 if (dBCon.IsConnect())
                 {
@@ -25,17 +26,24 @@ namespace Design370
                     {
                         bookingIDs.Add(reader.GetInt16(0));
                         bookingDates.Add(DateTime.Parse(reader.GetString(1)));
-                        System.Windows.Forms.MessageBox.Show("Test");
                     }
                     reader.Close();
 
-                    query = search != "" ? "SELECT * FROM booking b JOIN customer c ON b.customer_id = c.customer_id WHERE c.customer_last LIKE %" + search + "%"
-                        : "SELECT * FROM booking b JOIN customer c ON b.customer_id = c.customer_id";
+                    query = search != ""
+                        ? "SELECT t.timeslot_date, t.timeslot_start, c.customer_first, c.customer_last FROM booking b " +
+                        "JOIN customer c ON b.customer_id = c.customer_id " +
+                        "JOIN employee_timeslot et ON et.booking_id = b.booking_id " +
+                        "JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
+                        "WHERE c.customer_first LIKE '%" + search + "%' OR c.customer_last LIKE '%" + search + "%' OR c.customer_id_number LIKE '%" + search + "%'"
+                        : "SELECT t.timeslot_date, t.timeslot_start, c.customer_first, c.customer_last FROM booking b " +
+                        "JOIN customer c ON b.customer_id = c.customer_id " +
+                        "JOIN employee_timeslot et ON et.booking_id = b.booking_id " +
+                        "JOIN timeslot t ON et.timeslot_id = t.timeslot_id ";
                     command = new MySqlCommand(query, dBCon.Connection);
                     reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-
+                        dgv.Rows.Add(reader.GetString(0), reader.GetString(2) + " " + reader.GetString(3), "View", "Edit", "Delete");
                     }
                     reader.Close();
                 }

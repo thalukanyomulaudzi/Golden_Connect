@@ -47,6 +47,11 @@ namespace Design370
                 txtBookingEmployee.Text = Booking.employeeName;
                 txtBookingTime.Text = Booking.time;
                 DBConnection dBCon = DBConnection.Instance();
+
+                if (Booking.bookingType == "Photoshoot")
+                {
+                    numBookingGuests.Enabled = false;
+                }
                 if (dBCon.IsConnect())
                 {
                     string query = "SELECT bp.booking_package_name FROM booking_package bp " +
@@ -244,10 +249,17 @@ namespace Design370
         }
         private void BtnBookingProceed_Click(object sender, EventArgs e)
         {
+            if (cmbBookingPackage.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select a package first");
+                DialogResult = DialogResult.None;
+                return;
+            }
             MySqlCommand command;
             MySqlDataReader reader = null;
             try
             {
+                string ID;
                 DBConnection dBCon = DBConnection.Instance();
                 //get type id
                 string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = '" + Booking.bookingType + "'";
@@ -274,18 +286,56 @@ namespace Design370
                 reader.Close();
 
                 //insert booking
-                query = "INSERT INTO `booking` (`booking_id`, `customer_id`, `date_created`, `location_address`, `discount_id`, " +
+                query = "INSERT IGNORE INTO `booking` (`booking_id`, `customer_id`, `date_created`, `location_address`, `discount_id`, " +
                     "`booking_type_id`, `booking_status_id`, `transport_fee_id`, `booking_package_id`, `booking_guests`) " +
                     "VALUES (NULL, '" + Booking.customerID + "', '" + DateTime.Now.ToString("yyyy'-'MM'-'dd") + "', '" + txtBookingLocation.Text + "', NULL, '" +
-                    typeID + "', '" + statusID + "', '" + "1" + "', '" + packageID + "', '" + numBookingGuests.Value.ToString() + "');" +
-                    "UPDATE employee_timeslot et JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
+                    typeID + "', '" + statusID + "', '" + "1" + "', '" + packageID + "', '";
+
+                query += Booking.bookingType == "Photoshoot" 
+                    ? numBookingGuests.Value.ToString() + "');"
+                    : 0 + "');";
+
+                query += "UPDATE employee_timeslot et JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
                     "SET booking_id = LAST_INSERT_ID() " +
-                    "WHERE t.timeslot_date = '" + dtmBookingDate.Value.ToString("yyyy'-'MM'-'dd") + "' AND t.timeslot_start = '" + txtBookingTime.Text + "'";
+                    "WHERE t.timeslot_date = '" + dtmBookingDate.Value.ToString("yyyy'-'MM'-'dd") + "' AND t.timeslot_start = '" + txtBookingTime.Text + "';";
                 MessageBox.Show(query);
-                command = new MySqlCommand(query, dBCon.Connection);
+                command.CommandText = query;
                 command.ExecuteNonQuery();
+
+
+                foreach (var item in products)
+                {
+                    query = "SELECT product_id FROM product WHERE product_name = '" + item.Substring(0, item.IndexOf(";")) + "'";
+                    command.CommandText = query;
+                    reader = command.ExecuteReader();
+                    reader.Read();
+                    ID = reader.GetString(0);
+                    reader.Close();
+
+                    int quantity = Convert.ToInt32(item.Substring(item.IndexOf("-") + 1));
+                    if (quantity > 0)
+                    {
+                        query = "INSERT IGNORE INTO booking_product (booking_id, product_id, booking_product_quantity) " +
+                            "VALUES (LAST_INSERT_ID(), '" + ID + "', '" + quantity + "');";
+                    }
+                }
+                foreach (var item in services)
+                {
+                    query = "SELECT service_id FROM service WHERE service_name = '" + item.Substring(0, item.IndexOf(";")) + "'";
+                    command.CommandText = query;
+                    reader = command.ExecuteReader();
+                    reader.Read();
+                    ID = reader.GetString(0);
+                    reader.Close();
+                    int quantity = Convert.ToInt32(item.Substring(item.IndexOf("-") + 1));
+                    if (quantity > 0)
+                    {
+                        query = "INSERT IGNORE INTO booking_service (booking_id, service_id) " +
+                            "VALUES (LAST_INSERT_ID(), '" + ID + "');";
+                    }
+                }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 MessageBox.Show(ee.Message);
                 reader.Close();

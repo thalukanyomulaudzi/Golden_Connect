@@ -62,6 +62,7 @@
             // 
             // btnBookingProceed
             // 
+            this.btnBookingProceed.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnBookingProceed.Location = new System.Drawing.Point(390, 684);
             this.btnBookingProceed.Name = "btnBookingProceed";
             this.btnBookingProceed.Size = new System.Drawing.Size(104, 34);
