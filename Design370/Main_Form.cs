@@ -764,5 +764,21 @@ namespace Design370
                 MessageBox.Show(ee.Message);
             }
         }
+
+        private void DgvBookings_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                case 3:
+
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
