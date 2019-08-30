@@ -39,6 +39,8 @@
             this.txtProductame = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddProducts = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button2
@@ -56,7 +58,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(270, 201);
+            this.button3.Location = new System.Drawing.Point(270, 202);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 21);
             this.button3.TabIndex = 74;
@@ -110,6 +112,7 @@
             this.txtProductDescr.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductDescr.Location = new System.Drawing.Point(33, 87);
             this.txtProductDescr.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProductDescr.MaxLength = 100;
             this.txtProductDescr.Multiline = true;
             this.txtProductDescr.Name = "txtProductDescr";
             this.txtProductDescr.Size = new System.Drawing.Size(172, 82);
@@ -131,6 +134,7 @@
             this.txtProductame.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductame.Location = new System.Drawing.Point(33, 35);
             this.txtProductame.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProductame.MaxLength = 25;
             this.txtProductame.Name = "txtProductame";
             this.txtProductame.Size = new System.Drawing.Size(172, 21);
             this.txtProductame.TabIndex = 67;
@@ -158,11 +162,34 @@
             this.btnAddProducts.UseVisualStyleBackColor = true;
             this.btnAddProducts.Click += new System.EventHandler(this.btnAddProducts_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(267, 72);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.TabIndex = 91;
+            this.label5.Text = "Booking Type:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(270, 87);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(172, 21);
+            this.comboBox1.TabIndex = 90;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Product_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 350);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnAddProducts);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
@@ -195,5 +222,7 @@
         private System.Windows.Forms.TextBox txtProductame;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddProducts;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
