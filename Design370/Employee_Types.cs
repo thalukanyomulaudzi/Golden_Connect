@@ -44,14 +44,12 @@ namespace Design370
                         {
                             if (MessageBox.Show("Are sure you want to delete this type?", "Delete Employee Type", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                dbCon.Open();
                                 string deleteEmpType = "DELETE FROM `employee_type` WHERE `employee_type_name` ='" + dgvEmpType.Rows[e.RowIndex].Cells[3].Value + "'";
                                 if (dbCon.IsConnect())
                                 {
                                     var command = new MySqlCommand(deleteEmpType, dbCon.Connection);
                                     command.ExecuteReader();
                                     MessageBox.Show("Employee Type: " + dgvEmpType.Rows[e.RowIndex].Cells[3].Value + "", "Delete Employee Type", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    dbCon.Close();
                                 }
                             }
                             else
@@ -86,7 +84,6 @@ namespace Design370
                 dgvEmpType.Columns[4].Name = "Employee Type Description";
                 dgvEmpType.Columns[4].Width = 320;
                 dgvEmpType.ReadOnly = true;
-                dbCon.Open();
                 if (dbCon.IsConnect())
                 {
                     string loadTypes = "SELECT * FROM `employee_type`";
@@ -97,7 +94,7 @@ namespace Design370
                         dgvEmpType.Rows.Add("", "", "", reader[1], reader[2]);
                         cbxSortEmpType.Items.Add(reader[1]);
                     }
-                    dbCon.Close();
+                    reader.Close();
                 }
             }
             catch(Exception ee)

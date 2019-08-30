@@ -43,6 +43,10 @@
             // 
             // dgvBookingCustomer
             // 
+            this.dgvBookingCustomer.AllowUserToAddRows = false;
+            this.dgvBookingCustomer.AllowUserToDeleteRows = false;
+            this.dgvBookingCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBookingCustomer.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvBookingCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookingCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustFirst,
@@ -54,6 +58,8 @@
             this.dgvBookingCustomer.Location = new System.Drawing.Point(25, 76);
             this.dgvBookingCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.dgvBookingCustomer.Name = "dgvBookingCustomer";
+            this.dgvBookingCustomer.ReadOnly = true;
+            this.dgvBookingCustomer.RowHeadersVisible = false;
             this.dgvBookingCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBookingCustomer.Size = new System.Drawing.Size(732, 310);
             this.dgvBookingCustomer.TabIndex = 65;

@@ -56,6 +56,8 @@
             this.btnBookingServiceRemove = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtBookingTime = new System.Windows.Forms.TextBox();
+            this.txtBookingTotal = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBookingProductQuantity)).BeginInit();
             this.SuspendLayout();
@@ -347,11 +349,32 @@
             this.txtBookingTime.TabIndex = 60;
             this.txtBookingTime.Text = "John Doe";
             // 
+            // txtBookingTotal
+            // 
+            this.txtBookingTotal.Enabled = false;
+            this.txtBookingTotal.Location = new System.Drawing.Point(139, 689);
+            this.txtBookingTotal.Name = "txtBookingTotal";
+            this.txtBookingTotal.Size = new System.Drawing.Size(113, 24);
+            this.txtBookingTotal.TabIndex = 61;
+            this.txtBookingTotal.Text = "John Doe";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(37, 692);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(95, 18);
+            this.label8.TabIndex = 62;
+            this.label8.Text = "Booking total";
+            // 
             // Booking_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 743);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtBookingTotal);
             this.Controls.Add(this.txtBookingTime);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnBookingServiceRemove);
@@ -422,5 +445,7 @@
         private System.Windows.Forms.Button btnBookingServiceRemove;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtBookingTime;
+        private System.Windows.Forms.TextBox txtBookingTotal;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -31,7 +31,7 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -133,6 +133,13 @@ namespace Design370
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.btnBookingAdd = new System.Windows.Forms.Button();
             this.dgvBookings = new System.Windows.Forms.DataGridView();
+            this.bookingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookingCustName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookingStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookingView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.BookingEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.BookingDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblBookingSearch = new System.Windows.Forms.Label();
             this.txtBookingSearch = new System.Windows.Forms.TextBox();
             this.btnBookingCapture = new System.Windows.Forms.Button();
@@ -157,12 +164,6 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.bookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookingCustName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookingStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookingView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.BookingEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.BookingDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -503,18 +504,22 @@ namespace Design370
             // 
             // btnTimeslotAdd
             // 
-            this.btnTimeslotAdd.Enabled = false;
             this.btnTimeslotAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimeslotAdd.Location = new System.Drawing.Point(11, 482);
+            this.btnTimeslotAdd.Location = new System.Drawing.Point(623, 16);
             this.btnTimeslotAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeslotAdd.Name = "btnTimeslotAdd";
             this.btnTimeslotAdd.Size = new System.Drawing.Size(151, 28);
             this.btnTimeslotAdd.TabIndex = 17;
-            this.btnTimeslotAdd.Text = "Add Timeslot";
+            this.btnTimeslotAdd.Text = "Add Timeslots";
             this.btnTimeslotAdd.UseVisualStyleBackColor = true;
+            this.btnTimeslotAdd.Click += new System.EventHandler(this.BtnTimeslotAdd_Click);
             // 
             // dgvTimeslots
             // 
+            this.dgvTimeslots.AllowUserToAddRows = false;
+            this.dgvTimeslots.AllowUserToDeleteRows = false;
+            this.dgvTimeslots.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTimeslots.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvTimeslots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTimeslots.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.timeslotDay1,
@@ -527,6 +532,7 @@ namespace Design370
             this.dgvTimeslots.Location = new System.Drawing.Point(11, 59);
             this.dgvTimeslots.Margin = new System.Windows.Forms.Padding(2);
             this.dgvTimeslots.Name = "dgvTimeslots";
+            this.dgvTimeslots.ReadOnly = true;
             this.dgvTimeslots.RowTemplate.Height = 24;
             this.dgvTimeslots.Size = new System.Drawing.Size(763, 356);
             this.dgvTimeslots.TabIndex = 16;
@@ -535,36 +541,43 @@ namespace Design370
             // 
             this.timeslotDay1.HeaderText = "Day1";
             this.timeslotDay1.Name = "timeslotDay1";
+            this.timeslotDay1.ReadOnly = true;
             // 
             // timeslotDay2
             // 
             this.timeslotDay2.HeaderText = "Day2";
             this.timeslotDay2.Name = "timeslotDay2";
+            this.timeslotDay2.ReadOnly = true;
             // 
             // timeslotDay3
             // 
             this.timeslotDay3.HeaderText = "Day3";
             this.timeslotDay3.Name = "timeslotDay3";
+            this.timeslotDay3.ReadOnly = true;
             // 
             // timeslotDay4
             // 
             this.timeslotDay4.HeaderText = "Day4";
             this.timeslotDay4.Name = "timeslotDay4";
+            this.timeslotDay4.ReadOnly = true;
             // 
             // timeslotDay5
             // 
             this.timeslotDay5.HeaderText = "Day5";
             this.timeslotDay5.Name = "timeslotDay5";
+            this.timeslotDay5.ReadOnly = true;
             // 
             // timeslotDay6
             // 
             this.timeslotDay6.HeaderText = "Day6";
             this.timeslotDay6.Name = "timeslotDay6";
+            this.timeslotDay6.ReadOnly = true;
             // 
             // timeslotDay7
             // 
             this.timeslotDay7.HeaderText = "Day7";
             this.timeslotDay7.Name = "timeslotDay7";
+            this.timeslotDay7.ReadOnly = true;
             // 
             // tabPage4
             // 
@@ -1118,11 +1131,11 @@ namespace Design370
             // 
             // CustomerOrderPayment
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle1;
             this.CustomerOrderPayment.HeaderText = "";
             this.CustomerOrderPayment.Name = "CustomerOrderPayment";
             this.CustomerOrderPayment.Text = "Capture Payment";
@@ -1243,6 +1256,7 @@ namespace Design370
             this.dgvBookings.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bookingID,
             this.bookingDate,
             this.BookingCustName,
             this.bookingStatus,
@@ -1255,9 +1269,54 @@ namespace Design370
             this.dgvBookings.ReadOnly = true;
             this.dgvBookings.RowHeadersVisible = false;
             this.dgvBookings.RowTemplate.Height = 24;
+            this.dgvBookings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBookings.Size = new System.Drawing.Size(763, 349);
             this.dgvBookings.TabIndex = 53;
             this.dgvBookings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookings_CellContentClick);
+            // 
+            // bookingID
+            // 
+            this.bookingID.HeaderText = "ID";
+            this.bookingID.Name = "bookingID";
+            this.bookingID.ReadOnly = true;
+            // 
+            // bookingDate
+            // 
+            this.bookingDate.HeaderText = "Booking Date";
+            this.bookingDate.Name = "bookingDate";
+            this.bookingDate.ReadOnly = true;
+            // 
+            // BookingCustName
+            // 
+            this.BookingCustName.HeaderText = "Customer Name";
+            this.BookingCustName.Name = "BookingCustName";
+            this.BookingCustName.ReadOnly = true;
+            // 
+            // bookingStatus
+            // 
+            this.bookingStatus.HeaderText = "Booking Status";
+            this.bookingStatus.Name = "bookingStatus";
+            this.bookingStatus.ReadOnly = true;
+            // 
+            // bookingView
+            // 
+            this.bookingView.HeaderText = "";
+            this.bookingView.Name = "bookingView";
+            this.bookingView.ReadOnly = true;
+            this.bookingView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.bookingView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // BookingEdit
+            // 
+            this.BookingEdit.HeaderText = "";
+            this.BookingEdit.Name = "BookingEdit";
+            this.BookingEdit.ReadOnly = true;
+            // 
+            // BookingDelete
+            // 
+            this.BookingDelete.HeaderText = "";
+            this.BookingDelete.Name = "BookingDelete";
+            this.BookingDelete.ReadOnly = true;
             // 
             // lblBookingSearch
             // 
@@ -1409,7 +1468,7 @@ namespace Design370
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(200, 25);
             this.textBox10.TabIndex = 49;
-            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
+            this.textBox10.TextChanged += new System.EventHandler(this.TextBox10_TextChanged);
             // 
             // button24
             // 
@@ -1512,44 +1571,6 @@ namespace Design370
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
-            // 
-            // bookingDate
-            // 
-            this.bookingDate.HeaderText = "Booking Date";
-            this.bookingDate.Name = "bookingDate";
-            this.bookingDate.ReadOnly = true;
-            // 
-            // BookingCustName
-            // 
-            this.BookingCustName.HeaderText = "Customer Name";
-            this.BookingCustName.Name = "BookingCustName";
-            this.BookingCustName.ReadOnly = true;
-            // 
-            // bookingStatus
-            // 
-            this.bookingStatus.HeaderText = "Booking Status";
-            this.bookingStatus.Name = "bookingStatus";
-            this.bookingStatus.ReadOnly = true;
-            // 
-            // bookingView
-            // 
-            this.bookingView.HeaderText = "";
-            this.bookingView.Name = "bookingView";
-            this.bookingView.ReadOnly = true;
-            this.bookingView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.bookingView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // BookingEdit
-            // 
-            this.BookingEdit.HeaderText = "";
-            this.BookingEdit.Name = "BookingEdit";
-            this.BookingEdit.ReadOnly = true;
-            // 
-            // BookingDelete
-            // 
-            this.BookingDelete.HeaderText = "";
-            this.BookingDelete.Name = "BookingDelete";
-            this.BookingDelete.ReadOnly = true;
             // 
             // Main_Form
             // 
@@ -1751,6 +1772,7 @@ namespace Design370
         private Button button1;
         private DataGridViewButtonColumn ViewOrderProducts;
         private DataGridViewButtonColumn CustomerOrderPayment;
+        private DataGridViewTextBoxColumn bookingID;
         private DataGridViewTextBoxColumn bookingDate;
         private DataGridViewTextBoxColumn BookingCustName;
         private DataGridViewTextBoxColumn bookingStatus;

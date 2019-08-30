@@ -124,6 +124,7 @@ namespace Design370
         {
             try
             {
+                dgv.Rows.Clear();
                 DBConnection dBCon = DBConnection.Instance();
                 if (dBCon.IsConnect())
                 {
@@ -148,7 +149,7 @@ namespace Design370
                         reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            available.Add(reader.GetBoolean(0) ? "Available" : "Unavailable");
+                            available.Add(reader.GetInt16(0) != 0 ? "Available" : "Unavailable");
                         }
                         dgv.Rows.Add(available.ToArray());
                         dgv.Rows[dgv.Rows.Count-1].HeaderCell.Value = "0" + i + ":00:00";

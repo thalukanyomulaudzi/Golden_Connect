@@ -146,6 +146,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Booking.cs" />
+    <Compile Include="Booking_Capture_Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Booking_Capture_Payment.Designer.cs">
+      <DependentUpon>Booking_Capture_Payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Booking_Customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -444,6 +450,9 @@
     <Compile Include="Employee_Update.Designer.cs">
       <DependentUpon>Employee_Update.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Booking_Capture_Payment.resx">
+      <DependentUpon>Booking_Capture_Payment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Booking_Customer.resx">
       <DependentUpon>Booking_Customer.cs</DependentUpon>
     </EmbeddedResource>

@@ -6,8 +6,7 @@ namespace Design370
 {
     class Booking
     {
-        public static string bookingType = "", customerName = "", employeeName = "", customerID, employeeID, time;
-        public static short duration;
+        public static string bookingType = "", customerName = "", employeeName = "", customerID, employeeID, time, bookingID;
         public static DateTime bookingDate = new DateTime();
         public static void loadBookings(System.Windows.Forms.DataGridView dgv, string search = "")
         {
@@ -30,13 +29,13 @@ namespace Design370
                     reader.Close();
 
                     query = search != ""
-                        ? "SELECT t.timeslot_date, t.timeslot_start, c.customer_first, c.customer_last, bs.booking_status_name FROM booking b " +
+                        ? "SELECT t.timeslot_date, t.timeslot_start, c.customer_first, c.customer_last, bs.booking_status_name, b.booking_id FROM booking b " +
                         "JOIN customer c ON b.customer_id = c.customer_id " +
                         "JOIN employee_timeslot et ON et.booking_id = b.booking_id " +
                         "JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
                         "JOIN booking_status bs ON b.booking_status_id = bs.booking_status_id " +
                         "WHERE c.customer_first LIKE '%" + search + "%' OR c.customer_last LIKE '%" + search + "%' OR c.customer_id_number LIKE '%" + search + "%'"
-                        : "SELECT t.timeslot_date, t.timeslot_start, c.customer_first, c.customer_last, bs.booking_status_name FROM booking b " +
+                        : "SELECT t.timeslot_date, t.timeslot_start, c.customer_first, c.customer_last, bs.booking_status_name, b.booking_id FROM booking b " +
                         "JOIN customer c ON b.customer_id = c.customer_id " +
                         "JOIN employee_timeslot et ON et.booking_id = b.booking_id " +
                         "JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
@@ -45,7 +44,7 @@ namespace Design370
                     reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        dgv.Rows.Add(reader.GetString(0), reader.GetString(2) + " " + reader.GetString(3), reader.GetString(4), "View", "Edit", "Delete");
+                        dgv.Rows.Add(reader.GetString(5), reader.GetString(0), reader.GetString(2) + " " + reader.GetString(3), reader.GetString(4), "View", "Edit", "Delete");
                     }
                     reader.Close();
                 }

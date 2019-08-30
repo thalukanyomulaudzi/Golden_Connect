@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -66,11 +65,6 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             //Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
-            //Timeslots.generateTimeslotsUpTo(DateTime.Now.AddDays(1));
-            //Timeslots.linkTimeslots();
-            //Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
-            ////Timeslots.removeDuplicates();
-            ////MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
             Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
@@ -98,7 +92,7 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
-            
+
         }
 
         public void loadServices()
@@ -192,7 +186,7 @@ namespace Design370
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        
+
                     }
                     break;
                 default:
@@ -583,6 +577,8 @@ namespace Design370
 
         private void Main_Form_Activated(object sender, EventArgs e)
         {
+            Timeslot.loadTimeslots(dgvTimeslots,DateTime.Now);
+
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             dgvEventPackages.Rows.Clear();
@@ -636,13 +632,24 @@ namespace Design370
 
         private void BtnBookingCapture_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                Booking.bookingID = dgvBookings.SelectedRows[0].Cells["bookingID"].Value.ToString();
+                Booking_Capture_Payment capture_Payment = new Booking_Capture_Payment();
+                capture_Payment.ShowDialog();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
         }
 
         private void BtnBookingAdd_Click(object sender, EventArgs e)
         {
             Booking_Details details = new Booking_Details();
-            details.ShowDialog();
+            var result = details.ShowDialog();
+            if (result == DialogResult.Cancel)
+                MessageBox.Show("Booking creation has been canceled");
         }
 
         private void BtnPhotoshootPackageAdd_Click(object sender, EventArgs e)
@@ -723,7 +730,7 @@ namespace Design370
                     {
                         dbCon.Close();
                         dbCon.Open();
-                        string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Placed' AND `order`.`order_id` = '"+ dgvOrders.Rows[e.RowIndex].Cells[2].Value + "'";
+                        string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Placed' AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[2].Value + "'";
                         var command = new MySqlCommand(checkStatus, dbCon.Connection);
                         var reader = command.ExecuteReader();
                         reader.Read();
@@ -736,12 +743,12 @@ namespace Design370
                         {
                             MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        
+
                     }
                     break;
                 default:
                     break;
-                    
+
             }
         }
 
@@ -755,15 +762,9 @@ namespace Design370
         {
             DeliverOrder deliveries = new DeliverOrder();
             deliveries.ShowDialog();
-            }
         }
 
-        private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
+        private void TextBox10_TextChanged(object sender, EventArgs e)
         {
             dgvServices.Rows.Clear();
             try
@@ -803,6 +804,12 @@ namespace Design370
                 default:
                     break;
             }
+        }
+
+        private void BtnTimeslotAdd_Click(object sender, EventArgs e)
+        {
+            Timeslot_Add timeslotAdd = new Timeslot_Add();
+            timeslotAdd.ShowDialog();
         }
     }
 }
