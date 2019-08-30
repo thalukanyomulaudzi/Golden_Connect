@@ -36,7 +36,6 @@ namespace Design370
                 return;
             }
             loadBookingDetails();
-            numBookingSpan.Focus();
         }
 
         private void loadBookingDetails()
@@ -249,15 +248,6 @@ namespace Design370
             MySqlDataReader reader = null;
             try
             {
-                if(Convert.ToInt32(txtBookingTime.Text.Substring(0,2)) + numBookingSpan.Value > 16)
-                {
-                    MessageBox.Show("That time span is too long for a booking");
-                    return;
-                }
-
-
-
-
                 DBConnection dBCon = DBConnection.Instance();
                 //get type id
                 string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = '" + Booking.bookingType + "'";
@@ -288,13 +278,12 @@ namespace Design370
                     "`booking_type_id`, `booking_status_id`, `transport_fee_id`, `booking_package_id`, `booking_guests`) " +
                     "VALUES (NULL, '" + Booking.customerID + "', '" + DateTime.Now.ToString("yyyy'-'MM'-'dd") + "', '" + txtBookingLocation.Text + "', NULL, '" +
                     typeID + "', '" + statusID + "', '" + "1" + "', '" + packageID + "', '" + numBookingGuests.Value.ToString() + "');" +
-                    "UPDATE";
+                    "UPDATE employee_timeslot et JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
+                    "SET booking_id = LAST_INSERT_ID() " +
+                    "WHERE t.timeslot_date = '" + dtmBookingDate.Value.ToString("yyyy'-'MM'-'dd") + "' AND t.timeslot_start = '" + txtBookingTime.Text + "'";
+                MessageBox.Show(query);
                 command = new MySqlCommand(query, dBCon.Connection);
                 command.ExecuteNonQuery();
-
-
-
-
             }
             catch(Exception ee)
             {
