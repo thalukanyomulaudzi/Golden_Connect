@@ -71,7 +71,7 @@ namespace Design370
             //Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
             ////Timeslots.removeDuplicates();
             ////MessageBox.Show(Timeslots.timeslotExists(DateTime.Parse("2019-08-29 09:00:00")).ToString());
-            Timeslots.loadTimeslots(dgvTimeslots, DateTime.Today);
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             loadSuppliers();
@@ -168,12 +168,6 @@ namespace Design370
         {
             Service_Add service_Add = new Service_Add();
             service_Add.Show();
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            Photoshoot_Package_Add photoshootPackageAdd = new Photoshoot_Package_Add();
-            photoshootPackageAdd.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
