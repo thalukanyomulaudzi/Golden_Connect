@@ -115,6 +115,10 @@
             // 
             // dgvProductList
             // 
+            this.dgvProductList.AllowUserToAddRows = false;
+            this.dgvProductList.AllowUserToDeleteRows = false;
+            this.dgvProductList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -124,6 +128,8 @@
             this.Column5});
             this.dgvProductList.Location = new System.Drawing.Point(12, 43);
             this.dgvProductList.Name = "dgvProductList";
+            this.dgvProductList.ReadOnly = true;
+            this.dgvProductList.RowHeadersVisible = false;
             this.dgvProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductList.Size = new System.Drawing.Size(574, 173);
             this.dgvProductList.TabIndex = 79;
@@ -133,35 +139,37 @@
             this.Column1.DataPropertyName = "product_id";
             this.Column1.HeaderText = "Product ID";
             this.Column1.Name = "Column1";
-            this.Column1.Width = 85;
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.DataPropertyName = "product_name";
             this.Column2.HeaderText = "Product Name";
             this.Column2.Name = "Column2";
-            this.Column2.Width = 110;
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.DataPropertyName = "product_price";
             this.Column3.HeaderText = "Product Price";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.DataPropertyName = "product_stock_quantity";
             this.Column4.HeaderText = "Quantity On Hand";
             this.Column4.Name = "Column4";
-            this.Column4.Width = 120;
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.DataPropertyName = "product_type_name";
             this.Column5.HeaderText = "Product Type";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
-            // ProductList
+            // Product_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -174,7 +182,7 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.dgvProductList);
-            this.Name = "ProductList";
+            this.Name = "Product_List";
             this.Text = "ProductList";
             this.Load += new System.EventHandler(this.ProductList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).EndInit();
