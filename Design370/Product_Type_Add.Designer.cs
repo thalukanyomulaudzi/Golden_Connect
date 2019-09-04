@@ -116,6 +116,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Product_Type_Add";
             this.Text = "Add Product Type";
+            this.Load += new System.EventHandler(this.Product_Type_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

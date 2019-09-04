@@ -75,12 +75,6 @@ namespace Design370
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnServiceAdd = new System.Windows.Forms.Button();
             this.dgvServices = new System.Windows.Forms.DataGridView();
-            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.lblProductSearch = new System.Windows.Forms.Label();
@@ -164,6 +158,12 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -253,7 +253,7 @@ namespace Design370
             this.lblCustomerSort.Location = new System.Drawing.Point(281, 15);
             this.lblCustomerSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCustomerSort.Name = "lblCustomerSort";
-            this.lblCustomerSort.Size = new System.Drawing.Size(57, 18);
+            this.lblCustomerSort.Size = new System.Drawing.Size(56, 18);
             this.lblCustomerSort.TabIndex = 7;
             this.lblCustomerSort.Text = "Sort by:";
             // 
@@ -397,7 +397,7 @@ namespace Design370
             this.label7.Location = new System.Drawing.Point(281, 15);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 18);
+            this.label7.Size = new System.Drawing.Size(56, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Sort by:";
             // 
@@ -498,7 +498,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -662,42 +662,6 @@ namespace Design370
             this.dgvServices.Size = new System.Drawing.Size(763, 349);
             this.dgvServices.TabIndex = 0;
             this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
-            // 
-            // ServiceName
-            // 
-            this.ServiceName.HeaderText = "ServiceName";
-            this.ServiceName.Name = "ServiceName";
-            this.ServiceName.ReadOnly = true;
-            // 
-            // ServiceType
-            // 
-            this.ServiceType.HeaderText = "ServiceType";
-            this.ServiceType.Name = "ServiceType";
-            this.ServiceType.ReadOnly = true;
-            // 
-            // ServicePrice
-            // 
-            this.ServicePrice.HeaderText = "ServicePrice";
-            this.ServicePrice.Name = "ServicePrice";
-            this.ServicePrice.ReadOnly = true;
-            // 
-            // ServiceView
-            // 
-            this.ServiceView.HeaderText = "";
-            this.ServiceView.Name = "ServiceView";
-            this.ServiceView.ReadOnly = true;
-            // 
-            // ServiceEdit
-            // 
-            this.ServiceEdit.HeaderText = "";
-            this.ServiceEdit.Name = "ServiceEdit";
-            this.ServiceEdit.ReadOnly = true;
-            // 
-            // ServiceDelete
-            // 
-            this.ServiceDelete.HeaderText = "";
-            this.ServiceDelete.Name = "ServiceDelete";
-            this.ServiceDelete.ReadOnly = true;
             // 
             // tabPage5
             // 
@@ -905,7 +869,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 122;
+            this.PhotoshootPackageName.Width = 132;
             // 
             // Services
             // 
@@ -1048,7 +1012,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 122;
+            this.EventPackageName.Width = 132;
             // 
             // ServicesEvents
             // 
@@ -1186,7 +1150,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 18);
+            this.label15.Size = new System.Drawing.Size(56, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Sort by:";
             // 
@@ -1572,6 +1536,42 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // ServiceName
+            // 
+            this.ServiceName.HeaderText = "Service Name";
+            this.ServiceName.Name = "ServiceName";
+            this.ServiceName.ReadOnly = true;
+            // 
+            // ServiceType
+            // 
+            this.ServiceType.HeaderText = "Service Type";
+            this.ServiceType.Name = "ServiceType";
+            this.ServiceType.ReadOnly = true;
+            // 
+            // ServicePrice
+            // 
+            this.ServicePrice.HeaderText = "Price";
+            this.ServicePrice.Name = "ServicePrice";
+            this.ServicePrice.ReadOnly = true;
+            // 
+            // ServiceView
+            // 
+            this.ServiceView.HeaderText = "";
+            this.ServiceView.Name = "ServiceView";
+            this.ServiceView.ReadOnly = true;
+            // 
+            // ServiceEdit
+            // 
+            this.ServiceEdit.HeaderText = "";
+            this.ServiceEdit.Name = "ServiceEdit";
+            this.ServiceEdit.ReadOnly = true;
+            // 
+            // ServiceDelete
+            // 
+            this.ServiceDelete.HeaderText = "";
+            this.ServiceDelete.Name = "ServiceDelete";
+            this.ServiceDelete.ReadOnly = true;
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1763,12 +1763,6 @@ namespace Design370
         private DataGridViewButtonColumn Delete;
         private Button btnPhotoshootPackageAdd;
         private Button btnBookingAdd;
-        private DataGridViewTextBoxColumn ServiceName;
-        private DataGridViewTextBoxColumn ServiceType;
-        private DataGridViewTextBoxColumn ServicePrice;
-        private DataGridViewButtonColumn ServiceView;
-        private DataGridViewButtonColumn ServiceEdit;
-        private DataGridViewButtonColumn ServiceDelete;
         private Button button1;
         private DataGridViewButtonColumn ViewOrderProducts;
         private DataGridViewButtonColumn CustomerOrderPayment;
@@ -1779,6 +1773,12 @@ namespace Design370
         private DataGridViewButtonColumn bookingView;
         private DataGridViewButtonColumn BookingEdit;
         private DataGridViewButtonColumn BookingDelete;
+        private DataGridViewTextBoxColumn ServiceName;
+        private DataGridViewTextBoxColumn ServiceType;
+        private DataGridViewTextBoxColumn ServicePrice;
+        private DataGridViewButtonColumn ServiceView;
+        private DataGridViewButtonColumn ServiceEdit;
+        private DataGridViewButtonColumn ServiceDelete;
     }
 }
 

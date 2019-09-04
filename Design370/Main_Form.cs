@@ -101,7 +101,7 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
+                    string query = "SELECT service.service_name, booking_type.booking_type_name, service.service_price FROM service INNER JOIN booking_type ON service.booking_type_id=booking_type.booking_type_id";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -123,7 +123,7 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                    string query = "SELECT product.product_name, booking_type.booking_type_name, product.product_price FROM product INNER JOIN booking_type ON product.booking_type_id=booking_type.booking_type_id";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -671,9 +671,10 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product " +
-                        "INNER JOIN product_type ON product.product_type_id=product_type.product_type_id " +
-                        "WHERE product.product_name LIKE '%" + txtProductSearch.Text + "%' OR product_type.product_type_name LIKE '%" + txtProductSearch.Text + "%'";
+                    string word = "";
+                    string query = "SELECT product.product_name, booking_type.booking_type_name, product.product_price FROM product " +
+                        "INNER JOIN booking_type ON product.booking_type_id=booking_type.booking_type_id " +
+                        "WHERE product.product_name LIKE '%" + txtProductSearch.Text + "%' OR booking_type.booking_type_name LIKE '%" + txtProductSearch.Text + "%'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -696,9 +697,9 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service " +
-                        "INNER JOIN service_type ON service.service_type_id=service_type.service_type_id " +
-                        "WHERE service.service_name LIKE '%" + textBox2.Text + "%' OR service_type.service_type_name LIKE '%" + textBox2.Text + "%'";
+                    string query = "SELECT service.service_name, booking_type.booking_type_name, service.service_price FROM service " +
+                        "INNER JOIN booking_type ON service.booking_type_id=booking_type.booking_type_id " +
+                        "WHERE service.service_name LIKE '%" + textBox2.Text + "%' OR booking_type.booking_type_name LIKE '%" + textBox2.Text + "%'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
