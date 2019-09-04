@@ -48,7 +48,7 @@ namespace Design370
             }
             if (cbxProductTypes.SelectedIndex <= -1)
             {
-                MessageBox.Show("Please select a booking type and/or service type");
+                MessageBox.Show("Please select a product type");
                 return;
             }
             try
@@ -56,13 +56,13 @@ namespace Design370
                 if (dbCon.IsConnect())
                 {
                     string bookingTypeID = "";
-                    string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = '" + cbxProductTypes.SelectedItem.ToString() + "'";
+                    string query = "SELECT product_type_id FROM product_type WHERE product_type_name = '" + cbxProductTypes.SelectedItem.ToString() + "'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     reader.Read();
                     bookingTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "INSERT INTO `product`(`product_name`, `product_description`, `product_price`, `booking_type_id`) VALUES('" +
+                    query = "INSERT INTO `product`(`product_name`, `product_description`, `product_price`, `product_type_id`) VALUES('" +
                                 txtProductame.Text + "', '" + txtProductDescr.Text + "', '" + txtProductPrice.Text + "', '" + bookingTypeID + "')";
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
@@ -81,12 +81,12 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    var mysqlCmd = new MySqlCommand("SELECT * FROM booking_type", dbCon.Connection);
+                    var mysqlCmd = new MySqlCommand("SELECT * FROM product_type", dbCon.Connection);
                     var mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
                     {
-                        cbxProductTypes.Items.Add(mysqlReader["booking_type_name"].ToString());
-                        cbxProductTypes.ValueMember = (mysqlReader["booking_type_id"].ToString());
+                        cbxProductTypes.Items.Add(mysqlReader["product_type_name"].ToString());
+                        cbxProductTypes.ValueMember = (mysqlReader["product_type_id"].ToString());
 
                     }
                     mysqlReader.Close();

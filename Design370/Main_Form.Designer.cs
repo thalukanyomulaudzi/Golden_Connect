@@ -75,6 +75,12 @@ namespace Design370
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnServiceAdd = new System.Windows.Forms.Button();
             this.dgvServices = new System.Windows.Forms.DataGridView();
+            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.lblProductSearch = new System.Windows.Forms.Label();
@@ -158,12 +164,6 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -662,6 +662,43 @@ namespace Design370
             this.dgvServices.Size = new System.Drawing.Size(763, 349);
             this.dgvServices.TabIndex = 0;
             this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
+            this.dgvServices.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvServices_CellPainting);
+            // 
+            // ServiceName
+            // 
+            this.ServiceName.HeaderText = "Service Name";
+            this.ServiceName.Name = "ServiceName";
+            this.ServiceName.ReadOnly = true;
+            // 
+            // ServiceType
+            // 
+            this.ServiceType.HeaderText = "Service Type";
+            this.ServiceType.Name = "ServiceType";
+            this.ServiceType.ReadOnly = true;
+            // 
+            // ServicePrice
+            // 
+            this.ServicePrice.HeaderText = "Price";
+            this.ServicePrice.Name = "ServicePrice";
+            this.ServicePrice.ReadOnly = true;
+            // 
+            // ServiceView
+            // 
+            this.ServiceView.HeaderText = "";
+            this.ServiceView.Name = "ServiceView";
+            this.ServiceView.ReadOnly = true;
+            // 
+            // ServiceEdit
+            // 
+            this.ServiceEdit.HeaderText = "";
+            this.ServiceEdit.Name = "ServiceEdit";
+            this.ServiceEdit.ReadOnly = true;
+            // 
+            // ServiceDelete
+            // 
+            this.ServiceDelete.HeaderText = "";
+            this.ServiceDelete.Name = "ServiceDelete";
+            this.ServiceDelete.ReadOnly = true;
             // 
             // tabPage5
             // 
@@ -746,6 +783,7 @@ namespace Design370
             this.dgvProducts.Size = new System.Drawing.Size(763, 349);
             this.dgvProducts.TabIndex = 16;
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView3_CellContentClick);
+            this.dgvProducts.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvProducts_CellPainting);
             // 
             // ProductName
             // 
@@ -862,6 +900,7 @@ namespace Design370
             this.dgvPhotoshootPackage.Size = new System.Drawing.Size(763, 349);
             this.dgvPhotoshootPackage.TabIndex = 23;
             this.dgvPhotoshootPackage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView6_CellContentClick);
+            this.dgvPhotoshootPackage.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvPhotoshootPackage_CellPainting);
             // 
             // PhotoshootPackageName
             // 
@@ -1005,6 +1044,7 @@ namespace Design370
             this.dgvEventPackages.Size = new System.Drawing.Size(763, 349);
             this.dgvEventPackages.TabIndex = 30;
             this.dgvEventPackages.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellContentClick);
+            this.dgvEventPackages.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvEventPackages_CellPainting);
             // 
             // EventPackageName
             // 
@@ -1535,42 +1575,6 @@ namespace Design370
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
-            // 
-            // ServiceName
-            // 
-            this.ServiceName.HeaderText = "Service Name";
-            this.ServiceName.Name = "ServiceName";
-            this.ServiceName.ReadOnly = true;
-            // 
-            // ServiceType
-            // 
-            this.ServiceType.HeaderText = "Service Type";
-            this.ServiceType.Name = "ServiceType";
-            this.ServiceType.ReadOnly = true;
-            // 
-            // ServicePrice
-            // 
-            this.ServicePrice.HeaderText = "Price";
-            this.ServicePrice.Name = "ServicePrice";
-            this.ServicePrice.ReadOnly = true;
-            // 
-            // ServiceView
-            // 
-            this.ServiceView.HeaderText = "";
-            this.ServiceView.Name = "ServiceView";
-            this.ServiceView.ReadOnly = true;
-            // 
-            // ServiceEdit
-            // 
-            this.ServiceEdit.HeaderText = "";
-            this.ServiceEdit.Name = "ServiceEdit";
-            this.ServiceEdit.ReadOnly = true;
-            // 
-            // ServiceDelete
-            // 
-            this.ServiceDelete.HeaderText = "";
-            this.ServiceDelete.Name = "ServiceDelete";
-            this.ServiceDelete.ReadOnly = true;
             // 
             // Main_Form
             // 

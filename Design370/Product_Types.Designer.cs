@@ -91,6 +91,7 @@
             this.dataGridView7.Size = new System.Drawing.Size(754, 335);
             this.dataGridView7.TabIndex = 55;
             this.dataGridView7.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellContentClick);
+            this.dataGridView7.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView7_CellPainting);
             // 
             // EmpTypeName
             // 

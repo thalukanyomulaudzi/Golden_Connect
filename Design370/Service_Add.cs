@@ -32,12 +32,12 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    var mysqlCmd = new MySqlCommand("SELECT * FROM booking_type", dbCon.Connection);
+                    var mysqlCmd = new MySqlCommand("SELECT * FROM service_type", dbCon.Connection);
                     var mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
                     {
-                        cbxServiceTypes.Items.Add(mysqlReader["booking_type_name"].ToString());
-                        cbxServiceTypes.ValueMember = (mysqlReader["booking_type_id"].ToString());
+                        cbxServiceTypes.Items.Add(mysqlReader["service_type_name"].ToString());
+                        cbxServiceTypes.ValueMember = (mysqlReader["service_type_id"].ToString());
 
                     }
                     mysqlReader.Close();
@@ -64,7 +64,7 @@ namespace Design370
             }
             if (cbxServiceTypes.SelectedIndex <= -1)
             {
-                MessageBox.Show("Please select a booking type and/or service type");
+                MessageBox.Show("Please select a service type");
                 return;
             }
             try
@@ -72,13 +72,13 @@ namespace Design370
                 if (dbCon.IsConnect())
                 {
                     string bookingTypeID = "";
-                    string query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = '" + cbxServiceTypes.SelectedItem.ToString() + "'";
+                    string query = "SELECT service_type_id FROM service_type WHERE service_type_name = '" + cbxServiceTypes.SelectedItem.ToString() + "'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     reader.Read();
                     bookingTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "INSERT INTO `service`(`service_name`, `service_description`, `service_price`, `booking_type_id`) VALUES('" +
+                    query = "INSERT INTO `service`(`service_name`, `service_description`, `service_price`, `service_type_id`) VALUES('" +
                                 txtServiceName.Text + "', '" + txtServiceDescr.Text + "', '" + txtServicePrice.Text + "', '"  + bookingTypeID + "')";
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();

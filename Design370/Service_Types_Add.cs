@@ -13,6 +13,8 @@ namespace Design370
 {
     public partial class Service_Types_Add : Form
     {
+        DBConnection dbCon = DBConnection.Instance();
+
         public Service_Types_Add()
         {
             InitializeComponent();
@@ -25,26 +27,25 @@ namespace Design370
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string ServiceTypeInsert = "INSERT INTO service_type(service_type_name, service_type_description) VALUES('" +
-                                    txtServTypeName.Text + "', '" + txtServTypeDesc.Text + "')";
-            MysqlConnection.cmd = new MySqlCommand(ServiceTypeInsert, MysqlConnection.mysqlCon);
+            if (txtServTypeName.Text.Length <= 2 || txtServTypeDesc.Text.Length <= 5)
+            {
+                MessageBox.Show("Invalid character length for name and/or description");
+                return;
+            }
             try
             {
-                MysqlConnection.mysqlCon.Open();
-                MySqlDataReader checkIfExist = MysqlConnection.cmd.ExecuteReader();
-                if (checkIfExist.HasRows)
+                if (dbCon.IsConnect())
                 {
-                    MessageBox.Show("Service Type already exits!");
+                    string query = "INSERT INTO `product_type`(`product_type_name`, `product_type_description`, `product_type_id`) VALUES('" +
+                                txtServTypeName.Text + "', '" + txtServTypeDesc.Text + "', NULL')";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    command.ExecuteNonQuery();
                 }
-                else
-                {
-                    MessageBox.Show("New Service Type Inserted!");
-                    MysqlConnection.mysqlCon.Close();
-                }
+                this.Close();
             }
             catch (Exception ee)
             {
-                MessageBox.Show("Error: " + ee.Message);
+                MessageBox.Show(ee.Message);
             }
         }
     }

@@ -101,7 +101,7 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT service.service_name, booking_type.booking_type_name, service.service_price FROM service INNER JOIN booking_type ON service.booking_type_id=booking_type.booking_type_id";
+                    string query = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -123,7 +123,7 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT product.product_name, booking_type.booking_type_name, product.product_price FROM product INNER JOIN booking_type ON product.booking_type_id=booking_type.booking_type_id";
+                    string query = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -672,9 +672,9 @@ namespace Design370
                 if (dbCon.IsConnect())
                 {
                     string word = "";
-                    string query = "SELECT product.product_name, booking_type.booking_type_name, product.product_price FROM product " +
-                        "INNER JOIN booking_type ON product.booking_type_id=booking_type.booking_type_id " +
-                        "WHERE product.product_name LIKE '%" + txtProductSearch.Text + "%' OR booking_type.booking_type_name LIKE '%" + txtProductSearch.Text + "%'";
+                    string query = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product " +
+                        "INNER JOIN product_type ON product.product_type_id=product_type.product_type_id " +
+                        "WHERE product.product_name LIKE '%" + txtProductSearch.Text + "%' OR product_type.product_type_name LIKE '%" + txtProductSearch.Text + "%'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -697,9 +697,9 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT service.service_name, booking_type.booking_type_name, service.service_price FROM service " +
-                        "INNER JOIN booking_type ON service.booking_type_id=booking_type.booking_type_id " +
-                        "WHERE service.service_name LIKE '%" + textBox2.Text + "%' OR booking_type.booking_type_name LIKE '%" + textBox2.Text + "%'";
+                    string query = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service " +
+                        "INNER JOIN service_type ON service.service_type_id=service_type.service_type_id " +
+                        "WHERE service.service_name LIKE '%" + textBox2.Text + "%' OR service_type.service_type_name LIKE '%" + textBox2.Text + "%'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -811,6 +811,198 @@ namespace Design370
         {
             Timeslot_Add timeslotAdd = new Timeslot_Add();
             timeslotAdd.ShowDialog();
+        }
+
+        private void dgvProducts_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtProductSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtProductSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtProductSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void dgvServices_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(textBox2.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(textBox2.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, textBox2.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void dgvPhotoshootPackage_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtPhotoshootPackageSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtPhotoshootPackageSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtPhotoshootPackageSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void dgvEventPackages_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtEventPackageSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtEventPackageSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtEventPackageSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
         }
     }
 }

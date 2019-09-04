@@ -72,7 +72,7 @@
             this.btnAddServiceType.Name = "btnAddServiceType";
             this.btnAddServiceType.Size = new System.Drawing.Size(126, 21);
             this.btnAddServiceType.TabIndex = 85;
-            this.btnAddServiceType.Text = "Service Types";
+            this.btnAddServiceType.Text = "Add Service Type";
             this.btnAddServiceType.UseVisualStyleBackColor = true;
             this.btnAddServiceType.Click += new System.EventHandler(this.btnAddServiceType_Click);
             // 
