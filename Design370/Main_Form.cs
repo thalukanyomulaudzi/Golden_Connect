@@ -353,26 +353,26 @@ namespace Design370
 
         private void DataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string packageName;
+            string packageID;
             Photoshoot_Package_View photoshootPackage_View = new Photoshoot_Package_View();
             switch (e.ColumnIndex)
             {
 
-                case 4:
-                    Photoshoot_Package_View.edit = false;
-                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    photoshootPackage_View.GetRow = packageName;
-                    photoshootPackage_View.ShowDialog();
-                    break;
                 case 5:
-                    Photoshoot_Package_View.edit = true;
-                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    photoshootPackage_View.GetRow = packageName;
+                    Photoshoot_Package_View.edit = false;
+                    packageID = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageID;
                     photoshootPackage_View.ShowDialog();
                     break;
                 case 6:
-                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    Photoshoot.GetRowPhotoshoot = packageName;
+                    Photoshoot_Package_View.edit = true;
+                    packageID = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageID;
+                    photoshootPackage_View.ShowDialog();
+                    break;
+                case 7:
+                    packageID = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Photoshoot.GetRowPhotoshoot = packageID;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
@@ -441,25 +441,25 @@ namespace Design370
 
         private void DataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string packageName;
+            string packageID;
             Event_Package_View eventPackage_View = new Event_Package_View();
             switch (e.ColumnIndex)
             {
-                case 4:
-                    Event_Package_View.edit = false;
-                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    eventPackage_View.GetEventViewRow = packageName;
-                    eventPackage_View.ShowDialog();
-                    break;
                 case 5:
-                    Event_Package_View.edit = true;
-                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    eventPackage_View.GetEventViewRow = packageName;
+                    Event_Package_View.edit = false;
+                    packageID = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    eventPackage_View.GetEventViewRow = packageID;
                     eventPackage_View.ShowDialog();
                     break;
                 case 6:
-                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    Event.GetRowEvent = packageName;
+                    Event_Package_View.edit = true;
+                    packageID = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    eventPackage_View.GetEventViewRow = packageID;
+                    eventPackage_View.ShowDialog();
+                    break;
+                case 7:
+                    packageID = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Event.GetRowEvent = packageID;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
