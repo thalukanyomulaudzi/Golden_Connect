@@ -13,90 +13,80 @@ namespace Design370
 {
     public partial class Photoshoot_Package_Add : Form
     {
-        List<string> Products = new List<string>();
+        string serviceID = " ";
+        string productID = " ";
+        string serviceTypeID = " ";
+        string productTypeID = " ";
+        DataTable PIP = new DataTable();
         List<string> Services = new List<string>();
+        List<string> Products = new List<string>();
         public Photoshoot_Package_Add()
         {
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(listBox3, "Multiple items can be selected");
-            toolTip1.SetToolTip(listBox4, "Multiple items can be selected");
             toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
             toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
         }
 
         private void Photoshoot_Package_Add_Load(object sender, EventArgs e)
         {
+            PIP.Columns.Add();
+            PIP.Columns.Add();
+            PIP.Columns.Add();
+            PIP.Columns.Add();
+            PIP.Columns.Add();
+            PIP.Columns.Add();
             try
             {
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    int producttypeID = 0, servicetypeID = 0;
-                    string query = "SELECT product_type_id FROM product_type WHERE product_type_name = 'Photoshoot';";
+                    DataTable Services = new DataTable();
+                    DataTable Products = new DataTable();
+                    serviceTypeID = " ";
+                    string query = "SELECT service_type_id FROM service_type WHERE service_type_name = 'Photoshoot'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     reader.Read();
-                    producttypeID = reader.GetInt32(0);
+                    serviceTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "SELECT product_name, product_price FROM product WHERE product_type_id = '" + producttypeID + "'";
+                    query = "SELECT service_id, service_name, service_price FROM service WHERE service_type_id = '" + serviceTypeID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        listBox4.Items.Add(reader.GetString(0) + ";  R" + reader.GetString(1) + " - Qty: " + 0);
-                    }
+                    Services.Load(reader);
                     reader.Close();
-                    query = "SELECT service_type_id FROM service_type WHERE service_type_name = 'Photoshoot';";
+                    for (int i = 0; i < Services.Rows.Count; i++)
+                    {
+                        dgvServices.Rows.Add(Services.Rows[i].ItemArray[0], Services.Rows[i].ItemArray[1], "R" + Services.Rows[i].ItemArray[2], "Add");
+                    }
+                    productTypeID = " ";
+                    query = "SELECT product_type_id FROM product_type WHERE product_type_name = 'Photoshoot'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
                     reader.Read();
-                    servicetypeID = reader.GetInt32(0);
+                    productTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "SELECT service_name, service_price FROM service WHERE service_type_id = '" + servicetypeID +"'";
+                    query = "SELECT product_id, product_name, product_price FROM product WHERE product_type_id = '" + productTypeID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
-                    while (reader.Read())
+                    Products.Load(reader);
+                    reader.Close();
+                    for (int i = 0; i < Products.Rows.Count; i++)
                     {
-                        listBox3.Items.Add(reader.GetString(0) + ";  R" + reader.GetString(1) + " - Qty: " + 0);
+                        dgvProducts.Rows.Add(Products.Rows[i].ItemArray[0], Products.Rows[i].ItemArray[1], "R" + Products.Rows[i].ItemArray[2], "Add");
                     }
-                reader.Close();
                 }
             }
-            catch (Exception except)
+            catch (Exception ee)
             {
-                MessageBox.Show(except.Message);
-
+                MessageBox.Show(ee.Message);
             }
         }
         
         private void button1_Click(object sender, EventArgs e)
         {
-            int itemIndex, quantity = 0, i = 0;
-            string itemString = " ";
-            Services.Clear();
-            foreach (var item in listBox3.Items)
-            {
-                Services.Add(item.ToString());
-            }
-            foreach (var item in listBox3.SelectedItems)
-            {
-                itemIndex = listBox3.Items.IndexOf(item);
-                itemString = listBox3.Items[itemIndex].ToString();
-                int pos = itemString.IndexOf(":");
-                quantity = Convert.ToInt32(itemString.Substring(pos + 1)) + 1;
-                if (quantity > 1)
-                {
-                    MessageBox.Show("You have selected one or more services with a quantity of 1, some of these may not have updated properly");
-                    break;
-                }
-                itemString = itemString.Substring(0, pos);
-                Services[itemIndex] = itemString + ": " + quantity;
-            }
-            listBox3.Items.Clear();
-            listBox3.Items.AddRange(Services.ToArray());
-
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -106,24 +96,7 @@ namespace Design370
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int itemIndex, quantity = 0, i = 0;
-            string itemString = " ";
-            Products.Clear();
-            foreach (var item in listBox4.Items)
-            {
-                Products.Add(item.ToString());
-            }
-            foreach (var item in listBox4.SelectedItems)
-            {
-                itemIndex = listBox4.Items.IndexOf(item);
-                itemString = listBox4.Items[itemIndex].ToString();
-                int pos = itemString.IndexOf(":");
-                quantity = Convert.ToInt32(itemString.Substring(pos + 1)) + 1;
-                itemString = itemString.Substring(0, pos);
-                Products[itemIndex] = itemString + ": " + quantity;
-            }
-            listBox4.Items.Clear();
-            listBox4.Items.AddRange(Products.ToArray());
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -153,53 +126,56 @@ namespace Design370
 
         private void button6_Click(object sender, EventArgs e)
         {
+            DataTable Services = new DataTable();
+            DataTable Products = new DataTable();
             if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
             {
                 MessageBox.Show("Invalid character length for name and/or description");
                 return;
             }
-            int itemIndex1, quantity1 = 0, quantity2 = 0;
-            string itemString1 = " ";
-            bool flag = false, flag1 = false;
-            foreach (var item in listBox3.Items)
+            if (dgvServicesInPackage.Rows.Count == 0)
             {
-                itemIndex1 = listBox3.Items.IndexOf(item);
-                itemString1 = listBox3.Items[itemIndex1].ToString();
-                int pos = itemString1.IndexOf(":");
-                quantity1 = Convert.ToInt32(itemString1.Substring(pos + 1));
-                if (quantity1 >= 1)
-                {
-                    flag = true;
-                    break;
-                }
-            }
-            foreach (var item in listBox4.Items)
-            {
-                itemIndex1 = listBox4.Items.IndexOf(item);
-                itemString1 = listBox4.Items[itemIndex1].ToString();
-                int pos = itemString1.IndexOf(":");
-                quantity2 = Convert.ToInt32(itemString1.Substring(pos + 1));
-                if (quantity2 >= 1)
-                {
-                    flag1 = true;
-                    break;
-                }
-            }
-
-            if (!flag || !flag1)
-            {
-                MessageBox.Show("No service and/or product selected");
+                MessageBox.Show("No services have been added to the package");
                 return;
             }
-
+            else if (dgvProductsInPackage.Rows.Count == 0)
+            {
+                MessageBox.Show("No products have been added to the package");
+                return;
+            }
+            foreach (DataGridViewColumn column in dgvServicesInPackage.Columns)
+            {
+                Services.Columns.Add(column.Name);
+            }
+            foreach (DataGridViewRow row in dgvServicesInPackage.Rows)
+            {
+                DataRow dRow = Services.NewRow();
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    dRow[cell.ColumnIndex] = cell.Value;
+                }
+                Services.Rows.Add(dRow);
+            }
+            foreach (DataGridViewColumn column in dgvProductsInPackage.Columns)
+            {
+                Products.Columns.Add(column.Name);
+            }
+            foreach (DataGridViewRow row in dgvProductsInPackage.Rows)
+            {
+                DataRow dRow = Products.NewRow();
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    dRow[cell.ColumnIndex] = cell.Value;
+                }
+                Products.Rows.Add(dRow);
+            }
             try
             {
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    int quantity = 0, itemIndex = 0, posid = 0, posquant = 0, booking_package_id = 0;
-                    string itemString = " ";
                     string package_type = "";
+                    int booking_package_id = 0;
                     string query = "SELECT booking_package_type_id FROM booking_package_type WHERE booking_package_type_name = 'Photoshoot'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
@@ -216,60 +192,25 @@ namespace Design370
                     reader.Read();
                     booking_package_id = Convert.ToInt32(reader.GetInt32(0));
                     reader.Close();
-                    DataTable product_id = new DataTable();
-                    DataTable service_id = new DataTable();
-                    foreach (var item in Products)
+                    for (int i = 0; i < Services.Rows.Count; i++)
                     {
-                        itemIndex = Products.IndexOf(item);
-                        posid = Products[itemIndex].IndexOf(";");
-                        itemString = Products[itemIndex].Substring(0, posid);
-                        query = "SELECT product_id FROM product WHERE product_name = '" + itemString + "'";
+                        query = "INSERT INTO `booking_package_service` (`booking_package_id`, `service_id`) VALUES('" + booking_package_id + "', " +
+                            "'" + Services.Rows[i].ItemArray[0] + "')";
                         command = new MySqlCommand(query, dBConnection.Connection);
-                        reader = command.ExecuteReader();
-                        product_id.Load(reader);
-                        reader.Close();
+                        command.ExecuteNonQuery();
                     }
-                    for (int j = 0; j < product_id.Rows.Count; j++)
+                    for (int j = 0; j < Products.Rows.Count; j++)
                     {
-                        posquant = Products[j].IndexOf(":");
-                        quantity = Convert.ToInt32(Products[j].Substring(posquant + 1));
-                        if (quantity >= 0)
-                        {
-                            query = "INSERT INTO `booking_package_product` (`booking_package_id`, `product_id`, `booking_package_product_quantity`) VALUES";
-                            query += "('" + booking_package_id + "', '" + product_id.Rows[j].ItemArray[0].ToString() + "', '" + quantity + "')";
-                            command = new MySqlCommand(query, dBConnection.Connection);
-                            command.ExecuteNonQuery();
-                        }
-                    }
-                    foreach (var item in Services)
-                    {
-                        itemIndex = Services.IndexOf(item);
-                        posid = Services[itemIndex].IndexOf(";");
-                        itemString = Services[itemIndex].Substring(0, posid);
-                        query = "SELECT service_id FROM service WHERE service_name = '" + itemString + "'";
+                        query = "INSERT INTO `booking_package_product` (`booking_package_id`, `product_id`, `booking_package_product_quantity`) VALUES" +
+                            "('" + booking_package_id + "', '" + Products.Rows[j].ItemArray[0] + "', '" + Products.Rows[j].ItemArray[2] + "')";
                         command = new MySqlCommand(query, dBConnection.Connection);
-                        reader = command.ExecuteReader();
-                        service_id.Load(reader);
-                        reader.Close();
-                    }
-                    for (int k = 0; k < service_id.Rows.Count; k++)
-                    {
-                        posquant = Services[k].IndexOf(":");
-                        quantity = Convert.ToInt32(Services[k].Substring(posquant + 1));
-                        if (quantity == 1)
-                        {
-                            query = "INSERT INTO `booking_package_service` (`booking_package_id`, `service_id`) VALUES";
-                            query += "('" + booking_package_id + "', '" + service_id.Rows[k].ItemArray[0].ToString() + "')";
-                            command = new MySqlCommand(query, dBConnection.Connection);
-                            command.ExecuteNonQuery();
-                        }
+                        command.ExecuteNonQuery();
                     }
                 }
-            }
 
+            }
             catch (Exception except)
             {
-
                 MessageBox.Show(except.Message);
             }
             this.Close();
@@ -277,56 +218,369 @@ namespace Design370
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            int itemIndex, quantity = 0;
-            string itemString = " ";
-            Products.Clear();
-            foreach (var item in listBox4.Items)
-            {
-                Products.Add(item.ToString());
-            }
-            foreach (var item in listBox4.SelectedItems)
-            {
-                itemIndex = listBox4.Items.IndexOf(item);
-                itemString = listBox4.Items[itemIndex].ToString();
-                int pos = itemString.IndexOf(":");
-                quantity = Convert.ToInt32(itemString.Substring(pos + 1)) - 1;
-                if (quantity < 0)
-                {
-                    MessageBox.Show("You have selected one or more products with a quantity of 0, some of these may not have updated properly");
-                    break;
-                }
-                itemString = itemString.Substring(0, pos);
-                Products[itemIndex] = itemString + ": " + quantity;
-            }
-            listBox4.Items.Clear();
-            listBox4.Items.AddRange(Products.ToArray());
+            
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            int itemIndex, quantity = 0;
-            string itemString = " ";
-            Services.Clear();
-            foreach (var item in listBox3.Items)
+            
+        }
+
+        private void dgvServices_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DBConnection dBConnection = DBConnection.Instance();
+            switch (e.ColumnIndex)
             {
-                Services.Add(item.ToString());
-            }
-            foreach (var item in listBox3.SelectedItems)
-            {
-                itemIndex = listBox3.Items.IndexOf(item);
-                itemString = listBox3.Items[itemIndex].ToString();
-                int pos = itemString.IndexOf(":");
-                quantity = Convert.ToInt32(itemString.Substring(pos + 1)) - 1;
-                if (quantity < 0)
-                {
-                    MessageBox.Show("You have selected one or more services with a quantity of 0, some of these may not have updated properly");
+                case 3:
+                    try
+                    {
+                        if (dBConnection.IsConnect())
+                        {
+                            Services.Clear();
+                            serviceID = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            string query = "SELECT service_id, service_name, service_price FROM service WHERE service_id = '" + serviceID + "'";
+                            var command = new MySqlCommand(query, dBConnection.Connection);
+                            var reader = command.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                if (dgvServicesInPackage.Rows.Count == 0)
+                                {
+                                    dgvServicesInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Remove");
+                                }
+                                else
+                                {
+                                    foreach (DataGridViewRow item in dgvServicesInPackage.Rows)
+                                    {
+                                        Services.Add(item.Cells[0].Value.ToString());
+                                    }
+                                    if (dgvServicesInPackage.Rows.ToString().Contains(reader.GetString(0)) || Services.Contains(reader.GetString(0)))
+                                    {
+                                        MessageBox.Show("This service is already in the package");
+                                    }
+                                    else
+                                    {
+                                        dgvServicesInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Remove");
+                                    }
+                                }
+                            }
+                            reader.Close();
+                        }
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show(ee.Message);
+                    }
                     break;
-                }
-                itemString = itemString.Substring(0, pos);
-                Services[itemIndex] = itemString + ": " + quantity;
+                default:
+                    break;
             }
-            listBox3.Items.Clear();
-            listBox3.Items.AddRange(Services.ToArray());
+        }
+
+        private void dgvServicesInPackage_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DBConnection dBConnection = DBConnection.Instance();
+            switch (e.ColumnIndex)
+            {
+                case 3:
+                    try
+                    {
+                        if (dBConnection.IsConnect())
+                        {
+                            dgvServicesInPackage.Rows.Remove(dgvServicesInPackage.Rows[e.RowIndex]);
+                        }
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show(ee.Message);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DBConnection dBConnection = DBConnection.Instance();
+            switch (e.ColumnIndex)
+            {
+                case 3:
+                    try
+                    {
+                        if (dBConnection.IsConnect())
+                        {
+                            Products.Clear();
+                            productID = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            string query = "SELECT product_id, product_name, product_price FROM product WHERE product_id = '" + productID + "'";
+                            var command = new MySqlCommand(query, dBConnection.Connection);
+                            var reader = command.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                if (dgvProductsInPackage.Rows.Count == 0)
+                                {
+                                    dgvProductsInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), "1", "R" + reader.GetString(2), "Add", "Remove");
+                                    PIP.Rows.Add(reader.GetString(0), reader.GetString(1), "1", "R" + reader.GetString(2), "Add", "Remove");
+                                }
+                                else
+                                {
+                                    foreach (DataGridViewRow item in dgvProductsInPackage.Rows)
+                                    {
+                                        Products.Add(item.Cells[0].Value.ToString());
+                                    }
+                                    if (dgvProductsInPackage.Rows.ToString().Contains(reader.GetString(0)) || Products.Contains(reader.GetString(0)))
+                                    {
+                                        MessageBox.Show("This product is already in the package. To add to its quantity, use the add button in the table on the left");
+                                    }
+                                    else
+                                    {
+                                        dgvProductsInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), "1", "R" + reader.GetString(2), "Add", "Remove");
+                                        PIP.Rows.Add(reader.GetString(0), reader.GetString(1), "1", "R" + reader.GetString(2), "Add", "Remove");
+                                    }
+                                }
+                            }
+                            reader.Close();
+                        }
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show(ee.Message);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void dgvProductsInPackage_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DBConnection dBConnection = DBConnection.Instance();
+            string productInPackage = " ";
+            string itemString = " ";
+            string prodName = " ";
+            int productQuantity = 0, posid = 0;
+            double productPrice = 0;
+            switch (e.ColumnIndex)
+            {
+                case 4:
+                    try
+                    {
+                        if (dBConnection.IsConnect())
+                        {
+                            productInPackage = dgvProductsInPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            productQuantity = Convert.ToInt32(dgvProductsInPackage.Rows[e.RowIndex].Cells[2].Value);
+                            posid = dgvProductsInPackage.Rows[e.RowIndex].Cells[3].Value.ToString().IndexOf("R");
+                            itemString = dgvProductsInPackage.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(posid + 1);
+                            productPrice = Convert.ToDouble(itemString);
+                            productQuantity += 1;
+                            string query = "SELECT product_id, product_name, product_price FROM product WHERE product_id = '" + productInPackage + "'";
+                            var command = new MySqlCommand(query, dBConnection.Connection);
+                            var reader = command.ExecuteReader();
+                            reader.Read();
+                            productPrice += Convert.ToDouble(reader.GetString(2));
+                            dgvProductsInPackage.Rows[e.RowIndex].SetValues(reader.GetString(0), reader.GetString(1), productQuantity, "R" + string.Format("{0:0.00}", productPrice), "Add", "Remove");
+                            reader.Close();
+                        }
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show(ee.Message);
+                    }
+                    break;
+                case 5:
+                    try
+                    {
+                        if (dBConnection.IsConnect())
+                        {
+                            productInPackage = dgvProductsInPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            prodName = dgvProductsInPackage.Rows[e.RowIndex].Cells[1].Value.ToString();
+                            productQuantity = Convert.ToInt32(dgvProductsInPackage.Rows[e.RowIndex].Cells[2].Value);
+                            posid = dgvProductsInPackage.Rows[e.RowIndex].Cells[3].Value.ToString().IndexOf("R");
+                            itemString = dgvProductsInPackage.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(posid + 1);
+                            productPrice = Convert.ToDouble(itemString);
+                            if (productQuantity >= 2)
+                            {
+                                string query = "SELECT product_id, product_name, product_price FROM product WHERE product_id = '" + productInPackage + "'";
+                                var command = new MySqlCommand(query, dBConnection.Connection);
+                                var reader = command.ExecuteReader();
+                                reader.Read();
+                                productPrice -= Convert.ToDouble(reader.GetString(2));
+                                reader.Close();
+                                productQuantity -= 1;
+                                dgvProductsInPackage.Rows[e.RowIndex].SetValues(productInPackage, prodName, productQuantity, "R" + string.Format("{0:0.00}", productPrice), "Add", "Remove");
+                            }
+                            else if (productQuantity == 1)
+                            {
+                                dgvProductsInPackage.Rows.Remove(dgvProductsInPackage.Rows[e.RowIndex]);
+                            }
+                        }
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show(ee.Message);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void txtSearchProducts_TextChanged(object sender, EventArgs e)
+        {
+            dgvProducts.Rows.Clear();
+            try
+            {
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
+                {
+                    string query = "SELECT product_id, product_name, product_price FROM product " +
+                        "WHERE product_name LIKE '%" + txtSearchProducts.Text + "%' AND product_type_id = '" + productTypeID + "'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Add");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void dgvProducts_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtSearchProducts.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtSearchProducts.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearchProducts.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void txtSearchPIP_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DBConnection dbCon = DBConnection.Instance();
+                Products.Clear();
+                //for (int i = 0; i < PIP.Rows.Count; i++)
+                //{
+                //    dgvProductsInPackage.Rows.Add(PIP.Rows[i].ItemArray[0], PIP.Rows[i].ItemArray[1], PIP.Rows[i].ItemArray[2], PIP.Rows[i].ItemArray[3], PIP.Rows[i].ItemArray[4], PIP.Rows[i].ItemArray[6]);
+                //}
+                if (dbCon.IsConnect() && dgvProductsInPackage.Rows.Count != 0)
+                {
+                    foreach (DataGridViewRow item in dgvProductsInPackage.Rows)
+                    {
+                        Products.Add(item.Cells[0].Value.ToString());
+                        PIP.Rows.Add(item.Cells[0].Value.ToString(), item.Cells[1].Value.ToString(), item.Cells[2].Value.ToString(), item.Cells[3].Value.ToString(), "Add", "Remove");
+                    }
+                    dgvProductsInPackage.Rows.Clear();
+                    foreach (var item in Products)
+                    {
+                        string query = "SELECT product_id, product_name, product_price FROM product " +
+                        "WHERE product_name LIKE '%" + txtSearchPIP.Text + "%' AND product_id = '" + item + "'";
+                        var command = new MySqlCommand(query, dbCon.Connection);
+                        var reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            dgvProductsInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R", "Add", "Remove");
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void dgvProductsInPackage_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtSearchPIP.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtSearchPIP.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearchPIP.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
         }
     }
 }
