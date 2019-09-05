@@ -34,7 +34,6 @@ namespace Design370
             textBox2.Enabled = edit;
             textBox3.Enabled = edit;
             comboBox1.Enabled = edit;
-            comboBox2.Enabled = edit;
             button3.Enabled = edit;
             button2.Enabled = !edit;
 
@@ -42,20 +41,18 @@ namespace Design370
             {
                 DBConnection dbConnection = DBConnection.Instance();
                 string productTypeID = "";
-                string bookingTypeID = "";
-                string box1 = "";
-                string box2 = "";
+                string productTypeName = "";
                 if (dbConnection.IsConnect())
                 {
-                    var mysqlCmd = new MySqlCommand("SELECT * FROM booking_type", dbConnection.Connection);
+                    var mysqlCmd = new MySqlCommand("SELECT * FROM product_type", dbConnection.Connection);
                     var mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
                     {
-                        comboBox2.Items.Add(mysqlReader["booking_type_name"].ToString());
-                        comboBox2.ValueMember = (mysqlReader["booking_type_id"].ToString());
+                        comboBox1.Items.Add(mysqlReader["product_type_name"].ToString());
+                        comboBox1.ValueMember = (mysqlReader["product_type_id"].ToString());
                     }
                     mysqlReader.Close();
-                    string query = "SELECT product_id, product_name, product_description, product_price, booking_type_id, product_type_id FROM product WHERE product_name = '" + GetProductRow + "'";
+                    string query = "SELECT product_id, product_name, product_description, product_price, product_type_id FROM product WHERE product_id = '" + GetProductRow + "'";
                     mysqlCmd = new MySqlCommand(query, dbConnection.Connection);
                     mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
@@ -64,27 +61,16 @@ namespace Design370
                         textBox1.Text = mysqlReader.GetString(1);
                         textBox2.Text = mysqlReader.GetString(2);
                         textBox3.Text = mysqlReader.GetString(3);
-                        bookingTypeID = mysqlReader.GetString(4);
-                        productTypeID = mysqlReader.GetString(5);
+                        productTypeID = mysqlReader.GetString(4);
                     }
                     mysqlReader.Close();
-                    query = "SELECT booking_type_name FROM booking_type WHERE booking_type_id = '" + bookingTypeID + "'";
+                    query = "SELECT product_type_name FROM product_type WHERE product_type_id = '" + productTypeID + "'";
                     mysqlCmd = new MySqlCommand(query, dbConnection.Connection);
                     mysqlReader = mysqlCmd.ExecuteReader();
                     mysqlReader.Read();
-                    box1 = mysqlReader.GetString(0);
+                    productTypeName = mysqlReader.GetString(0);
                     mysqlReader.Close();
-                    comboBox2.SelectedItem = box1;
-                    mysqlCmd = new MySqlCommand("SELECT * FROM product_type WHERE product_type_id = '" + productTypeID + "'", dbConnection.Connection);
-                    mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-                        comboBox1.Items.Add(mysqlReader["product_type_name"].ToString());
-                        comboBox1.ValueMember = (mysqlReader["product_type_id"].ToString());
-                        box2 = mysqlReader.GetString(1);
-                    }
-                    mysqlReader.Close();
-                    comboBox1.SelectedItem = box2;
+                    comboBox1.SelectedText = productTypeName;
                 }
             }
             catch (Exception except)
@@ -99,7 +85,6 @@ namespace Design370
             textBox1.Enabled = true;
             textBox2.Enabled = true;
             textBox3.Enabled = true;
-            comboBox2.Enabled = true;
             button3.Enabled = true;
             button2.Enabled = false;
         }
@@ -116,9 +101,9 @@ namespace Design370
                 MessageBox.Show("Invalid character length for name and/or description and/or price");
                 return;
             }
-            if (comboBox1.SelectedIndex <= -1 || comboBox2.SelectedIndex <= -1)
+            if (comboBox1.SelectedIndex <= -1)
             {
-                MessageBox.Show("Please select a booking type and/or product type");
+                MessageBox.Show("Please select a product type");
                 return;
             }
             try
@@ -127,22 +112,15 @@ namespace Design370
                 if (dbConnection.IsConnect())
                 {
                     string productTypeID = "";
-                    string bookingTypeID = "";
                     string query = "SELECT product_type_id FROM product_type WHERE product_type_name = '" + comboBox1.SelectedItem.ToString() + "'";
                     var command = new MySqlCommand(query, dbConnection.Connection);
                     var reader = command.ExecuteReader();
                     reader.Read();
                     productTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = '" + comboBox2.SelectedItem.ToString() + "'";
-                    command = new MySqlCommand(query, dbConnection.Connection);
-                    reader = command.ExecuteReader();
-                    reader.Read();
-                    bookingTypeID = reader.GetString(0);
-                    reader.Close();
                     query = "UPDATE `product` SET `product_name` = '" + textBox1.Text + "', `product_description` = '" +
                         "" + textBox2.Text + "', `product_price` = '" + textBox3.Text + "', `product_type_id` = '" +
-                        "" + productTypeID + "', `booking_type_id` = '" + bookingTypeID + "' WHERE product_id = '" + productID + "'";
+                        "" + productTypeID + "' WHERE product_id = '" + productID + "'";
                     command = new MySqlCommand(query, dbConnection.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -162,47 +140,7 @@ namespace Design370
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox1.Items.Clear();
-            try
-            {
-                DBConnection dbConnection = DBConnection.Instance();
-                if (dbConnection.IsConnect())
-                {
-                    string bookingTypeID = "";
-                    string productTypeID = "";
-                    var mysqlCmd = new MySqlCommand("SELECT booking_type_ID FROM booking_type WHERE booking_type_name = '" + comboBox2.SelectedItem + "'", dbConnection.Connection);
-                    var mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-
-                        bookingTypeID = mysqlReader.GetString(0);
-
-                    }
-                    mysqlReader.Close();
-                    mysqlCmd = new MySqlCommand("SELECT product_type_id FROM product WHERE booking_type_id = '" + bookingTypeID + "'", dbConnection.Connection);
-                    mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-
-                        productTypeID = mysqlReader.GetString(0);
-
-                    }
-                    mysqlReader.Close();
-                    mysqlCmd = new MySqlCommand("SELECT * FROM product_type WHERE product_type_id = '" + productTypeID + "'", dbConnection.Connection);
-                    mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-                        comboBox1.Items.Add(mysqlReader["product_type_name"].ToString());
-                        comboBox1.ValueMember = (mysqlReader["product_type_id"].ToString());
-                    }
-                    mysqlReader.Close();
-                }
-
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            
         }
     }
 }

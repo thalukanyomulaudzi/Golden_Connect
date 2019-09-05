@@ -101,5 +101,15 @@ namespace Design370
         {
             
         }
+
+        private void txtServicePrice_Validating(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void txtServicePrice_Validated(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -75,24 +75,12 @@ namespace Design370
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnServiceAdd = new System.Windows.Forms.Button();
             this.dgvServices = new System.Windows.Forms.DataGridView();
-            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.lblProductSearch = new System.Windows.Forms.Label();
             this.txtProductSearch = new System.Windows.Forms.TextBox();
             this.btnProductAdd = new System.Windows.Forms.Button();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ProductEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ProductDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.btnPhotoshootPackageAdd = new System.Windows.Forms.Button();
             this.lblPhotoshootPackageSearch = new System.Windows.Forms.Label();
@@ -164,6 +152,20 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ServiceDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ProductEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ProductDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -647,6 +649,7 @@ namespace Design370
             this.dgvServices.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ServiceID,
             this.ServiceName,
             this.ServiceType,
             this.ServicePrice,
@@ -663,42 +666,6 @@ namespace Design370
             this.dgvServices.TabIndex = 0;
             this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
             this.dgvServices.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvServices_CellPainting);
-            // 
-            // ServiceName
-            // 
-            this.ServiceName.HeaderText = "Service Name";
-            this.ServiceName.Name = "ServiceName";
-            this.ServiceName.ReadOnly = true;
-            // 
-            // ServiceType
-            // 
-            this.ServiceType.HeaderText = "Service Type";
-            this.ServiceType.Name = "ServiceType";
-            this.ServiceType.ReadOnly = true;
-            // 
-            // ServicePrice
-            // 
-            this.ServicePrice.HeaderText = "Price";
-            this.ServicePrice.Name = "ServicePrice";
-            this.ServicePrice.ReadOnly = true;
-            // 
-            // ServiceView
-            // 
-            this.ServiceView.HeaderText = "";
-            this.ServiceView.Name = "ServiceView";
-            this.ServiceView.ReadOnly = true;
-            // 
-            // ServiceEdit
-            // 
-            this.ServiceEdit.HeaderText = "";
-            this.ServiceEdit.Name = "ServiceEdit";
-            this.ServiceEdit.ReadOnly = true;
-            // 
-            // ServiceDelete
-            // 
-            this.ServiceDelete.HeaderText = "";
-            this.ServiceDelete.Name = "ServiceDelete";
-            this.ServiceDelete.ReadOnly = true;
             // 
             // tabPage5
             // 
@@ -768,6 +735,7 @@ namespace Design370
             this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductID,
             this.ProductName,
             this.ProductType,
             this.ProductPrice,
@@ -784,45 +752,6 @@ namespace Design370
             this.dgvProducts.TabIndex = 16;
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView3_CellContentClick);
             this.dgvProducts.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvProducts_CellPainting);
-            // 
-            // ProductName
-            // 
-            this.ProductName.DataPropertyName = "product_name";
-            this.ProductName.HeaderText = "Product Name";
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            // 
-            // ProductType
-            // 
-            this.ProductType.DataPropertyName = "product_type_name";
-            this.ProductType.HeaderText = "Product Type";
-            this.ProductType.Name = "ProductType";
-            this.ProductType.ReadOnly = true;
-            // 
-            // ProductPrice
-            // 
-            this.ProductPrice.DataPropertyName = "product_price";
-            this.ProductPrice.HeaderText = "Price";
-            this.ProductPrice.Name = "ProductPrice";
-            this.ProductPrice.ReadOnly = true;
-            // 
-            // ProductView
-            // 
-            this.ProductView.HeaderText = "";
-            this.ProductView.Name = "ProductView";
-            this.ProductView.ReadOnly = true;
-            // 
-            // ProductEdit
-            // 
-            this.ProductEdit.HeaderText = "";
-            this.ProductEdit.Name = "ProductEdit";
-            this.ProductEdit.ReadOnly = true;
-            // 
-            // ProductDelete
-            // 
-            this.ProductDelete.HeaderText = "";
-            this.ProductDelete.Name = "ProductDelete";
-            this.ProductDelete.ReadOnly = true;
             // 
             // tabPage6
             // 
@@ -1576,6 +1505,95 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // ServiceID
+            // 
+            this.ServiceID.HeaderText = "ID";
+            this.ServiceID.Name = "ServiceID";
+            this.ServiceID.ReadOnly = true;
+            this.ServiceID.Visible = false;
+            // 
+            // ServiceName
+            // 
+            this.ServiceName.HeaderText = "Service Name";
+            this.ServiceName.Name = "ServiceName";
+            this.ServiceName.ReadOnly = true;
+            // 
+            // ServiceType
+            // 
+            this.ServiceType.HeaderText = "Service Type";
+            this.ServiceType.Name = "ServiceType";
+            this.ServiceType.ReadOnly = true;
+            // 
+            // ServicePrice
+            // 
+            this.ServicePrice.HeaderText = "Price";
+            this.ServicePrice.Name = "ServicePrice";
+            this.ServicePrice.ReadOnly = true;
+            // 
+            // ServiceView
+            // 
+            this.ServiceView.HeaderText = "";
+            this.ServiceView.Name = "ServiceView";
+            this.ServiceView.ReadOnly = true;
+            // 
+            // ServiceEdit
+            // 
+            this.ServiceEdit.HeaderText = "";
+            this.ServiceEdit.Name = "ServiceEdit";
+            this.ServiceEdit.ReadOnly = true;
+            // 
+            // ServiceDelete
+            // 
+            this.ServiceDelete.HeaderText = "";
+            this.ServiceDelete.Name = "ServiceDelete";
+            this.ServiceDelete.ReadOnly = true;
+            // 
+            // ProductID
+            // 
+            this.ProductID.HeaderText = "ID";
+            this.ProductID.Name = "ProductID";
+            this.ProductID.ReadOnly = true;
+            this.ProductID.Visible = false;
+            // 
+            // ProductName
+            // 
+            this.ProductName.DataPropertyName = "product_name";
+            this.ProductName.HeaderText = "Product Name";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // ProductType
+            // 
+            this.ProductType.DataPropertyName = "product_type_name";
+            this.ProductType.HeaderText = "Product Type";
+            this.ProductType.Name = "ProductType";
+            this.ProductType.ReadOnly = true;
+            // 
+            // ProductPrice
+            // 
+            this.ProductPrice.DataPropertyName = "product_price";
+            this.ProductPrice.HeaderText = "Price";
+            this.ProductPrice.Name = "ProductPrice";
+            this.ProductPrice.ReadOnly = true;
+            // 
+            // ProductView
+            // 
+            this.ProductView.HeaderText = "";
+            this.ProductView.Name = "ProductView";
+            this.ProductView.ReadOnly = true;
+            // 
+            // ProductEdit
+            // 
+            this.ProductEdit.HeaderText = "";
+            this.ProductEdit.Name = "ProductEdit";
+            this.ProductEdit.ReadOnly = true;
+            // 
+            // ProductDelete
+            // 
+            this.ProductDelete.HeaderText = "";
+            this.ProductDelete.Name = "ProductDelete";
+            this.ProductDelete.ReadOnly = true;
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1734,12 +1752,6 @@ namespace Design370
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TabPage tabPage12;
         private DataGridView dgvService;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
-        private System.Windows.Forms.DataGridViewButtonColumn ProductView;
-        private System.Windows.Forms.DataGridViewButtonColumn ProductEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ProductDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventPackageName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServicesEvents;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductsEvents;
@@ -1777,12 +1789,20 @@ namespace Design370
         private DataGridViewButtonColumn bookingView;
         private DataGridViewButtonColumn BookingEdit;
         private DataGridViewButtonColumn BookingDelete;
+        private DataGridViewTextBoxColumn ServiceID;
         private DataGridViewTextBoxColumn ServiceName;
         private DataGridViewTextBoxColumn ServiceType;
         private DataGridViewTextBoxColumn ServicePrice;
         private DataGridViewButtonColumn ServiceView;
         private DataGridViewButtonColumn ServiceEdit;
         private DataGridViewButtonColumn ServiceDelete;
+        private DataGridViewTextBoxColumn ProductID;
+        private DataGridViewTextBoxColumn ProductName;
+        private DataGridViewTextBoxColumn ProductType;
+        private DataGridViewTextBoxColumn ProductPrice;
+        private DataGridViewButtonColumn ProductView;
+        private DataGridViewButtonColumn ProductEdit;
+        private DataGridViewButtonColumn ProductDelete;
     }
 }
 

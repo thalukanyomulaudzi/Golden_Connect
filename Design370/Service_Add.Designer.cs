@@ -104,6 +104,8 @@
             this.txtServicePrice.Name = "txtServicePrice";
             this.txtServicePrice.Size = new System.Drawing.Size(172, 21);
             this.txtServicePrice.TabIndex = 82;
+            this.txtServicePrice.Validating += new System.ComponentModel.CancelEventHandler(this.txtServicePrice_Validating);
+            this.txtServicePrice.Validated += new System.EventHandler(this.txtServicePrice_Validated);
             // 
             // label3
             // 

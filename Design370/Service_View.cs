@@ -60,7 +60,7 @@ namespace Design370
                         comboBox1.ValueMember = (mysqlReader["service_type_id"].ToString());
                     }
                     mysqlReader.Close();
-                    string query = "SELECT service_id, service_name, service_description, service_price, service_type_id FROM service WHERE service_name = '" + GetServiceRow + "'";
+                    string query = "SELECT service_id, service_name, service_description, service_price, service_type_id FROM service WHERE service_id = '" + GetServiceRow + "'";
                     mysqlCmd = new MySqlCommand(query, dbConnection.Connection);
                     mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
