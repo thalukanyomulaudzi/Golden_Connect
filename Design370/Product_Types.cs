@@ -28,50 +28,69 @@ namespace Design370
         private void DataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Product_Types_View product_Types_View = new Product_Types_View();
-            string productTypeName = "";
+            string productTypeID = "";
             switch (e.ColumnIndex)
             {
 
-                case 2:
-                    Product_Types_View.edit = false;
-                    productTypeName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    product_Types_View.GetProductTypeRow = productTypeName;
-                    product_Types_View.ShowDialog();
-                    break;
                 case 3:
-                    Product_Types_View.edit = true;
-                    productTypeName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    product_Types_View.GetProductTypeRow = productTypeName;
+                    Product_Types_View.edit = false;
+                    productTypeID = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    product_Types_View.GetProductTypeRow = productTypeID;
                     product_Types_View.ShowDialog();
                     break;
                 case 4:
-                    productTypeName = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Product_Types_View.edit = true;
+                    productTypeID = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    product_Types_View.GetProductTypeRow = productTypeID;
+                    product_Types_View.ShowDialog();
+                    break;
+                case 5:
+                    productTypeID = dataGridView7.Rows[e.RowIndex].Cells[0].Value.ToString();
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
+                        try
+                        {
+                            DBConnection dBConnection = DBConnection.Instance();
+                            if (dBConnection.IsConnect())
+                            {
+                                string query = "DELETE FROM `product_type` WHERE product_type_id = '" + productTypeID + "'";
+                                var command = new MySqlCommand(query, dBConnection.Connection);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            System.Windows.Forms.MessageBox.Show("This product type contains services. It can not be deleted.");
+                        }
                         dataGridView7.Rows.Clear();
                         try
                         {
                             DBConnection dBConnection = DBConnection.Instance();
                             if (dBConnection.IsConnect())
                             {
-                                string productTypeID = "";
-                                string query = "SELECT product_type_id FROM product_type WHERE product_type_name = '" + productTypeName + "'";
+                                string productTypesID = " ";
+                                string productTypeName = " ";
+                                string prpductTypeDescription = " ";
+                                DataTable ProductTypes = new DataTable();
+                                string query = "SELECT product_type_id, product_type_name, product_type_description FROM product_type";
                                 var command = new MySqlCommand(query, dBConnection.Connection);
                                 var reader = command.ExecuteReader();
-                                while (reader.Read())
+                                ProductTypes.Load(reader);
+                                for (int i = 0; i < ProductTypes.Rows.Count; i++)
                                 {
-                                    productTypeID = reader.GetString(0);
+                                    productTypesID = ProductTypes.Rows[i].ItemArray[0].ToString();
+                                    productTypeName = ProductTypes.Rows[i].ItemArray[1].ToString();
+                                    prpductTypeDescription = ProductTypes.Rows[i].ItemArray[2].ToString();
+                                    dataGridView7.Rows.Add(productTypesID, productTypeName, prpductTypeDescription, "View", "Edit", "Delete");
                                 }
                                 reader.Close();
-                                query = "DELETE FROM `product_type` WHERE product_type_id = '" + productTypeID + "'";
-                                command = new MySqlCommand(query, dBConnection.Connection);
-                                command.ExecuteNonQuery();
                             }
                         }
-                        catch (Exception except)
+                        catch (Exception ex)
                         {
-                            System.Windows.Forms.MessageBox.Show("This product type contains services. It can not be deleted.");
+                            System.Windows.Forms.MessageBox.Show(ex.Message);
+
                         }
                     }
                     else
@@ -92,18 +111,20 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
+                    string productTypeID = " ";
                     string productTypeName = " ";
                     string prpductTypeDescription = " ";
                     DataTable ProductTypes = new DataTable();
-                    string query = "SELECT product_type_name, product_type_description FROM product_type";
+                    string query = "SELECT product_type_id, product_type_name, product_type_description FROM product_type";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     ProductTypes.Load(reader);
                     for (int i = 0; i < ProductTypes.Rows.Count; i++)
                     {
-                        productTypeName = ProductTypes.Rows[i].ItemArray[0].ToString();
-                        prpductTypeDescription = ProductTypes.Rows[i].ItemArray[1].ToString();
-                        dataGridView7.Rows.Add(productTypeName, prpductTypeDescription, "View", "Edit", "Delete");
+                        productTypeID = ProductTypes.Rows[i].ItemArray[0].ToString();
+                        productTypeName = ProductTypes.Rows[i].ItemArray[1].ToString();
+                        prpductTypeDescription = ProductTypes.Rows[i].ItemArray[2].ToString();
+                        dataGridView7.Rows.Add(productTypeID, productTypeName, prpductTypeDescription, "View", "Edit", "Delete");
                     }
                     reader.Close();
                 }
@@ -123,19 +144,21 @@ namespace Design370
                 if (dBConnection.IsConnect())
                 {
                     dataGridView7.Rows.Clear();
+                    string productTypeID = " ";
                     string productTypeName = " ";
                     string prpductTypeDescription = " ";
                     DataTable ProductTypes = new DataTable();
-                    string query = "SELECT product_type_name, product_type_description FROM product_type WHERE product_type_name LIKE '%" + textBox7.Text + "%' OR ";
+                    string query = "SELECT product_type_id, product_type_name, product_type_description FROM product_type WHERE product_type_name LIKE '%" + textBox7.Text + "%' OR ";
                     query += "product_type_description LIKE '%" + textBox7.Text + "%'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     ProductTypes.Load(reader);
                     for (int i = 0; i < ProductTypes.Rows.Count; i++)
                     {
-                        productTypeName = ProductTypes.Rows[i].ItemArray[0].ToString();
-                        prpductTypeDescription = ProductTypes.Rows[i].ItemArray[1].ToString();
-                        dataGridView7.Rows.Add(productTypeName, prpductTypeDescription, "View", "Edit", "Delete");
+                        productTypeID = ProductTypes.Rows[i].ItemArray[0].ToString();
+                        productTypeName = ProductTypes.Rows[i].ItemArray[1].ToString();
+                        prpductTypeDescription = ProductTypes.Rows[i].ItemArray[2].ToString();
+                        dataGridView7.Rows.Add(productTypeID, productTypeName, prpductTypeDescription, "View", "Edit", "Delete");
                     }
                     reader.Close();
                 }

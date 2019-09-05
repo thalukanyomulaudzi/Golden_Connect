@@ -29,8 +29,8 @@ namespace Design370
 
         private void Button3_Click_1(object sender, EventArgs e)
         {
-            Product_Types product_Types = new Product_Types();
-            product_Types.ShowDialog();
+            Product_Type_Add product_Type_add = new Product_Type_Add();
+            product_Type_add.ShowDialog();
         }
 
         private void Button2_Click_1(object sender, EventArgs e)
@@ -77,6 +77,17 @@ namespace Design370
 
         private void Product_Add_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Product_Add_Activated(object sender, EventArgs e)
+        {
+            cbxProductTypes.Items.Clear();
             try
             {
                 if (dbCon.IsConnect())
@@ -97,11 +108,6 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }

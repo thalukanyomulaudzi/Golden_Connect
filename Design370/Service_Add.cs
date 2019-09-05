@@ -28,26 +28,7 @@ namespace Design370
 
         private void Service_Add_Load(object sender, EventArgs e)
         {
-            try
-            {
-                if (dbCon.IsConnect())
-                {
-                    var mysqlCmd = new MySqlCommand("SELECT * FROM service_type", dbCon.Connection);
-                    var mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-                        cbxServiceTypes.Items.Add(mysqlReader["service_type_name"].ToString());
-                        cbxServiceTypes.ValueMember = (mysqlReader["service_type_id"].ToString());
-
-                    }
-                    mysqlReader.Close();
-                }
-
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -93,8 +74,8 @@ namespace Design370
 
         private void btnAddServiceType_Click(object sender, EventArgs e)
         {
-            Service_Types service_Types = new Service_Types();
-            service_Types.ShowDialog();
+            Service_Types_Add service_Types_add = new Service_Types_Add();
+            service_Types_add.ShowDialog();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,6 +91,31 @@ namespace Design370
         private void txtServicePrice_Validated(object sender, EventArgs e)
         {
             
+        }
+
+        private void Service_Add_Activated(object sender, EventArgs e)
+        {
+            cbxServiceTypes.Items.Clear();
+            try
+            {
+                if (dbCon.IsConnect())
+                {
+                    var mysqlCmd = new MySqlCommand("SELECT * FROM service_type", dbCon.Connection);
+                    var mysqlReader = mysqlCmd.ExecuteReader();
+                    while (mysqlReader.Read())
+                    {
+                        cbxServiceTypes.Items.Add(mysqlReader["service_type_name"].ToString());
+                        cbxServiceTypes.ValueMember = (mysqlReader["service_type_id"].ToString());
+
+                    }
+                    mysqlReader.Close();
+                }
+
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
         }
     }
 }

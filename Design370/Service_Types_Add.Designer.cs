@@ -64,6 +64,7 @@
             this.txtServTypeDesc.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServTypeDesc.Location = new System.Drawing.Point(30, 97);
             this.txtServTypeDesc.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtServTypeDesc.MaxLength = 100;
             this.txtServTypeDesc.Multiline = true;
             this.txtServTypeDesc.Name = "txtServTypeDesc";
             this.txtServTypeDesc.Size = new System.Drawing.Size(198, 162);
@@ -85,6 +86,7 @@
             this.txtServTypeName.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServTypeName.Location = new System.Drawing.Point(30, 40);
             this.txtServTypeName.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtServTypeName.MaxLength = 25;
             this.txtServTypeName.Name = "txtServTypeName";
             this.txtServTypeName.Size = new System.Drawing.Size(198, 21);
             this.txtServTypeName.TabIndex = 26;
@@ -115,6 +117,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Service_Types_Add";
             this.Text = "Add Service Type";
+            this.Load += new System.EventHandler(this.Service_Types_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,6 +18,10 @@ namespace Design370
         public Product_Type_Add()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(txtProdTypeName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtProdTypeDesc, "A maximum of 100 characters can be entered");
         }
 
 
@@ -37,8 +41,8 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "INSERT INTO `product_type`(`product_type_name`, `product_type_description`, `product_type_id`) VALUES('" +
-                                txtProdTypeName.Text + "', '" + txtProdTypeDesc.Text + "', NULL')";
+                    string query = "INSERT INTO `product_type`(`product_type_id`, `product_type_name`, `product_type_description`) VALUES('NULL', '" +
+                                txtProdTypeName.Text + "', '" + txtProdTypeDesc.Text + "')";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }

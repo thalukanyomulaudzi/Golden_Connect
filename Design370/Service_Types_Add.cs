@@ -18,6 +18,10 @@ namespace Design370
         public Service_Types_Add()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(txtServTypeName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtServTypeDesc, "A maximum of 100 characters can be entered");
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -36,8 +40,8 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "INSERT INTO `product_type`(`product_type_name`, `product_type_description`, `product_type_id`) VALUES('" +
-                                txtServTypeName.Text + "', '" + txtServTypeDesc.Text + "', NULL')";
+                    string query = "INSERT INTO `service_type`(`service_type_id`, `service_type_name`, `service_type_description`) VALUES('NULL', '" +
+                                txtServTypeName.Text + "', '" + txtServTypeDesc.Text + "')";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -47,6 +51,11 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
+        }
+
+        private void Service_Types_Add_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

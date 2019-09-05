@@ -182,6 +182,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Service_Add";
             this.Text = "Add Service";
+            this.Activated += new System.EventHandler(this.Service_Add_Activated);
             this.Load += new System.EventHandler(this.Service_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

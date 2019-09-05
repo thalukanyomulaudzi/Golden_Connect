@@ -32,6 +32,7 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.ServiceTypeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmpTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmpTypeDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmpTypeView = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -78,6 +79,7 @@
             this.dataGridView7.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ServiceTypeID,
             this.EmpTypeName,
             this.EmpTypeDescription,
             this.EmpTypeView,
@@ -92,6 +94,13 @@
             this.dataGridView7.TabIndex = 49;
             this.dataGridView7.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellContentClick);
             this.dataGridView7.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView7_CellPainting);
+            // 
+            // ServiceTypeID
+            // 
+            this.ServiceTypeID.HeaderText = "ID";
+            this.ServiceTypeID.Name = "ServiceTypeID";
+            this.ServiceTypeID.ReadOnly = true;
+            this.ServiceTypeID.Visible = false;
             // 
             // EmpTypeName
             // 
@@ -151,6 +160,7 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.DataGridView dataGridView7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceTypeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmpTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmpTypeDescription;
         private System.Windows.Forms.DataGridViewButtonColumn EmpTypeView;

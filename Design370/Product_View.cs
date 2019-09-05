@@ -87,6 +87,7 @@ namespace Design370
             textBox3.Enabled = true;
             button3.Enabled = true;
             button2.Enabled = false;
+            comboBox1.Enabled = true;
         }
 
         private void Product_View_FormClosing(object sender, FormClosingEventArgs e)
