@@ -525,6 +525,9 @@
     <EmbeddedResource Include="Photoshoot_Package_Add.resx">
       <DependentUpon>Photoshoot_Package_Add.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Photoshoot_Package_View.resx">
+      <DependentUpon>Photoshoot_Package_View.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot_Types.resx">
       <DependentUpon>Photoshoot_Types.cs</DependentUpon>
     </EmbeddedResource>
