@@ -241,7 +241,6 @@ namespace Design370
                             booking_package_id = reader.GetInt32(0);
                         }
                         reader.Close();
-                        MessageBox.Show(booking_package_id.ToString());
                         query = "DELETE FROM `booking_package_product` WHERE booking_package_id = '" + booking_package_id + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
