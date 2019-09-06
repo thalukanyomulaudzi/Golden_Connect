@@ -17,7 +17,7 @@ namespace Design370
         string productID = " ";
         string serviceTypeID = " ";
         string productTypeID = " ";
-        DataTable PIP = new DataTable();
+        double TotalPrice = 0;
         List<string> Services = new List<string>();
         List<string> Products = new List<string>();
         public Photoshoot_Package_Add()
@@ -31,12 +31,6 @@ namespace Design370
 
         private void Photoshoot_Package_Add_Load(object sender, EventArgs e)
         {
-            PIP.Columns.Add();
-            PIP.Columns.Add();
-            PIP.Columns.Add();
-            PIP.Columns.Add();
-            PIP.Columns.Add();
-            PIP.Columns.Add();
             try
             {
                 DBConnection dBConnection = DBConnection.Instance();
@@ -246,6 +240,8 @@ namespace Design370
                                 if (dgvServicesInPackage.Rows.Count == 0)
                                 {
                                     dgvServicesInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Remove");
+                                    TotalPrice += reader.GetDouble(2);
+                                    textBox3.Text = "R" + string.Format("{0:0.00}", TotalPrice);
                                 }
                                 else
                                 {
@@ -260,6 +256,8 @@ namespace Design370
                                     else
                                     {
                                         dgvServicesInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Remove");
+                                        TotalPrice += reader.GetDouble(2);
+                                        textBox3.Text = "R" + string.Format("{0:0.00}", TotalPrice);
                                     }
                                 }
                             }
@@ -279,6 +277,8 @@ namespace Design370
         private void dgvServicesInPackage_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DBConnection dBConnection = DBConnection.Instance();
+            string itemString = " ";
+            int posid = 0;
             switch (e.ColumnIndex)
             {
                 case 3:
@@ -286,7 +286,11 @@ namespace Design370
                     {
                         if (dBConnection.IsConnect())
                         {
+                            posid = dgvServicesInPackage.Rows[e.RowIndex].Cells[2].Value.ToString().IndexOf("R");
+                            itemString = dgvServicesInPackage.Rows[e.RowIndex].Cells[2].Value.ToString().Substring(posid + 1);
+                            TotalPrice -= Convert.ToDouble(itemString);
                             dgvServicesInPackage.Rows.Remove(dgvServicesInPackage.Rows[e.RowIndex]);
+                            textBox3.Text = "R" + string.Format("{0:0.00}", TotalPrice);
                         }
                     }
                     catch (Exception ee)
@@ -319,7 +323,8 @@ namespace Design370
                                 if (dgvProductsInPackage.Rows.Count == 0)
                                 {
                                     dgvProductsInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), "1", "R" + reader.GetString(2), "Add", "Remove");
-                                    PIP.Rows.Add(reader.GetString(0), reader.GetString(1), "1", "R" + reader.GetString(2), "Add", "Remove");
+                                    TotalPrice += reader.GetDouble(2);
+                                    textBox3.Text = "R" + string.Format("{0:0.00}", TotalPrice);
                                 }
                                 else
                                 {
@@ -334,7 +339,8 @@ namespace Design370
                                     else
                                     {
                                         dgvProductsInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), "1", "R" + reader.GetString(2), "Add", "Remove");
-                                        PIP.Rows.Add(reader.GetString(0), reader.GetString(1), "1", "R" + reader.GetString(2), "Add", "Remove");
+                                        TotalPrice += reader.GetDouble(2);
+                                        textBox3.Text = "R" + string.Format("{0:0.00}", TotalPrice);
                                     }
                                 }
                             }
@@ -377,6 +383,8 @@ namespace Design370
                             var reader = command.ExecuteReader();
                             reader.Read();
                             productPrice += Convert.ToDouble(reader.GetString(2));
+                            TotalPrice += reader.GetDouble(2);
+                            textBox3.Text = "R" + string.Format("{0:0.00}", TotalPrice);
                             dgvProductsInPackage.Rows[e.RowIndex].SetValues(reader.GetString(0), reader.GetString(1), productQuantity, "R" + string.Format("{0:0.00}", productPrice), "Add", "Remove");
                             reader.Close();
                         }
@@ -404,13 +412,19 @@ namespace Design370
                                 var reader = command.ExecuteReader();
                                 reader.Read();
                                 productPrice -= Convert.ToDouble(reader.GetString(2));
+                                TotalPrice -= reader.GetDouble(2);
+                                textBox3.Text = "R" + string.Format("{0:0.00}", TotalPrice);
                                 reader.Close();
                                 productQuantity -= 1;
                                 dgvProductsInPackage.Rows[e.RowIndex].SetValues(productInPackage, prodName, productQuantity, "R" + string.Format("{0:0.00}", productPrice), "Add", "Remove");
                             }
                             else if (productQuantity == 1)
                             {
+                                posid = dgvProductsInPackage.Rows[e.RowIndex].Cells[3].Value.ToString().IndexOf("R");
+                                itemString = dgvProductsInPackage.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(posid + 1);
                                 dgvProductsInPackage.Rows.Remove(dgvProductsInPackage.Rows[e.RowIndex]);
+                                TotalPrice -= Convert.ToDouble(itemString);
+                                textBox3.Text = "R" + string.Format("{0:0.00}", TotalPrice);
                             }
                         }
                     }
@@ -502,31 +516,26 @@ namespace Design370
             try
             {
                 DBConnection dbCon = DBConnection.Instance();
-                Products.Clear();
-                //for (int i = 0; i < PIP.Rows.Count; i++)
-                //{
-                //    dgvProductsInPackage.Rows.Add(PIP.Rows[i].ItemArray[0], PIP.Rows[i].ItemArray[1], PIP.Rows[i].ItemArray[2], PIP.Rows[i].ItemArray[3], PIP.Rows[i].ItemArray[4], PIP.Rows[i].ItemArray[6]);
-                //}
-                if (dbCon.IsConnect() && dgvProductsInPackage.Rows.Count != 0)
+                if (dbCon.IsConnect())
                 {
-                    foreach (DataGridViewRow item in dgvProductsInPackage.Rows)
+                    CurrencyManager currencyManager = (CurrencyManager)BindingContext[dgvProductsInPackage.Rows];
+                    currencyManager.SuspendBinding();
+                    for (int i = 0; i < dgvProductsInPackage.Rows.Count; i++)
                     {
-                        Products.Add(item.Cells[0].Value.ToString());
-                        PIP.Rows.Add(item.Cells[0].Value.ToString(), item.Cells[1].Value.ToString(), item.Cells[2].Value.ToString(), item.Cells[3].Value.ToString(), "Add", "Remove");
+                        dgvProductsInPackage.Rows[i].Visible = true;
                     }
-                    dgvProductsInPackage.Rows.Clear();
-                    foreach (var item in Products)
+                    for (int u = 0; u < dgvProductsInPackage.RowCount; u++)
                     {
-                        string query = "SELECT product_id, product_name, product_price FROM product " +
-                        "WHERE product_name LIKE '%" + txtSearchPIP.Text + "%' AND product_id = '" + item + "'";
-                        var command = new MySqlCommand(query, dbCon.Connection);
-                        var reader = command.ExecuteReader();
-                        while (reader.Read())
+                        if (dgvProductsInPackage.Rows[u].Cells[1].Value.ToString().Contains(txtSearchPIP.Text))
                         {
-                            dgvProductsInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R", "Add", "Remove");
+                            dgvProductsInPackage.Rows[u].Visible = true;
                         }
-                        reader.Close();
+                        else
+                        {
+                            dgvProductsInPackage.Rows[u].Visible = false;
+                        }
                     }
+                    currencyManager.ResumeBinding();
                 }
             }
             catch (Exception ee)
@@ -538,7 +547,7 @@ namespace Design370
         private void dgvProductsInPackage_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             // High light and searching apply over selective fields of grid.  
-            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            if (e.RowIndex > -1 && e.ColumnIndex == 1)
             {
                 // Check data for search  
                 if (!String.IsNullOrWhiteSpace(txtSearchPIP.Text.Trim()))
@@ -559,6 +568,160 @@ namespace Design370
                         String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
                         //size of the search word in the grid cell data  
                         String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearchPIP.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void txtSearchServices_TextChanged(object sender, EventArgs e)
+        {
+            dgvServices.Rows.Clear();
+            try
+            {
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
+                {
+                    string query = "SELECT service_id, service_name, service_price FROM service " +
+                        "WHERE service_name LIKE '%" + txtSearchServices.Text + "%' AND service_type_id = '" + serviceTypeID + "'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Add");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void dgvServices_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtSearchServices.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtSearchServices.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearchServices.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void txtSearchSIP_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
+                {
+                    CurrencyManager currencyManager = (CurrencyManager)BindingContext[dgvProductsInPackage.Rows];
+                    currencyManager.SuspendBinding();
+                    for (int i = 0; i < dgvProductsInPackage.Rows.Count; i++)
+                    {
+                        dgvProductsInPackage.Rows[i].Visible = true;
+                    }
+                    for (int u = 0; u < dgvProductsInPackage.RowCount; u++)
+                    {
+                        if (dgvProductsInPackage.Rows[u].Cells[1].Value.ToString().Contains(txtSearchPIP.Text))
+                        {
+                            dgvProductsInPackage.Rows[u].Visible = true;
+                        }
+                        else
+                        {
+                            dgvProductsInPackage.Rows[u].Visible = false;
+                        }
+                    }
+                    currencyManager.ResumeBinding();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void dgvServicesInPackage_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex == 1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtSearchSIP.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtSearchSIP.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearchSIP.Text.Trim().Length);
                         Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
                         Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
                         if (s1.Width > 5)
