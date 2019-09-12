@@ -53,12 +53,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtEmpFirst = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEmpAddCancel
             // 
             this.btnEmpAddCancel.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmpAddCancel.Location = new System.Drawing.Point(264, 457);
+            this.btnEmpAddCancel.Location = new System.Drawing.Point(265, 490);
             this.btnEmpAddCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmpAddCancel.Name = "btnEmpAddCancel";
             this.btnEmpAddCancel.Size = new System.Drawing.Size(87, 28);
@@ -70,7 +71,7 @@
             // btnEmpAdd
             // 
             this.btnEmpAdd.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmpAdd.Location = new System.Drawing.Point(369, 457);
+            this.btnEmpAdd.Location = new System.Drawing.Point(370, 490);
             this.btnEmpAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmpAdd.Name = "btnEmpAdd";
             this.btnEmpAdd.Size = new System.Drawing.Size(86, 28);
@@ -125,6 +126,7 @@
             this.txtEmpAddress.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpAddress.Location = new System.Drawing.Point(30, 213);
             this.txtEmpAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEmpAddress.MaxLength = 100;
             this.txtEmpAddress.Multiline = true;
             this.txtEmpAddress.Name = "txtEmpAddress";
             this.txtEmpAddress.Size = new System.Drawing.Size(183, 61);
@@ -144,9 +146,6 @@
             // 
             this.cbxEmpGender.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmpGender.FormattingEnabled = true;
-            this.cbxEmpGender.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
             this.cbxEmpGender.Location = new System.Drawing.Point(273, 116);
             this.cbxEmpGender.Name = "cbxEmpGender";
             this.cbxEmpGender.Size = new System.Drawing.Size(183, 21);
@@ -216,6 +215,7 @@
             // 
             this.txtEmpEmail.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpEmail.Location = new System.Drawing.Point(273, 336);
+            this.txtEmpEmail.MaxLength = 50;
             this.txtEmpEmail.Name = "txtEmpEmail";
             this.txtEmpEmail.Size = new System.Drawing.Size(183, 21);
             this.txtEmpEmail.TabIndex = 51;
@@ -224,6 +224,7 @@
             // 
             this.txtEmpPhone.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpPhone.Location = new System.Drawing.Point(31, 336);
+            this.txtEmpPhone.MaxLength = 10;
             this.txtEmpPhone.Name = "txtEmpPhone";
             this.txtEmpPhone.Size = new System.Drawing.Size(183, 21);
             this.txtEmpPhone.TabIndex = 50;
@@ -252,6 +253,7 @@
             // 
             this.txtEmpID.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpID.Location = new System.Drawing.Point(273, 67);
+            this.txtEmpID.MaxLength = 13;
             this.txtEmpID.Name = "txtEmpID";
             this.txtEmpID.Size = new System.Drawing.Size(183, 21);
             this.txtEmpID.TabIndex = 47;
@@ -270,6 +272,7 @@
             // 
             this.txtEmpLast.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpLast.Location = new System.Drawing.Point(31, 165);
+            this.txtEmpLast.MaxLength = 25;
             this.txtEmpLast.Name = "txtEmpLast";
             this.txtEmpLast.Size = new System.Drawing.Size(183, 21);
             this.txtEmpLast.TabIndex = 45;
@@ -288,6 +291,7 @@
             // 
             this.txtEmpFirst.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpFirst.Location = new System.Drawing.Point(31, 116);
+            this.txtEmpFirst.MaxLength = 25;
             this.txtEmpFirst.Name = "txtEmpFirst";
             this.txtEmpFirst.Size = new System.Drawing.Size(183, 21);
             this.txtEmpFirst.TabIndex = 43;
@@ -302,12 +306,24 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "First Name :";
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(273, 421);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(126, 21);
+            this.button3.TabIndex = 66;
+            this.button3.Text = "Add Employee Type";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Employee_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(475, 498);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(475, 533);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -369,5 +385,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtEmpFirst;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button3;
     }
 }

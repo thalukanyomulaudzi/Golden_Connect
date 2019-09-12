@@ -61,8 +61,6 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            Employee.LoadEmployeeTypes(cbxSort);
-            Employee.LoadEmployees(empGrid);
             //Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
             Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
@@ -226,34 +224,32 @@ namespace Design370
 
         private void DataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Employee_Update employeeView = new Employee_Update();
+            Employee_View employeeView = new Employee_View();
+            string employeeID = " ";
             switch (e.ColumnIndex)
             {
 
-                case 0:
-                    Employee_Update.edit = false;
-                    Employee_Update.employeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    employeeView.btnSaveEmpEdit.Visible = false;
+                case 6:
+                    Employee_View.edit = false;
+                    employeeID = empGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    employeeView.GetEmployeeRow = employeeID;
                     employeeView.ShowDialog();
                     break;
-                case 1:
-                    Employee_Update.edit = true;
-                    Employee_Update.employeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                case 7:
+                    Employee_View.edit = true;
+                    employeeID = empGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    employeeView.GetEmployeeRow = employeeID;
                     employeeView.ShowDialog();
                     break;
-                case 2:
+                case 8:
+                    employeeID = empGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Employee.EmployeeID = employeeID;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        Employee.EmployeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                        if (Employee.deleteEmployee())
-                        {
-                            MessageBox.Show("Employee Successfully Deleted", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-
-                        }
+                        empGrid.Rows.Clear();
+                        Employee.deleteEmployee(empGrid);
+                        Employee.LoadEmployees(empGrid);
                     }
                     else
                     {
@@ -543,8 +539,10 @@ namespace Design370
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            string employeeName = txtSearch.Text;
+            Employee.EmployeeID = employeeName;
             empGrid.Rows.Clear();
-            Employee.SearchEmployees(txtSearch.Text, empGrid);
+            Employee.SearchEmployees(empGrid);
         }
 
         private void TabPage3_Click(object sender, EventArgs e)
@@ -570,6 +568,8 @@ namespace Design370
             loadServices();
             dataGridView10.Rows.Clear();
             loadSuppliers();
+            empGrid.Rows.Clear();
+            Employee.LoadEmployees(empGrid);
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
@@ -601,8 +601,7 @@ namespace Design370
 
         private void CbxSort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            empGrid.Rows.Clear();
-            Employee.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
+            
         }
 
         private void BtnCaptureOrderPayment_Click(object sender, EventArgs e)
@@ -961,6 +960,54 @@ namespace Design370
                         String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
                         //size of the search word in the grid cell data  
                         String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtEventPackageSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void empGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && (e.ColumnIndex == 1 || e.ColumnIndex == 2))
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearch.Text.Trim().Length);
                         Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
                         Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
                         if (s1.Width > 5)
