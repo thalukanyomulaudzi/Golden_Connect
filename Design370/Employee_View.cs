@@ -15,9 +15,28 @@ namespace Design370
     {
         public static bool edit;
         public string GetEmployeeRow { get; set; }
+        string gender = " ";
+        string marital_statusID = " ";
+        string titleID = " ";
+        string employee_typeID = " ";
+        string title = " ";
+        string employee_type = " ";
+        string marital_status = " ";
         public Employee_View()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(textBox2, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(textBox3, "A maximum of 13 characters can be entered");
+            toolTip1.SetToolTip(textBox4, "A maximum of 10 characters can be entered");
+            toolTip1.SetToolTip(textBox7, "A maximum of 100 characters can be entered");
+            toolTip1.SetToolTip(textBox5, "A maximum of 50 characters can be entered");
+            toolTip1.SetToolTip(comboBox3, "Please select a gender");
+            toolTip1.SetToolTip(comboBox2, "Please select a marital status");
+            toolTip1.SetToolTip(cbxEmpTitle, "Please select a title");
+            toolTip1.SetToolTip(comboBox4, "Please select an employee type");
         }
 
         private void Label6_Click(object sender, EventArgs e)
@@ -125,10 +144,6 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    string gender = " ";
-                    string marital_status = " ";
-                    string title = " ";
-                    string employee_type = " ";
                     string query = "SELECT * FROM employee WHERE employee_id = '" + GetEmployeeRow + "'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
@@ -140,38 +155,47 @@ namespace Design370
                         textBox4.Text = reader.GetString(4);
                         textBox5.Text = reader.GetString(5);
                         textBox7.Text = reader.GetString(6);
-                        employee_type = reader.GetString(7);
+                        employee_typeID = reader.GetString(7);
                         gender = reader.GetString(8);
-                        marital_status = reader.GetString(9);
-                        title = reader.GetString(10);
+                        marital_statusID = reader.GetString(9);
+                        titleID = reader.GetString(10);
                     }
                     reader.Close();
                     if (gender == "M")
                     {
-                        comboBox3.SelectedText = "Male";
+                        comboBox3.SelectedIndex = comboBox3.FindStringExact("Male");
                     }
                     else if (gender == "F")
                     {
-                        comboBox3.SelectedText = "Female";
+                        comboBox3.SelectedIndex = comboBox3.FindStringExact("Female");
                     }
-                    query = "SELECT title_name FROM title WHERE title_id = '" + title + "'";
+                    query = "SELECT title_name FROM title WHERE title_id = '" + titleID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
-                    reader.Read();
-                    cbxEmpTitle.SelectedText = reader.GetString(0);
+                    while (reader.Read())
+                    {
+                        title = reader.GetString(0);
+                    }
                     reader.Close();
-                    query = "SELECT employee_type_name FROM employee_type WHERE employee_type_id = '" + employee_type + "'";
+                    cbxEmpTitle.SelectedIndex = cbxEmpTitle.FindStringExact(title);
+                    query = "SELECT employee_type_name FROM employee_type WHERE employee_type_id = '" + employee_typeID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
-                    reader.Read();
-                    comboBox4.SelectedText = reader.GetString(0);
+                    while (reader.Read())
+                    {
+                        employee_type = reader.GetString(0);
+                    }
                     reader.Close();
-                    query = "SELECT marital_status_name FROM marital_status WHERE marital_status_id = '" + marital_status + "'";
+                    comboBox4.SelectedIndex = comboBox4.FindStringExact(employee_type);
+                    query = "SELECT marital_status_name FROM marital_status WHERE marital_status_id = '" + marital_statusID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
-                    reader.Read();
-                    comboBox2.SelectedText = reader.GetString(0);
+                    while (reader.Read())
+                    {
+                        marital_status = reader.GetString(0);
+                    }
                     reader.Close();
+                    comboBox2.SelectedIndex = comboBox2.FindStringExact(marital_status);
                 }
             }
             catch (Exception ee)
@@ -195,11 +219,10 @@ namespace Design370
             button3.Enabled = true;
             button2.Enabled = false;
         }
-
-        public void addEmployee()
+        
+        private void Button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(cbxEmpTitle.SelectedText);
-            if (cbxEmpTitle.SelectedIndex < 0)
+            if (cbxEmpTitle.SelectedIndex <= -1)
             {
                 MessageBox.Show("Please select a title");
                 return;
@@ -214,7 +237,7 @@ namespace Design370
                 MessageBox.Show("Please provide a first name");
                 return;
             }
-            else if (comboBox3.SelectedIndex < 0)
+            else if (comboBox3.SelectedIndex <= -1)
             {
                 MessageBox.Show("Please select a gender");
                 return;
@@ -224,7 +247,7 @@ namespace Design370
                 MessageBox.Show("Please provide a last name");
                 return;
             }
-            else if (comboBox2.SelectedIndex < 0)
+            else if (comboBox2.SelectedIndex <= -1)
             {
                 MessageBox.Show("Please select a marital status");
                 return;
@@ -244,7 +267,7 @@ namespace Design370
                 MessageBox.Show("Please provide a valid email address");
                 return;
             }
-            else if (comboBox4.SelectedIndex < 0)
+            else if (comboBox4.SelectedIndex <= -1)
             {
                 MessageBox.Show("Please select an employee type");
                 return;
@@ -284,7 +307,7 @@ namespace Design370
                     reader.Close();
                     gender = comboBox3.SelectedItem.ToString().Substring(0, 1);
                     query = "UPDATE `employee` SET `employee_id` = '" + GetEmployeeRow + "', `employee_first` = '" + textBox1.Text + "', `employee_last` = '" + textBox2.Text +
-                        "', `employee_idnumber` = '" + textBox3.Text + "', `employee_phone` = '" + textBox4.Text + "', `employee_email` = '" + textBox5.Text + "', " +
+                        "', `employee_idnumber` = '" + textBox3.Text + "', `employee_phone` = '" + textBox4.Text + "', `employee_email` = '" + textBox5.Text.ToLower() + "', " +
                         "`employee_address` = '" + textBox7.Text + "', `employee_type` = '" + employee_type_ID + "', `employee_marital` = '" + maritalID + "', " +
                         "`employee_title` = '" + titleID + "' WHERE employee_id = '" + GetEmployeeRow + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
@@ -295,12 +318,6 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
-            this.Close();
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            addEmployee();
             this.Close();
         }
 

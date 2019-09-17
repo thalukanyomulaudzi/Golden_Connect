@@ -70,7 +70,7 @@ namespace Design370
                     mysqlReader.Read();
                     productTypeName = mysqlReader.GetString(0);
                     mysqlReader.Close();
-                    comboBox1.SelectedText = productTypeName;
+                    comboBox1.SelectedIndex = comboBox1.FindStringExact(productTypeName);
                 }
             }
             catch (Exception except)

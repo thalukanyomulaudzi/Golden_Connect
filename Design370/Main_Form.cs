@@ -330,6 +330,7 @@ namespace Design370
                                 string query = "DELETE FROM `service` WHERE service_id = '" + serviceID + "'";
                                 var command = new MySqlCommand(query, dBConnection.Connection);
                                 command.ExecuteNonQuery();
+                                loadServices();
                             }
                         }
                         catch (Exception)
@@ -418,6 +419,7 @@ namespace Design370
                                 string query = "DELETE FROM `product` WHERE product_id = '" + productID + "'";
                                 var command = new MySqlCommand(query, dBConnection.Connection);
                                 command.ExecuteNonQuery();
+                                loadProducts();
                             }
                         }
                         catch (Exception)

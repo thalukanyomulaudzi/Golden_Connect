@@ -31,7 +31,8 @@ namespace Design370
             switch(e.ColumnIndex)
             {
                 case 0:
-                    //Don't deem it necessary to have!!
+                    empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    empTypes.ShowDialog();
                     break;
                 case 1:
                     empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -76,31 +77,7 @@ namespace Design370
 
         private void Employee_Types_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dgvEmpType.ColumnCount = 5;
-                dgvEmpType.Columns[3].Name = "Employee Type Name";
-                dgvEmpType.Columns[3].Width = 230;
-                dgvEmpType.Columns[4].Name = "Employee Type Description";
-                dgvEmpType.Columns[4].Width = 320;
-                dgvEmpType.ReadOnly = true;
-                if (dbCon.IsConnect())
-                {
-                    string loadTypes = "SELECT * FROM `employee_type`";
-                    var command = new MySqlCommand(loadTypes, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        dgvEmpType.Rows.Add("", "", "", reader[1], reader[2]);
-                        cbxSortEmpType.Items.Add(reader[1]);
-                    }
-                    reader.Close();
-                }
-            }
-            catch(Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            
         }
 
         private void TxtSearchEmpType_TextChanged(object sender, EventArgs e)
@@ -112,6 +89,39 @@ namespace Design370
         private void CbxSortEmpType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Employee_Types_Activated(object sender, EventArgs e)
+        {
+            dgvEmpType.Rows.Clear();
+            try
+            {
+                DBConnection dBConnection = DBConnection.Instance();
+                if (dBConnection.IsConnect())
+                {
+                    string employeeTypeID = " ";
+                    string employeeTypeName = " ";
+                    string employeeTypeDescription = " ";
+                    DataTable EmployeeTypes = new DataTable();
+                    string query = "SELECT employee_type_id, employee_type_name, employee_type_description FROM employee_type";
+                    var command = new MySqlCommand(query, dBConnection.Connection);
+                    var reader = command.ExecuteReader();
+                    EmployeeTypes.Load(reader);
+                    for (int i = 0; i < EmployeeTypes.Rows.Count; i++)
+                    {
+                        employeeTypeID = EmployeeTypes.Rows[i].ItemArray[0].ToString();
+                        employeeTypeName = EmployeeTypes.Rows[i].ItemArray[1].ToString();
+                        employeeTypeDescription = EmployeeTypes.Rows[i].ItemArray[2].ToString();
+                        dgvEmpType.Rows.Add(employeeTypeID, employeeTypeName, employeeTypeDescription, "View", "Edit", "Delete");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+
+            }
         }
     }
 }

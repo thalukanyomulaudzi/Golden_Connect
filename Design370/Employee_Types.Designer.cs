@@ -29,57 +29,40 @@
         private void InitializeComponent()
         {
             this.dgvEmpType = new System.Windows.Forms.DataGridView();
-            this.EmpTypeView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpTypeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EmpTypeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button14 = new System.Windows.Forms.Button();
             this.txtSearchEmpType = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cbxSortEmpType = new System.Windows.Forms.ComboBox();
+            this.EmployeeTypeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeTypeDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmpTypeView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EmpTypeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EmpTypeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpType)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvEmpType
             // 
+            this.dgvEmpType.AllowUserToAddRows = false;
+            this.dgvEmpType.AllowUserToDeleteRows = false;
+            this.dgvEmpType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEmpType.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvEmpType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmpType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EmployeeTypeID,
+            this.EmployeeTypeName,
+            this.EmployeeTypeDescription,
             this.EmpTypeView,
             this.EmpTypeEdit,
             this.EmpTypeDelete});
-            this.dgvEmpType.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvEmpType.Location = new System.Drawing.Point(0, 73);
+            this.dgvEmpType.Location = new System.Drawing.Point(22, 73);
             this.dgvEmpType.Name = "dgvEmpType";
+            this.dgvEmpType.ReadOnly = true;
+            this.dgvEmpType.RowHeadersVisible = false;
             this.dgvEmpType.RowTemplate.Height = 24;
-            this.dgvEmpType.Size = new System.Drawing.Size(803, 383);
+            this.dgvEmpType.Size = new System.Drawing.Size(755, 341);
             this.dgvEmpType.TabIndex = 43;
             this.dgvEmpType.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvEmpType_CellContentClick);
-            // 
-            // EmpTypeView
-            // 
-            this.EmpTypeView.HeaderText = "";
-            this.EmpTypeView.Name = "EmpTypeView";
-            this.EmpTypeView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EmpTypeView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EmpTypeView.Text = "View";
-            this.EmpTypeView.UseColumnTextForButtonValue = true;
-            this.EmpTypeView.Width = 70;
-            // 
-            // EmpTypeEdit
-            // 
-            this.EmpTypeEdit.HeaderText = "";
-            this.EmpTypeEdit.Name = "EmpTypeEdit";
-            this.EmpTypeEdit.Text = "Edit";
-            this.EmpTypeEdit.UseColumnTextForButtonValue = true;
-            this.EmpTypeEdit.Width = 70;
-            // 
-            // EmpTypeDelete
-            // 
-            this.EmpTypeDelete.HeaderText = "";
-            this.EmpTypeDelete.Name = "EmpTypeDelete";
-            this.EmpTypeDelete.Text = "Delete";
-            this.EmpTypeDelete.UseColumnTextForButtonValue = true;
-            this.EmpTypeDelete.Width = 70;
             // 
             // button14
             // 
@@ -111,34 +94,56 @@
             this.label14.TabIndex = 46;
             this.label14.Text = "Search:";
             // 
-            // label13
+            // EmployeeTypeID
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(312, 27);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(56, 18);
-            this.label13.TabIndex = 47;
-            this.label13.Text = "Sort by:";
+            this.EmployeeTypeID.HeaderText = "ID";
+            this.EmployeeTypeID.Name = "EmployeeTypeID";
+            this.EmployeeTypeID.ReadOnly = true;
+            this.EmployeeTypeID.Visible = false;
             // 
-            // cbxSortEmpType
+            // EmployeeTypeName
             // 
-            this.cbxSortEmpType.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxSortEmpType.FormattingEnabled = true;
-            this.cbxSortEmpType.ItemHeight = 18;
-            this.cbxSortEmpType.Location = new System.Drawing.Point(374, 24);
-            this.cbxSortEmpType.Name = "cbxSortEmpType";
-            this.cbxSortEmpType.Size = new System.Drawing.Size(136, 26);
-            this.cbxSortEmpType.TabIndex = 48;
-            this.cbxSortEmpType.SelectedIndexChanged += new System.EventHandler(this.CbxSortEmpType_SelectedIndexChanged);
+            this.EmployeeTypeName.HeaderText = "Employee Type";
+            this.EmployeeTypeName.Name = "EmployeeTypeName";
+            this.EmployeeTypeName.ReadOnly = true;
+            // 
+            // EmployeeTypeDescription
+            // 
+            this.EmployeeTypeDescription.HeaderText = "Description";
+            this.EmployeeTypeDescription.Name = "EmployeeTypeDescription";
+            this.EmployeeTypeDescription.ReadOnly = true;
+            // 
+            // EmpTypeView
+            // 
+            this.EmpTypeView.HeaderText = "";
+            this.EmpTypeView.Name = "EmpTypeView";
+            this.EmpTypeView.ReadOnly = true;
+            this.EmpTypeView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EmpTypeView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EmpTypeView.Text = "View";
+            this.EmpTypeView.UseColumnTextForButtonValue = true;
+            // 
+            // EmpTypeEdit
+            // 
+            this.EmpTypeEdit.HeaderText = "";
+            this.EmpTypeEdit.Name = "EmpTypeEdit";
+            this.EmpTypeEdit.ReadOnly = true;
+            this.EmpTypeEdit.Text = "Edit";
+            this.EmpTypeEdit.UseColumnTextForButtonValue = true;
+            // 
+            // EmpTypeDelete
+            // 
+            this.EmpTypeDelete.HeaderText = "";
+            this.EmpTypeDelete.Name = "EmpTypeDelete";
+            this.EmpTypeDelete.ReadOnly = true;
+            this.EmpTypeDelete.Text = "Delete";
+            this.EmpTypeDelete.UseColumnTextForButtonValue = true;
             // 
             // Employee_Types
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 456);
-            this.Controls.Add(this.cbxSortEmpType);
-            this.Controls.Add(this.label13);
+            this.ClientSize = new System.Drawing.Size(801, 456);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtSearchEmpType);
             this.Controls.Add(this.button14);
@@ -148,6 +153,7 @@
             this.Name = "Employee_Types";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Types";
+            this.Activated += new System.EventHandler(this.Employee_Types_Activated);
             this.Load += new System.EventHandler(this.Employee_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpType)).EndInit();
             this.ResumeLayout(false);
@@ -160,8 +166,9 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.TextBox txtSearchEmpType;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox cbxSortEmpType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeTypeID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeTypeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeTypeDescription;
         private System.Windows.Forms.DataGridViewButtonColumn EmpTypeView;
         private System.Windows.Forms.DataGridViewButtonColumn EmpTypeEdit;
         private System.Windows.Forms.DataGridViewButtonColumn EmpTypeDelete;

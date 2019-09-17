@@ -78,7 +78,7 @@ namespace Design370
                     mysqlReader.Read();
                     serviceTypeName = mysqlReader.GetString(0);
                     mysqlReader.Close();
-                    comboBox1.SelectedText = serviceTypeName;
+                    comboBox1.SelectedIndex = comboBox1.FindStringExact(serviceTypeName);
                 }
             }
             catch (Exception except)
