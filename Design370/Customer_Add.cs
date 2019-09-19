@@ -53,26 +53,7 @@ namespace Design370
 
         public void addCustomer()
         {
-            string custInsert = "INSERT INTO customer(customer_first, customer_last, customer_email, customer_phone) VALUES('"+txtFN.Text+"', '"+txtLN.Text+"', '"+txtEM.Text+"', '"+txtTEL.Text+"')";
-            MysqlConnection.cmd = new MySqlCommand(custInsert, MysqlConnection.mysqlCon);
-            try
-            {
-                MysqlConnection.mysqlCon.Open();
-                MySqlDataReader checkIfExist = MysqlConnection.cmd.ExecuteReader();
-                if (checkIfExist.HasRows)
-                {
-                    MessageBox.Show("Customer already exits!");
-                }
-                else
-                {
-                    MessageBox.Show("New Customer Inserted!");
-                    MysqlConnection.mysqlCon.Close();
-                }
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show("Error: " + ee.Message);
-            }
+            
         }
     }
 }

@@ -35,15 +35,15 @@ namespace Design370
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cmb = new System.Windows.Forms.ComboBox();
-            this.lblCustomerSort = new System.Windows.Forms.Label();
             this.lblCustomerSearch = new System.Windows.Forms.Label();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.btnCustomerAdd = new System.Windows.Forms.Button();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.CustFirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CustEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CustDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -228,8 +228,6 @@ namespace Design370
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.cmb);
-            this.tabPage1.Controls.Add(this.lblCustomerSort);
             this.tabPage1.Controls.Add(this.lblCustomerSearch);
             this.tabPage1.Controls.Add(this.txtCustomerSearch);
             this.tabPage1.Controls.Add(this.btnCustomerAdd);
@@ -242,28 +240,6 @@ namespace Design370
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer";
             this.tabPage1.Click += new System.EventHandler(this.TabPage1_Click);
-            // 
-            // cmb
-            // 
-            this.cmb.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmb.FormattingEnabled = true;
-            this.cmb.ItemHeight = 17;
-            this.cmb.Location = new System.Drawing.Point(339, 11);
-            this.cmb.Margin = new System.Windows.Forms.Padding(2);
-            this.cmb.Name = "cmb";
-            this.cmb.Size = new System.Drawing.Size(103, 25);
-            this.cmb.TabIndex = 8;
-            // 
-            // lblCustomerSort
-            // 
-            this.lblCustomerSort.AutoSize = true;
-            this.lblCustomerSort.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomerSort.Location = new System.Drawing.Point(281, 15);
-            this.lblCustomerSort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCustomerSort.Name = "lblCustomerSort";
-            this.lblCustomerSort.Size = new System.Drawing.Size(56, 18);
-            this.lblCustomerSort.TabIndex = 7;
-            this.lblCustomerSort.Text = "Sort by:";
             // 
             // lblCustomerSearch
             // 
@@ -285,6 +261,7 @@ namespace Design370
             this.txtCustomerSearch.Name = "txtCustomerSearch";
             this.txtCustomerSearch.Size = new System.Drawing.Size(200, 25);
             this.txtCustomerSearch.TabIndex = 4;
+            this.txtCustomerSearch.TextChanged += new System.EventHandler(this.txtCustomerSearch_TextChanged);
             // 
             // btnCustomerAdd
             // 
@@ -301,41 +278,67 @@ namespace Design370
             // 
             // dgvCustomers
             // 
+            this.dgvCustomers.AllowUserToAddRows = false;
+            this.dgvCustomers.AllowUserToDeleteRows = false;
+            this.dgvCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCustomers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CustFirst,
-            this.CustLast,
+            this.CustomerID,
             this.CustID,
+            this.CustomerName,
+            this.CustomerPhone,
+            this.CustomerEmail,
             this.CustView,
             this.CustEdit,
             this.CustDelete});
             this.dgvCustomers.Location = new System.Drawing.Point(11, 59);
             this.dgvCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCustomers.Name = "dgvCustomers";
+            this.dgvCustomers.ReadOnly = true;
+            this.dgvCustomers.RowHeadersVisible = false;
             this.dgvCustomers.RowTemplate.Height = 25;
             this.dgvCustomers.Size = new System.Drawing.Size(763, 349);
             this.dgvCustomers.TabIndex = 0;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvCustomers.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvCustomers_CellPainting);
             // 
-            // CustFirst
+            // CustomerID
             // 
-            this.CustFirst.HeaderText = "First Name";
-            this.CustFirst.Name = "CustFirst";
-            // 
-            // CustLast
-            // 
-            this.CustLast.HeaderText = "Last Name";
-            this.CustLast.Name = "CustLast";
+            this.CustomerID.HeaderText = "ID";
+            this.CustomerID.Name = "CustomerID";
+            this.CustomerID.ReadOnly = true;
+            this.CustomerID.Visible = false;
             // 
             // CustID
             // 
             this.CustID.HeaderText = "ID Number";
             this.CustID.Name = "CustID";
+            this.CustID.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.HeaderText = "Customer Name";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            // 
+            // CustomerPhone
+            // 
+            this.CustomerPhone.HeaderText = "Phone Number";
+            this.CustomerPhone.Name = "CustomerPhone";
+            this.CustomerPhone.ReadOnly = true;
+            // 
+            // CustomerEmail
+            // 
+            this.CustomerEmail.HeaderText = "Email Address";
+            this.CustomerEmail.Name = "CustomerEmail";
+            this.CustomerEmail.ReadOnly = true;
             // 
             // CustView
             // 
             this.CustView.HeaderText = "";
             this.CustView.Name = "CustView";
+            this.CustView.ReadOnly = true;
             this.CustView.Text = "View";
             this.CustView.ToolTipText = "View";
             this.CustView.UseColumnTextForButtonValue = true;
@@ -344,6 +347,7 @@ namespace Design370
             // 
             this.CustEdit.HeaderText = "";
             this.CustEdit.Name = "CustEdit";
+            this.CustEdit.ReadOnly = true;
             this.CustEdit.Text = "Edit";
             this.CustEdit.ToolTipText = "Edit Row";
             this.CustEdit.UseColumnTextForButtonValue = true;
@@ -352,6 +356,7 @@ namespace Design370
             // 
             this.CustDelete.HeaderText = "";
             this.CustDelete.Name = "CustDelete";
+            this.CustDelete.ReadOnly = true;
             this.CustDelete.Text = "Delete";
             this.CustDelete.UseColumnTextForButtonValue = true;
             // 
@@ -531,7 +536,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -965,7 +970,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 132;
+            this.PhotoshootPackageName.Width = 122;
             // 
             // Services
             // 
@@ -1117,7 +1122,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 132;
+            this.EventPackageName.Width = 122;
             // 
             // ServicesEvents
             // 
@@ -1255,7 +1260,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 18);
+            this.label15.Size = new System.Drawing.Size(57, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Sort by:";
             // 
@@ -1713,8 +1718,6 @@ namespace Design370
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.TabPage tabPage11;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ComboBox cmb;
-        private System.Windows.Forms.Label lblCustomerSort;
         private System.Windows.Forms.Label lblCustomerSearch;
         private System.Windows.Forms.TextBox txtCustomerSearch;
         private System.Windows.Forms.Button btnCustomerAdd;
@@ -1785,12 +1788,6 @@ namespace Design370
         private System.Windows.Forms.Button btnEventTypes;
         private System.Windows.Forms.Button btnServiceType;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustFirst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustLast;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustID;
-        private System.Windows.Forms.DataGridViewButtonColumn CustView;
-        private System.Windows.Forms.DataGridViewButtonColumn CustEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn CustDelete;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button11;
@@ -1856,6 +1853,14 @@ namespace Design370
         private DataGridViewButtonColumn View;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private DataGridViewTextBoxColumn CustomerID;
+        private DataGridViewTextBoxColumn CustID;
+        private DataGridViewTextBoxColumn CustomerName;
+        private DataGridViewTextBoxColumn CustomerPhone;
+        private DataGridViewTextBoxColumn CustomerEmail;
+        private DataGridViewButtonColumn CustView;
+        private DataGridViewButtonColumn CustEdit;
+        private DataGridViewButtonColumn CustDelete;
     }
 }
 

@@ -262,7 +262,7 @@ namespace Design370
                 MessageBox.Show("Please enter a valid phone number");
                 return;
             }
-            else if (textBox5.Text.Length <= 5)
+            else if (textBox5.Text.Length <= 8)
             {
                 MessageBox.Show("Please provide a valid email address");
                 return;

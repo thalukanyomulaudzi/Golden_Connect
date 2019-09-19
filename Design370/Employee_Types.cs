@@ -30,15 +30,16 @@ namespace Design370
             Employee_Types_View empTypes = new Employee_Types_View();
             switch(e.ColumnIndex)
             {
-                case 0:
+                case 3:
+                    empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    MessageBox.Show("Test");
+                    empTypes.ShowDialog();
+                    break;
+                case 4:
                     empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
                     empTypes.ShowDialog();
                     break;
-                case 1:
-                    empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    empTypes.ShowDialog();
-                    break;
-                case 2:
+                case 5:
                     try
                     {
                         if (dgvEmpType.Rows[e.RowIndex].Cells[3].Value != null)
