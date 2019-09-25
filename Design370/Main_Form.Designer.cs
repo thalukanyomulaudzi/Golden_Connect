@@ -31,7 +31,7 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -265,9 +265,10 @@ namespace Design370
             // 
             // btnCustomerAdd
             // 
+            this.btnCustomerAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCustomerAdd.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnCustomerAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomerAdd.Location = new System.Drawing.Point(623, 11);
+            this.btnCustomerAdd.Location = new System.Drawing.Point(946, 16);
             this.btnCustomerAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnCustomerAdd.Name = "btnCustomerAdd";
             this.btnCustomerAdd.Size = new System.Drawing.Size(151, 28);
@@ -280,6 +281,9 @@ namespace Design370
             // 
             this.dgvCustomers.AllowUserToAddRows = false;
             this.dgvCustomers.AllowUserToDeleteRows = false;
+            this.dgvCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCustomers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -298,7 +302,7 @@ namespace Design370
             this.dgvCustomers.ReadOnly = true;
             this.dgvCustomers.RowHeadersVisible = false;
             this.dgvCustomers.RowTemplate.Height = 25;
-            this.dgvCustomers.Size = new System.Drawing.Size(763, 349);
+            this.dgvCustomers.Size = new System.Drawing.Size(1086, 377);
             this.dgvCustomers.TabIndex = 0;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgvCustomers.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvCustomers_CellPainting);
@@ -380,7 +384,7 @@ namespace Design370
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(936, 428);
+            this.button7.Location = new System.Drawing.Point(946, 450);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(151, 28);
@@ -414,7 +418,7 @@ namespace Design370
             // 
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button8.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(936, 16);
+            this.button8.Location = new System.Drawing.Point(946, 16);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(151, 28);
@@ -449,7 +453,7 @@ namespace Design370
             this.empGrid.ReadOnly = true;
             this.empGrid.RowHeadersVisible = false;
             this.empGrid.RowTemplate.Height = 24;
-            this.empGrid.Size = new System.Drawing.Size(1076, 355);
+            this.empGrid.Size = new System.Drawing.Size(1086, 377);
             this.empGrid.TabIndex = 9;
             this.empGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView4_CellContentClick);
             this.empGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.empGrid_CellPainting);
@@ -634,8 +638,9 @@ namespace Design370
             // 
             // btnServiceType
             // 
+            this.btnServiceType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnServiceType.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServiceType.Location = new System.Drawing.Point(623, 427);
+            this.btnServiceType.Location = new System.Drawing.Point(946, 451);
             this.btnServiceType.Margin = new System.Windows.Forms.Padding(2);
             this.btnServiceType.Name = "btnServiceType";
             this.btnServiceType.Size = new System.Drawing.Size(151, 28);
@@ -667,8 +672,9 @@ namespace Design370
             // 
             // btnServiceAdd
             // 
+            this.btnServiceAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnServiceAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServiceAdd.Location = new System.Drawing.Point(623, 11);
+            this.btnServiceAdd.Location = new System.Drawing.Point(946, 16);
             this.btnServiceAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnServiceAdd.Name = "btnServiceAdd";
             this.btnServiceAdd.Size = new System.Drawing.Size(151, 28);
@@ -681,6 +687,9 @@ namespace Design370
             // 
             this.dgvServices.AllowUserToAddRows = false;
             this.dgvServices.AllowUserToDeleteRows = false;
+            this.dgvServices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvServices.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -698,7 +707,7 @@ namespace Design370
             this.dgvServices.ReadOnly = true;
             this.dgvServices.RowHeadersVisible = false;
             this.dgvServices.RowTemplate.Height = 24;
-            this.dgvServices.Size = new System.Drawing.Size(763, 349);
+            this.dgvServices.Size = new System.Drawing.Size(1086, 379);
             this.dgvServices.TabIndex = 0;
             this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
             this.dgvServices.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvServices_CellPainting);
@@ -763,8 +772,9 @@ namespace Design370
             // 
             // button5
             // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(623, 427);
+            this.button5.Location = new System.Drawing.Point(946, 452);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(151, 28);
@@ -796,8 +806,9 @@ namespace Design370
             // 
             // btnProductAdd
             // 
+            this.btnProductAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnProductAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductAdd.Location = new System.Drawing.Point(623, 11);
+            this.btnProductAdd.Location = new System.Drawing.Point(946, 16);
             this.btnProductAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnProductAdd.Name = "btnProductAdd";
             this.btnProductAdd.Size = new System.Drawing.Size(151, 28);
@@ -810,6 +821,9 @@ namespace Design370
             // 
             this.dgvProducts.AllowUserToAddRows = false;
             this.dgvProducts.AllowUserToDeleteRows = false;
+            this.dgvProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -827,7 +841,7 @@ namespace Design370
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowTemplate.Height = 24;
-            this.dgvProducts.Size = new System.Drawing.Size(763, 349);
+            this.dgvProducts.Size = new System.Drawing.Size(1086, 379);
             this.dgvProducts.TabIndex = 16;
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView3_CellContentClick);
             this.dgvProducts.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvProducts_CellPainting);
@@ -897,8 +911,9 @@ namespace Design370
             // 
             // btnPhotoshootPackageAdd
             // 
+            this.btnPhotoshootPackageAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPhotoshootPackageAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhotoshootPackageAdd.Location = new System.Drawing.Point(586, 11);
+            this.btnPhotoshootPackageAdd.Location = new System.Drawing.Point(909, 16);
             this.btnPhotoshootPackageAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnPhotoshootPackageAdd.Name = "btnPhotoshootPackageAdd";
             this.btnPhotoshootPackageAdd.Size = new System.Drawing.Size(188, 28);
@@ -934,6 +949,9 @@ namespace Design370
             this.dgvPhotoshootPackage.AllowUserToDeleteRows = false;
             this.dgvPhotoshootPackage.AllowUserToResizeColumns = false;
             this.dgvPhotoshootPackage.AllowUserToResizeRows = false;
+            this.dgvPhotoshootPackage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPhotoshootPackage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPhotoshootPackage.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvPhotoshootPackage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -952,7 +970,7 @@ namespace Design370
             this.dgvPhotoshootPackage.ReadOnly = true;
             this.dgvPhotoshootPackage.RowHeadersVisible = false;
             this.dgvPhotoshootPackage.RowTemplate.Height = 24;
-            this.dgvPhotoshootPackage.Size = new System.Drawing.Size(763, 349);
+            this.dgvPhotoshootPackage.Size = new System.Drawing.Size(1086, 378);
             this.dgvPhotoshootPackage.TabIndex = 23;
             this.dgvPhotoshootPackage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView6_CellContentClick);
             this.dgvPhotoshootPackage.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvPhotoshootPackage_CellPainting);
@@ -1010,8 +1028,9 @@ namespace Design370
             // 
             // btnPhotoshootTypes
             // 
+            this.btnPhotoshootTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPhotoshootTypes.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhotoshootTypes.Location = new System.Drawing.Point(586, 427);
+            this.btnPhotoshootTypes.Location = new System.Drawing.Point(909, 450);
             this.btnPhotoshootTypes.Margin = new System.Windows.Forms.Padding(2);
             this.btnPhotoshootTypes.Name = "btnPhotoshootTypes";
             this.btnPhotoshootTypes.Size = new System.Drawing.Size(188, 29);
@@ -1037,8 +1056,9 @@ namespace Design370
             // 
             // btnEventTypes
             // 
+            this.btnEventTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEventTypes.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEventTypes.Location = new System.Drawing.Point(623, 427);
+            this.btnEventTypes.Location = new System.Drawing.Point(946, 449);
             this.btnEventTypes.Margin = new System.Windows.Forms.Padding(2);
             this.btnEventTypes.Name = "btnEventTypes";
             this.btnEventTypes.Size = new System.Drawing.Size(151, 28);
@@ -1070,8 +1090,9 @@ namespace Design370
             // 
             // btnEventPackageAdd
             // 
+            this.btnEventPackageAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEventPackageAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEventPackageAdd.Location = new System.Drawing.Point(623, 11);
+            this.btnEventPackageAdd.Location = new System.Drawing.Point(946, 16);
             this.btnEventPackageAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnEventPackageAdd.Name = "btnEventPackageAdd";
             this.btnEventPackageAdd.Size = new System.Drawing.Size(151, 28);
@@ -1086,6 +1107,9 @@ namespace Design370
             this.dgvEventPackages.AllowUserToDeleteRows = false;
             this.dgvEventPackages.AllowUserToResizeColumns = false;
             this.dgvEventPackages.AllowUserToResizeRows = false;
+            this.dgvEventPackages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvEventPackages.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEventPackages.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvEventPackages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1104,7 +1128,7 @@ namespace Design370
             this.dgvEventPackages.ReadOnly = true;
             this.dgvEventPackages.RowHeadersVisible = false;
             this.dgvEventPackages.RowTemplate.Height = 24;
-            this.dgvEventPackages.Size = new System.Drawing.Size(763, 349);
+            this.dgvEventPackages.Size = new System.Drawing.Size(1086, 377);
             this.dgvEventPackages.TabIndex = 30;
             this.dgvEventPackages.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellContentClick);
             this.dgvEventPackages.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvEventPackages_CellPainting);
@@ -1205,11 +1229,11 @@ namespace Design370
             // 
             // CustomerOrderPayment
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle8;
             this.CustomerOrderPayment.HeaderText = "";
             this.CustomerOrderPayment.Name = "CustomerOrderPayment";
             this.CustomerOrderPayment.Text = "Capture Payment";
@@ -1444,6 +1468,9 @@ namespace Design370
             // 
             this.dataGridView10.AllowUserToAddRows = false;
             this.dataGridView10.AllowUserToDeleteRows = false;
+            this.dataGridView10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView10.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView10.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1461,7 +1488,7 @@ namespace Design370
             this.dataGridView10.ReadOnly = true;
             this.dataGridView10.RowHeadersVisible = false;
             this.dataGridView10.RowTemplate.Height = 24;
-            this.dataGridView10.Size = new System.Drawing.Size(763, 349);
+            this.dataGridView10.Size = new System.Drawing.Size(1086, 379);
             this.dataGridView10.TabIndex = 55;
             this.dataGridView10.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView10_CellContentClick);
             // 
@@ -1513,8 +1540,9 @@ namespace Design370
             // 
             // button22
             // 
+            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button22.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.Location = new System.Drawing.Point(623, 427);
+            this.button22.Location = new System.Drawing.Point(946, 452);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(151, 28);
@@ -1546,8 +1574,9 @@ namespace Design370
             // 
             // button24
             // 
+            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button24.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.Location = new System.Drawing.Point(623, 11);
+            this.button24.Location = new System.Drawing.Point(946, 16);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(151, 28);
@@ -1650,6 +1679,7 @@ namespace Design370
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1262, 693);
             this.Controls.Add(this.pictureBox1);
@@ -1658,6 +1688,7 @@ namespace Design370
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.Main_Form_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
