@@ -28,5 +28,13 @@ namespace Design370
         {
 
         }
+
+        private void BtnReceiveSupplierOrder_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvSupplierOrders.SelectedRows)
+            {
+                // dgvSupplierOrders.Rows.RemoveAt(row.Index);
+            }
+        }
     }
 }

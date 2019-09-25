@@ -34,6 +34,7 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.dgvSupplierOrders = new System.Windows.Forms.DataGridView();
+            this.btnReceiveSupplierOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierOrders)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,11 +95,23 @@
             this.dgvSupplierOrders.Size = new System.Drawing.Size(652, 201);
             this.dgvSupplierOrders.TabIndex = 73;
             // 
+            // btnReceiveSupplierOrder
+            // 
+            this.btnReceiveSupplierOrder.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReceiveSupplierOrder.Location = new System.Drawing.Point(496, 287);
+            this.btnReceiveSupplierOrder.Name = "btnReceiveSupplierOrder";
+            this.btnReceiveSupplierOrder.Size = new System.Drawing.Size(178, 28);
+            this.btnReceiveSupplierOrder.TabIndex = 74;
+            this.btnReceiveSupplierOrder.Text = "Receive Supplier Order";
+            this.btnReceiveSupplierOrder.UseVisualStyleBackColor = true;
+            this.btnReceiveSupplierOrder.Click += new System.EventHandler(this.BtnReceiveSupplierOrder_Click);
+            // 
             // Supplier_Orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 327);
+            this.Controls.Add(this.btnReceiveSupplierOrder);
             this.Controls.Add(this.dgvSupplierOrders);
             this.Controls.Add(this.comboBox7);
             this.Controls.Add(this.label13);
@@ -124,5 +137,6 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.DataGridView dgvSupplierOrders;
+        private System.Windows.Forms.Button btnReceiveSupplierOrder;
     }
 }
