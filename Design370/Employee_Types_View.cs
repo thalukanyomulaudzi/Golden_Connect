@@ -13,7 +13,6 @@ namespace Design370
 {
     public partial class Employee_Types_View : Form
     {
-        DBConnection dbCon = DBConnection.Instance();
         public Employee_Types_View()
         {
             InitializeComponent();
@@ -23,9 +22,9 @@ namespace Design370
         {
             try
             {
-                if(dbCon.IsConnect())
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
                 {
-                    dbCon.Open();
                     string editEmpTypes = "UPDATE `employee_type` SET `employee_type_name` = @Name, `employee_type_description` = @Descr " +
                         "WHERE `employee_type_name` = @ID";
                     var command = new MySqlCommand(editEmpTypes, dbCon.Connection);
@@ -35,7 +34,7 @@ namespace Design370
                     command.Parameters.AddWithValue("@ID", txtEmpTypeName.Text);
                     command.ExecuteReader();
                     //if (done > 0)
-                        MessageBox.Show("Employee Type Updated Successfully", "Update Employee Type", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Employee Type Updated Successfully", "Update Employee Type", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dbCon.Close();
                     this.Close();
                 }
@@ -51,10 +50,10 @@ namespace Design370
         {
             try
             {
-                if(dbCon.IsConnect())
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
                 {
                     string loadEmployeeTypes = "SELECT * FROM `employee_type` WHERE `employee_type_name` = '"+emptype+"'";
-                    dbCon.Open();
                     var command = new MySqlCommand(loadEmployeeTypes, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     reader.Read();
@@ -63,7 +62,7 @@ namespace Design370
                         txtEmpTypeName.Text = reader[1].ToString();
                         txtEmpTypeDescription.Text = reader[2].ToString();
                     }
-                    dbCon.Close();
+                    reader.Close();
                 }
             }
             catch(Exception err)

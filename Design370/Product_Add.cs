@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -108,6 +110,21 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
+        }
+
+        private void txtProductPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProductPrice_Validating(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void txtProductPrice_Validated(object sender, EventArgs e)
+        {
+            
         }
     }
 }

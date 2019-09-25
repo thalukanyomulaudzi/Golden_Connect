@@ -170,6 +170,7 @@
     <Compile Include="Booking_Date.Designer.cs">
       <DependentUpon>Booking_Date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer.cs" />
     <Compile Include="Customer_Order_Capture.cs">
       <SubType>Form</SubType>
     </Compile>

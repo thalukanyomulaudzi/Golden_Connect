@@ -526,7 +526,7 @@ namespace Design370
                     }
                     for (int u = 0; u < dgvProductsInPackage.RowCount; u++)
                     {
-                        if (dgvProductsInPackage.Rows[u].Cells[1].Value.ToString().Contains(txtSearchPIP.Text))
+                        if (dgvProductsInPackage.Rows[u].Cells[1].Value.ToString().ToLower().Contains(txtSearchPIP.Text.ToLower()))
                         {
                             dgvProductsInPackage.Rows[u].Visible = true;
                         }
@@ -672,21 +672,21 @@ namespace Design370
                 DBConnection dbCon = DBConnection.Instance();
                 if (dbCon.IsConnect())
                 {
-                    CurrencyManager currencyManager = (CurrencyManager)BindingContext[dgvProductsInPackage.Rows];
+                    CurrencyManager currencyManager = (CurrencyManager)BindingContext[dgvServicesInPackage.Rows];
                     currencyManager.SuspendBinding();
-                    for (int i = 0; i < dgvProductsInPackage.Rows.Count; i++)
+                    for (int i = 0; i < dgvServicesInPackage.Rows.Count; i++)
                     {
-                        dgvProductsInPackage.Rows[i].Visible = true;
+                        dgvServicesInPackage.Rows[i].Visible = true;
                     }
-                    for (int u = 0; u < dgvProductsInPackage.RowCount; u++)
+                    for (int u = 0; u < dgvServicesInPackage.RowCount; u++)
                     {
-                        if (dgvProductsInPackage.Rows[u].Cells[1].Value.ToString().Contains(txtSearchPIP.Text))
+                        if (dgvServicesInPackage.Rows[u].Cells[1].Value.ToString().ToLower().Contains(txtSearchSIP.Text.ToLower()))
                         {
-                            dgvProductsInPackage.Rows[u].Visible = true;
+                            dgvServicesInPackage.Rows[u].Visible = true;
                         }
                         else
                         {
-                            dgvProductsInPackage.Rows[u].Visible = false;
+                            dgvServicesInPackage.Rows[u].Visible = false;
                         }
                     }
                     currencyManager.ResumeBinding();

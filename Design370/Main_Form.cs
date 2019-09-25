@@ -170,21 +170,30 @@ namespace Design370
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Customer_View customerView = new Customer_View();
+            string customerID = " "; 
             switch (e.ColumnIndex)
             {
-                case 3:
-                    customerView.edit = false;
-                    customerView.ShowDialog();
-                    break;
-                case 4:
-                    customerView.edit = true;
-                    customerView.ShowDialog();
-                    break;
                 case 5:
+                    customerView.edit = false;
+                    customerID = dgvCustomers.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    customerView.GetCustomerRow = customerID;
+                    customerView.ShowDialog();
+                    break;
+                case 6:
+                    customerView.edit = true;
+                    customerID = dgvCustomers.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    customerView.GetCustomerRow = customerID;
+                    customerView.ShowDialog();
+                    break;
+                case 7:
+                    customerID = dgvCustomers.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Customer.CustomerID = customerID;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-
+                        dgvCustomers.Rows.Clear();
+                        Customer.deleteCustomer(dgvCustomers);
+                        Customer.LoadCustomer(dgvCustomers);
                     }
                     break;
                 default:
@@ -330,6 +339,7 @@ namespace Design370
                                 string query = "DELETE FROM `service` WHERE service_id = '" + serviceID + "'";
                                 var command = new MySqlCommand(query, dBConnection.Connection);
                                 command.ExecuteNonQuery();
+                                loadServices();
                             }
                         }
                         catch (Exception)
@@ -418,6 +428,7 @@ namespace Design370
                                 string query = "DELETE FROM `product` WHERE product_id = '" + productID + "'";
                                 var command = new MySqlCommand(query, dBConnection.Connection);
                                 command.ExecuteNonQuery();
+                                loadProducts();
                             }
                         }
                         catch (Exception)
@@ -570,6 +581,8 @@ namespace Design370
             loadSuppliers();
             empGrid.Rows.Clear();
             Employee.LoadEmployees(empGrid);
+            dgvCustomers.Rows.Clear();
+            Customer.LoadCustomer(dgvCustomers);
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
@@ -1008,6 +1021,62 @@ namespace Design370
                         String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
                         //size of the search word in the grid cell data  
                         String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void txtCustomerSearch_TextChanged(object sender, EventArgs e)
+        {
+            string customerName = txtCustomerSearch.Text;
+            Customer.CustomerID = customerName;
+            dgvCustomers.Rows.Clear();
+            Customer.SearchCustomer(dgvCustomers);
+        }
+
+        private void dgvCustomers_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && (e.ColumnIndex == 1 || e.ColumnIndex == 2))
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtCustomerSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtCustomerSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtCustomerSearch.Text.Trim().Length);
                         Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
                         Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
                         if (s1.Width > 5)
