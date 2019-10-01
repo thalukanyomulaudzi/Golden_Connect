@@ -31,7 +31,6 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -121,8 +120,6 @@ namespace Design370
             this.EventPackageDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
-            this.ViewOrderProducts = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.CustomerOrderPayment = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
@@ -162,6 +159,7 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -1092,47 +1090,27 @@ namespace Design370
             // 
             // dgvOrders
             // 
+            this.dgvOrders.AllowUserToAddRows = false;
+            this.dgvOrders.AllowUserToDeleteRows = false;
             this.dgvOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ViewOrderProducts,
-            this.CustomerOrderPayment});
-            this.dgvOrders.Location = new System.Drawing.Point(2, 59);
+            this.dgvOrders.Location = new System.Drawing.Point(5, 59);
             this.dgvOrders.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.ReadOnly = true;
             this.dgvOrders.RowTemplate.Height = 24;
-            this.dgvOrders.Size = new System.Drawing.Size(1100, 547);
+            this.dgvOrders.Size = new System.Drawing.Size(952, 500);
             this.dgvOrders.TabIndex = 46;
             this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellContentClick);
-            // 
-            // ViewOrderProducts
-            // 
-            this.ViewOrderProducts.HeaderText = "";
-            this.ViewOrderProducts.Name = "ViewOrderProducts";
-            this.ViewOrderProducts.Text = "View Products";
-            this.ViewOrderProducts.UseColumnTextForButtonValue = true;
-            this.ViewOrderProducts.Width = 140;
-            // 
-            // CustomerOrderPayment
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.CustomerOrderPayment.DefaultCellStyle = dataGridViewCellStyle1;
-            this.CustomerOrderPayment.HeaderText = "";
-            this.CustomerOrderPayment.Name = "CustomerOrderPayment";
-            this.CustomerOrderPayment.Text = "Capture Payment";
-            this.CustomerOrderPayment.UseColumnTextForButtonValue = true;
-            this.CustomerOrderPayment.Width = 130;
             // 
             // button18
             // 
             this.button18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button18.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(979, 11);
+            this.button18.Location = new System.Drawing.Point(837, 11);
             this.button18.Margin = new System.Windows.Forms.Padding(2);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(112, 28);
@@ -1145,7 +1123,7 @@ namespace Design370
             // 
             this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button17.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(859, 11);
+            this.button17.Location = new System.Drawing.Point(717, 11);
             this.button17.Margin = new System.Windows.Forms.Padding(2);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(116, 28);
@@ -1159,7 +1137,11 @@ namespace Design370
             this.comboBox8.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox8.FormattingEnabled = true;
             this.comboBox8.ItemHeight = 17;
-            this.comboBox8.Location = new System.Drawing.Point(339, 11);
+            this.comboBox8.Items.AddRange(new object[] {
+            "All Orders",
+            "Placed Orders",
+            "Order For Delivery"});
+            this.comboBox8.Location = new System.Drawing.Point(336, 13);
             this.comboBox8.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(103, 25);
@@ -1172,9 +1154,9 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 18);
+            this.label15.Size = new System.Drawing.Size(51, 18);
             this.label15.TabIndex = 42;
-            this.label15.Text = "Sort by:";
+            this.label15.Text = "Show :";
             // 
             // label16
             // 
@@ -1200,7 +1182,7 @@ namespace Design370
             // 
             this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button16.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(727, 11);
+            this.button16.Location = new System.Drawing.Point(585, 11);
             this.button16.Margin = new System.Windows.Forms.Padding(2);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(128, 28);
@@ -1427,7 +1409,7 @@ namespace Design370
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(200, 25);
             this.textBox10.TabIndex = 49;
-            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
+            this.textBox10.TextChanged += new System.EventHandler(this.TextBox10_TextChanged);
             // 
             // button24
             // 
@@ -1443,6 +1425,7 @@ namespace Design370
             // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.crystalReportViewer1);
             this.tabPage11.Controls.Add(this.button13);
             this.tabPage11.Controls.Add(this.button11);
             this.tabPage11.Controls.Add(this.button9);
@@ -1459,7 +1442,7 @@ namespace Design370
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(37, 324);
+            this.button13.Location = new System.Drawing.Point(21, 324);
             this.button13.Margin = new System.Windows.Forms.Padding(2);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(227, 43);
@@ -1470,7 +1453,7 @@ namespace Design370
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(37, 251);
+            this.button11.Location = new System.Drawing.Point(21, 251);
             this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(227, 43);
@@ -1481,7 +1464,7 @@ namespace Design370
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(37, 178);
+            this.button9.Location = new System.Drawing.Point(21, 178);
             this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(227, 43);
@@ -1492,7 +1475,7 @@ namespace Design370
             // button25
             // 
             this.button25.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.Location = new System.Drawing.Point(37, 105);
+            this.button25.Location = new System.Drawing.Point(21, 105);
             this.button25.Margin = new System.Windows.Forms.Padding(2);
             this.button25.Name = "button25";
             this.button25.Size = new System.Drawing.Size(227, 43);
@@ -1503,7 +1486,7 @@ namespace Design370
             // button26
             // 
             this.button26.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button26.Location = new System.Drawing.Point(37, 32);
+            this.button26.Location = new System.Drawing.Point(21, 32);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(227, 43);
@@ -1530,6 +1513,16 @@ namespace Design370
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(269, 3);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(832, 602);
+            this.crystalReportViewer1.TabIndex = 61;
             // 
             // Main_Form
             // 
@@ -1734,8 +1727,7 @@ namespace Design370
         private DataGridViewButtonColumn ServiceEdit;
         private DataGridViewButtonColumn ServiceDelete;
         private Button button1;
-        private DataGridViewButtonColumn ViewOrderProducts;
-        private DataGridViewButtonColumn CustomerOrderPayment;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }
 

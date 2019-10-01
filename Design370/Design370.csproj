@@ -120,6 +120,10 @@
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySQL.Data.EntityFrameworkCore, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySQL.Data.EntityFrameworkCore.Design, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
       <HintPath>..\packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\ShockwaveFlashObjects.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -134,6 +138,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -163,6 +168,12 @@
     </Compile>
     <Compile Include="Booking_Date.Designer.cs">
       <DependentUpon>Booking_Date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Customer_Order_Capture.cs">
       <SubType>Form</SubType>
@@ -371,6 +382,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportsExample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsExample.Designer.cs">
+      <DependentUpon>ReportsExample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SavingOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SavingOrder.Designer.cs">
+      <DependentUpon>SavingOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -452,6 +475,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Booking_Date.resx">
       <DependentUpon>Booking_Date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_Order_Capture.resx">
       <DependentUpon>Customer_Order_Capture.cs</DependentUpon>
@@ -559,6 +586,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportsExample.resx">
+      <DependentUpon>ReportsExample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SavingOrder.resx">
+      <DependentUpon>SavingOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Service_Add.resx">
       <DependentUpon>Service_Add.cs</DependentUpon>
     </EmbeddedResource>
@@ -632,6 +665,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
