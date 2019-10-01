@@ -40,10 +40,10 @@
             this.Column7 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnBookingCreateEvent = new System.Windows.Forms.Button();
             this.dgvBookingEmployees = new System.Windows.Forms.DataGridView();
-            this.btnBookingCreatePhotoshoot = new System.Windows.Forms.Button();
             this.bookingEmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingEmployeeAvailable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingEmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBookingCreatePhotoshoot = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingEmployees)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +71,8 @@
             // 
             this.dgvBookEvent.AllowUserToAddRows = false;
             this.dgvBookEvent.AllowUserToDeleteRows = false;
-            this.dgvBookEvent.AllowUserToOrderColumns = true;
+            this.dgvBookEvent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBookEvent.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvBookEvent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookEvent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -84,6 +85,7 @@
             this.dgvBookEvent.Location = new System.Drawing.Point(27, 96);
             this.dgvBookEvent.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBookEvent.Name = "dgvBookEvent";
+            this.dgvBookEvent.ReadOnly = true;
             this.dgvBookEvent.RowTemplate.Height = 24;
             this.dgvBookEvent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvBookEvent.Size = new System.Drawing.Size(805, 232);
@@ -94,6 +96,7 @@
             // 
             this.Column1.HeaderText = "Column1";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -101,6 +104,7 @@
             // 
             this.Column2.HeaderText = "Column2";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -108,6 +112,7 @@
             // 
             this.Column3.HeaderText = "Column3";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -115,6 +120,7 @@
             // 
             this.Column4.HeaderText = "Column4";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -122,6 +128,7 @@
             // 
             this.Column5.HeaderText = "Column5";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -129,6 +136,7 @@
             // 
             this.Column6.HeaderText = "Column6";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -136,6 +144,7 @@
             // 
             this.Column7.HeaderText = "Column7";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -152,6 +161,10 @@
             // 
             // dgvBookingEmployees
             // 
+            this.dgvBookingEmployees.AllowUserToAddRows = false;
+            this.dgvBookingEmployees.AllowUserToDeleteRows = false;
+            this.dgvBookingEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBookingEmployees.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvBookingEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookingEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.bookingEmployeeName,
@@ -159,10 +172,30 @@
             this.bookingEmployeeID});
             this.dgvBookingEmployees.Location = new System.Drawing.Point(848, 96);
             this.dgvBookingEmployees.Name = "dgvBookingEmployees";
+            this.dgvBookingEmployees.ReadOnly = true;
+            this.dgvBookingEmployees.RowHeadersVisible = false;
             this.dgvBookingEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvBookingEmployees.Size = new System.Drawing.Size(288, 232);
             this.dgvBookingEmployees.TabIndex = 19;
             this.dgvBookingEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
+            // 
+            // bookingEmployeeName
+            // 
+            this.bookingEmployeeName.HeaderText = "Employee Name";
+            this.bookingEmployeeName.Name = "bookingEmployeeName";
+            this.bookingEmployeeName.ReadOnly = true;
+            // 
+            // bookingEmployeeAvailable
+            // 
+            this.bookingEmployeeAvailable.HeaderText = "Available";
+            this.bookingEmployeeAvailable.Name = "bookingEmployeeAvailable";
+            this.bookingEmployeeAvailable.ReadOnly = true;
+            // 
+            // bookingEmployeeID
+            // 
+            this.bookingEmployeeID.HeaderText = "ID";
+            this.bookingEmployeeID.Name = "bookingEmployeeID";
+            this.bookingEmployeeID.ReadOnly = true;
             // 
             // btnBookingCreatePhotoshoot
             // 
@@ -174,21 +207,6 @@
             this.btnBookingCreatePhotoshoot.Text = "Create photoshoot booking";
             this.btnBookingCreatePhotoshoot.UseVisualStyleBackColor = true;
             this.btnBookingCreatePhotoshoot.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // bookingEmployeeName
-            // 
-            this.bookingEmployeeName.HeaderText = "Employee Name";
-            this.bookingEmployeeName.Name = "bookingEmployeeName";
-            // 
-            // bookingEmployeeAvailable
-            // 
-            this.bookingEmployeeAvailable.HeaderText = "Available";
-            this.bookingEmployeeAvailable.Name = "bookingEmployeeAvailable";
-            // 
-            // bookingEmployeeID
-            // 
-            this.bookingEmployeeID.HeaderText = "ID";
-            this.bookingEmployeeID.Name = "bookingEmployeeID";
             // 
             // Booking_Date
             // 

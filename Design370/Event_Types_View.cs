@@ -38,7 +38,7 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    string query = "SELECT event_type_name, event_type_description FROM event_type WHERE event_type_name = '" + GetEventTypeViewRow + "'";
+                    string query = "SELECT event_type_name, event_type_description FROM event_type WHERE event_type_id = '" + GetEventTypeViewRow + "'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -62,6 +62,7 @@ namespace Design370
         {
             txtEventTypeName.Enabled = true;
             txtEventTypeDescription.Enabled = true;
+            btnEventTypeEdit.Enabled = false;
         }
 
         private void Event_Types_View_FormClosing(object sender, FormClosingEventArgs e)

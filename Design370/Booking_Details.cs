@@ -21,7 +21,6 @@ namespace Design370
 
             if (result == DialogResult.Cancel)
             {
-                MessageBox.Show("Customer selection has been canceled");
                 Dispose();
                 return;
             }
@@ -31,50 +30,16 @@ namespace Design370
 
             if (result == DialogResult.Cancel)
             {
-                MessageBox.Show("Timeslot/employee selection has been canceled");
                 Dispose();
                 return;
             }
             loadBookingDetails();
         }
 
-        private void loadBookingDetails()
-        {
-            try
-            {
-                txtBookingCustomer.Text = Booking.customerName;
-                dtmBookingDate.Value = Booking.bookingDate;
-                txtBookingEmployee.Text = Booking.employeeName;
-                txtBookingTime.Text = Booking.time;
-                DBConnection dBCon = DBConnection.Instance();
 
-                if (Booking.bookingType == "Photoshoot")
-                {
-                    numBookingGuests.Enabled = false;
-                }
-                if (dBCon.IsConnect())
-                {
-                    string query = "SELECT bp.booking_package_name FROM booking_package bp " +
-                        "JOIN booking_package_type bpt ON bp.booking_package_type_id = bpt.booking_package_type_id " +
-                        "WHERE bpt.booking_package_type_name = '" + Booking.bookingType + "'";
-                    MySqlCommand command = new MySqlCommand(query, dBCon.Connection);
-                    MySqlDataReader reader = command.ExecuteReader();
-                    cmbBookingPackage.Items.Clear();
-                    while (reader.Read())
-                    {
-                        cmbBookingPackage.Items.Add(reader.GetString(0));
-                    }
-                    reader.Close();
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
         private void Booking_Details_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("Booking creation has been canceled");
+
         }
         private void CbxBookingAdditions_CheckedChanged(object sender, EventArgs e)
         {
@@ -98,45 +63,7 @@ namespace Design370
             lstBookingServices.Items.Clear();
             loadPackages();
         }
-        private void loadPackages()
-        {
-            try
-            {
-                loadLists();
-                DBConnection dBCon = DBConnection.Instance();
-                string query = "SELECT p.product_name, p.product_price, bpp.booking_package_product_quantity FROM product p " +
-                    "JOIN booking_type bt ON p.booking_type_id = bt.booking_type_id " +
-                    "JOIN booking_package_product bpp ON p.product_id = bpp.product_id " +
-                    "WHERE bt.booking_type_name = '" + Booking.bookingType + "'";
-                var command = new MySqlCommand(query, dBCon.Connection);
-                var reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    products.Add(reader.GetString(0) + "; R" + reader.GetString(1) + " - " + reader.GetString(2));
-                }
-                reader.Close();
 
-                query = "SELECT service_name, s.service_price FROM service s " +
-                    "JOIN booking_type bt ON s.booking_type_id = bt.booking_type_id " +
-                    "WHERE bt.booking_type_name = '" + Booking.bookingType + "'";
-                command.CommandText = query;
-                reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    services.Add(reader.GetString(0) + "; R" + reader.GetString(1) + " - 1");
-                }
-                reader.Close();
-
-                foreach (var item in products)
-                    lstBookingProducts.Items.Add(item);
-                foreach (var item in services)
-                    lstBookingServices.Items.Add(item);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
         private void BtnBookingProductAdd_Click(object sender, EventArgs e)
         {
             try
@@ -238,15 +165,6 @@ namespace Design370
                 MessageBox.Show(ee.Message);
             }
         }
-        private void loadLists()
-        {
-            products.Clear();
-            services.Clear();
-            foreach (var item in lstBookingProducts.Items)
-                products.Add(item.ToString());
-            foreach (var item in lstBookingServices.Items)
-                services.Add(item.ToString());
-        }
         private void BtnBookingProceed_Click(object sender, EventArgs e)
         {
             if (cmbBookingPackage.SelectedIndex < 0)
@@ -291,14 +209,13 @@ namespace Design370
                     "VALUES (NULL, '" + Booking.customerID + "', '" + DateTime.Now.ToString("yyyy'-'MM'-'dd") + "', '" + txtBookingLocation.Text + "', NULL, '" +
                     typeID + "', '" + statusID + "', '" + "1" + "', '" + packageID + "', '";
 
-                query += Booking.bookingType == "Photoshoot" 
+                query += Booking.bookingType == "Photoshoot"
                     ? numBookingGuests.Value.ToString() + "');"
                     : 0 + "');";
 
                 query += "UPDATE employee_timeslot et JOIN timeslot t ON et.timeslot_id = t.timeslot_id " +
-                    "SET booking_id = LAST_INSERT_ID() " +
+                    "SET booking_id = LAST_INSERT_ID(), et.available = 0 " +
                     "WHERE t.timeslot_date = '" + dtmBookingDate.Value.ToString("yyyy'-'MM'-'dd") + "' AND t.timeslot_start = '" + txtBookingTime.Text + "';";
-                MessageBox.Show(query);
                 command.CommandText = query;
                 command.ExecuteNonQuery();
 
@@ -317,6 +234,8 @@ namespace Design370
                     {
                         query = "INSERT IGNORE INTO booking_product (booking_id, product_id, booking_product_quantity) " +
                             "VALUES (LAST_INSERT_ID(), '" + ID + "', '" + quantity + "');";
+                        command.CommandText = query;
+                        command.ExecuteNonQuery();
                     }
                 }
                 foreach (var item in services)
@@ -332,6 +251,8 @@ namespace Design370
                     {
                         query = "INSERT IGNORE INTO booking_service (booking_id, service_id) " +
                             "VALUES (LAST_INSERT_ID(), '" + ID + "');";
+                        command.CommandText = query;
+                        command.ExecuteNonQuery();
                     }
                 }
             }
@@ -341,10 +262,91 @@ namespace Design370
                 reader.Close();
             }
         }
-
-        private void NumBookingSpan_ValueChanged(object sender, EventArgs e)
+        private void updateTotal()
         {
+            txtBookingTotal.Text = 5.ToString();
+        }
+        private void loadLists()
+        {
+            products.Clear();
+            services.Clear();
+            foreach (var item in lstBookingProducts.Items)
+                products.Add(item.ToString());
+            foreach (var item in lstBookingServices.Items)
+                services.Add(item.ToString());
+        }
+        private void loadPackages()
+        {
+            try
+            {
+                loadLists();
+                DBConnection dBCon = DBConnection.Instance();
+                string query = "SELECT p.product_name, p.product_price, bpp.booking_package_product_quantity FROM product p " +
+                    "JOIN booking_type bt ON p.booking_type_id = bt.booking_type_id " +
+                    "JOIN booking_package_product bpp ON p.product_id = bpp.product_id " +
+                    "WHERE bt.booking_type_name = '" + Booking.bookingType + "'";
+                var command = new MySqlCommand(query, dBCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    products.Add(reader.GetString(0) + "; R" + reader.GetString(1) + " - " + reader.GetString(2));
+                }
+                reader.Close();
 
+                query = "SELECT service_name, s.service_price FROM service s " +
+                    "JOIN booking_type bt ON s.booking_type_id = bt.booking_type_id " +
+                    "WHERE bt.booking_type_name = '" + Booking.bookingType + "'";
+                command.CommandText = query;
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    services.Add(reader.GetString(0) + "; R" + reader.GetString(1) + " - 1");
+                }
+                reader.Close();
+
+                foreach (var item in products)
+                    lstBookingProducts.Items.Add(item);
+                foreach (var item in services)
+                    lstBookingServices.Items.Add(item);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        private void loadBookingDetails()
+        {
+            try
+            {
+                txtBookingCustomer.Text = Booking.customerName;
+                dtmBookingDate.Value = Booking.bookingDate;
+                txtBookingEmployee.Text = Booking.employeeName;
+                txtBookingTime.Text = Booking.time;
+                DBConnection dBCon = DBConnection.Instance();
+
+                if (Booking.bookingType == "Photoshoot")
+                {
+                    numBookingGuests.Enabled = false;
+                }
+                if (dBCon.IsConnect())
+                {
+                    string query = "SELECT bp.booking_package_name FROM booking_package bp " +
+                        "JOIN booking_package_type bpt ON bp.booking_package_type_id = bpt.booking_package_type_id " +
+                        "WHERE bpt.booking_package_type_name = '" + Booking.bookingType + "'";
+                    MySqlCommand command = new MySqlCommand(query, dBCon.Connection);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    cmbBookingPackage.Items.Clear();
+                    while (reader.Read())
+                    {
+                        cmbBookingPackage.Items.Add(reader.GetString(0));
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }

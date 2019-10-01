@@ -39,8 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtServiceName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -74,7 +72,7 @@
             this.btnAddServiceType.Name = "btnAddServiceType";
             this.btnAddServiceType.Size = new System.Drawing.Size(126, 21);
             this.btnAddServiceType.TabIndex = 85;
-            this.btnAddServiceType.Text = "Service Types";
+            this.btnAddServiceType.Text = "Add Service Type";
             this.btnAddServiceType.UseVisualStyleBackColor = true;
             this.btnAddServiceType.Click += new System.EventHandler(this.btnAddServiceType_Click);
             // 
@@ -106,6 +104,8 @@
             this.txtServicePrice.Name = "txtServicePrice";
             this.txtServicePrice.Size = new System.Drawing.Size(172, 21);
             this.txtServicePrice.TabIndex = 82;
+            this.txtServicePrice.Validating += new System.ComponentModel.CancelEventHandler(this.txtServicePrice_Validating);
+            this.txtServicePrice.Validated += new System.EventHandler(this.txtServicePrice_Validated);
             // 
             // label3
             // 
@@ -162,34 +162,11 @@
             this.label1.TabIndex = 77;
             this.label1.Text = "Service Name :";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(270, 87);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(172, 21);
-            this.comboBox1.TabIndex = 88;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(267, 72);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 13);
-            this.label5.TabIndex = 89;
-            this.label5.Text = "Booking Type:";
-            // 
             // Service_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 350);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAddService);
             this.Controls.Add(this.btnAddServiceType);
@@ -205,6 +182,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Service_Add";
             this.Text = "Add Service";
+            this.Activated += new System.EventHandler(this.Service_Add_Activated);
             this.Load += new System.EventHandler(this.Service_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -224,7 +202,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtServiceName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label5;
     }
 }

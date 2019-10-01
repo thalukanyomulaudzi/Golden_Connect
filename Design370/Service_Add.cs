@@ -28,27 +28,7 @@ namespace Design370
 
         private void Service_Add_Load(object sender, EventArgs e)
         {
-            cbxServiceTypes.Enabled = false;
-            try
-            {
-                if (dbCon.IsConnect())
-                {
-                    var mysqlCmd = new MySqlCommand("SELECT * FROM booking_type", dbCon.Connection);
-                    var mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-                        comboBox1.Items.Add(mysqlReader["booking_type_name"].ToString());
-                        comboBox1.ValueMember = (mysqlReader["booking_type_id"].ToString());
-
-                    }
-                    mysqlReader.Close();
-                }
-
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -63,31 +43,24 @@ namespace Design370
                 MessageBox.Show("Invalid character length for name and/or description and/or price");
                 return;
             }
-            if (cbxServiceTypes.SelectedIndex <= -1 || comboBox1.SelectedIndex <= -1)
+            if (cbxServiceTypes.SelectedIndex <= -1)
             {
-                MessageBox.Show("Please select a booking type and/or service type");
+                MessageBox.Show("Please select a service type");
                 return;
             }
             try
             {
                 if (dbCon.IsConnect())
                 {
-                    string serviceTypeID = "";
                     string bookingTypeID = "";
                     string query = "SELECT service_type_id FROM service_type WHERE service_type_name = '" + cbxServiceTypes.SelectedItem.ToString() + "'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     reader.Read();
-                    serviceTypeID = reader.GetString(0);
-                    reader.Close();
-                    query = "SELECT booking_type_id FROM booking_type WHERE booking_type_name = '" + comboBox1.SelectedItem.ToString() + "'";
-                    command = new MySqlCommand(query, dbCon.Connection);
-                    reader = command.ExecuteReader();
-                    reader.Read();
                     bookingTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "INSERT INTO `service`(`service_name`, `service_description`, `service_price`, `service_type_id`, `booking_type_id`) VALUES('" +
-                                txtServiceName.Text + "', '" + txtServiceDescr.Text + "', '" + txtServicePrice.Text + "', '" + serviceTypeID + "', '" + bookingTypeID + "')";
+                    query = "INSERT INTO `service`(`service_name`, `service_description`, `service_price`, `service_type_id`) VALUES('" +
+                                txtServiceName.Text + "', '" + txtServiceDescr.Text + "', '" + txtServicePrice.Text + "', '"  + bookingTypeID + "')";
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -101,43 +74,36 @@ namespace Design370
 
         private void btnAddServiceType_Click(object sender, EventArgs e)
         {
-            Service_Types service_Types = new Service_Types();
-            service_Types.ShowDialog();
+            Service_Types_Add service_Types_add = new Service_Types_Add();
+            service_Types_add.ShowDialog();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbxServiceTypes.Enabled = true;
+            
+        }
+
+        private void txtServicePrice_Validating(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void txtServicePrice_Validated(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Service_Add_Activated(object sender, EventArgs e)
+        {
             cbxServiceTypes.Items.Clear();
             try
             {
                 if (dbCon.IsConnect())
                 {
-                    string bookingTypeID = "";
-                    string serviceTypeID = "";
-                    var mysqlCmd = new MySqlCommand("SELECT booking_type_ID FROM booking_type WHERE booking_type_name = '" + comboBox1.SelectedItem + "'", dbCon.Connection);
+                    var mysqlCmd = new MySqlCommand("SELECT * FROM service_type", dbCon.Connection);
                     var mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
                     {
-
-                        bookingTypeID = mysqlReader.GetString(0);
-
-                    }
-                    mysqlReader.Close();
-                    mysqlCmd = new MySqlCommand("SELECT service_type_id FROM service WHERE booking_type_id = '" + bookingTypeID + "'", dbCon.Connection);
-                    mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-
-                        serviceTypeID = mysqlReader.GetString(0);
-
-                    }
-                    mysqlReader.Close();
-                    mysqlCmd = new MySqlCommand("SELECT * FROM service_type WHERE service_type_id = '" + serviceTypeID + "'", dbCon.Connection);
-                    mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-
                         cbxServiceTypes.Items.Add(mysqlReader["service_type_name"].ToString());
                         cbxServiceTypes.ValueMember = (mysqlReader["service_type_id"].ToString());
 

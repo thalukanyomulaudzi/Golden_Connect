@@ -38,7 +38,7 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    string query = "SELECT service_type_id, service_type_name, service_type_description FROM service_type WHERE service_type_name = '" + GetServiceTypeRow + "'";
+                    string query = "SELECT service_type_id, service_type_name, service_type_description FROM service_type WHERE service_type_id = '" + GetServiceTypeRow + "'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -61,6 +61,7 @@ namespace Design370
         {
             textBox1.Enabled = true;
             textBox2.Enabled = true;
+            button2.Enabled = false;
         }
 
         private void Service_Types_View_FormClosing(object sender, FormClosingEventArgs e)

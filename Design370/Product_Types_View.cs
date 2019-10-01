@@ -38,7 +38,7 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    string query = "SELECT product_type_id, product_type_name, product_type_description FROM product_type WHERE product_type_name = '" + GetProductTypeRow + "'";
+                    string query = "SELECT product_type_id, product_type_name, product_type_description FROM product_type WHERE product_type_id = '" + GetProductTypeRow + "'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -61,6 +61,7 @@ namespace Design370
         {
             textBox1.Enabled = true;
             textBox2.Enabled = true;
+            button2.Enabled = false;
         }
 
         private void Product_Types_View_FormClosing(object sender, FormClosingEventArgs e)

@@ -65,6 +65,7 @@
             this.txtProdTypeDesc.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProdTypeDesc.Location = new System.Drawing.Point(30, 97);
             this.txtProdTypeDesc.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtProdTypeDesc.MaxLength = 100;
             this.txtProdTypeDesc.Multiline = true;
             this.txtProdTypeDesc.Name = "txtProdTypeDesc";
             this.txtProdTypeDesc.Size = new System.Drawing.Size(198, 162);
@@ -86,6 +87,7 @@
             this.txtProdTypeName.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProdTypeName.Location = new System.Drawing.Point(30, 40);
             this.txtProdTypeName.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtProdTypeName.MaxLength = 25;
             this.txtProdTypeName.Name = "txtProdTypeName";
             this.txtProdTypeName.Size = new System.Drawing.Size(198, 21);
             this.txtProdTypeName.TabIndex = 34;
@@ -116,6 +118,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Product_Type_Add";
             this.Text = "Add Product Type";
+            this.Load += new System.EventHandler(this.Product_Type_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

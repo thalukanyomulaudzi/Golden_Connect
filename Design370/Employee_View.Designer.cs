@@ -282,7 +282,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 21);
             this.button3.TabIndex = 38;
-            this.button3.Text = "Employee Types";
+            this.button3.Text = "Add Employee Type";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 

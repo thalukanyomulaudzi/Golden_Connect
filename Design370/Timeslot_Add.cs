@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Design370
@@ -20,6 +13,11 @@ namespace Design370
         private void Timeslot_Add_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Button20_Click(object sender, EventArgs e)
+        {
+            Timeslot.generateTimeslotsUpTo(dateTimePicker1.Value);
         }
     }
 }

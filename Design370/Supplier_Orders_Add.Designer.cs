@@ -50,6 +50,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtType = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderProductList)).BeginInit();
@@ -159,6 +160,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dateTimePicker2);
             this.groupBox2.Controls.Add(this.btnRemoveProduct);
             this.groupBox2.Controls.Add(this.btnAddProduct);
             this.groupBox2.Controls.Add(this.dgvOrderProductList);
@@ -239,11 +241,14 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd hh:mm:ss";
             this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(381, 27);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(613, 27);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(264, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(17, 26);
             this.dateTimePicker1.TabIndex = 10;
+            this.dateTimePicker1.Visible = false;
             // 
             // label6
             // 
@@ -273,6 +278,13 @@
             this.label5.Size = new System.Drawing.Size(97, 16);
             this.label5.TabIndex = 7;
             this.label5.Text = "Document Type:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(381, 27);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(264, 26);
+            this.dateTimePicker2.TabIndex = 71;
             // 
             // Supplier_Orders_Add
             // 
@@ -321,5 +333,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }

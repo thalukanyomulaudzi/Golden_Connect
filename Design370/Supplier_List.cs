@@ -43,7 +43,7 @@ namespace Design370
         {
            
             Supplier_Orders_Add sd = new Supplier_Orders_Add();
-
+            Globals.SupplierID= dgvSupplierList.SelectedRows[0].Cells[0].Value.ToString();
             Globals.SupplierName = dgvSupplierList.SelectedRows[0].Cells[1].Value.ToString();
             Globals.SupplierEmail = dgvSupplierList.SelectedRows[0].Cells[2].Value.ToString();
             Globals.SupplierPhone = dgvSupplierList.SelectedRows[0].Cells[3].Value.ToString();
