@@ -65,7 +65,7 @@ namespace Design370
             //testConnection(); //this throws out all customer names and surnames, only use during development
             Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
-
+            Order.LoadOrders(dgvOrders);
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             dgvEventPackages.Rows.Clear();
@@ -595,6 +595,7 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             dgvCustomers.Rows.Clear();
             Customer.LoadCustomer(dgvCustomers);
+            Order.LoadOrders(dgvOrders);
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
@@ -735,16 +736,16 @@ namespace Design370
                     {
                         if (dbCon.IsConnect())
                         {
-                            dbCon.Close();
-                            dbCon.Open();
                             string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Pending' AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[0].Value + "'";
                             var command = new MySqlCommand(checkStatus, dbCon.Connection);
                             var reader = command.ExecuteReader();
                             reader.Read();
                             if (reader.HasRows)
                             {
+                                reader.Close();
                                 Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[0].Value);
                                 customerPay.ShowDialog();
+                                
                             }
                             else
                             {

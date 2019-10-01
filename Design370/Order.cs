@@ -32,32 +32,30 @@ namespace Design370
         {
             try
             {
-                dbCon.Close();
-                dbCon.Open();
-                DataGridViewButtonColumn viewOrder, payOrder;
-                viewOrder = new DataGridViewButtonColumn();
-                payOrder = new DataGridViewButtonColumn();
-                viewOrder.HeaderText = "Action";
-                viewOrder.Text = "View Order";
-                viewOrder.UseColumnTextForButtonValue = true;
-                viewOrder.Width = 130;
-                dgv.Rows.Clear();
-                dgv.ColumnCount = 5;
-                dgv.Columns[0].Name = "Order ID";
-                dgv.Columns[0].Width = 150;
-                dgv.Columns[1].Name = "Customer Name";
-                dgv.Columns[1].Width = 190;
-                dgv.Columns[2].Name = "Date Placed";
-                dgv.Columns[2].Width = 180;
-                dgv.Columns[3].Name = "Order Total";
-                dgv.Columns[3].Width = 150;
-                dgv.Columns[4].Name = "Order Status";
-                dgv.Columns[4].Width = 150;
-                dgv.Columns.Add(viewOrder);
-                dgv.ReadOnly = true;
-                dgv.RowHeadersVisible = false;
                 if (dbCon.IsConnect())
                 {
+                    DataGridViewButtonColumn viewOrder, payOrder;
+                    viewOrder = new DataGridViewButtonColumn();
+                    payOrder = new DataGridViewButtonColumn();
+                    viewOrder.HeaderText = "Action";
+                    viewOrder.Text = "View Order";
+                    viewOrder.UseColumnTextForButtonValue = true;
+                    viewOrder.Width = 130;
+                    dgv.Rows.Clear();
+                    dgv.ColumnCount = 5;
+                    dgv.Columns[0].Name = "Order ID";
+                    dgv.Columns[0].Width = 150;
+                    dgv.Columns[1].Name = "Customer Name";
+                    dgv.Columns[1].Width = 190;
+                    dgv.Columns[2].Name = "Date Placed";
+                    dgv.Columns[2].Width = 180;
+                    dgv.Columns[3].Name = "Order Total";
+                    dgv.Columns[3].Width = 150;
+                    dgv.Columns[4].Name = "Order Status";
+                    dgv.Columns[4].Width = 150;
+                    dgv.Columns.Add(viewOrder);
+                    dgv.ReadOnly = true;
+                    dgv.RowHeadersVisible = false;
                     string orders = "SELECT `order_id`, `order_date_placed`, `customer`.`customer_first`, `order_total`, `order_status`.`order_status_name`, `customer`.`customer_last` " +
                         "FROM `order`, `customer`, `order_status` " +
                         "WHERE `order`.`customer_id` = `customer`.`customer_id` AND `order`.`order_status_id` = `order_status`.`order_status_id`";
@@ -73,7 +71,7 @@ namespace Design370
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-                dbCon.Close();
+         
             }
         }
         static int statusID;
@@ -81,8 +79,6 @@ namespace Design370
         {
             if(dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
                 string getID = "SELECT * FROM `order_status` WHERE `order_status_name` = '"+statusName+"'";
                 var cmd = new MySqlCommand(getID, dbCon.Connection);
                 var reader = cmd.ExecuteReader();
@@ -97,8 +93,6 @@ namespace Design370
             statusID = getStatusID(status);
             if(dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
                 string update = "UPDATE `order` SET `order_status_id` = '"+statusID+"' WHERE `order_id` = '"+orderID+"'";
                 var command = new MySqlCommand(update, dbCon.Connection);
                 command.ExecuteReader();

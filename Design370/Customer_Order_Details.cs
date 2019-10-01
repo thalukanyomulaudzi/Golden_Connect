@@ -56,8 +56,6 @@ namespace Design370
             loadDGV(dgvSearchCustomer);
             if(dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
                 var command = new MySqlCommand("SELECT * FROM `customer`", dbCon.Connection);
                 var reader = command.ExecuteReader();
                 dgvSearchCustomer.Rows.Clear();
@@ -67,7 +65,6 @@ namespace Design370
                 }
                 reader.Close();
             }
-            dbCon.Close();
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -81,28 +78,27 @@ namespace Design370
             {
                 if (e.ColumnIndex == 5 && dgvSearchCustomer.Rows[e.RowIndex].Cells[0].Value != null)
                 {
-                    dbCon.Open();
-                    var command = new MySqlCommand("SELECT `customer_id` FROM `customer` " +
-                        "WHERE `customer_id_number` = '"+ Convert.ToInt64(dgvSearchCustomer.Rows[e.RowIndex].Cells[2].Value.ToString()) + "'", dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    if(reader.Read())
+                    if (dbCon.IsConnect())
                     {
-                        customerID = Convert.ToInt32(reader[0]);
+                        var command = new MySqlCommand("SELECT `customer_id` FROM `customer` " +
+                            "WHERE `customer_id_number` = '" + Convert.ToInt64(dgvSearchCustomer.Rows[e.RowIndex].Cells[2].Value.ToString()) + "'", dbCon.Connection);
+                        var reader = command.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            customerID = Convert.ToInt32(reader[0]);
+                        }
+                        reader.Close();
+                        names = dgvSearchCustomer.Rows[e.RowIndex].Cells[0].Value.ToString() + " " +
+                            dgvSearchCustomer.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        Customer_Order_New newCustomerOrder = new Customer_Order_New(this);
+                        this.Close();
+                        newCustomerOrder.ShowDialog();
                     }
-                    reader.Close();
-                    names = dgvSearchCustomer.Rows[e.RowIndex].Cells[0].Value.ToString() + " " +
-                        dgvSearchCustomer.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    Customer_Order_New newCustomerOrder = new Customer_Order_New(this);
-                    this.Close();
-                    newCustomerOrder.ShowDialog();
-                    dbCon.Close();
-                   
                 }
             }
             catch(Exception er)
             {
                 MessageBox.Show("Error: " + er.Message);
-                dbCon.Close();
             }
         }
 
@@ -110,23 +106,23 @@ namespace Design370
         {
             try
             {
-                dbCon.Open();
-                loadDGV(dgvSearchCustomer);
-                string query = "SELECT * FROM `customer` WHERE `customer_first` LIKE '%"+ txtCustomerSearch.Text + "%' OR `customer_last` LIKE '%" + txtCustomerSearch.Text + "%' OR `customer_id_number` LIKE '%" + txtCustomerSearch.Text + "%' " +
-                    "OR `customer_email` LIKE '%" + txtCustomerSearch.Text + "%' OR `customer_phone` LIKE '%" + txtCustomerSearch.Text + "%'";
-                var command = new MySqlCommand(query, dbCon.Connection);
-                var reader = command.ExecuteReader();
-                while(reader.Read())
+                if (dbCon.IsConnect())
                 {
-                    dgvSearchCustomer.Rows.Add(reader[1], reader[2], reader[5], reader[3], reader[4]);
+                    loadDGV(dgvSearchCustomer);
+                    string query = "SELECT * FROM `customer` WHERE `customer_first` LIKE '%" + txtCustomerSearch.Text + "%' OR `customer_last` LIKE '%" + txtCustomerSearch.Text + "%' OR `customer_id_number` LIKE '%" + txtCustomerSearch.Text + "%' " +
+                        "OR `customer_email` LIKE '%" + txtCustomerSearch.Text + "%' OR `customer_phone` LIKE '%" + txtCustomerSearch.Text + "%'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvSearchCustomer.Rows.Add(reader[1], reader[2], reader[5], reader[3], reader[4]);
+                    }
+                    reader.Close();
                 }
-                reader.Close();
-                dbCon.Close();
             }
             catch(Exception err)
             {
                 MessageBox.Show("Error: " + err.Message);
-                dbCon.Close();
             }
         }
 
@@ -138,15 +134,14 @@ namespace Design370
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-            this.Refresh();
+            //this.Refresh();
         }
 
         private void Customer_Order_Details_Activated(object sender, EventArgs e)
         {
-            loadDGV(dgvSearchCustomer);
+            //loadDGV(dgvSearchCustomer);
             if (dbCon.IsConnect())
             {
-                dbCon.Open();
                 var command = new MySqlCommand("SELECT * FROM `customer`", dbCon.Connection);
                 var reader = command.ExecuteReader();
                 dgvSearchCustomer.Rows.Clear();
@@ -156,7 +151,6 @@ namespace Design370
                 }
                 reader.Close();
             }
-            dbCon.Close();
         }
     }
 }

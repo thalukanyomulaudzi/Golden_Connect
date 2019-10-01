@@ -316,7 +316,7 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnAddProduct.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddProduct.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.Location = new System.Drawing.Point(351, 590);
@@ -329,7 +329,7 @@
             // 
             // btnSaveOrder
             // 
-            this.btnSaveOrder.BackColor = System.Drawing.Color.LightGreen;
+            this.btnSaveOrder.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnSaveOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveOrder.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveOrder.Location = new System.Drawing.Point(91, 590);
@@ -371,7 +371,7 @@
             // 
             // btnCancelOrder
             // 
-            this.btnCancelOrder.BackColor = System.Drawing.Color.Red;
+            this.btnCancelOrder.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnCancelOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelOrder.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelOrder.Location = new System.Drawing.Point(221, 590);
@@ -425,10 +425,6 @@
             this.lblPhoto.TabIndex = 0;
             this.lblPhoto.Text = "1  |  3";
             this.lblPhoto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // Customer_Order_New
             // 

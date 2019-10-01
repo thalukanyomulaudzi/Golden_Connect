@@ -37,7 +37,6 @@ namespace Design370
         public decimal subTotal;
         public bool saveCurrentOrder = false;
         /*******************************************************************/
-        Timer viewImages = new Timer();
         /*******************************************************************/
         public Customer_Order_New(Customer_Order_Details getCustNames)
         {
@@ -69,8 +68,6 @@ namespace Design370
             dgv.Columns.Add(deleteOrder);
             dgv.RowHeadersVisible = false;
             dgv.ColumnHeadersHeight = 30;
-            viewImages.Interval = 3000;
-            viewImages.Tick += new EventHandler(Timer1_Tick);
             ID = orderID.Next(1, 9999);
             while (getOrderID(ID) == false)
             {
@@ -80,21 +77,19 @@ namespace Design370
 
         public bool getOrderID(int o)
         {
-            dbCon.Close();
-            dbCon.Open();
-            var cmd = new MySqlCommand("SELECT `order_id` FROM `order`", dbCon.Connection);
-            var read = cmd.ExecuteReader();
-            while (read.Read())
+            if (dbCon.IsConnect())
             {
-                if (Convert.ToInt32(read[0]) == o)
+                var cmd = new MySqlCommand("SELECT `order_id` FROM `order`", dbCon.Connection);
+                var read = cmd.ExecuteReader();
+                while (read.Read())
                 {
-                    //MessageBox.Show("Generating another Order ID");
-                    dbCon.Close();
-                    return false; 
+                    if (Convert.ToInt32(read[0]) == o)
+                    {
+                        return false;
+                    }
                 }
+                read.Close();
             }
-            read.Close();
-            dbCon.Close();
             return true;
         }
 
@@ -103,8 +98,6 @@ namespace Design370
             lblOrderID.Text = ID.ToString();
             if (dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
                 var command = new MySqlCommand("SELECT `product_name`, `product_stock_quantity` FROM `product`, `product_type` WHERE `product`.`product_type_id` = `product_type`.`product_type_id` AND " +
                     "`product_type`.`product_type_name` = 'Customer Order' AND `product`.`product_stock_quantity` != '0';", dbCon.Connection);
                 var reader = command.ExecuteReader();
@@ -121,7 +114,6 @@ namespace Design370
             btnSaveOrder.Enabled = false;
             controls.Hide();
         }
-
         
         private void PictureBox1_Click(object sender, EventArgs e)
         {
@@ -177,7 +169,6 @@ namespace Design370
         {
             try
             {
-
                 if (e.ColumnIndex == 5)
                 {
                     string pr;
@@ -241,8 +232,6 @@ namespace Design370
             int count;
             if(dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
                 product = lboxProductTypes.SelectedItem.ToString();
                 var command = new MySqlCommand("SELECT `product_price`, `product_id`, `product_stock_quantity` FROM `product` WHERE `product_name` = '"+product+"'", dbCon.Connection);
                 var reader = command.ExecuteReader();
@@ -337,11 +326,9 @@ namespace Design370
                         lblOTotal.Text = "R"+orderTotal.ToString();
                     }
                 }
-                SavingOrder save = new SavingOrder();
+                //SavingOrder save = new SavingOrder();
                 if (dbCon.IsConnect())
                 {
-                    dbCon.Close();
-                    dbCon.Open();
                     var date = DateTime.Now;
                     string orderInsert = "INSERT INTO `order` (`order_id`, `order_date_placed`, `customer_id`, `order_status_id`, `order_total`) " +
                         "VALUES(@id, @date, @cID, @osd, @OrderTotal)";
@@ -353,8 +340,7 @@ namespace Design370
                     com.Parameters.AddWithValue("@OrderTotal", orderTotal);
                     com.ExecuteNonQuery();
                 }
-                dbCon.Close();
-                save.Show();
+
                 foreach (Order item in items)
                 {
                     if (item != null)
@@ -362,15 +348,13 @@ namespace Design370
                         saved = true;
                         if (dbCon.IsConnect())
                         {
-                            dbCon.Open();
                             var command = new MySqlCommand("INSERT INTO `order_line` (`product_id`, `order_id`, `order_line_quantity`) " +
                             "VALUES (@ProductID, @orderID, @quantity)", dbCon.Connection);
                             command.Parameters.AddWithValue("@orderID", ID);
                             command.Parameters.AddWithValue("@quantity", 1);
                             command.Parameters.AddWithValue("@ProductID", item.getProductID);
                             int complete = command.ExecuteNonQuery();
-                            dbCon.Close();
-                            dbCon.Open();
+           
                             int size = item.getOrderImages.Length;
                             int prodID = item.getProductID;
                             for (int indx = 0; indx < size; indx++)
@@ -386,27 +370,24 @@ namespace Design370
                                 int uploaded = cmd.ExecuteNonQuery();
                             }
                         }
-                        dbCon.Close();
                     }
                 }
                 //SendSMS(String AccountID, String Email, String Password, String Recipient, String Message);
-                dbCon.Close();
-                dbCon.Open();
-                var comnd = new MySqlCommand("INSERT INTO `audit_trail` (`audit_trail_id`, `employee_id`, `audit_trail_date_time`, `audit_trail_description`) " +
-                    "VALUES(NULL, @EMPID, @DT, @ADESC)", dbCon.Connection);
-                comnd.Parameters.AddWithValue("@EMPID", 1);
-                comnd.Parameters.AddWithValue("@DT", DateTime.Now);
-                comnd.Parameters.AddWithValue("@ADESC", "A new order " + ID + " was placed by Simon for " + customer.names);
-                comnd.ExecuteNonQuery();
-                dbCon.Close();
-                
-                save.saveOrder.Value = 100;
+                if (dbCon.IsConnect())
+                {
+                    var comnd = new MySqlCommand("INSERT INTO `audit_trail` (`audit_trail_id`, `employee_id`, `audit_trail_date_time`, `audit_trail_description`) " +
+                        "VALUES(NULL, @EMPID, @DT, @ADESC)", dbCon.Connection);
+                    comnd.Parameters.AddWithValue("@EMPID", 1);
+                    comnd.Parameters.AddWithValue("@DT", DateTime.Now);
+                    comnd.Parameters.AddWithValue("@ADESC", "A new order " + ID + " was placed by Simon for " + customer.names);
+                    comnd.ExecuteNonQuery();
+                }
+                this.Close();
                 if (saved == true)
                 {
-                    dbCon.Open();
-                    save.Close();
                     if (MessageBox.Show("Order Successfully Saved!", "Customer Order", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                     {
+                      
                         if (MessageBox.Show("Do you want to place a new order?", "Place Customer Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             updateStock();
@@ -426,8 +407,9 @@ namespace Design370
                             lblOTotal.Text = "R0.00";
                             pBoxPrintPhoto.Image = null;
                             controls.Hide();
-                            dbCon.Close();
                             orderTotal = 0;
+                            Customer_Order_Details selectCustomer = new Customer_Order_Details();
+                            selectCustomer.ShowDialog();
                         }
                         else
                         {
@@ -436,7 +418,6 @@ namespace Design370
                             items = null;
                             row = 0;
                             saved = false;
-                            dbCon.Close();
                         }
                     }
                 }
@@ -444,31 +425,32 @@ namespace Design370
             catch(Exception er)
             {
                 MessageBox.Show("Error: " + er.Message);
-                dbCon.Close();
+            
             }
         }
 
         public void updateStock()
         {
-            dbCon.Close();
-            dbCon.Open();
-            int size = items.Length;
-            for (int i = 0; i < size; i++)
+            if (dbCon.IsConnect())
             {
-                if (items[i] != null)
+                int size = items.Length;
+                for (int i = 0; i < size; i++)
                 {
-                    var commnd = new MySqlCommand("SELECT `product_stock_quantity` FROM `product` WHERE `product_name` = '" + items[i].getOrderName + "'", dbCon.Connection);
-                    var r = commnd.ExecuteReader();
-                    if (r.Read())
+                    if (items[i] != null)
                     {
-                        int q = Convert.ToInt32(r[0]);
-                        q -= 1;
+                        var commnd = new MySqlCommand("SELECT `product_stock_quantity` FROM `product` WHERE `product_name` = '" + items[i].getOrderName + "'", dbCon.Connection);
+                        var r = commnd.ExecuteReader();
+                        if (r.Read())
+                        {
+                            int q = Convert.ToInt32(r[0]);
+                            q -= 1;
+                            r.Close();
+                            var updCmd = new MySqlCommand("UPDATE `product` SET `product_stock_quantity` = '" + q + "' WHERE `product_name` = '" + items[i].getOrderName + "'", dbCon.Connection);
+                            var u = updCmd.ExecuteReader();
+                            u.Close();
+                        }
                         r.Close();
-                        var updCmd = new MySqlCommand("UPDATE `product` SET `product_stock_quantity` = '" + q + "' WHERE `product_name` = '"+items[i].getOrderName+"'", dbCon.Connection);
-                        var u = updCmd.ExecuteReader();
-                        u.Close();
                     }
-                    r.Close();
                 }
             }
         }
@@ -499,42 +481,25 @@ namespace Design370
                 lblPhoto.Text = "Image " + (index + 1).ToString() + " of " + photoSize.ToString();
                 btnPrev.Enabled = false;
                 btnNext.Enabled = true;
-                viewImages.Stop();
-                forBack = true;
             }
         }
 
         private void Customer_Order_New_FormClosing(object sender, FormClosingEventArgs e)
         {
-            dbCon.Close();
+          
         }
 
         private void BtnCancelOrder_Click(object sender, EventArgs e)
         {
-            this.Close();
-            dbCon.Close();
-            dbCon.Open();
-            var comnd = new MySqlCommand("INSERT INTO `audit_trail` (`audit_trail_id`, `employee_id`, `audit_trail_date_time`, `audit_trail_description`) " +
-                "VALUES(NULL, @EMPID, @DT, @ADESC)", dbCon.Connection);
-            comnd.Parameters.AddWithValue("@EMPID", 1);
-            comnd.Parameters.AddWithValue("@DT", DateTime.Now);
-            comnd.Parameters.AddWithValue("@ADESC", "Simon cancelled the ordering process for "+customer.names+"");
-            comnd.ExecuteNonQuery();
-            dbCon.Close();
-        }
-
-        public bool forBack = true;
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            if (forBack == true)
+            if (dbCon.IsConnect())
             {
-                photo++;
-                nextImage(photo);
-            }
-            else
-            {
-                photo--;
-                prevImage(photo);
+                this.Close();
+                var comnd = new MySqlCommand("INSERT INTO `audit_trail` (`audit_trail_id`, `employee_id`, `audit_trail_date_time`, `audit_trail_description`) " +
+                    "VALUES(NULL, @EMPID, @DT, @ADESC)", dbCon.Connection);
+                comnd.Parameters.AddWithValue("@EMPID", 1);
+                comnd.Parameters.AddWithValue("@DT", DateTime.Now);
+                comnd.Parameters.AddWithValue("@ADESC", "Simon cancelled the ordering process for " + customer.names + "");
+                comnd.ExecuteNonQuery();
             }
         }
 
@@ -548,11 +513,6 @@ namespace Design370
                     lblPhoto.Text = "Image " + (i + 1).ToString() + " of " + photoSize.ToString();
                     btnNext.Enabled = false;
                     btnPrev.Enabled = true;
-                    viewImages.Stop();
-                    //viewImages.Interval = 3000;
-                    //viewImages.Tick += new EventHandler(Timer1_Tick);
-                    //viewImages.Start();
-                    forBack = false;
                 }
                 else
                 {

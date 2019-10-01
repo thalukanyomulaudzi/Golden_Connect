@@ -170,7 +170,7 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            //this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -1570,7 +1570,7 @@ namespace Design370
             // 
             // tabPage11
             // 
-            this.tabPage11.Controls.Add(this.crystalReportViewer1);
+            //this.tabPage11.Controls.Add(this.crystalReportViewer1);
             this.tabPage11.Controls.Add(this.button13);
             this.tabPage11.Controls.Add(this.button11);
             this.tabPage11.Controls.Add(this.button9);
@@ -1661,13 +1661,13 @@ namespace Design370
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(269, 3);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(832, 602);
-            this.crystalReportViewer1.TabIndex = 61;
+            //this.crystalReportViewer1.ActiveViewIndex = -1;
+            //this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            //this.crystalReportViewer1.Location = new System.Drawing.Point(269, 3);
+            //this.crystalReportViewer1.Name = "crystalReportViewer1";
+            //this.crystalReportViewer1.Size = new System.Drawing.Size(832, 602);
+            //this.crystalReportViewer1.TabIndex = 61;
             // 
             // Main_Form
             // 
