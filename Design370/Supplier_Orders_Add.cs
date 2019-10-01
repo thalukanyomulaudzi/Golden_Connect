@@ -57,73 +57,10 @@ namespace Design370
                     }
                 }
             }
-            catch (Exception except)
+            catch (Exception)
             {
                 MessageBox.Show("Order has been placed");
             }
-            this.Close();
-            // string StrQuery, StrQuery1;
-            //try
-            //{
-            //    for (int i = 0; i < dgvOrderProductList.Rows.Count; i++)
-            //    {
-            //        //StrQuery = @"INSERT INTO supplier_order VALUES (" + Globals.SupplierID.ToString() + ", "
-            //        //           + dateTimePicker1.Text + ", "
-            //        //           + 1 + ", ";
-
-            //        //StrQuery1 = @"INSERT INTO supplier_order_line VALUES (" + Globals.SupplierID.ToString() +
-            //        //           ", "
-            //        //           + dgvOrderProductList.Rows[i].Cells["Column1"].Value + ", "
-            //        //           + dgvOrderProductList.Rows[i].Cells["Column3"].Value + ")";
-
-            //        //comm.CommandText = StrQuery;
-            //        //comm.CommandText = StrQuery1;
-            //        //comm.ExecuteNonQuery();
-            //        //"SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
-            //        string strquery = "INSERT INTO supplier_order(supplier_order.supplier_id, supplier_order.supplier_order_date_placed, supplier_order.supplier_order_status_id) VALUES('" +
-            //                            Globals.SupplierID.ToString() + "', '" + dateTimePicker1.Text + "', '" + 1 + "'); " +
-            //                          "INSERT INTO supplier_order_line(supplier_order_line.product_id, supplier_order_line.supplier_order_line_quantity) VALUES('" +
-            //                          dgvOrderProductList.Rows[i].Cells["Column1"].Value + "', '" + dgvOrderProductList.Rows[i].Cells["Column3"] + "', '" + 1 + "')";
-
-
-            //        //string strquery1 = "INSERT INTO supplier_order_line(supplier_order.supplier_id, supplier_order.supplier_order_date_placed, supplier_order.supplier_order_status_id) VALUES('" +
-            //        //                  Globals.SupplierID.ToString() + "', '" + dateTimePicker1.Text + "', '" + 1 + "')";
-            //        MysqlConnection.cmd = new MySqlCommand(strquery, MysqlConnection.mysqlCon);
-            //        try
-            //        {
-            //            MysqlConnection.mysqlCon.Open();
-            //            MySqlDataReader checkIfExist = MysqlConnection.cmd.ExecuteReader();
-            //            if (checkIfExist.HasRows)
-            //            {
-            //                MessageBox.Show("Product already exits!");
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("New Product Inserted!");
-            //                MysqlConnection.mysqlCon.Close();
-            //            }
-            //        }
-            //        catch (Exception ee)
-            //        {
-            //            MessageBox.Show("Error: " + ee.Message);
-            //        }
-            //    }
-            //    //using (MysqlConnection.mysqlCon)
-            //    //{
-            //    //    using (MySqlCommand comm = new MySqlCommand())
-            //    //    {
-            //    //        comm.Connection = MysqlConnection.mysqlCon;
-            //    //        MysqlConnection.mysqlCon.Open();
-
-            //    //    }
-            //    //}
-            //}
-            //catch (Exception ee )
-            //{
-            //    MessageBox.Show(ee.Message);
-            //}
-
-
             this.Close();
         }
 
