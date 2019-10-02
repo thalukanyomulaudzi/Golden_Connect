@@ -41,7 +41,7 @@ namespace Design370
                 DBConnection dBConnection = DBConnection.Instance();
                 if (dBConnection.IsConnect())
                 {
-                    string query = "SELECT photoshoot_type_name, photoshoot_type_description FROM photoshoot_type WHERE photoshoot_type_name = '" + GetPhotoshootTypeViewRow + "'";
+                    string query = "SELECT photoshoot_type_name, photoshoot_type_description FROM photoshoot_type WHERE photoshoot_type_id = '" + GetPhotoshootTypeViewRow + "'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -112,6 +112,7 @@ namespace Design370
         {
             textBox1.Enabled = true;
             textBox2.Enabled = true;
+            button2.Enabled = false;
         }
 
         private void Photoshoot_Types_View_FormClosing(object sender, FormClosingEventArgs e)

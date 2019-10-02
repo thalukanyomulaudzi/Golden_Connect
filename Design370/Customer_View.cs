@@ -8,9 +8,17 @@ namespace Design370
     {
         public bool edit;
         public string customerID;
+        public string GetCustomerRow { get; set; }
         public Customer_View()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(txtCustomerFirst, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerLast, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerEmail, "A maximum of 50 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerPhone, "A maximum of 10 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerID, "A maximum of 13 characters can be entered");
         }
 
         private void Label5_Click(object sender, EventArgs e)
@@ -20,76 +28,95 @@ namespace Design370
 
         private void Customer_View_Load(object sender, EventArgs e)
         {
-            toggleBoxes();
-            loadBoxes();
-        }
-        private void Customer_View_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (txtCustomerFirst.Enabled)
-            {
-                DialogResult exit = MessageBox.Show("Do you want to save these changes?", "Save changes", MessageBoxButtons.YesNo);
-                e.Cancel = exit == DialogResult.Yes ? false : true;
-            }
-        }
+            txtCustomerEmail.Enabled = edit;
+            txtCustomerFirst.Enabled = edit;
+            txtCustomerID.Enabled = edit;
+            txtCustomerLast.Enabled = edit;
+            txtCustomerPhone.Enabled = edit;
 
-        private void Button2_Click_1(object sender, EventArgs e)
-        {
-            edit = true;
-            toggleBoxes();
-        }
-
-        private void Button1_Click_1(object sender, EventArgs e)
-        {
             try
             {
-                if (edit)
+                DBConnection dBConnection = DBConnection.Instance();
+                if (dBConnection.IsConnect())
                 {
-                    DBConnection dBCon = DBConnection.Instance();
-                    string query = "UPDATE customer SET customer_first = '" + txtCustomerFirst.Text + "', customer_last = '" + txtCustomerLast.Text +
-                        "', customer_email = '" + txtCustomerEmail.Text + "', customer_phone = '" + txtCustomerPhone.Text +
-                        "', customer_id_number = '" + txtCustomerID.Text + "' " +
-                        "WHERE customer_id = '" + customerID + "'";
-                    var command = new MySqlCommand(query, dBCon.Connection);
-                    command.ExecuteNonQuery();
+                    string query = "SELECT * FROM customer WHERE customer_id = '" + GetCustomerRow + "'";
+                    var command = new MySqlCommand(query, dBConnection.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        txtCustomerID.Text = reader.GetString(5);
+                        txtCustomerFirst.Text = reader.GetString(1);
+                        txtCustomerLast.Text = reader.GetString(2);
+                        txtCustomerEmail.Text = reader.GetString(3);
+                        txtCustomerPhone.Text = reader.GetString(4);
+                    }
+                    reader.Close();
                 }
-                Dispose();
             }
             catch (Exception ee)
             {
                 MessageBox.Show(ee.Message);
             }
         }
-        private void toggleBoxes()
+        private void Customer_View_FormClosing(object sender, FormClosingEventArgs e)
         {
-            txtCustomerFirst.Enabled = edit;
-            txtCustomerLast.Enabled = edit;
-            txtCustomerID.Enabled = edit;
-            txtCustomerPhone.Enabled = edit;
-            txtCustomerEmail.Enabled = edit;
+            
         }
 
-        private void loadBoxes()
+        private void Button2_Click_1(object sender, EventArgs e)
         {
+            txtCustomerEmail.Enabled = true;
+            txtCustomerFirst.Enabled = true;
+            txtCustomerID.Enabled = true;
+            txtCustomerLast.Enabled = true;
+            txtCustomerPhone.Enabled = true;
+            button2.Enabled = false;
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            if (txtCustomerFirst.Text.Length <= 0)
+            {
+                MessageBox.Show("Please provide a first name");
+                return;
+            }
+            else if (txtCustomerLast.Text.Length <= 0)
+            {
+                MessageBox.Show("Please provide a last name");
+                return;
+            }
+            else if (txtCustomerEmail.Text.Length <= 12)
+            {
+                MessageBox.Show("Please provide a valid id number");
+                return;
+            }
+            else if (txtCustomerPhone.Text.Length <= 9)
+            {
+                MessageBox.Show("Please provide a valid phone number");
+                return;
+            }
+            else if (txtCustomerEmail.Text.Length <= 8)
+            {
+                MessageBox.Show("Please provide a valid email address");
+                return;
+            }
+            DBConnection dBConnection = DBConnection.Instance();
             try
             {
-                DBConnection dBCon = DBConnection.Instance();
-                string query = "SELECT customer_id, customer_first, customer_last, customer_id_number, customer_email, customer_phone FROM customer " +
-                    "WHERE customer_id_number = '" + customerID + "'";
-                var command = new MySqlCommand(query, dBCon.Connection);
-                var reader = command.ExecuteReader();
-                reader.Read();
-                customerID = reader.GetString(0);
-                txtCustomerFirst.Text = reader.GetString(1);
-                txtCustomerLast.Text = reader.GetString(2);
-                txtCustomerID.Text = reader.GetString(3);
-                txtCustomerEmail.Text = reader.GetString(4);
-                txtCustomerPhone.Text = reader.GetString(5);
-                reader.Close();
+                if (dBConnection.IsConnect())
+                {
+                    string query = "UPDATE `customer` SET `customer_id` = '" + GetCustomerRow + "', `customer_first` = '" + txtCustomerFirst.Text + "', `customer_last` = '" + txtCustomerLast.Text +
+                        "', `customer_email` = '" + txtCustomerEmail.Text.ToLower() + "', `customer_phone` = '" + txtCustomerPhone.Text + "', `customer_id_number` = '" + txtCustomerID.Text + "' WHERE " +
+                        "customer_id = '" + GetCustomerRow + "'";
+                    var command = new MySqlCommand(query, dBConnection.Connection);
+                    command.ExecuteNonQuery();
+                }
             }
-            catch (Exception e)
+            catch (Exception ee)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(ee.Message);
             }
+            this.Close();
         }
     }
 }

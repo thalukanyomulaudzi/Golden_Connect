@@ -58,6 +58,7 @@
             // 
             this.txtCustomerFirst.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerFirst.Location = new System.Drawing.Point(24, 72);
+            this.txtCustomerFirst.MaxLength = 25;
             this.txtCustomerFirst.Name = "txtCustomerFirst";
             this.txtCustomerFirst.Size = new System.Drawing.Size(183, 21);
             this.txtCustomerFirst.TabIndex = 1;
@@ -76,6 +77,7 @@
             // 
             this.txtCustomerLast.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerLast.Location = new System.Drawing.Point(24, 126);
+            this.txtCustomerLast.MaxLength = 25;
             this.txtCustomerLast.Name = "txtCustomerLast";
             this.txtCustomerLast.Size = new System.Drawing.Size(183, 21);
             this.txtCustomerLast.TabIndex = 3;
@@ -94,6 +96,7 @@
             // 
             this.txtCustomerID.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerID.Location = new System.Drawing.Point(284, 72);
+            this.txtCustomerID.MaxLength = 13;
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(183, 21);
             this.txtCustomerID.TabIndex = 5;
@@ -123,6 +126,7 @@
             // 
             this.txtCustomerPhone.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerPhone.Location = new System.Drawing.Point(24, 216);
+            this.txtCustomerPhone.MaxLength = 10;
             this.txtCustomerPhone.Name = "txtCustomerPhone";
             this.txtCustomerPhone.Size = new System.Drawing.Size(183, 21);
             this.txtCustomerPhone.TabIndex = 8;
@@ -131,6 +135,7 @@
             // 
             this.txtCustomerEmail.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerEmail.Location = new System.Drawing.Point(284, 216);
+            this.txtCustomerEmail.MaxLength = 50;
             this.txtCustomerEmail.Name = "txtCustomerEmail";
             this.txtCustomerEmail.Size = new System.Drawing.Size(183, 21);
             this.txtCustomerEmail.TabIndex = 9;

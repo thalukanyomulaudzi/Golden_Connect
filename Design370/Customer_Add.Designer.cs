@@ -74,7 +74,7 @@
             this.label12.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(21, 170);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(124, 14);
+            this.label12.Size = new System.Drawing.Size(126, 14);
             this.label12.TabIndex = 79;
             this.label12.Text = "2. Contact Information";
             // 
@@ -84,7 +84,7 @@
             this.label11.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(21, 25);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(127, 14);
+            this.label11.Size = new System.Drawing.Size(129, 14);
             this.label11.TabIndex = 78;
             this.label11.Text = "1. Personal Information";
             // 
@@ -92,6 +92,7 @@
             // 
             this.txtEM.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEM.Location = new System.Drawing.Point(284, 126);
+            this.txtEM.MaxLength = 50;
             this.txtEM.Name = "txtEM";
             this.txtEM.Size = new System.Drawing.Size(183, 21);
             this.txtEM.TabIndex = 77;
@@ -100,6 +101,7 @@
             // 
             this.txtTEL.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTEL.Location = new System.Drawing.Point(24, 216);
+            this.txtTEL.MaxLength = 10;
             this.txtTEL.Name = "txtTEL";
             this.txtTEL.Size = new System.Drawing.Size(183, 21);
             this.txtTEL.TabIndex = 76;
@@ -110,7 +112,7 @@
             this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(281, 110);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 13);
+            this.label5.Size = new System.Drawing.Size(85, 13);
             this.label5.TabIndex = 75;
             this.label5.Text = "Email Address :";
             // 
@@ -120,7 +122,7 @@
             this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(21, 200);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 74;
             this.label4.Text = "Phone Number :";
             // 
@@ -128,6 +130,7 @@
             // 
             this.textBox3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(284, 72);
+            this.textBox3.MaxLength = 13;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(183, 21);
             this.textBox3.TabIndex = 73;
@@ -138,7 +141,7 @@
             this.label3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(281, 56);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 72;
             this.label3.Text = "ID Number :";
             // 
@@ -146,6 +149,7 @@
             // 
             this.txtLN.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLN.Location = new System.Drawing.Point(24, 126);
+            this.txtLN.MaxLength = 25;
             this.txtLN.Name = "txtLN";
             this.txtLN.Size = new System.Drawing.Size(183, 21);
             this.txtLN.TabIndex = 71;
@@ -156,7 +160,7 @@
             this.label2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(21, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 70;
             this.label2.Text = "Last Name :";
             // 
@@ -164,6 +168,7 @@
             // 
             this.txtFN.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFN.Location = new System.Drawing.Point(24, 72);
+            this.txtFN.MaxLength = 25;
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(183, 21);
             this.txtFN.TabIndex = 69;
@@ -174,7 +179,7 @@
             this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(21, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 68;
             this.label1.Text = "First Name :";
             // 

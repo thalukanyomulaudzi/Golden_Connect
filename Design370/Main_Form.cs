@@ -61,14 +61,25 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
-            Employee.LoadEmployeeTypes(cbxSort);
-            Employee.LoadEmployees(empGrid);
             //Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
             Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
+            Order.LoadOrders(dgvOrders);
+            dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            dgvEventPackages.Rows.Clear();
+            Event.LoadDGV(dgvEventPackages);
+            dgvProducts.Rows.Clear();
+            loadProducts();
+            dgvServices.Rows.Clear();
+            loadServices();
+            dataGridView10.Rows.Clear();
             loadSuppliers();
+            empGrid.Rows.Clear();
+            Employee.LoadEmployees(empGrid);
+            dgvCustomers.Rows.Clear();
+            Customer.LoadCustomer(dgvCustomers);
         }
 
         public void loadSuppliers()
@@ -101,12 +112,12 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
+                    string query = "SELECT service.service_id, service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "View", "Edit", "Delete");
+                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
                     }
                     reader.Close();
                 }
@@ -123,12 +134,12 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                    string query = "SELECT product.product_id, product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "View", "Edit", "Delete");
+                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
                     }
                     reader.Close();
                 }
@@ -172,21 +183,30 @@ namespace Design370
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Customer_View customerView = new Customer_View();
+            string customerID = " "; 
             switch (e.ColumnIndex)
             {
-                case 3:
-                    customerView.edit = false;
-                    customerView.ShowDialog();
-                    break;
-                case 4:
-                    customerView.edit = true;
-                    customerView.ShowDialog();
-                    break;
                 case 5:
+                    customerView.edit = false;
+                    customerID = dgvCustomers.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    customerView.GetCustomerRow = customerID;
+                    customerView.ShowDialog();
+                    break;
+                case 6:
+                    customerView.edit = true;
+                    customerID = dgvCustomers.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    customerView.GetCustomerRow = customerID;
+                    customerView.ShowDialog();
+                    break;
+                case 7:
+                    customerID = dgvCustomers.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Customer.CustomerID = customerID;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-
+                        dgvCustomers.Rows.Clear();
+                        Customer.deleteCustomer(dgvCustomers);
+                        Customer.LoadCustomer(dgvCustomers);
                     }
                     break;
                 default:
@@ -220,40 +240,38 @@ namespace Design370
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            Customer_Order_New cOrder = new Customer_Order_New();
+            Customer_Order_Details cOrder = new Customer_Order_Details();
             cOrder.ShowDialog();
         }
 
         private void DataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Employee_Update employeeView = new Employee_Update();
+            Employee_View employeeView = new Employee_View();
+            string employeeID = " ";
             switch (e.ColumnIndex)
             {
 
-                case 0:
-                    Employee_Update.edit = false;
-                    Employee_Update.employeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    employeeView.btnSaveEmpEdit.Visible = false;
+                case 6:
+                    Employee_View.edit = false;
+                    employeeID = empGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    employeeView.GetEmployeeRow = employeeID;
                     employeeView.ShowDialog();
                     break;
-                case 1:
-                    Employee_Update.edit = true;
-                    Employee_Update.employeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                case 7:
+                    Employee_View.edit = true;
+                    employeeID = empGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    employeeView.GetEmployeeRow = employeeID;
                     employeeView.ShowDialog();
                     break;
-                case 2:
+                case 8:
+                    employeeID = empGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Employee.EmployeeID = employeeID;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        Employee.EmployeeID = empGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                        if (Employee.deleteEmployee())
-                        {
-                            MessageBox.Show("Employee Successfully Deleted", "Delete Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-
-                        }
+                        empGrid.Rows.Clear();
+                        Employee.deleteEmployee(empGrid);
+                        Employee.LoadEmployees(empGrid);
                     }
                     else
                     {
@@ -304,25 +322,24 @@ namespace Design370
         private void DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Service_View service_View = new Service_View();
-            string serviceName = "";
-
+            string serviceID = "";
             switch (e.ColumnIndex)
             {
 
-                case 3:
-                    Service_View.edit = false;
-                    serviceName = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    service_View.GetServiceRow = serviceName;
-                    service_View.ShowDialog();
-                    break;
                 case 4:
-                    Service_View.edit = true;
-                    serviceName = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    service_View.GetServiceRow = serviceName;
+                    Service_View.edit = false;
+                    serviceID = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    service_View.GetServiceRow = serviceID;
                     service_View.ShowDialog();
                     break;
                 case 5:
-                    serviceName = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Service_View.edit = true;
+                    serviceID = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    service_View.GetServiceRow = serviceID;
+                    service_View.ShowDialog();
+                    break;
+                case 6:
+                    serviceID = dgvServices.Rows[e.RowIndex].Cells[0].Value.ToString();
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
@@ -332,21 +349,13 @@ namespace Design370
                             DBConnection dBConnection = DBConnection.Instance();
                             if (dBConnection.IsConnect())
                             {
-                                string serviceID = "";
-                                string query = "SELECT service_id FROM service WHERE service_name = '" + serviceName + "'";
+                                string query = "DELETE FROM `service` WHERE service_id = '" + serviceID + "'";
                                 var command = new MySqlCommand(query, dBConnection.Connection);
-                                var reader = command.ExecuteReader();
-                                while (reader.Read())
-                                {
-                                    serviceID = reader.GetString(0);
-                                }
-                                reader.Close();
-                                query = "DELETE FROM `service` WHERE service_id = '" + serviceID + "'";
-                                command = new MySqlCommand(query, dBConnection.Connection);
                                 command.ExecuteNonQuery();
+                                loadServices();
                             }
                         }
-                        catch (Exception except)
+                        catch (Exception)
                         {
                             System.Windows.Forms.MessageBox.Show("This service is used in a package. It can not be deleted.");
                         }
@@ -363,26 +372,26 @@ namespace Design370
 
         private void DataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string packageName;
+            string packageID;
             Photoshoot_Package_View photoshootPackage_View = new Photoshoot_Package_View();
             switch (e.ColumnIndex)
             {
 
-                case 4:
-                    Photoshoot_Package_View.edit = false;
-                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    photoshootPackage_View.GetRow = packageName;
-                    photoshootPackage_View.ShowDialog();
-                    break;
                 case 5:
-                    Photoshoot_Package_View.edit = true;
-                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    photoshootPackage_View.GetRow = packageName;
+                    Photoshoot_Package_View.edit = false;
+                    packageID = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageID;
                     photoshootPackage_View.ShowDialog();
                     break;
                 case 6:
-                    packageName = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    Photoshoot.GetRowPhotoshoot = packageName;
+                    Photoshoot_Package_View.edit = true;
+                    packageID = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    photoshootPackage_View.GetRow = packageID;
+                    photoshootPackage_View.ShowDialog();
+                    break;
+                case 7:
+                    packageID = dgvPhotoshootPackage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Photoshoot.GetRowPhotoshoot = packageID;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
@@ -402,24 +411,24 @@ namespace Design370
 
         private void DataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string productName = "";
+            string productID = "";
             Product_View product_View = new Product_View();
             switch (e.ColumnIndex)
             {
-                case 3:
-                    Product_View.edit = false;
-                    productName = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    product_View.GetProductRow = productName;
-                    product_View.ShowDialog();
-                    break;
                 case 4:
-                    Product_View.edit = true;
-                    productName = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    product_View.GetProductRow = productName;
+                    Product_View.edit = false;
+                    productID = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    product_View.GetProductRow = productID;
                     product_View.ShowDialog();
                     break;
                 case 5:
-                    productName = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Product_View.edit = true;
+                    productID = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    product_View.GetProductRow = productID;
+                    product_View.ShowDialog();
+                    break;
+                case 6:
+                    productID = dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString();
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
@@ -429,21 +438,13 @@ namespace Design370
                             DBConnection dBConnection = DBConnection.Instance();
                             if (dBConnection.IsConnect())
                             {
-                                string productID = "";
-                                string query = "SELECT product_id FROM product WHERE product_name = '" + productName + "'";
+                                string query = "DELETE FROM `product` WHERE product_id = '" + productID + "'";
                                 var command = new MySqlCommand(query, dBConnection.Connection);
-                                var reader = command.ExecuteReader();
-                                while (reader.Read())
-                                {
-                                    productID = reader.GetString(0);
-                                }
-                                reader.Close();
-                                query = "DELETE FROM `product` WHERE product_id = '" + productID + "'";
-                                command = new MySqlCommand(query, dBConnection.Connection);
                                 command.ExecuteNonQuery();
+                                loadProducts();
                             }
                         }
-                        catch (Exception except)
+                        catch (Exception)
                         {
                             System.Windows.Forms.MessageBox.Show("This product is used in a package. It can not be deleted.");
                         }
@@ -460,25 +461,25 @@ namespace Design370
 
         private void DataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string packageName;
+            string packageID;
             Event_Package_View eventPackage_View = new Event_Package_View();
             switch (e.ColumnIndex)
             {
-                case 4:
-                    Event_Package_View.edit = false;
-                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    eventPackage_View.GetEventViewRow = packageName;
-                    eventPackage_View.ShowDialog();
-                    break;
                 case 5:
-                    Event_Package_View.edit = true;
-                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    eventPackage_View.GetEventViewRow = packageName;
+                    Event_Package_View.edit = false;
+                    packageID = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    eventPackage_View.GetEventViewRow = packageID;
                     eventPackage_View.ShowDialog();
                     break;
                 case 6:
-                    packageName = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    Event.GetRowEvent = packageName;
+                    Event_Package_View.edit = true;
+                    packageID = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    eventPackage_View.GetEventViewRow = packageID;
+                    eventPackage_View.ShowDialog();
+                    break;
+                case 7:
+                    packageID = dgvEventPackages.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Event.GetRowEvent = packageID;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
@@ -562,8 +563,10 @@ namespace Design370
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            string employeeName = txtSearch.Text;
+            Employee.EmployeeID = employeeName;
             empGrid.Rows.Clear();
-            Employee.SearchEmployees(txtSearch.Text, empGrid);
+            Employee.SearchEmployees(empGrid);
         }
 
         private void TabPage3_Click(object sender, EventArgs e)
@@ -578,7 +581,6 @@ namespace Design370
         private void Main_Form_Activated(object sender, EventArgs e)
         {
             Timeslot.loadTimeslots(dgvTimeslots,DateTime.Now);
-
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             dgvEventPackages.Rows.Clear();
@@ -589,6 +591,11 @@ namespace Design370
             loadServices();
             dataGridView10.Rows.Clear();
             loadSuppliers();
+            empGrid.Rows.Clear();
+            Employee.LoadEmployees(empGrid);
+            dgvCustomers.Rows.Clear();
+            Customer.LoadCustomer(dgvCustomers);
+            Order.LoadOrders(dgvOrders);
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
@@ -620,8 +627,7 @@ namespace Design370
 
         private void CbxSort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            empGrid.Rows.Clear();
-            Employee.SortEmployees(cbxSort.SelectedItem.ToString(), empGrid);
+            
         }
 
         private void BtnCaptureOrderPayment_Click(object sender, EventArgs e)
@@ -678,14 +684,14 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT product.product_name, product_type.product_type_name, product.product_price FROM product " +
+                    string query = "SELECT product.product_id, product.product_name, product_type.product_type_name, product.product_price FROM product " +
                         "INNER JOIN product_type ON product.product_type_id=product_type.product_type_id " +
                         "WHERE product.product_name LIKE '%" + txtProductSearch.Text + "%' OR product_type.product_type_name LIKE '%" + txtProductSearch.Text + "%'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "View", "Edit", "Delete");
+                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
                     }
                     reader.Close();
                 }
@@ -703,14 +709,14 @@ namespace Design370
             {
                 if (dbCon.IsConnect())
                 {
-                    string query = "SELECT service.service_name, service_type.service_type_name, service.service_price FROM service " +
+                    string query = "SELECT service.service_id, service.service_name, service_type.service_type_name, service.service_price FROM service " +
                         "INNER JOIN service_type ON service.service_type_id=service_type.service_type_id " +
                         "WHERE service.service_name LIKE '%" + textBox2.Text + "%' OR service_type.service_type_name LIKE '%" + textBox2.Text + "%'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "View", "Edit", "Delete");
+                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
                     }
                     reader.Close();
                 }
@@ -732,25 +738,28 @@ namespace Design370
                     customerOI = new OrderImages();
                     customerOI.ShowDialog();
                     break;
-                case 1:
-                    if (dbCon.IsConnect())
+                case 5:
+                    if (e.RowIndex >= 0)
                     {
-                        dbCon.Close();
-                        dbCon.Open();
-                        string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Placed' AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[2].Value + "'";
-                        var command = new MySqlCommand(checkStatus, dbCon.Connection);
-                        var reader = command.ExecuteReader();
-                        reader.Read();
-                        if (reader.HasRows)
+                        if (dbCon.IsConnect())
                         {
-                            Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
-                            customerPay.ShowDialog();
+                            string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Pending' AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[0].Value + "'";
+                            var command = new MySqlCommand(checkStatus, dbCon.Connection);
+                            var reader = command.ExecuteReader();
+                            reader.Read();
+                            if (reader.HasRows)
+                            {
+                                reader.Close();
+                                Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[0].Value);
+                                customerPay.ShowDialog();
+                                
+                            }
+                            else
+                            {
+                                MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            reader.Close();
                         }
-                        else
-                        {
-                            MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-
                     }
                     break;
                 default:
@@ -818,5 +827,307 @@ namespace Design370
             Timeslot_Add timeslotAdd = new Timeslot_Add();
             timeslotAdd.ShowDialog();
         }
+
+        private void dgvProducts_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtProductSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtProductSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtProductSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void dgvServices_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(textBox2.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(textBox2.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, textBox2.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void dgvPhotoshootPackage_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtPhotoshootPackageSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtPhotoshootPackageSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtPhotoshootPackageSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void dgvEventPackages_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtEventPackageSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtEventPackageSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtEventPackageSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void empGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && (e.ColumnIndex == 1 || e.ColumnIndex == 2))
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
+
+        private void txtCustomerSearch_TextChanged(object sender, EventArgs e)
+        {
+            string customerName = txtCustomerSearch.Text;
+            Customer.CustomerID = customerName;
+            dgvCustomers.Rows.Clear();
+            Customer.SearchCustomer(dgvCustomers);
+        }
+
+        private void dgvCustomers_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // High light and searching apply over selective fields of grid.  
+            if (e.RowIndex > -1 && (e.ColumnIndex == 1 || e.ColumnIndex == 2))
+            {
+                // Check data for search  
+                if (!String.IsNullOrWhiteSpace(txtCustomerSearch.Text.Trim()))
+                {
+                    String gridCellValue = e.FormattedValue.ToString();
+                    // check the index of search text into grid cell.  
+                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtCustomerSearch.Text.Trim().ToLower());
+                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
+                    if (startIndexInCellValue >= 0)
+                    {
+                        e.Handled = true;
+                        e.PaintBackground(e.CellBounds, true);
+                        //the highlite rectangle  
+                        Rectangle hl_rect = new Rectangle();
+                        hl_rect.Y = e.CellBounds.Y + 2;
+                        hl_rect.Height = e.CellBounds.Height - 5;
+                        //find the size of the text before the search word in grid cell data.  
+                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
+                        //size of the search word in the grid cell data  
+                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtCustomerSearch.Text.Trim().Length);
+                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
+                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
+                        if (s1.Width > 5)
+                        {
+                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        else
+                        {
+                            hl_rect.X = e.CellBounds.X + 2;
+                            hl_rect.Width = s2.Width - 6;
+                        }
+                        //color for showing highlighted text in grid cell  
+                        SolidBrush hl_brush;
+                        hl_brush = new SolidBrush(Color.Gold);
+                        //paint the background behind the search word  
+                        e.Graphics.FillRectangle(hl_brush, hl_rect);
+                        hl_brush.Dispose();
+                        e.PaintContent(e.CellBounds);
+                    }
+                }
+            }
+        }
     }
+
+    //private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+
+        
+    //}
 }

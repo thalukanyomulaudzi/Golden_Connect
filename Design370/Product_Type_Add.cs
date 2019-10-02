@@ -13,9 +13,15 @@ namespace Design370
 {
     public partial class Product_Type_Add : Form
     {
+        DBConnection dbCon = DBConnection.Instance();
+
         public Product_Type_Add()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(txtProdTypeName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtProdTypeDesc, "A maximum of 100 characters can be entered");
         }
 
 
@@ -26,27 +32,31 @@ namespace Design370
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string prodTypeInsert = "INSERT INTO product_type(product_type_name, product_type_description) VALUES('" +
-                                txtProdTypeName.Text + "', '" + txtProdTypeDesc.Text + "')";
-            MysqlConnection.cmd = new MySqlCommand(prodTypeInsert, MysqlConnection.mysqlCon);
+            if (txtProdTypeName.Text.Length <= 2 || txtProdTypeDesc.Text.Length <= 5)
+            {
+                MessageBox.Show("Invalid character length for name and/or description");
+                return;
+            }
             try
             {
-                MysqlConnection.mysqlCon.Open();
-                MySqlDataReader checkIfExist = MysqlConnection.cmd.ExecuteReader();
-                if (checkIfExist.HasRows)
+                if (dbCon.IsConnect())
                 {
-                    MessageBox.Show("Product Type already exits!");
+                    string query = "INSERT INTO `product_type`(`product_type_id`, `product_type_name`, `product_type_description`) VALUES('NULL', '" +
+                                txtProdTypeName.Text + "', '" + txtProdTypeDesc.Text + "')";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    command.ExecuteNonQuery();
                 }
-                else
-                {
-                    MessageBox.Show("New Product Type Inserted!");
-                    MysqlConnection.mysqlCon.Close();
-                }
+                this.Close();
             }
             catch (Exception ee)
             {
-                MessageBox.Show("Error: " + ee.Message);
+                MessageBox.Show(ee.Message);
             }
+        }
+
+        private void Product_Type_Add_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

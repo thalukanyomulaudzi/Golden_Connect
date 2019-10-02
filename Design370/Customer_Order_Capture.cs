@@ -37,26 +37,20 @@ namespace Design370
             lblOID.Text = OrderPaymentID.ToString();
             if(dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
-                string paymentData = "SELECT * FROM `order` WHERE `order_id` = '"+OrderPaymentID+"'";
-                var command = new MySqlCommand(paymentData, dbCon.Connection);
+                var command = new MySqlCommand("SELECT * FROM `order` WHERE `order_id` = '" + OrderPaymentID + "'", dbCon.Connection);
                 var reader = command.ExecuteReader();
                 reader.Read();
-                if(reader.HasRows)
+                if (reader.HasRows)
                 {
-                    lblAmountDue.Text = "R"+reader.GetString("order_total");
+                    lblAmountDue.Text = "R" + reader.GetString("order_total");
                     customerID = Convert.ToInt32(reader.GetString("customer_id"));
                 }
-                dbCon.Close();
+                reader.Close();
             }
 
             if (dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
-                string paymentData = "SELECT * FROM `customer`";
-                var command = new MySqlCommand(paymentData, dbCon.Connection);
+                var command = new MySqlCommand("SELECT * FROM `customer`", dbCon.Connection);
                 var reader = command.ExecuteReader();
                 reader.Read();
                 if (reader.HasRows)
@@ -64,21 +58,18 @@ namespace Design370
                     customerPhone = reader.GetString("customer_phone");
                     customerLastName = reader.GetString("customer_first");
                 }
-                dbCon.Close();
+                reader.Close();
             }
 
             if (dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
-                string paymentData = "SELECT * FROM `payment_type`";
-                var command = new MySqlCommand(paymentData, dbCon.Connection);
+                var command = new MySqlCommand("SELECT * FROM `payment_type`", dbCon.Connection);
                 var reader = command.ExecuteReader();
                 while(reader.Read())
                 {
                     cbxPaymentType.Items.Add(reader.GetString("payment_type_name"));
                 }
-                dbCon.Close();
+                reader.Close();
             }
         }
         
@@ -86,17 +77,15 @@ namespace Design370
         {
             if (dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
-                string paymentData = "SELECT `payment_type_id` FROM `payment_type` WHERE `payment_type_name` = '"+cbxPaymentType.SelectedItem.ToString()+"'";
-                var command = new MySqlCommand(paymentData, dbCon.Connection);
+                string paymentData = cbxPaymentType.SelectedItem.ToString();
+                var command = new MySqlCommand("SELECT `payment_type_id` FROM `payment_type` WHERE `payment_type_name` = '" + paymentData + "'", dbCon.Connection);
                 var reader = command.ExecuteReader();
                 reader.Read();
                 if (reader.HasRows)
                 {
                     paymentID = Convert.ToInt32(reader[0]);
                 }
-                dbCon.Close();
+                reader.Close();
             }
         }
 
@@ -104,8 +93,6 @@ namespace Design370
         {
             if (dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
                 string paymentData = "INSERT INTO `payment` (`payment_id`, `payment_type_id`, `payment_amount`, `customer_id`, `order_id`, `booking_id`) " +
                     "VALUES (NULL, '"+paymentID+"', '"+txtAmount.Text+"', '"+customerID+"', NULL, NULL)";
                 var command = new MySqlCommand(paymentData, dbCon.Connection);
@@ -120,7 +107,7 @@ namespace Design370
                 {
                     MessageBox.Show("Message not sent!");
                 }
-                dbCon.Close();
+                reader.Close();
             }
         }
 
@@ -128,12 +115,9 @@ namespace Design370
         {
             if (dbCon.IsConnect())
             {
-                dbCon.Close();
-                dbCon.Open();
-                string paymentData = "UPDATE `order` SET `order_status_id` = 3 WHERE `order_id` = '"+orderid+"'";
-                var command = new MySqlCommand(paymentData, dbCon.Connection);
+                var command = new MySqlCommand("UPDATE `order` SET `order_status_id` = 3 WHERE `order_id` = '" + orderid + "'", dbCon.Connection);
                 var reader = command.ExecuteReader();
-                dbCon.Close();
+                reader.Close();
             }
         }
 

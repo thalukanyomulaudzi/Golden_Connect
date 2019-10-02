@@ -39,14 +39,12 @@
             this.txtProductame = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddProducts = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(247, 298);
+            this.button2.Location = new System.Drawing.Point(240, 257);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 28);
@@ -62,7 +60,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 21);
             this.button3.TabIndex = 74;
-            this.button3.Text = "Product Types";
+            this.button3.Text = "Add Product Type";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click_1);
             // 
@@ -94,6 +92,9 @@
             this.txtProductPrice.Name = "txtProductPrice";
             this.txtProductPrice.Size = new System.Drawing.Size(172, 21);
             this.txtProductPrice.TabIndex = 71;
+            this.txtProductPrice.TextChanged += new System.EventHandler(this.txtProductPrice_TextChanged);
+            this.txtProductPrice.Validating += new System.ComponentModel.CancelEventHandler(this.txtProductPrice_Validating);
+            this.txtProductPrice.Validated += new System.EventHandler(this.txtProductPrice_Validated);
             // 
             // label3
             // 
@@ -153,7 +154,7 @@
             // btnAddProducts
             // 
             this.btnAddProducts.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProducts.Location = new System.Drawing.Point(356, 298);
+            this.btnAddProducts.Location = new System.Drawing.Point(343, 257);
             this.btnAddProducts.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddProducts.Name = "btnAddProducts";
             this.btnAddProducts.Size = new System.Drawing.Size(86, 28);
@@ -162,34 +163,11 @@
             this.btnAddProducts.UseVisualStyleBackColor = true;
             this.btnAddProducts.Click += new System.EventHandler(this.btnAddProducts_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(267, 72);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 13);
-            this.label5.TabIndex = 91;
-            this.label5.Text = "Booking Type:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(270, 87);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(172, 21);
-            this.comboBox1.TabIndex = 90;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // Product_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 350);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(453, 307);
             this.Controls.Add(this.btnAddProducts);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
@@ -203,6 +181,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Product_Add";
             this.Text = "Add Product";
+            this.Activated += new System.EventHandler(this.Product_Add_Activated);
             this.Load += new System.EventHandler(this.Product_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -222,7 +201,5 @@
         private System.Windows.Forms.TextBox txtProductame;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddProducts;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

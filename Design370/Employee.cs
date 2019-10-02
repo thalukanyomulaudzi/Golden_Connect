@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Windows.Forms;
 namespace Design370
 {
@@ -8,39 +9,40 @@ namespace Design370
         public static DBConnection dbCon = DBConnection.Instance();
         public static string EmployeeID { get; set; }
 
-        public static bool deleteEmployee()
+        public static void deleteEmployee(DataGridView dgv)
         {
             try
             {
-                if (dbCon.IsConnect())
+                DBConnection dBConnection = DBConnection.Instance();
+                if (dBConnection.IsConnect())
                 {
-                    string deleteEmp = "DELETE FROM `employee` WHERE `employee_idnumber` = '" + EmployeeID + "'";
-                    var command = new MySqlCommand(deleteEmp, dbCon.Connection);
-                    command.ExecuteReader();
-                    return true;
+                    string query = "DELETE FROM `employee` WHERE employee_id = '" + EmployeeID + "'";
+                    var command = new MySqlCommand(query, dBConnection.Connection);
+                    command.ExecuteNonQuery();
                 }
-                else
-                    return false;
             }
-            catch (Exception e)
+            catch (Exception except)
             {
-                MessageBox.Show(e.Message);
-                return false;
+                System.Windows.Forms.MessageBox.Show(except.Message);
             }
         }
         public static void LoadEmployees(DataGridView dgvEmp)
         {
             try
             {
-                setColumns(dgvEmp);
                 if (dbCon.IsConnect())
                 {
-                    string loadEmp = "SELECT * FROM `employee`";
-                    var command = new MySqlCommand(loadEmp, dbCon.Connection);
+                    DataTable Employee = new DataTable();
+                    string query = "SELECT employee.employee_id, employee.employee_first, employee.employee_last, employee.employee_idnumber, employee.employee_phone," +
+                        " employee.employee_email, employee_type.employee_type_name FROM employee INNER JOIN employee_type ON employee.employee_type = " +
+                        "employee_type.employee_type_id";
+                    var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
-                    while (reader.Read())
+                    Employee.Load(reader);
+                    for (int i = 0; i < Employee.Rows.Count; i++)
                     {
-                        dgvEmp.Rows.Add("", "", "", reader[1], reader[2], reader[3], reader[4], reader[5]);
+                        dgvEmp.Rows.Add(Employee.Rows[i].ItemArray[0], Employee.Rows[i].ItemArray[3], Employee.Rows[i].ItemArray[2] + ", " + Employee.Rows[i].ItemArray[1],
+                            Employee.Rows[i].ItemArray[4], Employee.Rows[i].ItemArray[5], Employee.Rows[i].ItemArray[6], "View", "Edit", "Delete");
                     }
                     reader.Close();
                 }
@@ -51,26 +53,25 @@ namespace Design370
             }
         }
 
-        public static void SearchEmployees(string searchText, DataGridView dgvEmp)
+        public static void SearchEmployees(DataGridView dgvEmp)
         {
             try
             {
-                setColumns(dgvEmp);
                 if (dbCon.IsConnect())
                 {
-                    string loadEmp = "SELECT * FROM `employee` WHERE `employee_idnumber` LIKE @ID OR `employee_first` LIKE @FIRST OR `employee_last` LIKE @LAST OR `employee_email` LIKE @MAIL";
-                    var command = new MySqlCommand(loadEmp, dbCon.Connection);
-                    command.CommandType = System.Data.CommandType.Text;
-                    command.Parameters.AddWithValue("@ID", "%" + searchText + "%");
-                    command.Parameters.AddWithValue("@FIRST", "%" + searchText + "%");
-                    command.Parameters.AddWithValue("@LAST", "%" + searchText + "%");
-                    command.Parameters.AddWithValue("@MAIL", "%" + searchText + "%");
+                    DataTable Employee = new DataTable();
+                    string query = "SELECT employee.employee_id, employee.employee_first, employee.employee_last, employee.employee_idnumber, employee.employee_phone," +
+                        " employee.employee_email, employee_type.employee_type_name FROM employee INNER JOIN employee_type ON employee.employee_type = " +
+                        "employee_type.employee_type_id WHERE employee.employee_first LIKE '%" + EmployeeID + "%' OR employee.employee_last LIKE '%" + EmployeeID + "%' OR " +
+                        "employee.employee_idnumber LIKE '%" + EmployeeID + "%'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
-                    while (reader.Read())
+                    Employee.Load(reader);
+                    for (int i = 0; i < Employee.Rows.Count; i++)
                     {
-                        dgvEmp.Rows.Add("", "", "", reader[1], reader[2], reader[3], reader[4], reader[5]);
+                        dgvEmp.Rows.Add(Employee.Rows[i].ItemArray[0], Employee.Rows[i].ItemArray[3], Employee.Rows[i].ItemArray[2] + ", " + Employee.Rows[i].ItemArray[1],
+                            Employee.Rows[i].ItemArray[4], Employee.Rows[i].ItemArray[5], Employee.Rows[i].ItemArray[6], "View", "Edit", "Delete");
                     }
-                    reader.Close();
                 }
             }
             catch (Exception e)
@@ -78,48 +79,6 @@ namespace Design370
                 MessageBox.Show(e.Message);
             }
         }
-        static int id;
-        public static void SortEmployees(string sort, DataGridView dgvEmp)
-        {
-            id = getEmpType(sort);
-            try
-            {
-                setColumns(dgvEmp);
-                if (dbCon.IsConnect())
-                {
-                    string loadEmp = "SELECT * FROM `employee` WHERE `employee_type` = '" + id + "'";
-                    var command = new MySqlCommand(loadEmp, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        dgvEmp.Rows.Add("", "", "", reader[1], reader[2], reader[3], reader[4], reader[5]);
-                    }
-                    reader.Close();
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
-        private static int t;
-        public static int getEmpType(string sort)
-        {
-            if (dbCon.IsConnect())
-            {
-                string empTypes = "SELECT * FROM `employee_type` WHERE `employee_type_name` = '" + sort + "'";
-                var command = new MySqlCommand(empTypes, dbCon.Connection);
-                var reader = command.ExecuteReader();
-                reader.Read();
-                if (reader.HasRows)
-                {
-                    t = Convert.ToInt32(reader[0].ToString());
-                }
-                reader.Close();
-            }
-            return t;
-        }
-
         public static void LoadEmployeeTypes(ComboBox sortCombo)
         {
             try
@@ -142,35 +101,26 @@ namespace Design370
             }
         }
 
-        public static void SearchEmployeeType(string text, DataGridView dgvEmpType)
+        public static void SearchEmployeeType(DataGridView dgvEmpType)
         {
             try
             {
-                dgvEmpType.ColumnCount = 5;
-                dgvEmpType.Columns[3].Name = "Employee Type Name";
-                dgvEmpType.Columns[3].Width = 230;
-                dgvEmpType.Columns[4].Name = "Employee Type Description";
-                dgvEmpType.Columns[4].Width = 320;
-                dgvEmpType.ReadOnly = true;
-                dbCon.Close();
-                dbCon.Open();
                 if (dbCon.IsConnect())
                 {
-                    string loadTypes = "SELECT * FROM `employee_type` WHERE `employee_type_name` LIKE @Name";
-                    var command = new MySqlCommand(loadTypes, dbCon.Connection);
-                    command.CommandType = System.Data.CommandType.Text;
-                    command.Parameters.AddWithValue("@Name", "%" + text + "%");
+                    DataTable EmployeeType = new DataTable();
+                    string query = "SELECT employee_type_id, employee_type_name, employee_type_description FROM employee_type WHERE employee_type_name LIKE '%" + EmployeeID + "%'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
-                    while (reader.Read())
+                    EmployeeType.Load(reader);
+                    for (int i = 0; i < EmployeeType.Rows.Count; i++)
                     {
-                        dgvEmpType.Rows.Add("", "", "", reader[1], reader[2]);
+                        dgvEmpType.Rows.Add(EmployeeType.Rows[i].ItemArray[0], EmployeeType.Rows[i].ItemArray[1], EmployeeType.Rows[i].ItemArray[2], "View", "Edit", "Delete");
                     }
-                    dbCon.Close();
                 }
             }
-            catch (Exception ee)
+            catch (Exception e)
             {
-                MessageBox.Show(ee.Message);
+                MessageBox.Show(e.Message);
             }
         }
         private static void setColumns(System.Windows.Forms.DataGridView dgv)

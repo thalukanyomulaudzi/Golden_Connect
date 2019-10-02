@@ -170,6 +170,7 @@
     <Compile Include="Booking_Date.Designer.cs">
       <DependentUpon>Booking_Date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer.cs" />
     <Compile Include="Customer_Order_Capture.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -524,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot_Package_Add.resx">
       <DependentUpon>Photoshoot_Package_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Photoshoot_Package_View.resx">
+      <DependentUpon>Photoshoot_Package_View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Photoshoot_Types.resx">
       <DependentUpon>Photoshoot_Types.cs</DependentUpon>
