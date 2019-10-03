@@ -65,7 +65,7 @@ namespace Design370
             //testConnection(); //this throws out all customer names and surnames, only use during development
             Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
             Booking.loadBookings(dgvBookings);
-
+            Order.LoadOrders(dgvOrders);
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             dgvEventPackages.Rows.Clear();
@@ -240,7 +240,7 @@ namespace Design370
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            Customer_Order_New cOrder = new Customer_Order_New();
+            Customer_Order_Details cOrder = new Customer_Order_Details();
             cOrder.ShowDialog();
         }
 
@@ -595,6 +595,7 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             dgvCustomers.Rows.Clear();
             Customer.LoadCustomer(dgvCustomers);
+            Order.LoadOrders(dgvOrders);
         }
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
@@ -639,6 +640,13 @@ namespace Design370
         {
             try
             {
+                DBConnection dBCon = DBConnection.Instance();
+                string query = "SELECT c.customer_id FROM customer c JOIN booking b ON b.customer_id = c.customer_id ";
+                var command = new MySqlCommand(query, dBCon.Connection);
+                var reader = command.ExecuteReader();
+                reader.Read();
+                Booking.customerID = reader.GetString(0);
+                reader.Close();
                 Booking.bookingID = dgvBookings.SelectedRows[0].Cells["bookingID"].Value.ToString();
                 Booking_Capture_Payment capture_Payment = new Booking_Capture_Payment();
                 capture_Payment.ShowDialog();
@@ -730,25 +738,28 @@ namespace Design370
                     customerOI = new OrderImages();
                     customerOI.ShowDialog();
                     break;
-                case 1:
-                    if (dbCon.IsConnect())
+                case 5:
+                    if (e.RowIndex >= 0)
                     {
-                        dbCon.Close();
-                        dbCon.Open();
-                        string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Placed' AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[2].Value + "'";
-                        var command = new MySqlCommand(checkStatus, dbCon.Connection);
-                        var reader = command.ExecuteReader();
-                        reader.Read();
-                        if (reader.HasRows)
+                        if (dbCon.IsConnect())
                         {
-                            Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
-                            customerPay.ShowDialog();
+                            string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Pending' AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[0].Value + "'";
+                            var command = new MySqlCommand(checkStatus, dbCon.Connection);
+                            var reader = command.ExecuteReader();
+                            reader.Read();
+                            if (reader.HasRows)
+                            {
+                                reader.Close();
+                                Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[0].Value);
+                                customerPay.ShowDialog();
+                                
+                            }
+                            else
+                            {
+                                MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            reader.Close();
                         }
-                        else
-                        {
-                            MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-
                     }
                     break;
                 default:
@@ -1113,4 +1124,10 @@ namespace Design370
             }
         }
     }
+
+    //private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+
+        
+    //}
 }

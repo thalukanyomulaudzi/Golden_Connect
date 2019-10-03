@@ -30,10 +30,10 @@
         {
             this.btnBookingPaymentCapture = new System.Windows.Forms.Button();
             this.dgvBookingPayments = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.PaymentCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtBookingAmountAfterPayment = new System.Windows.Forms.TextBox();
             this.txtBookingOutstandingTotal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,6 +51,7 @@
             this.btnBookingPaymentCapture.TabIndex = 0;
             this.btnBookingPaymentCapture.Text = "Capture Payment";
             this.btnBookingPaymentCapture.UseVisualStyleBackColor = true;
+            this.btnBookingPaymentCapture.Click += new System.EventHandler(this.BtnBookingPaymentCapture_Click);
             // 
             // dgvBookingPayments
             // 
@@ -70,15 +71,6 @@
             this.dgvBookingPayments.Size = new System.Drawing.Size(382, 190);
             this.dgvBookingPayments.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 18);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Past payments toward booking";
-            // 
             // PaymentCustomer
             // 
             this.PaymentCustomer.HeaderText = "Customer Name";
@@ -96,6 +88,15 @@
             this.paymentDate.HeaderText = "Payment Date";
             this.paymentDate.Name = "paymentDate";
             this.paymentDate.ReadOnly = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(212, 18);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Past payments toward booking";
             // 
             // txtBookingAmountAfterPayment
             // 
@@ -163,7 +164,7 @@
             this.Controls.Add(this.dgvBookingPayments);
             this.Controls.Add(this.btnBookingPaymentCapture);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Booking_Capture_Payment";
             this.Text = "Booking_Capture_Payment";
             this.Load += new System.EventHandler(this.Booking_Capture_Payment_Load);
