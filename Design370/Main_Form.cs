@@ -80,6 +80,8 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             dgvCustomers.Rows.Clear();
             Customer.LoadCustomer(dgvCustomers);
+            axAcroPDF1.src = @"C:\Users\Stefan\Desktop\Complexity.pdf";
+            axAcroPDF1.setShowToolbar(true);
         }
 
         public void loadSuppliers()
@@ -1123,6 +1125,12 @@ namespace Design370
                 }
             }
         }
+
+        private void txtSearchManual_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 
     //private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)

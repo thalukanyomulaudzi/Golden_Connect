@@ -48,6 +48,7 @@ namespace Design370
             button5.Enabled = !edit;
 
             int booking_package_id;
+            double price = 0;
             try
             {
                 DBConnection dBConnection = DBConnection.Instance();
@@ -90,7 +91,8 @@ namespace Design370
                         Product2.Load(reader);
                         for (int j = 0; j < Product2.Rows.Count; j++)
                         {
-                            dgvProductsInPackage.Rows.Add(Product2.Rows[j].ItemArray[0], Product2.Rows[j].ItemArray[1], Product2.Rows[j].ItemArray[3], "R" + Product2.Rows[j].ItemArray[2], "Add", "Remove");
+                            price = Convert.ToDouble(Product2.Rows[j].ItemArray[3]) * Convert.ToDouble(Product2.Rows[j].ItemArray[2]);
+                            dgvProductsInPackage.Rows.Add(Product2.Rows[j].ItemArray[0], Product2.Rows[j].ItemArray[1], Product2.Rows[j].ItemArray[3], "R" + string.Format("{0:0.00}", price), "Add", "Remove");
                             TotalPrice += (Convert.ToDouble(Product2.Rows[j].ItemArray[2]) * Convert.ToDouble(Product2.Rows[j].ItemArray[3]));
                         }
                         reader.Close();
