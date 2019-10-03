@@ -158,7 +158,7 @@ namespace Design370
                                 TotalPrice += Convert.ToDouble(service.Rows[m].ItemArray[0]);
                             }
                         }
-                        dgv.Rows.Add(PackageID, PackageName, ServiceCount, ProductCount, TotalPrice, "View", "Edit", "Delete");
+                        dgv.Rows.Add(PackageID, PackageName, ServiceCount, ProductCount, "R" + TotalPrice, "View", "Edit", "Delete");
                     }
 
                     reader.Close();
