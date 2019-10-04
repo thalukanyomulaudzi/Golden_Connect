@@ -1,7 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Design370
 {
@@ -80,8 +84,6 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             dgvCustomers.Rows.Clear();
             Customer.LoadCustomer(dgvCustomers);
-            axAcroPDF1.src = @"C:\Users\Stefan\Desktop\Complexity.pdf";
-            axAcroPDF1.setShowToolbar(true);
         }
 
         public void loadSuppliers()
@@ -1128,9 +1130,130 @@ namespace Design370
 
         private void txtSearchManual_TextChanged(object sender, EventArgs e)
         {
+            FindBy1Text();
+        }
+
+        private void FindBy1Text()
+        {
+            TreeNodeCollection nodes = treeView1.Nodes;
+            foreach (TreeNode n in nodes)
+            {
+                FindRecursive(n);
+            }
+        }
+
+        private void FindRecursive(TreeNode treeNode)
+        {
+            foreach (TreeNode tn in treeNode.Nodes)
+            {
+                // if the text properties match, color the item
+                if (tn.Text.Contains(txtSearchManual.Text))
+                {
+                    tn.BackColor = Color.Gold;
+
+                }
+                FindRecursive(tn);
+            }
+        }
+
+        private void tabPage12_Click(object sender, EventArgs e)
+        {
             
         }
 
+        private void tabPage12_Enter(object sender, EventArgs e)
+        {
+            axAcroPDF1.LoadFile("Manual.pdf");
+            axAcroPDF1.setShowToolbar(true);
+            LoadTreeViewFromXmlFile("Treeview.xml", treeView1);
+            treeView1.CollapseAll();
+        }
+
+        private void LoadTreeViewFromXmlFile(string filename, TreeView trv)
+        {
+            // Load the XML document.
+            XmlDocument xml_doc = new XmlDocument();
+            xml_doc.Load(filename);
+
+            // Add the root node's children to the TreeView.
+            trv.Nodes.Clear();
+            AddTreeViewChildNodes(trv.Nodes, xml_doc.DocumentElement);
+        }
+
+        private void AddTreeViewChildNodes(TreeNodeCollection parent_nodes, XmlNode xml_node)
+        {
+            foreach (XmlNode child_node in xml_node.ChildNodes)
+            {
+                // Make the new TreeView node.
+                TreeNode new_node = parent_nodes.Add(child_node.Name);
+
+                // Recursively make this node's descendants.
+                AddTreeViewChildNodes(new_node.Nodes, child_node);
+
+                // If this is a leaf node, make sure it's visible.
+                if (new_node.Nodes.Count == 0) new_node.EnsureVisible();
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            axAcroPDF1.Select();
+            SendKeys.Send("^(S)");
+        }
+
+        private void tabPage12_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Text == "Employee")
+            {
+                axAcroPDF1.setCurrentPage(1);
+            }
+            else if (e.Node.Text == "Add_Employee")
+            {
+                axAcroPDF1.setCurrentPage(2);
+            }
+            else if (e.Node.Text == "Search_Employee")
+            {
+                axAcroPDF1.setCurrentPage(1);
+            }
+            else if (e.Node.Text == "Maintain_Employee")
+            {
+                axAcroPDF1.setCurrentPage(4);
+            }
+            else if (e.Node.Text == "Photoshoots")
+            {
+                axAcroPDF1.setCurrentPage(5);
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            axAcroPDF1.Select();
+            SendKeys.Send("^f");
+            SendKeys.Flush();
+            SendKeys.Send(txtSearchManual.Text);
+            SendKeys.Flush();
+            SendKeys.Send("^g");
+            SendKeys.Flush();
+        }
+
+        private void txtSearchManual_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                axAcroPDF1.Select();
+                SendKeys.Send("^f");
+                SendKeys.Flush();
+                SendKeys.Send(txtSearchManual.Text);
+                SendKeys.Flush();
+                SendKeys.Send("^g");
+                SendKeys.Flush();
+            }
+        }
     }
 
     //private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)

@@ -271,6 +271,7 @@
       <DependentUpon>Event_Types_View.cs</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="Help.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -628,6 +629,7 @@
     <None Include="Resources\event.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Manual.pdf" />
     <None Include="Resources\photoshoot.jpg" />
   </ItemGroup>
   <ItemGroup>
