@@ -25,8 +25,8 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
+            toolTip1.SetToolTip(txtPackageName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtPackageDescription, "A maximum of 200 characters can be entered");
         }
 
         private void Photoshoot_Package_Add_Load(object sender, EventArgs e)
@@ -122,9 +122,9 @@ namespace Design370
         {
             DataTable Services = new DataTable();
             DataTable Products = new DataTable();
-            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+            if (!Validation.validate(txtPackageName.Text, "name") || !Validation.validate(txtPackageDescription.Text, "name"))
             {
-                MessageBox.Show("Invalid character length for name and/or description");
+                MessageBox.Show("Name and description must be valid");
                 return;
             }
             if (dgvServicesInPackage.Rows.Count == 0)
@@ -177,10 +177,10 @@ namespace Design370
                     package_type = reader.GetString(0);
                     reader.Close();
                     query = "INSERT INTO `booking_package` (`booking_package_id`, `booking_package_name`, `booking_package_description`, `booking_package_type_id`) VALUES";
-                    query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + package_type + "')";
+                    query += "(NULL, '" + txtPackageName.Text + "', '" + txtPackageDescription.Text + "', '" + package_type + "')";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     command.ExecuteNonQuery();
-                    query = "SELECT booking_package_id FROM booking_package WHERE booking_package_name = '" + textBox1.Text + "'";
+                    query = "SELECT booking_package_id FROM booking_package WHERE booking_package_name = '" + txtPackageName.Text + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
                     reader.Read();
@@ -744,6 +744,16 @@ namespace Design370
                     }
                 }
             }
+        }
+
+        private void TxtPackageName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblPackageName, Validation.validate(txtPackageName.Text, "name"));
+        }
+
+        private void TxtPackageDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblPackageDescription, Validation.validate(txtPackageDescription.Text, "name"));
         }
     }
 }

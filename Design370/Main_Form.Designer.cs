@@ -228,8 +228,6 @@ namespace Design370
             this.tabPage12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axCalendarControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axCalendarControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1839,8 +1837,6 @@ namespace Design370
             this.tabPage12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axCalendarControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axCalendarControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2012,7 +2008,6 @@ namespace Design370
         private TextBox txtSearchManual;
         private Label label1;
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
-        private AxXtremeCalendarControl.AxCalendarControl axCalendarControl1;
     }
 }
 

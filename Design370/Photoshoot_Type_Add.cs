@@ -18,15 +18,15 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
+            toolTip1.SetToolTip(txtPhotoshootTypeName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtPhotoshootTypeDescription, "A maximum of 200 characters can be entered");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+            if (!Validation.validate(txtPhotoshootTypeName.Text, "name") || !Validation.validate(txtPhotoshootTypeDescription.Text, "name"))
             {
-                MessageBox.Show("Invalid character length for name and/or description");
+                MessageBox.Show("All input fields must be valid");
                 return;
             }
             try
@@ -44,7 +44,7 @@ namespace Design370
                     }
                     reader.Close();
                     query = "INSERT INTO `photoshoot_type` (`photoshoot_type_id`, `photoshoot_type_name`, `photoshoot_type_description`, `booking_type_id`) VALUES";
-                    query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + booking_type_id + "')";
+                    query += "(NULL, '" + txtPhotoshootTypeName.Text + "', '" + txtPhotoshootTypeDescription.Text + "', '" + booking_type_id + "')";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -65,6 +65,16 @@ namespace Design370
         private void Photoshoot_Type_Add_FormClosing(object sender, FormClosingEventArgs e)
         {
            
+        }
+
+        private void TxtPhotoshootTypeName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblPhotoshootTypeName, Validation.validate(txtPhotoshootTypeName.Text, "name"));
+        }
+
+        private void TxtPhotoshootTypeDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblPhotoshootTypeDescription, Validation.validate(txtPhotoshootTypeDescription.Text, "name"));
         }
     }
 }

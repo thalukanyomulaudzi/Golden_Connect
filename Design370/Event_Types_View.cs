@@ -123,5 +123,15 @@ namespace Design370
         {
 
         }
+
+        private void TxtEventTypeName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblEventTypeName, Validation.validate(txtEventTypeName.Text, "name"));
+        }
+
+        private void TxtEventTypeDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblEventTypeDescription, Validation.validate(txtEventTypeDescription.Text, "name"));
+        }
     }
 }

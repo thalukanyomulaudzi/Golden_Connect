@@ -80,5 +80,14 @@ namespace Design370
         {
             Validation.checkMark(lblTypeDescription, Validation.validate(txtEmpTypeDescription.Text, "name"));
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            if (!Validation.validate(txtEmpTypeName.Text, "name") || !Validation.validate(txtEmpTypeDescription.Text, "name"))
+            {
+                MessageBox.Show("All input fields must be valid");
+                return;
+            }
+        }
     }
 }

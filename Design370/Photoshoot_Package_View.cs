@@ -25,14 +25,14 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
+            toolTip1.SetToolTip(txtPackageName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtPackageDescription, "A maximum of 200 characters can be entered");
         }
 
         private void PhotoshootPackage_View_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled = edit;
-            textBox2.Enabled = edit;
+            txtPackageName.Enabled = edit;
+            txtPackageDescription.Enabled = edit;
             textBox3.Enabled = edit;
             txtSearchServices.Enabled = edit;
             txtSearchProducts.Enabled = edit;
@@ -64,8 +64,8 @@ namespace Design370
                     while (reader.Read())
                     {
                         bookingPackageName = reader.GetString(0);
-                        textBox1.Text = reader.GetString(0);
-                        textBox2.Text = reader.GetString(1);
+                        txtPackageName.Text = reader.GetString(0);
+                        txtPackageDescription.Text = reader.GetString(1);
                     }
                     reader.Close();
                     booking_package_id = Convert.ToInt32(GetRow);
@@ -154,8 +154,8 @@ namespace Design370
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
+            txtPackageName.Enabled = true;
+            txtPackageDescription.Enabled = true;
             textBox3.Enabled = true;
             txtSearchProducts.Enabled = true;
             txtSearchServices.Enabled = true;
@@ -175,13 +175,13 @@ namespace Design370
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            if (textBox1.Enabled)
+            if (txtPackageName.Enabled)
             {
                 DataTable Services = new DataTable();
                 DataTable Products = new DataTable();
-                if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+                if (!Validation.validate(txtPackageName.Text, "name") || !Validation.validate(txtPackageDescription.Text, "name"))
                 {
-                    MessageBox.Show("Invalid character length for name and/or description");
+                    MessageBox.Show("Name and description must be valid");
                     return;
                 }
                 if (dgvServicesInPackage.Rows.Count == 0)
@@ -253,7 +253,7 @@ namespace Design370
                         command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
                         query = "INSERT INTO `booking_package` (`booking_package_id`, `booking_package_name`, `booking_package_description`, `booking_package_type_id`) VALUES";
-                        query += "('" + booking_package_id + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + package_type + "')";
+                        query += "('" + booking_package_id + "', '" + txtPackageName.Text + "', '" + txtPackageDescription.Text + "', '" + package_type + "')";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
                         for (int k = 0; k < Services.Rows.Count; k++)
@@ -831,6 +831,16 @@ namespace Design370
                     }
                 }
             }
+        }
+
+        private void TxtPackageName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblPackageName, Validation.validate(txtPackageName.Text, "name"));
+        }
+
+        private void TxtPackageDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblPackageDescription, Validation.validate(txtPackageDescription.Text, "name"));
         }
     }
 }

@@ -18,8 +18,8 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
+            toolTip1.SetToolTip(txtEventTypeName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtEventTypeDescription, "A maximum of 200 characters can be entered");
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace Design370
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+            if (txtEventTypeName.Text.Length <= 2 || txtEventTypeDescription.Text.Length <= 5)
             {
                 MessageBox.Show("Invalid character length for name and/or description");
                 return;
@@ -49,7 +49,7 @@ namespace Design370
                     }
                     reader.Close();
                     query = "INSERT INTO `event_type` (`event_type_id`, `event_type_name`, `event_type_description`, `booking_type_id`) VALUES";
-                    query += "(NULL, '" + textBox1.Text + "', '" + textBox2.Text + "', '" + booking_type_id + "')";
+                    query += "(NULL, '" + txtEventTypeName.Text + "', '" + txtEventTypeDescription.Text + "', '" + booking_type_id + "')";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -75,6 +75,16 @@ namespace Design370
         private void Event_Types_Add_FormClosing(object sender, FormClosingEventArgs e)
         {
            
+        }
+
+        private void TxtEventTypeName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblEventTypeName, Validation.validate(txtEventTypeName.Text, "name"));
+        }
+
+        private void TxtEventTypeDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblEventTypeDescription, Validation.validate(txtEventTypeDescription.Text, "name"));
         }
     }
 }
