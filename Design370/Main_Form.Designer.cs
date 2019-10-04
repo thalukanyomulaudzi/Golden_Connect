@@ -32,35 +32,6 @@ namespace Design370
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Login");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Add Customer");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Search Customer");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Maintain Customer");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Customer", new System.Windows.Forms.TreeNode[] {
-            treeNode22,
-            treeNode23,
-            treeNode24});
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Add Employee");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Search Employee");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Maintain Employee");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Add Employee Type");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Search Employee Type");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Maintain Employee Type");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Employee", new System.Windows.Forms.TreeNode[] {
-            treeNode26,
-            treeNode27,
-            treeNode28,
-            treeNode29,
-            treeNode30,
-            treeNode31});
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Timeslot");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Services");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Products");
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Photoshoots");
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Events");
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Booking");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Customer Order");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Reports");
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblCustomerSearch = new System.Windows.Forms.Label();
@@ -197,9 +168,10 @@ namespace Design370
             this.button25 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
+            this.button2 = new System.Windows.Forms.Button();
             this.txtSearchManual = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDebug = new System.Windows.Forms.Label();
@@ -1242,14 +1214,16 @@ namespace Design370
             this.dgvOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrders.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrders.Location = new System.Drawing.Point(5, 59);
+            this.dgvOrders.Location = new System.Drawing.Point(11, 61);
             this.dgvOrders.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.ReadOnly = true;
             this.dgvOrders.RowTemplate.Height = 24;
-            this.dgvOrders.Size = new System.Drawing.Size(952, 500);
+            this.dgvOrders.Size = new System.Drawing.Size(1086, 376);
             this.dgvOrders.TabIndex = 46;
             this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellContentClick);
             // 
@@ -1257,7 +1231,7 @@ namespace Design370
             // 
             this.button18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button18.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(837, 11);
+            this.button18.Location = new System.Drawing.Point(985, 16);
             this.button18.Margin = new System.Windows.Forms.Padding(2);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(112, 28);
@@ -1270,7 +1244,7 @@ namespace Design370
             // 
             this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button17.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(717, 11);
+            this.button17.Location = new System.Drawing.Point(865, 16);
             this.button17.Margin = new System.Windows.Forms.Padding(2);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(116, 28);
@@ -1329,7 +1303,7 @@ namespace Design370
             // 
             this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button16.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(585, 11);
+            this.button16.Location = new System.Drawing.Point(733, 16);
             this.button16.Margin = new System.Windows.Forms.Padding(2);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(128, 28);
@@ -1674,9 +1648,10 @@ namespace Design370
             // 
             // tabPage12
             // 
+            this.tabPage12.Controls.Add(this.button3);
             this.tabPage12.Controls.Add(this.axAcroPDF1);
+            this.tabPage12.Controls.Add(this.button2);
             this.tabPage12.Controls.Add(this.txtSearchManual);
-            this.tabPage12.Controls.Add(this.label1);
             this.tabPage12.Controls.Add(this.treeView1);
             this.tabPage12.Location = new System.Drawing.Point(154, 4);
             this.tabPage12.Name = "tabPage12";
@@ -1684,6 +1659,19 @@ namespace Design370
             this.tabPage12.TabIndex = 11;
             this.tabPage12.Text = "Help";
             this.tabPage12.UseVisualStyleBackColor = true;
+            this.tabPage12.Click += new System.EventHandler(this.tabPage12_Click);
+            this.tabPage12.Enter += new System.EventHandler(this.tabPage12_Enter);
+            this.tabPage12.Leave += new System.EventHandler(this.tabPage12_Leave);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(204, 24);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(70, 26);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Search";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // axAcroPDF1
             // 
@@ -1691,87 +1679,39 @@ namespace Design370
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.axAcroPDF1.Enabled = true;
-            this.axAcroPDF1.Location = new System.Drawing.Point(338, 24);
+            this.axAcroPDF1.Location = new System.Drawing.Point(294, 24);
             this.axAcroPDF1.Name = "axAcroPDF1";
             this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
-            this.axAcroPDF1.Size = new System.Drawing.Size(747, 456);
-            this.axAcroPDF1.TabIndex = 3;
+            this.axAcroPDF1.Size = new System.Drawing.Size(783, 515);
+            this.axAcroPDF1.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(879, 556);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(198, 29);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Download Help Document";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // txtSearchManual
             // 
-            this.txtSearchManual.Location = new System.Drawing.Point(133, 24);
+            this.txtSearchManual.Location = new System.Drawing.Point(21, 24);
             this.txtSearchManual.Name = "txtSearchManual";
-            this.txtSearchManual.Size = new System.Drawing.Size(182, 25);
+            this.txtSearchManual.Size = new System.Drawing.Size(177, 25);
             this.txtSearchManual.TabIndex = 2;
             this.txtSearchManual.TextChanged += new System.EventHandler(this.txtSearchManual_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Search Manual:";
+            this.txtSearchManual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchManual_KeyDown);
             // 
             // treeView1
             // 
             this.treeView1.Location = new System.Drawing.Point(21, 64);
             this.treeView1.Name = "treeView1";
-            treeNode21.Name = "Login";
-            treeNode21.Text = "Login";
-            treeNode22.Name = "Customer_Add";
-            treeNode22.Text = "Add Customer";
-            treeNode23.Name = "Customer_Search";
-            treeNode23.Text = "Search Customer";
-            treeNode24.Name = "Customer_Maintain";
-            treeNode24.Text = "Maintain Customer";
-            treeNode25.Name = "Customer";
-            treeNode25.Text = "Customer";
-            treeNode26.Name = "Employee_Add";
-            treeNode26.Text = "Add Employee";
-            treeNode27.Name = "Employee_Search";
-            treeNode27.Text = "Search Employee";
-            treeNode28.Name = "Employee_Maintain";
-            treeNode28.Text = "Maintain Employee";
-            treeNode29.Name = "Employee_Type_Add";
-            treeNode29.Text = "Add Employee Type";
-            treeNode30.Name = "Employee_Type_Search";
-            treeNode30.Text = "Search Employee Type";
-            treeNode31.Name = "Employee_Type_Maintain";
-            treeNode31.Text = "Maintain Employee Type";
-            treeNode32.Name = "Employee";
-            treeNode32.Text = "Employee";
-            treeNode33.Name = "Timeslot";
-            treeNode33.Text = "Timeslot";
-            treeNode34.Name = "Services";
-            treeNode34.Text = "Services";
-            treeNode35.Name = "Products";
-            treeNode35.Text = "Products";
-            treeNode36.Name = "Photoshoots";
-            treeNode36.Text = "Photoshoots";
-            treeNode37.Name = "Events";
-            treeNode37.Text = "Events";
-            treeNode38.Name = "Booking";
-            treeNode38.Text = "Booking";
-            treeNode39.Name = "Customer Order";
-            treeNode39.Text = "Customer Order";
-            treeNode40.Name = "Reports";
-            treeNode40.Text = "Reports";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode21,
-            treeNode25,
-            treeNode32,
-            treeNode33,
-            treeNode34,
-            treeNode35,
-            treeNode36,
-            treeNode37,
-            treeNode38,
-            treeNode39,
-            treeNode40});
-            this.treeView1.Size = new System.Drawing.Size(294, 416);
+            this.treeView1.Size = new System.Drawing.Size(251, 475);
             this.treeView1.TabIndex = 0;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // pictureBox1
             // 
@@ -2018,9 +1958,10 @@ namespace Design370
         private DataGridViewButtonColumn CustDelete;
         private TreeView treeView1;
         private TextBox txtSearchManual;
-        private Label label1;
+        private Button button2;
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
         private Label lblDebug;
+        private Button button3;
     }
 }
 
