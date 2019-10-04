@@ -77,5 +77,10 @@ namespace Design370
 
 
         }
+
+        private void ComboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

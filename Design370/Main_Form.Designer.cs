@@ -2008,7 +2008,6 @@ namespace Design370
         private TextBox txtSearchManual;
         private Label label1;
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
-        private AxXtremeCalendarControl.AxCalendarControl axCalendarControl1;
     }
 }
 
