@@ -272,7 +272,7 @@
             this.txtEmployeeID.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeeID.Location = new System.Drawing.Point(364, 93);
             this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmployeeID.MaxLength = 13;
+            this.txtEmployeeID.MaxLength = 15;
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(243, 26);
             this.txtEmployeeID.TabIndex = 3;

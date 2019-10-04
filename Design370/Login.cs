@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Design370
@@ -17,9 +14,9 @@ namespace Design370
             InitializeComponent();
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
-
+            User.login(txtID.Text.Trim(), txtPassword.Text.Trim());
         }
     }
 }

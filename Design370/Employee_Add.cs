@@ -150,47 +150,17 @@ namespace Design370
                 MessageBox.Show("Please select a title");
                 return;
             }
-            else if (txtEmployeeID.Text.Length <= 12)
-            {
-                MessageBox.Show("Please provide a valid id number");
-                return;
-            }
-            else if (txtEmployeeFirst.Text.Length <= 0)
-            {
-                MessageBox.Show("Please provide a first name");
-                return;
-            }
-            else if (cbxEmployeeGender.SelectedIndex < 0)
+            if (cbxEmployeeGender.SelectedIndex < 0)
             {
                 MessageBox.Show("Please select a gender");
                 return;
             }
-            else if (txtEmployeeLast.Text.Length <= 0)
-            {
-                MessageBox.Show("Please provide a last name");
-                return;
-            }
-            else if (cbxEmployeeMarital.SelectedIndex < 0)
+            if (cbxEmployeeMarital.SelectedIndex < 0)
             {
                 MessageBox.Show("Please select a marital status");
                 return;
             }
-            else if (txtEmployeeAddress.Text.Length <= 10)
-            {
-                MessageBox.Show("Please provide an address");
-                return;
-            }
-            else if (txtEmployeePhone.Text.Length <= 9)
-            {
-                MessageBox.Show("Please enter a valid phone number");
-                return;
-            }
-            else if (txtEmployeeEmail.Text.Length <= 5)
-            {
-                MessageBox.Show("Please provide a valid email address");
-                return;
-            }
-            else if (cbxEmployeeType.SelectedIndex < 0)
+            if (cbxEmployeeType.SelectedIndex < 0)
             {
                 MessageBox.Show("Please select an employee type");
                 return;
@@ -242,13 +212,15 @@ namespace Design370
 
         private void BtnEmpAdd_Click(object sender, EventArgs e)
         {
-            if (!Validation.validate(txtEmployeeFirst.Text, "name") || !Validation.validate(txtEmployeeLast.Text, "name") || !Validation.validate(txtEmployeeID.Text, "price") 
-                || !Validation.validate(txtEmployeeEmail.Text, "name") || !Validation.validate(txtEmployeePhone.Text, "name"))
+            if (!Validation.validate(txtEmployeeFirst.Text, "name") || !Validation.validate(txtEmployeeLast.Text, "name") || !Validation.validate(txtEmployeeID.Text, "id") 
+                || !Validation.validate(txtEmployeeEmail.Text, "email") || !Validation.validate(txtEmployeePhone.Text, "phone"))
             {
                 MessageBox.Show("All input fields must be valid");
                 return;
             }
             addEmployee();
+            User_Add user_Add = new User_Add();
+            user_Add.ShowDialog();
         }
 
         private void CmEMTP_SelectedIndexChanged(object sender, EventArgs e)

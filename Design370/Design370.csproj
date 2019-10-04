@@ -452,6 +452,13 @@
     <Compile Include="Employee_Update.Designer.cs">
       <DependentUpon>Employee_Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="User_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_Add.Designer.cs">
+      <DependentUpon>User_Add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="Booking_Capture_Payment.resx">
       <DependentUpon>Booking_Capture_Payment.cs</DependentUpon>
@@ -609,6 +616,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employee_Update.resx">
       <DependentUpon>Employee_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Add.resx">
+      <DependentUpon>User_Add.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

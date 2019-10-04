@@ -61,6 +61,8 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
+            Login login = new Login();
+            login.ShowDialog();
             //Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
             Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
@@ -1131,6 +1133,15 @@ namespace Design370
             
         }
 
+        private void LblDebug_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(User.AccessLevel.ToString());
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 
     //private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)

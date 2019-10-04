@@ -32,35 +32,35 @@ namespace Design370
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Login");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Add Customer");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Search Customer");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Maintain Customer");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Customer", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode3,
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Add Employee");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Search Employee");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Maintain Employee");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Add Employee Type");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Search Employee Type");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Maintain Employee Type");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Employee", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8,
-            treeNode9,
-            treeNode10,
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Timeslot");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Services");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Products");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Photoshoots");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Events");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Booking");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Customer Order");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Reports");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Login");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Add Customer");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Search Customer");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Maintain Customer");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Customer", new System.Windows.Forms.TreeNode[] {
+            treeNode22,
+            treeNode23,
+            treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Add Employee");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Search Employee");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Maintain Employee");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Add Employee Type");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Search Employee Type");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Maintain Employee Type");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Employee", new System.Windows.Forms.TreeNode[] {
+            treeNode26,
+            treeNode27,
+            treeNode28,
+            treeNode29,
+            treeNode30,
+            treeNode31});
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Timeslot");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Services");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Products");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Photoshoots");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Events");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Booking");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Customer Order");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Reports");
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblCustomerSearch = new System.Windows.Forms.Label();
@@ -202,7 +202,7 @@ namespace Design370
             this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            //this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.lblDebug = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -1718,58 +1718,58 @@ namespace Design370
             // 
             this.treeView1.Location = new System.Drawing.Point(21, 64);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Login";
-            treeNode1.Text = "Login";
-            treeNode2.Name = "Customer_Add";
-            treeNode2.Text = "Add Customer";
-            treeNode3.Name = "Customer_Search";
-            treeNode3.Text = "Search Customer";
-            treeNode4.Name = "Customer_Maintain";
-            treeNode4.Text = "Maintain Customer";
-            treeNode5.Name = "Customer";
-            treeNode5.Text = "Customer";
-            treeNode6.Name = "Employee_Add";
-            treeNode6.Text = "Add Employee";
-            treeNode7.Name = "Employee_Search";
-            treeNode7.Text = "Search Employee";
-            treeNode8.Name = "Employee_Maintain";
-            treeNode8.Text = "Maintain Employee";
-            treeNode9.Name = "Employee_Type_Add";
-            treeNode9.Text = "Add Employee Type";
-            treeNode10.Name = "Employee_Type_Search";
-            treeNode10.Text = "Search Employee Type";
-            treeNode11.Name = "Employee_Type_Maintain";
-            treeNode11.Text = "Maintain Employee Type";
-            treeNode12.Name = "Employee";
-            treeNode12.Text = "Employee";
-            treeNode13.Name = "Timeslot";
-            treeNode13.Text = "Timeslot";
-            treeNode14.Name = "Services";
-            treeNode14.Text = "Services";
-            treeNode15.Name = "Products";
-            treeNode15.Text = "Products";
-            treeNode16.Name = "Photoshoots";
-            treeNode16.Text = "Photoshoots";
-            treeNode17.Name = "Events";
-            treeNode17.Text = "Events";
-            treeNode18.Name = "Booking";
-            treeNode18.Text = "Booking";
-            treeNode19.Name = "Customer Order";
-            treeNode19.Text = "Customer Order";
-            treeNode20.Name = "Reports";
-            treeNode20.Text = "Reports";
+            treeNode21.Name = "Login";
+            treeNode21.Text = "Login";
+            treeNode22.Name = "Customer_Add";
+            treeNode22.Text = "Add Customer";
+            treeNode23.Name = "Customer_Search";
+            treeNode23.Text = "Search Customer";
+            treeNode24.Name = "Customer_Maintain";
+            treeNode24.Text = "Maintain Customer";
+            treeNode25.Name = "Customer";
+            treeNode25.Text = "Customer";
+            treeNode26.Name = "Employee_Add";
+            treeNode26.Text = "Add Employee";
+            treeNode27.Name = "Employee_Search";
+            treeNode27.Text = "Search Employee";
+            treeNode28.Name = "Employee_Maintain";
+            treeNode28.Text = "Maintain Employee";
+            treeNode29.Name = "Employee_Type_Add";
+            treeNode29.Text = "Add Employee Type";
+            treeNode30.Name = "Employee_Type_Search";
+            treeNode30.Text = "Search Employee Type";
+            treeNode31.Name = "Employee_Type_Maintain";
+            treeNode31.Text = "Maintain Employee Type";
+            treeNode32.Name = "Employee";
+            treeNode32.Text = "Employee";
+            treeNode33.Name = "Timeslot";
+            treeNode33.Text = "Timeslot";
+            treeNode34.Name = "Services";
+            treeNode34.Text = "Services";
+            treeNode35.Name = "Products";
+            treeNode35.Text = "Products";
+            treeNode36.Name = "Photoshoots";
+            treeNode36.Text = "Photoshoots";
+            treeNode37.Name = "Events";
+            treeNode37.Text = "Events";
+            treeNode38.Name = "Booking";
+            treeNode38.Text = "Booking";
+            treeNode39.Name = "Customer Order";
+            treeNode39.Text = "Customer Order";
+            treeNode40.Name = "Reports";
+            treeNode40.Text = "Reports";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode5,
-            treeNode12,
-            treeNode13,
-            treeNode14,
-            treeNode15,
-            treeNode16,
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20});
+            treeNode21,
+            treeNode25,
+            treeNode32,
+            treeNode33,
+            treeNode34,
+            treeNode35,
+            treeNode36,
+            treeNode37,
+            treeNode38,
+            treeNode39,
+            treeNode40});
             this.treeView1.Size = new System.Drawing.Size(294, 416);
             this.treeView1.TabIndex = 0;
             // 
@@ -1784,6 +1784,16 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // lblDebug
+            // 
+            this.lblDebug.AutoSize = true;
+            this.lblDebug.Location = new System.Drawing.Point(1157, 9);
+            this.lblDebug.Name = "lblDebug";
+            this.lblDebug.Size = new System.Drawing.Size(94, 13);
+            this.lblDebug.TabIndex = 13;
+            this.lblDebug.Text = "Debug Information";
+            this.lblDebug.Click += new System.EventHandler(this.LblDebug_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1791,6 +1801,7 @@ namespace Design370
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1262, 693);
+            this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -1838,6 +1849,7 @@ namespace Design370
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -2008,6 +2020,7 @@ namespace Design370
         private TextBox txtSearchManual;
         private Label label1;
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
+        private Label lblDebug;
     }
 }
 
