@@ -32,6 +32,35 @@ namespace Design370
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Login");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Add Customer");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Search Customer");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Maintain Customer");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Customer", new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Add Employee");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Search Employee");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Maintain Employee");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Add Employee Type");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Search Employee Type");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Maintain Employee Type");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Employee", new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9,
+            treeNode10,
+            treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Timeslot");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Services");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Products");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Photoshoots");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Events");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Booking");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Customer Order");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Reports");
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblCustomerSearch = new System.Windows.Forms.Label();
@@ -168,7 +197,12 @@ namespace Design370
             this.button25 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
+            this.txtSearchManual = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            //this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -191,7 +225,11 @@ namespace Design370
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
             this.tabPage11.SuspendLayout();
+            this.tabPage12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axCalendarControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axCalendarControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1638,12 +1676,104 @@ namespace Design370
             // 
             // tabPage12
             // 
+            this.tabPage12.Controls.Add(this.axAcroPDF1);
+            this.tabPage12.Controls.Add(this.txtSearchManual);
+            this.tabPage12.Controls.Add(this.label1);
+            this.tabPage12.Controls.Add(this.treeView1);
             this.tabPage12.Location = new System.Drawing.Point(154, 4);
             this.tabPage12.Name = "tabPage12";
             this.tabPage12.Size = new System.Drawing.Size(1104, 608);
             this.tabPage12.TabIndex = 11;
             this.tabPage12.Text = "Help";
             this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // axAcroPDF1
+            // 
+            this.axAcroPDF1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.axAcroPDF1.Enabled = true;
+            this.axAcroPDF1.Location = new System.Drawing.Point(338, 24);
+            this.axAcroPDF1.Name = "axAcroPDF1";
+            this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
+            this.axAcroPDF1.Size = new System.Drawing.Size(747, 456);
+            this.axAcroPDF1.TabIndex = 3;
+            // 
+            // txtSearchManual
+            // 
+            this.txtSearchManual.Location = new System.Drawing.Point(133, 24);
+            this.txtSearchManual.Name = "txtSearchManual";
+            this.txtSearchManual.Size = new System.Drawing.Size(182, 25);
+            this.txtSearchManual.TabIndex = 2;
+            this.txtSearchManual.TextChanged += new System.EventHandler(this.txtSearchManual_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 18);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Search Manual:";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(21, 64);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "Login";
+            treeNode1.Text = "Login";
+            treeNode2.Name = "Customer_Add";
+            treeNode2.Text = "Add Customer";
+            treeNode3.Name = "Customer_Search";
+            treeNode3.Text = "Search Customer";
+            treeNode4.Name = "Customer_Maintain";
+            treeNode4.Text = "Maintain Customer";
+            treeNode5.Name = "Customer";
+            treeNode5.Text = "Customer";
+            treeNode6.Name = "Employee_Add";
+            treeNode6.Text = "Add Employee";
+            treeNode7.Name = "Employee_Search";
+            treeNode7.Text = "Search Employee";
+            treeNode8.Name = "Employee_Maintain";
+            treeNode8.Text = "Maintain Employee";
+            treeNode9.Name = "Employee_Type_Add";
+            treeNode9.Text = "Add Employee Type";
+            treeNode10.Name = "Employee_Type_Search";
+            treeNode10.Text = "Search Employee Type";
+            treeNode11.Name = "Employee_Type_Maintain";
+            treeNode11.Text = "Maintain Employee Type";
+            treeNode12.Name = "Employee";
+            treeNode12.Text = "Employee";
+            treeNode13.Name = "Timeslot";
+            treeNode13.Text = "Timeslot";
+            treeNode14.Name = "Services";
+            treeNode14.Text = "Services";
+            treeNode15.Name = "Products";
+            treeNode15.Text = "Products";
+            treeNode16.Name = "Photoshoots";
+            treeNode16.Text = "Photoshoots";
+            treeNode17.Name = "Events";
+            treeNode17.Text = "Events";
+            treeNode18.Name = "Booking";
+            treeNode18.Text = "Booking";
+            treeNode19.Name = "Customer Order";
+            treeNode19.Text = "Customer Order";
+            treeNode20.Name = "Reports";
+            treeNode20.Text = "Reports";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode5,
+            treeNode12,
+            treeNode13,
+            treeNode14,
+            treeNode15,
+            treeNode16,
+            treeNode17,
+            treeNode18,
+            treeNode19,
+            treeNode20});
+            this.treeView1.Size = new System.Drawing.Size(294, 416);
+            this.treeView1.TabIndex = 0;
             // 
             // pictureBox1
             // 
@@ -1705,7 +1835,12 @@ namespace Design370
             this.tabPage10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
             this.tabPage11.ResumeLayout(false);
+            this.tabPage12.ResumeLayout(false);
+            this.tabPage12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axCalendarControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axCalendarControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1873,6 +2008,11 @@ namespace Design370
         private DataGridViewButtonColumn CustView;
         private DataGridViewButtonColumn CustEdit;
         private DataGridViewButtonColumn CustDelete;
+        private TreeView treeView1;
+        private TextBox txtSearchManual;
+        private Label label1;
+        private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
+        private AxXtremeCalendarControl.AxCalendarControl axCalendarControl1;
     }
 }
 
