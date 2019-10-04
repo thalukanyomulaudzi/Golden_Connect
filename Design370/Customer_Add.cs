@@ -18,11 +18,11 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(txtFN, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(txtLN, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(txtEM, "A maximum of 50 characters can be entered");
-            toolTip1.SetToolTip(txtTEL, "A maximum of 10 characters can be entered");
-            toolTip1.SetToolTip(textBox3, "A maximum of 13 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerFirst, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerLast, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerEmail, "A maximum of 50 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerPhone, "A maximum of 10 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerID, "A maximum of 13 characters can be entered");
         }
 
         private void Customer_Add_Load(object sender, EventArgs e)
@@ -43,29 +43,10 @@ namespace Design370
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            if (txtFN.Text.Length <= 0)
+            if (!Validation.validate(txtCustomerFirst.Text, "name") || !Validation.validate(txtCustomerLast.Text, "name") || !Validation.validate(txtCustomerID.Text, "id") 
+                || !Validation.validate(txtCustomerPhone.Text, "phone") || !Validation.validate(txtCustomerEmail.Text, "email"))
             {
-                MessageBox.Show("Please provide a first name");
-                return;
-            }
-            else if (txtLN.Text.Length <= 0)
-            {
-                MessageBox.Show("Please provide a last name");
-                return;
-            }
-            else if (textBox3.Text.Length <= 12)
-            {
-                MessageBox.Show("Please provide a valid id number");
-                return;
-            }
-            else if (txtTEL.Text.Length <= 9)
-            {
-                MessageBox.Show("Please provide a valid phone number");
-                return;
-            }
-            else if (txtEM.Text.Length <= 8)
-            {
-                MessageBox.Show("Please provide a valid email address");
+                MessageBox.Show("All input fields must be valid");
                 return;
             }
             DBConnection dBConnection = DBConnection.Instance();
@@ -73,8 +54,8 @@ namespace Design370
             {
                 if (dBConnection.IsConnect())
                 {
-                    string query = "INSERT INTO customer(customer_first, customer_last, customer_email, customer_phone, customer_id_number) VALUES('" + txtFN.Text + "', " +
-                        "'" + txtLN.Text + "', '" + txtEM.Text.ToLower() + "', '" + txtTEL.Text + "', '" + textBox3.Text + "')";
+                    string query = "INSERT INTO customer(customer_first, customer_last, customer_email, customer_phone, customer_id_number) VALUES('" + txtCustomerFirst.Text + "', " +
+                        "'" + txtCustomerLast.Text + "', '" + txtCustomerEmail.Text.ToLower() + "', '" + txtCustomerPhone.Text + "', '" + txtCustomerID.Text + "')";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -89,6 +70,31 @@ namespace Design370
         private void Customer_Add_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void TxtFN_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerFirst, Validation.validate(txtCustomerFirst.Text, "name"));
+        }
+
+        private void TxtCustomerID_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerID, Validation.validate(txtCustomerID.Text, "id"));
+        }
+
+        private void TxtCustomerLast_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerLast, Validation.validate(txtCustomerLast.Text, "name"));
+        }
+
+        private void TxtCustomerPhone_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerPhone, Validation.validate(txtCustomerPhone.Text, "phone"));
+        }
+
+        private void TxtCustomerEmail_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerEmail, Validation.validate(txtCustomerEmail.Text, "email"));
         }
     }
 }

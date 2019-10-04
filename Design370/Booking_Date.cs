@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace Design370
 
         private void Booking_Date_Load(object sender, EventArgs e)
         {
-            Timeslot.loadTimeslots(dgvBookEvent, DateTime.Today);
+
         }
 
 
@@ -23,9 +24,10 @@ namespace Design370
             dgvBookEvent.Rows.Clear();
             TimeSpan span = (dateTimePicker1.Value.Subtract(DateTime.Now));
             if (span.TotalDays <= 2)
-                Timeslot.loadTimeslots(dgvBookEvent, DateTime.Now);
+                Booking.firstDayOfWeek = DateTime.Now;
             else
-                Timeslot.loadTimeslots(dgvBookEvent, dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3)));
+                Booking.firstDayOfWeek = dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3));
+            Timeslot.loadTimeslots(dgvBookEvent, Booking.firstDayOfWeek);
         }
 
         private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -65,7 +67,7 @@ namespace Design370
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            bookingDetails("Event");
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -92,6 +94,53 @@ namespace Design370
         private void Book_Event_Date_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            Booking_Customer booking_Customer = new Booking_Customer();
+            booking_Customer.Show();
+        }
+
+        private void Booking_Date_Activated(object sender, EventArgs e)
+        {
+            Timeslot.loadTimeslots(dgvBookEvent, DateTime.Today);
+            txtBookingCustomerName.Text = Booking.customerName;
+        }
+
+        private void LblBookingDateNextWeek_MouseEnter(object sender, EventArgs e)
+        {
+            lblBookingDateNextWeek.ForeColor = Color.Blue;
+        }
+
+        private void LblBookingDateNextWeek_MouseLeave(object sender, EventArgs e)
+        {
+            lblBookingDateNextWeek.ForeColor = Color.Black;
+        }
+
+        private void LblBookingDatePreviousWeek_MouseEnter(object sender, EventArgs e)
+        {
+            lblBookingDatePreviousWeek.ForeColor = Color.Blue;
+        }
+
+        private void LblBookingDatePreviousWeek_MouseLeave(object sender, EventArgs e)
+        {
+            lblBookingDatePreviousWeek.ForeColor = Color.Black;
+        }
+
+        private void LblBookingDatePreviousWeek_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.Subtract(TimeSpan.FromDays(7));
+            if (dateTimePicker1.Value < DateTime.Today)
+            {
+                dateTimePicker1.Value = DateTime.Today;
+                MessageBox.Show("Cannot go into the past to create a booking");
+            }
+        }
+
+        private void LblBookingDateNextWeek_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value += TimeSpan.FromDays(7);
         }
     }
 }

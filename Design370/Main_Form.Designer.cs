@@ -31,7 +31,6 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -170,7 +169,6 @@ namespace Design370
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            //this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -1267,7 +1265,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(51, 18);
+            this.label15.Size = new System.Drawing.Size(52, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Show :";
             // 
@@ -1423,7 +1421,7 @@ namespace Design370
             // btnBookingCapture
             // 
             this.btnBookingCapture.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBookingCapture.Location = new System.Drawing.Point(11, 425);
+            this.btnBookingCapture.Location = new System.Drawing.Point(623, 427);
             this.btnBookingCapture.Margin = new System.Windows.Forms.Padding(2);
             this.btnBookingCapture.Name = "btnBookingCapture";
             this.btnBookingCapture.Size = new System.Drawing.Size(151, 29);
@@ -1570,7 +1568,6 @@ namespace Design370
             // 
             // tabPage11
             // 
-            //this.tabPage11.Controls.Add(this.crystalReportViewer1);
             this.tabPage11.Controls.Add(this.button13);
             this.tabPage11.Controls.Add(this.button11);
             this.tabPage11.Controls.Add(this.button9);
@@ -1658,16 +1655,6 @@ namespace Design370
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
-            // 
-            // crystalReportViewer1
-            // 
-            //this.crystalReportViewer1.ActiveViewIndex = -1;
-            //this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            //this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            //this.crystalReportViewer1.Location = new System.Drawing.Point(269, 3);
-            //this.crystalReportViewer1.Name = "crystalReportViewer1";
-            //this.crystalReportViewer1.Size = new System.Drawing.Size(832, 602);
-            //this.crystalReportViewer1.TabIndex = 61;
             // 
             // Main_Form
             // 

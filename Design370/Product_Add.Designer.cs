@@ -28,157 +28,189 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.cbxProductTypes = new System.Windows.Forms.ComboBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnProductTypeAdd = new System.Windows.Forms.Button();
+            this.cbxProductType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtProductPrice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtProductDescr = new System.Windows.Forms.TextBox();
+            this.txtProductDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtProductame = new System.Windows.Forms.TextBox();
+            this.txtProductName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAddProducts = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lblProductName = new System.Windows.Forms.Label();
+            this.lblProductDescription = new System.Windows.Forms.Label();
+            this.lblProductPrice = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(240, 257);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 28);
-            this.button2.TabIndex = 76;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click_1);
+            this.btnCancel.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(297, 348);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(116, 39);
+            this.btnCancel.TabIndex = 76;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.Button2_Click_1);
             // 
-            // button3
+            // btnProductTypeAdd
             // 
-            this.button3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(270, 202);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 21);
-            this.button3.TabIndex = 74;
-            this.button3.Text = "Add Product Type";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click_1);
+            this.btnProductTypeAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductTypeAdd.Location = new System.Drawing.Point(337, 272);
+            this.btnProductTypeAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnProductTypeAdd.Name = "btnProductTypeAdd";
+            this.btnProductTypeAdd.Size = new System.Drawing.Size(168, 29);
+            this.btnProductTypeAdd.TabIndex = 74;
+            this.btnProductTypeAdd.Text = "Add Product Type";
+            this.btnProductTypeAdd.UseVisualStyleBackColor = true;
+            this.btnProductTypeAdd.Click += new System.EventHandler(this.Button3_Click_1);
             // 
-            // cbxProductTypes
+            // cbxProductType
             // 
-            this.cbxProductTypes.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxProductTypes.FormattingEnabled = true;
-            this.cbxProductTypes.Location = new System.Drawing.Point(33, 202);
-            this.cbxProductTypes.Name = "cbxProductTypes";
-            this.cbxProductTypes.Size = new System.Drawing.Size(172, 21);
-            this.cbxProductTypes.TabIndex = 73;
+            this.cbxProductType.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxProductType.FormattingEnabled = true;
+            this.cbxProductType.Location = new System.Drawing.Point(21, 272);
+            this.cbxProductType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxProductType.Name = "cbxProductType";
+            this.cbxProductType.Size = new System.Drawing.Size(228, 26);
+            this.cbxProductType.TabIndex = 73;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 186);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(17, 250);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.Size = new System.Drawing.Size(95, 18);
             this.label4.TabIndex = 72;
             this.label4.Text = "Product Type:";
             // 
             // txtProductPrice
             // 
-            this.txtProductPrice.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductPrice.Location = new System.Drawing.Point(270, 35);
-            this.txtProductPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProductPrice.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductPrice.Location = new System.Drawing.Point(316, 40);
             this.txtProductPrice.Name = "txtProductPrice";
-            this.txtProductPrice.Size = new System.Drawing.Size(172, 21);
+            this.txtProductPrice.Size = new System.Drawing.Size(228, 26);
             this.txtProductPrice.TabIndex = 71;
+            this.txtProductPrice.Text = "R";
             this.txtProductPrice.TextChanged += new System.EventHandler(this.txtProductPrice_TextChanged);
-            this.txtProductPrice.Validating += new System.ComponentModel.CancelEventHandler(this.txtProductPrice_Validating);
-            this.txtProductPrice.Validated += new System.EventHandler(this.txtProductPrice_Validated);
             // 
             // label3
             // 
             this.label3.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(267, 20);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(313, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.Size = new System.Drawing.Size(104, 18);
             this.label3.TabIndex = 70;
             this.label3.Text = "Product Price :";
             // 
-            // txtProductDescr
+            // txtProductDescription
             // 
-            this.txtProductDescr.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductDescr.Location = new System.Drawing.Point(33, 87);
-            this.txtProductDescr.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProductDescr.MaxLength = 100;
-            this.txtProductDescr.Multiline = true;
-            this.txtProductDescr.Name = "txtProductDescr";
-            this.txtProductDescr.Size = new System.Drawing.Size(172, 82);
-            this.txtProductDescr.TabIndex = 69;
+            this.txtProductDescription.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductDescription.Location = new System.Drawing.Point(21, 112);
+            this.txtProductDescription.MaxLength = 100;
+            this.txtProductDescription.Multiline = true;
+            this.txtProductDescription.Name = "txtProductDescription";
+            this.txtProductDescription.Size = new System.Drawing.Size(228, 112);
+            this.txtProductDescription.TabIndex = 69;
+            this.txtProductDescription.TextChanged += new System.EventHandler(this.TxtProductDescription_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(30, 72);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(17, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 13);
+            this.label2.Size = new System.Drawing.Size(146, 18);
             this.label2.TabIndex = 68;
             this.label2.Text = "Product Description :";
             // 
-            // txtProductame
+            // txtProductName
             // 
-            this.txtProductame.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductame.Location = new System.Drawing.Point(33, 35);
-            this.txtProductame.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProductame.MaxLength = 25;
-            this.txtProductame.Name = "txtProductame";
-            this.txtProductame.Size = new System.Drawing.Size(172, 21);
-            this.txtProductame.TabIndex = 67;
+            this.txtProductName.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductName.Location = new System.Drawing.Point(21, 40);
+            this.txtProductName.MaxLength = 25;
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(228, 26);
+            this.txtProductName.TabIndex = 67;
+            this.txtProductName.TextChanged += new System.EventHandler(this.TxtProductame_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 20);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(17, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(110, 18);
             this.label1.TabIndex = 66;
             this.label1.Text = "Product Name :";
             // 
-            // btnAddProducts
+            // btnAdd
             // 
-            this.btnAddProducts.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProducts.Location = new System.Drawing.Point(343, 257);
-            this.btnAddProducts.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddProducts.Name = "btnAddProducts";
-            this.btnAddProducts.Size = new System.Drawing.Size(86, 28);
-            this.btnAddProducts.TabIndex = 77;
-            this.btnAddProducts.Text = "Add";
-            this.btnAddProducts.UseVisualStyleBackColor = true;
-            this.btnAddProducts.Click += new System.EventHandler(this.btnAddProducts_Click);
+            this.btnAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(434, 348);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(115, 39);
+            this.btnAdd.TabIndex = 77;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAddProducts_Click);
+            // 
+            // lblProductName
+            // 
+            this.lblProductName.AutoSize = true;
+            this.lblProductName.ForeColor = System.Drawing.Color.Red;
+            this.lblProductName.Location = new System.Drawing.Point(255, 43);
+            this.lblProductName.Name = "lblProductName";
+            this.lblProductName.Size = new System.Drawing.Size(19, 18);
+            this.lblProductName.TabIndex = 78;
+            this.lblProductName.Text = "✘";
+            // 
+            // lblProductDescription
+            // 
+            this.lblProductDescription.AutoSize = true;
+            this.lblProductDescription.ForeColor = System.Drawing.Color.Red;
+            this.lblProductDescription.Location = new System.Drawing.Point(255, 115);
+            this.lblProductDescription.Name = "lblProductDescription";
+            this.lblProductDescription.Size = new System.Drawing.Size(19, 18);
+            this.lblProductDescription.TabIndex = 79;
+            this.lblProductDescription.Text = "✘";
+            // 
+            // lblProductPrice
+            // 
+            this.lblProductPrice.AutoSize = true;
+            this.lblProductPrice.ForeColor = System.Drawing.Color.Red;
+            this.lblProductPrice.Location = new System.Drawing.Point(553, 43);
+            this.lblProductPrice.Name = "lblProductPrice";
+            this.lblProductPrice.Size = new System.Drawing.Size(19, 18);
+            this.lblProductPrice.TabIndex = 80;
+            this.lblProductPrice.Text = "✘";
             // 
             // Product_Add
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 307);
-            this.Controls.Add(this.btnAddProducts);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.cbxProductTypes);
+            this.ClientSize = new System.Drawing.Size(584, 409);
+            this.Controls.Add(this.lblProductPrice);
+            this.Controls.Add(this.lblProductDescription);
+            this.Controls.Add(this.lblProductName);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnProductTypeAdd);
+            this.Controls.Add(this.cbxProductType);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtProductPrice);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtProductDescr);
+            this.Controls.Add(this.txtProductDescription);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtProductame);
+            this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Product_Add";
             this.Text = "Add Product";
             this.Activated += new System.EventHandler(this.Product_Add_Activated);
@@ -190,16 +222,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox cbxProductTypes;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnProductTypeAdd;
+        private System.Windows.Forms.ComboBox cbxProductType;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtProductPrice;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtProductDescr;
+        private System.Windows.Forms.TextBox txtProductDescription;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtProductame;
+        private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAddProducts;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label lblProductName;
+        private System.Windows.Forms.Label lblProductDescription;
+        private System.Windows.Forms.Label lblProductPrice;
     }
 }

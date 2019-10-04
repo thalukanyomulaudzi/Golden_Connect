@@ -70,5 +70,15 @@ namespace Design370
                 MessageBox.Show(err.Message);
             }
         }
+
+        private void TxtEmpTypeName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblTypeName, Validation.validate(txtEmpTypeName.Text, "name"));
+        }
+
+        private void TxtEmpTypeDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblTypeDescription, Validation.validate(txtEmpTypeDescription.Text, "name"));
+        }
     }
 }
