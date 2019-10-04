@@ -32,9 +32,9 @@ namespace Design370
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtProdTypeName.Text.Length <= 2 || txtProdTypeDesc.Text.Length <= 5)
+            if (!Validation.validate(txtProdTypeName.Text, "name") || !Validation.validate(txtProdTypeDesc.Text, "name"))
             {
-                MessageBox.Show("Invalid character length for name and/or description");
+                MessageBox.Show("All input fields must be valid");
                 return;
             }
             try
@@ -57,6 +57,16 @@ namespace Design370
         private void Product_Type_Add_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void TxtProdTypeName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblProductTypeName, Validation.validate(txtProdTypeName.Text, "name"));
+        }
+
+        private void TxtProdTypeDesc_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblProductTypeDescription, Validation.validate(txtProdTypeDesc.Text, "name"));
         }
     }
 }

@@ -135,7 +135,6 @@
             this.txtEmployeeAddress.Name = "txtEmployeeAddress";
             this.txtEmployeeAddress.Size = new System.Drawing.Size(243, 83);
             this.txtEmployeeAddress.TabIndex = 5;
-            this.txtEmployeeAddress.TextChanged += new System.EventHandler(this.TxtEmployeeAddress_TextChanged);
             // 
             // cbxEmployeeType
             // 

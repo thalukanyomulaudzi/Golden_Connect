@@ -84,11 +84,11 @@
             // 
             // button5
             // 
-            this.button5.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(704, 720);
-            this.button5.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.button5.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(616, 640);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 39);
+            this.button5.Size = new System.Drawing.Size(101, 35);
             this.button5.TabIndex = 56;
             this.button5.Text = "Edit";
             this.button5.UseVisualStyleBackColor = true;
@@ -96,11 +96,11 @@
             // 
             // button6
             // 
-            this.button6.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(845, 720);
-            this.button6.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.button6.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(739, 640);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(115, 39);
+            this.button6.Size = new System.Drawing.Size(101, 35);
             this.button6.TabIndex = 55;
             this.button6.Text = "OK";
             this.button6.UseVisualStyleBackColor = true;
@@ -108,46 +108,46 @@
             // 
             // txtPackageDescription
             // 
-            this.txtPackageDescription.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPackageDescription.Location = new System.Drawing.Point(20, 125);
+            this.txtPackageDescription.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPackageDescription.Location = new System.Drawing.Point(18, 111);
             this.txtPackageDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtPackageDescription.MaxLength = 200;
             this.txtPackageDescription.Multiline = true;
             this.txtPackageDescription.Name = "txtPackageDescription";
-            this.txtPackageDescription.Size = new System.Drawing.Size(236, 230);
+            this.txtPackageDescription.Size = new System.Drawing.Size(207, 205);
             this.txtPackageDescription.TabIndex = 76;
             this.txtPackageDescription.TextChanged += new System.EventHandler(this.TxtPackageDescription_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 102);
+            this.label2.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(14, 91);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 18);
+            this.label2.Size = new System.Drawing.Size(80, 16);
             this.label2.TabIndex = 75;
             this.label2.Text = "Description :";
             // 
             // txtPackageName
             // 
-            this.txtPackageName.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPackageName.Location = new System.Drawing.Point(20, 64);
+            this.txtPackageName.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPackageName.Location = new System.Drawing.Point(18, 57);
             this.txtPackageName.Margin = new System.Windows.Forms.Padding(4);
             this.txtPackageName.MaxLength = 25;
             this.txtPackageName.Name = "txtPackageName";
-            this.txtPackageName.Size = new System.Drawing.Size(236, 26);
+            this.txtPackageName.Size = new System.Drawing.Size(207, 23);
             this.txtPackageName.TabIndex = 74;
             this.txtPackageName.TextChanged += new System.EventHandler(this.TxtPackageName_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 42);
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 18);
+            this.label1.Size = new System.Drawing.Size(48, 16);
             this.label1.TabIndex = 73;
             this.label1.Text = "Name :";
             // 
@@ -162,11 +162,11 @@
             this.groupBox1.Controls.Add(this.txtSearchServices);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.dgvProducts);
-            this.groupBox1.Location = new System.Drawing.Point(1027, 17);
+            this.groupBox1.Location = new System.Drawing.Point(899, 15);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(644, 779);
+            this.groupBox1.Size = new System.Drawing.Size(564, 692);
             this.groupBox1.TabIndex = 78;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Services and Products";
@@ -183,12 +183,12 @@
             this.ServicesName,
             this.ServicesPrice,
             this.ServicesAdd});
-            this.dgvServices.Location = new System.Drawing.Point(40, 80);
+            this.dgvServices.Location = new System.Drawing.Point(35, 71);
             this.dgvServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvServices.Name = "dgvServices";
             this.dgvServices.ReadOnly = true;
             this.dgvServices.RowHeadersVisible = false;
-            this.dgvServices.Size = new System.Drawing.Size(556, 276);
+            this.dgvServices.Size = new System.Drawing.Size(486, 245);
             this.dgvServices.TabIndex = 46;
             this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServices_CellContentClick);
             this.dgvServices.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvServices_CellPainting);
@@ -221,64 +221,64 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(36, 42);
+            this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(32, 37);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 18);
+            this.label4.Size = new System.Drawing.Size(65, 16);
             this.label4.TabIndex = 50;
             this.label4.Text = "Services :";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(317, 378);
+            this.label9.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(277, 336);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 18);
+            this.label9.Size = new System.Drawing.Size(55, 16);
             this.label9.TabIndex = 59;
             this.label9.Text = "Search :";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(317, 42);
+            this.label10.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(277, 37);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 18);
+            this.label10.Size = new System.Drawing.Size(55, 16);
             this.label10.TabIndex = 60;
             this.label10.Text = "Search :";
             // 
             // txtSearchProducts
             // 
-            this.txtSearchProducts.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchProducts.Location = new System.Drawing.Point(387, 374);
+            this.txtSearchProducts.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchProducts.Location = new System.Drawing.Point(339, 332);
             this.txtSearchProducts.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchProducts.Name = "txtSearchProducts";
-            this.txtSearchProducts.Size = new System.Drawing.Size(208, 26);
+            this.txtSearchProducts.Size = new System.Drawing.Size(182, 23);
             this.txtSearchProducts.TabIndex = 56;
             this.txtSearchProducts.TextChanged += new System.EventHandler(this.txtSearchProducts_TextChanged);
             // 
             // txtSearchServices
             // 
-            this.txtSearchServices.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchServices.Location = new System.Drawing.Point(387, 37);
+            this.txtSearchServices.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchServices.Location = new System.Drawing.Point(339, 33);
             this.txtSearchServices.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchServices.Name = "txtSearchServices";
-            this.txtSearchServices.Size = new System.Drawing.Size(208, 26);
+            this.txtSearchServices.Size = new System.Drawing.Size(182, 23);
             this.txtSearchServices.TabIndex = 54;
             this.txtSearchServices.TextChanged += new System.EventHandler(this.txtSearchServices_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(36, 378);
+            this.label6.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(32, 336);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 18);
+            this.label6.Size = new System.Drawing.Size(66, 16);
             this.label6.TabIndex = 52;
             this.label6.Text = "Products :";
             // 
@@ -294,12 +294,12 @@
             this.ProductsName,
             this.ProductPrice,
             this.ProductAdd});
-            this.dgvProducts.Location = new System.Drawing.Point(40, 418);
+            this.dgvProducts.Location = new System.Drawing.Point(35, 372);
             this.dgvProducts.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.RowHeadersVisible = false;
-            this.dgvProducts.Size = new System.Drawing.Size(556, 276);
+            this.dgvProducts.Size = new System.Drawing.Size(486, 245);
             this.dgvProducts.TabIndex = 48;
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
             this.dgvProducts.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvProducts_CellPainting);
@@ -349,11 +349,11 @@
             this.grbPackage.Controls.Add(this.txtSearchSIP);
             this.grbPackage.Controls.Add(this.dgvServicesInPackage);
             this.grbPackage.Controls.Add(this.label13);
-            this.grbPackage.Location = new System.Drawing.Point(16, 17);
+            this.grbPackage.Location = new System.Drawing.Point(14, 15);
             this.grbPackage.Margin = new System.Windows.Forms.Padding(4);
             this.grbPackage.Name = "grbPackage";
             this.grbPackage.Padding = new System.Windows.Forms.Padding(4);
-            this.grbPackage.Size = new System.Drawing.Size(1003, 779);
+            this.grbPackage.Size = new System.Drawing.Size(878, 692);
             this.grbPackage.TabIndex = 77;
             this.grbPackage.TabStop = false;
             this.grbPackage.Text = "Package Details";
@@ -361,43 +361,45 @@
             // lblPackageDescription
             // 
             this.lblPackageDescription.AutoSize = true;
+            this.lblPackageDescription.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPackageDescription.ForeColor = System.Drawing.Color.Red;
-            this.lblPackageDescription.Location = new System.Drawing.Point(263, 128);
+            this.lblPackageDescription.Location = new System.Drawing.Point(230, 114);
             this.lblPackageDescription.Name = "lblPackageDescription";
-            this.lblPackageDescription.Size = new System.Drawing.Size(19, 18);
+            this.lblPackageDescription.Size = new System.Drawing.Size(15, 16);
             this.lblPackageDescription.TabIndex = 82;
             this.lblPackageDescription.Text = "✘";
             // 
             // lblPackageName
             // 
             this.lblPackageName.AutoSize = true;
+            this.lblPackageName.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPackageName.ForeColor = System.Drawing.Color.Red;
-            this.lblPackageName.Location = new System.Drawing.Point(263, 67);
+            this.lblPackageName.Location = new System.Drawing.Point(230, 60);
             this.lblPackageName.Name = "lblPackageName";
-            this.lblPackageName.Size = new System.Drawing.Size(19, 18);
+            this.lblPackageName.Size = new System.Drawing.Size(15, 16);
             this.lblPackageName.TabIndex = 81;
             this.lblPackageName.Text = "✘";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(16, 368);
+            this.label11.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(14, 327);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(84, 18);
+            this.label11.Size = new System.Drawing.Size(74, 16);
             this.label11.TabIndex = 59;
             this.label11.Text = "Total Price :";
             // 
             // textBox3
             // 
-            this.textBox3.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(20, 390);
+            this.textBox3.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(18, 347);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.MaxLength = 25;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(236, 26);
+            this.textBox3.Size = new System.Drawing.Size(207, 23);
             this.textBox3.TabIndex = 60;
             this.textBox3.Text = "R0.00";
             // 
@@ -415,12 +417,12 @@
             this.PIPPrice,
             this.PIPAdd,
             this.PIPRemove});
-            this.dgvProductsInPackage.Location = new System.Drawing.Point(299, 418);
+            this.dgvProductsInPackage.Location = new System.Drawing.Point(262, 372);
             this.dgvProductsInPackage.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProductsInPackage.Name = "dgvProductsInPackage";
             this.dgvProductsInPackage.ReadOnly = true;
             this.dgvProductsInPackage.RowHeadersVisible = false;
-            this.dgvProductsInPackage.Size = new System.Drawing.Size(661, 276);
+            this.dgvProductsInPackage.Size = new System.Drawing.Size(578, 245);
             this.dgvProductsInPackage.TabIndex = 47;
             this.dgvProductsInPackage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductsInPackage_CellContentClick);
             this.dgvProductsInPackage.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvProductsInPackage_CellPainting);
@@ -465,53 +467,53 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(295, 378);
+            this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(258, 336);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 18);
+            this.label5.Size = new System.Drawing.Size(131, 16);
             this.label5.TabIndex = 51;
             this.label5.Text = "Products in Package :";
             // 
             // txtSearchPIP
             // 
-            this.txtSearchPIP.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchPIP.Location = new System.Drawing.Point(751, 374);
+            this.txtSearchPIP.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchPIP.Location = new System.Drawing.Point(657, 332);
             this.txtSearchPIP.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchPIP.Name = "txtSearchPIP";
-            this.txtSearchPIP.Size = new System.Drawing.Size(208, 26);
+            this.txtSearchPIP.Size = new System.Drawing.Size(182, 23);
             this.txtSearchPIP.TabIndex = 55;
             this.txtSearchPIP.TextChanged += new System.EventHandler(this.txtSearchPIP_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(681, 42);
+            this.label8.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(596, 37);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 18);
+            this.label8.Size = new System.Drawing.Size(55, 16);
             this.label8.TabIndex = 58;
             this.label8.Text = "Search :";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(681, 378);
+            this.label7.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(596, 336);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 18);
+            this.label7.Size = new System.Drawing.Size(55, 16);
             this.label7.TabIndex = 57;
             this.label7.Text = "Search :";
             // 
             // txtSearchSIP
             // 
-            this.txtSearchSIP.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchSIP.Location = new System.Drawing.Point(751, 37);
+            this.txtSearchSIP.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchSIP.Location = new System.Drawing.Point(657, 33);
             this.txtSearchSIP.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchSIP.Name = "txtSearchSIP";
-            this.txtSearchSIP.Size = new System.Drawing.Size(208, 26);
+            this.txtSearchSIP.Size = new System.Drawing.Size(182, 23);
             this.txtSearchSIP.TabIndex = 53;
             this.txtSearchSIP.TextChanged += new System.EventHandler(this.txtSearchSIP_TextChanged);
             // 
@@ -527,12 +529,12 @@
             this.SIPName,
             this.SIPPrice,
             this.SIPRemove});
-            this.dgvServicesInPackage.Location = new System.Drawing.Point(299, 80);
+            this.dgvServicesInPackage.Location = new System.Drawing.Point(262, 71);
             this.dgvServicesInPackage.Margin = new System.Windows.Forms.Padding(4);
             this.dgvServicesInPackage.Name = "dgvServicesInPackage";
             this.dgvServicesInPackage.ReadOnly = true;
             this.dgvServicesInPackage.RowHeadersVisible = false;
-            this.dgvServicesInPackage.Size = new System.Drawing.Size(661, 276);
+            this.dgvServicesInPackage.Size = new System.Drawing.Size(578, 245);
             this.dgvServicesInPackage.TabIndex = 45;
             this.dgvServicesInPackage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServicesInPackage_CellContentClick);
             this.dgvServicesInPackage.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvServicesInPackage_CellPainting);
@@ -565,22 +567,22 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(296, 42);
+            this.label13.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(259, 37);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(149, 18);
+            this.label13.Size = new System.Drawing.Size(130, 16);
             this.label13.TabIndex = 49;
             this.label13.Text = "Services in Package :";
             // 
             // Photoshoot_Package_View
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1689, 813);
+            this.ClientSize = new System.Drawing.Size(1478, 723);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbPackage);
-            this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Photoshoot_Package_View";
             this.Text = "View Photoshoot Package";

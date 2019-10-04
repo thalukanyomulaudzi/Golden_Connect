@@ -284,10 +284,7 @@ namespace Design370
 
         private void TxtEmployeeID_TextChanged(object sender, EventArgs e)
         {
-        }
-
-        private void TxtEmployeeAddress_TextChanged(object sender, EventArgs e)
-        {
+            Validation.checkMark(lblEmployeeID, Validation.validate(txtEmployeeID.Text, "id"));
         }
 
         private void TxtEmployeePhone_TextChanged(object sender, EventArgs e)

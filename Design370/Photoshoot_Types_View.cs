@@ -22,14 +22,14 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
+            toolTip1.SetToolTip(txtPhotoshootTypeName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtPhotoshootTypeDescription, "A maximum of 200 characters can be entered");
         }
 
         private void Photoshoot_Types_View_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled = edit;
-            textBox2.Enabled = edit;
+            txtPhotoshootTypeName.Enabled = edit;
+            txtPhotoshootTypeDescription.Enabled = edit;
 
             if (edit == true)
             {
@@ -46,8 +46,8 @@ namespace Design370
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        textBox1.Text = reader.GetString(0);
-                        textBox2.Text = reader.GetString(1);
+                        txtPhotoshootTypeName.Text = reader.GetString(0);
+                        txtPhotoshootTypeDescription.Text = reader.GetString(1);
                     }
                     reader.Close();
                 }
@@ -61,11 +61,11 @@ namespace Design370
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Enabled)
+            if (txtPhotoshootTypeName.Enabled)
             {
-                if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+                if (!Validation.validate(txtPhotoshootTypeName.Text, "name") || !Validation.validate(txtPhotoshootTypeDescription.Text, "name"))
                 {
-                    MessageBox.Show("Invalid character length for name and/or description");
+                    MessageBox.Show("All input fields must be valid");
                     return;
                 }
                 try
@@ -92,8 +92,8 @@ namespace Design370
                             photoshoot_type_id = reader.GetString(0);
                         }
                         reader.Close();
-                        query = "UPDATE `photoshoot_type` SET `photoshoot_type_id` = '" + photoshoot_type_id + "', `photoshoot_type_name` = '" + textBox1.Text + "', `photoshoot_type_description`";
-                        query += " = '" + textBox2.Text + "', `booking_type_id` = '" + booking_type_id + "' WHERE photoshoot_type_id = '" + photoshoot_type_id + "'";
+                        query = "UPDATE `photoshoot_type` SET `photoshoot_type_id` = '" + photoshoot_type_id + "', `photoshoot_type_name` = '" + txtPhotoshootTypeName.Text + "', `photoshoot_type_description`";
+                        query += " = '" + txtPhotoshootTypeDescription.Text + "', `booking_type_id` = '" + booking_type_id + "' WHERE photoshoot_type_id = '" + photoshoot_type_id + "'";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
                     }
@@ -110,14 +110,24 @@ namespace Design370
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
+            txtPhotoshootTypeName.Enabled = true;
+            txtPhotoshootTypeDescription.Enabled = true;
             button2.Enabled = false;
         }
 
         private void Photoshoot_Types_View_FormClosing(object sender, FormClosingEventArgs e)
         {
            
+        }
+
+        private void TxtPhotoshootTypeName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblPhotoshootTypeName, Validation.validate(txtPhotoshootTypeName.Text, "name"));
+        }
+
+        private void TxtPhotoshootTypeDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblPhotoshootTypeDescription, Validation.validate(txtPhotoshootTypeDescription.Text, "name"));
         }
     }
 }
