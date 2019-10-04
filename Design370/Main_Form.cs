@@ -1258,7 +1258,7 @@ namespace Design370
         }
         private void LblDebug_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(User.AccessLevel.ToString());
+            MessageBox.Show("User access level: " + User.AccessLevel.ToString());
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
