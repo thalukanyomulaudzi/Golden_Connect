@@ -1,8 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
@@ -1241,6 +1243,65 @@ namespace Design370
         private void Timer1_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            Process.Start(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Manual.pdf"));
+        }
+
+        private void Main_Form_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage1)
+            {
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Customer_Tab_Page";
+                helpForm.ShowDialog();
+            }
+            else if (tabControl1.SelectedTab == tabPage2)
+            {
+                //Employee
+            }
+            else if (tabControl1.SelectedTab == tabPage3)
+            {
+                //Timeslots
+            }
+            else if (tabControl1.SelectedTab == tabPage4)
+            {
+                //Services
+            }
+            else if (tabControl1.SelectedTab == tabPage5)
+            {
+                //Products
+            }
+            else if (tabControl1.SelectedTab == tabPage6)
+            {
+                //Photoshoots
+            }
+            else if (tabControl1.SelectedTab == tabPage7)
+            {
+                //Events
+            }
+            else if (tabControl1.SelectedTab == tabPage8)
+            {
+                //Customer Order
+            }
+            else if (tabControl1.SelectedTab == tabPage9)
+            {
+                //Booking
+            }
+            else if (tabControl1.SelectedTab == tabPage10)
+            {
+                //Supplier
+            }
+            else if (tabControl1.SelectedTab == tabPage11)
+            {
+                //Reports
+            }
+            else if (tabControl1.SelectedTab == tabPage12)
+            {
+                //Help
+            }
         }
     }
 

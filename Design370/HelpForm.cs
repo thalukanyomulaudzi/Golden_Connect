@@ -13,6 +13,8 @@ namespace Design370
 {
     public partial class HelpForm : Form
     {
+        public string HelpInfo { get; set; }
+
         public HelpForm()
         {
             InitializeComponent();
@@ -20,35 +22,18 @@ namespace Design370
 
         private void HelpForm_Load(object sender, EventArgs e)
         {
-            axAcroPDF1.LoadFile("Manual.pdf");
+            axAcroPDF1.LoadFile(HelpInfo + ".pdf");
             axAcroPDF1.setShowToolbar(true);
-            LoadTreeViewFromXmlFile("Treeview.xml", treeView1);
-            treeView1.CollapseAll();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            axAcroPDF1.Select();
-            SendKeys.Send("^f");
-            SendKeys.Flush();
-            SendKeys.Send(txtSearchManual.Text);
-            SendKeys.Flush();
-            SendKeys.Send("^g");
-            SendKeys.Flush();
+            
         }
 
         private void txtSearchManual_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                axAcroPDF1.Select();
-                SendKeys.Send("^f");
-                SendKeys.Flush();
-                SendKeys.Send(txtSearchManual.Text);
-                SendKeys.Flush();
-                SendKeys.Send("^g");
-                SendKeys.Flush();
-            }
+           
         }
 
         private void button2_Click(object sender, EventArgs e)

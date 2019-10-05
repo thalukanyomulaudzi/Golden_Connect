@@ -100,6 +100,7 @@ namespace Design370
         private void Customer_Add_HelpButtonClicked(object sender, CancelEventArgs e)
         {
             HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Add_Customer";
             helpForm.ShowDialog();
         }
     }

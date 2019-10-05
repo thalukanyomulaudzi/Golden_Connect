@@ -168,6 +168,7 @@ namespace Design370
             this.button25 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.button10 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             this.button2 = new System.Windows.Forms.Button();
@@ -1657,6 +1658,7 @@ namespace Design370
             // 
             // tabPage12
             // 
+            this.tabPage12.Controls.Add(this.button10);
             this.tabPage12.Controls.Add(this.button3);
             this.tabPage12.Controls.Add(this.axAcroPDF1);
             this.tabPage12.Controls.Add(this.button2);
@@ -1671,6 +1673,17 @@ namespace Design370
             this.tabPage12.Click += new System.EventHandler(this.tabPage12_Click);
             this.tabPage12.Enter += new System.EventHandler(this.tabPage12_Enter);
             this.tabPage12.Leave += new System.EventHandler(this.tabPage12_Leave);
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.Location = new System.Drawing.Point(661, 556);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(198, 29);
+            this.button10.TabIndex = 7;
+            this.button10.Text = "Open Help Document";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
             // button3
             // 
@@ -1701,7 +1714,7 @@ namespace Design370
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(198, 29);
             this.button2.TabIndex = 4;
-            this.button2.Text = "Download Help Document";
+            this.button2.Text = "Save Help Document";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -1736,7 +1749,8 @@ namespace Design370
             // lblDebug
             // 
             this.lblDebug.AutoSize = true;
-            this.lblDebug.Location = new System.Drawing.Point(1157, 9);
+            this.lblDebug.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblDebug.Location = new System.Drawing.Point(1168, 0);
             this.lblDebug.Name = "lblDebug";
             this.lblDebug.Size = new System.Drawing.Size(94, 13);
             this.lblDebug.TabIndex = 13;
@@ -1753,11 +1767,15 @@ namespace Design370
             this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
+            this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Main_Form_HelpButtonClicked);
             this.Activated += new System.EventHandler(this.Main_Form_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1971,6 +1989,7 @@ namespace Design370
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
         private Label lblDebug;
         private Button button3;
+        private Button button10;
     }
 }
 
