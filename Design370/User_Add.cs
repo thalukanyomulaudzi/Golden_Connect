@@ -6,6 +6,8 @@ namespace Design370
 {
     public partial class User_Add : Form
     {
+        private bool shown = false;
+
         public User_Add()
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace Design370
                     reader.Close();
                     return;
                 }
+                reader.Close();
             }
             catch (Exception ee)
             {
@@ -36,6 +39,13 @@ namespace Design370
                 return;
             }
             User.addUser(txtID.Text.Trim(), txtPassword.Text.Trim());
+        }
+
+        private void LblPasswordShow_Click(object sender, EventArgs e)
+        {
+            shown = !shown;
+            txtPassword.PasswordChar = shown ? '\0' : '*';
+            txtPasswordConfirm.PasswordChar = shown ? '\0' : '*';
         }
     }
 }

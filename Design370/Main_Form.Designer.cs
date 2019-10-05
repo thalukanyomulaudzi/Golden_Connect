@@ -31,6 +31,7 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -175,6 +176,9 @@ namespace Design370
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDebug = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTimeInactive = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -256,7 +260,6 @@ namespace Design370
             this.lblCustomerSearch.Size = new System.Drawing.Size(57, 18);
             this.lblCustomerSearch.TabIndex = 5;
             this.lblCustomerSearch.Text = "Search:";
-            this.lblCustomerSearch.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtCustomerSearch
             // 
@@ -1727,12 +1730,37 @@ namespace Design370
             // lblDebug
             // 
             this.lblDebug.AutoSize = true;
-            this.lblDebug.Location = new System.Drawing.Point(1157, 9);
+            this.lblDebug.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblDebug.Location = new System.Drawing.Point(1168, 0);
             this.lblDebug.Name = "lblDebug";
             this.lblDebug.Size = new System.Drawing.Size(94, 13);
             this.lblDebug.TabIndex = 13;
             this.lblDebug.Text = "Debug Information";
             this.lblDebug.Click += new System.EventHandler(this.LblDebug_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Location = new System.Drawing.Point(250, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Logged in as: ";
+            this.label1.Click += new System.EventHandler(this.Label1_Click_1);
+            // 
+            // lblTimeInactive
+            // 
+            this.lblTimeInactive.AutoSize = true;
+            this.lblTimeInactive.Location = new System.Drawing.Point(250, 13);
+            this.lblTimeInactive.Name = "lblTimeInactive";
+            this.lblTimeInactive.Size = new System.Drawing.Size(0, 13);
+            this.lblTimeInactive.TabIndex = 15;
             // 
             // Main_Form
             // 
@@ -1741,6 +1769,8 @@ namespace Design370
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1262, 693);
+            this.Controls.Add(this.lblTimeInactive);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
@@ -1751,7 +1781,7 @@ namespace Design370
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.Main_Form_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Main_Form_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1962,6 +1992,9 @@ namespace Design370
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
         private Label lblDebug;
         private Button button3;
+        private Timer timer1;
+        private Label label1;
+        private Label lblTimeInactive;
     }
 }
 

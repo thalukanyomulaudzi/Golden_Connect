@@ -11,13 +11,17 @@ namespace Design370
 {
     public partial class Main_Form : Form
     {
+
         DBConnection dbCon = DBConnection.Instance();
+        
         public Main_Form()
         {
             InitializeComponent();
-            ToolTip toolTip1 = new ToolTip { ShowAlways = true };
-            toolTip1.SetToolTip(txtPhotoshootPackageSearch, "Enter package name");
-
+            if (!connectDB())//First in function
+            {
+                MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
+                Application.Exit();
+            }
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
 
@@ -49,6 +53,11 @@ namespace Design370
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 0)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\n Required level: Receptionist");
+                return;
+            }
             Customer_Add customerAdd = new Customer_Add();
             customerAdd.Show();
         }
@@ -57,21 +66,21 @@ namespace Design370
         {
 
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private bool connectDB()
         {
-            if (!connectDB())//First in function
+            dbCon.DatabaseName = "golden_connect";
+            return (dbCon.IsConnect());
+        }
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+            if (User.ID < 0)
             {
-                MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
-                Application.Exit();
+                Login login = new Login();
+                login.ShowDialog();
             }
-            Login login = new Login();
-            login.ShowDialog();
-            //Order.LoadOrders(dgvOrders);
-            //testConnection(); //this throws out all customer names and surnames, only use during development
-            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
+            timer1.Start();
             Booking.loadBookings(dgvBookings);
-            Order.LoadOrders(dgvOrders);
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             dgvEventPackages.Rows.Clear();
@@ -86,24 +95,35 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             dgvCustomers.Rows.Clear();
             Customer.LoadCustomer(dgvCustomers);
+            Order.LoadOrders(dgvOrders);
+            MessageBox.Show("Loaded");
+
+            loadToolTips();
+        }
+        private void Main_Form_Activated(object sender, EventArgs e)
+        {
+            
         }
 
+        private void loadToolTips()
+        {
+
+        }
         public void loadSuppliers()
         {
             try
             {
-                if (dbCon.IsConnect())
+                dbCon = DBConnection.Instance();
+                string query = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.supplier_type_name FROM supplier " +
+                    "INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id";
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                dataGridView10.Rows.Clear();
+                while (reader.Read())
                 {
-                    string query = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.supplier_type_name FROM supplier " +
-                        "INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id";
-                    var command = new MySqlCommand(query, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        dataGridView10.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), "View", "Edit", "Delete");
-                    }
-                    reader.Close();
+                    dataGridView10.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), "View", "Edit", "Delete");
                 }
+                reader.Close();
             }
             catch (Exception ee)
             {
@@ -116,17 +136,15 @@ namespace Design370
         {
             try
             {
-                if (dbCon.IsConnect())
+                dbCon = DBConnection.Instance();
+                string query = "SELECT service.service_id, service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    string query = "SELECT service.service_id, service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
-                    var command = new MySqlCommand(query, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
-                    }
-                    reader.Close();
+                    dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
                 }
+                reader.Close();
             }
             catch (Exception ee)
             {
@@ -138,17 +156,15 @@ namespace Design370
         {
             try
             {
-                if (dbCon.IsConnect())
+                dbCon = DBConnection.Instance();
+                string query = "SELECT product.product_id, product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    string query = "SELECT product.product_id, product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
-                    var command = new MySqlCommand(query, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
-                    }
-                    reader.Close();
+                    dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
                 }
+                reader.Close();
             }
             catch (Exception ee)
             {
@@ -156,32 +172,13 @@ namespace Design370
             }
         }
 
-        private bool connectDB()
-        {
-            dbCon.DatabaseName = "golden_connect";
-            return (dbCon.IsConnect());
-        }
-
-        private void testConnection()//only in use during dev stage for example code
-        {
-            if (dbCon.IsConnect())
-            {
-                //suppose col0 and col1 are defined as VARCHAR in the DB
-                string query = "SELECT customer_first,customer_last FROM customer";
-                var command = new MySqlCommand(query, dbCon.Connection);
-                var reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    string first = reader.GetString(0);
-                    string last = reader.GetString(1);
-                    MessageBox.Show(first + "," + last);
-                }
-                reader.Close();
-            }
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 1)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Manager");
+                return;
+            }
             Service_Add service_Add = new Service_Add();
             service_Add.Show();
         }
@@ -222,30 +219,57 @@ namespace Design370
 
         private void button14_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 1)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Manager");
+                return;
+            }
             Event_Package_Add eventPackageAdd = new Event_Package_Add();
             eventPackageAdd.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 1)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Manager");
+                return;
+            }
             Event_Types eventTypes = new Event_Types();
             eventTypes.ShowDialog();
         }
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
+            DBConnection dbCon = DBConnection.Instance();
             DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
-            e.Cancel = exit == DialogResult.Yes ? false : true;
+            if (exit == DialogResult.Yes)
+            {
+                dbCon.Close();
+                e.Cancel = false;
+            }
+            else
+                e.Cancel = true;
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 1)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Manager");
+                return;
+            }
             Employee_Add employee_Add = new Employee_Add();
             employee_Add.Show();
         }
 
         private void Button16_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 0)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Receptionist");
+                return;
+            }
             Customer_Order_Details cOrder = new Customer_Order_Details();
             cOrder.ShowDialog();
         }
@@ -291,24 +315,44 @@ namespace Design370
 
         private void Button7_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 2)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Owner");
+                return;
+            }
             Employee_Types EmployeeTypes = new Employee_Types();
             EmployeeTypes.Show();
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 1)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Manager");
+                return;
+            }
             Service_Types service_Types = new Service_Types();
             service_Types.Show();
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 1)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Manager");
+                return;
+            }
             Product_Add product_Add = new Product_Add();
             product_Add.Show();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 1)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Manager");
+                return;
+            }
             Product_Types product_Types = new Product_Types();
             product_Types.Show();
         }
@@ -352,11 +396,11 @@ namespace Design370
                         dgvProducts.Rows.Clear();
                         try
                         {
-                            DBConnection dBConnection = DBConnection.Instance();
-                            if (dBConnection.IsConnect())
+                            dbCon = DBConnection.Instance();
+                            if (dbCon.IsConnect())
                             {
                                 string query = "DELETE FROM `service` WHERE service_id = '" + serviceID + "'";
-                                var command = new MySqlCommand(query, dBConnection.Connection);
+                                var command = new MySqlCommand(query, dbCon.Connection);
                                 command.ExecuteNonQuery();
                                 loadServices();
                             }
@@ -441,11 +485,11 @@ namespace Design370
                         dgvProducts.Rows.Clear();
                         try
                         {
-                            DBConnection dBConnection = DBConnection.Instance();
-                            if (dBConnection.IsConnect())
+                            dbCon = DBConnection.Instance();
+                            if (dbCon.IsConnect())
                             {
                                 string query = "DELETE FROM `product` WHERE product_id = '" + productID + "'";
-                                var command = new MySqlCommand(query, dBConnection.Connection);
+                                var command = new MySqlCommand(query, dbCon.Connection);
                                 command.ExecuteNonQuery();
                                 loadProducts();
                             }
@@ -530,26 +574,23 @@ namespace Design370
                         dataGridView10.Rows.Clear();
                         try
                         {
-                            DBConnection dBConnection = DBConnection.Instance();
-                            if (dBConnection.IsConnect())
+                            dbCon = DBConnection.Instance();
+                            string supplierID = "";
+                            string query = "SELECT supplier_id FROM supplier WHERE supplier_name = '" + supplierName + "'";
+                            var command = new MySqlCommand(query, dbCon.Connection);
+                            var reader = command.ExecuteReader();
+                            while (reader.Read())
                             {
-                                string supplierID = "";
-                                string query = "SELECT supplier_id FROM supplier WHERE supplier_name = '" + supplierName + "'";
-                                var command = new MySqlCommand(query, dBConnection.Connection);
-                                var reader = command.ExecuteReader();
-                                while (reader.Read())
-                                {
-                                    supplierID = reader.GetString(0);
-                                }
-                                reader.Close();
-                                query = "DELETE FROM `supplier` WHERE supplier_id = '" + supplierID + "'";
-                                command = new MySqlCommand(query, dBConnection.Connection);
-                                command.ExecuteNonQuery();
+                                supplierID = reader.GetString(0);
                             }
+                            reader.Close();
+                            query = "DELETE FROM `supplier` WHERE supplier_id = '" + supplierID + "'";
+                            command = new MySqlCommand(query, dbCon.Connection);
+                            command.ExecuteNonQuery();
                         }
-                        catch (Exception except)
+                        catch (Exception ee)
                         {
-                            System.Windows.Forms.MessageBox.Show("This supplier is used in a supplier order. It can not be deleted.");
+                            MessageBox.Show(ee.Message);
                         }
                     }
                     else
@@ -584,25 +625,7 @@ namespace Design370
 
         }
 
-        private void Main_Form_Activated(object sender, EventArgs e)
-        {
-            Timeslot.loadTimeslots(dgvTimeslots,DateTime.Now);
-            dgvPhotoshootPackage.Rows.Clear();
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            dgvEventPackages.Rows.Clear();
-            Event.LoadDGV(dgvEventPackages);
-            dgvProducts.Rows.Clear();
-            loadProducts();
-            dgvServices.Rows.Clear();
-            loadServices();
-            dataGridView10.Rows.Clear();
-            loadSuppliers();
-            empGrid.Rows.Clear();
-            Employee.LoadEmployees(empGrid);
-            dgvCustomers.Rows.Clear();
-            Customer.LoadCustomer(dgvCustomers);
-            Order.LoadOrders(dgvOrders);
-        }
+        
 
         private void TextBox9_TextChanged(object sender, EventArgs e)
         {
@@ -631,24 +654,14 @@ namespace Design370
             photoshoot_Types.ShowDialog();
         }
 
-        private void CbxSort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void BtnCaptureOrderPayment_Click(object sender, EventArgs e)
-        {
-            //Customer_Order_Capture newPayment = new Customer_Order_Capture();
-            //newPayment.ShowDialog();
-        }
 
         private void BtnBookingCapture_Click(object sender, EventArgs e)
         {
             try
             {
-                DBConnection dBCon = DBConnection.Instance();
+                dbCon = DBConnection.Instance();
                 string query = "SELECT c.customer_id FROM customer c JOIN booking b ON b.customer_id = c.customer_id ";
-                var command = new MySqlCommand(query, dBCon.Connection);
+                var command = new MySqlCommand(query, dbCon.Connection);
                 var reader = command.ExecuteReader();
                 reader.Read();
                 Booking.customerID = reader.GetString(0);
@@ -673,12 +686,22 @@ namespace Design370
 
         private void BtnPhotoshootPackageAdd_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 1)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Manager");
+                return;
+            }
             Photoshoot_Package_Add photoshootPackageAdd = new Photoshoot_Package_Add();
             photoshootPackageAdd.ShowDialog();
         }
 
         private void btnPhotoshootTypes_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel <= 1)
+            {
+                MessageBox.Show("Your user level is not high enough to do this.\nRequired level: Manager");
+                return;
+            }
             Photoshoot_Types photoshoot_Types = new Photoshoot_Types();
             photoshoot_Types.ShowDialog();
         }
@@ -688,19 +711,17 @@ namespace Design370
             dgvProducts.Rows.Clear();
             try
             {
-                if (dbCon.IsConnect())
-                {
-                    string query = "SELECT product.product_id, product.product_name, product_type.product_type_name, product.product_price FROM product " +
+                dbCon = DBConnection.Instance();
+                string query = "SELECT product.product_id, product.product_name, product_type.product_type_name, product.product_price FROM product " +
                         "INNER JOIN product_type ON product.product_type_id=product_type.product_type_id " +
                         "WHERE product.product_name LIKE '%" + txtProductSearch.Text + "%' OR product_type.product_type_name LIKE '%" + txtProductSearch.Text + "%'";
-                    var command = new MySqlCommand(query, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
-                    }
-                    reader.Close();
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
                 }
+                reader.Close();
             }
             catch (Exception ee)
             {
@@ -713,19 +734,17 @@ namespace Design370
             dgvServices.Rows.Clear();
             try
             {
-                if (dbCon.IsConnect())
-                {
-                    string query = "SELECT service.service_id, service.service_name, service_type.service_type_name, service.service_price FROM service " +
+                dbCon = DBConnection.Instance();
+                string query = "SELECT service.service_id, service.service_name, service_type.service_type_name, service.service_price FROM service " +
                         "INNER JOIN service_type ON service.service_type_id=service_type.service_type_id " +
                         "WHERE service.service_name LIKE '%" + textBox2.Text + "%' OR service_type.service_type_name LIKE '%" + textBox2.Text + "%'";
-                    var command = new MySqlCommand(query, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
-                    }
-                    reader.Close();
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
                 }
+                reader.Close();
             }
             catch (Exception ee)
             {
@@ -735,7 +754,7 @@ namespace Design370
 
         private void DgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            OrderImages customerOI = new OrderImages();
+            OrderImages customerOI;
             Customer_Order_Capture customerPay = new Customer_Order_Capture();
             switch (e.ColumnIndex)
             {
@@ -747,25 +766,25 @@ namespace Design370
                 case 5:
                     if (e.RowIndex >= 0)
                     {
-                        if (dbCon.IsConnect())
+                        dbCon = DBConnection.Instance();
+                        string checkStatus = "SELECT * FROM `order`, `order_status` " +
+                            "WHERE `order`.`order_status_id` = `order_status`.`order_status_id` " +
+                            "AND `order_status`.`order_status_name` = 'Pending' " +
+                            "AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[0].Value + "'";
+                        var command = new MySqlCommand(checkStatus, dbCon.Connection);
+                        var reader = command.ExecuteReader();
+                        reader.Read();
+                        if (reader.HasRows)
                         {
-                            string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Pending' AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[0].Value + "'";
-                            var command = new MySqlCommand(checkStatus, dbCon.Connection);
-                            var reader = command.ExecuteReader();
-                            reader.Read();
-                            if (reader.HasRows)
-                            {
-                                reader.Close();
-                                Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[0].Value);
-                                customerPay.ShowDialog();
-                                
-                            }
-                            else
-                            {
-                                MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
                             reader.Close();
+                            Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[0].Value);
+                            customerPay.ShowDialog();
                         }
+                        else
+                        {
+                            MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        reader.Close();
                     }
                     break;
                 default:
@@ -791,20 +810,18 @@ namespace Design370
             dgvServices.Rows.Clear();
             try
             {
-                if (dbCon.IsConnect())
-                {
-                    string query = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.supplier_type_name FROM supplier " +
+                dbCon = DBConnection.Instance();
+                string query = "SELECT supplier.supplier_name,supplier.supplier_email, supplier.supplier_phone, supplier_type.supplier_type_name FROM supplier " +
                         "INNER JOIN supplier_type ON supplier.supplier_type_id=supplier_type.supplier_type_id " +
                         "WHERE supplier.supplier_name LIKE '%" + textBox10.Text + "%' OR supplier_type.supplier_type_name LIKE '%" + textBox10.Text + "%' " +
                         "OR supplier.supplier_email LIKE '%" + textBox10.Text + "%' OR supplier.supplier_phone LIKE '%" + textBox10.Text + "%'";
-                    var command = new MySqlCommand(query, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        dataGridView10.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), "View", "Edit", "Delete");
-                    }
-                    reader.Close();
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    dataGridView10.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), "View", "Edit", "Delete");
                 }
+                reader.Close();
             }
             catch (Exception ee)
             {
@@ -1132,30 +1149,7 @@ namespace Design370
 
         private void txtSearchManual_TextChanged(object sender, EventArgs e)
         {
-            FindBy1Text();
-        }
-
-        private void FindBy1Text()
-        {
-            TreeNodeCollection nodes = treeView1.Nodes;
-            foreach (TreeNode n in nodes)
-            {
-                FindRecursive(n);
-            }
-        }
-
-        private void FindRecursive(TreeNode treeNode)
-        {
-            foreach (TreeNode tn in treeNode.Nodes)
-            {
-                // if the text properties match, color the item
-                if (tn.Text.Contains(txtSearchManual.Text))
-                {
-                    tn.BackColor = Color.Gold;
-
-                }
-                FindRecursive(tn);
-            }
+            
         }
 
         private void tabPage12_Click(object sender, EventArgs e)
@@ -1211,25 +1205,15 @@ namespace Design370
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (e.Node.Text == "Employee")
-            {
                 axAcroPDF1.setCurrentPage(1);
-            }
             else if (e.Node.Text == "Add_Employee")
-            {
                 axAcroPDF1.setCurrentPage(2);
-            }
             else if (e.Node.Text == "Search_Employee")
-            {
                 axAcroPDF1.setCurrentPage(1);
-            }
             else if (e.Node.Text == "Maintain_Employee")
-            {
                 axAcroPDF1.setCurrentPage(4);
-            }
             else if (e.Node.Text == "Photoshoots")
-            {
                 axAcroPDF1.setCurrentPage(5);
-            }
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -1263,13 +1247,20 @@ namespace Design370
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-
+            lblTimeInactive.Text = User.GetLastInputTime().ToString();
+            if (User.lastInputTime() > 120)
+            {
+                timer1.Stop();
+                User.logout();
+                MessageBox.Show("You have been logged out due to inactivity");
+            }
         }
-    }
 
-    //private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
-    //{
+        private void Label1_Click_1(object sender, EventArgs e)
+        {
+            User.logout();
+        }
 
         
-    //}
+    }
 }

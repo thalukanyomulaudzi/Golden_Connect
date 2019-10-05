@@ -16,24 +16,6 @@ namespace Design370
         public Supplier_Add()
         {
             InitializeComponent();
-
-            using (MysqlConnection.mysqlCon)
-            {
-                MySqlCommand mysqlCmd = new MySqlCommand("SELECT * FROM supplier_type", MysqlConnection.mysqlCon);
-
-                MysqlConnection.mysqlCon.Open();
-                MySqlDataReader mysqlReader = mysqlCmd.ExecuteReader();
-
-                while (mysqlReader.Read())
-                {
-                    cbxSupplierType.Items.Add(mysqlReader["supplier_type_name"].ToString());
-                    cbxSupplierType.ValueMember = (mysqlReader["supplier_type_id"].ToString());
-
-                }
-
-                mysqlReader.Close();
-
-            }
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -84,19 +66,16 @@ namespace Design370
             try
             {
                 DBConnection dbCon = DBConnection.Instance();
-                if (dbCon.IsConnect())
+                string query = "SELECT * FROM supplier_type";
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                cbxSupplierType.Items.Clear();
+                while (reader.Read())
                 {
-                    var mysqlCmd = new MySqlCommand("SELECT * FROM supplier_type", dbCon.Connection);
-                    var mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-                        cbxSupplierType.Items.Add(mysqlReader["supplier_type_name"].ToString());
-                        cbxSupplierType.ValueMember = (mysqlReader["supplier_type_id"].ToString());
-
-                    }
-                    mysqlReader.Close();
+                    cbxSupplierType.Items.Add(reader.GetString("supplier_type_name"));
+                    cbxSupplierType.ValueMember = (reader.GetString("supplier_type_id"));
                 }
-
+                reader.Close();
             }
             catch (Exception ee)
             {

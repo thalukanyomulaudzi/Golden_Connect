@@ -13,11 +13,10 @@ namespace Design370
         {
             try
             {
-                DBConnection dBConnection = DBConnection.Instance();
-                if (dBConnection.IsConnect())
+                if (dbCon.IsConnect())
                 {
                     string query = "DELETE FROM `employee` WHERE employee_id = '" + EmployeeID + "'";
-                    var command = new MySqlCommand(query, dBConnection.Connection);
+                    var command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
             }
