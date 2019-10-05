@@ -69,23 +69,23 @@ namespace Design370
             login.ShowDialog();
             //Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
-            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
-            Booking.loadBookings(dgvBookings);
-            Order.LoadOrders(dgvOrders);
-            dgvPhotoshootPackage.Rows.Clear();
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            dgvEventPackages.Rows.Clear();
-            Event.LoadDGV(dgvEventPackages);
-            dgvProducts.Rows.Clear();
-            loadProducts();
-            dgvServices.Rows.Clear();
-            loadServices();
-            dataGridView10.Rows.Clear();
-            loadSuppliers();
-            empGrid.Rows.Clear();
-            Employee.LoadEmployees(empGrid);
-            dgvCustomers.Rows.Clear();
-            Customer.LoadCustomer(dgvCustomers);
+            //Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
+            //Booking.loadBookings(dgvBookings);
+            //Order.LoadOrders(dgvOrders);
+            //dgvPhotoshootPackage.Rows.Clear();
+            //Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            //dgvEventPackages.Rows.Clear();
+            //Event.LoadDGV(dgvEventPackages);
+            //dgvProducts.Rows.Clear();
+            //loadProducts();
+            //dgvServices.Rows.Clear();
+            //loadServices();
+            //dataGridView10.Rows.Clear();
+            //loadSuppliers();
+            //empGrid.Rows.Clear();
+            //Employee.LoadEmployees(empGrid);
+            //dgvCustomers.Rows.Clear();
+            //Customer.LoadCustomer(dgvCustomers);
         }
 
         public void loadSuppliers()
@@ -586,7 +586,7 @@ namespace Design370
 
         private void Main_Form_Activated(object sender, EventArgs e)
         {
-            Timeslot.loadTimeslots(dgvTimeslots,DateTime.Now);
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             dgvEventPackages.Rows.Clear();
