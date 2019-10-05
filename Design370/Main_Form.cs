@@ -1132,30 +1132,7 @@ namespace Design370
 
         private void txtSearchManual_TextChanged(object sender, EventArgs e)
         {
-            FindBy1Text();
-        }
-
-        private void FindBy1Text()
-        {
-            TreeNodeCollection nodes = treeView1.Nodes;
-            foreach (TreeNode n in nodes)
-            {
-                FindRecursive(n);
-            }
-        }
-
-        private void FindRecursive(TreeNode treeNode)
-        {
-            foreach (TreeNode tn in treeNode.Nodes)
-            {
-                // if the text properties match, color the item
-                if (tn.Text.Contains(txtSearchManual.Text))
-                {
-                    tn.BackColor = Color.Gold;
-
-                }
-                FindRecursive(tn);
-            }
+            
         }
 
         private void tabPage12_Click(object sender, EventArgs e)

@@ -551,8 +551,9 @@ namespace Design370
             // 
             // btnTimeslotAdd
             // 
+            this.btnTimeslotAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimeslotAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimeslotAdd.Location = new System.Drawing.Point(623, 16);
+            this.btnTimeslotAdd.Location = new System.Drawing.Point(946, 16);
             this.btnTimeslotAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeslotAdd.Name = "btnTimeslotAdd";
             this.btnTimeslotAdd.Size = new System.Drawing.Size(151, 28);
@@ -565,6 +566,9 @@ namespace Design370
             // 
             this.dgvTimeslots.AllowUserToAddRows = false;
             this.dgvTimeslots.AllowUserToDeleteRows = false;
+            this.dgvTimeslots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTimeslots.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTimeslots.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvTimeslots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -581,7 +585,7 @@ namespace Design370
             this.dgvTimeslots.Name = "dgvTimeslots";
             this.dgvTimeslots.ReadOnly = true;
             this.dgvTimeslots.RowTemplate.Height = 24;
-            this.dgvTimeslots.Size = new System.Drawing.Size(763, 356);
+            this.dgvTimeslots.Size = new System.Drawing.Size(1086, 378);
             this.dgvTimeslots.TabIndex = 16;
             // 
             // timeslotDay1
@@ -1329,9 +1333,10 @@ namespace Design370
             // 
             // btnBookingAdd
             // 
-            this.btnBookingAdd.Location = new System.Drawing.Point(585, 13);
+            this.btnBookingAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBookingAdd.Location = new System.Drawing.Point(945, 13);
             this.btnBookingAdd.Name = "btnBookingAdd";
-            this.btnBookingAdd.Size = new System.Drawing.Size(189, 29);
+            this.btnBookingAdd.Size = new System.Drawing.Size(151, 29);
             this.btnBookingAdd.TabIndex = 54;
             this.btnBookingAdd.Text = "Add Booking";
             this.btnBookingAdd.UseVisualStyleBackColor = true;
@@ -1341,6 +1346,9 @@ namespace Design370
             // 
             this.dgvBookings.AllowUserToAddRows = false;
             this.dgvBookings.AllowUserToDeleteRows = false;
+            this.dgvBookings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBookings.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1359,7 +1367,7 @@ namespace Design370
             this.dgvBookings.RowHeadersVisible = false;
             this.dgvBookings.RowTemplate.Height = 24;
             this.dgvBookings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBookings.Size = new System.Drawing.Size(763, 349);
+            this.dgvBookings.Size = new System.Drawing.Size(1086, 377);
             this.dgvBookings.TabIndex = 53;
             this.dgvBookings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookings_CellContentClick);
             // 
@@ -1430,8 +1438,9 @@ namespace Design370
             // 
             // btnBookingCapture
             // 
+            this.btnBookingCapture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBookingCapture.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBookingCapture.Location = new System.Drawing.Point(623, 427);
+            this.btnBookingCapture.Location = new System.Drawing.Point(945, 449);
             this.btnBookingCapture.Margin = new System.Windows.Forms.Padding(2);
             this.btnBookingCapture.Name = "btnBookingCapture";
             this.btnBookingCapture.Size = new System.Drawing.Size(151, 29);
