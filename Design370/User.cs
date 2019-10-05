@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Design370
 {
     class User
     {
-
         public static int AccessLevel { get; set; } = -1;
         public static int ID { get; set; } = -1;
         public static string Name { get; set; } = "";
@@ -18,8 +18,8 @@ namespace Design370
         public static void login(string user, string pass)
         {
             //string newsalt = generateSalt();
-            //MessageBox.Show(newsalt);
-            //txtID.Text = byteArrayToString(hash(txtPassword.Text + newsalt));
+            //MessageBox.Show(byteArrayToString(hash(pass + newsalt)) + "," + newsalt);
+            //File.WriteAllText("hash.txt", byteArrayToString(hash(pass + newsalt)) + "," + newsalt);
             //return;
             try
             {
@@ -56,6 +56,7 @@ namespace Design370
                     //login
                     AccessLevel = access;
                     ID = id;
+                    Name = name;
                 }
                 else
                 {

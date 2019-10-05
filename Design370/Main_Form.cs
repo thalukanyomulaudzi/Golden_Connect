@@ -79,30 +79,29 @@ namespace Design370
                 login.ShowDialog();
             }
             timer1.Start();
+
+            loadToolTips();
+        }
+        private void Main_Form_Activated(object sender, EventArgs e)
+        {
+            if (User.ID < 0)
+            {
+                Login login = new Login();
+                login.ShowDialog();
+            }
+            timer1.Start();
             Booking.loadBookings(dgvBookings);
             Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             dgvEventPackages.Rows.Clear();
             Event.LoadDGV(dgvEventPackages);
-            dgvProducts.Rows.Clear();
             loadProducts();
-            dgvServices.Rows.Clear();
             loadServices();
-            dataGridView10.Rows.Clear();
             loadSuppliers();
-            empGrid.Rows.Clear();
             Employee.LoadEmployees(empGrid);
-            dgvCustomers.Rows.Clear();
             Customer.LoadCustomer(dgvCustomers);
             Order.LoadOrders(dgvOrders);
-            MessageBox.Show("Loaded");
-
-            loadToolTips();
-        }
-        private void Main_Form_Activated(object sender, EventArgs e)
-        {
-            
         }
 
         private void loadToolTips()
@@ -140,6 +139,7 @@ namespace Design370
                 string query = "SELECT service.service_id, service.service_name, service_type.service_type_name, service.service_price FROM service INNER JOIN service_type ON service.service_type_id=service_type.service_type_id";
                 var command = new MySqlCommand(query, dbCon.Connection);
                 var reader = command.ExecuteReader();
+                dgvServices.Rows.Clear();
                 while (reader.Read())
                 {
                     dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
@@ -160,6 +160,7 @@ namespace Design370
                 string query = "SELECT product.product_id, product.product_name, product_type.product_type_name, product.product_price FROM product INNER JOIN product_type ON product.product_type_id=product_type.product_type_id";
                 var command = new MySqlCommand(query, dbCon.Connection);
                 var reader = command.ExecuteReader();
+                dgvProducts.Rows.Clear();
                 while (reader.Read())
                 {
                     dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(2), "R" + reader.GetString(3), "View", "Edit", "Delete");
@@ -1248,7 +1249,7 @@ namespace Design370
         private void Timer1_Tick(object sender, EventArgs e)
         {
             lblTimeInactive.Text = User.GetLastInputTime().ToString();
-            if (User.lastInputTime() > 120)
+            if (User.lastInputTime() > Settings.Timeout)
             {
                 timer1.Stop();
                 User.logout();
@@ -1261,6 +1262,10 @@ namespace Design370
             User.logout();
         }
 
-        
+        private void Button10_Click_1(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.ShowDialog();
+        }
     }
 }

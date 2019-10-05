@@ -179,6 +179,7 @@ namespace Design370
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.lblTimeInactive = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -1762,6 +1763,16 @@ namespace Design370
             this.lblTimeInactive.Size = new System.Drawing.Size(0, 13);
             this.lblTimeInactive.TabIndex = 15;
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(257, 44);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 16;
+            this.button10.Text = "change timeout";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.Button10_Click_1);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1769,6 +1780,7 @@ namespace Design370
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1262, 693);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.lblTimeInactive);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDebug);
@@ -1995,6 +2007,7 @@ namespace Design370
         private Timer timer1;
         private Label label1;
         private Label lblTimeInactive;
+        private Button button10;
     }
 }
 

@@ -410,6 +410,12 @@
     <Compile Include="Service_View.Designer.cs">
       <DependentUpon>Service_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Supplier_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -596,6 +602,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Service_View.resx">
       <DependentUpon>Service_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier_List.resx">
       <DependentUpon>Supplier_List.cs</DependentUpon>

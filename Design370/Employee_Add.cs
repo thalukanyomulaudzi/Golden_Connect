@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -32,32 +25,6 @@ namespace Design370
             toolTip1.SetToolTip(cbxEmployeeMarital, "Please select a marital status");
             toolTip1.SetToolTip(cbxEmployeeTitle, "Please select a title");
             toolTip1.SetToolTip(cbxEmployeeType, "Please select an employee type");
-        }
-
-        private void Label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button3_Click_1(object sender, EventArgs e)
-        {
-            Employee_Types employee_Types = new Employee_Types();
-            employee_Types.Show();
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Employee_Add_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
         }
 
         private void Employee_Add_Load(object sender, EventArgs e)
@@ -138,11 +105,6 @@ namespace Design370
             }
         }
 
-        private void CmMS_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         public void addEmployee()
         {
             if (cbxEmployeeTitle.SelectedIndex < 0)
@@ -207,12 +169,12 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
-            this.Close();
+            Close();
         }
 
         private void BtnEmpAdd_Click(object sender, EventArgs e)
         {
-            if (!Validation.validate(txtEmployeeFirst.Text, "name") || !Validation.validate(txtEmployeeLast.Text, "name") || !Validation.validate(txtEmployeeID.Text, "id") 
+            if (!Validation.validate(txtEmployeeFirst.Text, "name") || !Validation.validate(txtEmployeeLast.Text, "name") || !Validation.validate(txtEmployeeID.Text, "id")
                 || !Validation.validate(txtEmployeeEmail.Text, "email") || !Validation.validate(txtEmployeePhone.Text, "phone"))
             {
                 MessageBox.Show("All input fields must be valid");
@@ -221,16 +183,6 @@ namespace Design370
             addEmployee();
             User_Add user_Add = new User_Add();
             user_Add.ShowDialog();
-        }
-
-        private void CmEMTP_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void CmTITLE_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -262,6 +214,11 @@ namespace Design370
         private void TxtEmployeePhone_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblEmployeePhone, Validation.validate(txtEmployeePhone.Text, "phone"));
+        }
+
+        private void BtnEmployeeCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

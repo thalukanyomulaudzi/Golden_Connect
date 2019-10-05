@@ -25,11 +25,12 @@ namespace Design370
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            if (txtSupplierName.Text.Length <= 2 || txtEmailAddress.Text.Length <= 5 || txtEmailAddress.Text.Length <= 10 || txtTelephoneNo.Text.Length <= 9)
+            if (!Validation.validate(txtSupplierName.Text, "name") || !Validation.validate(txtSupplierPhone.Text, "phone") || !Validation.validate(txtSupplierEmail.Text, "id"))
             {
-                MessageBox.Show("Invalid character length for one of the inputs");
+                MessageBox.Show("All input fields must be valid");
                 return;
             }
+
             if (cbxSupplierType.SelectedIndex <= -1 )
             {
                 MessageBox.Show("Please select a supplier type");
@@ -48,7 +49,7 @@ namespace Design370
                     supplierTypeID = reader.GetString(0);
                     reader.Close();
                     query = "INSERT INTO `supplier`(`supplier_id`, `supplier_name`, `supplier_email`, `supplier_phone`, `supplier_location_address`, `supplier_type_id`) VALUES('" +
-                                "NULL" + "', '" + txtSupplierName.Text + "', '" + txtEmailAddress.Text + "', '" + txtTelephoneNo.Text + "', '" + txtAddress + "', '" + supplierTypeID + "')";
+                                "NULL" + "', '" + txtSupplierName.Text + "', '" + txtSupplierEmail.Text + "', '" + txtSupplierPhone.Text + "', '" + txtAddress + "', '" + supplierTypeID + "')";
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -81,6 +82,16 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
+        }
+
+        private void TxtSupplierName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblSupplierName, Validation.validate(txtSupplierName.Text, "name"));
+        }
+
+        private void TxtTelephoneNo_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblSupplierPhone, Validation.validate(txtSupplierPhone.Text, "phone"));
         }
     }
 }
