@@ -629,28 +629,6 @@ namespace Design370
 
         }
 
-        private void Main_Form_Activated(object sender, EventArgs e)
-        {
-            if (User.ID < 0)
-            {
-                Login login = new Login();
-                login.ShowDialog();
-            }
-            timer1.Start();
-            Booking.loadBookings(dgvBookings);
-            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
-            dgvPhotoshootPackage.Rows.Clear();
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            dgvEventPackages.Rows.Clear();
-            Event.LoadDGV(dgvEventPackages);
-            loadProducts();
-            loadServices();
-            loadSuppliers();
-            Employee.LoadEmployees(empGrid);
-            Customer.LoadCustomer(dgvCustomers);
-            Order.LoadOrders(dgvOrders);
-        }
-
         private void TextBox9_TextChanged(object sender, EventArgs e)
         {
             Booking.loadBookings(dgvBookings, txtBookingSearch.Text);
@@ -1339,7 +1317,6 @@ namespace Design370
                 //Help
             }
         }
-    }
 
         private void Label1_Click_1(object sender, EventArgs e)
         {
