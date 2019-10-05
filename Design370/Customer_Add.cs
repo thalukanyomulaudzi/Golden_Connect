@@ -96,5 +96,11 @@ namespace Design370
         {
             Validation.checkMark(lblCustomerEmail, Validation.validate(txtCustomerEmail.Text, "email"));
         }
+
+        private void Customer_Add_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.ShowDialog();
+        }
     }
 }

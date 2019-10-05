@@ -50,7 +50,7 @@ namespace Design370
         private void button1_Click(object sender, EventArgs e)
         {
             Customer_Add customerAdd = new Customer_Add();
-            customerAdd.Show();
+            customerAdd.ShowDialog();
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -64,7 +64,7 @@
             // 
             this.txtCustomerFirst.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerFirst.Location = new System.Drawing.Point(32, 100);
-            this.txtCustomerFirst.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerFirst.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerFirst.MaxLength = 25;
             this.txtCustomerFirst.Name = "txtCustomerFirst";
             this.txtCustomerFirst.Size = new System.Drawing.Size(243, 26);
@@ -86,7 +86,7 @@
             // 
             this.txtCustomerLast.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerLast.Location = new System.Drawing.Point(32, 174);
-            this.txtCustomerLast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerLast.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerLast.MaxLength = 25;
             this.txtCustomerLast.Name = "txtCustomerLast";
             this.txtCustomerLast.Size = new System.Drawing.Size(243, 26);
@@ -108,7 +108,7 @@
             // 
             this.txtCustomerID.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerID.Location = new System.Drawing.Point(379, 100);
-            this.txtCustomerID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerID.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerID.MaxLength = 13;
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(243, 26);
@@ -142,7 +142,7 @@
             // 
             this.txtCustomerPhone.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerPhone.Location = new System.Drawing.Point(32, 299);
-            this.txtCustomerPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerPhone.MaxLength = 10;
             this.txtCustomerPhone.Name = "txtCustomerPhone";
             this.txtCustomerPhone.Size = new System.Drawing.Size(243, 26);
@@ -153,7 +153,7 @@
             // 
             this.txtCustomerEmail.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerEmail.Location = new System.Drawing.Point(379, 299);
-            this.txtCustomerEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerEmail.MaxLength = 50;
             this.txtCustomerEmail.Name = "txtCustomerEmail";
             this.txtCustomerEmail.Size = new System.Drawing.Size(243, 26);
@@ -280,9 +280,13 @@
             this.Controls.Add(this.txtCustomerFirst);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HelpButton = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Customer_View";
             this.Text = "View Customer";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Customer_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Customer_View_FormClosing);
             this.Load += new System.EventHandler(this.Customer_View_Load);
             this.ResumeLayout(false);
