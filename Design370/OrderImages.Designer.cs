@@ -94,7 +94,7 @@
             this.label2.Font = new System.Drawing.Font("Bahnschrift Light SemiCondensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(340, 144);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 29);
+            this.label2.Size = new System.Drawing.Size(108, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "Order ID : ";
             // 

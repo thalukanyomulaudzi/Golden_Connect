@@ -21,29 +21,29 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(comboBox1, "If disabled, choose a booking type first");
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 100 characters can be entered");
+            toolTip1.SetToolTip(cbxServiceType, "If disabled, choose a booking type first");
+            toolTip1.SetToolTip(txtServiceName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtServiceDescription, "A maximum of 100 characters can be entered");
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
-            textBox3.Enabled = true;
-            comboBox1.Enabled = true;
-            button3.Enabled = true;
-            button2.Enabled = false;
+            txtServiceName.Enabled = true;
+            txtServiceDescription.Enabled = true;
+            txtServicePrice.Enabled = true;
+            cbxServiceType.Enabled = true;
+            btnServiceTypeAdd.Enabled = true;
+            btnServiceEdit.Enabled = false;
         }
 
         private void Service_View_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled = edit;
-            textBox2.Enabled = edit;
-            textBox3.Enabled = edit;
-            comboBox1.Enabled = edit;
-            button3.Enabled = edit;
-            button2.Enabled = !edit;
+            txtServiceName.Enabled = edit;
+            txtServiceDescription.Enabled = edit;
+            txtServicePrice.Enabled = edit;
+            cbxServiceType.Enabled = edit;
+            btnServiceTypeAdd.Enabled = edit;
+            btnServiceEdit.Enabled = !edit;
 
             try
             {
@@ -56,8 +56,8 @@ namespace Design370
                     var mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
                     {
-                        comboBox1.Items.Add(mysqlReader["service_type_name"].ToString());
-                        comboBox1.ValueMember = (mysqlReader["service_type_id"].ToString());
+                        cbxServiceType.Items.Add(mysqlReader["service_type_name"].ToString());
+                        cbxServiceType.ValueMember = (mysqlReader["service_type_id"].ToString());
                     }
                     mysqlReader.Close();
                     string query = "SELECT service_id, service_name, service_description, service_price, service_type_id FROM service WHERE service_id = '" + GetServiceRow + "'";
@@ -66,9 +66,9 @@ namespace Design370
                     while (mysqlReader.Read())
                     {
                         serviceID = mysqlReader.GetString(0);
-                        textBox1.Text = mysqlReader.GetString(1);
-                        textBox2.Text = mysqlReader.GetString(2);
-                        textBox3.Text = mysqlReader.GetString(3);
+                        txtServiceName.Text = mysqlReader.GetString(1);
+                        txtServiceDescription.Text = mysqlReader.GetString(2);
+                        txtServicePrice.Text = mysqlReader.GetString(3);
                         serviceTypeID = mysqlReader.GetString(4);
                     }
                     mysqlReader.Close();
@@ -78,7 +78,7 @@ namespace Design370
                     mysqlReader.Read();
                     serviceTypeName = mysqlReader.GetString(0);
                     mysqlReader.Close();
-                    comboBox1.SelectedIndex = comboBox1.FindStringExact(serviceTypeName);
+                    cbxServiceType.SelectedIndex = cbxServiceType.FindStringExact(serviceTypeName);
                 }
             }
             catch (Exception except)
@@ -95,12 +95,12 @@ namespace Design370
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5 || textBox3.Text.Length == 0)
+            if (!Validation.validate(txtServiceName.Text, "name") || !Validation.validate(txtServiceDescription.Text, "name") || !Validation.validate(txtServicePrice.Text, "price"))
             {
-                MessageBox.Show("Invalid character length for name and/or description and/or price");
+                MessageBox.Show("All input fields must be valid");
                 return;
             }
-            if (comboBox1.SelectedIndex <= -1)
+            if (cbxServiceType.SelectedIndex <= -1)
             {
                 MessageBox.Show("Please select a service type");
                 return;
@@ -111,14 +111,14 @@ namespace Design370
                 if (dbConnection.IsConnect())
                 {
                     string serviceTypeID = "";
-                    string query = "SELECT service_type_id FROM service_type WHERE service_type_name = '" + comboBox1.SelectedItem.ToString() + "'";
+                    string query = "SELECT service_type_id FROM service_type WHERE service_type_name = '" + cbxServiceType.SelectedItem.ToString() + "'";
                     var command = new MySqlCommand(query, dbConnection.Connection);
                     var reader = command.ExecuteReader();
                     reader.Read();
                     serviceTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "UPDATE `service` SET `service_name` = '" + textBox1.Text + "', `service_description` = '" +
-                        "" + textBox2.Text + "', `service_price` = '" + textBox3.Text + "', `service_type_id` = '" +
+                    query = "UPDATE `service` SET `service_name` = '" + txtServiceName.Text + "', `service_description` = '" +
+                        "" + txtServiceDescription.Text + "', `service_price` = '" + txtServicePrice.Text + "', `service_type_id` = '" +
                         "" + serviceTypeID + "' WHERE service_id = '" + serviceID + "'";
                     command = new MySqlCommand(query, dbConnection.Connection);
                     command.ExecuteNonQuery();
@@ -137,14 +137,19 @@ namespace Design370
             service_Types.Show();
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void TxtServiceName_TextChanged(object sender, EventArgs e)
         {
-            
+            Validation.checkMark(lblServiceName, Validation.validate(txtServiceName.Text, "name"));
         }
 
-        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
+        private void TxtServicePrice_TextChanged(object sender, EventArgs e)
         {
+            Validation.checkMark(lblServicePrice, Validation.validate(txtServicePrice.Text, "price"));
+        }
 
+        private void TxtServiceDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblServiceDescription, Validation.validate(txtServiceDescription.Text, "name"));
         }
     }
 }

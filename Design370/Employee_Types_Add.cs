@@ -30,7 +30,7 @@ namespace Design370
 
         private void Btn_AddType_Click(object sender, EventArgs e)
         {
-            if (!Validation.validate(txtTypeName.Text, "name") || !Validation.validate(txtTypeDescription.Text, "name"))
+            if (!Validation.validate(txtTypeName.Text, "name") || !Validation.validate(txtTypeDescription.Text, "name") || cbxAccessLevel.SelectedIndex < 0)
             {
                 MessageBox.Show("All input fields must be valid");
                 return;
@@ -40,21 +40,21 @@ namespace Design370
 
         public void addEmployeeType()
         {
-            MysqlConnection.mysqlCon.Open();
-            string empType = "INSERT INTO employee_type(employee_type_name, employee_type_description)" +
-                " VALUES('"+txtTypeName.Text+"', '"+txtTypeDescription.Text+"')";
-
             try
             {
-                MysqlConnection.cmd = new MySqlCommand(empType, MysqlConnection.mysqlCon);
-                MysqlConnection.cmd.ExecuteReader();
-                MessageBox.Show("New Employee Type Inserted!");
-                MysqlConnection.mysqlCon.Close();
+                DBConnection dBCon = DBConnection.Instance();
+                string query = "INSERT INTO employee_type(employee_type_name, employee_type_description, access_level)" +
+                    " VALUES('" + txtTypeName.Text + "', '" + txtTypeDescription.Text + "', '" + cbxAccessLevel.Text + "')";
+                var command = new MySqlCommand(query, dBCon.Connection);
+                if (command.ExecuteNonQuery() < 0)
+                {
+                    MessageBox.Show("Employee type added");
+                }
+
             }
-            catch (Exception ee)
+            catch (Exception e)
             {
-                MessageBox.Show("Error: " + ee.Message);
-                MysqlConnection.mysqlCon.Close();
+                MessageBox.Show(e.Message);
             }
         }
 

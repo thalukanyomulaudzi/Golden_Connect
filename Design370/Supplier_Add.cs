@@ -16,24 +16,6 @@ namespace Design370
         public Supplier_Add()
         {
             InitializeComponent();
-
-            using (MysqlConnection.mysqlCon)
-            {
-                MySqlCommand mysqlCmd = new MySqlCommand("SELECT * FROM supplier_type", MysqlConnection.mysqlCon);
-
-                MysqlConnection.mysqlCon.Open();
-                MySqlDataReader mysqlReader = mysqlCmd.ExecuteReader();
-
-                while (mysqlReader.Read())
-                {
-                    cbxSupplierType.Items.Add(mysqlReader["supplier_type_name"].ToString());
-                    cbxSupplierType.ValueMember = (mysqlReader["supplier_type_id"].ToString());
-
-                }
-
-                mysqlReader.Close();
-
-            }
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -43,11 +25,12 @@ namespace Design370
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            if (txtSupplierName.Text.Length <= 2 || txtEmailAddress.Text.Length <= 5 || txtEmailAddress.Text.Length <= 10 || txtTelephoneNo.Text.Length <= 9)
+            if (!Validation.validate(txtSupplierName.Text, "name") || !Validation.validate(txtSupplierPhone.Text, "phone") || !Validation.validate(txtSupplierEmail.Text, "id"))
             {
-                MessageBox.Show("Invalid character length for one of the inputs");
+                MessageBox.Show("All input fields must be valid");
                 return;
             }
+
             if (cbxSupplierType.SelectedIndex <= -1 )
             {
                 MessageBox.Show("Please select a supplier type");
@@ -66,7 +49,7 @@ namespace Design370
                     supplierTypeID = reader.GetString(0);
                     reader.Close();
                     query = "INSERT INTO `supplier`(`supplier_id`, `supplier_name`, `supplier_email`, `supplier_phone`, `supplier_location_address`, `supplier_type_id`) VALUES('" +
-                                "NULL" + "', '" + txtSupplierName.Text + "', '" + txtEmailAddress.Text + "', '" + txtTelephoneNo.Text + "', '" + txtAddress + "', '" + supplierTypeID + "')";
+                                "NULL" + "', '" + txtSupplierName.Text + "', '" + txtSupplierEmail.Text + "', '" + txtSupplierPhone.Text + "', '" + txtAddress + "', '" + supplierTypeID + "')";
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -84,24 +67,31 @@ namespace Design370
             try
             {
                 DBConnection dbCon = DBConnection.Instance();
-                if (dbCon.IsConnect())
+                string query = "SELECT * FROM supplier_type";
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                cbxSupplierType.Items.Clear();
+                while (reader.Read())
                 {
-                    var mysqlCmd = new MySqlCommand("SELECT * FROM supplier_type", dbCon.Connection);
-                    var mysqlReader = mysqlCmd.ExecuteReader();
-                    while (mysqlReader.Read())
-                    {
-                        cbxSupplierType.Items.Add(mysqlReader["supplier_type_name"].ToString());
-                        cbxSupplierType.ValueMember = (mysqlReader["supplier_type_id"].ToString());
-
-                    }
-                    mysqlReader.Close();
+                    cbxSupplierType.Items.Add(reader.GetString("supplier_type_name"));
+                    cbxSupplierType.ValueMember = (reader.GetString("supplier_type_id"));
                 }
-
+                reader.Close();
             }
             catch (Exception ee)
             {
                 MessageBox.Show(ee.Message);
             }
+        }
+
+        private void TxtSupplierName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblSupplierName, Validation.validate(txtSupplierName.Text, "name"));
+        }
+
+        private void TxtTelephoneNo_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblSupplierPhone, Validation.validate(txtSupplierPhone.Text, "phone"));
         }
     }
 }

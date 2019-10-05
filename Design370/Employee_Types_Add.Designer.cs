@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxAccessLevel = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTypeDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,15 +40,20 @@
             this.lblTypeDescription = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cbxAccessLevel
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(30, 332);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(198, 26);
-            this.comboBox1.TabIndex = 22;
+            this.cbxAccessLevel.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxAccessLevel.FormattingEnabled = true;
+            this.cbxAccessLevel.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3"});
+            this.cbxAccessLevel.Location = new System.Drawing.Point(30, 332);
+            this.cbxAccessLevel.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxAccessLevel.Name = "cbxAccessLevel";
+            this.cbxAccessLevel.Size = new System.Drawing.Size(198, 26);
+            this.cbxAccessLevel.TabIndex = 22;
             // 
             // label3
             // 
@@ -156,7 +161,7 @@
             this.Controls.Add(this.lblTypeName);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_AddType);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxAccessLevel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTypeDescription);
             this.Controls.Add(this.label2);
@@ -174,7 +179,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxAccessLevel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTypeDescription;
         private System.Windows.Forms.Label label2;
