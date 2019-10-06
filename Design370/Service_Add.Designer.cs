@@ -81,7 +81,7 @@
             this.btnServiceCancel.Name = "btnServiceCancel";
             this.btnServiceCancel.Size = new System.Drawing.Size(118, 38);
             this.btnServiceCancel.TabIndex = 94;
-            this.btnServiceCancel.Text = "Edit";
+            this.btnServiceCancel.Text = "Cancel";
             this.btnServiceCancel.UseVisualStyleBackColor = true;
             // 
             // btnServiceAdd
@@ -91,7 +91,7 @@
             this.btnServiceAdd.Name = "btnServiceAdd";
             this.btnServiceAdd.Size = new System.Drawing.Size(118, 38);
             this.btnServiceAdd.TabIndex = 93;
-            this.btnServiceAdd.Text = "OK";
+            this.btnServiceAdd.Text = "Add";
             this.btnServiceAdd.UseVisualStyleBackColor = true;
             this.btnServiceAdd.Click += new System.EventHandler(this.BtnServiceAdd_Click);
             // 
