@@ -24,8 +24,6 @@ namespace Design370
             txtEmpTypeDescription.Enabled = true;
             cbxAccessLevel.Enabled = true;
         }
-
-        public string emptype;
         private void Employee_Types_View_Load(object sender, EventArgs e)
         {
             txtEmpTypeName.Enabled = edit;

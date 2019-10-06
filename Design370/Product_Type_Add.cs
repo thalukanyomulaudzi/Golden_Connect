@@ -20,8 +20,8 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(txtProdTypeName, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(txtProdTypeDesc, "A maximum of 100 characters can be entered");
+            toolTip1.SetToolTip(txtProductTypeName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtProdutTypeDesc, "A maximum of 100 characters can be entered");
         }
 
 
@@ -32,7 +32,7 @@ namespace Design370
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!Validation.validate(txtProdTypeName.Text, "name") || !Validation.validate(txtProdTypeDesc.Text, "name"))
+            if (!Validation.validate(txtProductTypeName.Text, "name") || !Validation.validate(txtProdutTypeDesc.Text, "name"))
             {
                 MessageBox.Show("All input fields must be valid");
                 return;
@@ -42,7 +42,7 @@ namespace Design370
                 if (dbCon.IsConnect())
                 {
                     string query = "INSERT INTO `product_type`(`product_type_id`, `product_type_name`, `product_type_description`) VALUES('NULL', '" +
-                                txtProdTypeName.Text + "', '" + txtProdTypeDesc.Text + "')";
+                                txtProductTypeName.Text + "', '" + txtProdutTypeDesc.Text + "')";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -61,12 +61,12 @@ namespace Design370
 
         private void TxtProdTypeName_TextChanged(object sender, EventArgs e)
         {
-            Validation.checkMark(lblProductTypeName, Validation.validate(txtProdTypeName.Text, "name"));
+            Validation.checkMark(lblProductTypeName, Validation.validate(txtProductTypeName.Text, "name"));
         }
 
         private void TxtProdTypeDesc_TextChanged(object sender, EventArgs e)
         {
-            Validation.checkMark(lblProductTypeDescription, Validation.validate(txtProdTypeDesc.Text, "name"));
+            Validation.checkMark(lblProductTypeDescription, Validation.validate(txtProdutTypeDesc.Text, "name"));
         }
     }
 }

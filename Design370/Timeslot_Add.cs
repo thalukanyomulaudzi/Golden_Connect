@@ -12,7 +12,7 @@ namespace Design370
 
         private void Timeslot_Add_Load(object sender, EventArgs e)
         {
-
+            dateTimePicker1.Value = DateTime.Now.AddDays(30);
         }
 
         private void Button20_Click(object sender, EventArgs e)

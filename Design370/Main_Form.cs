@@ -844,11 +844,13 @@ namespace Design370
             switch (e.ColumnIndex)
             {
                 case 3:
-
+                    //view
                     break;
                 case 4:
+                    //edit
                     break;
                 case 5:
+                    //delete
                     break;
                 default:
                     break;
