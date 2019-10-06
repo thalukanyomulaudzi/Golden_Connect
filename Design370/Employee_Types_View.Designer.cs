@@ -56,6 +56,11 @@
             // 
             this.cbxAccessLevel.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxAccessLevel.FormattingEnabled = true;
+            this.cbxAccessLevel.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3"});
             this.cbxAccessLevel.Location = new System.Drawing.Point(24, 296);
             this.cbxAccessLevel.Margin = new System.Windows.Forms.Padding(4);
             this.cbxAccessLevel.Name = "cbxAccessLevel";
