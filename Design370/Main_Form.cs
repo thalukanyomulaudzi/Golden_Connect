@@ -735,15 +735,9 @@ namespace Design370
 
         private void DgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            OrderImages customerOI = new OrderImages();
             View_Order_Details viewOrder = new View_Order_Details();
             switch (e.ColumnIndex)
             {
-                case 0:
-                    OrderImages.orderID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
-                    customerOI = new OrderImages();
-                    customerOI.ShowDialog();
-                    break;
                 case 5:
                     if (e.RowIndex >= 0)
                     {
@@ -1246,6 +1240,12 @@ namespace Design370
         private void Timer1_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnMakePayment_Click(object sender, EventArgs e)
+        {
+            Customer_Order_Payment op = new Customer_Order_Payment();
+            op.ShowDialog();
         }
     }
 

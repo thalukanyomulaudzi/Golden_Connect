@@ -26,7 +26,7 @@ namespace Design370
         DataGridViewButtonColumn viewOrder, prepare;
         public int each = 0;
         public int size;
-        OrderList[] olist = null;
+        public OrderList[] olist = null;
         public int getSize()
         {
             if (dbCon.IsConnect())

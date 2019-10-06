@@ -179,6 +179,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerOrderReceipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerOrderReceipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomerReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -214,6 +220,18 @@
     </Compile>
     <Compile Include="Customer_Order_Add.Designer.cs">
       <DependentUpon>Customer_Order_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_Order_Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer_Order_Payment.Designer.cs">
+      <DependentUpon>Customer_Order_Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_Payment_Receipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer_Payment_Receipt.Designer.cs">
+      <DependentUpon>Customer_Payment_Receipt.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer_View.cs">
       <SubType>Form</SubType>
@@ -516,6 +534,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomerOrderReceipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CustomerOrderReceipt.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CustomerReport.cs</LastGenOutput>
@@ -534,6 +556,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_Order_Add.resx">
       <DependentUpon>Customer_Order_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer_Order_Payment.resx">
+      <DependentUpon>Customer_Order_Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer_Payment_Receipt.resx">
+      <DependentUpon>Customer_Payment_Receipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_View.resx">
       <DependentUpon>Customer_View.cs</DependentUpon>
@@ -735,15 +763,6 @@
     <None Include="Resources\user.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="AcroPDFLib">
-      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="ACTIVEXLib">
       <Guid>{012F24C1-35B0-11D0-BF2D-0000E8D0D146}</Guid>
       <VersionMajor>1</VersionMajor>

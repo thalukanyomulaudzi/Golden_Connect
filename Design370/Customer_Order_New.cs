@@ -36,8 +36,12 @@ namespace Design370
         public int photoSize;
         public decimal subTotal;
         public bool saveCurrentOrder = false;
+        Random itemID = new Random();
+        public int oID;
+        public int ID;
+        public bool saved = false;
         /*******************************************************************/
-        /*******************************************************************/
+
         public Customer_Order_New(Customer_Order_Details getCustNames)
         {
             InitializeComponent();
@@ -68,29 +72,7 @@ namespace Design370
             dgv.Columns.Add(deleteOrder);
             dgv.RowHeadersVisible = false;
             dgv.ColumnHeadersHeight = 30;
-            ID = orderID.Next(1, 9999);
-            while (getOrderID(ID) == false)
-            {
-                ID = orderID.Next(1, 9999);
-            }
-        }
-
-        public bool getOrderID(int o)
-        {
-            if (dbCon.IsConnect())
-            {
-                var cmd = new MySqlCommand("SELECT `order_id` FROM `order`", dbCon.Connection);
-                var read = cmd.ExecuteReader();
-                while (read.Read())
-                {
-                    if (Convert.ToInt32(read[0]) == o)
-                    {
-                        return false;
-                    }
-                }
-                read.Close();
-            }
-            return true;
+            getOrderID();
         }
 
         private void NewCustomerOrder_Load(object sender, EventArgs e)
@@ -114,7 +96,20 @@ namespace Design370
             btnSaveOrder.Enabled = false;
             controls.Hide();
         }
-        
+
+        public void getOrderID()
+        {
+            if (dbCon.IsConnect())
+            {
+                var cmd = new MySqlCommand("SELECT MAX(`order_id`) FROM `order`", dbCon.Connection);
+                var read = cmd.ExecuteReader();
+                read.Read();
+                oID = Convert.ToInt32(read[0]);
+                ID = ++oID;
+                read.Close();
+            }
+        }
+
         private void PictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -269,7 +264,7 @@ namespace Design370
                 lblOTotal.Text = "R" + hold.ToString();
             }
         }
-        Random itemID = new Random();
+
         private void BtnAddProduct_Click(object sender, EventArgs e)
         {
             int item_id = itemID.Next(1, 99);
@@ -300,8 +295,7 @@ namespace Design370
                 MessageBox.Show("No More Stock Left", "Customer Order", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
-        public int ID;
-        public bool saved = false;
+      
         private void BtnSaveOrder_Click_1(object sender, EventArgs e)
         {
             try
@@ -331,12 +325,12 @@ namespace Design370
                 //SavingOrder save = new SavingOrder();
                 if (dbCon.IsConnect())
                 {
-                    var date = DateTime.Now;
+                    DateTime date = DateTime.Now;
                     string orderInsert = "INSERT INTO `order` (`order_id`, `order_date_placed`, `customer_id`, `order_status_id`, `order_total`, `order_quantity`) " +
                         "VALUES(@id, @date, @cID, @osd, @OrderTotal, @QTY)";
                     var com = new MySqlCommand(orderInsert, dbCon.Connection);
                     com.Parameters.AddWithValue("@id", ID);
-                    com.Parameters.AddWithValue("@date", date);
+                    com.Parameters.AddWithValue("@date", date.Date);
                     com.Parameters.AddWithValue("@cID", customer.customerID);
                     com.Parameters.AddWithValue("@osd", 1);
                     com.Parameters.AddWithValue("@OrderTotal", orderTotal);
@@ -348,7 +342,7 @@ namespace Design370
                         var delivery = new MySqlCommand("INSERT INTO `delivery` (`delivery_id`, `delivery_location_address`, `delivery_date`, `order_id`, `delivery_fee_id`, `delivery_status_id`) " +
                             "VALUES(NULL, @ADDR, @DELDATE, @OID, @FEE, @ODSTATUS)", dbCon.Connection);
                         delivery.Parameters.AddWithValue("@ADDR", txtDelAddress.Text);
-                        delivery.Parameters.AddWithValue("@DELDATE", date);
+                        delivery.Parameters.AddWithValue("@DELDATE", date.Date);
                         delivery.Parameters.AddWithValue("@OID", ID);
                         delivery.Parameters.AddWithValue("@FEE", 1);
                         delivery.Parameters.AddWithValue("@ODSTATUS", 1);
@@ -393,7 +387,7 @@ namespace Design370
                     var comnd = new MySqlCommand("INSERT INTO `audit_trail` (`audit_trail_id`, `employee_id`, `audit_trail_date_time`, `audit_trail_description`) " +
                         "VALUES(NULL, @EMPID, @DT, @ADESC)", dbCon.Connection);
                     comnd.Parameters.AddWithValue("@EMPID", 1);
-                    comnd.Parameters.AddWithValue("@DT", DateTime.Now);
+                    comnd.Parameters.AddWithValue("@DT", DateTime.Now.Date);
                     comnd.Parameters.AddWithValue("@ADESC", "A new order " + ID + " was placed by Simon for " + customer.names);
                     comnd.ExecuteNonQuery();
                 }
@@ -406,11 +400,7 @@ namespace Design370
                         if (MessageBox.Show("Do you want to place a new order?", "Place Customer Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             updateStock();
-                            ID = orderID.Next(1, 9999);
-                            while (getOrderID(ID) == false)
-                            {
-                                ID = orderID.Next(1, 9999);
-                            }
+                            getOrderID();
                             items = null;
                             items = new Order[10];
                             row = 0;
@@ -511,7 +501,7 @@ namespace Design370
                 var comnd = new MySqlCommand("INSERT INTO `audit_trail` (`audit_trail_id`, `employee_id`, `audit_trail_date_time`, `audit_trail_description`) " +
                     "VALUES(NULL, @EMPID, @DT, @ADESC)", dbCon.Connection);
                 comnd.Parameters.AddWithValue("@EMPID", 1);
-                comnd.Parameters.AddWithValue("@DT", DateTime.Now);
+                comnd.Parameters.AddWithValue("@DT", DateTime.Now.Date);
                 comnd.Parameters.AddWithValue("@ADESC", "Simon cancelled the ordering process for " + customer.names + "");
                 comnd.ExecuteNonQuery();
             }

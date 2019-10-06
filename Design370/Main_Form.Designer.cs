@@ -127,6 +127,7 @@ namespace Design370
             this.EventPackageEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EventPackageDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.btnMakePayment = new System.Windows.Forms.Button();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
@@ -1195,6 +1196,7 @@ namespace Design370
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.btnMakePayment);
             this.tabPage8.Controls.Add(this.dgvOrders);
             this.tabPage8.Controls.Add(this.button18);
             this.tabPage8.Controls.Add(this.button17);
@@ -1210,6 +1212,17 @@ namespace Design370
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Customer Orders";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // btnMakePayment
+            // 
+            this.btnMakePayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMakePayment.Location = new System.Drawing.Point(600, 16);
+            this.btnMakePayment.Name = "btnMakePayment";
+            this.btnMakePayment.Size = new System.Drawing.Size(128, 28);
+            this.btnMakePayment.TabIndex = 47;
+            this.btnMakePayment.Text = "Make Payment";
+            this.btnMakePayment.UseVisualStyleBackColor = true;
+            this.btnMakePayment.Click += new System.EventHandler(this.BtnMakePayment_Click);
             // 
             // dgvOrders
             // 
@@ -1275,7 +1288,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 18);
+            this.label15.Size = new System.Drawing.Size(51, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Show :";
             // 
@@ -1968,6 +1981,7 @@ namespace Design370
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
         private Label lblDebug;
         private Button button3;
+        private Button btnMakePayment;
     }
 }
 
