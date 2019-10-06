@@ -13,6 +13,11 @@ namespace Design370
 {
     public partial class Employee_Types_View : Form
     {
+        int id = -1;
+        public static bool edit;
+        string helpstring = " ";
+        public static string emptype;
+
         public Employee_Types_View()
         {
             InitializeComponent();
@@ -45,27 +50,24 @@ namespace Design370
             }
         }
 
-        public string emptype;
         private void Employee_Types_View_Load(object sender, EventArgs e)
         {
             try
             {
                 DBConnection dbCon = DBConnection.Instance();
-                if (dbCon.IsConnect())
+                string query = "SELECT employee_type_id, employee_type_name, employee_type_description, access_level FROM `employee_type` WHERE `employee_type_name` = '" + emptype + "'";
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    string loadEmployeeTypes = "SELECT * FROM `employee_type` WHERE `employee_type_name` = '"+emptype+"'";
-                    var command = new MySqlCommand(loadEmployeeTypes, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    reader.Read();
-                    if(reader.HasRows)
-                    {
-                        txtEmpTypeName.Text = reader[1].ToString();
-                        txtEmpTypeDescription.Text = reader[2].ToString();
-                    }
-                    reader.Close();
+                    id = reader.GetInt32(0);
+                    txtEmpTypeName.Text = reader.GetString(1);
+                    txtEmpTypeDescription.Text = reader.GetString(2);
+                    cbxAccessLevel.SelectedIndex = cbxAccessLevel.FindStringExact(reader.GetString(3));
                 }
+                reader.Close();
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
