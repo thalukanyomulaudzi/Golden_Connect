@@ -15,7 +15,7 @@ namespace Design370
             else if (rule == "id")
                 pattern = @"^([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])[ ]?[0-9]{4}[ ]?[01][89][0-9]$";
             else if (rule == "price")
-                pattern = "^(R?[0-9]+([.][0-9]{2})?)$";
+                pattern = "^(R?[0-9]+([.,][0-9]{2})?)$";
             else if (rule == "email")
                 pattern = "^([A-Za-z,0-9]+)([.]{1}[A-Za-z,0-9]+)*[@]{1}([A-Za-z0-9]+)+([.]{1}[A-Za-z0-9]+)+$";
             else if (rule == "phone")

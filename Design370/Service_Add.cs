@@ -48,6 +48,7 @@ namespace Design370
 
         private void BtnServiceAdd_Click(object sender, EventArgs e)
         {
+            double price = txtServicePrice.Text.Contains("R") ? Convert.ToDouble(txtServicePrice.Text.Substring(1)) : Convert.ToDouble(txtServicePrice.Text);
             if (!Validation.validate(txtServiceName.Text, "name") || !Validation.validate(txtServiceDescription.Text, "name") || !Validation.validate(txtServicePrice.Text, "price"))
             {
                 MessageBox.Show("All input fields must be valid");
@@ -68,7 +69,7 @@ namespace Design370
                 bookingTypeID = reader.GetString(0);
                 reader.Close();
                 query = "INSERT INTO `service`(`service_name`, `service_description`, `service_price`, `service_type_id`) VALUES('" +
-                            txtServiceName.Text + "', '" + txtServiceDescription.Text + "', '" + txtServicePrice.Text + "', '" + bookingTypeID + "')";
+                            txtServiceName.Text + "', '" + txtServiceDescription.Text + "', '" + price + "', '" + bookingTypeID + "')";
                 command = new MySqlCommand(query, dbCon.Connection);
                 command.ExecuteNonQuery();
                 Close();

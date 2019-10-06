@@ -57,5 +57,10 @@ namespace Design370
         {
 
         }
+
+        private void TxtServTypeName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

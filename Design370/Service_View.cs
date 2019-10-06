@@ -108,6 +108,8 @@ namespace Design370
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            double price = txtServicePrice.Text.Contains("R") ? Convert.ToDouble(txtServicePrice.Text.Substring(1)) : Convert.ToDouble(txtServicePrice.Text);
+
             if (!Validation.validate(txtServiceName.Text, "name") || !Validation.validate(txtServiceDescription.Text, "name") || !Validation.validate(txtServicePrice.Text, "price"))
             {
                 MessageBox.Show("All input fields must be valid");
@@ -131,7 +133,7 @@ namespace Design370
                     serviceTypeID = reader.GetString(0);
                     reader.Close();
                     query = "UPDATE `service` SET `service_name` = '" + txtServiceName.Text + "', `service_description` = '" +
-                        "" + txtServiceDescription.Text + "', `service_price` = '" + txtServicePrice.Text + "', `service_type_id` = '" +
+                        "" + txtServiceDescription.Text + "', `service_price` = '" + price + "', `service_type_id` = '" +
                         "" + serviceTypeID + "' WHERE service_id = '" + serviceID + "'";
                     command = new MySqlCommand(query, dbConnection.Connection);
                     command.ExecuteNonQuery();

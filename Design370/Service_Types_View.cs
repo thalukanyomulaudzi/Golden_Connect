@@ -21,14 +21,14 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
+            toolTip1.SetToolTip(txtServiceName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtServiceDescription, "A maximum of 200 characters can be entered");
         }
 
         private void Service_Types_View_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled = edit;
-            textBox2.Enabled = edit;
+            txtServiceName.Enabled = edit;
+            txtServiceDescription.Enabled = edit;
             if (edit == true)
             {
                 button2.Enabled = false;
@@ -44,8 +44,8 @@ namespace Design370
                     while (reader.Read())
                     {
                         service_type_id = reader.GetString(0);
-                        textBox1.Text = reader.GetString(1);
-                        textBox2.Text = reader.GetString(2);
+                        txtServiceName.Text = reader.GetString(1);
+                        txtServiceDescription.Text = reader.GetString(2);
                     }
                     reader.Close();
                 }
@@ -59,8 +59,8 @@ namespace Design370
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
+            txtServiceName.Enabled = true;
+            txtServiceDescription.Enabled = true;
             button2.Enabled = false;
         }
 
@@ -71,9 +71,9 @@ namespace Design370
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Enabled)
+            if (txtServiceName.Enabled)
             {
-                if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+                if (txtServiceName.Text.Length <= 2 || txtServiceDescription.Text.Length <= 5)
                 {
                     MessageBox.Show("Invalid character length for name and/or description");
                     return;
@@ -83,8 +83,8 @@ namespace Design370
                     DBConnection dBConnection = DBConnection.Instance();
                     if (dBConnection.IsConnect())
                     {
-                        string query = "UPDATE `service_type` SET `service_type_id` = '" + service_type_id + "', `service_type_name` = '" + textBox1.Text + "', `service_type_description`";
-                        query += " = '" + textBox2.Text + "' WHERE service_type_id = '" + service_type_id + "'";
+                        string query = "UPDATE `service_type` SET `service_type_id` = '" + service_type_id + "', `service_type_name` = '" + txtServiceName.Text + "', `service_type_description`";
+                        query += " = '" + txtServiceDescription.Text + "' WHERE service_type_id = '" + service_type_id + "'";
                         var command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
                     }
@@ -97,6 +97,16 @@ namespace Design370
                 this.Close();
             }
             this.Close();
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblServiceName, Validation.validate(txtServiceName.Text, "name"));
+        }
+
+        private void TxtServiceDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblServiceDescription, Validation.validate(txtServiceDescription.Text, "name"));
         }
     }
 }
