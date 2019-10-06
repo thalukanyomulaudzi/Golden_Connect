@@ -97,16 +97,17 @@ namespace Design370
                     "VALUES (NULL, '"+paymentID+"', '"+txtAmount.Text+"', '"+customerID+"', NULL, NULL)";
                 var command = new MySqlCommand(paymentData, dbCon.Connection);
                 var reader = command.ExecuteReader();
-                int sent = SendSMS("CI00206948", "u15231748@tuks.co.za", "om0QGsm1", "0733859365", "Good Day\nThis Message serves as a notice to inform you that your order payment has been received. \n\nThank you for your support.\n\nGolden Hour");
-                if (sent == 0)
-                {
-                    MessageBox.Show("Order payment for: " + customerLastName + " has been captured successfully");
-                    updateOrder(OrderPaymentID);
-                }
-                else
-                {
-                    MessageBox.Show("Message not sent!");
-                }
+                MessageBox.Show("Order payment for: " + customerLastName + " has been captured successfully");
+                // int sent = SendSMS("CI00206948", "u15231748@tuks.co.za", "om0QGsm1", "0733859365", "Good Day\nThis Message serves as a notice to inform you that your order payment has been received. \n\nThank you for your support.\n\nGolden Hour");
+                //if (sent == 0)
+                //{
+                //    
+                //    updateOrder(OrderPaymentID);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Message not sent!");
+                //}
                 reader.Close();
             }
         }

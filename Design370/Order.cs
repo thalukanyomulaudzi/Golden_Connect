@@ -10,12 +10,13 @@ namespace Design370
 
         public Order() { }
 
-        public Order(string name, string[] imgs, int item_id, int productID)
+        public Order(string name, string[] imgs, int item_id, int productID, int qty)
         {
             getOrderName = name;
             getOrderImages = imgs;
             getItemID = item_id;
             getProductID = productID;
+            getProductQty = qty;
         }
 
         public string getOrderName { get; set; }
@@ -27,6 +28,8 @@ namespace Design370
         public int getItemID { get; set; }
 
         public int getProductID { get; set; }
+
+        public int getProductQty { get; set; }
 
         public static void LoadOrders(DataGridView dgv)
         {
@@ -58,12 +61,12 @@ namespace Design370
                     dgv.RowHeadersVisible = false;
                     string orders = "SELECT `order_id`, `order_date_placed`, `customer`.`customer_first`, `order_total`, `order_status`.`order_status_name`, `customer`.`customer_last` " +
                         "FROM `order`, `customer`, `order_status` " +
-                        "WHERE `order`.`customer_id` = `customer`.`customer_id` AND `order`.`order_status_id` = `order_status`.`order_status_id`";
+                        "WHERE `order`.`customer_id` = `customer`.`customer_id` AND `order`.`order_status_id` = `order_status`.`order_status_id` ORDER BY `order_date_placed` DESC";
                     var command = new MySqlCommand(orders, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        dgv.Rows.Add(reader[0], reader[2] + " " + reader[5], reader[1], "R"+reader[3], reader[4]);
+                        dgv.Rows.Add(reader[0], reader[5] +", " + reader[2], Convert.ToDateTime(reader[1]).ToString("yyyy-M-dd"), "R"+reader[3], reader[4]);
                     }
                     reader.Close();
                 }
@@ -84,6 +87,7 @@ namespace Design370
                 var reader = cmd.ExecuteReader();
                 reader.Read();
                 statusID = Convert.ToInt32(reader[0]);
+                reader.Close();
             }
             return statusID;
         }
@@ -95,7 +99,8 @@ namespace Design370
             {
                 string update = "UPDATE `order` SET `order_status_id` = '"+statusID+"' WHERE `order_id` = '"+orderID+"'";
                 var command = new MySqlCommand(update, dbCon.Connection);
-                command.ExecuteReader();
+                var reader = command.ExecuteReader();
+                reader.Close();
                 MessageBox.Show("Order: "+orderID + " successfully updated!");
             }
         }

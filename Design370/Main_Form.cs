@@ -247,7 +247,7 @@ namespace Design370
         private void Button16_Click(object sender, EventArgs e)
         {
             Customer_Order_Details cOrder = new Customer_Order_Details();
-            cOrder.ShowDialog();
+            cOrder.Show();
         }
 
         private void DataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -736,7 +736,7 @@ namespace Design370
         private void DgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             OrderImages customerOI = new OrderImages();
-            Customer_Order_Capture customerPay = new Customer_Order_Capture();
+            View_Order_Details viewOrder = new View_Order_Details();
             switch (e.ColumnIndex)
             {
                 case 0:
@@ -747,22 +747,21 @@ namespace Design370
                 case 5:
                     if (e.RowIndex >= 0)
                     {
+                        int orderID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[0].Value);
                         if (dbCon.IsConnect())
                         {
-                            string checkStatus = "SELECT * FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Pending' AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[0].Value + "'";
+                            string checkStatus = "SELECT `customer_id` FROM `order` WHERE `order_id` = '"+orderID+"'";
                             var command = new MySqlCommand(checkStatus, dbCon.Connection);
                             var reader = command.ExecuteReader();
                             reader.Read();
                             if (reader.HasRows)
                             {
-                                reader.Close();
-                                Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[0].Value);
-                                customerPay.ShowDialog();
                                 
-                            }
-                            else
-                            {
-                                MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                View_Order_Details.customerID = Convert.ToInt32(reader[0]);
+                                View_Order_Details.order_id = orderID;
+                                reader.Close();
+                                viewOrder.ShowDialog();
+                                
                             }
                             reader.Close();
                         }
@@ -1207,6 +1206,12 @@ namespace Design370
             {
                 axAcroPDF1.setCurrentPage(5);
             }
+        }
+
+        private void BtnGenCustRpt_Click(object sender, EventArgs e)
+        {
+            CustomerReportList custRep = new CustomerReportList();
+            custRep.ShowDialog();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
