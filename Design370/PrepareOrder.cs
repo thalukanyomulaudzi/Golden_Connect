@@ -138,7 +138,7 @@ namespace Design370
 
                     Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
                     //Set animation status for Word application
-                    winword.ShowAnimation = false;
+                    //winword.ShowAnimation = false;
                     winword.Visible = false;
                     object missing = System.Reflection.Missing.Value;
                     Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);

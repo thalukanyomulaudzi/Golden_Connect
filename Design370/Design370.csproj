@@ -750,15 +750,6 @@
     <None Include="Resources\user.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="AcroPDFLib">
-      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="ACTIVEXLib">
       <Guid>{012F24C1-35B0-11D0-BF2D-0000E8D0D146}</Guid>
       <VersionMajor>1</VersionMajor>

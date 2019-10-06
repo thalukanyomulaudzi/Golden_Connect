@@ -1227,7 +1227,6 @@ namespace Design370
                 axAcroPDF1.setCurrentPage(4);
             else if (e.Node.Text == "Photoshoots")
                 axAcroPDF1.setCurrentPage(5);
-            }
         }
 
         private void BtnGenCustRpt_Click(object sender, EventArgs e)
