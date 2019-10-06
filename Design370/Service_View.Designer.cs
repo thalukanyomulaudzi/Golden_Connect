@@ -70,7 +70,7 @@
             // 
             this.btnServiceTypeAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnServiceTypeAdd.Location = new System.Drawing.Point(337, 271);
-            this.btnServiceTypeAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnServiceTypeAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnServiceTypeAdd.Name = "btnServiceTypeAdd";
             this.btnServiceTypeAdd.Size = new System.Drawing.Size(269, 29);
             this.btnServiceTypeAdd.TabIndex = 5;
@@ -83,7 +83,7 @@
             this.cbxServiceType.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxServiceType.FormattingEnabled = true;
             this.cbxServiceType.Location = new System.Drawing.Point(28, 273);
-            this.cbxServiceType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxServiceType.Margin = new System.Windows.Forms.Padding(4);
             this.cbxServiceType.Name = "cbxServiceType";
             this.cbxServiceType.Size = new System.Drawing.Size(247, 26);
             this.cbxServiceType.TabIndex = 4;
@@ -208,9 +208,13 @@
             this.Controls.Add(this.txtServiceName);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HelpButton = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Service_View";
             this.Text = "View Service";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Service_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Service_View_FormClosing);
             this.Load += new System.EventHandler(this.Service_View_Load);
             this.ResumeLayout(false);

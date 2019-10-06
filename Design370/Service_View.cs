@@ -16,6 +16,7 @@ namespace Design370
         public static bool edit;
         string serviceID = "";
         public string GetServiceRow { get; set; }
+        string helpstring = " ";
         public Service_View()
         {
             InitializeComponent();
@@ -34,6 +35,8 @@ namespace Design370
             cbxServiceType.Enabled = true;
             btnServiceTypeAdd.Enabled = true;
             btnServiceEdit.Enabled = false;
+            this.Text = "Edit Service";
+            helpstring = "Edit_Service";
         }
 
         private void Service_View_Load(object sender, EventArgs e)
@@ -44,6 +47,16 @@ namespace Design370
             cbxServiceType.Enabled = edit;
             btnServiceTypeAdd.Enabled = edit;
             btnServiceEdit.Enabled = !edit;
+            if (edit)
+            {
+                this.Text = "Edit Service";
+                helpstring = "Edit_Service";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Service";
+                helpstring = "View_Service";
+            }
 
             try
             {
@@ -150,6 +163,13 @@ namespace Design370
         private void TxtServiceDescription_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblServiceDescription, Validation.validate(txtServiceDescription.Text, "name"));
+        }
+
+        private void Service_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
         }
     }
 }

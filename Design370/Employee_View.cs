@@ -22,6 +22,7 @@ namespace Design370
         string title = " ";
         string employee_type = " ";
         string marital_status = " ";
+        string helpstring = " ";
         public Employee_View()
         {
             InitializeComponent();
@@ -127,7 +128,16 @@ namespace Design370
             cbxEmployeeGender.Enabled = edit;
             cbxEmployeeType.Enabled = edit;
             btnEmployeeEdit.Enabled = !edit;
-
+            if (edit)
+            {
+                this.Text = "Edit Employee";
+                helpstring = "Edit_Employee";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Employee";
+                helpstring = "View_Employee";
+            }
             cbxEmployeeGender.Items.Add("Male");
             cbxEmployeeGender.Items.Add("Female");
             loadTitles();
@@ -201,6 +211,8 @@ namespace Design370
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            helpstring = "Edit_Employee";
+            this.Text = "Edit Employee";
             txtEmployeeFirst.Enabled = true;
             txtEmployeeLast.Enabled = true;
             txtEmployeeID.Enabled = true;
@@ -321,6 +333,13 @@ namespace Design370
         private void TxtEmployeeEmail_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblEmployeeEmail, Validation.validate(txtEmployeeEmail.Text, "email"));
+        }
+
+        private void Employee_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
         }
     }
 }

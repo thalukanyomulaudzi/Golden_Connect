@@ -220,5 +220,12 @@ namespace Design370
         {
             Close();
         }
+
+        private void Employee_Add_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Add_Employee";
+            helpForm.ShowDialog();
+        }
     }
 }
