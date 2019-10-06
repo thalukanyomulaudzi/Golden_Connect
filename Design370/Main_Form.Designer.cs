@@ -178,7 +178,7 @@ namespace Design370
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDebug = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.lblTimeInactive = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
@@ -1766,16 +1766,16 @@ namespace Design370
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // label1
+            // lblUser
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Location = new System.Drawing.Point(250, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Logged in as: ";
-            this.label1.Click += new System.EventHandler(this.Label1_Click_1);
+            this.lblUser.AutoSize = true;
+            this.lblUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblUser.Location = new System.Drawing.Point(250, 0);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(74, 13);
+            this.lblUser.TabIndex = 14;
+            this.lblUser.Text = "Logged in as: ";
+            this.lblUser.Click += new System.EventHandler(this.Label1_Click_1);
             // 
             // lblTimeInactive
             // 
@@ -1804,7 +1804,7 @@ namespace Design370
             this.ClientSize = new System.Drawing.Size(1262, 693);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.lblTimeInactive);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
@@ -2031,7 +2031,7 @@ namespace Design370
         private Label lblDebug;
         private Button button3;
         private Timer timer1;
-        private Label label1;
+        private Label lblUser;
         private Label lblTimeInactive;
         private Button btnSettings;
         private Button button10;

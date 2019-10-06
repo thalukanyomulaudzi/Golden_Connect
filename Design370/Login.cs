@@ -30,5 +30,13 @@ namespace Design370
         {
 
         }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (User.ID < 0)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

@@ -133,6 +133,7 @@ namespace Design370
         {
             ID = -1;
             AccessLevel = -1;
+            Name = "";
         }
 
         public static uint lastInputTime()
