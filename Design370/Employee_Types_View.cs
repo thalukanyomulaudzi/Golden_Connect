@@ -21,11 +21,22 @@ namespace Design370
             txtEmpTypeName.Enabled = true;
             txtEmpTypeDescription.Enabled = true;
             cbxAccessLevel.Enabled = true;
+            helpstring = "Edit_Employee_Type";
         }
 
         public string emptype;
         private void Employee_Types_View_Load(object sender, EventArgs e)
         {
+            if (edit)
+            {
+                this.Text = "Edit Employee Type";
+                helpstring = "Edit_Employee_Type";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Employee Type";
+                helpstring = "View_Employee_Type";
+            }
             txtEmpTypeName.Enabled = edit;
             txtEmpTypeDescription.Enabled = edit;
             cbxAccessLevel.Enabled = edit;
@@ -36,7 +47,6 @@ namespace Design370
                 string query = "SELECT * FROM `employee_type` WHERE `employee_type_name` = '" + emptype + "'";
                 var command = new MySqlCommand(query, dbCon.Connection);
                 var reader = command.ExecuteReader();
-                reader.Read();
                 while (reader.Read())
                 {
                     id = reader.GetInt32(0);
