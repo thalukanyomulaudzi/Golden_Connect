@@ -72,7 +72,61 @@ namespace Design370
         {
             bookingDetails("Photoshoot");
         }
-        private void bookingDetails(string bookingType)
+
+        private void LblBookingDateNextWeek_MouseEnter(object sender, EventArgs e)
+        {
+            lblBookingDateNextWeek.ForeColor = Color.Blue;
+        }
+
+        private void LblBookingDateNextWeek_MouseLeave(object sender, EventArgs e)
+        {
+            lblBookingDateNextWeek.ForeColor = Color.Black;
+        }
+
+        private void LblBookingDatePreviousWeek_MouseEnter(object sender, EventArgs e)
+        {
+            lblBookingDatePreviousWeek.ForeColor = Color.Blue;
+        }
+
+        private void LblBookingDatePreviousWeek_MouseLeave(object sender, EventArgs e)
+        {
+            lblBookingDatePreviousWeek.ForeColor = Color.Black;
+        }
+
+        private void LblBookingDatePreviousWeek_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.Subtract(TimeSpan.FromDays(7));
+            if (dateTimePicker1.Value < DateTime.Today)
+            {
+                dateTimePicker1.Value = DateTime.Today;
+                MessageBox.Show("Cannot go into the past to create a booking");
+            }
+        }
+
+        private void LblBookingDateNextWeek_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value += TimeSpan.FromDays(7);
+        }
+
+        private void DgvBookEvent_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value.ToString() == "Available")
+            {
+                e.CellStyle.BackColor = Color.Green;
+            }
+            else if (e.Value.ToString() == "Unavailable")
+            {
+                e.CellStyle.BackColor = Color.Red;
+            }
+        }
+
+        private void BtnChangeCustomer_Click(object sender, EventArgs e)
+        {
+            Booking_Customer booking_Customer = new Booking_Customer();
+            booking_Customer.ShowDialog();
+        }
+
+        private void BtnBookingPhotoshoot_Click(object sender, EventArgs e)
         {
             try
             {

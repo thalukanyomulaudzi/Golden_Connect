@@ -79,7 +79,7 @@ namespace Design370
         {
             if(dbCon.IsConnect())
             {
-                string getID = "SELECT * FROM `order_status` WHERE `order_status_name` = '"+statusName+"'";
+                string getID = "SELECT * FROM `order_status` WHERE `order_status_name` = '" + statusName + "'";
                 var cmd = new MySqlCommand(getID, dbCon.Connection);
                 var reader = cmd.ExecuteReader();
                 reader.Read();

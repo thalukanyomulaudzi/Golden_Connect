@@ -53,8 +53,36 @@ namespace Design370
         {
 
         }
+        private bool connectDB()
+        {
+            //dbCon.DatabaseName = "4d3dGYntTO";
+            dbCon.DatabaseName = "golden_connect";
+            return (dbCon.IsConnect());
+        }
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+            //    if (User.ID < 0)
+            //    {
+            //        Login login = new Login();
+            //        login.ShowDialog();
+            //    }
+            //    timer1.Start();
+            Booking.loadBookings(dgvBookings);
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
+            dgvPhotoshootPackage.Rows.Clear();
+            Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            dgvEventPackages.Rows.Clear();
+            Event.LoadDGV(dgvEventPackages);
+            loadProducts();
+            loadServices();
+            loadSuppliers();
+            Employee.LoadEmployees(empGrid);
+            Customer.LoadCustomer(dgvCustomers);
+            Order.LoadOrders(dgvOrders);
+            Timeslot.clearTimeslots();
+        }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Main_Form_Activated(object sender, EventArgs e)
         {
             if (!connectDB())//First in function
             {
