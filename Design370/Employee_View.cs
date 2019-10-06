@@ -222,8 +222,47 @@ namespace Design370
         
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (!Validation.validate(txtEmployeeFirst.Text, "name") || !Validation.validate(txtEmployeeLast.Text, "name") || !Validation.validate(txtEmployeeID.Text, "price")
-                || !Validation.validate(txtEmployeeEmail.Text, "email") || !Validation.validate(txtEmployeePhone.Text, "phone"))
+            if (cbxEmpTitle.SelectedIndex <= -1)
+            {
+                MessageBox.Show("Please select a title");
+                return;
+            }
+            else if (textBox3.Text.Length <= 12)
+            {
+                MessageBox.Show("Please provide a valid id number");
+                return;
+            }
+            else if (textBox1.Text.Length <= 0)
+            {
+                MessageBox.Show("Please provide a first name");
+                return;
+            }
+            else if (comboBox3.SelectedIndex <= -1)
+            {
+                MessageBox.Show("Please select a gender");
+                return;
+            }
+            else if (textBox2.Text.Length <= 0)
+            {
+                MessageBox.Show("Please provide a last name");
+                return;
+            }
+            else if (comboBox2.SelectedIndex <= -1)
+            {
+                MessageBox.Show("Please select a marital status");
+                return;
+            }
+            else if (textBox7.Text.Length <= 10)
+            {
+                MessageBox.Show("Please provide an address");
+                return;
+            }
+            else if (textBox4.Text.Length <= 9)
+            {
+                MessageBox.Show("Please enter a valid phone number");
+                return;
+            }
+            else if (textBox5.Text.Length <= 8)
             {
                 MessageBox.Show("Please provide a valid email address");
                 return;

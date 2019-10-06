@@ -354,7 +354,7 @@
             this.txtBookingTotal.Enabled = false;
             this.txtBookingTotal.Location = new System.Drawing.Point(139, 689);
             this.txtBookingTotal.Name = "txtBookingTotal";
-            this.txtBookingTotal.Size = new System.Drawing.Size(119, 24);
+            this.txtBookingTotal.Size = new System.Drawing.Size(113, 24);
             this.txtBookingTotal.TabIndex = 61;
             this.txtBookingTotal.Text = "John Doe";
             // 
@@ -368,57 +368,11 @@
             this.label8.TabIndex = 62;
             this.label8.Text = "Booking total";
             // 
-            // gbxBookingPackage
-            // 
-            this.gbxBookingPackage.Controls.Add(this.lstBookingServices);
-            this.gbxBookingPackage.Controls.Add(this.label3);
-            this.gbxBookingPackage.Controls.Add(this.cmbBookingPackage);
-            this.gbxBookingPackage.Controls.Add(this.lstBookingProducts);
-            this.gbxBookingPackage.Controls.Add(this.btnBookingServiceRemove);
-            this.gbxBookingPackage.Controls.Add(this.label4);
-            this.gbxBookingPackage.Controls.Add(this.btnBookingProductRemove);
-            this.gbxBookingPackage.Controls.Add(this.label5);
-            this.gbxBookingPackage.Controls.Add(this.numBookingProductQuantity);
-            this.gbxBookingPackage.Controls.Add(this.btnBookingServiceAdd);
-            this.gbxBookingPackage.Controls.Add(this.label6);
-            this.gbxBookingPackage.Controls.Add(this.btnBookingProductAdd);
-            this.gbxBookingPackage.Location = new System.Drawing.Point(537, 12);
-            this.gbxBookingPackage.Name = "gbxBookingPackage";
-            this.gbxBookingPackage.Size = new System.Drawing.Size(502, 513);
-            this.gbxBookingPackage.TabIndex = 63;
-            this.gbxBookingPackage.TabStop = false;
-            this.gbxBookingPackage.Text = "Package";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtBookingLocation);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.numBookingGuests);
-            this.groupBox1.Controls.Add(this.txtBookingTime);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.txtBookingCustomer);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.dtmBookingDate);
-            this.groupBox1.Controls.Add(this.btnBookingChangeCustomer);
-            this.groupBox1.Controls.Add(this.btnBookingChangeDateEmployee);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtBookingEmployee);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(498, 513);
-            this.groupBox1.TabIndex = 64;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
             // Booking_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1636, 834);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gbxBookingPackage);
+            this.ClientSize = new System.Drawing.Size(532, 743);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtBookingTotal);
             this.Controls.Add(this.txtBookingTime);

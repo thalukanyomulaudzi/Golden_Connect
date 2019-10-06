@@ -71,65 +71,33 @@ namespace Design370
 
         private void DgvBookingAdd_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Customer_View customerView = new Customer_View();
-            //customerView.customerID = dgvBookingCustomer.SelectedRows[0].Cells[2].Value.ToString();
-            //switch (e.ColumnIndex)
-            //{
-            //    case 3:
-            //        customerView.edit = false;
-            //        customerView.Show();
-            //        break;
-            //    case 4:
-            //        customerView.edit = true;
-            //        customerView.Show();
-            //        break;
-            //    case 5:
-            //        DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
-            //        if (delete == DialogResult.Yes)
-            //        {
-            //            try
-            //            {
-            //                DBConnection dBCon = DBConnection.Instance();
-            //                string query = "DELETE FROM customer WHERE customer_id_number = " + dgvBookingCustomer.SelectedRows[0].Cells[2].Value.ToString();
-            //                var command = new MySqlCommand(query, dBCon.Connection);
-            //                command.ExecuteNonQuery();
-            //            }
-            //            catch (Exception ee)
-            //            {
-            //                MessageBox.Show(ee.Message);
-            //            }
-            //        }
-            //        break;
-            //    default:
-            //        break;
-            //}
-
-
             Customer_View customerView = new Customer_View();
-            string customerID = " ";
+            customerView.customerID = dgvBookingCustomer.SelectedRows[0].Cells[2].Value.ToString();
             switch (e.ColumnIndex)
             {
                 case 3:
                     customerView.edit = false;
-                    customerID = dgvBookingCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    customerView.GetCustomerRow = customerID;
-                    customerView.ShowDialog();
+                    customerView.Show();
                     break;
                 case 4:
                     customerView.edit = true;
-                    customerID = dgvBookingCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    customerView.GetCustomerRow = customerID;
-                    customerView.ShowDialog();
+                    customerView.Show();
                     break;
                 case 5:
-                    customerID = dgvBookingCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    Customer.CustomerID = customerID;
                     DialogResult delete = MessageBox.Show("Do you really want to delete this entry?", "Delete", MessageBoxButtons.YesNo);
                     if (delete == DialogResult.Yes)
                     {
-                        dgvBookingCustomer.Rows.Clear();
-                        Customer.deleteCustomer(dgvBookingCustomer);
-                        Customer.LoadCustomer(dgvBookingCustomer);
+                        try
+                        {
+                            DBConnection dBCon = DBConnection.Instance();
+                            string query = "DELETE FROM customer WHERE customer_id_number = " + dgvBookingCustomer.SelectedRows[0].Cells[2].Value.ToString();
+                            var command = new MySqlCommand(query, dBCon.Connection);
+                            command.ExecuteNonQuery();
+                        }
+                        catch (Exception ee)
+                        {
+                            MessageBox.Show(ee.Message);
+                        }
                     }
                     break;
                 default:

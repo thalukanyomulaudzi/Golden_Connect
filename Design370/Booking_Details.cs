@@ -41,6 +41,10 @@ namespace Design370
         {
 
         }
+        private void CbxBookingAdditions_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
         private void BtnBookingChangeCustomer_Click(object sender, EventArgs e)
         {
             Booking_Customer bookingAdd = new Booking_Customer();
@@ -278,7 +282,7 @@ namespace Design370
                 loadLists();
                 DBConnection dBCon = DBConnection.Instance();
                 string query = "SELECT p.product_name, p.product_price, bpp.booking_package_product_quantity FROM product p " +
-                    "JOIN booking_type bt ON p.product_type_id = bt.booking_type_id " +
+                    "JOIN booking_type bt ON p.booking_type_id = bt.booking_type_id " +
                     "JOIN booking_package_product bpp ON p.product_id = bpp.product_id " +
                     "WHERE bt.booking_type_name = '" + Booking.bookingType + "'";
                 var command = new MySqlCommand(query, dBCon.Connection);
@@ -289,8 +293,8 @@ namespace Design370
                 }
                 reader.Close();
 
-                query = "SELECT s.service_name, s.service_price FROM service s " +
-                    "JOIN booking_type bt ON s.service_type_id = bt.booking_type_id " +
+                query = "SELECT service_name, s.service_price FROM service s " +
+                    "JOIN booking_type bt ON s.booking_type_id = bt.booking_type_id " +
                     "WHERE bt.booking_type_name = '" + Booking.bookingType + "'";
                 command.CommandText = query;
                 reader = command.ExecuteReader();

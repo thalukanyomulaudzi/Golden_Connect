@@ -24,13 +24,11 @@ namespace Design370
                 dgvPrepareCustomerOrder.ColumnCount = 5;
                 dgvPrepareCustomerOrder.Columns[2].Name = "Order ID";
                 dgvPrepareCustomerOrder.Columns[2].Width = 140;
-                dgvPrepareCustomerOrder.Columns[3].Name = "Order Quantity";
-                dgvPrepareCustomerOrder.Columns[3].Width = 130;
-                dgvPrepareCustomerOrder.Columns.Add(viewOrder);
-                dgvPrepareCustomerOrder.Columns.Add(prepare);
-                string ordersToBePrepared = "SELECT `order_id`, `customer_first`, `customer_last`, `order_date_placed`, `order_quantity` FROM `order`, `order_status`, `customer` " +
-                    "WHERE `order_status`.`order_status_name` = 'Ready' AND `order_status`.`order_status_id` = `order`.`order_status_id` AND " +
-                    "`order`.`customer_id` = `customer`.`customer_id` AND `order_status`.`order_status_name` = 'Ready'";
+                dgvPrepareCustomerOrder.Columns[3].Name = "Order Date";
+                dgvPrepareCustomerOrder.Columns[3].Width = 140;
+                dgvPrepareCustomerOrder.Columns[4].Name = "Order Quantity";
+                dgvPrepareCustomerOrder.Columns[4].Width = 140;
+                string ordersToBePrepared = "SELECT * FROM `order`, `order_status` WHERE `order_status`.`order_status_name` = 'Paid' AND `order_status`.`order_status_id` = `order`.`order_status_id`";
                 var command = new MySqlCommand(ordersToBePrepared, dbCon.Connection);
                 var reader = command.ExecuteReader();
                 while (reader.Read())
