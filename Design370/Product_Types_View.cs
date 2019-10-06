@@ -15,6 +15,7 @@ namespace Design370
     {
         public static bool edit;
         string product_type_id = "";
+        string helpstring = " ";
         public string GetProductTypeRow { get; set; }
         public Product_Types_View()
         {
@@ -27,6 +28,16 @@ namespace Design370
 
         private void Product_Types_View_Load(object sender, EventArgs e)
         {
+            if (edit)
+            {
+                this.Text = "Edit Product Type";
+                helpstring = "Edit_Product_Type";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Product Type";
+                helpstring = "View_Product_Type";
+            }
             txtProductTypeName.Enabled = edit;
             txtProductTypeDescription.Enabled = edit;
             if (edit == true)
@@ -59,6 +70,8 @@ namespace Design370
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            this.Text = "Edit Product Type";
+            helpstring = "Edit_Product_Type";
             txtProductTypeName.Enabled = true;
             txtProductTypeDescription.Enabled = true;
             button2.Enabled = false;

@@ -141,7 +141,10 @@
             this.Controls.Add(this.txtPhotoshootTypeName);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HelpButton = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Photoshoot_Type_Add";
             this.Text = "Add Photoshoot Type";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Photoshoot_Type_Add_FormClosing);

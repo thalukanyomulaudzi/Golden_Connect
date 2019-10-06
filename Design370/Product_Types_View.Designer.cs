@@ -141,7 +141,10 @@
             this.Controls.Add(this.txtProductTypeName);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Product_Types_View";
             this.Text = "View Product Type";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Product_Types_View_FormClosing);
