@@ -47,7 +47,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(297, 348);
+            this.btnCancel.Location = new System.Drawing.Point(297, 341);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(116, 39);
             this.btnCancel.TabIndex = 76;
@@ -58,10 +58,10 @@
             // btnProductTypeAdd
             // 
             this.btnProductTypeAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductTypeAdd.Location = new System.Drawing.Point(337, 272);
+            this.btnProductTypeAdd.Location = new System.Drawing.Point(297, 272);
             this.btnProductTypeAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnProductTypeAdd.Name = "btnProductTypeAdd";
-            this.btnProductTypeAdd.Size = new System.Drawing.Size(168, 29);
+            this.btnProductTypeAdd.Size = new System.Drawing.Size(247, 29);
             this.btnProductTypeAdd.TabIndex = 74;
             this.btnProductTypeAdd.Text = "Add Product Type";
             this.btnProductTypeAdd.UseVisualStyleBackColor = true;
@@ -90,9 +90,9 @@
             // txtProductPrice
             // 
             this.txtProductPrice.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductPrice.Location = new System.Drawing.Point(316, 40);
+            this.txtProductPrice.Location = new System.Drawing.Point(302, 40);
             this.txtProductPrice.Name = "txtProductPrice";
-            this.txtProductPrice.Size = new System.Drawing.Size(228, 26);
+            this.txtProductPrice.Size = new System.Drawing.Size(247, 26);
             this.txtProductPrice.TabIndex = 71;
             this.txtProductPrice.Text = "R";
             this.txtProductPrice.TextChanged += new System.EventHandler(this.txtProductPrice_TextChanged);
@@ -102,7 +102,7 @@
             this.label3.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(313, 19);
+            this.label3.Location = new System.Drawing.Point(299, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 18);
             this.label3.TabIndex = 70;
@@ -152,7 +152,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(434, 348);
+            this.btnAdd.Location = new System.Drawing.Point(429, 341);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(115, 39);
             this.btnAdd.TabIndex = 77;

@@ -111,7 +111,7 @@
             // 
             this.lblProductTypeName.AutoSize = true;
             this.lblProductTypeName.ForeColor = System.Drawing.Color.Red;
-            this.lblProductTypeName.Location = new System.Drawing.Point(236, 43);
+            this.lblProductTypeName.Location = new System.Drawing.Point(236, 50);
             this.lblProductTypeName.Name = "lblProductTypeName";
             this.lblProductTypeName.Size = new System.Drawing.Size(19, 18);
             this.lblProductTypeName.TabIndex = 79;
@@ -121,7 +121,7 @@
             // 
             this.lblProductTypeDescription.AutoSize = true;
             this.lblProductTypeDescription.ForeColor = System.Drawing.Color.Red;
-            this.lblProductTypeDescription.Location = new System.Drawing.Point(236, 105);
+            this.lblProductTypeDescription.Location = new System.Drawing.Point(236, 112);
             this.lblProductTypeDescription.Name = "lblProductTypeDescription";
             this.lblProductTypeDescription.Size = new System.Drawing.Size(19, 18);
             this.lblProductTypeDescription.TabIndex = 80;

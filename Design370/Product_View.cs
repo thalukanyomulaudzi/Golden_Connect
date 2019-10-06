@@ -112,8 +112,6 @@ namespace Design370
         {
             double price = txtProductPrice.Text.Contains("R") ? Convert.ToDouble(txtProductPrice.Text.Substring(1)) : Convert.ToDouble(txtProductPrice.Text);
 
-
-
             if (txtProductName.Text.Length <= 2 || txtProductDescription.Text.Length <= 5 || txtProductPrice.Text.Length == 0)
             {
                 MessageBox.Show("Invalid character length for name and/or description and/or price");
