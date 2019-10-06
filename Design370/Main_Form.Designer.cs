@@ -181,6 +181,7 @@ namespace Design370
             this.lblUser = new System.Windows.Forms.Label();
             this.lblTimeInactive = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -206,6 +207,7 @@ namespace Design370
             this.tabPage12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage13.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -223,6 +225,7 @@ namespace Design370
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Controls.Add(this.tabPage12);
+            this.tabControl1.Controls.Add(this.tabPage13);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1787,13 +1790,23 @@ namespace Design370
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(257, 44);
+            this.btnSettings.Location = new System.Drawing.Point(51, 51);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(75, 23);
+            this.btnSettings.Size = new System.Drawing.Size(142, 58);
             this.btnSettings.TabIndex = 16;
-            this.btnSettings.Text = "change timeout";
+            this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.Button10_Click_1);
+            // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.btnSettings);
+            this.tabPage13.Location = new System.Drawing.Point(154, 4);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Size = new System.Drawing.Size(1104, 608);
+            this.tabPage13.TabIndex = 12;
+            this.tabPage13.Text = "tabPage13";
+            this.tabPage13.UseVisualStyleBackColor = true;
             // 
             // Main_Form
             // 
@@ -1802,7 +1815,6 @@ namespace Design370
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1262, 693);
-            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.lblTimeInactive);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblDebug);
@@ -1856,6 +1868,7 @@ namespace Design370
             this.tabPage12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage13.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2035,6 +2048,7 @@ namespace Design370
         private Label lblTimeInactive;
         private Button btnSettings;
         private Button button10;
+        private TabPage tabPage13;
     }
 }
 
