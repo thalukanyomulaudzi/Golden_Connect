@@ -16,7 +16,6 @@ namespace Design370
     public partial class Product_Add : Form
     {
         DBConnection dbCon = DBConnection.Instance();
-
         public Product_Add()
         {
             InitializeComponent();
@@ -125,6 +124,13 @@ namespace Design370
         private void TxtProductDescription_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblProductDescription, Validation.validate(txtProductDescription.Text, "name"));
+        }
+
+        private void Product_Add_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Add_Product";
+            helpForm.ShowDialog();
         }
     }
 }

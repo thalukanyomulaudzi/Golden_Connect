@@ -16,6 +16,7 @@ namespace Design370
         public static bool edit;
         public string GetProductRow { get; set; }
         string productID = "";
+        string helpstring = " ";
         public Product_View()
         {
             InitializeComponent();
@@ -36,6 +37,16 @@ namespace Design370
             comboBox1.Enabled = edit;
             button3.Enabled = edit;
             button2.Enabled = !edit;
+            if (edit)
+            {
+                this.Text = "Edit Product";
+                helpstring = "Edit_Product";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Product";
+                helpstring = "View_Product";
+            }
 
             try
             {
@@ -88,6 +99,8 @@ namespace Design370
             button3.Enabled = true;
             button2.Enabled = false;
             comboBox1.Enabled = true;
+            this.Text = "Edit Product";
+            helpstring = "Edit_Product";
         }
 
         private void Product_View_FormClosing(object sender, FormClosingEventArgs e)
@@ -142,6 +155,13 @@ namespace Design370
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void Product_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
         }
     }
 }

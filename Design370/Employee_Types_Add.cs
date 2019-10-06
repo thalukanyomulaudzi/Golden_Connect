@@ -67,5 +67,12 @@ namespace Design370
         {
             Validation.checkMark(lblTypeDescription, Validation.validate(txtTypeDescription.Text, "name"));
         }
+
+        private void Employee_Types_Add_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Add_Employee_Type";
+            helpForm.ShowDialog();
+        }
     }
 }

@@ -59,7 +59,7 @@
             // 
             this.btnProductTypeAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProductTypeAdd.Location = new System.Drawing.Point(337, 272);
-            this.btnProductTypeAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnProductTypeAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnProductTypeAdd.Name = "btnProductTypeAdd";
             this.btnProductTypeAdd.Size = new System.Drawing.Size(168, 29);
             this.btnProductTypeAdd.TabIndex = 74;
@@ -72,7 +72,7 @@
             this.cbxProductType.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxProductType.FormattingEnabled = true;
             this.cbxProductType.Location = new System.Drawing.Point(21, 272);
-            this.cbxProductType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxProductType.Margin = new System.Windows.Forms.Padding(4);
             this.cbxProductType.Name = "cbxProductType";
             this.cbxProductType.Size = new System.Drawing.Size(228, 26);
             this.cbxProductType.TabIndex = 73;
@@ -210,9 +210,13 @@
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HelpButton = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Product_Add";
             this.Text = "Add Product";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Product_Add_HelpButtonClicked);
             this.Activated += new System.EventHandler(this.Product_Add_Activated);
             this.Load += new System.EventHandler(this.Product_Add_Load);
             this.ResumeLayout(false);

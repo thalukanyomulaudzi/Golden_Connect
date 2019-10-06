@@ -150,10 +150,14 @@
             this.Controls.Add(this.button14);
             this.Controls.Add(this.dgvEmpType);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Employee_Types";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Types";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Employee_Types_HelpButtonClicked);
             this.Activated += new System.EventHandler(this.Employee_Types_Activated);
             this.Load += new System.EventHandler(this.Employee_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpType)).EndInit();

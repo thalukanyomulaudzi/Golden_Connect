@@ -9,6 +9,7 @@ namespace Design370
         public bool edit;
         public string customerID;
         public string GetCustomerRow { get; set; }
+        string helpstring = " ";
         public Customer_View()
         {
             InitializeComponent();
@@ -33,6 +34,17 @@ namespace Design370
             txtCustomerID.Enabled = edit;
             txtCustomerLast.Enabled = edit;
             txtCustomerPhone.Enabled = edit;
+            button2.Enabled = !edit;
+            if (edit)
+            {
+                this.Text = "Edit Customer";
+                helpstring = "Edit_Customer";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Customer";
+                helpstring = "View_Customer";
+            }
 
             try
             {
@@ -71,6 +83,8 @@ namespace Design370
             txtCustomerLast.Enabled = true;
             txtCustomerPhone.Enabled = true;
             button2.Enabled = false;
+            helpstring = "Edit_Customer";
+            this.Text = "Edit Customer";
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
@@ -128,6 +142,7 @@ namespace Design370
         private void Customer_View_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
         {
             HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
             helpForm.ShowDialog();
         }
     }

@@ -206,9 +206,13 @@
             this.Controls.Add(this.txtServiceName);
             this.Controls.Add(this.label8);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Service_Add";
             this.Text = "Add Service";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Service_Add_HelpButtonClicked);
             this.Activated += new System.EventHandler(this.Service_Add_Activated);
             this.ResumeLayout(false);
             this.PerformLayout();

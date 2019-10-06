@@ -333,7 +333,7 @@ namespace Design370
                 return;
             }
             Employee_Types EmployeeTypes = new Employee_Types();
-            EmployeeTypes.Show();
+            EmployeeTypes.ShowDialog();
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -1283,47 +1283,63 @@ namespace Design370
             }
             else if (tabControl1.SelectedTab == tabPage2)
             {
-                //Employee
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Employee_Tab_Page";
+                helpForm.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage3)
             {
-                //Timeslots
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Timeslots_Tab_Page";
+                helpForm.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage4)
             {
-                //Services
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Services_Tab_Page";
+                helpForm.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage5)
             {
-                //Products
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Products_Tab_Page";
+                helpForm.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage6)
             {
-                //Photoshoots
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Photoshoots_Tab_Page";
+                helpForm.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage7)
             {
-                //Events
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Photoshoots_Tab_Page";
+                helpForm.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage8)
             {
-                //Customer Order
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Customer_Order_Tab_Page";
+                helpForm.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage9)
             {
-                //Booking
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Booking_Tab_Page";
+                helpForm.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage10)
             {
-                //Supplier
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Supplier_Tab_Page";
+                helpForm.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage11)
             {
-                //Reports
-            }
-            else if (tabControl1.SelectedTab == tabPage12)
-            {
-                //Help
+                HelpForm helpForm = new HelpForm();
+                helpForm.HelpInfo = "Reports_Tab_Page";
+                helpForm.ShowDialog();
             }
         }
 

@@ -285,7 +285,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Customer_View";
-            this.Text = "Edit Customer";
+            this.Text = "View Customer";
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Customer_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Customer_View_FormClosing);
             this.Load += new System.EventHandler(this.Customer_View_Load);
