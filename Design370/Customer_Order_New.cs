@@ -109,7 +109,7 @@ namespace Design370
                 reader.Close();
             }
             pQty = Convert.ToInt32(nQty.Value);
-            lboxProductTypes.SelectedIndex = 0;
+            //lboxProductTypes.SelectedIndex = 0;
             btnAddProduct.Enabled = false;
             btnSaveOrder.Enabled = false;
             controls.Hide();

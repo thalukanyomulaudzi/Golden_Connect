@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <Login />
+  <Customer>
+    <Add_Customer />
+    <Search_Customer />
+    <Maintain_Customer />
+  </Customer>
+  <Employee>
+    <Add_Employee />
+    <Search_Employee />
+    <Maintain_Employee />
+    <Add_Employee_Type />
+    <Search_Employee_Type />
+    <Maintain_Employee_Type />
+  </Employee>
+  <Timeslot>
+    <Add_Timeslot />
+    <Search_Timeslot />
+    <Maintain_Timeslot />
+  </Timeslot>
+  <Services>
+    <Add_Service />
+    <Search_Service />
+    <Maintain_Service />
+    <Add_Service_Type />
+    <Search_Service_Type />
+    <Maintain_Service_Type />
+  </Services>
+  <Products>
+    <Add_Product />
+    <Search_Product />
+    <Maintain_Product />
+    <Add_Product_Type />
+    <Search_Product_Type />
+    <Maintain_Product_Type />
+  </Products>
+  <Photoshoots>
+    <Add_Photoshoot_Package />
+    <Search_Photoshoot_Package />
+    <Maintain_Photoshoot_Package />
+    <Add_Photoshoot_Type />
+    <View_Photoshoot_Type />
+    <Maintain_Photoshoot_Type />
+  </Photoshoots>
+  <Events>
+    <Add_Event_Package />
+    <Search_Event_Package />
+    <Maintain_Event_Package />
+    <Add_Event_Type />
+    <Search_Event_Type />
+    <Maintain_Event_Type />
+  </Events>
+  <Customer_Order>
+    <Placce_Customer_Order />
+    <Capture_Payment />
+    <Prepare_Order />
+    <Deliver_Order />
+  </Customer_Order>
+  <Booking>
+    <Add_Booking />
+    <Book_Event />
+    <Book_Photoshoot />
+    <Capture_Payment />
+  </Booking>
+  <Supplier>
+    <Add_Supplier />
+    <Search_Supplier />
+    <Maintain_Supplier />
+    <Place_Supplier_Order />
+    <Search_Supplier_Order />
+    <Maintain_Supplier_Order />
+  </Supplier>
+  <Reports>
+    <Customer_Report />
+    <Booking_Report />
+    <Supplier_Order_Report />
+    <Inventory_Report />
+    <Audit_Trail_Report />
+  </Reports>
+</root>

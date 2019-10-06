@@ -75,29 +75,10 @@ namespace Design370
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            if (txtCustomerFirst.Text.Length <= 0)
+            if (!Validation.validate(txtCustomerFirst.Text, "name") || !Validation.validate(txtCustomerLast.Text, "name") || !Validation.validate(txtCustomerID.Text, "id")
+                || !Validation.validate(txtCustomerPhone.Text, "phone") || !Validation.validate(txtCustomerEmail.Text, "email"))
             {
-                MessageBox.Show("Please provide a first name");
-                return;
-            }
-            else if (txtCustomerLast.Text.Length <= 0)
-            {
-                MessageBox.Show("Please provide a last name");
-                return;
-            }
-            else if (txtCustomerEmail.Text.Length <= 12)
-            {
-                MessageBox.Show("Please provide a valid id number");
-                return;
-            }
-            else if (txtCustomerPhone.Text.Length <= 9)
-            {
-                MessageBox.Show("Please provide a valid phone number");
-                return;
-            }
-            else if (txtCustomerEmail.Text.Length <= 8)
-            {
-                MessageBox.Show("Please provide a valid email address");
+                MessageBox.Show("All input fields must be valid");
                 return;
             }
             DBConnection dBConnection = DBConnection.Instance();
@@ -117,6 +98,37 @@ namespace Design370
                 MessageBox.Show(ee.Message);
             }
             this.Close();
+        }
+
+        private void TxtCustomerFirst_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerFirst, Validation.validate(txtCustomerFirst.Text, "name"));
+        }
+
+        private void TxtCustomerLast_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerLast, Validation.validate(txtCustomerLast.Text, "name"));
+        }
+
+        private void TxtCustomerID_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerID, Validation.validate(txtCustomerID.Text, "id"));
+        }
+
+        private void TxtCustomerPhone_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerPhone, Validation.validate(txtCustomerPhone.Text, "phone"));
+        }
+
+        private void TxtCustomerEmail_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblCustomerEmail, Validation.validate(txtCustomerEmail.Text, "email"));
+        }
+
+        private void Customer_View_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.ShowDialog();
         }
     }
 }

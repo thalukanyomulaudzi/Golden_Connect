@@ -112,6 +112,11 @@ namespace Design370
             }
         }
 
+        private void TxtAmount_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblOrderPayment, Validation.validate(txtAmount.Text, "price"));
+        }
+
         public void updateOrder(int orderid)
         {
             if (dbCon.IsConnect())

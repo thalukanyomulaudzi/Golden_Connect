@@ -1,7 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Design370
 {
@@ -46,7 +50,7 @@ namespace Design370
         private void button1_Click(object sender, EventArgs e)
         {
             Customer_Add customerAdd = new Customer_Add();
-            customerAdd.Show();
+            customerAdd.ShowDialog();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -61,25 +65,27 @@ namespace Design370
                 MessageBox.Show("Could not connect to database " + dbCon.DatabaseName + ", please contact network administrator");
                 Application.Exit();
             }
+            Login login = new Login();
+            login.ShowDialog();
             //Order.LoadOrders(dgvOrders);
             //testConnection(); //this throws out all customer names and surnames, only use during development
-            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
-            Booking.loadBookings(dgvBookings);
-            Order.LoadOrders(dgvOrders);
-            dgvPhotoshootPackage.Rows.Clear();
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            dgvEventPackages.Rows.Clear();
-            Event.LoadDGV(dgvEventPackages);
-            dgvProducts.Rows.Clear();
-            loadProducts();
-            dgvServices.Rows.Clear();
-            loadServices();
-            dataGridView10.Rows.Clear();
-            loadSuppliers();
-            empGrid.Rows.Clear();
-            Employee.LoadEmployees(empGrid);
-            dgvCustomers.Rows.Clear();
-            Customer.LoadCustomer(dgvCustomers);
+            //Timeslot.loadTimeslots(dgvTimeslots, DateTime.Today);
+            //Booking.loadBookings(dgvBookings);
+            //Order.LoadOrders(dgvOrders);
+            //dgvPhotoshootPackage.Rows.Clear();
+            //Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            //dgvEventPackages.Rows.Clear();
+            //Event.LoadDGV(dgvEventPackages);
+            //dgvProducts.Rows.Clear();
+            //loadProducts();
+            //dgvServices.Rows.Clear();
+            //loadServices();
+            //dataGridView10.Rows.Clear();
+            //loadSuppliers();
+            //empGrid.Rows.Clear();
+            //Employee.LoadEmployees(empGrid);
+            //dgvCustomers.Rows.Clear();
+            //Customer.LoadCustomer(dgvCustomers);
         }
 
         public void loadSuppliers()
@@ -580,7 +586,7 @@ namespace Design370
 
         private void Main_Form_Activated(object sender, EventArgs e)
         {
-            Timeslot.loadTimeslots(dgvTimeslots,DateTime.Now);
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
             dgvPhotoshootPackage.Rows.Clear();
             Photoshoot.LoadDGV(dgvPhotoshootPackage);
             dgvEventPackages.Rows.Clear();
@@ -640,6 +646,13 @@ namespace Design370
         {
             try
             {
+                DBConnection dBCon = DBConnection.Instance();
+                string query = "SELECT c.customer_id FROM customer c JOIN booking b ON b.customer_id = c.customer_id ";
+                var command = new MySqlCommand(query, dBCon.Connection);
+                var reader = command.ExecuteReader();
+                reader.Read();
+                Booking.customerID = reader.GetString(0);
+                reader.Close();
                 Booking.bookingID = dgvBookings.SelectedRows[0].Cells["bookingID"].Value.ToString();
                 Booking_Capture_Payment capture_Payment = new Booking_Capture_Payment();
                 capture_Payment.ShowDialog();
@@ -1116,10 +1129,123 @@ namespace Design370
             }
         }
 
+        private void txtSearchManual_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabPage12_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabPage12_Enter(object sender, EventArgs e)
+        {
+            axAcroPDF1.LoadFile("Manual.pdf");
+            axAcroPDF1.setShowToolbar(true);
+            LoadTreeViewFromXmlFile("Treeview.xml", treeView1);
+            treeView1.CollapseAll();
+        }
+
+        private void LoadTreeViewFromXmlFile(string filename, TreeView trv)
+        {
+            // Load the XML document.
+            XmlDocument xml_doc = new XmlDocument();
+            xml_doc.Load(filename);
+
+            // Add the root node's children to the TreeView.
+            trv.Nodes.Clear();
+            AddTreeViewChildNodes(trv.Nodes, xml_doc.DocumentElement);
+        }
+
+        private void AddTreeViewChildNodes(TreeNodeCollection parent_nodes, XmlNode xml_node)
+        {
+            foreach (XmlNode child_node in xml_node.ChildNodes)
+            {
+                // Make the new TreeView node.
+                TreeNode new_node = parent_nodes.Add(child_node.Name);
+
+                // Recursively make this node's descendants.
+                AddTreeViewChildNodes(new_node.Nodes, child_node);
+
+                // If this is a leaf node, make sure it's visible.
+                if (new_node.Nodes.Count == 0) new_node.EnsureVisible();
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            axAcroPDF1.Select();
+            SendKeys.Send("^(S)");
+        }
+
+        private void tabPage12_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Text == "Employee")
+            {
+                axAcroPDF1.setCurrentPage(1);
+            }
+            else if (e.Node.Text == "Add_Employee")
+            {
+                axAcroPDF1.setCurrentPage(2);
+            }
+            else if (e.Node.Text == "Search_Employee")
+            {
+                axAcroPDF1.setCurrentPage(1);
+            }
+            else if (e.Node.Text == "Maintain_Employee")
+            {
+                axAcroPDF1.setCurrentPage(4);
+            }
+            else if (e.Node.Text == "Photoshoots")
+            {
+                axAcroPDF1.setCurrentPage(5);
+            }
+        }
+
         private void BtnGenCustRpt_Click(object sender, EventArgs e)
         {
             CustomerReportList custRep = new CustomerReportList();
             custRep.ShowDialog();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            axAcroPDF1.Select();
+            SendKeys.Send("^f");
+            SendKeys.Flush();
+            SendKeys.Send(txtSearchManual.Text);
+            SendKeys.Flush();
+            SendKeys.Send("^g");
+            SendKeys.Flush();
+        }
+
+        private void txtSearchManual_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                axAcroPDF1.Select();
+                SendKeys.Send("^f");
+                SendKeys.Flush();
+                SendKeys.Send(txtSearchManual.Text);
+                SendKeys.Flush();
+                SendKeys.Send("^g");
+                SendKeys.Flush();
+            }
+        }
+        private void LblDebug_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("User access level: " + User.AccessLevel.ToString());
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 

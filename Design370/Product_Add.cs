@@ -22,9 +22,9 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(cbxProductTypes, "If disabled, choose a booking type first");
-            toolTip1.SetToolTip(txtProductame, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(txtProductDescr, "A maximum of 100 characters can be entered");
+            toolTip1.SetToolTip(cbxProductType, "If disabled, choose a booking type first");
+            toolTip1.SetToolTip(txtProductName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtProductDescription, "A maximum of 100 characters can be entered");
         }
 
 
@@ -37,18 +37,18 @@ namespace Design370
 
         private void Button2_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
 
         private void btnAddProducts_Click(object sender, EventArgs e)
         {
-            if (txtProductame.Text.Length <= 2 || txtProductDescr.Text.Length <= 5 || txtProductPrice.Text.Length == 0)
+            if (!Validation.validate(txtProductName.Text, "name") || !Validation.validate(txtProductDescription.Text, "name") || !Validation.validate(txtProductPrice.Text, "price"))
             {
-                MessageBox.Show("Invalid character length for name and/or description and/or price");
+                MessageBox.Show("All input fields must be valid");
                 return;
             }
-            if (cbxProductTypes.SelectedIndex <= -1)
+            if (cbxProductType.SelectedIndex <= -1)
             {
                 MessageBox.Show("Please select a product type");
                 return;
@@ -58,18 +58,18 @@ namespace Design370
                 if (dbCon.IsConnect())
                 {
                     string bookingTypeID = "";
-                    string query = "SELECT product_type_id FROM product_type WHERE product_type_name = '" + cbxProductTypes.SelectedItem.ToString() + "'";
+                    string query = "SELECT product_type_id FROM product_type WHERE product_type_name = '" + cbxProductType.SelectedItem.ToString() + "'";
                     var command = new MySqlCommand(query, dbCon.Connection);
                     var reader = command.ExecuteReader();
                     reader.Read();
                     bookingTypeID = reader.GetString(0);
                     reader.Close();
                     query = "INSERT INTO `product`(`product_name`, `product_description`, `product_price`, `product_type_id`) VALUES('" +
-                                txtProductame.Text + "', '" + txtProductDescr.Text + "', '" + txtProductPrice.Text + "', '" + bookingTypeID + "')";
+                                txtProductName.Text + "', '" + txtProductDescription.Text + "', '" + txtProductPrice.Text + "', '" + bookingTypeID + "')";
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
-                this.Close();
+                Close();
             }
             catch (Exception ee)
             {
@@ -89,7 +89,7 @@ namespace Design370
 
         private void Product_Add_Activated(object sender, EventArgs e)
         {
-            cbxProductTypes.Items.Clear();
+            cbxProductType.Items.Clear();
             try
             {
                 if (dbCon.IsConnect())
@@ -98,8 +98,8 @@ namespace Design370
                     var mysqlReader = mysqlCmd.ExecuteReader();
                     while (mysqlReader.Read())
                     {
-                        cbxProductTypes.Items.Add(mysqlReader["product_type_name"].ToString());
-                        cbxProductTypes.ValueMember = (mysqlReader["product_type_id"].ToString());
+                        cbxProductType.Items.Add(mysqlReader["product_type_name"].ToString());
+                        cbxProductType.ValueMember = (mysqlReader["product_type_id"].ToString());
 
                     }
                     mysqlReader.Close();
@@ -114,17 +114,17 @@ namespace Design370
 
         private void txtProductPrice_TextChanged(object sender, EventArgs e)
         {
-
+            Validation.checkMark(lblProductPrice, Validation.validate(txtProductPrice.Text, "price"));
         }
 
-        private void txtProductPrice_Validating(object sender, CancelEventArgs e)
+        private void TxtProductame_TextChanged(object sender, EventArgs e)
         {
-            
+            Validation.checkMark(lblProductName, Validation.validate(txtProductName.Text,"name"));
         }
 
-        private void txtProductPrice_Validated(object sender, EventArgs e)
+        private void TxtProductDescription_TextChanged(object sender, EventArgs e)
         {
-            
+            Validation.checkMark(lblProductDescription, Validation.validate(txtProductDescription.Text, "name"));
         }
     }
 }

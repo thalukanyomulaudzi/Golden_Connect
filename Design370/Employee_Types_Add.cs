@@ -30,6 +30,11 @@ namespace Design370
 
         private void Btn_AddType_Click(object sender, EventArgs e)
         {
+            if (!Validation.validate(txtTypeName.Text, "name") || !Validation.validate(txtTypeDescription.Text, "name"))
+            {
+                MessageBox.Show("All input fields must be valid");
+                return;
+            }
             addEmployeeType();
         }
 
@@ -37,7 +42,7 @@ namespace Design370
         {
             MysqlConnection.mysqlCon.Open();
             string empType = "INSERT INTO employee_type(employee_type_name, employee_type_description)" +
-                " VALUES('"+txtType.Text+"', '"+txtDescription.Text+"')";
+                " VALUES('"+txtTypeName.Text+"', '"+txtTypeDescription.Text+"')";
 
             try
             {
@@ -51,6 +56,16 @@ namespace Design370
                 MessageBox.Show("Error: " + ee.Message);
                 MysqlConnection.mysqlCon.Close();
             }
+        }
+
+        private void TxtType_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblTypeName, Validation.validate(txtTypeName.Text, "name"));
+        }
+
+        private void TxtDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblTypeDescription, Validation.validate(txtTypeDescription.Text, "name"));
         }
     }
 }

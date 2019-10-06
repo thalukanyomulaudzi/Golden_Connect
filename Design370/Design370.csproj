@@ -291,6 +291,13 @@
       <DependentUpon>Event_Types_View.cs</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="Help.cs" />
+    <Compile Include="HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -405,6 +412,7 @@
     <Compile Include="ReportOrder.Designer.cs">
       <DependentUpon>ReportOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Schedule.cs" />
     <Compile Include="Service_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -484,6 +492,14 @@
     <Compile Include="View_Order_Details.Designer.cs">
       <DependentUpon>View_Order_Details.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="User_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_Add.Designer.cs">
+      <DependentUpon>User_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="Booking_Capture_Payment.resx">
       <DependentUpon>Booking_Capture_Payment.cs</DependentUpon>
     </EmbeddedResource>
@@ -554,6 +570,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Event_Types_View.resx">
       <DependentUpon>Event_Types_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -658,6 +677,9 @@
     <EmbeddedResource Include="View_Order_Details.resx">
       <DependentUpon>View_Order_Details.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User_Add.resx">
+      <DependentUpon>User_Add.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -676,6 +698,7 @@
     <None Include="Resources\event.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Manual.pdf" />
     <None Include="Resources\photoshoot.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -760,6 +783,68 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxMicrosoft.Office.Interop.OutlookViewCtl">
+      <Guid>{0006F062-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxXtremeCalendarControl">
+      <Guid>{79EB16A5-917F-4145-AB5F-D3AEA60612D8}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>81</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.OutlookViewCtl">
+      <Guid>{0006F062-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="XtremeCalendarControl">
+      <Guid>{79EB16A5-917F-4145-AB5F-D3AEA60612D8}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>81</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

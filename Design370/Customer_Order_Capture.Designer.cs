@@ -38,6 +38,7 @@
             this.lblAmountDue = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxPaymentType = new System.Windows.Forms.ComboBox();
+            this.lblOrderPayment = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +60,7 @@
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(116, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 41);
+            this.label2.Size = new System.Drawing.Size(130, 41);
             this.label2.TabIndex = 1;
             this.label2.Text = "Order ID : ";
             this.label2.Click += new System.EventHandler(this.Label2_Click);
@@ -68,9 +69,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Bahnschrift Condensed", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(56, 293);
+            this.label3.Location = new System.Drawing.Point(49, 293);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 28);
+            this.label3.Size = new System.Drawing.Size(155, 28);
             this.label3.TabIndex = 1;
             this.label3.Text = "Payment Amount : ";
             // 
@@ -81,6 +82,7 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(154, 28);
             this.txtAmount.TabIndex = 3;
+            this.txtAmount.TextChanged += new System.EventHandler(this.TxtAmount_TextChanged);
             // 
             // btnSavePayment
             // 
@@ -110,7 +112,7 @@
             this.label4.Font = new System.Drawing.Font("Bahnschrift Condensed", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(73, 145);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 41);
+            this.label4.Size = new System.Drawing.Size(173, 41);
             this.label4.TabIndex = 1;
             this.label4.Text = "Amount Due : ";
             this.label4.Click += new System.EventHandler(this.Label2_Click);
@@ -121,7 +123,7 @@
             this.lblAmountDue.Font = new System.Drawing.Font("Bahnschrift Condensed", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmountDue.Location = new System.Drawing.Point(233, 145);
             this.lblAmountDue.Name = "lblAmountDue";
-            this.lblAmountDue.Size = new System.Drawing.Size(78, 41);
+            this.lblAmountDue.Size = new System.Drawing.Size(77, 41);
             this.lblAmountDue.TabIndex = 1;
             this.lblAmountDue.Text = "R0.00";
             this.lblAmountDue.Click += new System.EventHandler(this.Label2_Click);
@@ -130,9 +132,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Bahnschrift Condensed", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(80, 237);
+            this.label5.Location = new System.Drawing.Point(73, 240);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 28);
+            this.label5.Size = new System.Drawing.Size(131, 28);
             this.label5.TabIndex = 1;
             this.label5.Text = "Payment Type : ";
             // 
@@ -146,11 +148,22 @@
             this.cbxPaymentType.TabIndex = 5;
             this.cbxPaymentType.SelectedIndexChanged += new System.EventHandler(this.CbxPaymentType_SelectedIndexChanged);
             // 
+            // lblOrderPayment
+            // 
+            this.lblOrderPayment.AutoSize = true;
+            this.lblOrderPayment.ForeColor = System.Drawing.Color.Red;
+            this.lblOrderPayment.Location = new System.Drawing.Point(370, 296);
+            this.lblOrderPayment.Name = "lblOrderPayment";
+            this.lblOrderPayment.Size = new System.Drawing.Size(23, 24);
+            this.lblOrderPayment.TabIndex = 87;
+            this.lblOrderPayment.Text = "✘";
+            // 
             // Customer_Order_Capture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 398);
+            this.Controls.Add(this.lblOrderPayment);
             this.Controls.Add(this.cbxPaymentType);
             this.Controls.Add(this.btnSavePayment);
             this.Controls.Add(this.label5);
@@ -185,5 +198,6 @@
         private System.Windows.Forms.Label lblAmountDue;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbxPaymentType;
+        private System.Windows.Forms.Label lblOrderPayment;
     }
 }

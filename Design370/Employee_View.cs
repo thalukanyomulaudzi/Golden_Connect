@@ -27,21 +27,16 @@ namespace Design370
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox3, "A maximum of 13 characters can be entered");
-            toolTip1.SetToolTip(textBox4, "A maximum of 10 characters can be entered");
-            toolTip1.SetToolTip(textBox7, "A maximum of 100 characters can be entered");
-            toolTip1.SetToolTip(textBox5, "A maximum of 50 characters can be entered");
-            toolTip1.SetToolTip(comboBox3, "Please select a gender");
-            toolTip1.SetToolTip(comboBox2, "Please select a marital status");
-            toolTip1.SetToolTip(cbxEmpTitle, "Please select a title");
-            toolTip1.SetToolTip(comboBox4, "Please select an employee type");
-        }
-
-        private void Label6_Click(object sender, EventArgs e)
-        {
-
+            toolTip1.SetToolTip(txtEmployeeFirst, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtEmployeeLast, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtEmployeeID, "A maximum of 13 characters can be entered");
+            toolTip1.SetToolTip(txtEmployeePhone, "A maximum of 10 characters can be entered");
+            toolTip1.SetToolTip(txtEmployeeAddress, "A maximum of 100 characters can be entered");
+            toolTip1.SetToolTip(txtEmployeeEmail, "A maximum of 50 characters can be entered");
+            toolTip1.SetToolTip(cbxEmployeeGender, "Please select a gender");
+            toolTip1.SetToolTip(cbxEmployeeStatus, "Please select a marital status");
+            toolTip1.SetToolTip(cbxEmployeeTitle, "Please select a title");
+            toolTip1.SetToolTip(cbxEmployeeType, "Please select an employee type");
         }
 
         private void TextBox6_TextChanged(object sender, EventArgs e)
@@ -61,7 +56,7 @@ namespace Design370
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        cbxEmpTitle.Items.Add(reader.GetString(1));
+                        cbxEmployeeTitle.Items.Add(reader.GetString(1));
                     }
                     reader.Close();
                 }
@@ -84,7 +79,7 @@ namespace Design370
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        comboBox4.Items.Add(reader.GetString(1));
+                        cbxEmployeeType.Items.Add(reader.GetString(1));
                     }
                     reader.Close();
                 }
@@ -107,7 +102,7 @@ namespace Design370
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        comboBox2.Items.Add(reader.GetString(1));
+                        cbxEmployeeStatus.Items.Add(reader.GetString(1));
                     }
                     reader.Close();
                 }
@@ -120,21 +115,21 @@ namespace Design370
 
         private void Employee_View_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled = edit;
-            textBox2.Enabled = edit;
-            textBox3.Enabled = edit;
-            textBox4.Enabled = edit;
-            textBox5.Enabled = edit;
-            textBox7.Enabled = edit;
-            button3.Enabled = edit;
-            cbxEmpTitle.Enabled = edit;
-            comboBox2.Enabled = edit;
-            comboBox3.Enabled = edit;
-            comboBox4.Enabled = edit;
-            button2.Enabled = !edit;
+            txtEmployeeFirst.Enabled = edit;
+            txtEmployeeLast.Enabled = edit;
+            txtEmployeeID.Enabled = edit;
+            txtEmployeePhone.Enabled = edit;
+            txtEmployeeEmail.Enabled = edit;
+            txtEmployeeAddress.Enabled = edit;
+            btnEmployeeTypeAdd.Enabled = edit;
+            cbxEmployeeTitle.Enabled = edit;
+            cbxEmployeeStatus.Enabled = edit;
+            cbxEmployeeGender.Enabled = edit;
+            cbxEmployeeType.Enabled = edit;
+            btnEmployeeEdit.Enabled = !edit;
 
-            comboBox3.Items.Add("Male");
-            comboBox3.Items.Add("Female");
+            cbxEmployeeGender.Items.Add("Male");
+            cbxEmployeeGender.Items.Add("Female");
             loadTitles();
             loadMaritalStatus();
             loadTypes();
@@ -149,12 +144,12 @@ namespace Design370
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        textBox1.Text = reader.GetString(1);
-                        textBox2.Text = reader.GetString(2);
-                        textBox3.Text = reader.GetString(3);
-                        textBox4.Text = reader.GetString(4);
-                        textBox5.Text = reader.GetString(5);
-                        textBox7.Text = reader.GetString(6);
+                        txtEmployeeFirst.Text = reader.GetString(1);
+                        txtEmployeeLast.Text = reader.GetString(2);
+                        txtEmployeeID.Text = reader.GetString(3);
+                        txtEmployeePhone.Text = reader.GetString(4);
+                        txtEmployeeEmail.Text = reader.GetString(5);
+                        txtEmployeeAddress.Text = reader.GetString(6);
                         employee_typeID = reader.GetString(7);
                         gender = reader.GetString(8);
                         marital_statusID = reader.GetString(9);
@@ -163,11 +158,11 @@ namespace Design370
                     reader.Close();
                     if (gender == "M")
                     {
-                        comboBox3.SelectedIndex = comboBox3.FindStringExact("Male");
+                        cbxEmployeeGender.SelectedIndex = cbxEmployeeGender.FindStringExact("Male");
                     }
                     else if (gender == "F")
                     {
-                        comboBox3.SelectedIndex = comboBox3.FindStringExact("Female");
+                        cbxEmployeeGender.SelectedIndex = cbxEmployeeGender.FindStringExact("Female");
                     }
                     query = "SELECT title_name FROM title WHERE title_id = '" + titleID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
@@ -177,7 +172,7 @@ namespace Design370
                         title = reader.GetString(0);
                     }
                     reader.Close();
-                    cbxEmpTitle.SelectedIndex = cbxEmpTitle.FindStringExact(title);
+                    cbxEmployeeTitle.SelectedIndex = cbxEmployeeTitle.FindStringExact(title);
                     query = "SELECT employee_type_name FROM employee_type WHERE employee_type_id = '" + employee_typeID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
@@ -186,7 +181,7 @@ namespace Design370
                         employee_type = reader.GetString(0);
                     }
                     reader.Close();
-                    comboBox4.SelectedIndex = comboBox4.FindStringExact(employee_type);
+                    cbxEmployeeType.SelectedIndex = cbxEmployeeType.FindStringExact(employee_type);
                     query = "SELECT marital_status_name FROM marital_status WHERE marital_status_id = '" + marital_statusID + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
@@ -195,7 +190,7 @@ namespace Design370
                         marital_status = reader.GetString(0);
                     }
                     reader.Close();
-                    comboBox2.SelectedIndex = comboBox2.FindStringExact(marital_status);
+                    cbxEmployeeStatus.SelectedIndex = cbxEmployeeStatus.FindStringExact(marital_status);
                 }
             }
             catch (Exception ee)
@@ -206,70 +201,32 @@ namespace Design370
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
-            textBox3.Enabled = true;
-            textBox4.Enabled = true;
-            textBox5.Enabled = true;
-            textBox7.Enabled = true;
-            cbxEmpTitle.Enabled = true;
-            comboBox2.Enabled = true;
-            comboBox3.Enabled = true;
-            comboBox4.Enabled = true;
-            button3.Enabled = true;
-            button2.Enabled = false;
+            txtEmployeeFirst.Enabled = true;
+            txtEmployeeLast.Enabled = true;
+            txtEmployeeID.Enabled = true;
+            txtEmployeePhone.Enabled = true;
+            txtEmployeeEmail.Enabled = true;
+            txtEmployeeAddress.Enabled = true;
+            cbxEmployeeTitle.Enabled = true;
+            cbxEmployeeStatus.Enabled = true;
+            cbxEmployeeGender.Enabled = true;
+            cbxEmployeeType.Enabled = true;
+            btnEmployeeTypeAdd.Enabled = true;
+            btnEmployeeEdit.Enabled = false;
         }
         
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (cbxEmpTitle.SelectedIndex <= -1)
+            if (!Validation.validate(txtEmployeeFirst.Text, "name") || !Validation.validate(txtEmployeeLast.Text, "name") || !Validation.validate(txtEmployeeID.Text, "price")
+                || !Validation.validate(txtEmployeeEmail.Text, "name") || !Validation.validate(txtEmployeePhone.Text, "name"))
             {
-                MessageBox.Show("Please select a title");
+                MessageBox.Show("All input fields must be valid");
                 return;
             }
-            else if (textBox3.Text.Length <= 12)
+            if (cbxEmployeeTitle.SelectedIndex < 0 || cbxEmployeeGender.SelectedIndex < 0 
+                || cbxEmployeeStatus.SelectedIndex < 0 || cbxEmployeeType.SelectedIndex < 0)
             {
-                MessageBox.Show("Please provide a valid id number");
-                return;
-            }
-            else if (textBox1.Text.Length <= 0)
-            {
-                MessageBox.Show("Please provide a first name");
-                return;
-            }
-            else if (comboBox3.SelectedIndex <= -1)
-            {
-                MessageBox.Show("Please select a gender");
-                return;
-            }
-            else if (textBox2.Text.Length <= 0)
-            {
-                MessageBox.Show("Please provide a last name");
-                return;
-            }
-            else if (comboBox2.SelectedIndex <= -1)
-            {
-                MessageBox.Show("Please select a marital status");
-                return;
-            }
-            else if (textBox7.Text.Length <= 10)
-            {
-                MessageBox.Show("Please provide an address");
-                return;
-            }
-            else if (textBox4.Text.Length <= 9)
-            {
-                MessageBox.Show("Please enter a valid phone number");
-                return;
-            }
-            else if (textBox5.Text.Length <= 8)
-            {
-                MessageBox.Show("Please provide a valid email address");
-                return;
-            }
-            else if (comboBox4.SelectedIndex <= -1)
-            {
-                MessageBox.Show("Please select an employee type");
+                MessageBox.Show("Please choose values for all comboboxes");
                 return;
             }
             DBConnection dBConnection = DBConnection.Instance();
@@ -281,7 +238,7 @@ namespace Design370
                     string maritalID = " ";
                     string employee_type_ID = " ";
                     string gender = " ";
-                    string query = "SELECT title_id FROM title WHERE title_name = '" + cbxEmpTitle.SelectedItem.ToString() + "'";
+                    string query = "SELECT title_id FROM title WHERE title_name = '" + cbxEmployeeTitle.SelectedItem.ToString() + "'";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -289,7 +246,7 @@ namespace Design370
                         titleID = reader.GetString(0);
                     }
                     reader.Close();
-                    query = "SELECT marital_status_id FROM marital_status WHERE marital_status_name = '" + comboBox2.SelectedItem.ToString() + "'";
+                    query = "SELECT marital_status_id FROM marital_status WHERE marital_status_name = '" + cbxEmployeeStatus.SelectedItem.ToString() + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
                     while (reader.Read())
@@ -297,7 +254,7 @@ namespace Design370
                         maritalID = reader.GetString(0);
                     }
                     reader.Close();
-                    query = "SELECT employee_type_id FROM employee_type WHERE employee_type_name = '" + comboBox4.SelectedItem.ToString() + "'";
+                    query = "SELECT employee_type_id FROM employee_type WHERE employee_type_name = '" + cbxEmployeeType.SelectedItem.ToString() + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     reader = command.ExecuteReader();
                     while (reader.Read())
@@ -305,10 +262,10 @@ namespace Design370
                         employee_type_ID = reader.GetString(0);
                     }
                     reader.Close();
-                    gender = comboBox3.SelectedItem.ToString().Substring(0, 1);
-                    query = "UPDATE `employee` SET `employee_id` = '" + GetEmployeeRow + "', `employee_first` = '" + textBox1.Text + "', `employee_last` = '" + textBox2.Text +
-                        "', `employee_idnumber` = '" + textBox3.Text + "', `employee_phone` = '" + textBox4.Text + "', `employee_email` = '" + textBox5.Text.ToLower() + "', " +
-                        "`employee_address` = '" + textBox7.Text + "', `employee_type` = '" + employee_type_ID + "', `employee_marital` = '" + maritalID + "', " +
+                    gender = cbxEmployeeGender.SelectedItem.ToString().Substring(0, 1);
+                    query = "UPDATE `employee` SET `employee_id` = '" + GetEmployeeRow + "', `employee_first` = '" + txtEmployeeFirst.Text + "', `employee_last` = '" + txtEmployeeLast.Text +
+                        "', `employee_idnumber` = '" + txtEmployeeID.Text + "', `employee_phone` = '" + txtEmployeePhone.Text + "', `employee_email` = '" + txtEmployeeEmail.Text.ToLower() + "', " +
+                        "`employee_address` = '" + txtEmployeeAddress.Text + "', `employee_type` = '" + employee_type_ID + "', `employee_marital` = '" + maritalID + "', " +
                         "`employee_title` = '" + titleID + "' WHERE employee_id = '" + GetEmployeeRow + "'";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     command.ExecuteNonQuery();
@@ -332,49 +289,38 @@ namespace Design370
             employee_Types_Add.ShowDialog();
         }
 
-        private void Label4_Click(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void Label2_Click(object sender, EventArgs e)
+        private void TxtEmployeeAddress_TextChanged(object sender, EventArgs e)
         {
-
         }
 
-        private void Label1_Click(object sender, EventArgs e)
+        private void TxtEmployeeFirst_TextChanged(object sender, EventArgs e)
         {
-
+            Validation.checkMark(lblEmployeeFirst, Validation.validate(txtEmployeeFirst.Text, "name"));
         }
 
-        private void Label10_Click(object sender, EventArgs e)
+        private void TxtEmployeeLast_TextChanged(object sender, EventArgs e)
         {
-
+            Validation.checkMark(lblEmployeeLast, Validation.validate(txtEmployeeLast.Text, "name"));
         }
 
-        private void Label9_Click(object sender, EventArgs e)
+        private void TxtEmployeeID_TextChanged(object sender, EventArgs e)
         {
-
+            Validation.checkMark(lblEmployeeID, Validation.validate(txtEmployeeID.Text, "id"));
         }
 
-        private void Label8_Click(object sender, EventArgs e)
+        private void TxtEmployeePhone_TextChanged(object sender, EventArgs e)
         {
-
+            Validation.checkMark(lblEmployeePhone, Validation.validate(txtEmployeePhone.Text, "phone"));
         }
 
-        private void Label7_Click(object sender, EventArgs e)
+        private void TxtEmployeeEmail_TextChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void Label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label3_Click(object sender, EventArgs e)
-        {
-
+            Validation.checkMark(lblEmployeeEmail, Validation.validate(txtEmployeeEmail.Text, "email"));
         }
     }
 }

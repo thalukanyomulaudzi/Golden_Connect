@@ -70,5 +70,24 @@ namespace Design370
                 MessageBox.Show(err.Message);
             }
         }
+
+        private void TxtEmpTypeName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblTypeName, Validation.validate(txtEmpTypeName.Text, "name"));
+        }
+
+        private void TxtEmpTypeDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblTypeDescription, Validation.validate(txtEmpTypeDescription.Text, "name"));
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            if (!Validation.validate(txtEmpTypeName.Text, "name") || !Validation.validate(txtEmpTypeDescription.Text, "name"))
+            {
+                MessageBox.Show("All input fields must be valid");
+                return;
+            }
+        }
     }
 }

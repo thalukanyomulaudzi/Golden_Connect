@@ -168,7 +168,13 @@ namespace Design370
             this.button25 = new System.Windows.Forms.Button();
             this.btnGenCustRpt = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
+            this.button2 = new System.Windows.Forms.Button();
+            this.txtSearchManual = new System.Windows.Forms.TextBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblDebug = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -191,6 +197,8 @@ namespace Design370
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
             this.tabPage11.SuspendLayout();
+            this.tabPage12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -543,8 +551,9 @@ namespace Design370
             // 
             // btnTimeslotAdd
             // 
+            this.btnTimeslotAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimeslotAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimeslotAdd.Location = new System.Drawing.Point(623, 16);
+            this.btnTimeslotAdd.Location = new System.Drawing.Point(946, 16);
             this.btnTimeslotAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeslotAdd.Name = "btnTimeslotAdd";
             this.btnTimeslotAdd.Size = new System.Drawing.Size(151, 28);
@@ -557,6 +566,9 @@ namespace Design370
             // 
             this.dgvTimeslots.AllowUserToAddRows = false;
             this.dgvTimeslots.AllowUserToDeleteRows = false;
+            this.dgvTimeslots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTimeslots.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTimeslots.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvTimeslots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -573,7 +585,7 @@ namespace Design370
             this.dgvTimeslots.Name = "dgvTimeslots";
             this.dgvTimeslots.ReadOnly = true;
             this.dgvTimeslots.RowTemplate.Height = 24;
-            this.dgvTimeslots.Size = new System.Drawing.Size(763, 356);
+            this.dgvTimeslots.Size = new System.Drawing.Size(1086, 378);
             this.dgvTimeslots.TabIndex = 16;
             // 
             // timeslotDay1
@@ -1206,14 +1218,16 @@ namespace Design370
             this.dgvOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrders.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrders.Location = new System.Drawing.Point(5, 59);
+            this.dgvOrders.Location = new System.Drawing.Point(11, 61);
             this.dgvOrders.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.ReadOnly = true;
             this.dgvOrders.RowTemplate.Height = 24;
-            this.dgvOrders.Size = new System.Drawing.Size(952, 500);
+            this.dgvOrders.Size = new System.Drawing.Size(1086, 376);
             this.dgvOrders.TabIndex = 46;
             this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellContentClick);
             // 
@@ -1221,7 +1235,7 @@ namespace Design370
             // 
             this.button18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button18.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(837, 11);
+            this.button18.Location = new System.Drawing.Point(985, 16);
             this.button18.Margin = new System.Windows.Forms.Padding(2);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(112, 28);
@@ -1234,7 +1248,7 @@ namespace Design370
             // 
             this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button17.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(717, 11);
+            this.button17.Location = new System.Drawing.Point(865, 16);
             this.button17.Margin = new System.Windows.Forms.Padding(2);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(116, 28);
@@ -1261,7 +1275,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(51, 18);
+            this.label15.Size = new System.Drawing.Size(52, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Show :";
             // 
@@ -1289,7 +1303,7 @@ namespace Design370
             // 
             this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button16.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(585, 11);
+            this.button16.Location = new System.Drawing.Point(733, 16);
             this.button16.Margin = new System.Windows.Forms.Padding(2);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(128, 28);
@@ -1315,9 +1329,10 @@ namespace Design370
             // 
             // btnBookingAdd
             // 
-            this.btnBookingAdd.Location = new System.Drawing.Point(585, 13);
+            this.btnBookingAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBookingAdd.Location = new System.Drawing.Point(945, 13);
             this.btnBookingAdd.Name = "btnBookingAdd";
-            this.btnBookingAdd.Size = new System.Drawing.Size(189, 29);
+            this.btnBookingAdd.Size = new System.Drawing.Size(151, 29);
             this.btnBookingAdd.TabIndex = 54;
             this.btnBookingAdd.Text = "Add Booking";
             this.btnBookingAdd.UseVisualStyleBackColor = true;
@@ -1327,6 +1342,9 @@ namespace Design370
             // 
             this.dgvBookings.AllowUserToAddRows = false;
             this.dgvBookings.AllowUserToDeleteRows = false;
+            this.dgvBookings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBookings.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1345,7 +1363,7 @@ namespace Design370
             this.dgvBookings.RowHeadersVisible = false;
             this.dgvBookings.RowTemplate.Height = 24;
             this.dgvBookings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBookings.Size = new System.Drawing.Size(763, 349);
+            this.dgvBookings.Size = new System.Drawing.Size(1086, 377);
             this.dgvBookings.TabIndex = 53;
             this.dgvBookings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookings_CellContentClick);
             // 
@@ -1416,8 +1434,9 @@ namespace Design370
             // 
             // btnBookingCapture
             // 
+            this.btnBookingCapture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBookingCapture.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBookingCapture.Location = new System.Drawing.Point(11, 425);
+            this.btnBookingCapture.Location = new System.Drawing.Point(945, 449);
             this.btnBookingCapture.Margin = new System.Windows.Forms.Padding(2);
             this.btnBookingCapture.Name = "btnBookingCapture";
             this.btnBookingCapture.Size = new System.Drawing.Size(151, 29);
@@ -1635,12 +1654,70 @@ namespace Design370
             // 
             // tabPage12
             // 
+            this.tabPage12.Controls.Add(this.button3);
+            this.tabPage12.Controls.Add(this.axAcroPDF1);
+            this.tabPage12.Controls.Add(this.button2);
+            this.tabPage12.Controls.Add(this.txtSearchManual);
+            this.tabPage12.Controls.Add(this.treeView1);
             this.tabPage12.Location = new System.Drawing.Point(154, 4);
             this.tabPage12.Name = "tabPage12";
             this.tabPage12.Size = new System.Drawing.Size(1104, 608);
             this.tabPage12.TabIndex = 11;
             this.tabPage12.Text = "Help";
             this.tabPage12.UseVisualStyleBackColor = true;
+            this.tabPage12.Click += new System.EventHandler(this.tabPage12_Click);
+            this.tabPage12.Enter += new System.EventHandler(this.tabPage12_Enter);
+            this.tabPage12.Leave += new System.EventHandler(this.tabPage12_Leave);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(204, 24);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(70, 26);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Search";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // axAcroPDF1
+            // 
+            this.axAcroPDF1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.axAcroPDF1.Enabled = true;
+            this.axAcroPDF1.Location = new System.Drawing.Point(294, 24);
+            this.axAcroPDF1.Name = "axAcroPDF1";
+            this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
+            this.axAcroPDF1.Size = new System.Drawing.Size(783, 515);
+            this.axAcroPDF1.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(879, 556);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(198, 29);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Download Help Document";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // txtSearchManual
+            // 
+            this.txtSearchManual.Location = new System.Drawing.Point(21, 24);
+            this.txtSearchManual.Name = "txtSearchManual";
+            this.txtSearchManual.Size = new System.Drawing.Size(177, 25);
+            this.txtSearchManual.TabIndex = 2;
+            this.txtSearchManual.TextChanged += new System.EventHandler(this.txtSearchManual_TextChanged);
+            this.txtSearchManual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchManual_KeyDown);
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(21, 64);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(251, 475);
+            this.treeView1.TabIndex = 0;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // pictureBox1
             // 
@@ -1653,6 +1730,16 @@ namespace Design370
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // lblDebug
+            // 
+            this.lblDebug.AutoSize = true;
+            this.lblDebug.Location = new System.Drawing.Point(1157, 9);
+            this.lblDebug.Name = "lblDebug";
+            this.lblDebug.Size = new System.Drawing.Size(94, 13);
+            this.lblDebug.TabIndex = 13;
+            this.lblDebug.Text = "Debug Information";
+            this.lblDebug.Click += new System.EventHandler(this.LblDebug_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1660,6 +1747,7 @@ namespace Design370
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1262, 693);
+            this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -1702,8 +1790,12 @@ namespace Design370
             this.tabPage10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
             this.tabPage11.ResumeLayout(false);
+            this.tabPage12.ResumeLayout(false);
+            this.tabPage12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1870,6 +1962,12 @@ namespace Design370
         private DataGridViewButtonColumn CustView;
         private DataGridViewButtonColumn CustEdit;
         private DataGridViewButtonColumn CustDelete;
+        private TreeView treeView1;
+        private TextBox txtSearchManual;
+        private Button button2;
+        private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
+        private Label lblDebug;
+        private Button button3;
     }
 }
 
