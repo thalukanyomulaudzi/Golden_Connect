@@ -284,7 +284,7 @@ namespace Design370
                 return;
             }
             Customer_Order_Details cOrder = new Customer_Order_Details();
-            cOrder.ShowDialog();
+            cOrder.Show();
         }
 
         private void DataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1227,6 +1227,13 @@ namespace Design370
                 axAcroPDF1.setCurrentPage(4);
             else if (e.Node.Text == "Photoshoots")
                 axAcroPDF1.setCurrentPage(5);
+            }
+        }
+
+        private void BtnGenCustRpt_Click(object sender, EventArgs e)
+        {
+            CustomerReportList custRep = new CustomerReportList();
+            custRep.ShowDialog();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
