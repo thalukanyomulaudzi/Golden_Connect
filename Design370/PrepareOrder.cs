@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.Office.Interop.Word;
-using System.Xml;
-using System.Xml.Linq;
-using Microsoft.CSharp;
+﻿using Microsoft.Office.Interop.Word;
 using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
 
 namespace Design370
 {
@@ -21,61 +11,24 @@ namespace Design370
         {
             InitializeComponent();
         }
-        public static string CustomerNames;
         DBConnection dbCon = DBConnection.Instance();
-        DataGridViewButtonColumn viewOrder, prepare;
-        public int each = 0;
-        public int size;
-        OrderList[] olist = null;
-        public int getSize()
-        {
-            if (dbCon.IsConnect())
-            {
-                var cmd = new MySqlCommand("SELECT COUNT(`order_id`) FROM `order`, `order_status` WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND " +
-                    "`order_status`.`order_status_name` = 'Ready'", dbCon.Connection);
-                var OrderReader = cmd.ExecuteReader();
-                OrderReader.Read();
-                if (OrderReader.HasRows)
-                {
-                    size = Convert.ToInt32(OrderReader[0]);
-                }
-                OrderReader.Close();
-            }
-            return size;
-        }
-
         private void PrepareOrder_Load(object sender, EventArgs e)
         {
             if (dbCon.IsConnect())
             {
-                dgvPrepareCustomerOrder.Rows.Clear();
-                viewOrder = new DataGridViewButtonColumn();
-                prepare = new DataGridViewButtonColumn();
-                viewOrder.HeaderText = "View Order";
-                viewOrder.Text = "View";
-                viewOrder.UseColumnTextForButtonValue = true;
-                prepare.HeaderText = "Prepare Order";
-                prepare.Text = "Prepared";
-                prepare.Width = 120;
-                prepare.UseColumnTextForButtonValue = true;
-                dgvPrepareCustomerOrder.ColumnCount = 4;
-                dgvPrepareCustomerOrder.Columns[0].Name = "Order ID";
-                dgvPrepareCustomerOrder.Columns[0].Width = 140;
-                dgvPrepareCustomerOrder.Columns[1].Name = "Customer Name";
-                dgvPrepareCustomerOrder.Columns[1].Width = 170;
-                dgvPrepareCustomerOrder.Columns[2].Name = "Order Date";
+                dgvPrepareCustomerOrder.ColumnCount = 5;
+                dgvPrepareCustomerOrder.Columns[2].Name = "Order ID";
                 dgvPrepareCustomerOrder.Columns[2].Width = 140;
-                dgvPrepareCustomerOrder.Columns[3].Name = "Order Quantity";
-                dgvPrepareCustomerOrder.Columns[3].Width = 130;
-                dgvPrepareCustomerOrder.Columns.Add(viewOrder);
-                dgvPrepareCustomerOrder.Columns.Add(prepare);
-                string ordersToBePrepared = "SELECT `order_id`, `customer_first`, `customer_last`, `order_date_placed`, `order_quantity` FROM `order`, `order_status`, `customer` WHERE `order_status`.`order_status_name` = 'Ready' AND `order_status`.`order_status_id` = `order`.`order_status_id` AND " +
-                    "`order`.`customer_id` = `customer`.`customer_id` AND `order_status`.`order_status_name` = 'Ready'";
+                dgvPrepareCustomerOrder.Columns[3].Name = "Order Date";
+                dgvPrepareCustomerOrder.Columns[3].Width = 140;
+                dgvPrepareCustomerOrder.Columns[4].Name = "Order Quantity";
+                dgvPrepareCustomerOrder.Columns[4].Width = 140;
+                string ordersToBePrepared = "SELECT * FROM `order`, `order_status` WHERE `order_status`.`order_status_name` = 'Paid' AND `order_status`.`order_status_id` = `order`.`order_status_id`";
                 var command = new MySqlCommand(ordersToBePrepared, dbCon.Connection);
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    dgvPrepareCustomerOrder.Rows.Add(reader[0], reader[1].ToString() + ", " + reader[2].ToString(), reader[3], reader[4]);
+                    dgvPrepareCustomerOrder.Rows.Add("", "", reader[0], reader[1], reader[5]);
                 }
                 reader.Close();
             }
@@ -83,31 +36,15 @@ namespace Design370
 
         private void DgvPrepareCustomerOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            View_Order_Details viewOrder = new View_Order_Details();
-            switch (e.ColumnIndex)
+            switch(e.ColumnIndex)
             {
-                case 5:
-                    Order.UpdateOrderStatus(Convert.ToInt32(dgvPrepareCustomerOrder.Rows[e.RowIndex].Cells[0].Value), "Complete");
+                case 0:
+                    Order.UpdateOrderStatus(Convert.ToInt32(dgvPrepareCustomerOrder.Rows[e.RowIndex].Cells[2].Value), "Prepared");
                     break;
-                case 4:
-                    if (e.RowIndex >= 0)
-                    {
-                        int orderID = Convert.ToInt32(dgvPrepareCustomerOrder.Rows[e.RowIndex].Cells[0].Value);
-                        if (dbCon.IsConnect())
-                        {
-                            string checkStatus = "SELECT `customer_id` FROM `order` WHERE `order_id` = '" + orderID + "'";
-                            var command = new MySqlCommand(checkStatus, dbCon.Connection);
-                            var reader = command.ExecuteReader();
-                            reader.Read();
-                            if (reader.HasRows)
-                            {
-                                View_Order_Details.customerID = Convert.ToInt32(reader[0]);
-                                View_Order_Details.order_id = orderID;
-                                reader.Close();
-                                viewOrder.ShowDialog();
-                            }
-                        }
-                    }
+                case 1:
+                    OrderImages.orderID = Convert.ToInt32(dgvPrepareCustomerOrder.Rows[e.RowIndex].Cells[2].Value);
+                    OrderImages orderImg = new OrderImages();
+                    orderImg.ShowDialog();
                     break;
                 default:
                     break;
@@ -268,6 +205,11 @@ namespace Design370
             {
                 MessageBox.Show("Error: " + error.Message);
             }
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void PrepareOrder_Activated(object sender, EventArgs e)
