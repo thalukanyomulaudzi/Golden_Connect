@@ -120,20 +120,10 @@ namespace Design370
             }
         }
 
-        private void BtnBookingConfirmDate_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void BtnChangeCustomer_Click(object sender, EventArgs e)
         {
             Booking_Customer booking_Customer = new Booking_Customer();
             booking_Customer.ShowDialog();
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void BtnBookingPhotoshoot_Click(object sender, EventArgs e)

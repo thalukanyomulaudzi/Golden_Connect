@@ -172,12 +172,6 @@
     <Compile Include="Booking_Date.Designer.cs">
       <DependentUpon>Booking_Date.cs</DependentUpon>
     </Compile>
-    <Compile Include="Booking_Dialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Booking_Dialog.Designer.cs">
-      <DependentUpon>Booking_Dialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="CrystalReport1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

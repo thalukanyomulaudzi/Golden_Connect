@@ -94,7 +94,7 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             Customer.LoadCustomer(dgvCustomers);
             Order.LoadOrders(dgvOrders);
-            
+            Timeslot.clearTimeslots();
         }
 
         private void Main_Form_Activated(object sender, EventArgs e)

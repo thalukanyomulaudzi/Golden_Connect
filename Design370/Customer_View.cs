@@ -18,7 +18,7 @@ namespace Design370
             toolTip1.SetToolTip(txtCustomerFirst, "A maximum of 25 characters can be entered");
             toolTip1.SetToolTip(txtCustomerLast, "A maximum of 25 characters can be entered");
             toolTip1.SetToolTip(txtCustomerEmail, "A maximum of 50 characters can be entered");
-            toolTip1.SetToolTip(txtCustomerPhone, "A maximum of 10 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerPhone, "A maximum of 15 characters can be entered");
             toolTip1.SetToolTip(txtCustomerID, "A maximum of 13 characters can be entered");
         }
 
@@ -37,12 +37,12 @@ namespace Design370
             button2.Enabled = !edit;
             if (edit)
             {
-                this.Text = "Edit Customer";
+                Text = "Edit Customer";
                 helpstring = "Edit_Customer";
             }
             else if (!edit)
             {
-                this.Text = "View Customer";
+                Text = "View Customer";
                 helpstring = "View_Customer";
             }
 
@@ -84,7 +84,7 @@ namespace Design370
             txtCustomerPhone.Enabled = true;
             button2.Enabled = false;
             helpstring = "Edit_Customer";
-            this.Text = "Edit Customer";
+            Text = "Edit Customer";
         }
 
         private void Button1_Click_1(object sender, EventArgs e)

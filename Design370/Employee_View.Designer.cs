@@ -391,6 +391,7 @@
             // 
             // Employee_View
             // 
+            this.AcceptButton = this.btnEmployeeOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 694);

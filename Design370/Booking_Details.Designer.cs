@@ -69,7 +69,7 @@
             // btnBookingProceed
             // 
             this.btnBookingProceed.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnBookingProceed.Location = new System.Drawing.Point(910, 708);
+            this.btnBookingProceed.Location = new System.Drawing.Point(910, 560);
             this.btnBookingProceed.Name = "btnBookingProceed";
             this.btnBookingProceed.Size = new System.Drawing.Size(104, 34);
             this.btnBookingProceed.TabIndex = 15;
@@ -80,7 +80,7 @@
             // btnBookingCancel
             // 
             this.btnBookingCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnBookingCancel.Location = new System.Drawing.Point(796, 708);
+            this.btnBookingCancel.Location = new System.Drawing.Point(796, 560);
             this.btnBookingCancel.Name = "btnBookingCancel";
             this.btnBookingCancel.Size = new System.Drawing.Size(104, 34);
             this.btnBookingCancel.TabIndex = 14;
@@ -357,16 +357,16 @@
             // txtBookingTotal
             // 
             this.txtBookingTotal.Enabled = false;
-            this.txtBookingTotal.Location = new System.Drawing.Point(659, 713);
+            this.txtBookingTotal.Location = new System.Drawing.Point(659, 565);
             this.txtBookingTotal.Name = "txtBookingTotal";
-            this.txtBookingTotal.Size = new System.Drawing.Size(113, 24);
+            this.txtBookingTotal.Size = new System.Drawing.Size(119, 24);
             this.txtBookingTotal.TabIndex = 61;
             this.txtBookingTotal.Text = "John Doe";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(557, 716);
+            this.label8.Location = new System.Drawing.Point(557, 568);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 18);
@@ -389,7 +389,7 @@
             this.gbxBookingPackage.Controls.Add(this.btnBookingProductAdd);
             this.gbxBookingPackage.Location = new System.Drawing.Point(537, 12);
             this.gbxBookingPackage.Name = "gbxBookingPackage";
-            this.gbxBookingPackage.Size = new System.Drawing.Size(502, 643);
+            this.gbxBookingPackage.Size = new System.Drawing.Size(502, 513);
             this.gbxBookingPackage.TabIndex = 63;
             this.gbxBookingPackage.TabStop = false;
             this.gbxBookingPackage.Text = "Package";
@@ -412,7 +412,7 @@
             this.groupBox1.Controls.Add(this.txtBookingEmployee);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(498, 652);
+            this.groupBox1.Size = new System.Drawing.Size(498, 513);
             this.groupBox1.TabIndex = 64;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -421,13 +421,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1636, 834);
+            this.ClientSize = new System.Drawing.Size(1104, 766);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbxBookingPackage);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtBookingTotal);
             this.Controls.Add(this.btnBookingProceed);
             this.Controls.Add(this.btnBookingCancel);
+            this.Controls.Add(this.txtBookingTotal);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Booking_Details";

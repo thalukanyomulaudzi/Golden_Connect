@@ -230,7 +230,7 @@ namespace Design370
         private void Button1_Click(object sender, EventArgs e)
         {
             if (!Validation.validate(txtEmployeeFirst.Text, "name") || !Validation.validate(txtEmployeeLast.Text, "name") || !Validation.validate(txtEmployeeID.Text, "price")
-                || !Validation.validate(txtEmployeeEmail.Text, "name") || !Validation.validate(txtEmployeePhone.Text, "name"))
+                || !Validation.validate(txtEmployeeEmail.Text, "email") || !Validation.validate(txtEmployeePhone.Text, "phone"))
             {
                 MessageBox.Show("All input fields must be valid");
                 return;
