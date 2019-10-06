@@ -132,8 +132,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -170,7 +172,25 @@
     <Compile Include="Booking_Date.Designer.cs">
       <DependentUpon>Booking_Date.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomerReportList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerReportList.Designer.cs">
+      <DependentUpon>CustomerReportList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer_Order_Capture.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +317,7 @@
     <Compile Include="OrderImages.Designer.cs">
       <DependentUpon>OrderImages.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderList.cs" />
     <Compile Include="Photoshoot.cs" />
     <Compile Include="Photoshoot_Package_Add.cs">
       <SubType>Form</SubType>
@@ -378,6 +399,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportOrder.Designer.cs">
+      <DependentUpon>ReportOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -451,6 +478,12 @@
     <Compile Include="Employee_Update.Designer.cs">
       <DependentUpon>Employee_Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="View_Order_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Order_Details.Designer.cs">
+      <DependentUpon>View_Order_Details.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Booking_Capture_Payment.resx">
       <DependentUpon>Booking_Capture_Payment.cs</DependentUpon>
     </EmbeddedResource>
@@ -462,6 +495,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Booking_Date.resx">
       <DependentUpon>Booking_Date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CustomerReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerReportList.resx">
+      <DependentUpon>CustomerReportList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_Order_Capture.resx">
       <DependentUpon>Customer_Order_Capture.cs</DependentUpon>
@@ -572,6 +616,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportOrder.resx">
+      <DependentUpon>ReportOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Service_Add.resx">
       <DependentUpon>Service_Add.cs</DependentUpon>
     </EmbeddedResource>
@@ -607,6 +654,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employee_Update.resx">
       <DependentUpon>Employee_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Order_Details.resx">
+      <DependentUpon>View_Order_Details.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -645,6 +695,71 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delivery address.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\email.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\phone.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\price.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ACTIVEXLib">
+      <Guid>{012F24C1-35B0-11D0-BF2D-0000E8D0D146}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

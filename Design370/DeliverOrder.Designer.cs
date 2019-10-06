@@ -30,56 +30,51 @@
         {
             this.dgvDeliveries = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.PrepareCustOrder = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDeliveries
             // 
+            this.dgvDeliveries.AllowUserToAddRows = false;
+            this.dgvDeliveries.AllowUserToDeleteRows = false;
             this.dgvDeliveries.ColumnHeadersHeight = 34;
-            this.dgvDeliveries.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PrepareCustOrder});
             this.dgvDeliveries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDeliveries.Location = new System.Drawing.Point(0, 65);
-            this.dgvDeliveries.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.dgvDeliveries.Location = new System.Drawing.Point(0, 45);
+            this.dgvDeliveries.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.dgvDeliveries.Name = "dgvDeliveries";
+            this.dgvDeliveries.ReadOnly = true;
+            this.dgvDeliveries.RowHeadersVisible = false;
             this.dgvDeliveries.RowTemplate.Height = 30;
-            this.dgvDeliveries.Size = new System.Drawing.Size(885, 434);
+            this.dgvDeliveries.Size = new System.Drawing.Size(665, 352);
             this.dgvDeliveries.TabIndex = 3;
             this.dgvDeliveries.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDeliveries_CellContentClick);
             // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Book Antiqua", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(885, 65);
+            this.label1.Size = new System.Drawing.Size(665, 45);
             this.label1.TabIndex = 2;
             this.label1.Text = "Customer Order Delivery";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PrepareCustOrder
-            // 
-            this.PrepareCustOrder.HeaderText = "";
-            this.PrepareCustOrder.Name = "PrepareCustOrder";
-            this.PrepareCustOrder.Text = "Order Delivered";
-            this.PrepareCustOrder.UseColumnTextForButtonValue = true;
-            this.PrepareCustOrder.Width = 150;
-            // 
             // DeliverOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 499);
+            this.ClientSize = new System.Drawing.Size(665, 397);
             this.Controls.Add(this.dgvDeliveries);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Bookshelf Symbol 7", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(8, 5, 8, 5);
+            this.Font = new System.Drawing.Font("Bahnschrift Light SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DeliverOrder";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DeliverOrder";
+            this.Text = "Order for Delivery";
+            this.Activated += new System.EventHandler(this.DeliverOrder_Activated);
             this.Load += new System.EventHandler(this.DeliverOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
             this.ResumeLayout(false);
@@ -90,6 +85,5 @@
 
         private System.Windows.Forms.DataGridView dgvDeliveries;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewButtonColumn PrepareCustOrder;
     }
 }

@@ -145,7 +145,7 @@ namespace Design370
                     btnNext.Visible = false;
                     btnPrev.Enabled = false;
                     btnNext.Enabled = false;
-                    btnAddProduct.Enabled = true;
+                    btnAddProduct.Visible = true;
                 }
                 else if(photoSize > 1)
                 {
@@ -153,7 +153,7 @@ namespace Design370
                     btnNext.Visible = true;
                     btnPrev.Enabled = false;
                     btnNext.Enabled = true;
-                    btnAddProduct.Enabled = true;
+                    btnAddProduct.Visible = true;
                 }
             }
             else
@@ -243,7 +243,6 @@ namespace Design370
                     count = Convert.ToInt32(reader[2]);
                     lblStock.Text = count.ToString() + " Items";
                     subT = price * pQty;
-                    lblqty.Text = "1";
                 }
                 reader.Close();
 
@@ -275,7 +274,7 @@ namespace Design370
         {
             int item_id = itemID.Next(1, 99);
             dgv.Rows.Add(product, "Phone Cover", lblPrice.Text, "#" + item_id.ToString(), images);
-            items[row] = new Order(product, photos, item_id, prodID);
+            items[row] = new Order(product, photos, item_id, prodID, pQty);
             row++;
             orderTotal += subT;
             displayTotal(orderTotal);
@@ -285,6 +284,7 @@ namespace Design370
             btnAddProduct.Enabled = false;
             saveCurrentOrder = false;
             lboxProductTypes.SelectedIndex = 0;
+            btnAddProduct.Visible = false;
         }
         
         private void NQty_ValueChanged(object sender, EventArgs e)
@@ -310,9 +310,10 @@ namespace Design370
                 {
                     int item_id = itemID.Next(1, 99);
                     dgv.Rows.Add(product, "Phone Cover", lblPrice.Text, "#" + item_id.ToString(), images);
-                    items[0] = new Order(product, photos, item_id, prodID);
+                    items[row] = new Order(product, photos, item_id, prodID, pQty);
                     orderTotal += (pQty * price);
                     lblOTotal.Text = "R"+orderTotal.ToString();
+                    row++;
                 }
                 else if(saveCurrentOrder == true)
                 {
@@ -320,25 +321,39 @@ namespace Design370
                     {
                         int item_id = itemID.Next(1, 99);
                         dgv.Rows.Add(product, "Phone Cover", lblPrice.Text, "#" + item_id.ToString(), images);
-                        items[row] = new Order(product, photos, item_id, prodID);
+                        items[row] = new Order(product, photos, item_id, prodID, pQty);
                         row++;
                         orderTotal += subT;
                         lblOTotal.Text = "R"+orderTotal.ToString();
                     }
                 }
+
                 //SavingOrder save = new SavingOrder();
                 if (dbCon.IsConnect())
                 {
                     var date = DateTime.Now;
-                    string orderInsert = "INSERT INTO `order` (`order_id`, `order_date_placed`, `customer_id`, `order_status_id`, `order_total`) " +
-                        "VALUES(@id, @date, @cID, @osd, @OrderTotal)";
+                    string orderInsert = "INSERT INTO `order` (`order_id`, `order_date_placed`, `customer_id`, `order_status_id`, `order_total`, `order_quantity`) " +
+                        "VALUES(@id, @date, @cID, @osd, @OrderTotal, @QTY)";
                     var com = new MySqlCommand(orderInsert, dbCon.Connection);
                     com.Parameters.AddWithValue("@id", ID);
                     com.Parameters.AddWithValue("@date", date);
                     com.Parameters.AddWithValue("@cID", customer.customerID);
                     com.Parameters.AddWithValue("@osd", 1);
                     com.Parameters.AddWithValue("@OrderTotal", orderTotal);
+                    com.Parameters.AddWithValue("@QTY", row);
                     com.ExecuteNonQuery();
+
+                    if (rBtnDelivered.Checked == true)
+                    {
+                        var delivery = new MySqlCommand("INSERT INTO `delivery` (`delivery_id`, `delivery_location_address`, `delivery_date`, `order_id`, `delivery_fee_id`, `delivery_status_id`) " +
+                            "VALUES(NULL, @ADDR, @DELDATE, @OID, @FEE, @ODSTATUS)", dbCon.Connection);
+                        delivery.Parameters.AddWithValue("@ADDR", txtDelAddress.Text);
+                        delivery.Parameters.AddWithValue("@DELDATE", date);
+                        delivery.Parameters.AddWithValue("@OID", ID);
+                        delivery.Parameters.AddWithValue("@FEE", 1);
+                        delivery.Parameters.AddWithValue("@ODSTATUS", 1);
+                        delivery.ExecuteNonQuery();
+                    }
                 }
 
                 foreach (Order item in items)
@@ -351,7 +366,7 @@ namespace Design370
                             var command = new MySqlCommand("INSERT INTO `order_line` (`product_id`, `order_id`, `order_line_quantity`) " +
                             "VALUES (@ProductID, @orderID, @quantity)", dbCon.Connection);
                             command.Parameters.AddWithValue("@orderID", ID);
-                            command.Parameters.AddWithValue("@quantity", 1);
+                            command.Parameters.AddWithValue("@quantity", item.getProductQty);
                             command.Parameters.AddWithValue("@ProductID", item.getProductID);
                             int complete = command.ExecuteNonQuery();
            
@@ -425,7 +440,6 @@ namespace Design370
             catch(Exception er)
             {
                 MessageBox.Show("Error: " + er.Message);
-            
             }
         }
 
@@ -545,5 +559,20 @@ namespace Design370
             return ResultCode;
         }
 
+        private void rBtnDelivered_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rBtnDelivered.Checked == true)
+            {
+                pnlDeliveryAddress.Visible = true;
+            }
+        }
+
+        private void RBtnCollected_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rBtnCollected.Checked == true)
+            {
+                pnlDeliveryAddress.Visible = false;
+            }
+        }
     }
 }

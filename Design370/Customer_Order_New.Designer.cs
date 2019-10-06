@@ -42,7 +42,6 @@
             this.pBoxPrintPhoto = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblqty = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblStock = new System.Windows.Forms.Label();
@@ -60,6 +59,12 @@
             this.btnPrev = new System.Windows.Forms.Button();
             this.lblPhoto = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.rBtnCollected = new System.Windows.Forms.RadioButton();
+            this.rBtnDelivered = new System.Windows.Forms.RadioButton();
+            this.pnlDeliveryAddress = new System.Windows.Forms.Panel();
+            this.txtDelAddress = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxPrintPhoto)).BeginInit();
@@ -67,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nQty)).BeginInit();
             this.panel3.SuspendLayout();
             this.controls.SuspendLayout();
+            this.pnlDeliveryAddress.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvOrderList
@@ -135,7 +141,7 @@
             "Canvas"});
             this.lboxProductTypes.Location = new System.Drawing.Point(40, 152);
             this.lboxProductTypes.Name = "lboxProductTypes";
-            this.lboxProductTypes.Size = new System.Drawing.Size(215, 380);
+            this.lboxProductTypes.Size = new System.Drawing.Size(215, 152);
             this.lboxProductTypes.TabIndex = 3;
             this.lboxProductTypes.SelectedIndexChanged += new System.EventHandler(this.lbox_ProductTypes_SelectedIndexChanged);
             // 
@@ -166,7 +172,7 @@
             // 
             this.btnUploadPhoto.FlatAppearance.BorderSize = 0;
             this.btnUploadPhoto.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadPhoto.Location = new System.Drawing.Point(285, 290);
+            this.btnUploadPhoto.Location = new System.Drawing.Point(285, 306);
             this.btnUploadPhoto.Name = "btnUploadPhoto";
             this.btnUploadPhoto.Size = new System.Drawing.Size(244, 31);
             this.btnUploadPhoto.TabIndex = 4;
@@ -200,9 +206,9 @@
             // 
             // pBoxPrintPhoto
             // 
-            this.pBoxPrintPhoto.Location = new System.Drawing.Point(285, 321);
+            this.pBoxPrintPhoto.Location = new System.Drawing.Point(286, 337);
             this.pBoxPrintPhoto.Name = "pBoxPrintPhoto";
-            this.pBoxPrintPhoto.Size = new System.Drawing.Size(244, 175);
+            this.pBoxPrintPhoto.Size = new System.Drawing.Size(242, 175);
             this.pBoxPrintPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxPrintPhoto.TabIndex = 5;
             this.pBoxPrintPhoto.TabStop = false;
@@ -221,7 +227,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.lblqty);
             this.panel2.Controls.Add(this.lblPrice);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.lblStock);
@@ -232,17 +237,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(244, 132);
             this.panel2.TabIndex = 6;
-            // 
-            // lblqty
-            // 
-            this.lblqty.AutoSize = true;
-            this.lblqty.Font = new System.Drawing.Font("Bahnschrift SemiLight", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblqty.Location = new System.Drawing.Point(119, 57);
-            this.lblqty.Name = "lblqty";
-            this.lblqty.Size = new System.Drawing.Size(59, 24);
-            this.lblqty.TabIndex = 1;
-            this.lblqty.Text = "R0.00";
-            this.lblqty.Visible = false;
             // 
             // lblPrice
             // 
@@ -316,23 +310,28 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnAddProduct.BackColor = System.Drawing.Color.Silver;
+            this.btnAddProduct.Enabled = false;
+            this.btnAddProduct.FlatAppearance.BorderSize = 0;
             this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddProduct.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProduct.Location = new System.Drawing.Point(351, 590);
+            this.btnAddProduct.Font = new System.Drawing.Font("Bahnschrift Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.ForeColor = System.Drawing.Color.Black;
+            this.btnAddProduct.Location = new System.Drawing.Point(408, 551);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(124, 31);
+            this.btnAddProduct.Size = new System.Drawing.Size(121, 27);
             this.btnAddProduct.TabIndex = 4;
             this.btnAddProduct.Text = "Add Product";
             this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Visible = false;
             this.btnAddProduct.Click += new System.EventHandler(this.BtnAddProduct_Click);
             // 
             // btnSaveOrder
             // 
-            this.btnSaveOrder.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnSaveOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveOrder.BackColor = System.Drawing.Color.Silver;
+            this.btnSaveOrder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveOrder.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveOrder.Location = new System.Drawing.Point(91, 590);
+            this.btnSaveOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnSaveOrder.Location = new System.Drawing.Point(38, 590);
             this.btnSaveOrder.Name = "btnSaveOrder";
             this.btnSaveOrder.Size = new System.Drawing.Size(124, 31);
             this.btnSaveOrder.TabIndex = 4;
@@ -371,10 +370,11 @@
             // 
             // btnCancelOrder
             // 
-            this.btnCancelOrder.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnCancelOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelOrder.BackColor = System.Drawing.Color.Silver;
+            this.btnCancelOrder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelOrder.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelOrder.Location = new System.Drawing.Point(221, 590);
+            this.btnCancelOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelOrder.Location = new System.Drawing.Point(168, 590);
             this.btnCancelOrder.Name = "btnCancelOrder";
             this.btnCancelOrder.Size = new System.Drawing.Size(124, 31);
             this.btnCancelOrder.TabIndex = 4;
@@ -387,7 +387,7 @@
             this.controls.Controls.Add(this.btnNext);
             this.controls.Controls.Add(this.btnPrev);
             this.controls.Controls.Add(this.lblPhoto);
-            this.controls.Location = new System.Drawing.Point(286, 498);
+            this.controls.Location = new System.Drawing.Point(286, 514);
             this.controls.Name = "controls";
             this.controls.Size = new System.Drawing.Size(243, 35);
             this.controls.TabIndex = 8;
@@ -419,12 +419,79 @@
             // lblPhoto
             // 
             this.lblPhoto.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoto.Location = new System.Drawing.Point(39, 3);
+            this.lblPhoto.Location = new System.Drawing.Point(37, 3);
             this.lblPhoto.Name = "lblPhoto";
             this.lblPhoto.Size = new System.Drawing.Size(166, 31);
             this.lblPhoto.TabIndex = 0;
             this.lblPhoto.Text = "1  |  3";
             this.lblPhoto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // rBtnCollected
+            // 
+            this.rBtnCollected.AutoSize = true;
+            this.rBtnCollected.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBtnCollected.Location = new System.Drawing.Point(47, 374);
+            this.rBtnCollected.Name = "rBtnCollected";
+            this.rBtnCollected.Size = new System.Drawing.Size(96, 23);
+            this.rBtnCollected.TabIndex = 9;
+            this.rBtnCollected.TabStop = true;
+            this.rBtnCollected.Text = "Collected";
+            this.rBtnCollected.UseVisualStyleBackColor = true;
+            this.rBtnCollected.CheckedChanged += new System.EventHandler(this.RBtnCollected_CheckedChanged);
+            // 
+            // rBtnDelivered
+            // 
+            this.rBtnDelivered.AutoSize = true;
+            this.rBtnDelivered.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBtnDelivered.Location = new System.Drawing.Point(47, 348);
+            this.rBtnDelivered.Name = "rBtnDelivered";
+            this.rBtnDelivered.Size = new System.Drawing.Size(98, 23);
+            this.rBtnDelivered.TabIndex = 9;
+            this.rBtnDelivered.TabStop = true;
+            this.rBtnDelivered.Text = "Delivered";
+            this.rBtnDelivered.UseVisualStyleBackColor = true;
+            this.rBtnDelivered.CheckedChanged += new System.EventHandler(this.rBtnDelivered_CheckedChanged);
+            // 
+            // pnlDeliveryAddress
+            // 
+            this.pnlDeliveryAddress.Controls.Add(this.txtDelAddress);
+            this.pnlDeliveryAddress.Controls.Add(this.label5);
+            this.pnlDeliveryAddress.Location = new System.Drawing.Point(40, 406);
+            this.pnlDeliveryAddress.Name = "pnlDeliveryAddress";
+            this.pnlDeliveryAddress.Size = new System.Drawing.Size(213, 143);
+            this.pnlDeliveryAddress.TabIndex = 10;
+            this.pnlDeliveryAddress.Visible = false;
+            // 
+            // txtDelAddress
+            // 
+            this.txtDelAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDelAddress.Font = new System.Drawing.Font("Bahnschrift Condensed", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelAddress.Location = new System.Drawing.Point(0, 25);
+            this.txtDelAddress.Name = "txtDelAddress";
+            this.txtDelAddress.Size = new System.Drawing.Size(213, 117);
+            this.txtDelAddress.TabIndex = 12;
+            this.txtDelAddress.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Bahnschrift SemiLight", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(4, 4);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 18);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Delivery Address";
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(40, 306);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(219, 31);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Collection Method";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Customer_Order_New
             // 
@@ -432,6 +499,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1185, 656);
+            this.Controls.Add(this.rBtnDelivered);
+            this.Controls.Add(this.rBtnCollected);
+            this.Controls.Add(this.pnlDeliveryAddress);
             this.Controls.Add(this.controls);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -444,6 +514,7 @@
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnUploadPhoto);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lboxProductTypes);
             this.Controls.Add(this.panel1);
@@ -464,7 +535,10 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.controls.ResumeLayout(false);
+            this.pnlDeliveryAddress.ResumeLayout(false);
+            this.pnlDeliveryAddress.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -500,6 +574,11 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblStock;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblqty;
+        private System.Windows.Forms.RadioButton rBtnCollected;
+        private System.Windows.Forms.RadioButton rBtnDelivered;
+        private System.Windows.Forms.Panel pnlDeliveryAddress;
+        private System.Windows.Forms.RichTextBox txtDelAddress;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
     }
 }

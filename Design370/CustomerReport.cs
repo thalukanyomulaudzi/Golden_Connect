@@ -16,14 +16,14 @@ namespace Design370 {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport1 : ReportClass {
+    public class CustomerReport : ReportClass {
         
-        public CrystalReport1() {
+        public CustomerReport() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport1.rpt";
+                return "CustomerReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Design370 {
         
         public override string FullResourceName {
             get {
-                return "Design370.CrystalReport1.rpt";
+                return "Design370.CustomerReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,41 +90,17 @@ namespace Design370 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_PDate {
+        public CrystalDecisions.Shared.IParameterField Parameter_pStartDate {
             get {
                 return this.DataDefinition.ParameterFields[0];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_pTotalProducts {
-            get {
-                return this.DataDefinition.ParameterFields[1];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_pStockOnHand {
-            get {
-                return this.DataDefinition.ParameterFields[2];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_pOrderTotal {
-            get {
-                return this.DataDefinition.ParameterFields[3];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport1 : Component, ICachedReport {
+    public class CachedCustomerReport : Component, ICachedReport {
         
-        public CachedCrystalReport1() {
+        public CachedCustomerReport() {
         }
         
         [Browsable(false)]
@@ -161,7 +137,7 @@ namespace Design370 {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport1 rpt = new CrystalReport1();
+            CustomerReport rpt = new CustomerReport();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -31,7 +31,6 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -167,10 +166,9 @@ namespace Design370
             this.button11 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
+            this.btnGenCustRpt = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            //this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -539,7 +537,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -987,7 +985,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 122;
+            this.PhotoshootPackageName.Width = 132;
             // 
             // Services
             // 
@@ -1145,7 +1143,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 122;
+            this.EventPackageName.Width = 132;
             // 
             // ServicesEvents
             // 
@@ -1250,14 +1248,10 @@ namespace Design370
             this.comboBox8.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox8.FormattingEnabled = true;
             this.comboBox8.ItemHeight = 17;
-            this.comboBox8.Items.AddRange(new object[] {
-            "All Orders",
-            "Placed Orders",
-            "Order For Delivery"});
             this.comboBox8.Location = new System.Drawing.Point(336, 13);
             this.comboBox8.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(103, 25);
+            this.comboBox8.Size = new System.Drawing.Size(149, 25);
             this.comboBox8.TabIndex = 43;
             // 
             // label15
@@ -1570,12 +1564,11 @@ namespace Design370
             // 
             // tabPage11
             // 
-            //this.tabPage11.Controls.Add(this.crystalReportViewer1);
             this.tabPage11.Controls.Add(this.button13);
             this.tabPage11.Controls.Add(this.button11);
             this.tabPage11.Controls.Add(this.button9);
             this.tabPage11.Controls.Add(this.button25);
-            this.tabPage11.Controls.Add(this.button26);
+            this.tabPage11.Controls.Add(this.btnGenCustRpt);
             this.tabPage11.Location = new System.Drawing.Point(154, 4);
             this.tabPage11.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage11.Name = "tabPage11";
@@ -1628,16 +1621,17 @@ namespace Design370
             this.button25.Text = "Generate Booking Report";
             this.button25.UseVisualStyleBackColor = true;
             // 
-            // button26
+            // btnGenCustRpt
             // 
-            this.button26.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button26.Location = new System.Drawing.Point(21, 32);
-            this.button26.Margin = new System.Windows.Forms.Padding(2);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(227, 43);
-            this.button26.TabIndex = 56;
-            this.button26.Text = "Generate Customer Report";
-            this.button26.UseVisualStyleBackColor = true;
+            this.btnGenCustRpt.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenCustRpt.Location = new System.Drawing.Point(21, 32);
+            this.btnGenCustRpt.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenCustRpt.Name = "btnGenCustRpt";
+            this.btnGenCustRpt.Size = new System.Drawing.Size(227, 43);
+            this.btnGenCustRpt.TabIndex = 56;
+            this.btnGenCustRpt.Text = "Generate Customer Report";
+            this.btnGenCustRpt.UseVisualStyleBackColor = true;
+            this.btnGenCustRpt.Click += new System.EventHandler(this.BtnGenCustRpt_Click);
             // 
             // tabPage12
             // 
@@ -1658,16 +1652,6 @@ namespace Design370
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
-            // 
-            // crystalReportViewer1
-            // 
-            //this.crystalReportViewer1.ActiveViewIndex = -1;
-            //this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            //this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            //this.crystalReportViewer1.Location = new System.Drawing.Point(269, 3);
-            //this.crystalReportViewer1.Name = "crystalReportViewer1";
-            //this.crystalReportViewer1.Size = new System.Drawing.Size(832, 602);
-            //this.crystalReportViewer1.TabIndex = 61;
             // 
             // Main_Form
             // 
@@ -1808,7 +1792,7 @@ namespace Design370
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button btnGenCustRpt;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnEventTypes;
         private System.Windows.Forms.Button btnServiceType;
