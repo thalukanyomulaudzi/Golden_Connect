@@ -42,13 +42,14 @@
             this.bookingEmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingEmployeeAvailable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingEmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnBookingConfirm = new System.Windows.Forms.Button();
+            this.btnBookingPhotoshoot = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBookingCustomerName = new System.Windows.Forms.TextBox();
             this.btnChangeCustomer = new System.Windows.Forms.Button();
             this.lblBookingDatePreviousWeek = new System.Windows.Forms.Label();
             this.lblBookingDateNextWeek = new System.Windows.Forms.Label();
             this.btnBookingCancel = new System.Windows.Forms.Button();
+            this.btnBookingEvent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookEvent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingEmployees)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +68,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(167, 75);
+            this.dateTimePicker1.Location = new System.Drawing.Point(195, 70);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(240, 24);
@@ -78,8 +79,9 @@
             // 
             this.dgvBookEvent.AllowUserToAddRows = false;
             this.dgvBookEvent.AllowUserToDeleteRows = false;
+            this.dgvBookEvent.AllowUserToResizeColumns = false;
+            this.dgvBookEvent.AllowUserToResizeRows = false;
             this.dgvBookEvent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvBookEvent.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders;
             this.dgvBookEvent.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvBookEvent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookEvent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -94,6 +96,8 @@
             this.dgvBookEvent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvBookEvent.Name = "dgvBookEvent";
             this.dgvBookEvent.ReadOnly = true;
+            this.dgvBookEvent.RowHeadersWidth = 24;
+            this.dgvBookEvent.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvBookEvent.RowTemplate.Height = 24;
             this.dgvBookEvent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvBookEvent.Size = new System.Drawing.Size(1020, 322);
@@ -169,7 +173,6 @@
             this.dgvBookingEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvBookingEmployees.Size = new System.Drawing.Size(384, 171);
             this.dgvBookingEmployees.TabIndex = 19;
-            this.dgvBookingEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
             // 
             // bookingEmployeeName
             // 
@@ -189,17 +192,17 @@
             this.bookingEmployeeID.Name = "bookingEmployeeID";
             this.bookingEmployeeID.ReadOnly = true;
             // 
-            // btnBookingConfirm
+            // btnBookingPhotoshoot
             // 
-            this.btnBookingConfirm.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnBookingConfirm.Location = new System.Drawing.Point(853, 629);
-            this.btnBookingConfirm.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBookingConfirm.Name = "btnBookingConfirm";
-            this.btnBookingConfirm.Size = new System.Drawing.Size(189, 34);
-            this.btnBookingConfirm.TabIndex = 20;
-            this.btnBookingConfirm.Text = "Proceed";
-            this.btnBookingConfirm.UseVisualStyleBackColor = true;
-            this.btnBookingConfirm.Click += new System.EventHandler(this.BtnBookingConfirmDate_Click);
+            this.btnBookingPhotoshoot.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnBookingPhotoshoot.Location = new System.Drawing.Point(769, 629);
+            this.btnBookingPhotoshoot.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBookingPhotoshoot.Name = "btnBookingPhotoshoot";
+            this.btnBookingPhotoshoot.Size = new System.Drawing.Size(273, 34);
+            this.btnBookingPhotoshoot.TabIndex = 20;
+            this.btnBookingPhotoshoot.Text = "Create photoshoot booking";
+            this.btnBookingPhotoshoot.UseVisualStyleBackColor = true;
+            this.btnBookingPhotoshoot.Click += new System.EventHandler(this.BtnBookingPhotoshoot_Click);
             // 
             // label2
             // 
@@ -212,14 +215,14 @@
             // 
             // txtBookingCustomerName
             // 
-            this.txtBookingCustomerName.Location = new System.Drawing.Point(179, 22);
+            this.txtBookingCustomerName.Location = new System.Drawing.Point(195, 22);
             this.txtBookingCustomerName.Name = "txtBookingCustomerName";
-            this.txtBookingCustomerName.Size = new System.Drawing.Size(228, 26);
+            this.txtBookingCustomerName.Size = new System.Drawing.Size(240, 26);
             this.txtBookingCustomerName.TabIndex = 22;
             // 
             // btnChangeCustomer
             // 
-            this.btnChangeCustomer.Location = new System.Drawing.Point(413, 21);
+            this.btnChangeCustomer.Location = new System.Drawing.Point(441, 20);
             this.btnChangeCustomer.Name = "btnChangeCustomer";
             this.btnChangeCustomer.Size = new System.Drawing.Size(75, 28);
             this.btnChangeCustomer.TabIndex = 25;
@@ -255,8 +258,8 @@
             // 
             // btnBookingCancel
             // 
-            this.btnBookingCancel.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnBookingCancel.Location = new System.Drawing.Point(656, 629);
+            this.btnBookingCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnBookingCancel.Location = new System.Drawing.Point(547, 629);
             this.btnBookingCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnBookingCancel.Name = "btnBookingCancel";
             this.btnBookingCancel.Size = new System.Drawing.Size(189, 34);
@@ -264,20 +267,33 @@
             this.btnBookingCancel.Text = "Cancel";
             this.btnBookingCancel.UseVisualStyleBackColor = true;
             // 
+            // btnBookingEvent
+            // 
+            this.btnBookingEvent.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnBookingEvent.Location = new System.Drawing.Point(769, 587);
+            this.btnBookingEvent.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBookingEvent.Name = "btnBookingEvent";
+            this.btnBookingEvent.Size = new System.Drawing.Size(273, 34);
+            this.btnBookingEvent.TabIndex = 29;
+            this.btnBookingEvent.Text = "Create event booking";
+            this.btnBookingEvent.UseVisualStyleBackColor = true;
+            this.btnBookingEvent.Click += new System.EventHandler(this.BtnBookingEvent_Click);
+            // 
             // Booking_Date
             // 
-            this.AcceptButton = this.btnBookingConfirm;
+            this.AcceptButton = this.btnBookingPhotoshoot;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnBookingCancel;
-            this.ClientSize = new System.Drawing.Size(1499, 760);
+            this.ClientSize = new System.Drawing.Size(1078, 693);
+            this.Controls.Add(this.btnBookingEvent);
             this.Controls.Add(this.btnBookingCancel);
             this.Controls.Add(this.lblBookingDateNextWeek);
             this.Controls.Add(this.lblBookingDatePreviousWeek);
             this.Controls.Add(this.btnChangeCustomer);
             this.Controls.Add(this.txtBookingCustomerName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnBookingConfirm);
+            this.Controls.Add(this.btnBookingPhotoshoot);
             this.Controls.Add(this.dgvBookingEmployees);
             this.Controls.Add(this.dgvBookEvent);
             this.Controls.Add(this.dateTimePicker1);
@@ -302,7 +318,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridView dgvBookEvent;
         private System.Windows.Forms.DataGridView dgvBookingEmployees;
-        private System.Windows.Forms.Button btnBookingConfirm;
+        private System.Windows.Forms.Button btnBookingPhotoshoot;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeAvailable;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingEmployeeID;
@@ -319,5 +335,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button btnBookingCancel;
+        private System.Windows.Forms.Button btnBookingEvent;
     }
 }

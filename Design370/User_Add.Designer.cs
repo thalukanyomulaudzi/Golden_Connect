@@ -48,7 +48,7 @@
             this.btnUserCreate.TabIndex = 4;
             this.btnUserCreate.Text = "Create user";
             this.btnUserCreate.UseVisualStyleBackColor = true;
-            this.btnUserCreate.Click += new System.EventHandler(this.BtnLogin_Click);
+            this.btnUserCreate.Click += new System.EventHandler(this.BtnUserCreate_Click);
             // 
             // label2
             // 
@@ -65,7 +65,7 @@
             // 
             this.txtPassword.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(194, 110);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(264, 26);
@@ -86,7 +86,7 @@
             // 
             this.txtID.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(194, 64);
-            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(264, 26);
             this.txtID.TabIndex = 1;
@@ -106,7 +106,7 @@
             // 
             this.txtPasswordConfirm.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPasswordConfirm.Location = new System.Drawing.Point(194, 156);
-            this.txtPasswordConfirm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPasswordConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
             this.txtPasswordConfirm.PasswordChar = '*';
             this.txtPasswordConfirm.Size = new System.Drawing.Size(264, 26);
@@ -139,7 +139,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtID);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "User_Add";
             this.Text = "User_Add";
             this.ResumeLayout(false);

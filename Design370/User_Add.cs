@@ -13,7 +13,14 @@ namespace Design370
             InitializeComponent();
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private void LblPasswordShow_Click(object sender, EventArgs e)
+        {
+            shown = !shown;
+            txtPassword.PasswordChar = shown ? '\0' : '*';
+            txtPasswordConfirm.PasswordChar = shown ? '\0' : '*';
+        }
+
+        private void BtnUserCreate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -39,13 +46,6 @@ namespace Design370
                 return;
             }
             User.addUser(txtID.Text.Trim(), txtPassword.Text.Trim());
-        }
-
-        private void LblPasswordShow_Click(object sender, EventArgs e)
-        {
-            shown = !shown;
-            txtPassword.PasswordChar = shown ? '\0' : '*';
-            txtPasswordConfirm.PasswordChar = shown ? '\0' : '*';
         }
     }
 }

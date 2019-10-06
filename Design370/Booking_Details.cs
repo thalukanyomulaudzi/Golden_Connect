@@ -348,5 +348,10 @@ namespace Design370
                 MessageBox.Show(e.Message);
             }
         }
+
+        private void LstBookingProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

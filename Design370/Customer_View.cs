@@ -111,7 +111,7 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
-            this.Close();
+            Close();
         }
 
         private void TxtCustomerFirst_TextChanged(object sender, EventArgs e)

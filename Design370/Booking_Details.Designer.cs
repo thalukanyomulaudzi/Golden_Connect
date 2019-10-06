@@ -130,6 +130,7 @@
             this.lstBookingProducts.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstBookingProducts.Size = new System.Drawing.Size(218, 184);
             this.lstBookingProducts.TabIndex = 7;
+            this.lstBookingProducts.SelectedIndexChanged += new System.EventHandler(this.LstBookingProducts_SelectedIndexChanged);
             // 
             // cmbBookingPackage
             // 

@@ -76,12 +76,12 @@ namespace Design370
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
-        //    if (User.ID < 0)
-        //    {
-        //        Login login = new Login();
-        //        login.ShowDialog();
-        //    }
-        //    timer1.Start();
+            //    if (User.ID < 0)
+            //    {
+            //        Login login = new Login();
+            //        login.ShowDialog();
+            //    }
+            //    timer1.Start();
             Booking.loadBookings(dgvBookings);
             Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
             dgvPhotoshootPackage.Rows.Clear();
@@ -94,6 +94,7 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             Customer.LoadCustomer(dgvCustomers);
             Order.LoadOrders(dgvOrders);
+            
         }
 
         private void Main_Form_Activated(object sender, EventArgs e)
