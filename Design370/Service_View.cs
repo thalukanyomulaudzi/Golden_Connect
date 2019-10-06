@@ -171,5 +171,15 @@ namespace Design370
             helpForm.HelpInfo = helpstring;
             helpForm.ShowDialog();
         }
+
+        private void LblServiceDescription_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LblServiceName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

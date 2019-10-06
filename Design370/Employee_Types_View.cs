@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace Design370
@@ -9,6 +10,7 @@ namespace Design370
         int id = -1;
         public static bool edit;
         string helpstring = " ";
+        public string emptype;
 
         public Employee_Types_View()
         {
@@ -23,8 +25,6 @@ namespace Design370
             cbxAccessLevel.Enabled = true;
             helpstring = "Edit_Employee_Type";
         }
-
-        public string emptype;
         private void Employee_Types_View_Load(object sender, EventArgs e)
         {
             if (edit)

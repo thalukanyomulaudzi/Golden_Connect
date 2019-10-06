@@ -58,14 +58,18 @@
             this.txtBookingTime = new System.Windows.Forms.TextBox();
             this.txtBookingTotal = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.gbxBookingPackage = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBookingProductQuantity)).BeginInit();
+            this.gbxBookingPackage.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBookingProceed
             // 
             this.btnBookingProceed.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnBookingProceed.Location = new System.Drawing.Point(390, 684);
+            this.btnBookingProceed.Location = new System.Drawing.Point(910, 708);
             this.btnBookingProceed.Name = "btnBookingProceed";
             this.btnBookingProceed.Size = new System.Drawing.Size(104, 34);
             this.btnBookingProceed.TabIndex = 15;
@@ -76,7 +80,7 @@
             // btnBookingCancel
             // 
             this.btnBookingCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnBookingCancel.Location = new System.Drawing.Point(276, 684);
+            this.btnBookingCancel.Location = new System.Drawing.Point(796, 708);
             this.btnBookingCancel.Name = "btnBookingCancel";
             this.btnBookingCancel.Size = new System.Drawing.Size(104, 34);
             this.btnBookingCancel.TabIndex = 14;
@@ -86,7 +90,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(273, 336);
+            this.label5.Location = new System.Drawing.Point(256, 91);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 18);
@@ -99,16 +103,16 @@
             this.lstBookingServices.ItemHeight = 18;
             this.lstBookingServices.Items.AddRange(new object[] {
             "Please select a package"});
-            this.lstBookingServices.Location = new System.Drawing.Point(276, 367);
+            this.lstBookingServices.Location = new System.Drawing.Point(259, 122);
             this.lstBookingServices.Name = "lstBookingServices";
             this.lstBookingServices.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstBookingServices.Size = new System.Drawing.Size(218, 166);
+            this.lstBookingServices.Size = new System.Drawing.Size(218, 184);
             this.lstBookingServices.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 336);
+            this.label4.Location = new System.Drawing.Point(20, 91);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(143, 18);
@@ -121,16 +125,16 @@
             this.lstBookingProducts.ItemHeight = 18;
             this.lstBookingProducts.Items.AddRange(new object[] {
             "Please select a package"});
-            this.lstBookingProducts.Location = new System.Drawing.Point(40, 367);
+            this.lstBookingProducts.Location = new System.Drawing.Point(23, 122);
             this.lstBookingProducts.Name = "lstBookingProducts";
             this.lstBookingProducts.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstBookingProducts.Size = new System.Drawing.Size(218, 166);
+            this.lstBookingProducts.Size = new System.Drawing.Size(218, 184);
             this.lstBookingProducts.TabIndex = 7;
             // 
             // cmbBookingPackage
             // 
             this.cmbBookingPackage.FormattingEnabled = true;
-            this.cmbBookingPackage.Location = new System.Drawing.Point(208, 290);
+            this.cmbBookingPackage.Location = new System.Drawing.Point(191, 42);
             this.cmbBookingPackage.Name = "cmbBookingPackage";
             this.cmbBookingPackage.Size = new System.Drawing.Size(286, 26);
             this.cmbBookingPackage.TabIndex = 6;
@@ -139,7 +143,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 294);
+            this.label3.Location = new System.Drawing.Point(20, 46);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 18);
@@ -148,7 +152,7 @@
             // 
             // numBookingGuests
             // 
-            this.numBookingGuests.Location = new System.Drawing.Point(208, 238);
+            this.numBookingGuests.Location = new System.Drawing.Point(161, 318);
             this.numBookingGuests.Maximum = new decimal(new int[] {
             500,
             0,
@@ -160,7 +164,7 @@
             0,
             0});
             this.numBookingGuests.Name = "numBookingGuests";
-            this.numBookingGuests.Size = new System.Drawing.Size(286, 24);
+            this.numBookingGuests.Size = new System.Drawing.Size(314, 24);
             this.numBookingGuests.TabIndex = 5;
             this.numBookingGuests.Value = new decimal(new int[] {
             1,
@@ -171,7 +175,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 241);
+            this.label2.Location = new System.Drawing.Point(21, 321);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 18);
@@ -180,17 +184,17 @@
             // 
             // txtBookingLocation
             // 
-            this.txtBookingLocation.Location = new System.Drawing.Point(208, 150);
+            this.txtBookingLocation.Location = new System.Drawing.Point(161, 214);
             this.txtBookingLocation.Multiline = true;
             this.txtBookingLocation.Name = "txtBookingLocation";
-            this.txtBookingLocation.Size = new System.Drawing.Size(286, 81);
+            this.txtBookingLocation.Size = new System.Drawing.Size(314, 81);
             this.txtBookingLocation.TabIndex = 4;
-            this.txtBookingLocation.Text = "10 Example Road\r\nBrooklyn\r\nPretoria\r\n0181";
+            this.txtBookingLocation.Text = "10 Example Road\r\nBrooklyn\r\n0181\r\nPretoria\r\n";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 181);
+            this.label1.Location = new System.Drawing.Point(21, 245);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 18);
@@ -200,7 +204,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(37, 28);
+            this.label7.Location = new System.Drawing.Point(18, 47);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(82, 18);
@@ -210,16 +214,16 @@
             // txtBookingCustomer
             // 
             this.txtBookingCustomer.Enabled = false;
-            this.txtBookingCustomer.Location = new System.Drawing.Point(208, 25);
+            this.txtBookingCustomer.Location = new System.Drawing.Point(161, 44);
             this.txtBookingCustomer.Name = "txtBookingCustomer";
-            this.txtBookingCustomer.Size = new System.Drawing.Size(212, 24);
+            this.txtBookingCustomer.Size = new System.Drawing.Size(240, 24);
             this.txtBookingCustomer.TabIndex = 40;
             this.txtBookingCustomer.Text = "John Doe";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 90);
+            this.label9.Location = new System.Drawing.Point(21, 133);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(43, 18);
@@ -229,14 +233,14 @@
             // dtmBookingDate
             // 
             this.dtmBookingDate.Enabled = false;
-            this.dtmBookingDate.Location = new System.Drawing.Point(208, 87);
+            this.dtmBookingDate.Location = new System.Drawing.Point(161, 128);
             this.dtmBookingDate.Name = "dtmBookingDate";
-            this.dtmBookingDate.Size = new System.Drawing.Size(212, 24);
+            this.dtmBookingDate.Size = new System.Drawing.Size(240, 24);
             this.dtmBookingDate.TabIndex = 42;
             // 
             // btnBookingChangeCustomer
             // 
-            this.btnBookingChangeCustomer.Location = new System.Drawing.Point(426, 24);
+            this.btnBookingChangeCustomer.Location = new System.Drawing.Point(407, 43);
             this.btnBookingChangeCustomer.Name = "btnBookingChangeCustomer";
             this.btnBookingChangeCustomer.Size = new System.Drawing.Size(68, 26);
             this.btnBookingChangeCustomer.TabIndex = 0;
@@ -246,9 +250,9 @@
             // 
             // btnBookingChangeDateEmployee
             // 
-            this.btnBookingChangeDateEmployee.Location = new System.Drawing.Point(426, 56);
+            this.btnBookingChangeDateEmployee.Location = new System.Drawing.Point(407, 88);
             this.btnBookingChangeDateEmployee.Name = "btnBookingChangeDateEmployee";
-            this.btnBookingChangeDateEmployee.Size = new System.Drawing.Size(68, 88);
+            this.btnBookingChangeDateEmployee.Size = new System.Drawing.Size(68, 104);
             this.btnBookingChangeDateEmployee.TabIndex = 1;
             this.btnBookingChangeDateEmployee.Text = "Change";
             this.btnBookingChangeDateEmployee.UseVisualStyleBackColor = true;
@@ -257,7 +261,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(37, 60);
+            this.label10.Location = new System.Drawing.Point(18, 91);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 18);
@@ -267,25 +271,25 @@
             // txtBookingEmployee
             // 
             this.txtBookingEmployee.Enabled = false;
-            this.txtBookingEmployee.Location = new System.Drawing.Point(208, 57);
+            this.txtBookingEmployee.Location = new System.Drawing.Point(161, 88);
             this.txtBookingEmployee.Name = "txtBookingEmployee";
-            this.txtBookingEmployee.Size = new System.Drawing.Size(212, 24);
+            this.txtBookingEmployee.Size = new System.Drawing.Size(240, 24);
             this.txtBookingEmployee.TabIndex = 46;
             this.txtBookingEmployee.Text = "John Doe";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 543);
+            this.label6.Location = new System.Drawing.Point(20, 344);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 18);
+            this.label6.Size = new System.Drawing.Size(50, 18);
             this.label6.TabIndex = 47;
-            this.label6.Text = "Changes";
+            this.label6.Text = "Extras";
             // 
             // btnBookingProductAdd
             // 
-            this.btnBookingProductAdd.Location = new System.Drawing.Point(115, 572);
+            this.btnBookingProductAdd.Location = new System.Drawing.Point(98, 379);
             this.btnBookingProductAdd.Name = "btnBookingProductAdd";
             this.btnBookingProductAdd.Size = new System.Drawing.Size(143, 26);
             this.btnBookingProductAdd.TabIndex = 10;
@@ -295,7 +299,7 @@
             // 
             // btnBookingServiceAdd
             // 
-            this.btnBookingServiceAdd.Location = new System.Drawing.Point(351, 572);
+            this.btnBookingServiceAdd.Location = new System.Drawing.Point(334, 379);
             this.btnBookingServiceAdd.Name = "btnBookingServiceAdd";
             this.btnBookingServiceAdd.Size = new System.Drawing.Size(143, 26);
             this.btnBookingServiceAdd.TabIndex = 12;
@@ -305,14 +309,14 @@
             // 
             // numBookingProductQuantity
             // 
-            this.numBookingProductQuantity.Location = new System.Drawing.Point(40, 586);
+            this.numBookingProductQuantity.Location = new System.Drawing.Point(23, 393);
             this.numBookingProductQuantity.Name = "numBookingProductQuantity";
             this.numBookingProductQuantity.Size = new System.Drawing.Size(46, 24);
             this.numBookingProductQuantity.TabIndex = 9;
             // 
             // btnBookingProductRemove
             // 
-            this.btnBookingProductRemove.Location = new System.Drawing.Point(115, 604);
+            this.btnBookingProductRemove.Location = new System.Drawing.Point(98, 411);
             this.btnBookingProductRemove.Name = "btnBookingProductRemove";
             this.btnBookingProductRemove.Size = new System.Drawing.Size(143, 26);
             this.btnBookingProductRemove.TabIndex = 11;
@@ -322,7 +326,7 @@
             // 
             // btnBookingServiceRemove
             // 
-            this.btnBookingServiceRemove.Location = new System.Drawing.Point(351, 604);
+            this.btnBookingServiceRemove.Location = new System.Drawing.Point(334, 411);
             this.btnBookingServiceRemove.Name = "btnBookingServiceRemove";
             this.btnBookingServiceRemove.Size = new System.Drawing.Size(143, 26);
             this.btnBookingServiceRemove.TabIndex = 13;
@@ -333,7 +337,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(37, 122);
+            this.label12.Location = new System.Drawing.Point(21, 171);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 18);
@@ -343,16 +347,16 @@
             // txtBookingTime
             // 
             this.txtBookingTime.Enabled = false;
-            this.txtBookingTime.Location = new System.Drawing.Point(208, 119);
+            this.txtBookingTime.Location = new System.Drawing.Point(161, 168);
             this.txtBookingTime.Name = "txtBookingTime";
-            this.txtBookingTime.Size = new System.Drawing.Size(212, 24);
+            this.txtBookingTime.Size = new System.Drawing.Size(240, 24);
             this.txtBookingTime.TabIndex = 60;
             this.txtBookingTime.Text = "John Doe";
             // 
             // txtBookingTotal
             // 
             this.txtBookingTotal.Enabled = false;
-            this.txtBookingTotal.Location = new System.Drawing.Point(139, 689);
+            this.txtBookingTotal.Location = new System.Drawing.Point(659, 713);
             this.txtBookingTotal.Name = "txtBookingTotal";
             this.txtBookingTotal.Size = new System.Drawing.Size(113, 24);
             this.txtBookingTotal.TabIndex = 61;
@@ -361,48 +365,68 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(37, 692);
+            this.label8.Location = new System.Drawing.Point(557, 716);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 18);
             this.label8.TabIndex = 62;
             this.label8.Text = "Booking total";
             // 
+            // gbxBookingPackage
+            // 
+            this.gbxBookingPackage.Controls.Add(this.lstBookingServices);
+            this.gbxBookingPackage.Controls.Add(this.label3);
+            this.gbxBookingPackage.Controls.Add(this.cmbBookingPackage);
+            this.gbxBookingPackage.Controls.Add(this.lstBookingProducts);
+            this.gbxBookingPackage.Controls.Add(this.btnBookingServiceRemove);
+            this.gbxBookingPackage.Controls.Add(this.label4);
+            this.gbxBookingPackage.Controls.Add(this.btnBookingProductRemove);
+            this.gbxBookingPackage.Controls.Add(this.label5);
+            this.gbxBookingPackage.Controls.Add(this.numBookingProductQuantity);
+            this.gbxBookingPackage.Controls.Add(this.btnBookingServiceAdd);
+            this.gbxBookingPackage.Controls.Add(this.label6);
+            this.gbxBookingPackage.Controls.Add(this.btnBookingProductAdd);
+            this.gbxBookingPackage.Location = new System.Drawing.Point(537, 12);
+            this.gbxBookingPackage.Name = "gbxBookingPackage";
+            this.gbxBookingPackage.Size = new System.Drawing.Size(502, 643);
+            this.gbxBookingPackage.TabIndex = 63;
+            this.gbxBookingPackage.TabStop = false;
+            this.gbxBookingPackage.Text = "Package";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtBookingLocation);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.numBookingGuests);
+            this.groupBox1.Controls.Add(this.txtBookingTime);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.txtBookingCustomer);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.dtmBookingDate);
+            this.groupBox1.Controls.Add(this.btnBookingChangeCustomer);
+            this.groupBox1.Controls.Add(this.btnBookingChangeDateEmployee);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtBookingEmployee);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(498, 652);
+            this.groupBox1.TabIndex = 64;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
             // Booking_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 743);
+            this.ClientSize = new System.Drawing.Size(1636, 834);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbxBookingPackage);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtBookingTotal);
-            this.Controls.Add(this.txtBookingTime);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.btnBookingServiceRemove);
-            this.Controls.Add(this.btnBookingProductRemove);
-            this.Controls.Add(this.numBookingProductQuantity);
-            this.Controls.Add(this.btnBookingServiceAdd);
-            this.Controls.Add(this.btnBookingProductAdd);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtBookingEmployee);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.btnBookingChangeDateEmployee);
-            this.Controls.Add(this.btnBookingChangeCustomer);
-            this.Controls.Add(this.dtmBookingDate);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtBookingCustomer);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnBookingProceed);
             this.Controls.Add(this.btnBookingCancel);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lstBookingServices);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.lstBookingProducts);
-            this.Controls.Add(this.cmbBookingPackage);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.numBookingGuests);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtBookingLocation);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Booking_Details";
@@ -411,6 +435,10 @@
             this.Load += new System.EventHandler(this.Booking_Details_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBookingProductQuantity)).EndInit();
+            this.gbxBookingPackage.ResumeLayout(false);
+            this.gbxBookingPackage.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,5 +475,7 @@
         private System.Windows.Forms.TextBox txtBookingTime;
         private System.Windows.Forms.TextBox txtBookingTotal;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox gbxBookingPackage;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

@@ -33,6 +33,7 @@ namespace Design370
             {
                 if (String.IsNullOrEmpty(DatabaseName))
                     return false;
+                //string connstring = string.Format("Server=remotemysql.com; database={0}; UID=4d3dGYntTO; password=1nluzUaqm6", DatabaseName);
                 string connstring = string.Format("Server=localhost; database={0}; UID=root; password=", DatabaseName);
                 Connection = new MySqlConnection(connstring);
                 try

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Microsoft.Office.Interop.Word;
 using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
+using Microsoft.Office.Interop.Word;
+using System.Xml;
+using System.Xml.Linq;
+using Microsoft.CSharp;
+using MySql.Data.MySqlClient;
+
 namespace Design370
 {
     public partial class PrepareOrder : Form

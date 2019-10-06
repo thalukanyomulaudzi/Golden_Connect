@@ -70,19 +70,30 @@ namespace Design370
         }
         private bool connectDB()
         {
+            //dbCon.DatabaseName = "4d3dGYntTO";
             dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            if (User.ID < 0)
-            {
-                Login login = new Login();
-                login.ShowDialog();
-            }
-            timer1.Start();
-
-            loadToolTips();
+        //    if (User.ID < 0)
+        //    {
+        //        Login login = new Login();
+        //        login.ShowDialog();
+        //    }
+        //    timer1.Start();
+            Booking.loadBookings(dgvBookings);
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
+            dgvPhotoshootPackage.Rows.Clear();
+            Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            dgvEventPackages.Rows.Clear();
+            Event.LoadDGV(dgvEventPackages);
+            loadProducts();
+            loadServices();
+            loadSuppliers();
+            Employee.LoadEmployees(empGrid);
+            Customer.LoadCustomer(dgvCustomers);
+            Order.LoadOrders(dgvOrders);
         }
 
         private void Main_Form_Activated(object sender, EventArgs e)
@@ -105,11 +116,6 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             Customer.LoadCustomer(dgvCustomers);
             Order.LoadOrders(dgvOrders);
-        }
-
-        private void loadToolTips()
-        {
-
         }
         public void loadSuppliers()
         {
@@ -245,15 +251,17 @@ namespace Design370
 
         private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DBConnection dbCon = DBConnection.Instance();
-            DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
-            if (exit == DialogResult.Yes)
+            if (User.ID >= 0)
             {
-                dbCon.Close();
-                e.Cancel = false;
+                DialogResult exit = MessageBox.Show("Do you really want to exit?", "Exit confirmation", MessageBoxButtons.YesNo);
+                if (exit == DialogResult.Yes)
+                {
+                    dbCon.Close();
+                    e.Cancel = false;
+                }
+                else
+                    e.Cancel = true;
             }
-            else
-                e.Cancel = true;
         }
 
         private void Button8_Click(object sender, EventArgs e)
@@ -836,11 +844,13 @@ namespace Design370
             switch (e.ColumnIndex)
             {
                 case 3:
-
+                    //view
                     break;
                 case 4:
+                    //edit
                     break;
                 case 5:
+                    //delete
                     break;
                 default:
                     break;
@@ -1250,6 +1260,7 @@ namespace Design370
         private void Timer1_Tick(object sender, EventArgs e)
         {
             lblTimeInactive.Text = User.GetLastInputTime().ToString();
+            lblUser.Text = "Logged in as: " + User.Name;
             if (User.lastInputTime() > Settings.Timeout)
             {
                 timer1.Stop();
