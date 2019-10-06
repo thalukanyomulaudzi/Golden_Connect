@@ -2,11 +2,6 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Word;
-using System.Xml;
-using System.Xml.Linq;
-using Microsoft.CSharp;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
