@@ -144,9 +144,13 @@
             this.Controls.Add(this.button14);
             this.Controls.Add(this.dataGridView7);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Service_Types";
             this.Text = "Service Types";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Service_Types_HelpButtonClicked);
             this.Activated += new System.EventHandler(this.Service_Types_Activated);
             this.Load += new System.EventHandler(this.Service_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();

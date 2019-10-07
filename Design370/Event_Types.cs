@@ -62,7 +62,7 @@ namespace Design370
                         }
                         catch (Exception except)
                         {
-                            System.Windows.Forms.MessageBox.Show(except.Message);
+                            System.Windows.Forms.MessageBox.Show("This event type is being used and can not be deleted");
                         }
                         dataGridView7.Rows.Clear();
                         try
@@ -222,6 +222,13 @@ namespace Design370
                     }
                 }
             }
+        }
+
+        private void Event_Types_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Event_Types";
+            helpForm.ShowDialog();
         }
     }
 }

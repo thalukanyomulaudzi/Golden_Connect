@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
     public partial class Product_Add : Form
     {
         DBConnection dbCon = DBConnection.Instance();
-
         public Product_Add()
         {
             InitializeComponent();
@@ -43,6 +34,7 @@ namespace Design370
 
         private void btnAddProducts_Click(object sender, EventArgs e)
         {
+            double price = txtProductPrice.Text.Contains("R") ? Convert.ToDouble(txtProductPrice.Text.Substring(1)) : Convert.ToDouble(txtProductPrice.Text);
             if (!Validation.validate(txtProductName.Text, "name") || !Validation.validate(txtProductDescription.Text, "name") || !Validation.validate(txtProductPrice.Text, "price"))
             {
                 MessageBox.Show("All input fields must be valid");
@@ -65,7 +57,7 @@ namespace Design370
                     bookingTypeID = reader.GetString(0);
                     reader.Close();
                     query = "INSERT INTO `product`(`product_name`, `product_description`, `product_price`, `product_type_id`) VALUES('" +
-                                txtProductName.Text + "', '" + txtProductDescription.Text + "', '" + txtProductPrice.Text + "', '" + bookingTypeID + "')";
+                                txtProductName.Text + "', '" + txtProductDescription.Text + "', '" + price + "', '" + bookingTypeID + "')";
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -79,12 +71,12 @@ namespace Design370
 
         private void Product_Add_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Product_Add_Activated(object sender, EventArgs e)
@@ -119,12 +111,19 @@ namespace Design370
 
         private void TxtProductame_TextChanged(object sender, EventArgs e)
         {
-            Validation.checkMark(lblProductName, Validation.validate(txtProductName.Text,"name"));
+            Validation.checkMark(lblProductName, Validation.validate(txtProductName.Text, "name"));
         }
 
         private void TxtProductDescription_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblProductDescription, Validation.validate(txtProductDescription.Text, "name"));
+        }
+
+        private void Product_Add_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Add_Product";
+            helpForm.ShowDialog();
         }
     }
 }

@@ -153,5 +153,17 @@ namespace Design370
                 reader.Close();
             }
         }
+
+        private void Customer_Order_Details_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+
+        }
+
+        private void Customer_Order_Details_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Select_Customer";
+            helpForm.ShowDialog();
+        }
     }
 }

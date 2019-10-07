@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -16,7 +10,7 @@ namespace Design370
         int id = -1;
         public static bool edit;
         string helpstring = " ";
-        public static string emptype;
+        public string emptype;
 
         public Employee_Types_View()
         {
@@ -25,37 +19,32 @@ namespace Design370
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DBConnection dbCon = DBConnection.Instance();
-                if (dbCon.IsConnect())
-                {
-                    string editEmpTypes = "UPDATE `employee_type` SET `employee_type_name` = @Name, `employee_type_description` = @Descr " +
-                        "WHERE `employee_type_name` = @ID";
-                    var command = new MySqlCommand(editEmpTypes, dbCon.Connection);
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@Name", txtEmpTypeName.Text);
-                    command.Parameters.AddWithValue("@Descr", txtEmpTypeDescription.Text);
-                    command.Parameters.AddWithValue("@ID", txtEmpTypeName.Text);
-                    command.ExecuteReader();
-                    //if (done > 0)
-                    MessageBox.Show("Employee Type Updated Successfully", "Update Employee Type", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dbCon.Close();
-                    this.Close();
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
+            btnSaveEmpType.Enabled = false;
+            txtEmpTypeName.Enabled = true;
+            txtEmpTypeDescription.Enabled = true;
+            cbxAccessLevel.Enabled = true;
+            helpstring = "Edit_Employee_Type";
         }
-
         private void Employee_Types_View_Load(object sender, EventArgs e)
         {
+            if (edit)
+            {
+                this.Text = "Edit Employee Type";
+                helpstring = "Edit_Employee_Type";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Employee Type";
+                helpstring = "View_Employee_Type";
+            }
+            txtEmpTypeName.Enabled = edit;
+            txtEmpTypeDescription.Enabled = edit;
+            cbxAccessLevel.Enabled = edit;
+            btnSaveEmpType.Enabled = !edit;
             try
             {
                 DBConnection dbCon = DBConnection.Instance();
-                string query = "SELECT employee_type_id, employee_type_name, employee_type_description, access_level FROM `employee_type` WHERE `employee_type_name` = '" + emptype + "'";
+                string query = "SELECT * FROM `employee_type` WHERE `employee_type_name` = '" + emptype + "'";
                 var command = new MySqlCommand(query, dbCon.Connection);
                 var reader = command.ExecuteReader();
                 while (reader.Read())
@@ -90,6 +79,29 @@ namespace Design370
                 MessageBox.Show("All input fields must be valid");
                 return;
             }
+            try
+            {
+                DBConnection dBCon = DBConnection.Instance();
+                string query = "UPDATE employee_type SET (employee_type_name, employee_type_description, access_level) " +
+                    "VALUES ('" + txtEmpTypeName.Text + "', '" + txtEmpTypeDescription.Text + "', '" + cbxAccessLevel.SelectedText + "') " + 
+                    "WHERE employee_type_id = '" + id + "'";
+                var command = new MySqlCommand(query, dBCon.Connection);
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Employee type updated");
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void Employee_Types_View_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
         }
     }
 }

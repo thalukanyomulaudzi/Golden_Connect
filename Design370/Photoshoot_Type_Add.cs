@@ -76,5 +76,12 @@ namespace Design370
         {
             Validation.checkMark(lblPhotoshootTypeDescription, Validation.validate(txtPhotoshootTypeDescription.Text, "name"));
         }
+
+        private void Photoshoot_Type_Add_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Add_Photoshoot_Type";
+            helpForm.ShowDialog();
+        }
     }
 }

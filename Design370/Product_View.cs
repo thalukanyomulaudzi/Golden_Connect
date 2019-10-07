@@ -16,26 +16,37 @@ namespace Design370
         public static bool edit;
         public string GetProductRow { get; set; }
         string productID = "";
+        string helpstring = " ";
         public Product_View()
         {
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
             toolTip1.SetToolTip(comboBox1, "If disabled, choose a booking type first");
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 100 characters can be entered");
+            toolTip1.SetToolTip(txtProductName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtProductDescription, "A maximum of 100 characters can be entered");
 
         }
 
         private void Product_View_Load(object sender, EventArgs e)
         {
 
-            textBox1.Enabled = edit;
-            textBox2.Enabled = edit;
-            textBox3.Enabled = edit;
+            txtProductName.Enabled = edit;
+            txtProductDescription.Enabled = edit;
+            txtProductPrice.Enabled = edit;
             comboBox1.Enabled = edit;
             button3.Enabled = edit;
             button2.Enabled = !edit;
+            if (edit)
+            {
+                this.Text = "Edit Product";
+                helpstring = "Edit_Product";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Product";
+                helpstring = "View_Product";
+            }
 
             try
             {
@@ -58,9 +69,9 @@ namespace Design370
                     while (mysqlReader.Read())
                     {
                         productID = mysqlReader.GetString(0);
-                        textBox1.Text = mysqlReader.GetString(1);
-                        textBox2.Text = mysqlReader.GetString(2);
-                        textBox3.Text = mysqlReader.GetString(3);
+                        txtProductName.Text = mysqlReader.GetString(1);
+                        txtProductDescription.Text = mysqlReader.GetString(2);
+                        txtProductPrice.Text = mysqlReader.GetString(3);
                         productTypeID = mysqlReader.GetString(4);
                     }
                     mysqlReader.Close();
@@ -82,12 +93,14 @@ namespace Design370
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
-            textBox3.Enabled = true;
+            txtProductName.Enabled = true;
+            txtProductDescription.Enabled = true;
+            txtProductPrice.Enabled = true;
             button3.Enabled = true;
             button2.Enabled = false;
             comboBox1.Enabled = true;
+            this.Text = "Edit Product";
+            helpstring = "Edit_Product";
         }
 
         private void Product_View_FormClosing(object sender, FormClosingEventArgs e)
@@ -97,7 +110,9 @@ namespace Design370
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5 || textBox3.Text.Length == 0)
+            double price = txtProductPrice.Text.Contains("R") ? Convert.ToDouble(txtProductPrice.Text.Substring(1)) : Convert.ToDouble(txtProductPrice.Text);
+
+            if (txtProductName.Text.Length <= 2 || txtProductDescription.Text.Length <= 5 || txtProductPrice.Text.Length == 0)
             {
                 MessageBox.Show("Invalid character length for name and/or description and/or price");
                 return;
@@ -119,8 +134,8 @@ namespace Design370
                     reader.Read();
                     productTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "UPDATE `product` SET `product_name` = '" + textBox1.Text + "', `product_description` = '" +
-                        "" + textBox2.Text + "', `product_price` = '" + textBox3.Text + "', `product_type_id` = '" +
+                    query = "UPDATE `product` SET `product_name` = '" + txtProductName.Text + "', `product_description` = '" +
+                        "" + txtProductDescription.Text + "', `product_price` = '" + price + "', `product_type_id` = '" +
                         "" + productTypeID + "' WHERE product_id = '" + productID + "'";
                     command = new MySqlCommand(query, dbConnection.Connection);
                     command.ExecuteNonQuery();
@@ -142,6 +157,28 @@ namespace Design370
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void Product_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblProductName, Validation.validate(txtProductName.Text, "name"));
+        }
+
+        private void TxtProductDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblProductDescription, Validation.validate(txtProductDescription.Text, "name"));
+        }
+
+        private void TxtProductPrice_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblProductPrice, Validation.validate(txtProductPrice.Text, "price"));
         }
     }
 }

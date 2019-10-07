@@ -13,6 +13,7 @@ namespace Design370
         string bookingPackageName = " ";
         string serviceID = " ";
         string productID = " ";
+        string helpstring = " ";
         string serviceTypeID = " ";
         string productTypeID = " ";
         double TotalPrice = 0;
@@ -36,13 +37,21 @@ namespace Design370
             textBox3.Enabled = edit;
             txtSearchServices.Enabled = edit;
             txtSearchProducts.Enabled = edit;
-            txtSearchPIP.Enabled = edit;
-            txtSearchSIP.Enabled = edit;
             dgvProducts.Enabled = edit;
             dgvServices.Enabled = edit;
             dgvProductsInPackage.Enabled = edit;
             dgvServicesInPackage.Enabled = edit;
             button5.Enabled = !edit;
+            if (edit)
+            {
+                this.Text = "Edit Photoshoot Package";
+                helpstring = "Edit_Photoshoot_Package";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Photoshoot Package";
+                helpstring = "View_Photoshoot_Package";
+            }
 
             int booking_package_id;
             double price = 0;
@@ -154,13 +163,13 @@ namespace Design370
 
         private void Button5_Click(object sender, EventArgs e)
         {
+            this.Text = "Edit Photoshoot Package";
+            helpstring = "Edit_Photoshoot_Package";
             txtPackageName.Enabled = true;
             txtPackageDescription.Enabled = true;
             textBox3.Enabled = true;
             txtSearchProducts.Enabled = true;
             txtSearchServices.Enabled = true;
-            txtSearchSIP.Enabled = true;
-            txtSearchPIP.Enabled = true;
             dgvProducts.Enabled = true;
             dgvServices.Enabled = true;
             dgvProductsInPackage.Enabled = true;
@@ -600,83 +609,12 @@ namespace Design370
 
         private void txtSearchPIP_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                DBConnection dbCon = DBConnection.Instance();
-                if (dbCon.IsConnect())
-                {
-                    CurrencyManager currencyManager = (CurrencyManager)BindingContext[dgvProductsInPackage.Rows];
-                    currencyManager.SuspendBinding();
-                    for (int i = 0; i < dgvProductsInPackage.Rows.Count; i++)
-                    {
-                        dgvProductsInPackage.Rows[i].Visible = true;
-                    }
-                    for (int u = 0; u < dgvProductsInPackage.RowCount; u++)
-                    {
-                        if (dgvProductsInPackage.Rows[u].Cells[1].Value.ToString().Contains(txtSearchPIP.Text))
-                        {
-                            dgvProductsInPackage.Rows[u].Visible = true;
-                        }
-                        else
-                        {
-                            dgvProductsInPackage.Rows[u].Visible = false;
-                        }
-                    }
-                    currencyManager.ResumeBinding();
-                }
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+           
         }
 
         private void dgvProductsInPackage_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            // High light and searching apply over selective fields of grid.  
-            if (e.RowIndex > -1 && e.ColumnIndex == 1)
-            {
-                // Check data for search  
-                if (!String.IsNullOrWhiteSpace(txtSearchPIP.Text.Trim()))
-                {
-                    String gridCellValue = e.FormattedValue.ToString();
-                    // check the index of search text into grid cell.  
-                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtSearchPIP.Text.Trim().ToLower());
-                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
-                    if (startIndexInCellValue >= 0)
-                    {
-                        e.Handled = true;
-                        e.PaintBackground(e.CellBounds, true);
-                        //the highlite rectangle  
-                        Rectangle hl_rect = new Rectangle();
-                        hl_rect.Y = e.CellBounds.Y + 2;
-                        hl_rect.Height = e.CellBounds.Height - 5;
-                        //find the size of the text before the search word in grid cell data.  
-                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
-                        //size of the search word in the grid cell data  
-                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearchPIP.Text.Trim().Length);
-                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
-                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
-                        if (s1.Width > 5)
-                        {
-                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
-                            hl_rect.Width = s2.Width - 6;
-                        }
-                        else
-                        {
-                            hl_rect.X = e.CellBounds.X + 2;
-                            hl_rect.Width = s2.Width - 6;
-                        }
-                        //color for showing highlighted text in grid cell  
-                        SolidBrush hl_brush;
-                        hl_brush = new SolidBrush(Color.Gold);
-                        //paint the background behind the search word  
-                        e.Graphics.FillRectangle(hl_brush, hl_rect);
-                        hl_brush.Dispose();
-                        e.PaintContent(e.CellBounds);
-                    }
-                }
-            }
+            
         }
 
         private void txtSearchServices_TextChanged(object sender, EventArgs e)
@@ -754,83 +692,12 @@ namespace Design370
 
         private void txtSearchSIP_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                DBConnection dbCon = DBConnection.Instance();
-                if (dbCon.IsConnect())
-                {
-                    CurrencyManager currencyManager = (CurrencyManager)BindingContext[dgvProductsInPackage.Rows];
-                    currencyManager.SuspendBinding();
-                    for (int i = 0; i < dgvProductsInPackage.Rows.Count; i++)
-                    {
-                        dgvProductsInPackage.Rows[i].Visible = true;
-                    }
-                    for (int u = 0; u < dgvProductsInPackage.RowCount; u++)
-                    {
-                        if (dgvProductsInPackage.Rows[u].Cells[1].Value.ToString().Contains(txtSearchPIP.Text))
-                        {
-                            dgvProductsInPackage.Rows[u].Visible = true;
-                        }
-                        else
-                        {
-                            dgvProductsInPackage.Rows[u].Visible = false;
-                        }
-                    }
-                    currencyManager.ResumeBinding();
-                }
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            
         }
 
         private void dgvServicesInPackage_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            // High light and searching apply over selective fields of grid.  
-            if (e.RowIndex > -1 && e.ColumnIndex == 1)
-            {
-                // Check data for search  
-                if (!String.IsNullOrWhiteSpace(txtSearchSIP.Text.Trim()))
-                {
-                    String gridCellValue = e.FormattedValue.ToString();
-                    // check the index of search text into grid cell.  
-                    int startIndexInCellValue = gridCellValue.ToLower().IndexOf(txtSearchSIP.Text.Trim().ToLower());
-                    // IF search text is exists inside grid cell then startIndexInCellValue value will be greater then 0 or equal to 0  
-                    if (startIndexInCellValue >= 0)
-                    {
-                        e.Handled = true;
-                        e.PaintBackground(e.CellBounds, true);
-                        //the highlite rectangle  
-                        Rectangle hl_rect = new Rectangle();
-                        hl_rect.Y = e.CellBounds.Y + 2;
-                        hl_rect.Height = e.CellBounds.Height - 5;
-                        //find the size of the text before the search word in grid cell data.  
-                        String sBeforeSearchword = gridCellValue.Substring(0, startIndexInCellValue);
-                        //size of the search word in the grid cell data  
-                        String sSearchWord = gridCellValue.Substring(startIndexInCellValue, txtSearchSIP.Text.Trim().Length);
-                        Size s1 = TextRenderer.MeasureText(e.Graphics, sBeforeSearchword, e.CellStyle.Font, e.CellBounds.Size);
-                        Size s2 = TextRenderer.MeasureText(e.Graphics, sSearchWord, e.CellStyle.Font, e.CellBounds.Size);
-                        if (s1.Width > 5)
-                        {
-                            hl_rect.X = e.CellBounds.X + s1.Width - 5;
-                            hl_rect.Width = s2.Width - 6;
-                        }
-                        else
-                        {
-                            hl_rect.X = e.CellBounds.X + 2;
-                            hl_rect.Width = s2.Width - 6;
-                        }
-                        //color for showing highlighted text in grid cell  
-                        SolidBrush hl_brush;
-                        hl_brush = new SolidBrush(Color.Gold);
-                        //paint the background behind the search word  
-                        e.Graphics.FillRectangle(hl_brush, hl_rect);
-                        hl_brush.Dispose();
-                        e.PaintContent(e.CellBounds);
-                    }
-                }
-            }
+           
         }
 
         private void TxtPackageName_TextChanged(object sender, EventArgs e)
@@ -841,6 +708,18 @@ namespace Design370
         private void TxtPackageDescription_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblPackageDescription, Validation.validate(txtPackageDescription.Text, "name"));
+        }
+
+        private void grbPackage_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Photoshoot_Package_View_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
         }
     }
 }

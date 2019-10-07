@@ -1,33 +1,36 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Design370
 {
     class User
     {
-        public static int AccessLevel { get; set; }
-        public static string ID { get; set; }
+        public static int AccessLevel { get; set; } = -1;
+        public static int ID { get; set; } = -1;
+        public static string Name { get; set; } = "";
 
-        public static void login(string id, string pass)
+        public static void login(string user, string pass)
         {
             //string newsalt = generateSalt();
-            //MessageBox.Show(newsalt);
-            //txtID.Text = byteArrayToString(hash(txtPassword.Text + newsalt));
+            //MessageBox.Show(byteArrayToString(hash(pass + newsalt)) + "," + newsalt);
+            //File.WriteAllText("hash.txt", byteArrayToString(hash(pass + newsalt)) + "," + newsalt);
             //return;
             try
             {
-                string username = "", password = "", salt = "";
-                int access = 0;
+                string username = "", password = "", salt = "", name = "";
+                int access = 0, id = -1;
 
                 DBConnection dBCon = DBConnection.Instance();
-                string query = "SELECT u.username, u.password, u.salt, et.access_level " +
+                string query = "SELECT u.username, u.password, u.salt, et.access_level, e.employee_id, e.employee_first, e.employee_last " +
                     "FROM user u JOIN employee e ON u.employee_id = e.employee_id " +
                     "JOIN employee_type et ON e.employee_type = et.employee_type_id " +
-                    "WHERE u.username = '" + id + "'";
+                    "WHERE u.username = '" + user + "'";
                 var command = new MySqlCommand(query, dBCon.Connection);
                 var reader = command.ExecuteReader();
 
@@ -43,6 +46,8 @@ namespace Design370
                     password = reader.GetString(1);
                     salt = reader.GetString(2);
                     access = reader.GetInt32(3);
+                    id = reader.GetInt32(4);
+                    name += reader.GetString(6) + ", " + reader.GetString(5);
                 }
                 reader.Close();
                 byte[] hashed = hash(pass + salt);
@@ -50,6 +55,8 @@ namespace Design370
                 {
                     //login
                     AccessLevel = access;
+                    ID = id;
+                    Name = name;
                 }
                 else
                 {
@@ -121,5 +128,45 @@ namespace Design370
                 MessageBox.Show(e.Message);
             }
         }
+
+        public static void logout()
+        {
+            ID = -1;
+            AccessLevel = -1;
+            Name = "";
+        }
+
+        public static uint lastInputTime()
+        {
+            return GetLastInputTime();
+        }
+
+
+
+        [DllImport("user32.dll")]
+        public static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+        public static uint GetLastInputTime()
+        {
+            uint idleTime = 0;
+            LASTINPUTINFO lastInputInfo = new LASTINPUTINFO();
+            lastInputInfo.cbSize = (uint)Marshal.SizeOf(lastInputInfo);
+            lastInputInfo.dwTime = 0;
+
+            uint envTicks = (uint)Environment.TickCount;
+
+            if (GetLastInputInfo(ref lastInputInfo))
+            {
+                uint lastInputTick = lastInputInfo.dwTime;
+                idleTime = envTicks - lastInputTick;
+            }
+            return ((idleTime > 0) ? (idleTime / 1000) : 0);
+        }
+    }
+    struct LASTINPUTINFO
+    {
+        public static readonly int SizeOf = Marshal.SizeOf(typeof(LASTINPUTINFO));
+
+        public uint cbSize;
+        public uint dwTime;
     }
 }

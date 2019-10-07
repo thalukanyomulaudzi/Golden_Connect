@@ -9,6 +9,7 @@ namespace Design370
         public bool edit;
         public string customerID;
         public string GetCustomerRow { get; set; }
+        string helpstring = " ";
         public Customer_View()
         {
             InitializeComponent();
@@ -17,7 +18,7 @@ namespace Design370
             toolTip1.SetToolTip(txtCustomerFirst, "A maximum of 25 characters can be entered");
             toolTip1.SetToolTip(txtCustomerLast, "A maximum of 25 characters can be entered");
             toolTip1.SetToolTip(txtCustomerEmail, "A maximum of 50 characters can be entered");
-            toolTip1.SetToolTip(txtCustomerPhone, "A maximum of 10 characters can be entered");
+            toolTip1.SetToolTip(txtCustomerPhone, "A maximum of 15 characters can be entered");
             toolTip1.SetToolTip(txtCustomerID, "A maximum of 13 characters can be entered");
         }
 
@@ -33,6 +34,17 @@ namespace Design370
             txtCustomerID.Enabled = edit;
             txtCustomerLast.Enabled = edit;
             txtCustomerPhone.Enabled = edit;
+            button2.Enabled = !edit;
+            if (edit)
+            {
+                Text = "Edit Customer";
+                helpstring = "Edit_Customer";
+            }
+            else if (!edit)
+            {
+                Text = "View Customer";
+                helpstring = "View_Customer";
+            }
 
             try
             {
@@ -71,6 +83,8 @@ namespace Design370
             txtCustomerLast.Enabled = true;
             txtCustomerPhone.Enabled = true;
             button2.Enabled = false;
+            helpstring = "Edit_Customer";
+            Text = "Edit Customer";
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
@@ -97,7 +111,7 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
-            this.Close();
+            Close();
         }
 
         private void TxtCustomerFirst_TextChanged(object sender, EventArgs e)
@@ -128,6 +142,7 @@ namespace Design370
         private void Customer_View_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
         {
             HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
             helpForm.ShowDialog();
         }
     }

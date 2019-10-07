@@ -32,12 +32,13 @@ namespace Design370
             switch(e.ColumnIndex)
             {
                 case 3:
-                    //empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    MessageBox.Show("Test");
+                    empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    Employee_Types_View.edit = false;
                     empTypes.ShowDialog();
                     break;
                 case 4:
-                    //empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    Employee_Types_View.edit = true;
                     empTypes.ShowDialog();
                     break;
                 case 5:
@@ -67,7 +68,7 @@ namespace Design370
                     }
                     catch(Exception err)
                     {
-                        MessageBox.Show(err.Message);
+                        MessageBox.Show("This employee type is assigned to someone and can not be deleted");
                     }
                     break;
                 default:
@@ -174,6 +175,13 @@ namespace Design370
                     }
                 }
             }
+        }
+
+        private void Employee_Types_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Employee_Types";
+            helpForm.ShowDialog();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Design370
 {
     public partial class Login : Form
     {
+        private bool shown = false;
         public Login()
         {
             InitializeComponent();
@@ -17,6 +18,25 @@ namespace Design370
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             User.login(txtID.Text.Trim(), txtPassword.Text.Trim());
+        }
+
+        private void LblPasswordShow_Click(object sender, EventArgs e)
+        {
+            shown = !shown;
+            txtPassword.PasswordChar = shown ? '\0' : '*';
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (User.ID < 0)
+            {
+                Application.Exit();
+            }
         }
     }
 }

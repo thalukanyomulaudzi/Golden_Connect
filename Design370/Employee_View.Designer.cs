@@ -65,7 +65,7 @@
             // 
             this.btnEmployeeEdit.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeEdit.Location = new System.Drawing.Point(363, 623);
-            this.btnEmployeeEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEmployeeEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEmployeeEdit.Name = "btnEmployeeEdit";
             this.btnEmployeeEdit.Size = new System.Drawing.Size(117, 39);
             this.btnEmployeeEdit.TabIndex = 23;
@@ -77,7 +77,7 @@
             // 
             this.btnEmployeeOK.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeOK.Location = new System.Drawing.Point(490, 623);
-            this.btnEmployeeOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEmployeeOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnEmployeeOK.Name = "btnEmployeeOK";
             this.btnEmployeeOK.Size = new System.Drawing.Size(117, 39);
             this.btnEmployeeOK.TabIndex = 22;
@@ -89,7 +89,7 @@
             // 
             this.txtEmployeeEmail.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeeEmail.Location = new System.Drawing.Point(363, 404);
-            this.txtEmployeeEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmployeeEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmployeeEmail.Name = "txtEmployeeEmail";
             this.txtEmployeeEmail.Size = new System.Drawing.Size(243, 26);
             this.txtEmployeeEmail.TabIndex = 21;
@@ -99,7 +99,7 @@
             // 
             this.txtEmployeePhone.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeePhone.Location = new System.Drawing.Point(40, 404);
-            this.txtEmployeePhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmployeePhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmployeePhone.Name = "txtEmployeePhone";
             this.txtEmployeePhone.Size = new System.Drawing.Size(243, 26);
             this.txtEmployeePhone.TabIndex = 20;
@@ -131,7 +131,7 @@
             // 
             this.txtEmployeeID.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeeID.Location = new System.Drawing.Point(364, 93);
-            this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(243, 26);
             this.txtEmployeeID.TabIndex = 17;
@@ -152,7 +152,7 @@
             // 
             this.txtEmployeeLast.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeeLast.Location = new System.Drawing.Point(41, 160);
-            this.txtEmployeeLast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmployeeLast.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmployeeLast.Name = "txtEmployeeLast";
             this.txtEmployeeLast.Size = new System.Drawing.Size(243, 26);
             this.txtEmployeeLast.TabIndex = 15;
@@ -173,7 +173,7 @@
             // 
             this.txtEmployeeFirst.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeeFirst.Location = new System.Drawing.Point(41, 93);
-            this.txtEmployeeFirst.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmployeeFirst.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmployeeFirst.Name = "txtEmployeeFirst";
             this.txtEmployeeFirst.Size = new System.Drawing.Size(243, 26);
             this.txtEmployeeFirst.TabIndex = 13;
@@ -239,7 +239,7 @@
             this.cbxEmployeeTitle.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmployeeTitle.FormattingEnabled = true;
             this.cbxEmployeeTitle.Location = new System.Drawing.Point(364, 292);
-            this.cbxEmployeeTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEmployeeTitle.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeTitle.Name = "cbxEmployeeTitle";
             this.cbxEmployeeTitle.Size = new System.Drawing.Size(127, 26);
             this.cbxEmployeeTitle.TabIndex = 32;
@@ -249,7 +249,7 @@
             this.cbxEmployeeStatus.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmployeeStatus.FormattingEnabled = true;
             this.cbxEmployeeStatus.Location = new System.Drawing.Point(364, 228);
-            this.cbxEmployeeStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEmployeeStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeStatus.Name = "cbxEmployeeStatus";
             this.cbxEmployeeStatus.Size = new System.Drawing.Size(243, 26);
             this.cbxEmployeeStatus.TabIndex = 33;
@@ -259,7 +259,7 @@
             this.cbxEmployeeGender.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmployeeGender.FormattingEnabled = true;
             this.cbxEmployeeGender.Location = new System.Drawing.Point(364, 161);
-            this.cbxEmployeeGender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEmployeeGender.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeGender.Name = "cbxEmployeeGender";
             this.cbxEmployeeGender.Size = new System.Drawing.Size(243, 26);
             this.cbxEmployeeGender.TabIndex = 34;
@@ -269,7 +269,7 @@
             this.cbxEmployeeType.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmployeeType.FormattingEnabled = true;
             this.cbxEmployeeType.Location = new System.Drawing.Point(40, 522);
-            this.cbxEmployeeType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEmployeeType.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeType.Name = "cbxEmployeeType";
             this.cbxEmployeeType.Size = new System.Drawing.Size(243, 26);
             this.cbxEmployeeType.TabIndex = 35;
@@ -298,7 +298,7 @@
             // 
             this.btnEmployeeTypeAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployeeTypeAdd.Location = new System.Drawing.Point(363, 522);
-            this.btnEmployeeTypeAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEmployeeTypeAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnEmployeeTypeAdd.Name = "btnEmployeeTypeAdd";
             this.btnEmployeeTypeAdd.Size = new System.Drawing.Size(168, 29);
             this.btnEmployeeTypeAdd.TabIndex = 38;
@@ -309,7 +309,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(37, 36);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
@@ -320,7 +320,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(35, 347);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
@@ -331,7 +331,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(36, 462);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
@@ -391,6 +391,7 @@
             // 
             // Employee_View
             // 
+            this.AcceptButton = this.btnEmployeeOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 694);
@@ -426,9 +427,13 @@
             this.Controls.Add(this.txtEmployeeFirst);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HelpButton = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Employee_View";
             this.Text = "View Employee";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Employee_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Employee_View_FormClosing);
             this.Load += new System.EventHandler(this.Employee_View_Load);
             this.ResumeLayout(false);

@@ -15,20 +15,31 @@ namespace Design370
     {
         public static bool edit;
         string product_type_id = "";
+        string helpstring = " ";
         public string GetProductTypeRow { get; set; }
         public Product_Types_View()
         {
             InitializeComponent();
             ToolTip toolTip1 = new ToolTip();
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(textBox1, "A maximum of 25 characters can be entered");
-            toolTip1.SetToolTip(textBox2, "A maximum of 200 characters can be entered");
+            toolTip1.SetToolTip(txtProductTypeName, "A maximum of 25 characters can be entered");
+            toolTip1.SetToolTip(txtProductTypeDescription, "A maximum of 200 characters can be entered");
         }
 
         private void Product_Types_View_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled = edit;
-            textBox2.Enabled = edit;
+            if (edit)
+            {
+                this.Text = "Edit Product Type";
+                helpstring = "Edit_Product_Type";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Product Type";
+                helpstring = "View_Product_Type";
+            }
+            txtProductTypeName.Enabled = edit;
+            txtProductTypeDescription.Enabled = edit;
             if (edit == true)
             {
                 button2.Enabled = false;
@@ -44,8 +55,8 @@ namespace Design370
                     while (reader.Read())
                     {
                         product_type_id = reader.GetString(0);
-                        textBox1.Text = reader.GetString(1);
-                        textBox2.Text = reader.GetString(2);
+                        txtProductTypeName.Text = reader.GetString(1);
+                        txtProductTypeDescription.Text = reader.GetString(2);
                     }
                     reader.Close();
                 }
@@ -59,8 +70,10 @@ namespace Design370
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
+            this.Text = "Edit Product Type";
+            helpstring = "Edit_Product_Type";
+            txtProductTypeName.Enabled = true;
+            txtProductTypeDescription.Enabled = true;
             button2.Enabled = false;
         }
 
@@ -71,11 +84,11 @@ namespace Design370
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Enabled)
+            if (txtProductTypeName.Enabled)
             {
-                if (textBox1.Text.Length <= 2 || textBox2.Text.Length <= 5)
+                if (!Validation.validate(txtProductTypeName.Text, "name") || !Validation.validate(txtProductTypeDescription.Text, "name"))
                 {
-                    MessageBox.Show("Invalid character length for name and/or description");
+                    MessageBox.Show("All input fields must be valid");
                     return;
                 }
                 try
@@ -83,8 +96,8 @@ namespace Design370
                     DBConnection dBConnection = DBConnection.Instance();
                     if (dBConnection.IsConnect())
                     {
-                        string query = "UPDATE `product_type` SET `product_type_id` = '" + product_type_id + "', `product_type_name` = '" + textBox1.Text + "', `product_type_description`";
-                        query += " = '" + textBox2.Text + "' WHERE product_type_id = '" + product_type_id + "'";
+                        string query = "UPDATE `product_type` SET `product_type_id` = '" + product_type_id + "', `product_type_name` = '" + txtProductTypeName.Text + "', `product_type_description`";
+                        query += " = '" + txtProductTypeDescription.Text + "' WHERE product_type_id = '" + product_type_id + "'";
                         var command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
                     }
@@ -97,6 +110,23 @@ namespace Design370
                 this.Close();
             }
             this.Close();
+        }
+
+        private void TxtProductTypeName_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblProductTypeName, Validation.validate(txtProductTypeName.Text, "name"));
+        }
+
+        private void TxtProductTypeDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblProductTypeDescription, Validation.validate(txtProductTypeDescription.Text, "name"));
+        }
+
+        private void Product_Types_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
         }
     }
 }

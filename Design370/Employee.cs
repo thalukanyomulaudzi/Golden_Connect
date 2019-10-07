@@ -13,39 +13,36 @@ namespace Design370
         {
             try
             {
-                DBConnection dBConnection = DBConnection.Instance();
-                if (dBConnection.IsConnect())
+                if (dbCon.IsConnect())
                 {
                     string query = "DELETE FROM `employee` WHERE employee_id = '" + EmployeeID + "'";
-                    var command = new MySqlCommand(query, dBConnection.Connection);
+                    var command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
             }
             catch (Exception except)
             {
-                System.Windows.Forms.MessageBox.Show(except.Message);
+                System.Windows.Forms.MessageBox.Show("This employee is being used on the system and can not be deleted");
             }
         }
         public static void LoadEmployees(DataGridView dgvEmp)
         {
             try
             {
-                if (dbCon.IsConnect())
+                DataTable Employee = new DataTable();
+                string query = "SELECT employee.employee_id, employee.employee_first, employee.employee_last, employee.employee_idnumber, employee.employee_phone," +
+                    " employee.employee_email, employee_type.employee_type_name FROM employee INNER JOIN employee_type ON employee.employee_type = " +
+                    "employee_type.employee_type_id";
+                var command = new MySqlCommand(query, dbCon.Connection);
+                var reader = command.ExecuteReader();
+                Employee.Load(reader);
+                dgvEmp.Rows.Clear();
+                for (int i = 0; i < Employee.Rows.Count; i++)
                 {
-                    DataTable Employee = new DataTable();
-                    string query = "SELECT employee.employee_id, employee.employee_first, employee.employee_last, employee.employee_idnumber, employee.employee_phone," +
-                        " employee.employee_email, employee_type.employee_type_name FROM employee INNER JOIN employee_type ON employee.employee_type = " +
-                        "employee_type.employee_type_id";
-                    var command = new MySqlCommand(query, dbCon.Connection);
-                    var reader = command.ExecuteReader();
-                    Employee.Load(reader);
-                    for (int i = 0; i < Employee.Rows.Count; i++)
-                    {
-                        dgvEmp.Rows.Add(Employee.Rows[i].ItemArray[0], Employee.Rows[i].ItemArray[3], Employee.Rows[i].ItemArray[2] + ", " + Employee.Rows[i].ItemArray[1],
-                            Employee.Rows[i].ItemArray[4], Employee.Rows[i].ItemArray[5], Employee.Rows[i].ItemArray[6], "View", "Edit", "Delete");
-                    }
-                    reader.Close();
+                    dgvEmp.Rows.Add(Employee.Rows[i].ItemArray[0], Employee.Rows[i].ItemArray[3], Employee.Rows[i].ItemArray[2] + ", " + Employee.Rows[i].ItemArray[1],
+                        Employee.Rows[i].ItemArray[4], Employee.Rows[i].ItemArray[5], Employee.Rows[i].ItemArray[6], "View", "Edit", "Delete");
                 }
+                reader.Close();
             }
             catch (Exception e)
             {

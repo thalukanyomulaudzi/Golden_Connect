@@ -31,6 +31,7 @@ namespace Design370
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -169,13 +170,19 @@ namespace Design370
             this.button25 = new System.Windows.Forms.Button();
             this.btnGenCustRpt = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.button10 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             this.button2 = new System.Windows.Forms.Button();
             this.txtSearchManual = new System.Windows.Forms.TextBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDebug = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblUser = new System.Windows.Forms.Label();
+            this.lblTimeInactive = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -200,6 +207,7 @@ namespace Design370
             this.tabPage11.SuspendLayout();
             this.tabPage12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
+            this.tabPage13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -218,6 +226,7 @@ namespace Design370
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Controls.Add(this.tabPage12);
+            this.tabControl1.Controls.Add(this.tabPage13);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -257,7 +266,6 @@ namespace Design370
             this.lblCustomerSearch.Size = new System.Drawing.Size(57, 18);
             this.lblCustomerSearch.TabIndex = 5;
             this.lblCustomerSearch.Text = "Search:";
-            this.lblCustomerSearch.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtCustomerSearch
             // 
@@ -546,7 +554,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -998,7 +1006,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 132;
+            this.PhotoshootPackageName.Width = 122;
             // 
             // Services
             // 
@@ -1156,7 +1164,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 132;
+            this.EventPackageName.Width = 122;
             // 
             // ServicesEvents
             // 
@@ -1669,6 +1677,7 @@ namespace Design370
             // 
             // tabPage12
             // 
+            this.tabPage12.Controls.Add(this.button10);
             this.tabPage12.Controls.Add(this.button3);
             this.tabPage12.Controls.Add(this.axAcroPDF1);
             this.tabPage12.Controls.Add(this.button2);
@@ -1683,6 +1692,17 @@ namespace Design370
             this.tabPage12.Click += new System.EventHandler(this.tabPage12_Click);
             this.tabPage12.Enter += new System.EventHandler(this.tabPage12_Enter);
             this.tabPage12.Leave += new System.EventHandler(this.tabPage12_Leave);
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.Location = new System.Drawing.Point(661, 556);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(198, 29);
+            this.button10.TabIndex = 7;
+            this.button10.Text = "Open Help Document";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
             // button3
             // 
@@ -1713,7 +1733,7 @@ namespace Design370
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(198, 29);
             this.button2.TabIndex = 4;
-            this.button2.Text = "Download Help Document";
+            this.button2.Text = "Save Help Document";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -1734,6 +1754,26 @@ namespace Design370
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.btnSettings);
+            this.tabPage13.Location = new System.Drawing.Point(154, 4);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Size = new System.Drawing.Size(1104, 608);
+            this.tabPage13.TabIndex = 12;
+            this.tabPage13.Text = "Settings";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Location = new System.Drawing.Point(51, 51);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(142, 58);
+            this.btnSettings.TabIndex = 16;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.Button10_Click_1);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -1748,12 +1788,37 @@ namespace Design370
             // lblDebug
             // 
             this.lblDebug.AutoSize = true;
-            this.lblDebug.Location = new System.Drawing.Point(1157, 9);
+            this.lblDebug.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblDebug.Location = new System.Drawing.Point(1168, 0);
             this.lblDebug.Name = "lblDebug";
             this.lblDebug.Size = new System.Drawing.Size(94, 13);
             this.lblDebug.TabIndex = 13;
             this.lblDebug.Text = "Debug Information";
             this.lblDebug.Click += new System.EventHandler(this.LblDebug_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblUser.Location = new System.Drawing.Point(250, 0);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(74, 13);
+            this.lblUser.TabIndex = 14;
+            this.lblUser.Text = "Logged in as: ";
+            this.lblUser.Click += new System.EventHandler(this.Label1_Click_1);
+            // 
+            // lblTimeInactive
+            // 
+            this.lblTimeInactive.AutoSize = true;
+            this.lblTimeInactive.Location = new System.Drawing.Point(250, 13);
+            this.lblTimeInactive.Name = "lblTimeInactive";
+            this.lblTimeInactive.Size = new System.Drawing.Size(0, 13);
+            this.lblTimeInactive.TabIndex = 15;
             // 
             // Main_Form
             // 
@@ -1762,17 +1827,23 @@ namespace Design370
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1262, 693);
+            this.Controls.Add(this.lblTimeInactive);
+            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
+            this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Golden Connect";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Main_Form_HelpButtonClicked);
             this.Activated += new System.EventHandler(this.Main_Form_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Main_Form_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1808,6 +1879,7 @@ namespace Design370
             this.tabPage12.ResumeLayout(false);
             this.tabPage12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
+            this.tabPage13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1983,6 +2055,12 @@ namespace Design370
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
         private Label lblDebug;
         private Button button3;
+        private Timer timer1;
+        private Label lblUser;
+        private Label lblTimeInactive;
+        private Button btnSettings;
+        private Button button10;
+        private TabPage tabPage13;
         private Button btnMakePayment;
     }
 }

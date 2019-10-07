@@ -6,12 +6,21 @@ namespace Design370
 {
     public partial class User_Add : Form
     {
+        private bool shown = false;
+
         public User_Add()
         {
             InitializeComponent();
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private void LblPasswordShow_Click(object sender, EventArgs e)
+        {
+            shown = !shown;
+            txtPassword.PasswordChar = shown ? '\0' : '*';
+            txtPasswordConfirm.PasswordChar = shown ? '\0' : '*';
+        }
+
+        private void BtnUserCreate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -25,6 +34,8 @@ namespace Design370
                     reader.Close();
                     return;
                 }
+                reader.Close();
+                this.Close();
             }
             catch (Exception ee)
             {

@@ -15,7 +15,7 @@ namespace Design370
 
         private void Booking_Date_Load(object sender, EventArgs e)
         {
-
+            dgvBookEvent.RowTemplate.Height = 50;
         }
 
 
@@ -28,11 +28,6 @@ namespace Design370
             else
                 Booking.firstDayOfWeek = dateTimePicker1.Value.Subtract(TimeSpan.FromDays(3));
             Timeslot.loadTimeslots(dgvBookEvent, Booking.firstDayOfWeek);
-        }
-
-        private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void DgvBookEvent_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -65,42 +60,12 @@ namespace Design370
                 MessageBox.Show(ee.Message);
             }
         }
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            bookingDetails("Photoshoot");
-        }
-        private void bookingDetails(string bookingType)
-        {
-            try
-            {
-                Booking.bookingType = bookingType;
-                Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
-                Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                Booking.employeeID = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[2].Value.ToString();
-                Booking.time = dgvBookEvent.Rows[dgvBookEvent.CurrentRow.Index].HeaderCell.Value.ToString();
-                MessageBox.Show(Booking.time);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
 
         private void Book_Event_Date_FormClosing(object sender, FormClosingEventArgs e)
         {
 
         }
 
-        private void Button1_Click_1(object sender, EventArgs e)
-        {
-            Booking_Customer booking_Customer = new Booking_Customer();
-            booking_Customer.Show();
-        }
 
         private void Booking_Date_Activated(object sender, EventArgs e)
         {
@@ -141,6 +106,56 @@ namespace Design370
         private void LblBookingDateNextWeek_Click(object sender, EventArgs e)
         {
             dateTimePicker1.Value += TimeSpan.FromDays(7);
+        }
+
+        private void DgvBookEvent_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value.ToString() == "Available")
+            {
+                e.CellStyle.BackColor = Color.Green;
+            }
+            else if (e.Value.ToString() == "Unavailable")
+            {
+                e.CellStyle.BackColor = Color.Red;
+            }
+        }
+
+        private void BtnChangeCustomer_Click(object sender, EventArgs e)
+        {
+            Booking_Customer booking_Customer = new Booking_Customer();
+            booking_Customer.ShowDialog();
+        }
+
+        private void BtnBookingPhotoshoot_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Booking.bookingType = "Photoshoot";
+                Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
+                Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                Booking.employeeID = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[2].Value.ToString();
+                Booking.time = dgvBookEvent.Rows[dgvBookEvent.CurrentRow.Index].HeaderCell.Value.ToString();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void BtnBookingEvent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Booking.bookingType = "Event";
+                Booking.bookingDate = DateTime.Parse(dgvBookEvent.Columns[dgvBookEvent.CurrentCell.ColumnIndex].HeaderText);
+                Booking.employeeName = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                Booking.employeeID = dgvBookingEmployees.Rows[dgvBookingEmployees.CurrentCell.RowIndex].Cells[2].Value.ToString();
+                Booking.time = dgvBookEvent.Rows[dgvBookEvent.CurrentRow.Index].HeaderCell.Value.ToString();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
         }
     }
 }
