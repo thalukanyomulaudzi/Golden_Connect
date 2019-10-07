@@ -49,7 +49,25 @@
             this.txtBookingTotal = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.gbxBookingPackage = new System.Windows.Forms.GroupBox();
-            this.gbxBookingDetails = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dgvServices = new System.Windows.Forms.DataGridView();
+            this.ServicesID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicesPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicesAdd = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.ProductsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductAdd = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dgvServicesInPackage = new System.Windows.Forms.DataGridView();
+            this.SIPID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SIPName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SIPPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SIPRemove = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.dgvProductsInPackage = new System.Windows.Forms.DataGridView();
             this.PIPID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PIPName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,32 +75,14 @@
             this.PIPPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PIPAdd = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PIPRemove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dgvServicesInPackage = new System.Windows.Forms.DataGridView();
-            this.SIPID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SIPName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SIPPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SIPRemove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dgvServices = new System.Windows.Forms.DataGridView();
-            this.ServicesID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServicesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServicesPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServicesAdd = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.ProductsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductAdd = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.gbxBookingDetails = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).BeginInit();
             this.gbxBookingPackage.SuspendLayout();
-            this.gbxBookingDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductsInPackage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServicesInPackage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServicesInPackage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductsInPackage)).BeginInit();
+            this.gbxBookingDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBookingProceed
@@ -315,30 +315,185 @@
             this.gbxBookingPackage.TabStop = false;
             this.gbxBookingPackage.Text = "Package Details";
             // 
-            // gbxBookingDetails
+            // label17
             // 
-            this.gbxBookingDetails.Controls.Add(this.txtBookingLocation);
-            this.gbxBookingDetails.Controls.Add(this.label1);
-            this.gbxBookingDetails.Controls.Add(this.label2);
-            this.gbxBookingDetails.Controls.Add(this.numBookingGuests);
-            this.gbxBookingDetails.Controls.Add(this.txtBookingTime);
-            this.gbxBookingDetails.Controls.Add(this.label7);
-            this.gbxBookingDetails.Controls.Add(this.label12);
-            this.gbxBookingDetails.Controls.Add(this.txtBookingCustomer);
-            this.gbxBookingDetails.Controls.Add(this.label9);
-            this.gbxBookingDetails.Controls.Add(this.dtmBookingDate);
-            this.gbxBookingDetails.Controls.Add(this.btnBookingChangeCustomer);
-            this.gbxBookingDetails.Controls.Add(this.btnBookingChangeDateEmployee);
-            this.gbxBookingDetails.Controls.Add(this.label10);
-            this.gbxBookingDetails.Controls.Add(this.txtBookingEmployee);
-            this.gbxBookingDetails.Location = new System.Drawing.Point(9, 11);
-            this.gbxBookingDetails.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.gbxBookingDetails.Name = "gbxBookingDetails";
-            this.gbxBookingDetails.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.gbxBookingDetails.Size = new System.Drawing.Size(928, 191);
-            this.gbxBookingDetails.TabIndex = 64;
-            this.gbxBookingDetails.TabStop = false;
-            this.gbxBookingDetails.Text = "Booking Details";
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(503, 270);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(126, 16);
+            this.label17.TabIndex = 68;
+            this.label17.Text = "Additional Products :";
+            // 
+            // dgvServices
+            // 
+            this.dgvServices.AllowUserToAddRows = false;
+            this.dgvServices.AllowUserToDeleteRows = false;
+            this.dgvServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvServices.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ServicesID,
+            this.ServicesName,
+            this.ServicesPrice,
+            this.ServicesAdd});
+            this.dgvServices.Location = new System.Drawing.Point(506, 82);
+            this.dgvServices.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvServices.Name = "dgvServices";
+            this.dgvServices.ReadOnly = true;
+            this.dgvServices.RowHeadersVisible = false;
+            this.dgvServices.Size = new System.Drawing.Size(411, 158);
+            this.dgvServices.TabIndex = 65;
+            this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvServices_CellContentClick);
+            // 
+            // ServicesID
+            // 
+            this.ServicesID.HeaderText = "ID";
+            this.ServicesID.Name = "ServicesID";
+            this.ServicesID.ReadOnly = true;
+            this.ServicesID.Visible = false;
+            // 
+            // ServicesName
+            // 
+            this.ServicesName.HeaderText = "Service Name";
+            this.ServicesName.Name = "ServicesName";
+            this.ServicesName.ReadOnly = true;
+            // 
+            // ServicesPrice
+            // 
+            this.ServicesPrice.HeaderText = "Price";
+            this.ServicesPrice.Name = "ServicesPrice";
+            this.ServicesPrice.ReadOnly = true;
+            // 
+            // ServicesAdd
+            // 
+            this.ServicesAdd.HeaderText = "";
+            this.ServicesAdd.Name = "ServicesAdd";
+            this.ServicesAdd.ReadOnly = true;
+            // 
+            // dgvProducts
+            // 
+            this.dgvProducts.AllowUserToAddRows = false;
+            this.dgvProducts.AllowUserToDeleteRows = false;
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductsID,
+            this.ProductsName,
+            this.ProductPrice,
+            this.ProductAdd});
+            this.dgvProducts.Location = new System.Drawing.Point(506, 290);
+            this.dgvProducts.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.ReadOnly = true;
+            this.dgvProducts.RowHeadersVisible = false;
+            this.dgvProducts.Size = new System.Drawing.Size(411, 158);
+            this.dgvProducts.TabIndex = 66;
+            this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProducts_CellContentClick);
+            // 
+            // ProductsID
+            // 
+            this.ProductsID.HeaderText = "ID";
+            this.ProductsID.Name = "ProductsID";
+            this.ProductsID.ReadOnly = true;
+            this.ProductsID.Visible = false;
+            // 
+            // ProductsName
+            // 
+            this.ProductsName.HeaderText = "Product Name";
+            this.ProductsName.Name = "ProductsName";
+            this.ProductsName.ReadOnly = true;
+            // 
+            // ProductPrice
+            // 
+            this.ProductPrice.HeaderText = "Price";
+            this.ProductPrice.Name = "ProductPrice";
+            this.ProductPrice.ReadOnly = true;
+            // 
+            // ProductAdd
+            // 
+            this.ProductAdd.HeaderText = "";
+            this.ProductAdd.Name = "ProductAdd";
+            this.ProductAdd.ReadOnly = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(503, 62);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(125, 16);
+            this.label13.TabIndex = 67;
+            this.label13.Text = "Additional Services :";
+            // 
+            // dgvServicesInPackage
+            // 
+            this.dgvServicesInPackage.AllowUserToAddRows = false;
+            this.dgvServicesInPackage.AllowUserToDeleteRows = false;
+            this.dgvServicesInPackage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvServicesInPackage.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvServicesInPackage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvServicesInPackage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SIPID,
+            this.SIPName,
+            this.SIPPrice,
+            this.SIPRemove});
+            this.dgvServicesInPackage.Location = new System.Drawing.Point(17, 82);
+            this.dgvServicesInPackage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvServicesInPackage.Name = "dgvServicesInPackage";
+            this.dgvServicesInPackage.ReadOnly = true;
+            this.dgvServicesInPackage.RowHeadersVisible = false;
+            this.dgvServicesInPackage.Size = new System.Drawing.Size(450, 158);
+            this.dgvServicesInPackage.TabIndex = 85;
+            this.dgvServicesInPackage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvServicesInPackage_CellContentClick);
+            // 
+            // SIPID
+            // 
+            this.SIPID.HeaderText = "ID";
+            this.SIPID.Name = "SIPID";
+            this.SIPID.ReadOnly = true;
+            this.SIPID.Visible = false;
+            // 
+            // SIPName
+            // 
+            this.SIPName.HeaderText = "Service Name";
+            this.SIPName.Name = "SIPName";
+            this.SIPName.ReadOnly = true;
+            // 
+            // SIPPrice
+            // 
+            this.SIPPrice.HeaderText = "Price";
+            this.SIPPrice.Name = "SIPPrice";
+            this.SIPPrice.ReadOnly = true;
+            // 
+            // SIPRemove
+            // 
+            this.SIPRemove.HeaderText = "";
+            this.SIPRemove.Name = "SIPRemove";
+            this.SIPRemove.ReadOnly = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(14, 62);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(130, 16);
+            this.label15.TabIndex = 87;
+            this.label15.Text = "Services in Package :";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(14, 270);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(131, 16);
+            this.label11.TabIndex = 88;
+            this.label11.Text = "Products in Package :";
             // 
             // dgvProductsInPackage
             // 
@@ -400,205 +555,30 @@
             this.PIPRemove.Name = "PIPRemove";
             this.PIPRemove.ReadOnly = true;
             // 
-            // label11
+            // gbxBookingDetails
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 270);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(131, 16);
-            this.label11.TabIndex = 88;
-            this.label11.Text = "Products in Package :";
-            // 
-            // dgvServicesInPackage
-            // 
-            this.dgvServicesInPackage.AllowUserToAddRows = false;
-            this.dgvServicesInPackage.AllowUserToDeleteRows = false;
-            this.dgvServicesInPackage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvServicesInPackage.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvServicesInPackage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvServicesInPackage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SIPID,
-            this.SIPName,
-            this.SIPPrice,
-            this.SIPRemove});
-            this.dgvServicesInPackage.Location = new System.Drawing.Point(17, 82);
-            this.dgvServicesInPackage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgvServicesInPackage.Name = "dgvServicesInPackage";
-            this.dgvServicesInPackage.ReadOnly = true;
-            this.dgvServicesInPackage.RowHeadersVisible = false;
-            this.dgvServicesInPackage.Size = new System.Drawing.Size(450, 158);
-            this.dgvServicesInPackage.TabIndex = 85;
-            this.dgvServicesInPackage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvServicesInPackage_CellContentClick);
-            // 
-            // SIPID
-            // 
-            this.SIPID.HeaderText = "ID";
-            this.SIPID.Name = "SIPID";
-            this.SIPID.ReadOnly = true;
-            this.SIPID.Visible = false;
-            // 
-            // SIPName
-            // 
-            this.SIPName.HeaderText = "Service Name";
-            this.SIPName.Name = "SIPName";
-            this.SIPName.ReadOnly = true;
-            // 
-            // SIPPrice
-            // 
-            this.SIPPrice.HeaderText = "Price";
-            this.SIPPrice.Name = "SIPPrice";
-            this.SIPPrice.ReadOnly = true;
-            // 
-            // SIPRemove
-            // 
-            this.SIPRemove.HeaderText = "";
-            this.SIPRemove.Name = "SIPRemove";
-            this.SIPRemove.ReadOnly = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(14, 62);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(130, 16);
-            this.label15.TabIndex = 87;
-            this.label15.Text = "Services in Package :";
-            // 
-            // dgvServices
-            // 
-            this.dgvServices.AllowUserToAddRows = false;
-            this.dgvServices.AllowUserToDeleteRows = false;
-            this.dgvServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvServices.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ServicesID,
-            this.ServicesName,
-            this.ServicesPrice,
-            this.ServicesAdd});
-            this.dgvServices.Location = new System.Drawing.Point(506, 82);
-            this.dgvServices.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvServices.Name = "dgvServices";
-            this.dgvServices.ReadOnly = true;
-            this.dgvServices.RowHeadersVisible = false;
-            this.dgvServices.Size = new System.Drawing.Size(411, 158);
-            this.dgvServices.TabIndex = 65;
-            this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvServices_CellContentClick);
-            // 
-            // ServicesID
-            // 
-            this.ServicesID.HeaderText = "ID";
-            this.ServicesID.Name = "ServicesID";
-            this.ServicesID.ReadOnly = true;
-            this.ServicesID.Visible = false;
-            // 
-            // ServicesName
-            // 
-            this.ServicesName.HeaderText = "Service Name";
-            this.ServicesName.Name = "ServicesName";
-            this.ServicesName.ReadOnly = true;
-            // 
-            // ServicesPrice
-            // 
-            this.ServicesPrice.HeaderText = "Price";
-            this.ServicesPrice.Name = "ServicesPrice";
-            this.ServicesPrice.ReadOnly = true;
-            // 
-            // ServicesAdd
-            // 
-            this.ServicesAdd.HeaderText = "";
-            this.ServicesAdd.Name = "ServicesAdd";
-            this.ServicesAdd.ReadOnly = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(503, 62);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(125, 16);
-            this.label13.TabIndex = 67;
-            this.label13.Text = "Additional Services :";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(503, 270);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(126, 16);
-            this.label17.TabIndex = 68;
-            this.label17.Text = "Additional Products :";
-            // 
-            // dgvProducts
-            // 
-            this.dgvProducts.AllowUserToAddRows = false;
-            this.dgvProducts.AllowUserToDeleteRows = false;
-            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ProductsID,
-            this.ProductsName,
-            this.ProductPrice,
-            this.ProductAdd});
-            this.dgvProducts.Location = new System.Drawing.Point(506, 290);
-            this.dgvProducts.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvProducts.Name = "dgvProducts";
-            this.dgvProducts.ReadOnly = true;
-            this.dgvProducts.RowHeadersVisible = false;
-            this.dgvProducts.Size = new System.Drawing.Size(411, 158);
-            this.dgvProducts.TabIndex = 66;
-            this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProducts_CellContentClick);
-            // 
-            // ProductsID
-            // 
-            this.ProductsID.HeaderText = "ID";
-            this.ProductsID.Name = "ProductsID";
-            this.ProductsID.ReadOnly = true;
-            this.ProductsID.Visible = false;
-            // 
-            // ProductsName
-            // 
-            this.ProductsName.HeaderText = "Product Name";
-            this.ProductsName.Name = "ProductsName";
-            this.ProductsName.ReadOnly = true;
-            // 
-            // ProductPrice
-            // 
-            this.ProductPrice.HeaderText = "Price";
-            this.ProductPrice.Name = "ProductPrice";
-            this.ProductPrice.ReadOnly = true;
-            // 
-            // ProductAdd
-            // 
-            this.groupBox1.Controls.Add(this.txtBookingLocation);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.numBookingGuests);
-            this.groupBox1.Controls.Add(this.txtBookingTime);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.txtBookingCustomer);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.dtmBookingDate);
-            this.groupBox1.Controls.Add(this.btnBookingChangeCustomer);
-            this.groupBox1.Controls.Add(this.btnBookingChangeDateEmployee);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtBookingEmployee);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(498, 513);
-            this.groupBox1.TabIndex = 64;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            this.ProductAdd.HeaderText = "";
-            this.ProductAdd.Name = "ProductAdd";
-            this.ProductAdd.ReadOnly = true;
+            this.gbxBookingDetails.Controls.Add(this.txtBookingLocation);
+            this.gbxBookingDetails.Controls.Add(this.label1);
+            this.gbxBookingDetails.Controls.Add(this.label2);
+            this.gbxBookingDetails.Controls.Add(this.numBookingGuests);
+            this.gbxBookingDetails.Controls.Add(this.txtBookingTime);
+            this.gbxBookingDetails.Controls.Add(this.label7);
+            this.gbxBookingDetails.Controls.Add(this.label12);
+            this.gbxBookingDetails.Controls.Add(this.txtBookingCustomer);
+            this.gbxBookingDetails.Controls.Add(this.label9);
+            this.gbxBookingDetails.Controls.Add(this.dtmBookingDate);
+            this.gbxBookingDetails.Controls.Add(this.btnBookingChangeCustomer);
+            this.gbxBookingDetails.Controls.Add(this.btnBookingChangeDateEmployee);
+            this.gbxBookingDetails.Controls.Add(this.label10);
+            this.gbxBookingDetails.Controls.Add(this.txtBookingEmployee);
+            this.gbxBookingDetails.Location = new System.Drawing.Point(12, 12);
+            this.gbxBookingDetails.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gbxBookingDetails.Name = "gbxBookingDetails";
+            this.gbxBookingDetails.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gbxBookingDetails.Size = new System.Drawing.Size(925, 190);
+            this.gbxBookingDetails.TabIndex = 64;
+            this.gbxBookingDetails.TabStop = false;
+            this.gbxBookingDetails.Text = "groupBox1";
             // 
             // Booking_Details
             // 
@@ -620,12 +600,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).EndInit();
             this.gbxBookingPackage.ResumeLayout(false);
             this.gbxBookingPackage.PerformLayout();
-            this.gbxBookingDetails.ResumeLayout(false);
-            this.gbxBookingDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductsInPackage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServicesInPackage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServicesInPackage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductsInPackage)).EndInit();
+            this.gbxBookingDetails.ResumeLayout(false);
+            this.gbxBookingDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
