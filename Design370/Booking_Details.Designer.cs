@@ -576,6 +576,26 @@
             // 
             // ProductAdd
             // 
+            this.groupBox1.Controls.Add(this.txtBookingLocation);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.numBookingGuests);
+            this.groupBox1.Controls.Add(this.txtBookingTime);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.txtBookingCustomer);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.dtmBookingDate);
+            this.groupBox1.Controls.Add(this.btnBookingChangeCustomer);
+            this.groupBox1.Controls.Add(this.btnBookingChangeDateEmployee);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtBookingEmployee);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(498, 513);
+            this.groupBox1.TabIndex = 64;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
             this.ProductAdd.HeaderText = "";
             this.ProductAdd.Name = "ProductAdd";
             this.ProductAdd.ReadOnly = true;
