@@ -15,7 +15,7 @@ namespace Design370
     {
 
         DBConnection dbCon = DBConnection.Instance();
-        
+
         public Main_Form()
         {
             InitializeComponent();
@@ -197,7 +197,7 @@ namespace Design370
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Customer_View customerView = new Customer_View();
-            string customerID = " "; 
+            string customerID = " ";
             switch (e.ColumnIndex)
             {
                 case 5:
@@ -777,25 +777,24 @@ namespace Design370
                 case 5:
                     if (e.RowIndex >= 0)
                     {
-                        dbCon = DBConnection.Instance();
-                        string checkStatus = "SELECT * FROM `order`, `order_status` " +
-                            "WHERE `order`.`order_status_id` = `order_status`.`order_status_id` " +
-                            "AND `order_status`.`order_status_name` = 'Pending' " +
-                            "AND `order`.`order_id` = '" + dgvOrders.Rows[e.RowIndex].Cells[0].Value + "'";
-                        var command = new MySqlCommand(checkStatus, dbCon.Connection);
-                        var reader = command.ExecuteReader();
-                        reader.Read();
-                        if (reader.HasRows)
+                        int orderID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[0].Value);
+                        if (dbCon.IsConnect())
                         {
+                            string checkStatus = "SELECT `customer_id` FROM `order` WHERE `order_id` = '" + orderID + "'";
+                            var command = new MySqlCommand(checkStatus, dbCon.Connection);
+                            var reader = command.ExecuteReader();
+                            reader.Read();
+                            if (reader.HasRows)
+                            {
+
+                                View_Order_Details.customerID = Convert.ToInt32(reader[0]);
+                                View_Order_Details.order_id = orderID;
+                                reader.Close();
+                                viewOrder.ShowDialog();
+
+                            }
                             reader.Close();
-                            Customer_Order_Capture.OrderPaymentID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[0].Value);
-                            customerPay.ShowDialog();
                         }
-                        else
-                        {
-                            MessageBox.Show("Order already paid, check order status.", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        reader.Close();
                     }
                     break;
                 default:
@@ -1162,12 +1161,12 @@ namespace Design370
 
         private void txtSearchManual_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tabPage12_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tabPage12_Enter(object sender, EventArgs e)
@@ -1212,7 +1211,7 @@ namespace Design370
 
         private void tabPage12_Leave(object sender, EventArgs e)
         {
-            
+
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
