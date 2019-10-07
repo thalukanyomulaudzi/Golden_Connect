@@ -709,5 +709,17 @@ namespace Design370
         {
             Validation.checkMark(lblPackageDescription, Validation.validate(txtPackageDescription.Text, "name"));
         }
+
+        private void grbPackage_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Photoshoot_Package_View_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
+        }
     }
 }

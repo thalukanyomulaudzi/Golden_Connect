@@ -147,6 +147,7 @@
             this.MinimizeBox = false;
             this.Name = "Photoshoot_Types_View";
             this.Text = "View Photoshoot Types";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Photoshoot_Types_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Photoshoot_Types_View_FormClosing);
             this.Load += new System.EventHandler(this.Photoshoot_Types_View_Load);
             this.ResumeLayout(false);

@@ -147,6 +147,7 @@
             this.MinimizeBox = false;
             this.Name = "Service_Types_View";
             this.Text = "View Service Type";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Service_Types_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Service_Types_View_FormClosing);
             this.Load += new System.EventHandler(this.Service_Types_View_Load);
             this.ResumeLayout(false);

@@ -62,5 +62,12 @@ namespace Design370
         {
 
         }
+
+        private void Service_Types_Add_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Add_Service_Type";
+            helpForm.ShowDialog();
+        }
     }
 }

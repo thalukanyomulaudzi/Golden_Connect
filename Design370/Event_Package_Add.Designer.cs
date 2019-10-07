@@ -538,6 +538,7 @@
             this.MinimizeBox = false;
             this.Name = "Event_Package_Add";
             this.Text = "Add Event Package";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Event_Package_Add_HelpButtonClicked);
             this.Load += new System.EventHandler(this.Event_Package_Add_Load);
             this.grbPackage.ResumeLayout(false);
             this.grbPackage.PerformLayout();

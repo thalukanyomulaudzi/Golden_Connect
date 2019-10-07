@@ -147,6 +147,7 @@
             this.MinimizeBox = false;
             this.Name = "Product_Type_Add";
             this.Text = "Add Product Type";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Product_Type_Add_HelpButtonClicked);
             this.Load += new System.EventHandler(this.Product_Type_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

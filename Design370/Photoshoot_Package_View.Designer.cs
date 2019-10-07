@@ -349,6 +349,7 @@
             this.grbPackage.TabIndex = 77;
             this.grbPackage.TabStop = false;
             this.grbPackage.Text = "Package Details";
+            this.grbPackage.Enter += new System.EventHandler(this.grbPackage_Enter);
             // 
             // lblPackageDescription
             // 
@@ -539,6 +540,7 @@
             this.MinimizeBox = false;
             this.Name = "Photoshoot_Package_View";
             this.Text = "View Photoshoot Package";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Photoshoot_Package_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PhotoshootPackage_View_FormClosing);
             this.Load += new System.EventHandler(this.PhotoshootPackage_View_Load);
             this.groupBox1.ResumeLayout(false);

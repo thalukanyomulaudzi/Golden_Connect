@@ -223,5 +223,12 @@ namespace Design370
                 }
             }
         }
+
+        private void Event_Types_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Event_Types";
+            helpForm.ShowDialog();
+        }
     }
 }

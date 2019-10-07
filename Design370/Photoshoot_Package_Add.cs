@@ -613,5 +613,12 @@ namespace Design370
         {
             Validation.checkMark(lblPackageDescription, Validation.validate(txtPackageDescription.Text, "name"));
         }
+
+        private void Photoshoot_Package_Add_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Add_Photoshoot_Package";
+            helpForm.ShowDialog();
+        }
     }
 }

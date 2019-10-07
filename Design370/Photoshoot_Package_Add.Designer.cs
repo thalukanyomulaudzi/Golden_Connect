@@ -538,6 +538,7 @@
             this.MinimizeBox = false;
             this.Name = "Photoshoot_Package_Add";
             this.Text = "Add Photoshoot Package";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Photoshoot_Package_Add_HelpButtonClicked);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Photoshoot_Package_Add_FormClosed);
             this.Load += new System.EventHandler(this.Photoshoot_Package_Add_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvServicesInPackage)).EndInit();

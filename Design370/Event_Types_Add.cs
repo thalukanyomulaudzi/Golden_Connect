@@ -86,5 +86,12 @@ namespace Design370
         {
             Validation.checkMark(lblEventTypeDescription, Validation.validate(txtEventTypeDescription.Text, "name"));
         }
+
+        private void Event_Types_Add_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Add_Event_Type";
+            helpForm.ShowDialog();
+        }
     }
 }

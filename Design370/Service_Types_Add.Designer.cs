@@ -145,6 +145,7 @@
             this.MinimizeBox = false;
             this.Name = "Service_Types_Add";
             this.Text = "Add Service Type";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Service_Types_Add_HelpButtonClicked);
             this.Load += new System.EventHandler(this.Service_Types_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

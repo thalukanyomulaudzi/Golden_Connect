@@ -538,6 +538,7 @@
             this.MinimizeBox = false;
             this.Name = "Event_Package_View";
             this.Text = "View Event Package";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Event_Package_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EventPackage_View_FormClosing);
             this.Load += new System.EventHandler(this.EventPackage_View_Load);
             this.grbPackage.ResumeLayout(false);

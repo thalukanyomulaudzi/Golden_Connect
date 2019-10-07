@@ -121,5 +121,12 @@ namespace Design370
         {
             Validation.checkMark(lblProductTypeDescription, Validation.validate(txtProductTypeDescription.Text, "name"));
         }
+
+        private void Product_Types_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
+        }
     }
 }

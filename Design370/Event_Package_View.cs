@@ -713,5 +713,12 @@ namespace Design370
         {
 
         }
+
+        private void Event_Package_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
+        }
     }
 }

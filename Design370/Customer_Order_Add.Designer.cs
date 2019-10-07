@@ -63,7 +63,7 @@
             this.label17.Location = new System.Drawing.Point(271, 16);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(56, 18);
+            this.label17.Size = new System.Drawing.Size(57, 18);
             this.label17.TabIndex = 69;
             this.label17.Text = "Sort by:";
             // 
@@ -99,7 +99,7 @@
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.Button20_Click);
             // 
-            // Cutomer_Order_Add
+            // Customer_Order_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,8 +110,12 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.button20);
-            this.Name = "Cutomer_Order_Add";
+            this.HelpButton = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Customer_Order_Add";
             this.Text = "Cutomer_Order_Add";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Customer_Order_Add_HelpButtonClicked);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

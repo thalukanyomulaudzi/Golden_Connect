@@ -16,6 +16,7 @@ namespace Design370
         public string GetEventTypeViewRow { get; set; }
 
         public static bool edit;
+        string helpstring = " ";
         public Event_Types_View()
         {
             InitializeComponent();
@@ -27,6 +28,16 @@ namespace Design370
 
         private void Event_Types_View_Load(object sender, EventArgs e)
         {
+            if (edit)
+            {
+                this.Text = "Edit Event Type";
+                helpstring = "Edit_Event_Type";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Event Type";
+                helpstring = "View_Event_Type";
+            }
             txtEventTypeName.Enabled = edit;
             txtEventTypeDescription.Enabled = edit;
             string Name = "";
@@ -60,6 +71,8 @@ namespace Design370
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            this.Text = "Edit Event Type";
+            helpstring = "Edit_Event_Type";
             txtEventTypeName.Enabled = true;
             txtEventTypeDescription.Enabled = true;
             btnEventTypeEdit.Enabled = false;
@@ -132,6 +145,13 @@ namespace Design370
         private void TxtEventTypeDescription_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblEventTypeDescription, Validation.validate(txtEventTypeDescription.Text, "name"));
+        }
+
+        private void Event_Types_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
         }
     }
 }

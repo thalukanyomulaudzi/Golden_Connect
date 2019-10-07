@@ -22,5 +22,12 @@ namespace Design370
             Customer_Order_Details customerOrderDetails = new Customer_Order_Details();
             customerOrderDetails.Show();
         }
+
+        private void Customer_Order_Add_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Place_Customer_Order";
+            helpForm.ShowDialog();
+        }
     }
 }

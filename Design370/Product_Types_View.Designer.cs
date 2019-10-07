@@ -147,6 +147,7 @@
             this.MinimizeBox = false;
             this.Name = "Product_Types_View";
             this.Text = "View Product Type";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Product_Types_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Product_Types_View_FormClosing);
             this.Load += new System.EventHandler(this.Product_Types_View_Load);
             this.ResumeLayout(false);

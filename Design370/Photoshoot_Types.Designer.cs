@@ -160,6 +160,7 @@
             this.MinimizeBox = false;
             this.Name = "Photoshoot_Types";
             this.Text = "Photoshoot Types";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Photoshoot_Types_HelpButtonClicked);
             this.Activated += new System.EventHandler(this.Photoshoot_Types_Activated);
             this.Load += new System.EventHandler(this.Photoshoot_Types_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();

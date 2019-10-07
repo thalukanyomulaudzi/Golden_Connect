@@ -141,9 +141,13 @@
             this.Controls.Add(this.txtEventTypeName);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HelpButton = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Event_Types_View";
             this.Text = "View Event Type";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Event_Types_View_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Event_Types_View_FormClosing);
             this.Load += new System.EventHandler(this.Event_Types_View_Load);
             this.ResumeLayout(false);

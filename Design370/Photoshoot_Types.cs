@@ -222,5 +222,12 @@ namespace Design370
                 }
             }
         }
+
+        private void Photoshoot_Types_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Photoshoot_Types";
+            helpForm.ShowDialog();
+        }
     }
 }

@@ -545,5 +545,11 @@ namespace Design370
             return ResultCode;
         }
 
+        private void Customer_Order_New_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = "Place_Customer_Order";
+            helpForm.ShowDialog();
+        }
     }
 }
