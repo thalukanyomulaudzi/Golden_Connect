@@ -70,8 +70,8 @@ namespace Design370
         }
         private bool connectDB()
         {
-            //dbCon.DatabaseName = "4d3dGYntTO";
-            dbCon.DatabaseName = "golden_connect";
+            dbCon.DatabaseName = "4d3dGYntTO";
+            //dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
         }
         private void Main_Form_Load(object sender, EventArgs e)

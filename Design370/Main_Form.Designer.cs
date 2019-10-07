@@ -554,7 +554,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -1006,7 +1006,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 122;
+            this.PhotoshootPackageName.Width = 132;
             // 
             // Services
             // 
@@ -1164,7 +1164,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 122;
+            this.EventPackageName.Width = 132;
             // 
             // ServicesEvents
             // 
@@ -1638,7 +1638,6 @@ namespace Design370
             this.button11.TabIndex = 59;
             this.button11.Text = "Generate Inventory Report";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.Button11_Click);
             // 
             // button9
             // 
@@ -1650,7 +1649,6 @@ namespace Design370
             this.button9.TabIndex = 58;
             this.button9.Text = "Generate Supplier Order Report";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.Button9_Click);
             // 
             // button25
             // 
@@ -1702,7 +1700,6 @@ namespace Design370
             this.button10.TabIndex = 7;
             this.button10.Text = "Open Help Document";
             this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
             // button3
             // 
