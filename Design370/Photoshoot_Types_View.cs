@@ -16,6 +16,7 @@ namespace Design370
         public string GetPhotoshootTypeViewRow { get; set; }
 
         public static bool edit;
+        string helpstring = " ";
 
         public Photoshoot_Types_View()
         {
@@ -30,7 +31,16 @@ namespace Design370
         {
             txtPhotoshootTypeName.Enabled = edit;
             txtPhotoshootTypeDescription.Enabled = edit;
-
+            if (edit)
+            {
+                this.Text = "Edit Photoshoot Type";
+                helpstring = "Edit_Photoshoot_Type";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Photoshoot Type";
+                helpstring = "View_Photoshoot_Type";
+            }
             if (edit == true)
             {
                 button2.Enabled = false;
@@ -110,6 +120,8 @@ namespace Design370
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Text = "Edit Photoshoot Type";
+            helpstring = "Edit_Photoshoot_Type";
             txtPhotoshootTypeName.Enabled = true;
             txtPhotoshootTypeDescription.Enabled = true;
             button2.Enabled = false;
@@ -128,6 +140,13 @@ namespace Design370
         private void TxtPhotoshootTypeDescription_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblPhotoshootTypeDescription, Validation.validate(txtPhotoshootTypeDescription.Text, "name"));
+        }
+
+        private void Photoshoot_Types_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
         }
     }
 }

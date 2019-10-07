@@ -1172,7 +1172,7 @@ namespace Design370
 
         private void tabPage12_Enter(object sender, EventArgs e)
         {
-            axAcroPDF1.LoadFile("Manual.pdf");
+            axAcroPDF1.LoadFile("Training_Manual.pdf");
             axAcroPDF1.setShowToolbar(true);
             LoadTreeViewFromXmlFile("Treeview.xml", treeView1);
             treeView1.CollapseAll();
@@ -1217,16 +1217,96 @@ namespace Design370
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Text == "Employee")
-                axAcroPDF1.setCurrentPage(1);
-            else if (e.Node.Text == "Add_Employee")
-                axAcroPDF1.setCurrentPage(2);
-            else if (e.Node.Text == "Search_Employee")
-                axAcroPDF1.setCurrentPage(1);
-            else if (e.Node.Text == "Maintain_Employee")
+            if (e.Node.Text == "Customer")
+                axAcroPDF1.setCurrentPage(28);
+            else if (e.Node.Text == "Add_Customer")
+                axAcroPDF1.setCurrentPage(28);
+            else if (e.Node.Text == "Search_Customer")
+                axAcroPDF1.setCurrentPage(32);
+            else if (e.Node.Text == "Maintain_Customer")
+                axAcroPDF1.setCurrentPage(34);
+            else if (e.Node.Text == "Employee")
                 axAcroPDF1.setCurrentPage(4);
+            else if (e.Node.Text == "Add_Employee")
+                axAcroPDF1.setCurrentPage(4);
+            else if (e.Node.Text == "Search_Employee")
+                axAcroPDF1.setCurrentPage(9);
+            else if (e.Node.Text == "Maintain_Employee")
+                axAcroPDF1.setCurrentPage(11);
+            else if (e.Node.Text == "Add_Employee_Type")
+                axAcroPDF1.setCurrentPage(15);
+            else if (e.Node.Text == "Search_Employee_Type")
+                axAcroPDF1.setCurrentPage(19);
+            else if (e.Node.Text == "Maintain_Employee_Type")
+                axAcroPDF1.setCurrentPage(22);
+            else if (e.Node.Text == "Timeslots")
+                axAcroPDF1.setCurrentPage(125);
+            else if (e.Node.Text == "Add_Timeslot")
+                axAcroPDF1.setCurrentPage(125);
+            else if (e.Node.Text == "Search Timeslot")
+                axAcroPDF1.setCurrentPage(125);
+            else if (e.Node.Text == "Maintain_Timeslot")
+                axAcroPDF1.setCurrentPage(1255);
+            else if (e.Node.Text == "Services")
+                axAcroPDF1.setCurrentPage(38);
+            else if (e.Node.Text == "Add_Service")
+                axAcroPDF1.setCurrentPage(38);
+            else if (e.Node.Text == "Search_Service")
+                axAcroPDF1.setCurrentPage(42);
+            else if (e.Node.Text == "Maintain_Service")
+                axAcroPDF1.setCurrentPage(45);
+            else if (e.Node.Text == "Add_Service_Type")
+                axAcroPDF1.setCurrentPage(48);
+            else if (e.Node.Text == "Search_Service_Type")
+                axAcroPDF1.setCurrentPage(52);
+            else if (e.Node.Text == "Products")
+                axAcroPDF1.setCurrentPage(55);
+            else if (e.Node.Text == "Add_Product")
+                axAcroPDF1.setCurrentPage(59);
+            else if (e.Node.Text == "Search_Product")
+                axAcroPDF1.setCurrentPage(59);
+            else if (e.Node.Text == "Maintain_Product")
+                axAcroPDF1.setCurrentPage(63);
+            else if (e.Node.Text == "Add_Product_Type")
+                axAcroPDF1.setCurrentPage(65);
+            else if (e.Node.Text == "Search_Product_Type")
+                axAcroPDF1.setCurrentPage(73);
+            else if (e.Node.Text == "Maintain_Product_Type")
+                axAcroPDF1.setCurrentPage(76);
             else if (e.Node.Text == "Photoshoots")
-                axAcroPDF1.setCurrentPage(5);
+                axAcroPDF1.setCurrentPage(80);
+            else if (e.Node.Text == "Add_Photoshoot_Package")
+                axAcroPDF1.setCurrentPage(80);
+            else if (e.Node.Text == "Search_Photoshoot_Package")
+                axAcroPDF1.setCurrentPage(85);
+            else if (e.Node.Text == "Maintain_Photoshoot_Package")
+                axAcroPDF1.setCurrentPage(87);
+            else if (e.Node.Text == "Add_Photoshoot_Type")
+                axAcroPDF1.setCurrentPage(91);
+            else if (e.Node.Text == "View_Photoshoot_Type")
+                axAcroPDF1.setCurrentPage(96);
+            else if (e.Node.Text == "Maintain_Photoshoot_Type")
+                axAcroPDF1.setCurrentPage(99);
+            else if (e.Node.Text == "Events")
+                axAcroPDF1.setCurrentPage(104);
+            else if (e.Node.Text == "Add_Event_Package")
+                axAcroPDF1.setCurrentPage(104);
+            else if (e.Node.Text == "Search_Event_Package")
+                axAcroPDF1.setCurrentPage(107);
+            else if (e.Node.Text == "Maintain_Event_Package")
+                axAcroPDF1.setCurrentPage(110);
+            else if (e.Node.Text == "Add_Event_Type")
+                axAcroPDF1.setCurrentPage(113);
+            else if (e.Node.Text == "View_Event_Type")
+                axAcroPDF1.setCurrentPage(117);
+            else if (e.Node.Text == "Maintain_Event_Type")
+                axAcroPDF1.setCurrentPage(120);
+            else if (e.Node.Text == "Customer_Order")
+                axAcroPDF1.setCurrentPage(140);
+            else if (e.Node.Text == "Place_Customer_Order")
+                axAcroPDF1.setCurrentPage(140);
+            else if (e.Node.Text == "Capture_Payment")
+                axAcroPDF1.setCurrentPage(143);
         }
 
         private void BtnGenCustRpt_Click(object sender, EventArgs e)
@@ -1279,7 +1359,7 @@ namespace Design370
 
         private void button10_Click_1(object sender, EventArgs e)
         {
-            Process.Start(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Manual.pdf"));
+            Process.Start(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Training_Manual.pdf"));
         }
 
         private void Main_Form_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)

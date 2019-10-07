@@ -14,6 +14,7 @@ namespace Design370
     public partial class Service_Types_View : Form
     {
         public static bool edit;
+        string helpstring = " ";
         string service_type_id = " ";
         public string GetServiceTypeRow { get; set; }
         public Service_Types_View()
@@ -27,6 +28,16 @@ namespace Design370
 
         private void Service_Types_View_Load(object sender, EventArgs e)
         {
+            if (edit)
+            {
+                this.Text = "Edit Service Type";
+                helpstring = "Edit_Service_Type";
+            }
+            else if (!edit)
+            {
+                this.Text = "View Service Type";
+                helpstring = "View_Service_Type";
+            }
             txtServiceName.Enabled = edit;
             txtServiceDescription.Enabled = edit;
             if (edit == true)
@@ -59,6 +70,8 @@ namespace Design370
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            this.Text = "Edit Service Type";
+            helpstring = "Edit_Service_Type";
             txtServiceName.Enabled = true;
             txtServiceDescription.Enabled = true;
             button2.Enabled = false;
@@ -107,6 +120,13 @@ namespace Design370
         private void TxtServiceDescription_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblServiceDescription, Validation.validate(txtServiceDescription.Text, "name"));
+        }
+
+        private void Service_Types_View_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.HelpInfo = helpstring;
+            helpForm.ShowDialog();
         }
     }
 }

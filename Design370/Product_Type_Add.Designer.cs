@@ -141,9 +141,13 @@
             this.Controls.Add(this.txtProductTypeName);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Product_Type_Add";
             this.Text = "Add Product Type";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Product_Type_Add_HelpButtonClicked);
             this.Load += new System.EventHandler(this.Product_Type_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

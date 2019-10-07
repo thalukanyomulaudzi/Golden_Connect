@@ -22,7 +22,7 @@ namespace Design370
             }
             catch (Exception except)
             {
-                System.Windows.Forms.MessageBox.Show(except.Message);
+                System.Windows.Forms.MessageBox.Show("This employee is being used on the system and can not be deleted");
             }
         }
         public static void LoadEmployees(DataGridView dgvEmp)
