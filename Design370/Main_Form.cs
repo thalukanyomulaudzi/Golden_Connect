@@ -1307,6 +1307,10 @@ namespace Design370
                 axAcroPDF1.setCurrentPage(140);
             else if (e.Node.Text == "Capture_Payment")
                 axAcroPDF1.setCurrentPage(143);
+            else if (e.Node.Text == "Bookings")
+                axAcroPDF1.setCurrentPage(148);
+            else if (e.Node.Text == "Add_Booking")
+                axAcroPDF1.setCurrentPage(148);
         }
 
         private void button3_Click_1(object sender, EventArgs e)
