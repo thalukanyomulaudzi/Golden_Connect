@@ -1247,11 +1247,17 @@ namespace Design370
             Customer_Order_Payment op = new Customer_Order_Payment();
             op.ShowDialog();
         }
+
+        private void Button9_Click(object sender, EventArgs e)
+        {
+            supplierOrderReport sor = new supplierOrderReport();
+            sor.ShowDialog();
+        }
+
+        private void Button11_Click(object sender, EventArgs e)
+        {
+            Inventory p = new Inventory();
+            p.Show();
+        }
     }
-
-    //private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-
-        
-    //}
 }

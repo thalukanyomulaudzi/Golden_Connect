@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using WebCam_Capture;
 
 namespace Design370
 {
@@ -31,12 +32,12 @@ namespace Design370
             switch(e.ColumnIndex)
             {
                 case 3:
-                    empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    //empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
                     MessageBox.Show("Test");
                     empTypes.ShowDialog();
                     break;
                 case 4:
-                    empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    //empTypes.emptype = dgvEmpType.Rows[e.RowIndex].Cells[3].Value.ToString();
                     empTypes.ShowDialog();
                     break;
                 case 5:

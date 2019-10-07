@@ -1630,6 +1630,7 @@ namespace Design370
             this.button11.TabIndex = 59;
             this.button11.Text = "Generate Inventory Report";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.Button11_Click);
             // 
             // button9
             // 
@@ -1641,6 +1642,7 @@ namespace Design370
             this.button9.TabIndex = 58;
             this.button9.Text = "Generate Supplier Order Report";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
             // 
             // button25
             // 

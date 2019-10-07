@@ -149,6 +149,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebCam_Capture">
+      <HintPath>..\WebCam_Capture.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Booking.cs" />
@@ -180,6 +183,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="inventoryReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>inventoryReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Customer.cs" />
@@ -320,6 +329,24 @@
     <Compile Include="HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryReport.Designer.cs">
+      <DependentUpon>InventoryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -384,6 +411,7 @@
     <Compile Include="PrepareOrder.Designer.cs">
       <DependentUpon>PrepareOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductsOnHand.cs" />
     <Compile Include="Product_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -465,6 +493,18 @@
     <Compile Include="Service_View.Designer.cs">
       <DependentUpon>Service_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="supplierOrderReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="supplierOrderReport.Designer.cs">
+      <DependentUpon>supplierOrderReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierOrderReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SupplierOrderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Supplier_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -538,6 +578,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="inventoryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inventoryReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerOrderReceipt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CustomerOrderReceipt.cs</LastGenOutput>
@@ -605,6 +649,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HelpForm.resx">
       <DependentUpon>HelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryReport.resx">
+      <DependentUpon>InventoryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InvReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -685,6 +739,13 @@
     <EmbeddedResource Include="Service_View.resx">
       <DependentUpon>Service_View.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="supplierOrderReport.resx">
+      <DependentUpon>supplierOrderReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierOrderReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SupplierOrderReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Supplier_List.resx">
       <DependentUpon>Supplier_List.cs</DependentUpon>
     </EmbeddedResource>
@@ -713,6 +774,7 @@
       <DependentUpon>User_Add.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ProductsOnHand.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
