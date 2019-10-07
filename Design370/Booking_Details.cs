@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace Design370
@@ -55,111 +56,102 @@ namespace Design370
         }
         private void CmbBookingPackage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstBookingProducts.Items.Clear();
-            lstBookingServices.Items.Clear();
-            loadPackages();
-        }
+            double linePrice = 0;
+            double totalPrice = 0;
+            int productTypeID, serviceTypeID;
+            DataTable products = new DataTable();
+            DataTable services = new DataTable();
 
-        private void BtnBookingProductAdd_Click(object sender, EventArgs e)
-        {
             try
             {
-                if (numBookingProductQuantity.Value < 1)
+                DBConnection dBConnection = DBConnection.Instance();
+                string query = "SELECT product_type_id FROM product_type WHERE product_type_name = '" + Booking.bookingType + "'";
+                var command = new MySqlCommand(query, dBConnection.Connection);
+                var reader = command.ExecuteReader();
+                reader.Read();
+                productTypeID = reader.GetInt32(0);
+                reader.Close();
+
+                query = "SELECT product_id, booking_package_product_quantity FROM booking_package_product WHERE booking_package_name = '" + cmbBookingPackage.Text + "'";
+                command = new MySqlCommand(query, dBConnection.Connection);
+                reader = command.ExecuteReader();
+                products.Load(reader);
+                for (int i = 0; i < products.Rows.Count; i++)
                 {
-                    MessageBox.Show("Please enter a value in the numberbox on the left");
-                    return;
+                    query = "SELECT p.product_id, p.product_name, p.product_price, bpp.booking_package_product_quantity " +
+                        "FROM product p INNER JOIN booking_package_product bpp ON p.product_id = bpp.product_id " +
+                        "JOIN booking_package bp ON bp.booking_package_id = bpp.booking_package_id" +
+                        "WHERE p.product_id = '" + products.Rows[i].ItemArray[0] + "' AND bp.booking_package_name = '" + cmbBookingPackage.Text + "'";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    reader = command.ExecuteReader();
+                    reader.Read();
+                    linePrice = reader.GetDouble(2) * reader.GetDouble(3);
+                    dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), reader.GetString(3), "R" + string.Format("{0:0.00}", linePrice), "Add", "Remove");
+                    totalPrice += linePrice;
+                    reader.Close();
                 }
-                loadLists();
-                foreach (int position in lstBookingProducts.SelectedIndices)
+                reader.Close();
+                products.Clear();
+                query = "SELECT product_id, product_name, product_price FROM product WHERE product_type_id = '" + productTypeID + "'";
+                command = new MySqlCommand(query, dBConnection.Connection);
+                reader = command.ExecuteReader();
+                products.Load(reader);
+                for (int i = 0; i < products.Rows.Count; i++)
                 {
-                    int quantity = Convert.ToInt32(lstBookingProducts.Items[position].ToString().Substring(lstBookingProducts.Items[position].ToString().IndexOf("-") + 1));
-                    quantity += (int)numBookingProductQuantity.Value;
-                    if (quantity >= 10)
-                    {
-                        MessageBox.Show("That is a very high amount to have of a product, please check the amounts carefully");
-                    }
-                    products[position] = products[position].Substring(0, products[position].IndexOf("-") + 1) + " " + quantity;
-                    lstBookingProducts.Items[position] = products[position];
+                    dgvProducts.Rows.Add(products.Rows[i].ItemArray[0], products.Rows[i].ItemArray[1], "R" + products.Rows[i].ItemArray[2], "Add");
                 }
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
-        }
-        private void BtnBookingProductRemove_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (numBookingProductQuantity.Value < 1)
+                reader.Close();
+
+                query = "SELECT service_type_id FROM service_type WHERE service_type_name = '" + Booking.bookingType + "'";
+                command = new MySqlCommand(query, dBConnection.Connection);
+                reader = command.ExecuteReader();
+                reader.Read();
+                serviceTypeID = reader.GetInt32(0);
+                reader.Close();
+
+                query = "SELECT service_id FROM booking_package_service WHERE booking_package_name = '" + cmbBookingPackage.Text + "'";
+                command = new MySqlCommand(query, dBConnection.Connection);
+                reader = command.ExecuteReader();
+                services.Load(reader);
+                for (int i = 0; i < services.Rows.Count; i++)
                 {
-                    MessageBox.Show("Please enter a value in the numberbox on the left");
-                    return;
+                    query = "SELECT service_id, service_name, service_price FROM service WHERE service_id = '" + services.Rows[i].ItemArray[0] + "'";
+                    command = new MySqlCommand(query, dBConnection.Connection);
+                    reader = command.ExecuteReader();
+                    reader.Read();
+                    dgvServicesInPackage.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Remove");
+                    totalPrice += Convert.ToDouble(reader.GetString(2));
+                    reader.Close();
                 }
-                loadLists();
-                foreach (int position in lstBookingProducts.SelectedIndices)
+                reader.Close();
+
+                services.Clear();
+                query = "SELECT service_id, service_name, service_price FROM service WHERE service_type_id = '" + serviceTypeID + "'";
+                command = new MySqlCommand(query, dBConnection.Connection);
+                reader = command.ExecuteReader();
+                services.Load(reader);
+                for (int p = 0; p < services.Rows.Count; p++)
                 {
-                    int quantity = Convert.ToInt32(lstBookingProducts.Items[position].ToString().Substring(lstBookingProducts.Items[position].ToString().IndexOf("-") + 1));
-                    quantity -= (int)numBookingProductQuantity.Value;
-                    if (quantity <= 0)
-                    {
-                        MessageBox.Show("This product has been removed");
-                        quantity = 0;
-                    }
-                    products[position] = products[position].Substring(0, products[position].IndexOf("-") + 1) + " " + quantity;
-                    lstBookingProducts.Items[position] = products[position];
+                    dgvServices.Rows.Add(services.Rows[p].ItemArray[0], services.Rows[p].ItemArray[1], "R" + services.Rows[p].ItemArray[2], "Add");
                 }
+                reader.Close();
+
             }
-            catch (Exception ee)
+            catch (Exception except)
             {
-                MessageBox.Show(ee.Message);
+                MessageBox.Show(except.Message);
+
             }
-        }
-        private void BtnBookingServiceAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                loadLists();
-                foreach (int position in lstBookingServices.SelectedIndices)
-                {
-                    int quantity = Convert.ToInt32(lstBookingServices.Items[position].ToString().Substring(lstBookingServices.Items[position].ToString().IndexOf("-") + 1));
-                    if (quantity == 1)
-                    {
-                        MessageBox.Show("This service is already added");
-                        break;
-                    }
-                    quantity += 1;
-                    services[position] = services[position].Substring(0, services[position].IndexOf("-") + 1) + " " + quantity;
-                    lstBookingServices.Items[position] = services[position];
-                }
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
-        }
-        private void BtnBookingServiceRemove_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                loadLists();
-                foreach (int position in lstBookingServices.SelectedIndices)
-                {
-                    int quantity = Convert.ToInt32(lstBookingServices.Items[position].ToString().Substring(lstBookingServices.Items[position].ToString().IndexOf("-") + 1));
-                    if (quantity == 0)
-                    {
-                        MessageBox.Show("This service is already removed");
-                        break;
-                    }
-                    quantity -= 1;
-                    services[position] = services[position].Substring(0, services[position].IndexOf("-") + 1) + " " + quantity;
-                    lstBookingServices.Items[position] = services[position];
-                }
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            textBox3.Text = "R" + string.Format("{0:0.00}", TotalPrice);
+
+
+
+
+
+
+
+
+            loadPackages();
         }
         private void BtnBookingProceed_Click(object sender, EventArgs e)
         {
@@ -278,9 +270,9 @@ namespace Design370
                 loadLists();
                 DBConnection dBCon = DBConnection.Instance();
                 string query = "SELECT p.product_name, p.product_price, bpp.booking_package_product_quantity FROM product p " +
-                    "JOIN booking_type bt ON p.product_type_id = bt.booking_type_id " +
+                    "JOIN product_type pt ON p.product_type_id = pt.product_type_id " +
                     "JOIN booking_package_product bpp ON p.product_id = bpp.product_id " +
-                    "WHERE bt.booking_type_name = '" + Booking.bookingType + "'";
+                    "WHERE pt.product_type_name = '" + Booking.bookingType + "'";
                 var command = new MySqlCommand(query, dBCon.Connection);
                 var reader = command.ExecuteReader();
                 while (reader.Read())
@@ -290,8 +282,8 @@ namespace Design370
                 reader.Close();
 
                 query = "SELECT s.service_name, s.service_price FROM service s " +
-                    "JOIN booking_type bt ON s.service_type_id = bt.booking_type_id " +
-                    "WHERE bt.booking_type_name = '" + Booking.bookingType + "'";
+                    "JOIN service_type st ON s.service_type_id = st.service_type_id " +
+                    "WHERE st.service_type_name = '" + Booking.bookingType + "'";
                 command.CommandText = query;
                 reader = command.ExecuteReader();
                 while (reader.Read())
@@ -299,7 +291,6 @@ namespace Design370
                     services.Add(reader.GetString(0) + "; R" + reader.GetString(1) + " - 1");
                 }
                 reader.Close();
-
                 foreach (var item in products)
                     lstBookingProducts.Items.Add(item);
                 foreach (var item in services)

@@ -767,6 +767,7 @@ namespace Design370
         {
             OrderImages customerOI;
             Customer_Order_Capture customerPay = new Customer_Order_Capture();
+            View_Order_Details viewOrder = new View_Order_Details();
             switch (e.ColumnIndex)
             {
                 case 0:
