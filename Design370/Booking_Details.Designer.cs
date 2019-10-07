@@ -361,6 +361,7 @@
             this.dgvProductsInPackage.RowHeadersVisible = false;
             this.dgvProductsInPackage.Size = new System.Drawing.Size(450, 158);
             this.dgvProductsInPackage.TabIndex = 86;
+            this.dgvProductsInPackage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProductsInPackage_CellContentClick);
             // 
             // PIPID
             // 
@@ -428,6 +429,7 @@
             this.dgvServicesInPackage.RowHeadersVisible = false;
             this.dgvServicesInPackage.Size = new System.Drawing.Size(450, 158);
             this.dgvServicesInPackage.TabIndex = 85;
+            this.dgvServicesInPackage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvServicesInPackage_CellContentClick);
             // 
             // SIPID
             // 
@@ -483,6 +485,7 @@
             this.dgvServices.RowHeadersVisible = false;
             this.dgvServices.Size = new System.Drawing.Size(411, 158);
             this.dgvServices.TabIndex = 65;
+            this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvServices_CellContentClick);
             // 
             // ServicesID
             // 
@@ -550,6 +553,7 @@
             this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.Size = new System.Drawing.Size(411, 158);
             this.dgvProducts.TabIndex = 66;
+            this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProducts_CellContentClick);
             // 
             // ProductsID
             // 
