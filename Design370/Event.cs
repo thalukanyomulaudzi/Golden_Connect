@@ -193,7 +193,7 @@ namespace Design370
             }
             catch (Exception except)
             {
-                System.Windows.Forms.MessageBox.Show(except.Message);
+                System.Windows.Forms.MessageBox.Show("This package is being used, and can therefore not be deleted");
             }
         }
     }

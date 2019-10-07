@@ -67,5 +67,10 @@ namespace Design370
                 if (new_node.Nodes.Count == 0) new_node.EnsureVisible();
             }
         }
+
+        private void axAcroPDF1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

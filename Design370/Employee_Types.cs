@@ -67,7 +67,7 @@ namespace Design370
                     }
                     catch(Exception err)
                     {
-                        MessageBox.Show(err.Message);
+                        MessageBox.Show("This employee type is assigned to someone and can not be deleted");
                     }
                     break;
                 default:

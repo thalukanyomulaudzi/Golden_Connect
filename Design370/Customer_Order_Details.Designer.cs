@@ -101,13 +101,17 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvSearchCustomer);
             this.Controls.Add(this.label1);
+            this.HelpButton = true;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Customer_Order_Details";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Order";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Customer_Order_Details_HelpButtonClicked);
             this.Activated += new System.EventHandler(this.Customer_Order_Details_Activated);
             this.Load += new System.EventHandler(this.Customer_Order_Details_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.Customer_Order_Details_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
