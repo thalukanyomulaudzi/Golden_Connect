@@ -586,7 +586,7 @@
             this.gbxBookingDetails.Size = new System.Drawing.Size(925, 190);
             this.gbxBookingDetails.TabIndex = 64;
             this.gbxBookingDetails.TabStop = false;
-            this.gbxBookingDetails.Text = "groupBox1";
+            this.gbxBookingDetails.Text = "Booking Details";
             // 
             // label4
             // 
@@ -633,7 +633,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 801);
+            this.ClientSize = new System.Drawing.Size(958, 749);
             this.Controls.Add(this.gbxBookingDetails);
             this.Controls.Add(this.gbxBookingPackage);
             this.Controls.Add(this.label8);

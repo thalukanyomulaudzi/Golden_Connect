@@ -59,6 +59,10 @@ namespace Design370
         }
         private void CmbBookingPackage_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvProducts.Rows.Clear();
+            dgvProductsInPackage.Rows.Clear();
+            dgvServices.Rows.Clear();
+            dgvServicesInPackage.Rows.Clear();
             double linePrice;
             int productTypeID, serviceTypeID;
             DataTable products = new DataTable();

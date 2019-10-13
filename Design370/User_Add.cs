@@ -35,6 +35,7 @@ namespace Design370
                     return;
                 }
                 reader.Close();
+                this.Close();
             }
             catch (Exception ee)
             {
