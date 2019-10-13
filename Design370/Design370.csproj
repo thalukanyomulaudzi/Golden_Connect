@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -49,16 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>B3D27F6058C3F007B08B196454F4ECAACABE6668</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>Design370_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -132,6 +123,10 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
       <HintPath>..\packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\ShockwaveFlashObjects.dll</HintPath>
@@ -159,7 +154,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WebCam_Capture">
-      <HintPath>bin\WebCam_Capture.dll</HintPath>
+      <HintPath>..\WebCam_Capture.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -194,7 +189,19 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="inventoryReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>inventoryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerOrderReceipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerOrderReceipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomerReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -224,6 +231,18 @@
     </Compile>
     <Compile Include="Customer_Order_Details.Designer.cs">
       <DependentUpon>Customer_Order_Details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_Order_Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer_Order_Payment.Designer.cs">
+      <DependentUpon>Customer_Order_Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_Payment_Receipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer_Payment_Receipt.Designer.cs">
+      <DependentUpon>Customer_Payment_Receipt.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer_View.cs">
       <SubType>Form</SubType>
@@ -308,6 +327,24 @@
     <Compile Include="HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryReport.Designer.cs">
+      <DependentUpon>InventoryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -372,6 +409,7 @@
     <Compile Include="PrepareOrder.Designer.cs">
       <DependentUpon>PrepareOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductsOnHand.cs" />
     <Compile Include="Product_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -453,6 +491,18 @@
     <Compile Include="Service_View.Designer.cs">
       <DependentUpon>Service_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="supplierOrderReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="supplierOrderReport.Designer.cs">
+      <DependentUpon>supplierOrderReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierOrderReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SupplierOrderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -532,6 +582,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="inventoryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inventoryReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerOrderReceipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CustomerOrderReceipt.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CustomerReport.cs</LastGenOutput>
@@ -547,6 +605,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_Order_Details.resx">
       <DependentUpon>Customer_Order_Details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer_Order_Payment.resx">
+      <DependentUpon>Customer_Order_Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer_Payment_Receipt.resx">
+      <DependentUpon>Customer_Payment_Receipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_View.resx">
       <DependentUpon>Customer_View.cs</DependentUpon>
@@ -586,6 +650,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HelpForm.resx">
       <DependentUpon>HelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryReport.resx">
+      <DependentUpon>InventoryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InvReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -666,8 +740,12 @@
     <EmbeddedResource Include="Service_View.resx">
       <DependentUpon>Service_View.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <EmbeddedResource Include="supplierOrderReport.resx">
+      <DependentUpon>supplierOrderReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierOrderReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SupplierOrderReport1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier_List.resx">
       <DependentUpon>Supplier_List.cs</DependentUpon>
@@ -698,6 +776,7 @@
     </EmbeddedResource>
     <None Include="Design370_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ProductsOnHand.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -707,53 +786,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\View_Customer.pdf" />
-    <None Include="Resources\View_Employee.pdf" />
-    <None Include="Resources\View_Employee_Type.pdf" />
-    <None Include="Resources\View_Event_Package.pdf" />
-    <None Include="Resources\View_Event_Type.pdf" />
-    <None Include="Resources\View_Photoshoot_Package.pdf" />
-    <None Include="Resources\View_Photoshoot_Type.pdf" />
-    <None Include="Resources\View_Product.pdf" />
-    <None Include="Resources\View_Product_Type.pdf" />
-    <None Include="Resources\View_Service.pdf" />
-    <None Include="Resources\View_Service_Type.pdf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Add_Customer.pdf" />
-    <None Include="Resources\Add_Employee.pdf" />
-    <None Include="Resources\Add_Employee_Type.pdf" />
-    <None Include="Resources\Add_Event_Package.pdf" />
-    <None Include="Resources\Add_Event_Type.pdf" />
-    <None Include="Resources\Add_Photoshoot_Package.pdf" />
-    <None Include="Resources\Add_Photoshoot_Type.pdf" />
-    <None Include="Resources\Add_Product.pdf" />
-    <None Include="Resources\Add_Product_Type.pdf" />
-    <None Include="Resources\Add_Service.pdf" />
-    <None Include="Resources\Add_Service_Type.pdf" />
-    <None Include="Resources\Customer_Order_Tab_Page.pdf" />
-    <None Include="Resources\Customer_Tab_Page.pdf" />
-    <None Include="Resources\Edit_Customer.pdf" />
-    <None Include="Resources\Edit_Employee.pdf" />
-    <None Include="Resources\Edit_Employee_Type.pdf" />
-    <None Include="Resources\Edit_Event_Package.pdf" />
-    <None Include="Resources\Edit_Event_Type.pdf" />
-    <None Include="Resources\Edit_Photoshoot_Package.pdf" />
-    <None Include="Resources\Edit_Photoshoot_Type.pdf" />
-    <None Include="Resources\Edit_Product.pdf" />
-    <None Include="Resources\Edit_Product_Type.pdf" />
-    <None Include="Resources\Edit_Service.pdf" />
-    <None Include="Resources\Edit_Service_Type.pdf" />
-    <None Include="Resources\Employee_Tab_Page.pdf" />
-    <None Include="Resources\Employee_Types.pdf" />
     <None Include="Resources\event.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Events_Tab_Page.pdf" />
-    <None Include="Resources\Event_Types.pdf" />
     <None Include="Resources\Manual.pdf" />
     <None Include="Resources\photoshoot.jpg" />
   </ItemGroup>
@@ -785,18 +825,9 @@
     <None Include="Resources\phone.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Photoshoots_Tab_Page.pdf" />
-    <None Include="Resources\Photoshoot_Types.pdf" />
-    <None Include="Resources\Place_Customer_Order.pdf" />
     <None Include="Resources\price.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Products_Tab_Page.pdf" />
-    <None Include="Resources\Product_Types.pdf" />
-    <None Include="Resources\Select_Customer.pdf" />
-    <None Include="Resources\Services_Tab_Page.pdf" />
-    <None Include="Resources\Service_Types.pdf" />
-    <None Include="Resources\Training_Manual.pdf" />
     <None Include="Resources\user.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -885,6 +916,15 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word1">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -906,9 +946,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\Treeview.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
