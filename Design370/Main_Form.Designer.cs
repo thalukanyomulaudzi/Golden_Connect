@@ -1795,11 +1795,11 @@ namespace Design370
             // 
             this.lblDebug.AutoSize = true;
             this.lblDebug.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblDebug.Location = new System.Drawing.Point(1168, 0);
+            this.lblDebug.Location = new System.Drawing.Point(1222, 0);
             this.lblDebug.Name = "lblDebug";
-            this.lblDebug.Size = new System.Drawing.Size(94, 13);
+            this.lblDebug.Size = new System.Drawing.Size(40, 13);
             this.lblDebug.TabIndex = 13;
-            this.lblDebug.Text = "Debug Information";
+            this.lblDebug.Text = "Logout";
             this.lblDebug.Click += new System.EventHandler(this.LblDebug_Click);
             // 
             // timer1
@@ -1850,6 +1850,9 @@ namespace Design370
             this.Activated += new System.EventHandler(this.Main_Form_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Main_Form_Load);
+            this.Click += new System.EventHandler(this.Main_Form_Click);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_Form_KeyPress);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Main_Form_MouseMove);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
