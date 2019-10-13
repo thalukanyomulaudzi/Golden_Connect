@@ -117,6 +117,16 @@ namespace Design370
             Employee.LoadEmployees(empGrid);
             Customer.LoadCustomer(dgvCustomers);
             Order.LoadOrders(dgvOrders);
+            txtCustomerSearch.Clear();
+            txtSearch.Clear();
+            textBox2.Clear();
+            txtProductSearch.Clear();
+            txtPhotoshootPackageSearch.Clear();
+            txtEventPackageSearch.Clear();
+            textBox8.Clear();
+            txtBookingSearch.Clear();
+            textBox10.Clear();
+            txtSearchManual.Clear();
         }
         public void loadSuppliers()
         {
@@ -837,15 +847,23 @@ namespace Design370
 
         private void DgvBookings_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string booking_ID = " ";
+            Booking_View booking_View = new Booking_View();
             switch (e.ColumnIndex)
             {
-                case 3:
-                    //view
-                    break;
                 case 4:
-                    //edit
+                    Booking_View.edit = false;
+                    booking_ID = dgvBookings.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    booking_View.GetBookingRow = booking_ID;
+                    booking_View.ShowDialog();
                     break;
                 case 5:
+                    Booking_View.edit = true;
+                    booking_ID = dgvBookings.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    booking_View.GetBookingRow = booking_ID;
+                    booking_View.ShowDialog();
+                    break;
+                case 6:
                     //delete
                     break;
                 default:
@@ -1171,6 +1189,7 @@ namespace Design370
             axAcroPDF1.setShowToolbar(true);
             LoadTreeViewFromXmlFile("Treeview.xml", treeView1);
             treeView1.CollapseAll();
+            txtSearchManual.Clear();
         }
 
         private void LoadTreeViewFromXmlFile(string filename, TreeView trv)
@@ -1441,6 +1460,51 @@ namespace Design370
         {
             Settings settings = new Settings();
             settings.ShowDialog();
+        }
+
+        private void tabPage1_Enter(object sender, EventArgs e)
+        {
+            txtCustomerSearch.Clear();
+        }
+
+        private void tabPage2_Enter(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+        }
+
+        private void tabPage4_Enter(object sender, EventArgs e)
+        {
+            textBox2.Clear();
+        }
+
+        private void tabPage5_Enter(object sender, EventArgs e)
+        {
+            txtProductSearch.Clear();
+        }
+
+        private void tabPage6_Enter(object sender, EventArgs e)
+        {
+            txtPhotoshootPackageSearch.Clear();
+        }
+
+        private void tabPage7_Enter(object sender, EventArgs e)
+        {
+            txtEventPackageSearch.Clear();
+        }
+
+        private void tabPage8_Enter(object sender, EventArgs e)
+        {
+            textBox8.Clear();
+        }
+
+        private void tabPage9_Enter(object sender, EventArgs e)
+        {
+            txtBookingSearch.Clear();
+        }
+
+        private void tabPage10_Enter(object sender, EventArgs e)
+        {
+            textBox10.Clear();
         }
     }
 }

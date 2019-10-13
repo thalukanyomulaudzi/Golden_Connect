@@ -255,6 +255,7 @@ namespace Design370
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer";
             this.tabPage1.Click += new System.EventHandler(this.TabPage1_Click);
+            this.tabPage1.Enter += new System.EventHandler(this.tabPage1_Enter);
             // 
             // lblCustomerSearch
             // 
@@ -393,6 +394,7 @@ namespace Design370
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Employee";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
             // 
             // button7
             // 
@@ -554,7 +556,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -653,6 +655,7 @@ namespace Design370
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Services";
             this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage4.Enter += new System.EventHandler(this.tabPage4_Enter);
             // 
             // btnServiceType
             // 
@@ -787,6 +790,7 @@ namespace Design370
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Products";
             this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage5.Enter += new System.EventHandler(this.tabPage5_Enter);
             // 
             // button5
             // 
@@ -925,6 +929,7 @@ namespace Design370
             this.tabPage6.Text = "Photoshoots";
             this.tabPage6.UseVisualStyleBackColor = true;
             this.tabPage6.Click += new System.EventHandler(this.tabPage6_Click);
+            this.tabPage6.Enter += new System.EventHandler(this.tabPage6_Enter);
             this.tabPage6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TabPage6_MouseClick);
             // 
             // btnPhotoshootPackageAdd
@@ -1006,7 +1011,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 132;
+            this.PhotoshootPackageName.Width = 122;
             // 
             // Services
             // 
@@ -1071,6 +1076,7 @@ namespace Design370
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Events";
             this.tabPage7.UseVisualStyleBackColor = true;
+            this.tabPage7.Enter += new System.EventHandler(this.tabPage7_Enter);
             // 
             // btnEventTypes
             // 
@@ -1164,7 +1170,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 132;
+            this.EventPackageName.Width = 122;
             // 
             // ServicesEvents
             // 
@@ -1220,6 +1226,7 @@ namespace Design370
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Customer Orders";
             this.tabPage8.UseVisualStyleBackColor = true;
+            this.tabPage8.Enter += new System.EventHandler(this.tabPage8_Enter);
             // 
             // btnMakePayment
             // 
@@ -1296,7 +1303,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(51, 18);
+            this.label15.Size = new System.Drawing.Size(52, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Show :";
             // 
@@ -1347,6 +1354,7 @@ namespace Design370
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Bookings";
             this.tabPage9.UseVisualStyleBackColor = true;
+            this.tabPage9.Enter += new System.EventHandler(this.tabPage9_Enter);
             // 
             // btnBookingAdd
             // 
@@ -1480,6 +1488,7 @@ namespace Design370
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "Supplier";
             this.tabPage10.UseVisualStyleBackColor = true;
+            this.tabPage10.Enter += new System.EventHandler(this.tabPage10_Enter);
             // 
             // dataGridView10
             // 
