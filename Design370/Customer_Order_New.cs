@@ -99,7 +99,7 @@ namespace Design370
             if (dbCon.IsConnect())
             {
                 var command = new MySqlCommand("SELECT `product_name`, `product_stock_quantity` FROM `product`, `product_type` WHERE `product`.`product_type_id` = `product_type`.`product_type_id` AND " +
-                    "`product_type`.`product_type_name` = 'Customer Order' AND `product`.`product_stock_quantity` != '0';", dbCon.Connection);
+                    "`product_type`.`product_type_name` = 'Order' AND `product`.`product_stock_quantity` != '0';", dbCon.Connection);
                 var reader = command.ExecuteReader();
                 lboxProductTypes.Items.Clear();
                 while (reader.Read())

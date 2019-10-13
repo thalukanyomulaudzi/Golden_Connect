@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -707,14 +707,53 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\View_Customer.pdf" />
+    <None Include="Resources\View_Employee.pdf" />
+    <None Include="Resources\View_Employee_Type.pdf" />
+    <None Include="Resources\View_Event_Package.pdf" />
+    <None Include="Resources\View_Event_Type.pdf" />
+    <None Include="Resources\View_Photoshoot_Package.pdf" />
+    <None Include="Resources\View_Photoshoot_Type.pdf" />
+    <None Include="Resources\View_Product.pdf" />
+    <None Include="Resources\View_Product_Type.pdf" />
+    <None Include="Resources\View_Service.pdf" />
+    <None Include="Resources\View_Service_Type.pdf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Add_Customer.pdf" />
+    <None Include="Resources\Add_Employee.pdf" />
+    <None Include="Resources\Add_Employee_Type.pdf" />
+    <None Include="Resources\Add_Event_Package.pdf" />
+    <None Include="Resources\Add_Event_Type.pdf" />
+    <None Include="Resources\Add_Photoshoot_Package.pdf" />
+    <None Include="Resources\Add_Photoshoot_Type.pdf" />
+    <None Include="Resources\Add_Product.pdf" />
+    <None Include="Resources\Add_Product_Type.pdf" />
+    <None Include="Resources\Add_Service.pdf" />
+    <None Include="Resources\Add_Service_Type.pdf" />
+    <None Include="Resources\Customer_Order_Tab_Page.pdf" />
+    <None Include="Resources\Customer_Tab_Page.pdf" />
+    <None Include="Resources\Edit_Customer.pdf" />
+    <None Include="Resources\Edit_Employee.pdf" />
+    <None Include="Resources\Edit_Employee_Type.pdf" />
+    <None Include="Resources\Edit_Event_Package.pdf" />
+    <None Include="Resources\Edit_Event_Type.pdf" />
+    <None Include="Resources\Edit_Photoshoot_Package.pdf" />
+    <None Include="Resources\Edit_Photoshoot_Type.pdf" />
+    <None Include="Resources\Edit_Product.pdf" />
+    <None Include="Resources\Edit_Product_Type.pdf" />
+    <None Include="Resources\Edit_Service.pdf" />
+    <None Include="Resources\Edit_Service_Type.pdf" />
+    <None Include="Resources\Employee_Tab_Page.pdf" />
+    <None Include="Resources\Employee_Types.pdf" />
     <None Include="Resources\event.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Events_Tab_Page.pdf" />
+    <None Include="Resources\Event_Types.pdf" />
     <None Include="Resources\Manual.pdf" />
     <None Include="Resources\photoshoot.jpg" />
   </ItemGroup>
@@ -746,9 +785,18 @@
     <None Include="Resources\phone.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Photoshoots_Tab_Page.pdf" />
+    <None Include="Resources\Photoshoot_Types.pdf" />
+    <None Include="Resources\Place_Customer_Order.pdf" />
     <None Include="Resources\price.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Products_Tab_Page.pdf" />
+    <None Include="Resources\Product_Types.pdf" />
+    <None Include="Resources\Select_Customer.pdf" />
+    <None Include="Resources\Services_Tab_Page.pdf" />
+    <None Include="Resources\Service_Types.pdf" />
+    <None Include="Resources\Training_Manual.pdf" />
     <None Include="Resources\user.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -858,6 +906,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Treeview.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
