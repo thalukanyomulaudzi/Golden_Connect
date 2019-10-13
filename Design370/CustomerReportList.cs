@@ -29,12 +29,14 @@ namespace Design370
             CustomerReport cr = new CustomerReport();
             if(connection.IsConnect())
             {
-                var adpt = new MySqlDataAdapter("SELECT * FROM `customer`", connection.Connection);
-                DataSet dt = new DataSet();
-                adpt.Fill(dt, "customer");
-                cr.SetDataSource(dt);
-                cr.SetParameterValue("pStartDate", dkt.ToString("MMMM"));
-                //cr.SetParameterValue("pEndDate", ld.ToString("yyyy-M-dd"));
+                var st = dtStart.Value.Date.ToString("yyyy-M-dd");
+                var end = dtEnd.Value.Date.ToString("yyyy-M-dd");
+                var command = new MySqlCommand("SELECT * FROM `customer` WHERE `customer_join_date` BETWEEN ` CAST('"+dtStart+"' AS DATE) AND CAST('"+dtEnd+"' AS DATE)", connection.Connection);
+                var reader = command.ExecuteReader();
+                while(reader.Read())
+                {
+
+                }
                 customerReport.ReportSource = cr;
                 customerReport.Refresh();
             }
