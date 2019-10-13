@@ -82,14 +82,11 @@ namespace Design370
             try
             {
                 DBConnection dBCon = DBConnection.Instance();
-                string query = "UPDATE employee_type SET (employee_type_name, employee_type_description, access_level) " +
-                    "VALUES ('" + txtEmpTypeName.Text + "', '" + txtEmpTypeDescription.Text + "', '" + cbxAccessLevel.SelectedText + "') " + 
-                    "WHERE employee_type_id = '" + id + "'";
+                string query = "UPDATE `employee_type` SET `employee_type_name` = '" + txtEmpTypeName.Text + "', `employee_type_description` = '" + txtEmpTypeDescription.Text + "', " +
+                    "`access_level` = '" + cbxAccessLevel.SelectedItem.ToString() + "' WHERE employee_type_id = '" + id + "'";
                 var command = new MySqlCommand(query, dBCon.Connection);
-                if (command.ExecuteNonQuery() > 0)
-                {
-                    MessageBox.Show("Employee type updated");
-                }
+                command.ExecuteNonQuery();
+                this.Close();
             }
             catch (Exception err)
             {

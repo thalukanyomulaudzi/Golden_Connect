@@ -48,12 +48,42 @@ namespace Design370
                         {
                             if (MessageBox.Show("Are sure you want to delete this type?", "Delete Employee Type", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                string deleteEmpType = "DELETE FROM `employee_type` WHERE `employee_type_name` ='" + dgvEmpType.Rows[e.RowIndex].Cells[3].Value + "'";
+                                string deleteEmpType = "DELETE FROM `employee_type` WHERE `employee_type_id` ='" + dgvEmpType.Rows[e.RowIndex].Cells[0].Value + "'";
                                 if (dbCon.IsConnect())
                                 {
                                     var command = new MySqlCommand(deleteEmpType, dbCon.Connection);
-                                    command.ExecuteReader();
-                                    MessageBox.Show("Employee Type: " + dgvEmpType.Rows[e.RowIndex].Cells[3].Value + "", "Delete Employee Type", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    command.ExecuteNonQuery();
+                                    dgvEmpType.Rows.Clear();
+                                    dgvEmpType.Rows.Clear();
+                                    try
+                                    {
+                                        DBConnection dBConnection = DBConnection.Instance();
+                                        if (dBConnection.IsConnect())
+                                        {
+                                            string employeeTypeID = " ";
+                                            string employeeTypeName = " ";
+                                            string employeeTypeDescription = " ";
+                                            DataTable EmployeeTypes = new DataTable();
+                                            string query = "SELECT employee_type_id, employee_type_name, employee_type_description FROM employee_type";
+                                            command = new MySqlCommand(query, dBConnection.Connection);
+                                            var reader = command.ExecuteReader();
+                                            EmployeeTypes.Load(reader);
+                                            for (int i = 0; i < EmployeeTypes.Rows.Count; i++)
+                                            {
+                                                employeeTypeID = EmployeeTypes.Rows[i].ItemArray[0].ToString();
+                                                employeeTypeName = EmployeeTypes.Rows[i].ItemArray[1].ToString();
+                                                employeeTypeDescription = EmployeeTypes.Rows[i].ItemArray[2].ToString();
+                                                dgvEmpType.Rows.Add(employeeTypeID, employeeTypeName, employeeTypeDescription, "View", "Edit", "Delete");
+                                            }
+                                            reader.Close();
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        System.Windows.Forms.MessageBox.Show(ex.Message);
+
+                                    }
+
                                 }
                             }
                             else

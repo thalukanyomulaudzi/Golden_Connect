@@ -1541,6 +1541,11 @@ namespace Design370
         {
 
         }
-            
+
+        private void tabPage3_Enter(object sender, EventArgs e)
+        {
+            dgvTimeslots.Rows.Clear();
+            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
+        }
     }
 }

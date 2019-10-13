@@ -56,6 +56,7 @@ namespace Design370
             {
                 MessageBox.Show(e.Message);
             }
+            this.Close();
         }
 
         private void TxtType_TextChanged(object sender, EventArgs e)

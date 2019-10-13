@@ -549,6 +549,7 @@ namespace Design370
             this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.TabPage3_Click);
+            this.tabPage3.Enter += new System.EventHandler(this.tabPage3_Enter);
             // 
             // lblTimeslots
             // 
