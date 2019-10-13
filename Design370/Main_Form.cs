@@ -70,8 +70,8 @@ namespace Design370
         }
         private bool connectDB()
         {
-            //dbCon.DatabaseName = "4d3dGYntTO";
-            dbCon.DatabaseName = "golden_connect";
+            dbCon.DatabaseName = "4d3dGYntTO";
+            //dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
         }
         private void Main_Form_Load(object sender, EventArgs e)
@@ -82,19 +82,19 @@ namespace Design370
             //        login.ShowDialog();
             //    }
             //    timer1.Start();
-            Booking.loadBookings(dgvBookings);
-            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
-            dgvPhotoshootPackage.Rows.Clear();
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            dgvEventPackages.Rows.Clear();
-            Event.LoadDGV(dgvEventPackages);
-            loadProducts();
-            loadServices();
-            loadSuppliers();
-            Employee.LoadEmployees(empGrid);
+            //Booking.loadBookings(dgvBookings);
+            //Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
+            //dgvPhotoshootPackage.Rows.Clear();
+            //Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            //dgvEventPackages.Rows.Clear();
+            //Event.LoadDGV(dgvEventPackages);
+            //loadProducts();
+            //loadServices();
+            //loadSuppliers();
+            //Employee.LoadEmployees(empGrid);
             Customer.LoadCustomer(dgvCustomers);
-            Order.LoadOrders(dgvOrders);
-            Timeslot.clearTimeslots();
+            //Order.LoadOrders(dgvOrders);
+            //Timeslot.clearTimeslots();
         }
 
         private void Main_Form_Activated(object sender, EventArgs e)
@@ -105,18 +105,28 @@ namespace Design370
                 login.ShowDialog();
             }
             timer1.Start();
-            Booking.loadBookings(dgvBookings);
-            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
-            dgvPhotoshootPackage.Rows.Clear();
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            dgvEventPackages.Rows.Clear();
-            Event.LoadDGV(dgvEventPackages);
-            loadProducts();
-            loadServices();
-            loadSuppliers();
-            Employee.LoadEmployees(empGrid);
-            Customer.LoadCustomer(dgvCustomers);
-            Order.LoadOrders(dgvOrders);
+            //Booking.loadBookings(dgvBookings);
+            //Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
+            //dgvPhotoshootPackage.Rows.Clear();
+            //Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            //dgvEventPackages.Rows.Clear();
+            //Event.LoadDGV(dgvEventPackages);
+            //loadProducts();
+            //loadServices();
+            //loadSuppliers();
+            //Employee.LoadEmployees(empGrid);
+            //Customer.LoadCustomer(dgvCustomers);
+            //Order.LoadOrders(dgvOrders);
+            txtCustomerSearch.Clear();
+            txtSearch.Clear();
+            textBox2.Clear();
+            txtProductSearch.Clear();
+            txtPhotoshootPackageSearch.Clear();
+            txtEventPackageSearch.Clear();
+            textBox8.Clear();
+            txtBookingSearch.Clear();
+            textBox10.Clear();
+            txtSearchManual.Clear();
         }
         public void loadSuppliers()
         {
@@ -770,11 +780,6 @@ namespace Design370
             View_Order_Details viewOrder = new View_Order_Details();
             switch (e.ColumnIndex)
             {
-                case 0:
-                    OrderImages.orderID = Convert.ToInt32(dgvOrders.Rows[e.RowIndex].Cells[2].Value);
-                    customerOI = new OrderImages();
-                    customerOI.ShowDialog();
-                    break;
                 case 5:
                     if (e.RowIndex >= 0)
                     {
@@ -842,15 +847,23 @@ namespace Design370
 
         private void DgvBookings_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string booking_ID = " ";
+            Booking_View booking_View = new Booking_View();
             switch (e.ColumnIndex)
             {
-                case 3:
-                    //view
-                    break;
                 case 4:
-                    //edit
+                    Booking_View.edit = false;
+                    booking_ID = dgvBookings.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    booking_View.GetBookingRow = booking_ID;
+                    booking_View.ShowDialog();
                     break;
                 case 5:
+                    Booking_View.edit = true;
+                    booking_ID = dgvBookings.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    booking_View.GetBookingRow = booking_ID;
+                    booking_View.ShowDialog();
+                    break;
+                case 6:
                     //delete
                     break;
                 default:
@@ -1181,6 +1194,7 @@ namespace Design370
             axAcroPDF1.setShowToolbar(true);
             LoadTreeViewFromXmlFile("Treeview.xml", treeView1);
             treeView1.CollapseAll();
+            txtSearchManual.Clear();
         }
 
         private void LoadTreeViewFromXmlFile(string filename, TreeView trv)
@@ -1346,7 +1360,8 @@ namespace Design370
         }
         private void LblDebug_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("User access level: " + User.AccessLevel.ToString());
+            User.logout();
+            MessageBox.Show("You have been logged out");
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -1362,9 +1377,10 @@ namespace Design370
 
         }
 
-        private void button10_Click_1(object sender, EventArgs e)
+        private void BtnMakePayment_Click(object sender, EventArgs e)
         {
-            Process.Start(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Training_Manual.pdf"));
+            Customer_Order_Payment op = new Customer_Order_Payment();
+            op.ShowDialog();
         }
 
         private void Main_Form_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
@@ -1447,5 +1463,84 @@ namespace Design370
             Settings settings = new Settings();
             settings.ShowDialog();
         }
+
+        private void tabPage1_Enter(object sender, EventArgs e)
+        {
+            dgvCustomers.Rows.Clear();
+            Customer.LoadCustomer(dgvCustomers);
+            txtCustomerSearch.Clear();
+        }
+
+        private void tabPage2_Enter(object sender, EventArgs e)
+        {
+            empGrid.Rows.Clear();
+            Employee.LoadEmployees(empGrid);
+            txtSearch.Clear();
+        }
+
+        private void tabPage4_Enter(object sender, EventArgs e)
+        {
+            dgvServices.Rows.Clear();
+            loadServices();
+            textBox2.Clear();
+        }
+
+        private void tabPage5_Enter(object sender, EventArgs e)
+        {
+            dgvProducts.Rows.Clear();
+            loadProducts();
+            txtProductSearch.Clear();
+        }
+
+        private void tabPage6_Enter(object sender, EventArgs e)
+        {
+            dgvPhotoshootPackage.Rows.Clear();
+            Photoshoot.LoadDGV(dgvPhotoshootPackage);
+            txtPhotoshootPackageSearch.Clear();
+        }
+
+        private void tabPage7_Enter(object sender, EventArgs e)
+        {
+            dgvEventPackages.Rows.Clear();
+            Event.LoadDGV(dgvEventPackages);
+            txtEventPackageSearch.Clear();
+        }
+
+        private void tabPage8_Enter(object sender, EventArgs e)
+        {
+            dgvOrders.Rows.Clear();
+            Order.LoadOrders(dgvOrders);
+            textBox8.Clear();
+        }
+
+        private void tabPage9_Enter(object sender, EventArgs e)
+        {
+            dgvBookings.Rows.Clear();
+            Booking.loadBookings(dgvBookings);
+            txtBookingSearch.Clear();
+        }
+
+        private void tabPage10_Enter(object sender, EventArgs e)
+        {
+            dataGridView10.Rows.Clear();
+            loadSuppliers();
+            textBox10.Clear();
+        }
+
+        private void Main_Form_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Main_Form_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void Main_Form_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+            
     }
 }
