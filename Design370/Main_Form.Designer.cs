@@ -239,6 +239,7 @@ namespace Design370
             this.tabControl1.Size = new System.Drawing.Size(1262, 616);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 11;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -255,7 +256,6 @@ namespace Design370
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer";
             this.tabPage1.Click += new System.EventHandler(this.TabPage1_Click);
-            this.tabPage1.Enter += new System.EventHandler(this.tabPage1_Enter);
             // 
             // lblCustomerSearch
             // 
@@ -394,7 +394,6 @@ namespace Design370
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Employee";
             this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
             // 
             // button7
             // 
@@ -549,7 +548,6 @@ namespace Design370
             this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.TabPage3_Click);
-            this.tabPage3.Enter += new System.EventHandler(this.tabPage3_Enter);
             // 
             // lblTimeslots
             // 
@@ -656,7 +654,6 @@ namespace Design370
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Services";
             this.tabPage4.UseVisualStyleBackColor = true;
-            this.tabPage4.Enter += new System.EventHandler(this.tabPage4_Enter);
             // 
             // btnServiceType
             // 
@@ -791,7 +788,6 @@ namespace Design370
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Products";
             this.tabPage5.UseVisualStyleBackColor = true;
-            this.tabPage5.Enter += new System.EventHandler(this.tabPage5_Enter);
             // 
             // button5
             // 
@@ -930,7 +926,6 @@ namespace Design370
             this.tabPage6.Text = "Photoshoots";
             this.tabPage6.UseVisualStyleBackColor = true;
             this.tabPage6.Click += new System.EventHandler(this.tabPage6_Click);
-            this.tabPage6.Enter += new System.EventHandler(this.tabPage6_Enter);
             this.tabPage6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TabPage6_MouseClick);
             // 
             // btnPhotoshootPackageAdd
@@ -1077,7 +1072,6 @@ namespace Design370
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Events";
             this.tabPage7.UseVisualStyleBackColor = true;
-            this.tabPage7.Enter += new System.EventHandler(this.tabPage7_Enter);
             // 
             // btnEventTypes
             // 
@@ -1227,7 +1221,6 @@ namespace Design370
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Customer Orders";
             this.tabPage8.UseVisualStyleBackColor = true;
-            this.tabPage8.Enter += new System.EventHandler(this.tabPage8_Enter);
             // 
             // btnMakePayment
             // 
@@ -1355,7 +1348,6 @@ namespace Design370
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Bookings";
             this.tabPage9.UseVisualStyleBackColor = true;
-            this.tabPage9.Enter += new System.EventHandler(this.tabPage9_Enter);
             // 
             // btnBookingAdd
             // 
@@ -1489,7 +1481,6 @@ namespace Design370
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "Supplier";
             this.tabPage10.UseVisualStyleBackColor = true;
-            this.tabPage10.Enter += new System.EventHandler(this.tabPage10_Enter);
             // 
             // dataGridView10
             // 
@@ -1851,9 +1842,6 @@ namespace Design370
             this.Activated += new System.EventHandler(this.Main_Form_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Main_Form_Load);
-            this.Click += new System.EventHandler(this.Main_Form_Click);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_Form_KeyPress);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Main_Form_MouseMove);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

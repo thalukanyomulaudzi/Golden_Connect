@@ -92,9 +92,10 @@ namespace Design370
             //loadServices();
             //loadSuppliers();
             //Employee.LoadEmployees(empGrid);
-            Customer.LoadCustomer(dgvCustomers);
+            //Customer.LoadCustomer(dgvCustomers);
             //Order.LoadOrders(dgvOrders);
             //Timeslot.clearTimeslots();
+            loadTab();
         }
 
         private void Main_Form_Activated(object sender, EventArgs e)
@@ -117,16 +118,17 @@ namespace Design370
             //Employee.LoadEmployees(empGrid);
             //Customer.LoadCustomer(dgvCustomers);
             //Order.LoadOrders(dgvOrders);
-            txtCustomerSearch.Clear();
-            txtSearch.Clear();
-            textBox2.Clear();
-            txtProductSearch.Clear();
-            txtPhotoshootPackageSearch.Clear();
-            txtEventPackageSearch.Clear();
-            textBox8.Clear();
-            txtBookingSearch.Clear();
-            textBox10.Clear();
-            txtSearchManual.Clear();
+            //txtCustomerSearch.Clear();
+            //txtSearch.Clear();
+            //textBox2.Clear();
+            //txtProductSearch.Clear();
+            //txtPhotoshootPackageSearch.Clear();
+            //txtEventPackageSearch.Clear();
+            //textBox8.Clear();
+            //txtBookingSearch.Clear();
+            //textBox10.Clear();
+            //txtSearchManual.Clear();
+            loadTab();
         }
         public void loadSuppliers()
         {
@@ -1464,88 +1466,69 @@ namespace Design370
             settings.ShowDialog();
         }
 
-        private void tabPage1_Enter(object sender, EventArgs e)
+
+        private void loadTab()
         {
-            dgvCustomers.Rows.Clear();
-            Customer.LoadCustomer(dgvCustomers);
-            txtCustomerSearch.Clear();
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
+                    dgvCustomers.Rows.Clear();
+                    Customer.LoadCustomer(dgvCustomers);
+                    txtCustomerSearch.Clear();
+                    break;
+                case 1:
+                    empGrid.Rows.Clear();
+                    Employee.LoadEmployees(empGrid);
+                    txtSearch.Clear();
+                    break;
+                case 2:
+                    dgvTimeslots.Rows.Clear();
+                    Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
+                    break;
+                case 3:
+                    dgvServices.Rows.Clear();
+                    loadServices();
+                    textBox2.Clear();
+                    break;
+                case 4:
+                    dgvProducts.Rows.Clear();
+                    loadProducts();
+                    txtProductSearch.Clear();
+                    break;
+                case 5:
+                    dgvPhotoshootPackage.Rows.Clear();
+                    Photoshoot.LoadDGV(dgvPhotoshootPackage);
+                    txtPhotoshootPackageSearch.Clear();
+                    break;
+                case 6:
+                    dgvEventPackages.Rows.Clear();
+                    Event.LoadDGV(dgvEventPackages);
+                    txtEventPackageSearch.Clear();
+                    break;
+                case 7:
+                    dgvOrders.Rows.Clear();
+                    Order.LoadOrders(dgvOrders);
+                    textBox8.Clear();
+                    break;
+                case 8:
+                    dgvBookings.Rows.Clear();
+                    Booking.loadBookings(dgvBookings);
+                    txtBookingSearch.Clear();
+                    break;
+                case 9:
+                    dataGridView10.Rows.Clear();
+                    loadSuppliers();
+                    textBox10.Clear();
+                    break;
+
+                default:
+                    break;
+            }
         }
 
-        private void tabPage2_Enter(object sender, EventArgs e)
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            empGrid.Rows.Clear();
-            Employee.LoadEmployees(empGrid);
-            txtSearch.Clear();
-        }
-
-        private void tabPage4_Enter(object sender, EventArgs e)
-        {
-            dgvServices.Rows.Clear();
-            loadServices();
-            textBox2.Clear();
-        }
-
-        private void tabPage5_Enter(object sender, EventArgs e)
-        {
-            dgvProducts.Rows.Clear();
-            loadProducts();
-            txtProductSearch.Clear();
-        }
-
-        private void tabPage6_Enter(object sender, EventArgs e)
-        {
-            dgvPhotoshootPackage.Rows.Clear();
-            Photoshoot.LoadDGV(dgvPhotoshootPackage);
-            txtPhotoshootPackageSearch.Clear();
-        }
-
-        private void tabPage7_Enter(object sender, EventArgs e)
-        {
-            dgvEventPackages.Rows.Clear();
-            Event.LoadDGV(dgvEventPackages);
-            txtEventPackageSearch.Clear();
-        }
-
-        private void tabPage8_Enter(object sender, EventArgs e)
-        {
-            dgvOrders.Rows.Clear();
-            Order.LoadOrders(dgvOrders);
-            textBox8.Clear();
-        }
-
-        private void tabPage9_Enter(object sender, EventArgs e)
-        {
-            dgvBookings.Rows.Clear();
-            Booking.loadBookings(dgvBookings);
-            txtBookingSearch.Clear();
-        }
-
-        private void tabPage10_Enter(object sender, EventArgs e)
-        {
-            dataGridView10.Rows.Clear();
-            loadSuppliers();
-            textBox10.Clear();
-        }
-
-        private void Main_Form_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Main_Form_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void Main_Form_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void tabPage3_Enter(object sender, EventArgs e)
-        {
-            dgvTimeslots.Rows.Clear();
-            Timeslot.loadTimeslots(dgvTimeslots, DateTime.Now);
+            loadTab();
         }
     }
 }
