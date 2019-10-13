@@ -108,6 +108,7 @@
             this.txtSupplierEmail.Name = "txtSupplierEmail";
             this.txtSupplierEmail.Size = new System.Drawing.Size(248, 26);
             this.txtSupplierEmail.TabIndex = 91;
+            this.txtSupplierEmail.TextChanged += new System.EventHandler(this.TxtSupplierEmail_TextChanged);
             // 
             // txtSupplierPhone
             // 

@@ -543,7 +543,7 @@ namespace Design370
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(1104, 608);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Timeslot";
+            this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.TabPage3_Click);
             // 
@@ -553,15 +553,15 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(205, 23);
             this.lblTimeslots.TabIndex = 18;
-            this.lblTimeslots.Text = "Timeslots for this week";
+            this.lblTimeslots.Text = "Schedule for this week";
             // 
             // btnTimeslotAdd
             // 
             this.btnTimeslotAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimeslotAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimeslotAdd.Location = new System.Drawing.Point(946, 16);
+            this.btnTimeslotAdd.Location = new System.Drawing.Point(949, 573);
             this.btnTimeslotAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeslotAdd.Name = "btnTimeslotAdd";
             this.btnTimeslotAdd.Size = new System.Drawing.Size(151, 28);

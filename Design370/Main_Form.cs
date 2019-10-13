@@ -860,6 +860,11 @@ namespace Design370
 
         private void BtnTimeslotAdd_Click(object sender, EventArgs e)
         {
+            if (User.AccessLevel < 2)
+            {
+                MessageBox.Show("Your user level is not high enough. Required level: Manager");
+                return;
+            }
             Timeslot_Add timeslotAdd = new Timeslot_Add();
             timeslotAdd.ShowDialog();
         }
@@ -1307,10 +1312,6 @@ namespace Design370
                 axAcroPDF1.setCurrentPage(140);
             else if (e.Node.Text == "Capture_Payment")
                 axAcroPDF1.setCurrentPage(143);
-            else if (e.Node.Text == "Bookings")
-                axAcroPDF1.setCurrentPage(148);
-            else if (e.Node.Text == "Add_Booking")
-                axAcroPDF1.setCurrentPage(148);
         }
 
         private void BtnGenCustRpt_Click(object sender, EventArgs e)

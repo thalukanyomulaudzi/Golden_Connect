@@ -76,6 +76,10 @@
             this.PIPAdd = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PIPRemove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.gbxBookingDetails = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSearchProducts = new System.Windows.Forms.TextBox();
+            this.txtSearchServices = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numBookingGuests)).BeginInit();
             this.gbxBookingPackage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).BeginInit();
@@ -296,6 +300,10 @@
             // 
             // gbxBookingPackage
             // 
+            this.gbxBookingPackage.Controls.Add(this.label4);
+            this.gbxBookingPackage.Controls.Add(this.label5);
+            this.gbxBookingPackage.Controls.Add(this.txtSearchProducts);
+            this.gbxBookingPackage.Controls.Add(this.txtSearchServices);
             this.gbxBookingPackage.Controls.Add(this.label17);
             this.gbxBookingPackage.Controls.Add(this.dgvServices);
             this.gbxBookingPackage.Controls.Add(this.dgvProducts);
@@ -319,7 +327,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(503, 270);
+            this.label17.Location = new System.Drawing.Point(503, 268);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(126, 16);
@@ -422,7 +430,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(503, 62);
+            this.label13.Location = new System.Drawing.Point(503, 60);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(125, 16);
@@ -479,7 +487,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(14, 62);
+            this.label15.Location = new System.Drawing.Point(14, 60);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(130, 16);
             this.label15.TabIndex = 87;
@@ -489,7 +497,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 270);
+            this.label11.Location = new System.Drawing.Point(14, 268);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(131, 16);
             this.label11.TabIndex = 88;
@@ -580,6 +588,47 @@
             this.gbxBookingDetails.TabStop = false;
             this.gbxBookingDetails.Text = "groupBox1";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(678, 268);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 16);
+            this.label4.TabIndex = 91;
+            this.label4.Text = "Search :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(678, 60);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 16);
+            this.label5.TabIndex = 92;
+            this.label5.Text = "Search :";
+            // 
+            // txtSearchProducts
+            // 
+            this.txtSearchProducts.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchProducts.Location = new System.Drawing.Point(735, 265);
+            this.txtSearchProducts.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchProducts.Name = "txtSearchProducts";
+            this.txtSearchProducts.Size = new System.Drawing.Size(182, 23);
+            this.txtSearchProducts.TabIndex = 90;
+            // 
+            // txtSearchServices
+            // 
+            this.txtSearchServices.Font = new System.Drawing.Font("Bahnschrift Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchServices.Location = new System.Drawing.Point(735, 57);
+            this.txtSearchServices.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchServices.Name = "txtSearchServices";
+            this.txtSearchServices.Size = new System.Drawing.Size(182, 23);
+            this.txtSearchServices.TabIndex = 89;
+            this.txtSearchServices.TextChanged += new System.EventHandler(this.TxtSearchServices_TextChanged);
+            // 
             // Booking_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -660,5 +709,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductsName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
         private System.Windows.Forms.DataGridViewButtonColumn ProductAdd;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSearchProducts;
+        private System.Windows.Forms.TextBox txtSearchServices;
     }
 }
