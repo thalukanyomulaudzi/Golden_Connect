@@ -317,8 +317,7 @@
             this.gbxBookingPackage.Location = new System.Drawing.Point(9, 208);
             this.gbxBookingPackage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.gbxBookingPackage.Name = "gbxBookingPackage";
-            this.gbxBookingPackage.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.gbxBookingPackage.Size = new System.Drawing.Size(928, 465);
+            this.gbxBookingPackage.Size = new System.Drawing.Size(502, 643);
             this.gbxBookingPackage.TabIndex = 63;
             this.gbxBookingPackage.TabStop = false;
             this.gbxBookingPackage.Text = "Package Details";
