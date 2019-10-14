@@ -51,6 +51,7 @@ namespace Design370
             dgv.Columns.Add(btnSelect);
             dgv.ReadOnly = true;
         }
+
         private void Customer_Order_Details_Load(object sender, EventArgs e)
         {
             loadDGV(dgvSearchCustomer);

@@ -255,6 +255,7 @@ namespace Design370
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer";
             this.tabPage1.Click += new System.EventHandler(this.TabPage1_Click);
+            this.tabPage1.Enter += new System.EventHandler(this.tabPage1_Enter);
             // 
             // lblCustomerSearch
             // 
@@ -393,6 +394,7 @@ namespace Design370
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Employee";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
             // 
             // button7
             // 
@@ -544,7 +546,7 @@ namespace Design370
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(1104, 608);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Timeslot";
+            this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.TabPage3_Click);
             // 
@@ -554,15 +556,15 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(205, 23);
             this.lblTimeslots.TabIndex = 18;
-            this.lblTimeslots.Text = "Timeslots for this week";
+            this.lblTimeslots.Text = "Schedule for this week";
             // 
             // btnTimeslotAdd
             // 
             this.btnTimeslotAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimeslotAdd.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimeslotAdd.Location = new System.Drawing.Point(946, 16);
+            this.btnTimeslotAdd.Location = new System.Drawing.Point(949, 573);
             this.btnTimeslotAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeslotAdd.Name = "btnTimeslotAdd";
             this.btnTimeslotAdd.Size = new System.Drawing.Size(151, 28);
@@ -653,6 +655,7 @@ namespace Design370
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Services";
             this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage4.Enter += new System.EventHandler(this.tabPage4_Enter);
             // 
             // btnServiceType
             // 
@@ -787,6 +790,7 @@ namespace Design370
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Products";
             this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage5.Enter += new System.EventHandler(this.tabPage5_Enter);
             // 
             // button5
             // 
@@ -925,6 +929,7 @@ namespace Design370
             this.tabPage6.Text = "Photoshoots";
             this.tabPage6.UseVisualStyleBackColor = true;
             this.tabPage6.Click += new System.EventHandler(this.tabPage6_Click);
+            this.tabPage6.Enter += new System.EventHandler(this.tabPage6_Enter);
             this.tabPage6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TabPage6_MouseClick);
             // 
             // btnPhotoshootPackageAdd
@@ -1071,6 +1076,7 @@ namespace Design370
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Events";
             this.tabPage7.UseVisualStyleBackColor = true;
+            this.tabPage7.Enter += new System.EventHandler(this.tabPage7_Enter);
             // 
             // btnEventTypes
             // 
@@ -1220,6 +1226,9 @@ namespace Design370
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Customer Orders";
             this.tabPage8.UseVisualStyleBackColor = true;
+            this.tabPage8.Enter += new System.EventHandler(this.tabPage8_Enter);
+            // 
+            // btnMakePayment
             // 
             // btnPay
             // 
@@ -1347,6 +1356,7 @@ namespace Design370
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Bookings";
             this.tabPage9.UseVisualStyleBackColor = true;
+            this.tabPage9.Enter += new System.EventHandler(this.tabPage9_Enter);
             // 
             // btnBookingAdd
             // 
@@ -1480,6 +1490,7 @@ namespace Design370
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "Supplier";
             this.tabPage10.UseVisualStyleBackColor = true;
+            this.tabPage10.Enter += new System.EventHandler(this.tabPage10_Enter);
             // 
             // dataGridView10
             // 
@@ -1701,7 +1712,6 @@ namespace Design370
             this.button10.TabIndex = 7;
             this.button10.Text = "Open Help Document";
             this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
             // button3
             // 
@@ -1788,11 +1798,11 @@ namespace Design370
             // 
             this.lblDebug.AutoSize = true;
             this.lblDebug.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblDebug.Location = new System.Drawing.Point(1168, 0);
+            this.lblDebug.Location = new System.Drawing.Point(1222, 0);
             this.lblDebug.Name = "lblDebug";
-            this.lblDebug.Size = new System.Drawing.Size(94, 13);
+            this.lblDebug.Size = new System.Drawing.Size(40, 13);
             this.lblDebug.TabIndex = 13;
-            this.lblDebug.Text = "Debug Information";
+            this.lblDebug.Text = "Logout";
             this.lblDebug.Click += new System.EventHandler(this.LblDebug_Click);
             // 
             // timer1
@@ -1843,6 +1853,9 @@ namespace Design370
             this.Activated += new System.EventHandler(this.Main_Form_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
             this.Load += new System.EventHandler(this.Main_Form_Load);
+            this.Click += new System.EventHandler(this.Main_Form_Click);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_Form_KeyPress);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Main_Form_MouseMove);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Design370
 {
@@ -25,13 +18,13 @@ namespace Design370
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            if (!Validation.validate(txtSupplierName.Text, "name") || !Validation.validate(txtSupplierPhone.Text, "phone") || !Validation.validate(txtSupplierEmail.Text, "id"))
+            if (!Validation.validate(txtSupplierName.Text, "name") || !Validation.validate(txtSupplierPhone.Text, "phone") || !Validation.validate(txtSupplierEmail.Text, "email"))
             {
                 MessageBox.Show("All input fields must be valid");
                 return;
             }
 
-            if (cbxSupplierType.SelectedIndex <= -1 )
+            if (cbxSupplierType.SelectedIndex <= -1)
             {
                 MessageBox.Show("Please select a supplier type");
                 return;
@@ -59,7 +52,7 @@ namespace Design370
             {
                 MessageBox.Show(ee.Message);
             }
-        
+
         }
 
         private void Supplier_Add_Load(object sender, EventArgs e)
@@ -92,6 +85,11 @@ namespace Design370
         private void TxtTelephoneNo_TextChanged(object sender, EventArgs e)
         {
             Validation.checkMark(lblSupplierPhone, Validation.validate(txtSupplierPhone.Text, "phone"));
+        }
+
+        private void TxtSupplierEmail_TextChanged(object sender, EventArgs e)
+        {
+            Validation.checkMark(lblSupplierEmail, Validation.validate(txtSupplierEmail.Text, "email"));
         }
     }
 }

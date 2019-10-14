@@ -181,11 +181,5 @@ namespace Design370
         {
             System.Diagnostics.Process.Start("mailto:"+lblEmail.Text);
         }
-
-        private void Button1_Click_1(object sender, EventArgs e)
-        {
-            ReportOrder r = new ReportOrder();
-            r.Show();
-        }
     }
 }

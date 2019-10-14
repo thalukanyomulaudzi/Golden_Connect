@@ -12,6 +12,7 @@ namespace Design370
         private List<string> products = new List<string>();
         private List<string> services = new List<string>();
         double totalPrice = 0;
+        int bookingTypeID = -1;
         public Booking_Details()
         {
             InitializeComponent();
@@ -294,7 +295,7 @@ namespace Design370
                 {
                     numBookingGuests.Enabled = false;
                 }
-                string query = "SELECT bp.booking_package_name FROM booking_package bp " +
+                string query = "SELECT bp.booking_package_name, bpt.booking_package_type_id FROM booking_package bp " +
                         "JOIN booking_package_type bpt ON bp.booking_package_type_id = bpt.booking_package_type_id " +
                         "WHERE bpt.booking_package_type_name = '" + Booking.bookingType + "'";
                 MySqlCommand command = new MySqlCommand(query, dBConnection.Connection);
@@ -304,6 +305,7 @@ namespace Design370
                 {
                     cmbBookingPackage.Items.Add(reader.GetString(0));
                 }
+                bookingTypeID = reader.GetInt32(1);
                 reader.Close();
             }
             catch (Exception e)
@@ -513,6 +515,56 @@ namespace Design370
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void TxtSearchServices_TextChanged(object sender, EventArgs e)
+        {
+            dgvServices.Rows.Clear();
+            try
+            {
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
+                {
+                    string query = "SELECT service_id, service_name, service_price FROM service " +
+                        "WHERE service_name LIKE '%" + txtSearchServices.Text + "%' AND service_type_id = '" + bookingTypeID + "'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvServices.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Add");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void TxtSearchProducts_TextChanged(object sender, EventArgs e)
+        {
+            dgvProducts.Rows.Clear();
+            try
+            {
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
+                {
+                    string query = "SELECT product_id, product_name, product_price FROM product " +
+                        "WHERE product_name LIKE '%" + txtSearchProducts.Text + "%' AND product_type_id = '" + bookingTypeID + "'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Add");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
     }
