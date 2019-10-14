@@ -597,6 +597,7 @@ namespace Design370
             this.dgvTimeslots.RowTemplate.Height = 24;
             this.dgvTimeslots.Size = new System.Drawing.Size(1086, 378);
             this.dgvTimeslots.TabIndex = 16;
+            this.dgvTimeslots.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvTimeslots_CellFormatting);
             // 
             // timeslotDay1
             // 

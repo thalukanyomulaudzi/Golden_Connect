@@ -1530,5 +1530,22 @@ namespace Design370
         {
             loadTab();
         }
+
+        private void DgvTimeslots_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        { 
+
+        }
+
+        private void DgvTimeslots_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value.ToString() == "Available")
+            {
+                e.CellStyle.BackColor = Color.Green;
+            }
+            else if (e.Value.ToString() == "Unavailable")
+            {
+                e.CellStyle.BackColor = Color.Red;
+            }
+        }
     }
 }
