@@ -80,14 +80,22 @@ namespace Design370
         static int statusID;
         private static int getStatusID(string statusName)
         {
-            if(dbCon.IsConnect())
+            try
             {
-                string getID = "SELECT * FROM `order_status` WHERE `order_status_name` = '" + statusName + "'";
-                var cmd = new MySqlCommand(getID, dbCon.Connection);
-                var reader = cmd.ExecuteReader();
-                reader.Read();
-                statusID = Convert.ToInt32(reader[0]);
-                reader.Close();
+                if (dbCon.IsConnect())
+                {
+                    string getID = "SELECT * FROM `order_status` WHERE `order_status_name` = '" + statusName + "'";
+                    var cmd = new MySqlCommand(getID, dbCon.Connection);
+                    var reader = cmd.ExecuteReader();
+                    reader.Read();
+                    if (reader.HasRows)
+                    { statusID = Convert.ToInt32(reader[0]); }
+                    reader.Close();
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Error: " + e.Message);
             }
             return statusID;
         }

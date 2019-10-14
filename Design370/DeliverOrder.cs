@@ -45,7 +45,7 @@ namespace Design370
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    dgvDeliveries.Rows.Add(reader[0], reader[2] + ", " + reader[1], reader[3], reader[4]);
+                    dgvDeliveries.Rows.Add(reader[0], reader[2] + ", " + reader[1], Convert.ToDateTime(reader[3]).Date.ToString("yyyy-M-dd"), reader[4]);
                 }
                 reader.Close();
             }
@@ -85,7 +85,7 @@ namespace Design370
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    dgvDeliveries.Rows.Add(reader[0], reader[2] + ", " + reader[1], reader[3], reader[4]);
+                    dgvDeliveries.Rows.Add(reader[0], reader[2] + ", " + reader[1], Convert.ToDateTime(reader[3]).Date.ToString("yyyy-M-dd"), reader[4]);
                 }
                 reader.Close();
             }

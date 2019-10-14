@@ -68,29 +68,24 @@ namespace Design370
             dgv.Columns.Add(deleteOrder);
             dgv.RowHeadersVisible = false;
             dgv.ColumnHeadersHeight = 30;
-            ID = orderID.Next(1, 9999);
-            while (getOrderID(ID) == false)
-            {
-                ID = orderID.Next(1, 9999);
-            }
+            ID = getOrderID();
         }
 
-        public bool getOrderID(int o)
+        public int getOrderID()
         {
             if (dbCon.IsConnect())
             {
-                var cmd = new MySqlCommand("SELECT `order_id` FROM `order`", dbCon.Connection);
+                var cmd = new MySqlCommand("SELECT MAX(`order_id`) FROM `order`", dbCon.Connection);
                 var read = cmd.ExecuteReader();
-                while (read.Read())
+                read.Read();
+                if (read.HasRows)
                 {
-                    if (Convert.ToInt32(read[0]) == o)
-                    {
-                        return false;
-                    }
+                    ID = Convert.ToInt32(read[0]);
+                    ID++;
                 }
                 read.Close();
             }
-            return true;
+            return ID;
         }
 
         private void NewCustomerOrder_Load(object sender, EventArgs e)
@@ -328,7 +323,6 @@ namespace Design370
                     }
                 }
 
-                //SavingOrder save = new SavingOrder();
                 if (dbCon.IsConnect())
                 {
                     var date = DateTime.Now;
@@ -406,11 +400,7 @@ namespace Design370
                         if (MessageBox.Show("Do you want to place a new order?", "Place Customer Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             updateStock();
-                            ID = orderID.Next(1, 9999);
-                            while (getOrderID(ID) == false)
-                            {
-                                ID = orderID.Next(1, 9999);
-                            }
+                            ID = getOrderID();
                             items = null;
                             items = new Order[10];
                             row = 0;

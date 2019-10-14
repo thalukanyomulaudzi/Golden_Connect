@@ -66,7 +66,7 @@ namespace Design370
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    dgvPrepareCustomerOrder.Rows.Add(reader[0], reader[1].ToString() + ", " + reader[2].ToString(), reader[3], reader[4]);
+                    dgvPrepareCustomerOrder.Rows.Add(reader[0], reader[1].ToString() + ", " + reader[2].ToString(), Convert.ToDateTime(reader[3]).Date.ToString("yyyy-M-dd"), reader[4]);
                 }
                 reader.Close();
             }
@@ -292,7 +292,7 @@ namespace Design370
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    dgvPrepareCustomerOrder.Rows.Add(reader[0], reader[1].ToString() + ", " + reader[2].ToString(), reader[3], reader[4]);
+                    dgvPrepareCustomerOrder.Rows.Add(reader[0], reader[1].ToString() + ", " + reader[2].ToString(), Convert.ToDateTime(reader[3]).Date.ToString("yyyy-M-dd"), reader[4]);
                 }
                 reader.Close();
             }

@@ -128,6 +128,7 @@ namespace Design370
             this.EventPackageEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EventPackageDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.btnPay = new System.Windows.Forms.Button();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
@@ -135,7 +136,7 @@ namespace Design370
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button16 = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.btnBookingAdd = new System.Windows.Forms.Button();
             this.dgvBookings = new System.Windows.Forms.DataGridView();
@@ -164,7 +165,7 @@ namespace Design370
             this.button24 = new System.Windows.Forms.Button();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.button13 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnGenerateInventoryReport = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
             this.btnGenCustRpt = new System.Windows.Forms.Button();
@@ -553,7 +554,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(208, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(202, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Timeslots for this week";
             // 
@@ -1005,7 +1006,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 122;
+            this.PhotoshootPackageName.Width = 132;
             // 
             // Services
             // 
@@ -1163,7 +1164,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 122;
+            this.EventPackageName.Width = 132;
             // 
             // ServicesEvents
             // 
@@ -1203,6 +1204,7 @@ namespace Design370
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.btnPay);
             this.tabPage8.Controls.Add(this.dgvOrders);
             this.tabPage8.Controls.Add(this.button18);
             this.tabPage8.Controls.Add(this.button17);
@@ -1210,7 +1212,7 @@ namespace Design370
             this.tabPage8.Controls.Add(this.label15);
             this.tabPage8.Controls.Add(this.label16);
             this.tabPage8.Controls.Add(this.textBox8);
-            this.tabPage8.Controls.Add(this.button16);
+            this.tabPage8.Controls.Add(this.btnPayment);
             this.tabPage8.Location = new System.Drawing.Point(154, 4);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage8.Name = "tabPage8";
@@ -1218,6 +1220,17 @@ namespace Design370
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Customer Orders";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // btnPay
+            // 
+            this.btnPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPay.Location = new System.Drawing.Point(968, 16);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(128, 28);
+            this.btnPay.TabIndex = 47;
+            this.btnPay.Text = "Make Payment";
+            this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.BtnPay_Click);
             // 
             // dgvOrders
             // 
@@ -1243,10 +1256,10 @@ namespace Design370
             // 
             this.button18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button18.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(985, 16);
+            this.button18.Location = new System.Drawing.Point(838, 16);
             this.button18.Margin = new System.Windows.Forms.Padding(2);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(112, 28);
+            this.button18.Size = new System.Drawing.Size(128, 28);
             this.button18.TabIndex = 45;
             this.button18.Text = "Deliver Order";
             this.button18.UseVisualStyleBackColor = true;
@@ -1256,10 +1269,10 @@ namespace Design370
             // 
             this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button17.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(865, 16);
+            this.button17.Location = new System.Drawing.Point(708, 16);
             this.button17.Margin = new System.Windows.Forms.Padding(2);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(116, 28);
+            this.button17.Size = new System.Drawing.Size(128, 28);
             this.button17.TabIndex = 44;
             this.button17.Text = "Prepare Order";
             this.button17.UseVisualStyleBackColor = true;
@@ -1283,7 +1296,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 18);
+            this.label15.Size = new System.Drawing.Size(51, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Show :";
             // 
@@ -1307,18 +1320,18 @@ namespace Design370
             this.textBox8.Size = new System.Drawing.Size(200, 25);
             this.textBox8.TabIndex = 40;
             // 
-            // button16
+            // btnPayment
             // 
-            this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button16.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(733, 16);
-            this.button16.Margin = new System.Windows.Forms.Padding(2);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(128, 28);
-            this.button16.TabIndex = 38;
-            this.button16.Text = "Place Order";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.Button16_Click);
+            this.btnPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPayment.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.Location = new System.Drawing.Point(577, 16);
+            this.btnPayment.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(128, 28);
+            this.btnPayment.TabIndex = 38;
+            this.btnPayment.Text = "Place Order";
+            this.btnPayment.UseVisualStyleBackColor = true;
+            this.btnPayment.Click += new System.EventHandler(this.Button16_Click);
             // 
             // tabPage9
             // 
@@ -1592,7 +1605,7 @@ namespace Design370
             // tabPage11
             // 
             this.tabPage11.Controls.Add(this.button13);
-            this.tabPage11.Controls.Add(this.button11);
+            this.tabPage11.Controls.Add(this.btnGenerateInventoryReport);
             this.tabPage11.Controls.Add(this.button9);
             this.tabPage11.Controls.Add(this.button25);
             this.tabPage11.Controls.Add(this.btnGenCustRpt);
@@ -1615,16 +1628,17 @@ namespace Design370
             this.button13.Text = "Generate Audit Trail Report";
             this.button13.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btnGenerateInventoryReport
             // 
-            this.button11.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(21, 251);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(227, 43);
-            this.button11.TabIndex = 59;
-            this.button11.Text = "Generate Inventory Report";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnGenerateInventoryReport.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateInventoryReport.Location = new System.Drawing.Point(21, 251);
+            this.btnGenerateInventoryReport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerateInventoryReport.Name = "btnGenerateInventoryReport";
+            this.btnGenerateInventoryReport.Size = new System.Drawing.Size(227, 43);
+            this.btnGenerateInventoryReport.TabIndex = 59;
+            this.btnGenerateInventoryReport.Text = "Generate Inventory Report";
+            this.btnGenerateInventoryReport.UseVisualStyleBackColor = true;
+            this.btnGenerateInventoryReport.Click += new System.EventHandler(this.BtnGenerateInventoryReport_Click);
             // 
             // button9
             // 
@@ -1937,7 +1951,7 @@ namespace Design370
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.DataGridView dgvOrders;
@@ -1963,7 +1977,7 @@ namespace Design370
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnGenerateInventoryReport;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TabPage tabPage12;
         private DataGridView dgvService;
@@ -2046,6 +2060,7 @@ namespace Design370
         private Button btnSettings;
         private Button button10;
         private TabPage tabPage13;
+        private Button btnPay;
     }
 }
 

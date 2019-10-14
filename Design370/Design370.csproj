@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\Users\u1523\OneDrive\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -189,19 +189,13 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="inventoryReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>inventoryReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="Customer Order Paymebt Receipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer Order Paymebt Receipt.Designer.cs">
+      <DependentUpon>Customer Order Paymebt Receipt.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs" />
-    <Compile Include="CustomerOrderReceipt.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CustomerOrderReceipt.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CustomerReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -214,6 +208,13 @@
     <Compile Include="CustomerReportList.Designer.cs">
       <DependentUpon>CustomerReportList.cs</DependentUpon>
     </Compile>
+    <Compile Include="customersRep.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>customersRep.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customer_Order.cs" />
     <Compile Include="Customer_Order_Capture.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,17 +233,23 @@
     <Compile Include="Customer_Order_Details.Designer.cs">
       <DependentUpon>Customer_Order_Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer_Order_Payment.cs">
+    <Compile Include="Customer_Order_Payment_.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>orderPayments.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="inventory_Stock_On_Hand.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customer_Order_Payment.Designer.cs">
-      <DependentUpon>Customer_Order_Payment.cs</DependentUpon>
+    <Compile Include="inventory_Stock_On_Hand.Designer.cs">
+      <DependentUpon>inventory_Stock_On_Hand.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer_Payment_Receipt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer_Payment_Receipt.Designer.cs">
-      <DependentUpon>Customer_Payment_Receipt.cs</DependentUpon>
+    <Compile Include="orderPayments.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>orderPayments.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Customer_View.cs">
       <SubType>Form</SubType>
@@ -327,24 +334,6 @@
     <Compile Include="HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory.Designer.cs">
-      <DependentUpon>Inventory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryReport.Designer.cs">
-      <DependentUpon>InventoryReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InvReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,7 +346,6 @@
     <Compile Include="Main_Form.Designer.cs">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="MysqlConnection.cs" />
     <Compile Include="Customer_Order_New.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -409,7 +397,7 @@
     <Compile Include="PrepareOrder.Designer.cs">
       <DependentUpon>PrepareOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductsOnHand.cs" />
+    <Compile Include="Products.cs" />
     <Compile Include="Product_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -454,6 +442,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Customer_Order_Receipts.cs" />
     <Compile Include="ReportOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -491,23 +480,17 @@
     <Compile Include="Service_View.Designer.cs">
       <DependentUpon>Service_View.cs</DependentUpon>
     </Compile>
-    <Compile Include="supplierOrderReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="supplierOrderReport.Designer.cs">
-      <DependentUpon>supplierOrderReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SupplierOrderReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SupplierOrderReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockOnHand.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockOnHand.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Supplier_List.cs">
       <SubType>Form</SubType>
@@ -566,6 +549,7 @@
       <DependentUpon>User_Add.cs</DependentUpon>
     </Compile>
     <Compile Include="Validation.cs" />
+    <Compile Include="_Customers.cs" />
     <EmbeddedResource Include="Booking_Capture_Payment.resx">
       <DependentUpon>Booking_Capture_Payment.cs</DependentUpon>
     </EmbeddedResource>
@@ -582,13 +566,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="inventoryReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>inventoryReport1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomerOrderReceipt.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CustomerOrderReceipt.cs</LastGenOutput>
+    <EmbeddedResource Include="Customer Order Paymebt Receipt.resx">
+      <DependentUpon>Customer Order Paymebt Receipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -596,6 +575,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerReportList.resx">
       <DependentUpon>CustomerReportList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="customersRep.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>customersRep.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_Order_Capture.resx">
       <DependentUpon>Customer_Order_Capture.cs</DependentUpon>
@@ -606,11 +589,12 @@
     <EmbeddedResource Include="Customer_Order_Details.resx">
       <DependentUpon>Customer_Order_Details.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customer_Order_Payment.resx">
-      <DependentUpon>Customer_Order_Payment.cs</DependentUpon>
+    <EmbeddedResource Include="inventory_Stock_On_Hand.resx">
+      <DependentUpon>inventory_Stock_On_Hand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customer_Payment_Receipt.resx">
-      <DependentUpon>Customer_Payment_Receipt.cs</DependentUpon>
+    <EmbeddedResource Include="orderPayments.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>orderPayments.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_View.resx">
       <DependentUpon>Customer_View.cs</DependentUpon>
@@ -650,16 +634,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HelpForm.resx">
       <DependentUpon>HelpForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inventory.resx">
-      <DependentUpon>Inventory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryReport.resx">
-      <DependentUpon>InventoryReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InvReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InvReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -740,12 +714,9 @@
     <EmbeddedResource Include="Service_View.resx">
       <DependentUpon>Service_View.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="supplierOrderReport.resx">
-      <DependentUpon>supplierOrderReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SupplierOrderReport.rpt">
+    <EmbeddedResource Include="StockOnHand.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>SupplierOrderReport1.cs</LastGenOutput>
+      <LastGenOutput>StockOnHand.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier_List.resx">
       <DependentUpon>Supplier_List.cs</DependentUpon>
@@ -774,7 +745,6 @@
     <EmbeddedResource Include="User_Add.resx">
       <DependentUpon>User_Add.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Design370_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ProductsOnHand.datasource" />
     <None Include="Properties\Settings.settings">
@@ -946,6 +916,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot_20191012-171228_Chrome.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

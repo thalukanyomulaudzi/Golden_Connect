@@ -17,13 +17,40 @@ namespace Design370
 {
     public partial class Customer_Order_Capture : Form
     {
-        public static int OrderPaymentID;
+        public static int orderPaymentID;
         DBConnection dbCon = DBConnection.Instance();
-        int paymentID, customerID;
-        string customerPhone, customerLastName;
+        public int paymentID, customerID;
+        public string customerPhone, customerLastName;
+
         public Customer_Order_Capture()
         {
             InitializeComponent();
+        }
+
+        public void createDgv()
+        {
+            DataGridViewButtonColumn view = new DataGridViewButtonColumn();
+            view.HeaderText = "View Order";
+            view.Text = "View";
+            view.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn pay = new DataGridViewButtonColumn();
+            pay.HeaderText = "Make Payment";
+            pay.Text = "Select";
+            pay.UseColumnTextForButtonValue = true;
+            dgvPayments.Rows.Clear();
+            dgvPayments.ColumnCount = 5;
+            dgvPayments.Columns[0].Name = "Order ID";
+            dgvPayments.Columns[0].Width = 100;
+            dgvPayments.Columns[1].Name = "Customer Name";
+            dgvPayments.Columns[1].Width = 140;
+            dgvPayments.Columns[2].Name = "Date Placed";
+            dgvPayments.Columns[2].Width = 120;
+            dgvPayments.Columns[3].Name = "Order Quantity";
+            dgvPayments.Columns[3].Width = 120;
+            dgvPayments.Columns[4].Name = "Order Total";
+            dgvPayments.Columns[4].Width = 110;
+            dgvPayments.Columns.Add(pay);
+            dgvPayments.Columns.Add(view);
         }
 
         private void Label2_Click(object sender, EventArgs e)
@@ -33,57 +60,15 @@ namespace Design370
 
         private void CapturePayment_Load(object sender, EventArgs e)
         {
-            cbxPaymentType.Items.Clear();
-            lblOID.Text = OrderPaymentID.ToString();
-            if(dbCon.IsConnect())
-            {
-                var command = new MySqlCommand("SELECT * FROM `order` WHERE `order_id` = '" + OrderPaymentID + "'", dbCon.Connection);
-                var reader = command.ExecuteReader();
-                reader.Read();
-                if (reader.HasRows)
-                {
-                    lblAmountDue.Text = "R" + reader.GetString("order_total");
-                    customerID = Convert.ToInt32(reader.GetString("customer_id"));
-                }
-                reader.Close();
-            }
-
             if (dbCon.IsConnect())
             {
-                var command = new MySqlCommand("SELECT * FROM `customer`", dbCon.Connection);
-                var reader = command.ExecuteReader();
-                reader.Read();
-                if (reader.HasRows)
-                {
-                    customerPhone = reader.GetString("customer_phone");
-                    customerLastName = reader.GetString("customer_first");
-                }
-                reader.Close();
-            }
-
-            if (dbCon.IsConnect())
-            {
-                var command = new MySqlCommand("SELECT * FROM `payment_type`", dbCon.Connection);
+                createDgv();
+                var command = new MySqlCommand("SELECT `order_id`, `customer_first`, `customer_last`, `order_date_placed`, `order_quantity`, `order_total` FROM `order`,`customer`,`order_status`" +
+                    " WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Pending' AND `order`.`customer_id` = `customer`.`customer_id`", dbCon.Connection);
                 var reader = command.ExecuteReader();
                 while(reader.Read())
                 {
-                    cbxPaymentType.Items.Add(reader.GetString("payment_type_name"));
-                }
-                reader.Close();
-            }
-        }
-        
-        private void CbxPaymentType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (dbCon.IsConnect())
-            {
-                string paymentData = cbxPaymentType.SelectedItem.ToString();
-                var command = new MySqlCommand("SELECT `payment_type_id` FROM `payment_type` WHERE `payment_type_name` = '" + paymentData + "'", dbCon.Connection);
-                var reader = command.ExecuteReader();
-                reader.Read();
-                if (reader.HasRows)
-                {
-                    paymentID = Convert.ToInt32(reader[0]);
+                    dgvPayments.Rows.Add(reader[0], reader[2] + ", " + reader[1], Convert.ToDateTime(reader[3]).Date.ToString("yyyy-M-dd"), reader[4], "R"+reader[5]);
                 }
                 reader.Close();
             }
@@ -91,30 +76,112 @@ namespace Design370
 
         private void BtnSavePayment_Click(object sender, EventArgs e)
         {
-            if (dbCon.IsConnect())
+            if (txtAmount.Text != String.Empty && Convert.ToDecimal(txtAmount.Text) >= Convert.ToDecimal((dgvPayments.Rows[index].Cells[4].Value.ToString()).Remove(0, 1)))
             {
-                string paymentData = "INSERT INTO `payment` (`payment_id`, `payment_type_id`, `payment_amount`, `customer_id`, `order_id`, `booking_id`) " +
-                    "VALUES (NULL, '"+paymentID+"', '"+txtAmount.Text+"', '"+customerID+"', NULL, NULL)";
-                var command = new MySqlCommand(paymentData, dbCon.Connection);
-                var reader = command.ExecuteReader();
-                MessageBox.Show("Order payment for: " + customerLastName + " has been captured successfully");
-                // int sent = SendSMS("CI00206948", "u15231748@tuks.co.za", "om0QGsm1", "0733859365", "Good Day\nThis Message serves as a notice to inform you that your order payment has been received. \n\nThank you for your support.\n\nGolden Hour");
-                //if (sent == 0)
-                //{
-                //    
-                //    updateOrder(OrderPaymentID);
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Message not sent!");
-                //}
-                reader.Close();
+                Customer_Order_Paymebt_Receipt payOrder = new Customer_Order_Paymebt_Receipt();
+                Customer_Order_Paymebt_Receipt.payAmount = txtAmount.Text;
+                if (dbCon.IsConnect())
+                {
+                    string paymentData = "INSERT INTO `payment` (`payment_amount`, `customer_id`, `order_id`, `booking_id`) " +
+                        "VALUES ('" + txtAmount.Text + "', '" + customerID + "', '"+Convert.ToInt32(lblOrderID.Text)+"', NULL)";
+                    var command = new MySqlCommand(paymentData, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    //MessageBox.Show("Order payment for: " + dgvPayments.Rows[index].Cells[1].Value.ToString() + " has been captured successfully");
+                    reader.Close();
+
+                    var updateorder = new MySqlCommand("UPDATE `order` SET `order_status_id` = '2' WHERE `order_id` = '"+Convert.ToInt32(lblOrderID.Text)+"'", dbCon.Connection);
+                    var updated = updateorder.ExecuteReader();
+                    updated.Close();
+
+                    // int sent = SendSMS("CI00206948", "u15231748@tuks.co.za", "om0QGsm1", "0733859365", "Good Day\nThis Message serves as a notice to inform you that your order payment has been received. \n\nThank you for your support.\n\nGolden Hour");
+                    //if (sent == 0)
+                    //{
+                    //    
+                    //    updateOrder(OrderPaymentID);
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Message not sent!");
+                    //}
+
+                    payOrder.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cannot make payment less that what you have ordered", "Customer Order Payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public decimal orderTotal;
+        private void TxtAmount_TextChanged(object sender, EventArgs e)
+        {
+            if(txtAmount.Text != String.Empty && Convert.ToDecimal(txtAmount.Text) >= Convert.ToDecimal(orderTotal))
+            {
+                Validation.checkMark(lblOrderPayment, Validation.validate(txtAmount.Text, "price"));
+            }
+        }
+        int index = 0;
+        private void DgvPayments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 5)
+            {
+                lblOrderID.Text = dgvPayments.Rows[e.RowIndex].Cells[0].Value.ToString();
+                if (dbCon.IsConnect())
+                {
+                    var command = new MySqlCommand("SELECT `customer_id` FROM `order` WHERE `order_id` = '"+Convert.ToInt32(lblOrderID.Text) +"'", dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    reader.Read();
+                    if(reader.HasRows)
+                    {
+                        customerID = Convert.ToInt32(reader[0]);
+                    }
+                    reader.Close();
+                }
+                
+                dgvPayments.Rows[index].DefaultCellStyle.BackColor = Color.White;
+                dgvPayments.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                index = e.RowIndex;
+                Customer_Order_Paymebt_Receipt.id = Convert.ToInt32(dgvPayments.Rows[e.RowIndex].Cells[0].Value);
+                btnSavePayment.Enabled = true;
+            }
+            else if(e.ColumnIndex == 6)
+            {
+                View_Order_Details viewOrder = new View_Order_Details();
+                int orderID = Convert.ToInt32(dgvPayments.Rows[e.RowIndex].Cells[0].Value);
+                if (dbCon.IsConnect())
+                {
+                    string checkStatus = "SELECT `customer_id` FROM `order` WHERE `order_id` = '" + orderID + "'";
+                    var command = new MySqlCommand(checkStatus, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    reader.Read();
+                    if (reader.HasRows)
+                    {
+
+                        View_Order_Details.customerID = Convert.ToInt32(reader[0]);
+                        View_Order_Details.order_id = orderID;
+                        reader.Close();
+                        viewOrder.ShowDialog();
+
+                    }
+                    reader.Close();
+                }
             }
         }
 
-        private void TxtAmount_TextChanged(object sender, EventArgs e)
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
-            Validation.checkMark(lblOrderPayment, Validation.validate(txtAmount.Text, "price"));
+            if (dbCon.IsConnect())
+            {
+                createDgv();
+                var command = new MySqlCommand("SELECT `order_id`, `customer_first`, `customer_last`, `order_date_placed`, `order_quantity`, `order_total` FROM `order`,`customer`,`order_status`" +
+                    " WHERE `order`.`order_status_id` = `order_status`.`order_status_id` AND `order_status`.`order_status_name` = 'Pending' AND `order`.`customer_id` = `customer`.`customer_id` AND `customer`.`customer_first` = '%"+txtSearch.Text+ "%' OR `customer`.`customer_last` = '%" + txtSearch.Text + "%'", dbCon.Connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    dgvPayments.Rows.Add(reader[0], reader[2] + ", " + reader[1], Convert.ToDateTime(reader[3]).Date.ToString("yyyy-M-dd"), reader[4], reader[5]);
+                }
+                reader.Close();
+            }
         }
 
         public void updateOrder(int orderid)
