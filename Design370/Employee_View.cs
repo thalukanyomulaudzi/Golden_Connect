@@ -209,7 +209,7 @@ namespace Design370
             }
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void BtnEmployeeEdit_Click(object sender, EventArgs e)
         {
             helpstring = "Edit_Employee";
             this.Text = "Edit Employee";
@@ -227,7 +227,7 @@ namespace Design370
             btnEmployeeEdit.Enabled = false;
         }
         
-        private void Button1_Click(object sender, EventArgs e)
+        private void BtnEmployeeOK_Click(object sender, EventArgs e)
         {
             if (!Validation.validate(txtEmployeeFirst.Text, "name") || !Validation.validate(txtEmployeeLast.Text, "name") || !Validation.validate(txtEmployeeID.Text, "price")
                 || !Validation.validate(txtEmployeeEmail.Text, "email") || !Validation.validate(txtEmployeePhone.Text, "phone"))

@@ -58,10 +58,10 @@
             // btnProductTypeAdd
             // 
             this.btnProductTypeAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductTypeAdd.Location = new System.Drawing.Point(297, 272);
+            this.btnProductTypeAdd.Location = new System.Drawing.Point(257, 270);
             this.btnProductTypeAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnProductTypeAdd.Name = "btnProductTypeAdd";
-            this.btnProductTypeAdd.Size = new System.Drawing.Size(247, 29);
+            this.btnProductTypeAdd.Size = new System.Drawing.Size(46, 29);
             this.btnProductTypeAdd.TabIndex = 74;
             this.btnProductTypeAdd.Text = "Add Product Type";
             this.btnProductTypeAdd.UseVisualStyleBackColor = true;

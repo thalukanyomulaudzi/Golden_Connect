@@ -59,16 +59,12 @@
             this.lblEmployeeID = new System.Windows.Forms.Label();
             this.lblEmployeePhone = new System.Windows.Forms.Label();
             this.lblEmployeeEmail = new System.Windows.Forms.Label();
-            this.bntCapture = new System.Windows.Forms.Button();
-            this.imgCapture = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCapture)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEmployeeCancel
             // 
             this.btnEmployeeCancel.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployeeCancel.Location = new System.Drawing.Point(349, 674);
+            this.btnEmployeeCancel.Location = new System.Drawing.Point(336, 591);
             this.btnEmployeeCancel.Name = "btnEmployeeCancel";
             this.btnEmployeeCancel.Size = new System.Drawing.Size(116, 39);
             this.btnEmployeeCancel.TabIndex = 13;
@@ -79,7 +75,7 @@
             // btnEmployeeAdd
             // 
             this.btnEmployeeAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployeeAdd.Location = new System.Drawing.Point(477, 674);
+            this.btnEmployeeAdd.Location = new System.Drawing.Point(464, 591);
             this.btnEmployeeAdd.Name = "btnEmployeeAdd";
             this.btnEmployeeAdd.Size = new System.Drawing.Size(115, 39);
             this.btnEmployeeAdd.TabIndex = 12;
@@ -91,10 +87,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(20, 570);
+            this.label13.Location = new System.Drawing.Point(20, 487);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(164, 18);
+            this.label13.Size = new System.Drawing.Size(166, 18);
             this.label13.TabIndex = 65;
             this.label13.Text = "3. Business Information";
             // 
@@ -102,10 +98,10 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(20, 453);
+            this.label12.Location = new System.Drawing.Point(22, 370);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(152, 18);
+            this.label12.Size = new System.Drawing.Size(154, 18);
             this.label12.TabIndex = 64;
             this.label12.Text = "2. Contact Information";
             // 
@@ -116,7 +112,7 @@
             this.label11.Location = new System.Drawing.Point(21, 16);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(157, 18);
+            this.label11.Size = new System.Drawing.Size(159, 18);
             this.label11.TabIndex = 63;
             this.label11.Text = "1. Personal Information";
             // 
@@ -126,7 +122,7 @@
             this.label10.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(22, 226);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 18);
+            this.label10.Size = new System.Drawing.Size(71, 18);
             this.label10.TabIndex = 61;
             this.label10.Text = "Address :";
             // 
@@ -144,7 +140,7 @@
             // 
             this.cbxEmployeeType.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmployeeType.FormattingEnabled = true;
-            this.cbxEmployeeType.Location = new System.Drawing.Point(23, 630);
+            this.cbxEmployeeType.Location = new System.Drawing.Point(22, 549);
             this.cbxEmployeeType.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeType.Name = "cbxEmployeeType";
             this.cbxEmployeeType.Size = new System.Drawing.Size(243, 26);
@@ -154,7 +150,7 @@
             // 
             this.cbxEmployeeGender.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmployeeGender.FormattingEnabled = true;
-            this.cbxEmployeeGender.Location = new System.Drawing.Point(334, 49);
+            this.cbxEmployeeGender.Location = new System.Drawing.Point(336, 61);
             this.cbxEmployeeGender.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeGender.Name = "cbxEmployeeGender";
             this.cbxEmployeeGender.Size = new System.Drawing.Size(243, 26);
@@ -164,7 +160,7 @@
             // 
             this.cbxEmployeeMarital.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmployeeMarital.FormattingEnabled = true;
-            this.cbxEmployeeMarital.Location = new System.Drawing.Point(333, 107);
+            this.cbxEmployeeMarital.Location = new System.Drawing.Point(336, 124);
             this.cbxEmployeeMarital.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeMarital.Name = "cbxEmployeeMarital";
             this.cbxEmployeeMarital.Size = new System.Drawing.Size(243, 26);
@@ -174,7 +170,7 @@
             // 
             this.cbxEmployeeTitle.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmployeeTitle.FormattingEnabled = true;
-            this.cbxEmployeeTitle.Location = new System.Drawing.Point(334, 171);
+            this.cbxEmployeeTitle.Location = new System.Drawing.Point(336, 186);
             this.cbxEmployeeTitle.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeTitle.Name = "cbxEmployeeTitle";
             this.cbxEmployeeTitle.Size = new System.Drawing.Size(116, 26);
@@ -184,10 +180,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 542);
+            this.label9.Location = new System.Drawing.Point(20, 527);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(111, 18);
+            this.label9.Size = new System.Drawing.Size(113, 18);
             this.label9.TabIndex = 55;
             this.label9.Text = "Employee Type :";
             // 
@@ -195,10 +191,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(330, 26);
+            this.label8.Location = new System.Drawing.Point(332, 38);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 18);
+            this.label8.Size = new System.Drawing.Size(63, 18);
             this.label8.TabIndex = 54;
             this.label8.Text = "Gender :";
             // 
@@ -206,10 +202,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(329, 85);
+            this.label7.Location = new System.Drawing.Point(331, 102);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 18);
+            this.label7.Size = new System.Drawing.Size(108, 18);
             this.label7.TabIndex = 53;
             this.label7.Text = "Marital status :";
             // 
@@ -217,17 +213,17 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(340, 164);
+            this.label6.Location = new System.Drawing.Point(333, 164);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 18);
+            this.label6.Size = new System.Drawing.Size(43, 18);
             this.label6.TabIndex = 52;
             this.label6.Text = "Title :";
             // 
             // txtEmployeeEmail
             // 
             this.txtEmployeeEmail.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmployeeEmail.Location = new System.Drawing.Point(348, 512);
+            this.txtEmployeeEmail.Location = new System.Drawing.Point(334, 429);
             this.txtEmployeeEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmployeeEmail.MaxLength = 50;
             this.txtEmployeeEmail.Name = "txtEmployeeEmail";
@@ -238,7 +234,7 @@
             // txtEmployeePhone
             // 
             this.txtEmployeePhone.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmployeePhone.Location = new System.Drawing.Point(25, 512);
+            this.txtEmployeePhone.Location = new System.Drawing.Point(25, 429);
             this.txtEmployeePhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmployeePhone.MaxLength = 15;
             this.txtEmployeePhone.Name = "txtEmployeePhone";
@@ -250,10 +246,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(344, 490);
+            this.label5.Location = new System.Drawing.Point(330, 407);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 18);
+            this.label5.Size = new System.Drawing.Size(113, 18);
             this.label5.TabIndex = 49;
             this.label5.Text = "Email Address :";
             // 
@@ -261,10 +257,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(20, 490);
+            this.label4.Location = new System.Drawing.Point(22, 407);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 18);
+            this.label4.Size = new System.Drawing.Size(114, 18);
             this.label4.TabIndex = 48;
             this.label4.Text = "Phone Number :";
             // 
@@ -286,7 +282,7 @@
             this.label3.Location = new System.Drawing.Point(22, 164);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 18);
+            this.label3.Size = new System.Drawing.Size(87, 18);
             this.label3.TabIndex = 46;
             this.label3.Text = "ID Number :";
             // 
@@ -308,7 +304,7 @@
             this.label2.Location = new System.Drawing.Point(20, 102);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 18);
+            this.label2.Size = new System.Drawing.Size(89, 18);
             this.label2.TabIndex = 44;
             this.label2.Text = "Last Name :";
             // 
@@ -330,17 +326,17 @@
             this.label1.Location = new System.Drawing.Point(21, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 18);
+            this.label1.Size = new System.Drawing.Size(90, 18);
             this.label1.TabIndex = 42;
             this.label1.Text = "First Name :";
             // 
             // btnEmployeeTypeAdd
             // 
             this.btnEmployeeTypeAdd.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployeeTypeAdd.Location = new System.Drawing.Point(348, 628);
+            this.btnEmployeeTypeAdd.Location = new System.Drawing.Point(274, 546);
             this.btnEmployeeTypeAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnEmployeeTypeAdd.Name = "btnEmployeeTypeAdd";
-            this.btnEmployeeTypeAdd.Size = new System.Drawing.Size(243, 29);
+            this.btnEmployeeTypeAdd.Size = new System.Drawing.Size(49, 29);
             this.btnEmployeeTypeAdd.TabIndex = 11;
             this.btnEmployeeTypeAdd.Text = "Add Employee Type";
             this.btnEmployeeTypeAdd.UseVisualStyleBackColor = true;
@@ -380,7 +376,7 @@
             // 
             this.lblEmployeePhone.AutoSize = true;
             this.lblEmployeePhone.ForeColor = System.Drawing.Color.Red;
-            this.lblEmployeePhone.Location = new System.Drawing.Point(275, 515);
+            this.lblEmployeePhone.Location = new System.Drawing.Point(275, 432);
             this.lblEmployeePhone.Name = "lblEmployeePhone";
             this.lblEmployeePhone.Size = new System.Drawing.Size(19, 18);
             this.lblEmployeePhone.TabIndex = 83;
@@ -390,50 +386,18 @@
             // 
             this.lblEmployeeEmail.AutoSize = true;
             this.lblEmployeeEmail.ForeColor = System.Drawing.Color.Red;
-            this.lblEmployeeEmail.Location = new System.Drawing.Point(595, 515);
+            this.lblEmployeeEmail.Location = new System.Drawing.Point(585, 432);
             this.lblEmployeeEmail.Name = "lblEmployeeEmail";
             this.lblEmployeeEmail.Size = new System.Drawing.Size(19, 18);
             this.lblEmployeeEmail.TabIndex = 84;
             this.lblEmployeeEmail.Text = "✘";
-            // 
-            // bntCapture
-            // 
-            this.bntCapture.Location = new System.Drawing.Point(402, 400);
-            this.bntCapture.Name = "bntCapture";
-            this.bntCapture.Size = new System.Drawing.Size(85, 29);
-            this.bntCapture.TabIndex = 86;
-            this.bntCapture.Text = "Capture Image";
-            this.bntCapture.UseVisualStyleBackColor = true;
-            this.bntCapture.Click += new System.EventHandler(this.bntCapture_Click);
-            // 
-            // imgCapture
-            // 
-            this.imgCapture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgCapture.Location = new System.Drawing.Point(345, 247);
-            this.imgCapture.Name = "imgCapture";
-            this.imgCapture.Size = new System.Drawing.Size(194, 147);
-            this.imgCapture.TabIndex = 85;
-            this.imgCapture.TabStop = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(342, 226);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 18);
-            this.label14.TabIndex = 87;
-            this.label14.Text = "Photo :";
             // 
             // Employee_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(623, 742);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.bntCapture);
-            this.Controls.Add(this.imgCapture);
+            this.ClientSize = new System.Drawing.Size(611, 657);
             this.Controls.Add(this.lblEmployeeEmail);
             this.Controls.Add(this.lblEmployeePhone);
             this.Controls.Add(this.lblEmployeeID);
@@ -475,7 +439,6 @@
             this.Text = "Add Employee";
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Employee_Add_HelpButtonClicked);
             this.Load += new System.EventHandler(this.Employee_Add_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.imgCapture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,8 +476,5 @@
         private System.Windows.Forms.Label lblEmployeeID;
         private System.Windows.Forms.Label lblEmployeePhone;
         private System.Windows.Forms.Label lblEmployeeEmail;
-        private System.Windows.Forms.Button bntCapture;
-        private System.Windows.Forms.PictureBox imgCapture;
-        private System.Windows.Forms.Label label14;
     }
 }

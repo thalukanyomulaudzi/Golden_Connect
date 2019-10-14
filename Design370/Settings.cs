@@ -5,7 +5,7 @@ namespace Design370
 {
     public partial class Settings : Form
     {
-        public static int Timeout { get; set; } = 120;
+        public static int Timeout { get; set; } = 300;
         public Settings()
         {
             InitializeComponent();

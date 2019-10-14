@@ -36,9 +36,8 @@ namespace Design370
             loadTitles();
             loadMaritalStatus();
             loadTypes();
-
-            webcam.InitializeWebCam(ref imgCapture);
-            webcam.Start();
+            //webcam.InitializeWebCam(ref imgCapture);
+            //webcam.Start();
         }
 
         public void loadTitles()
@@ -162,14 +161,17 @@ namespace Design370
                     }
                     reader.Close();
                     MemoryStream stream = new MemoryStream();
-                    imgCapture.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    byte[] pic = stream.ToArray();
-
+                    MessageBox.Show("Test");
+                    //imgCapture.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    //byte[] pic;
+                    //if (stream != null)
+                    //    pic = stream.ToArray();
+                    //else pic = null;
                     gender = cbxEmployeeGender.SelectedItem.ToString().Substring(0, 1);
                     query = "INSERT INTO employee(employee_first, employee_last, employee_idnumber, employee_phone, " +
                     "employee_email, employee_address, employee_type, employee_gender, employee_marital, employee_title, employee_image) " +
                     "VALUES('" + txtEmployeeFirst.Text + "', '" + txtEmployeeLast.Text + "', '" + txtEmployeeID.Text + "', '" + txtEmployeePhone.Text + "', '" + txtEmployeeEmail.Text.ToLower() + "', '" + txtEmployeeAddress.Text + "', " +
-                    "'" + employee_type_ID + "', '" + gender + "', '" + maritalID + "', '" + titleID + "', '" + pic + "')";
+                    "'" + employee_type_ID + "', '" + gender + "', '" + maritalID + "', '" + titleID + "', '" + null + "')";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -239,8 +241,20 @@ namespace Design370
 
         private void bntCapture_Click(object sender, EventArgs e)
         {
-            webcam.Stop();
-            imgCapture.Image = imgCapture.Image;
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Title = "Open a Text File";
+            //ofd.Filter = "JPEG Files (*.jpg) | *.jpg"; //Here you can filter which all files you wanted allow to open  
+            //DialogResult dr = ofd.ShowDialog();
+            //if (dr == DialogResult.OK)
+            //{
+            //    //imgCapture.Image = System.Drawing.Image.FromFile(ofd.FileName);
+            //    //imgCapture.SizeMode = PictureBoxSizeMode.StretchImage;
+            //}
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

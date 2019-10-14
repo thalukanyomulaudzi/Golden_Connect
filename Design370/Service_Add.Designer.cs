@@ -98,10 +98,10 @@
             // btnServiceType
             // 
             this.btnServiceType.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServiceType.Location = new System.Drawing.Point(337, 271);
+            this.btnServiceType.Location = new System.Drawing.Point(284, 271);
             this.btnServiceType.Margin = new System.Windows.Forms.Padding(4);
             this.btnServiceType.Name = "btnServiceType";
-            this.btnServiceType.Size = new System.Drawing.Size(269, 29);
+            this.btnServiceType.Size = new System.Drawing.Size(43, 29);
             this.btnServiceType.TabIndex = 92;
             this.btnServiceType.Text = "Add Service Type";
             this.btnServiceType.UseVisualStyleBackColor = true;
