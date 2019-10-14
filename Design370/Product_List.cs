@@ -51,7 +51,7 @@ namespace Design370
             {
                 if (txtProductQuantity.Text.ToString() != "")
                 {
-                    int s = Convert.ToInt32(dgvProductList.SelectedRows[0].Cells[3].Value) + Convert.ToInt32(txtProductQuantity.Text);
+                    int s = Convert.ToInt32(txtProductQuantity.Text);
                     Supplier_Orders_Add sd = new Supplier_Orders_Add();
 
                     Globals.ProductID = dgvProductList.SelectedRows[0].Cells[0].Value.ToString();

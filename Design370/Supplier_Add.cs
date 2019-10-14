@@ -41,8 +41,8 @@ namespace Design370
                     reader.Read();
                     supplierTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "INSERT INTO `supplier`(`supplier_id`, `supplier_name`, `supplier_email`, `supplier_phone`, `supplier_location_address`, `supplier_type_id`) VALUES('" +
-                                "NULL" + "', '" + txtSupplierName.Text + "', '" + txtSupplierEmail.Text + "', '" + txtSupplierPhone.Text + "', '" + txtAddress + "', '" + supplierTypeID + "')";
+                    query = "INSERT INTO `supplier`( `supplier_name`,`supplier_email`, `supplier_phone`, `supplier_location_address`, `supplier_type_id`) VALUES('" +
+                                 txtSupplierName.Text + "', '" + txtSupplierEmail.Text + "', '" + txtSupplierPhone.Text + "', '" + txtAddress.Text + "', '" + supplierTypeID + "')";
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }

@@ -200,6 +200,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cbxsp);
             this.Name = "Supplier_View";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View Supplier";
             this.Activated += new System.EventHandler(this.Supplier_View_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Supplier_View_FormClosing);

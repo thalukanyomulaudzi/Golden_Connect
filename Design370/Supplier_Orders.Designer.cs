@@ -184,7 +184,9 @@
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Supplier_Orders";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier Orders";
+            this.Activated += new System.EventHandler(this.orders);
             this.Load += new System.EventHandler(this.Supplier_Orders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).EndInit();

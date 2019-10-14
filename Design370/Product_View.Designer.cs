@@ -70,9 +70,9 @@
             // 
             this.button3.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(329, 268);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(269, 29);
+            this.button3.Size = new System.Drawing.Size(211, 29);
             this.button3.TabIndex = 5;
             this.button3.Text = "Add Product Type";
             this.button3.UseVisualStyleBackColor = true;
@@ -83,7 +83,7 @@
             this.comboBox1.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(24, 270);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(249, 26);
             this.comboBox1.TabIndex = 4;
@@ -94,7 +94,7 @@
             this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(20, 248);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 18);
+            this.label4.Size = new System.Drawing.Size(94, 18);
             this.label4.TabIndex = 83;
             this.label4.Text = "Product Type:";
             // 
@@ -114,7 +114,7 @@
             this.label3.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(325, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 18);
+            this.label3.Size = new System.Drawing.Size(102, 18);
             this.label3.TabIndex = 81;
             this.label3.Text = "Product Price :";
             // 
@@ -135,7 +135,7 @@
             this.label2.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(20, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 18);
+            this.label2.Size = new System.Drawing.Size(144, 18);
             this.label2.TabIndex = 79;
             this.label2.Text = "Product Description :";
             // 
@@ -155,7 +155,7 @@
             this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(20, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 18);
+            this.label1.Size = new System.Drawing.Size(108, 18);
             this.label1.TabIndex = 77;
             this.label1.Text = "Product Name :";
             // 
@@ -193,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 426);
+            this.ClientSize = new System.Drawing.Size(626, 426);
             this.Controls.Add(this.lblProductDescription);
             this.Controls.Add(this.lblProductPrice);
             this.Controls.Add(this.lblProductName);
@@ -210,7 +210,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Product_View";

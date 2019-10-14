@@ -123,6 +123,8 @@ namespace Design370
                         command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
                     }
+                    Supplier_Orders so = new Supplier_Orders();
+                    so.Refresh();
                     MessageBox.Show("Order has been placed");
                 }
                 
@@ -132,8 +134,7 @@ namespace Design370
                 MessageBox.Show("Error: " + er.Message);
             }
 
-            Supplier_Orders so = new Supplier_Orders();
-            so.Refresh();
+
 
 
             this.Close();
@@ -144,5 +145,10 @@ namespace Design370
 
         }
 
+        private void activateOrders(object sender, EventArgs e)
+        {
+            Supplier_Orders so = new Supplier_Orders();
+            so.Refresh();
+        }
     }
 }
