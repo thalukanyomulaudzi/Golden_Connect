@@ -117,8 +117,8 @@ namespace Design370
                 string salt = generateSalt();
                 byte[] passHash = hash(pass + salt);
 
-                query = "INSERT INTO user (user_id, employee_id, username, password, salt) " +
-                    "VALUES (NULL, '" + id + "', '" + user + "', '" + byteArrayToString(passHash) + "', '" + salt + "')";
+                query = "INSERT INTO user (employee_id, username, password, salt) " +
+                    "VALUES ('" + id + "', '" + user + "', '" + byteArrayToString(passHash) + "', '" + salt + "')";
                 //MessageBox.Show(query);
                 command = new MySqlCommand(query, dBCon.Connection);
                 command.ExecuteNonQuery();

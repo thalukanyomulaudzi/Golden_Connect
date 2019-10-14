@@ -432,7 +432,7 @@ namespace Design370
                         }
                         catch (Exception)
                         {
-                            System.Windows.Forms.MessageBox.Show("This service is used in a package. It can not be deleted.");
+                            System.Windows.Forms.MessageBox.Show("This service is used in a package or booking. It cannot be deleted.");
                         }
                     }
                     else
@@ -521,7 +521,7 @@ namespace Design370
                         }
                         catch (Exception)
                         {
-                            System.Windows.Forms.MessageBox.Show("This product is used in a package. It can not be deleted.");
+                            System.Windows.Forms.MessageBox.Show("This product is used in a package, booking, or order. It cannot be deleted.");
                         }
                     }
                     else
@@ -1529,6 +1529,23 @@ namespace Design370
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadTab();
+        }
+
+        private void DgvTimeslots_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        { 
+
+        }
+
+        private void DgvTimeslots_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value.ToString() == "Available")
+            {
+                e.CellStyle.BackColor = Color.Green;
+            }
+            else if (e.Value.ToString() == "Unavailable")
+            {
+                e.CellStyle.BackColor = Color.Red;
+            }
         }
     }
 }

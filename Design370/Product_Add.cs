@@ -75,7 +75,8 @@ namespace Design370
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
-                Close();
+                this.Close();
+                Main_Form.ActiveForm.Refresh();
             }
             catch (Exception ee)
             {
