@@ -295,7 +295,9 @@
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Supplier_Orders_Add";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Place Supplier Order";
+            this.Activated += new System.EventHandler(this.activateOrders);
             this.Load += new System.EventHandler(this.Supplier_Orders_Add_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

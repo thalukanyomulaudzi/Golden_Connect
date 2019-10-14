@@ -1,7 +1,16 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace Design370
 {
@@ -56,8 +65,13 @@ namespace Design370
                     reader.Read();
                     bookingTypeID = reader.GetString(0);
                     reader.Close();
-                    query = "INSERT INTO `product`(`product_name`, `product_description`, `product_price`, `product_type_id`) VALUES('" +
-                                txtProductName.Text + "', '" + txtProductDescription.Text + "', '" + price + "', '" + bookingTypeID + "')";
+
+                    MemoryStream stream = new MemoryStream();
+                    pictureBox1.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] pic = stream.ToArray();
+
+                    query = "INSERT INTO `product`(`product_name`, `product_description`, `product_price`, `product_type_id`, `image`) VALUES('" +
+                                txtProductName.Text + "', '" + txtProductDescription.Text + "', '" + price + "', '" + bookingTypeID + "', '" + pic + "')";
                     command = new MySqlCommand(query, dbCon.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -125,6 +139,17 @@ namespace Design370
             HelpForm helpForm = new HelpForm();
             helpForm.HelpInfo = "Add_Product";
             helpForm.ShowDialog();
+        }
+
+        private void BtnUploadImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog uploadingPhoto = new OpenFileDialog();
+            uploadingPhoto.Filter = "JPG|*.jpg|JPEG|*.jpeg|GIF|*.gif|PNG|*.png";
+            //uploadingPhoto.Multiselect = true;
+            if (uploadingPhoto.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = Image.FromFile(uploadingPhoto.FileName);
+            }
         }
     }
 }

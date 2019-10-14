@@ -22,7 +22,7 @@ namespace Design370
         private void Button14_Click(object sender, EventArgs e)
         {
             Supplier_Orders_Add supplier_Orders_Add = new Supplier_Orders_Add();
-            supplier_Orders_Add.Show();
+            supplier_Orders_Add.ShowDialog();
         }
 
         private void Supplier_Orders_Load(object sender, EventArgs e)
@@ -54,6 +54,7 @@ namespace Design370
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void BtnReceiveSupplierOrder_Click(object sender, EventArgs e)
@@ -72,7 +73,7 @@ namespace Design370
         private void Button14_Click_1(object sender, EventArgs e)
         {
             Supplier_Orders_Add supplier_Orders_Add = new Supplier_Orders_Add();
-            supplier_Orders_Add.Show();
+            supplier_Orders_Add.ShowDialog();
         }
 
         private void BtnReceiveSupplierOrder_Click_1(object sender, EventArgs e)
@@ -250,14 +251,24 @@ namespace Design370
 
         private void button14_Click_2(object sender, EventArgs e)
         {
+
             Supplier_Orders_Add so = new Supplier_Orders_Add();
             so.ShowDialog();
+            Supplier_Orders s = new Supplier_Orders();
+            s.Close();
         }
 
         private void btnReceiveSupplierOrder_Click_2(object sender, EventArgs e)
         {
             ReceivedOrders f = new ReceivedOrders();
             f.ShowDialog();
+
+        }
+
+        private void orders(object sender, EventArgs e)
+        {
+            dgvSupplierOrders.Refresh();
+            dgvDisplay.Refresh();
 
         }
     }

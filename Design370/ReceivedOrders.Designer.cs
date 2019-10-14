@@ -99,6 +99,7 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox7);
             this.Name = "ReceivedOrders";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReceivedOrders";
             this.Load += new System.EventHandler(this.ReceivedOrders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceivedOrders)).EndInit();

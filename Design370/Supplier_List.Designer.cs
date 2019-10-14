@@ -168,6 +168,7 @@
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.dgvSupplierList);
             this.Name = "Supplier_List";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SupplierList";
             this.Load += new System.EventHandler(this.SupplierList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).EndInit();

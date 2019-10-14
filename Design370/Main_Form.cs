@@ -391,7 +391,7 @@ namespace Design370
         private void Button22_Click(object sender, EventArgs e)
         {
             Supplier_Orders supplier_Orders = new Supplier_Orders();
-            supplier_Orders.Show();
+            supplier_Orders.ShowDialog();
         }
 
         private void DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
