@@ -227,5 +227,16 @@ namespace Design370
             helpForm.HelpInfo = "Add_Employee";
             helpForm.ShowDialog();
         }
+
+        private void bntCapture_Click(object sender, EventArgs e)
+        {
+            webcam.Stop();
+            imgCapture.Image = imgCapture.Image;
+        }
+
+        private void Label14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
