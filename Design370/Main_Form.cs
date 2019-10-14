@@ -432,7 +432,7 @@ namespace Design370
                         }
                         catch (Exception)
                         {
-                            System.Windows.Forms.MessageBox.Show("This service is used in a package. It can not be deleted.");
+                            System.Windows.Forms.MessageBox.Show("This service is used in a package or booking. It cannot be deleted.");
                         }
                     }
                     else
@@ -521,7 +521,7 @@ namespace Design370
                         }
                         catch (Exception)
                         {
-                            System.Windows.Forms.MessageBox.Show("This product is used in a package. It can not be deleted.");
+                            System.Windows.Forms.MessageBox.Show("This product is used in a package, booking, or order. It cannot be deleted.");
                         }
                     }
                     else

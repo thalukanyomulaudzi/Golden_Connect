@@ -424,7 +424,6 @@
             this.label14.Size = new System.Drawing.Size(53, 18);
             this.label14.TabIndex = 87;
             this.label14.Text = "Photo :";
-            this.label14.Click += new System.EventHandler(this.Label14_Click);
             // 
             // Employee_Add
             // 

@@ -555,7 +555,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(199, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(205, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Schedule for this week";
             // 
@@ -926,7 +926,6 @@ namespace Design370
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Photoshoots";
             this.tabPage6.UseVisualStyleBackColor = true;
-            this.tabPage6.Click += new System.EventHandler(this.tabPage6_Click);
             this.tabPage6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TabPage6_MouseClick);
             // 
             // btnPhotoshootPackageAdd
@@ -1008,7 +1007,7 @@ namespace Design370
             this.PhotoshootPackageName.HeaderText = "Package Name";
             this.PhotoshootPackageName.Name = "PhotoshootPackageName";
             this.PhotoshootPackageName.ReadOnly = true;
-            this.PhotoshootPackageName.Width = 132;
+            this.PhotoshootPackageName.Width = 122;
             // 
             // Services
             // 
@@ -1166,7 +1165,7 @@ namespace Design370
             this.EventPackageName.HeaderText = "Package Name";
             this.EventPackageName.Name = "EventPackageName";
             this.EventPackageName.ReadOnly = true;
-            this.EventPackageName.Width = 132;
+            this.EventPackageName.Width = 122;
             // 
             // ServicesEvents
             // 
@@ -1298,7 +1297,7 @@ namespace Design370
             this.label15.Location = new System.Drawing.Point(281, 15);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(51, 18);
+            this.label15.Size = new System.Drawing.Size(52, 18);
             this.label15.TabIndex = 42;
             this.label15.Text = "Show :";
             // 
@@ -1353,7 +1352,7 @@ namespace Design370
             // btnBookingAdd
             // 
             this.btnBookingAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBookingAdd.Location = new System.Drawing.Point(945, 13);
+            this.btnBookingAdd.Location = new System.Drawing.Point(945, 15);
             this.btnBookingAdd.Name = "btnBookingAdd";
             this.btnBookingAdd.Size = new System.Drawing.Size(151, 29);
             this.btnBookingAdd.TabIndex = 54;
@@ -1883,11 +1882,6 @@ namespace Design370
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-
-        private void tabPage6_Click(object sender, EventArgs e)
-        {
-            
         }
 
         #endregion

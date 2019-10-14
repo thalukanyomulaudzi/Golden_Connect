@@ -353,7 +353,6 @@
             this.txtSearchProducts.Name = "txtSearchProducts";
             this.txtSearchProducts.Size = new System.Drawing.Size(182, 23);
             this.txtSearchProducts.TabIndex = 90;
-            this.txtSearchProducts.TextChanged += new System.EventHandler(this.TxtSearchProducts_TextChanged);
             // 
             // txtSearchServices
             // 

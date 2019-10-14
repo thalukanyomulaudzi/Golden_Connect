@@ -198,6 +198,7 @@ namespace Design370
                 MessageBox.Show(except.Message);
             }
             this.Close();
+            Main_Form.ActiveForm.Refresh();
         }
 
         private void dgvServices_CellContentClick(object sender, DataGridViewCellEventArgs e)
