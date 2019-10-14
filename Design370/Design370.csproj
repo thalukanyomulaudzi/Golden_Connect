@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -465,6 +465,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceivedOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceivedOrders.Designer.cs">
+      <DependentUpon>ReceivedOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -736,6 +742,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReceivedOrders.resx">
+      <DependentUpon>ReceivedOrders.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportOrder.resx">
       <DependentUpon>ReportOrder.cs</DependentUpon>
     </EmbeddedResource>
