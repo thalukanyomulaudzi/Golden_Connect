@@ -542,5 +542,30 @@ namespace Design370
                 MessageBox.Show(ee.Message);
             }
         }
+
+        private void TxtSearchProducts_TextChanged(object sender, EventArgs e)
+        {
+            dgvProducts.Rows.Clear();
+            try
+            {
+                DBConnection dbCon = DBConnection.Instance();
+                if (dbCon.IsConnect())
+                {
+                    string query = "SELECT product_id, product_name, product_price FROM product " +
+                        "WHERE product_name LIKE '%" + txtSearchProducts.Text + "%' AND product_type_id = '" + bookingTypeID + "'";
+                    var command = new MySqlCommand(query, dbCon.Connection);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dgvProducts.Rows.Add(reader.GetString(0), reader.GetString(1), "R" + reader.GetString(2), "Add");
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
     }
 }
