@@ -583,6 +583,7 @@
       <DependentUpon>User_Add.cs</DependentUpon>
     </Compile>
     <Compile Include="Validation.cs" />
+    <Compile Include="WebCam.cs" />
     <EmbeddedResource Include="Booking_Capture_Payment.resx">
       <DependentUpon>Booking_Capture_Payment.cs</DependentUpon>
     </EmbeddedResource>

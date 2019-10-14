@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Design370
 {
@@ -10,6 +11,7 @@ namespace Design370
         string maritalID = " ";
         string employee_type_ID = " ";
         string gender = " ";
+        WebCam webcam = new WebCam();
         public Employee_Add()
         {
             InitializeComponent();
@@ -34,6 +36,9 @@ namespace Design370
             loadTitles();
             loadMaritalStatus();
             loadTypes();
+
+            webcam.InitializeWebCam(ref imgCapture);
+            webcam.Start();
         }
 
         public void loadTitles()
@@ -156,11 +161,15 @@ namespace Design370
                         employee_type_ID = reader.GetString(0);
                     }
                     reader.Close();
+                    MemoryStream stream = new MemoryStream();
+                    imgCapture.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] pic = stream.ToArray();
+
                     gender = cbxEmployeeGender.SelectedItem.ToString().Substring(0, 1);
                     query = "INSERT INTO employee(employee_first, employee_last, employee_idnumber, employee_phone, " +
-                    "employee_email, employee_address, employee_type, employee_gender, employee_marital, employee_title) " +
+                    "employee_email, employee_address, employee_type, employee_gender, employee_marital, employee_title, employee_image) " +
                     "VALUES('" + txtEmployeeFirst.Text + "', '" + txtEmployeeLast.Text + "', '" + txtEmployeeID.Text + "', '" + txtEmployeePhone.Text + "', '" + txtEmployeeEmail.Text.ToLower() + "', '" + txtEmployeeAddress.Text + "', " +
-                    "'" + employee_type_ID + "', '" + gender + "', '" + maritalID + "', '" + titleID + "')";
+                    "'" + employee_type_ID + "', '" + gender + "', '" + maritalID + "', '" + titleID + "', '" + pic + "')";
                     command = new MySqlCommand(query, dBConnection.Connection);
                     command.ExecuteNonQuery();
                 }
@@ -226,6 +235,12 @@ namespace Design370
             HelpForm helpForm = new HelpForm();
             helpForm.HelpInfo = "Add_Employee";
             helpForm.ShowDialog();
+        }
+
+        private void bntCapture_Click(object sender, EventArgs e)
+        {
+            webcam.Stop();
+            imgCapture.Image = imgCapture.Image;
         }
     }
 }
