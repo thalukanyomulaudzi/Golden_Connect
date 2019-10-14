@@ -46,7 +46,7 @@ namespace Design370
                         int i = dgvSupplierOrders.Rows.Add();
                         dgvSupplierOrders.Rows[i].Cells[0].Value = dataTable.Rows[i].ItemArray[0];
                         dgvSupplierOrders.Rows[i].Cells[1].Value = dataTable.Rows[i].ItemArray[1];
-                        dgvSupplierOrders.Rows[i].Cells[2].Value = dataTable.Rows[i].ItemArray[2];
+                        dgvSupplierOrders.Rows[i].Cells[2].Value = Convert.ToDateTime(dataTable.Rows[i].ItemArray[2]).Date.ToString("yyyy-M-dd");
                     }
                 }
             }

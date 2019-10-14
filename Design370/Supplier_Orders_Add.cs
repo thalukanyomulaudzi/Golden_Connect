@@ -92,41 +92,44 @@ namespace Design370
         {
 
         }
-
+        DBConnection dBConnection = DBConnection.Instance();
+        public string supplier_order_id;
         private void btnPlace_Click(object sender, EventArgs e)
         {
             try
             {
-                DBConnection dBConnection = DBConnection.Instance();
+                
                 if (dBConnection.IsConnect())
                 {
-                    string supplier_order_id = "";
-                    string query = "INSERT INTO `supplier_order` (`supplier_order_id`, `supplier_id`, `supplier_order_date_placed`, `supplier_order_status_id`) VALUES";
-                    query += "('" + "NULL" + "', '" + Globals.SupplierID + "', '" + dateTimePicker1.Text + "', '" + 1 + "')";
+                    string query = "INSERT INTO `supplier_order` (`supplier_id`, `supplier_order_date_placed`, `supplier_order_status_id`) VALUES";
+                    query += "('" + Globals.SupplierID + "', '" + Convert.ToDateTime(dateTimePicker1.Value).Date.ToString("yyyy-M-dd") + "', '" + 1 + "')";
                     var command = new MySqlCommand(query, dBConnection.Connection);
                     command.ExecuteNonQuery();
 
-                    MessageBox.Show("test");
-                    query = "SELECT supplier_order_id FROM supplier_order WHERE supplier_id = '" + Globals.SupplierID + "' AND supplier_order_date_placed = '" + dateTimePicker1.Text + "'";
-                    command = new MySqlCommand(query, dBConnection.Connection);
-                    var reader = command.ExecuteReader();
+                    query = "SELECT MAX(supplier_order_id) FROM supplier_order";
+                    var cmd = new MySqlCommand(query, dBConnection.Connection);
+                    var reader = cmd.ExecuteReader();
                     reader.Read();
-                    supplier_order_id = reader.GetString(0);
+                    if (reader.HasRows)
+                    {
+                        supplier_order_id = reader[0].ToString();
+                       
+                    }
                     reader.Close();
                     for (int i = 0; i < dgvOrderProductList.Rows.Count; i++)
                     {
-                        query = "INSERT INTO `supplier_order_line` (`supplier_order_id`, `product_id`, `supplier_order_line_quantity` ) VALUES('" + supplier_order_id + "', " +
+                        query = "INSERT INTO `supplier_order_line` (`supplier_order_id`, `product_id`, `supplier_order_line_quantity` ) VALUES('" + Convert.ToInt16(supplier_order_id) + "', " +
                                 "'" + dgvOrderProductList.Rows[i].Cells[0].Value + "', '" + dgvOrderProductList.Rows[i].Cells[2].Value + "')";
                         command = new MySqlCommand(query, dBConnection.Connection);
                         command.ExecuteNonQuery();
                     }
-                    ////
+                    MessageBox.Show("Order has been placed");
                 }
-                MessageBox.Show("Order has been placed");
+                
             }
-            catch (Exception)
+            catch (Exception er)
             {
-                //MessageBox.Show("Order has been placed");
+                MessageBox.Show("Error: " + er.Message);
             }
 
             Supplier_Orders so = new Supplier_Orders();
