@@ -231,7 +231,7 @@ namespace Design370
 
         private void bntCapture_Click(object sender, EventArgs e)
         {
-            webcam.Stop();
+            //webcam.Stop();
             imgCapture.Image = imgCapture.Image;
         }
 

@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -49,16 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>B3D27F6058C3F007B08B196454F4ECAACABE6668</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>Design370_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -163,6 +154,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audit Trail Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Audit Trail Report.Designer.cs">
+      <DependentUpon>Audit Trail Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Trail.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Audit_Trail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Booking.cs" />
     <Compile Include="Booking_Capture_Payment.cs">
       <SubType>Form</SubType>
@@ -561,6 +564,13 @@
     </Compile>
     <Compile Include="Validation.cs" />
     <Compile Include="_Customers.cs" />
+    <EmbeddedResource Include="Audit Trail Report.resx">
+      <DependentUpon>Audit Trail Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Audit_Trail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Audit_Trail.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Booking_Capture_Payment.resx">
       <DependentUpon>Booking_Capture_Payment.cs</DependentUpon>
     </EmbeddedResource>

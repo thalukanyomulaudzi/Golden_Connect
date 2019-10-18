@@ -77,6 +77,7 @@
             this.txtAmount.Size = new System.Drawing.Size(153, 27);
             this.txtAmount.TabIndex = 3;
             this.txtAmount.TextChanged += new System.EventHandler(this.TxtAmount_TextChanged);
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtAmount_KeyPress);
             // 
             // btnSavePayment
             // 

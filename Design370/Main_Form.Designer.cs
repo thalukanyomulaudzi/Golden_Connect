@@ -132,8 +132,6 @@ namespace Design370
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.btnPayment = new System.Windows.Forms.Button();
@@ -556,7 +554,7 @@ namespace Design370
             this.lblTimeslots.Font = new System.Drawing.Font("Bahnschrift Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeslots.Location = new System.Drawing.Point(8, 21);
             this.lblTimeslots.Name = "lblTimeslots";
-            this.lblTimeslots.Size = new System.Drawing.Size(205, 23);
+            this.lblTimeslots.Size = new System.Drawing.Size(199, 23);
             this.lblTimeslots.TabIndex = 18;
             this.lblTimeslots.Text = "Schedule for this week";
             // 
@@ -1214,8 +1212,6 @@ namespace Design370
             this.tabPage8.Controls.Add(this.dgvOrders);
             this.tabPage8.Controls.Add(this.button18);
             this.tabPage8.Controls.Add(this.button17);
-            this.tabPage8.Controls.Add(this.comboBox8);
-            this.tabPage8.Controls.Add(this.label15);
             this.tabPage8.Controls.Add(this.label16);
             this.tabPage8.Controls.Add(this.textBox8);
             this.tabPage8.Controls.Add(this.btnPayment);
@@ -1227,8 +1223,6 @@ namespace Design370
             this.tabPage8.Text = "Customer Orders";
             this.tabPage8.UseVisualStyleBackColor = true;
             this.tabPage8.Enter += new System.EventHandler(this.tabPage8_Enter);
-            // 
-            // btnMakePayment
             // 
             // btnPay
             // 
@@ -1287,33 +1281,11 @@ namespace Design370
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.Button17_Click);
             // 
-            // comboBox8
-            // 
-            this.comboBox8.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.ItemHeight = 17;
-            this.comboBox8.Location = new System.Drawing.Point(336, 13);
-            this.comboBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(149, 25);
-            this.comboBox8.TabIndex = 43;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(281, 15);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(51, 18);
-            this.label15.TabIndex = 42;
-            this.label15.Text = "Show :";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(8, 16);
+            this.label16.Location = new System.Drawing.Point(10, 20);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(57, 18);
@@ -1323,7 +1295,7 @@ namespace Design370
             // textBox8
             // 
             this.textBox8.Font = new System.Drawing.Font("Bahnschrift Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(71, 13);
+            this.textBox8.Location = new System.Drawing.Point(73, 17);
             this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(200, 25);
@@ -1638,6 +1610,7 @@ namespace Design370
             this.button13.TabIndex = 60;
             this.button13.Text = "Generate Audit Trail Report";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.Button13_Click);
             // 
             // btnGenerateInventoryReport
             // 
@@ -1960,8 +1933,6 @@ namespace Design370
         private System.Windows.Forms.TextBox txtEventPackageSearch;
         private System.Windows.Forms.Button btnEventPackageAdd;
         private System.Windows.Forms.DataGridView dgvEventPackages;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button btnPayment;

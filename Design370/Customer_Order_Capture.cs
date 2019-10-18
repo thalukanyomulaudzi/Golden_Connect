@@ -58,6 +58,8 @@ namespace Design370
 
         }
 
+        public string nm;
+
         private void CapturePayment_Load(object sender, EventArgs e)
         {
             if (dbCon.IsConnect())
@@ -86,25 +88,35 @@ namespace Design370
                         "VALUES ('" + txtAmount.Text + "', '" + customerID + "', '"+Convert.ToInt32(lblOrderID.Text)+"', NULL)";
                     var command = new MySqlCommand(paymentData, dbCon.Connection);
                     var reader = command.ExecuteReader();
-                    //MessageBox.Show("Order payment for: " + dgvPayments.Rows[index].Cells[1].Value.ToString() + " has been captured successfully");
+                   
                     reader.Close();
+
+                    //var cm = new MySqlCommand("SELECT `customer_email`, `customer_phone` FROM `customer` WHERE `customer_id` = '" + customerID + "'", dbCon.Connection);
+                    //var re = cm.ExecuteReader();
+                    //re.Read();
+                    //if (re.HasRows)
+                    //{
+                    //    // = Convert.ToInt32(reader[0]);
+                    //    eml = reader[0].ToString();
+                    //    pn = reader[1].ToString();
+                    //}
+                    //re.Close();
 
                     var updateorder = new MySqlCommand("UPDATE `order` SET `order_status_id` = '2' WHERE `order_id` = '"+Convert.ToInt32(lblOrderID.Text)+"'", dbCon.Connection);
                     var updated = updateorder.ExecuteReader();
                     updated.Close();
 
-                    // int sent = SendSMS("CI00206948", "u15231748@tuks.co.za", "om0QGsm1", "0733859365", "Good Day\nThis Message serves as a notice to inform you that your order payment has been received. \n\nThank you for your support.\n\nGolden Hour");
+                    //int sent = SendSMS("CI00206948", eml, "om0QGsm1", pn, "Good Day "+nm+"\nThis Message serves as a notice to inform you that your order payment has been received. \n\nThank you for your support.\n\nGolden Hour");
                     //if (sent == 0)
                     //{
-                    //    
-                    //    updateOrder(OrderPaymentID);
+
+                    //    //updateOrder(OrderPaymentID);
                     //}
                     //else
                     //{
                     //    MessageBox.Show("Message not sent!");
                     //}
-
-                    payOrder.ShowDialog();
+                    //payOrder.ShowDialog();
                 }
             }
             else
@@ -121,10 +133,14 @@ namespace Design370
             }
         }
         int index = 0;
+        public string eml;
+        public string pn;
         private void DgvPayments_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.ColumnIndex == 5)
             {
+
+                nm = dgvPayments.Rows[e.RowIndex].Cells[1].Value.ToString();
                 lblOrderID.Text = dgvPayments.Rows[e.RowIndex].Cells[0].Value.ToString();
                 if (dbCon.IsConnect())
                 {
@@ -181,6 +197,15 @@ namespace Design370
                     dgvPayments.Rows.Add(reader[0], reader[2] + ", " + reader[1], Convert.ToDateTime(reader[3]).Date.ToString("yyyy-M-dd"), reader[4], reader[5]);
                 }
                 reader.Close();
+            }
+        }
+
+        private void TxtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int i;
+            if (int.TryParse(e.KeyChar.ToString(), out i))
+            {
+                //MessageBox.Show("Number");
             }
         }
 

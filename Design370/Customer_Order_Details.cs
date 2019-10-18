@@ -77,7 +77,7 @@ namespace Design370
         {
             try
             {
-                if (e.ColumnIndex == 5 && dgvSearchCustomer.Rows[e.RowIndex].Cells[0].Value != null)
+                if (e.ColumnIndex == 5)
                 {
                     if (dbCon.IsConnect())
                     {

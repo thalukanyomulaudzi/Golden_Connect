@@ -70,8 +70,8 @@ namespace Design370
         }
         private bool connectDB()
         {
-            dbCon.DatabaseName = "4d3dGYntTO";
-            //dbCon.DatabaseName = "golden_connect";
+            //dbCon.DatabaseName = "4d3dGYntTO";
+            dbCon.DatabaseName = "golden_connect";
             return (dbCon.IsConnect());
         }
         private void Main_Form_Load(object sender, EventArgs e)
@@ -1379,8 +1379,8 @@ namespace Design370
 
         private void BtnMakePayment_Click(object sender, EventArgs e)
         {
-            Customer_Order_Payment op = new Customer_Order_Payment();
-            op.ShowDialog();
+            //Customer_Order_Payment op = new Customer_Order_Payment();
+            //op.ShowDialog();
         }
 
         private void Main_Form_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
@@ -1553,6 +1553,12 @@ namespace Design370
         {
             inventory_Stock_On_Hand inventory = new inventory_Stock_On_Hand();
             inventory.ShowDialog();
+        }
+
+        private void Button13_Click(object sender, EventArgs e)
+        {
+            Audit_Trail_Report at = new Audit_Trail_Report();
+            at.ShowDialog();
         }
     }
 }

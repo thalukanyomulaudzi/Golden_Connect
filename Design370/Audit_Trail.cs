@@ -16,14 +16,14 @@ namespace Design370 {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class SupplierOrderReport : ReportClass {
+    public class Audit_Trail : ReportClass {
         
-        public SupplierOrderReport() {
+        public Audit_Trail() {
         }
         
         public override string ResourceName {
             get {
-                return "SupplierOrderReport.rpt";
+                return "Audit_Trail.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Design370 {
         
         public override string FullResourceName {
             get {
-                return "Design370.SupplierOrderReport.rpt";
+                return "Design370.Audit_Trail.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Design370 {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedSupplierOrderReport : Component, ICachedReport {
+    public class CachedAudit_Trail : Component, ICachedReport {
         
-        public CachedSupplierOrderReport() {
+        public CachedAudit_Trail() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Design370 {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            SupplierOrderReport rpt = new SupplierOrderReport();
+            Audit_Trail rpt = new Audit_Trail();
             rpt.Site = this.Site;
             return rpt;
         }
