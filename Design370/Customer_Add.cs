@@ -65,6 +65,7 @@ namespace Design370
                 MessageBox.Show(ee.Message);
             }
             this.Close();
+            Main_Form.ActiveForm.Refresh();
         }
 
         private void Customer_Add_FormClosing(object sender, FormClosingEventArgs e)

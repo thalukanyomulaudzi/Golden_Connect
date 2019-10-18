@@ -36,6 +36,7 @@ namespace Design370
                 }
                 reader.Close();
                 this.Close();
+                Main_Form.ActiveForm.Refresh();
             }
             catch (Exception ee)
             {

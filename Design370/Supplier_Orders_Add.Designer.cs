@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnPlaceOrder = new System.Windows.Forms.Button();
             this.btnSelectSupplier = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
@@ -50,7 +49,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtType = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.btnPlace = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderProductList)).BeginInit();
@@ -68,21 +67,8 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // btnPlaceOrder
-            // 
-            this.btnPlaceOrder.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlaceOrder.Location = new System.Drawing.Point(588, 412);
-            this.btnPlaceOrder.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPlaceOrder.Name = "btnPlaceOrder";
-            this.btnPlaceOrder.Size = new System.Drawing.Size(86, 28);
-            this.btnPlaceOrder.TabIndex = 66;
-            this.btnPlaceOrder.Text = "Place Order";
-            this.btnPlaceOrder.UseVisualStyleBackColor = true;
-            this.btnPlaceOrder.Click += new System.EventHandler(this.Button4_Click);
-            // 
             // btnSelectSupplier
             // 
-            this.btnSelectSupplier.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSelectSupplier.Font = new System.Drawing.Font("Bahnschrift Light", 9.25F);
             this.btnSelectSupplier.Location = new System.Drawing.Point(12, 12);
             this.btnSelectSupplier.Name = "btnSelectSupplier";
@@ -106,9 +92,11 @@
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Supplier Details";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtEmailAddress
             // 
+            this.txtEmailAddress.Enabled = false;
             this.txtEmailAddress.Location = new System.Drawing.Point(182, 54);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(388, 26);
@@ -136,6 +124,7 @@
             // 
             // txtSupplierName
             // 
+            this.txtSupplierName.Enabled = false;
             this.txtSupplierName.Location = new System.Drawing.Point(182, 19);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(388, 26);
@@ -143,6 +132,7 @@
             // 
             // txtTelephoneNo
             // 
+            this.txtTelephoneNo.Enabled = false;
             this.txtTelephoneNo.Location = new System.Drawing.Point(182, 89);
             this.txtTelephoneNo.Name = "txtTelephoneNo";
             this.txtTelephoneNo.Size = new System.Drawing.Size(160, 26);
@@ -160,7 +150,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dateTimePicker2);
             this.groupBox2.Controls.Add(this.btnRemoveProduct);
             this.groupBox2.Controls.Add(this.btnAddProduct);
             this.groupBox2.Controls.Add(this.dgvOrderProductList);
@@ -168,6 +157,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtType);
             this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(12, 181);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(662, 226);
@@ -200,6 +190,7 @@
             // 
             // dgvOrderProductList
             // 
+            this.dgvOrderProductList.AllowUserToAddRows = false;
             this.dgvOrderProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrderProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -244,11 +235,10 @@
             this.dateTimePicker1.CustomFormat = "yyyy-MM-dd hh:mm:ss";
             this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(613, 27);
+            this.dateTimePicker1.Location = new System.Drawing.Point(381, 27);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(17, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(249, 26);
             this.dateTimePicker1.TabIndex = 10;
-            this.dateTimePicker1.Visible = false;
             // 
             // label6
             // 
@@ -279,27 +269,35 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Document Type:";
             // 
-            // dateTimePicker2
+            // btnPlace
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(381, 27);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(264, 26);
-            this.dateTimePicker2.TabIndex = 71;
+            this.btnPlace.Enabled = false;
+            this.btnPlace.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlace.Location = new System.Drawing.Point(571, 412);
+            this.btnPlace.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPlace.Name = "btnPlace";
+            this.btnPlace.Size = new System.Drawing.Size(86, 28);
+            this.btnPlace.TabIndex = 73;
+            this.btnPlace.Text = "Place Order";
+            this.btnPlace.UseVisualStyleBackColor = true;
+            this.btnPlace.Click += new System.EventHandler(this.btnPlace_Click);
             // 
             // Supplier_Orders_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 443);
+            this.Controls.Add(this.btnPlace);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSelectSupplier);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnPlaceOrder);
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Supplier_Orders_Add";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Place Supplier Order";
+            this.Activated += new System.EventHandler(this.activateOrders);
             this.Load += new System.EventHandler(this.Supplier_Orders_Add_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -312,7 +310,6 @@
 
         #endregion
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnPlaceOrder;
         private System.Windows.Forms.Button btnSelectSupplier;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtEmailAddress;
@@ -333,6 +330,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button btnPlace;
     }
 }

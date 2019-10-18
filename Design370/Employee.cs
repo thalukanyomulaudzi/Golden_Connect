@@ -13,12 +13,9 @@ namespace Design370
         {
             try
             {
-                if (dbCon.IsConnect())
-                {
-                    string query = "DELETE FROM `employee` WHERE employee_id = '" + EmployeeID + "'";
-                    var command = new MySqlCommand(query, dbCon.Connection);
-                    command.ExecuteNonQuery();
-                }
+                string query = "DELETE FROM `employee` WHERE employee_id = '" + EmployeeID + "'";
+                var command = new MySqlCommand(query, dbCon.Connection);
+                command.ExecuteNonQuery();
             }
             catch (Exception except)
             {

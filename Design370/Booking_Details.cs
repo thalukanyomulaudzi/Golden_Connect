@@ -304,9 +304,11 @@ namespace Design370
                 while (reader.Read())
                 {
                     cmbBookingPackage.Items.Add(reader.GetString(0));
+                    bookingTypeID = reader.GetInt32(1);
                 }
-                bookingTypeID = reader.GetInt32(1);
                 reader.Close();
+                if (cmbBookingPackage.Items.Count < 1)
+                    MessageBox.Show("There are no packages for this booking type, please add packages first");
             }
             catch (Exception e)
             {

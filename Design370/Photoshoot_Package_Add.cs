@@ -130,12 +130,10 @@ namespace Design370
             if (dgvServicesInPackage.Rows.Count == 0)
             {
                 MessageBox.Show("No services have been added to the package");
-                return;
             }
             else if (dgvProductsInPackage.Rows.Count == 0)
             {
                 MessageBox.Show("No products have been added to the package");
-                return;
             }
             foreach (DataGridViewColumn column in dgvServicesInPackage.Columns)
             {
@@ -208,6 +206,7 @@ namespace Design370
                 MessageBox.Show(except.Message);
             }
             this.Close();
+            Main_Form.ActiveForm.Refresh();
         }
 
         private void button1_Click_1(object sender, EventArgs e)

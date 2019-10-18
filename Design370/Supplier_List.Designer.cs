@@ -45,6 +45,7 @@
             // 
             // dgvSupplierList
             // 
+            this.dgvSupplierList.AllowUserToAddRows = false;
             this.dgvSupplierList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSupplierList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -154,7 +155,7 @@
             this.btnSelectSupplier.UseVisualStyleBackColor = true;
             this.btnSelectSupplier.Click += new System.EventHandler(this.btnSelectSupplier_Click);
             // 
-            // SupplierList
+            // Supplier_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -166,7 +167,8 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.dgvSupplierList);
-            this.Name = "SupplierList";
+            this.Name = "Supplier_List";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SupplierList";
             this.Load += new System.EventHandler(this.SupplierList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).EndInit();

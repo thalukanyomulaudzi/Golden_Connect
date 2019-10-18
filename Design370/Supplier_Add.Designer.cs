@@ -86,7 +86,7 @@
             this.label12.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(21, 217);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(154, 18);
+            this.label12.Size = new System.Drawing.Size(152, 18);
             this.label12.TabIndex = 93;
             this.label12.Text = "2. Contact Information";
             // 
@@ -96,7 +96,7 @@
             this.label11.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(21, 19);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(156, 18);
+            this.label11.Size = new System.Drawing.Size(154, 18);
             this.label11.TabIndex = 92;
             this.label11.Text = "1. Supplier Information";
             // 
@@ -126,7 +126,7 @@
             this.label6.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(358, 260);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 18);
+            this.label6.Size = new System.Drawing.Size(111, 18);
             this.label6.TabIndex = 89;
             this.label6.Text = "Email Address :";
             // 
@@ -136,7 +136,7 @@
             this.label7.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(21, 260);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(139, 18);
+            this.label7.Size = new System.Drawing.Size(137, 18);
             this.label7.TabIndex = 88;
             this.label7.Text = "Telephone Number :";
             // 
@@ -156,7 +156,7 @@
             this.label8.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(358, 63);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 18);
+            this.label8.Size = new System.Drawing.Size(70, 18);
             this.label8.TabIndex = 86;
             this.label8.Text = "Address :";
             // 
@@ -166,7 +166,7 @@
             this.label9.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(21, 138);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 18);
+            this.label9.Size = new System.Drawing.Size(101, 18);
             this.label9.TabIndex = 84;
             this.label9.Text = "Supplier Type :";
             // 
@@ -186,7 +186,7 @@
             this.label10.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(21, 63);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(114, 18);
+            this.label10.Size = new System.Drawing.Size(112, 18);
             this.label10.TabIndex = 82;
             this.label10.Text = "Supplier Name :";
             // 
@@ -245,6 +245,7 @@
             this.Font = new System.Drawing.Font("Bahnschrift Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Supplier_Add";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Supplier";
             this.Load += new System.EventHandler(this.Supplier_Add_Load);
             this.ResumeLayout(false);
